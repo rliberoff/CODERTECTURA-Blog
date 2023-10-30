@@ -1,6 +1,6 @@
 # Sample site navigation bar links
 
-- title: Inicio
+- title: Inicio 
   url: /
 # - title: Posts
 #   url: /posts/
@@ -10,5 +10,7 @@
 #   url: /tags/
 # - title: Recipes
 #   url: /recipes/
-# - title: Search
-#   url: /search/
+- title: Sobre Mí
+  url: /about/
+- title: 🔍
+  url: /search/

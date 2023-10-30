@@ -25,13 +25,18 @@ date_format: "%Y-%m-%-d"
 read_time: true
 words_per_minute: 200
 mathjax:
-  enable: true
+    enable: false
 
 google_fonts:
-  - name: "Source Sans Pro"
-    weights: "400,400i,700,700i"
-  - name: "Lora"
-    weights: "400,400i,700,700i"
+  # - name: "Source Sans Pro"
+  #   weights: "400,400i,700,700i"
+  # - name: "Lora"
+  #   weights: "400,400i,700,700i"
+  - name: "Inter"
+    weights: "400,700"
+  - name: "Noto Sans Symbols 2"
+    weights: "400"
+
 google_analytics: # Google Analytics id, e.g. "UA-NNNNNNNN-N"
 disqus:
   shortname: # Disqus shortname, e.g. "my_disqus_shortname"
@@ -45,7 +50,7 @@ liquid:
 # Build settings
 markdown: kramdown
 feed:
-  path: atom.xml
+  path: /atom.xml
 
 # Pagination - https://jekyllrb.com/docs/pagination/
 paginate: 6

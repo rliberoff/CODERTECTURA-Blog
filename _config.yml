@@ -13,17 +13,19 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+
 theme: jekyll-theme-so-simple
 skin: "/assets/css/skins/default.css"
 locale: "es"
 title: "CODERTECTURA"
 description: ""
 baseurl: "" # the subpath of your site, e.g. "/blog"
-url: # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url: "https://codertectura.com/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 logo: "/images/logo.png"
 date_format: "%Y-%m-%-d"
 read_time: true
 words_per_minute: 200
+
 mathjax:
     enable: false
 
@@ -38,8 +40,7 @@ google_fonts:
     weights: "400"
 
 google_analytics: # Google Analytics id, e.g. "UA-NNNNNNNN-N"
-disqus:
-  shortname: # Disqus shortname, e.g. "my_disqus_shortname"
+
 twitter:
   username: rliberoff # site's Twitter username
 
@@ -83,10 +84,10 @@ plugins:
   - jekyll-paginate
 
 # Collections
-collections:
-  recipes:
-    output: true
-    permalink: /:collection/:path/
+# collections:
+#   recipes:
+#     output: true
+#     permalink: /:collection/:path/
 
 # Front Matter Defaults
 defaults:
@@ -94,14 +95,6 @@ defaults:
   - scope:
       path: "_posts"
       type: posts
-    values:
-      layout: post
-      comments: true
-      share: true
-  # Recipe defaults
-  - scope:
-      path: "_recipes"
-      type: recipes
     values:
       layout: post
       comments: true

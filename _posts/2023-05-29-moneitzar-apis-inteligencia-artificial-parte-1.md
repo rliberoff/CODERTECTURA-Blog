@@ -4,7 +4,7 @@ excerpt: "En esta serie de tres publicaciones, voy a ir mostrando los detalles t
 date: 2023-05-29 00:00:00 +0000
 last_modified_at: 2023-10-29 00:00:00 +0000
 layout: post
-permalink: /apis/monetizacion/parte-1
+permalink: /post/apis-monetizacion-parte-1
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
@@ -27,8 +27,8 @@ Artítculo publicado originalmente en el blog [«Piensa en software, desarrolla 
 {% capture notice-text %}
 Este es la primera parte de una serie de trest publicaciones:
 
-- [Parte 2: Implementación](/apis/monetizacion/parte-2)
-- [Parte 3: Delegación en el APIM](/apis/monetizacion/parte-3)
+- [Parte 2: Implementación](/post/apis-monetizacion-parte-2)
+- [Parte 3: Delegación en el APIM](/post/apis-monetizacion-parte-3)
 {% endcapture %}
 
 <div class="notice--success" style="font-size: medium;">
@@ -47,7 +47,7 @@ Como decía al principio, en los próximos artículos te mostraré los detalles 
 
 El código de esta publicación lo tienes disponible junto con la presentación (en formato PDF) en el siguiente repo de GitHub 👉 <a href=""> [https://github.com/rliberoff/Global-Azure-Spain-2023-API-Monetization](https://github.com/rliberoff/Global-Azure-Spain-2023-API-Monetization){:target="_blank"}.
 
-A continuación, me gustaría conversar de algunos aspectos teóricos antes de entrar en la implementación, pero si estás impaciente por entender el código del repo y no tener que leer la chapa que escribo a continuación, entonces ve directamente aquí 🤓 ➡️ [Parte 2](/apis/monetizacion/parte-2).
+A continuación, me gustaría conversar de algunos aspectos teóricos antes de entrar en la implementación, pero si estás impaciente por entender el código del repo y no tener que leer la chapa que escribo a continuación, entonces ve directamente aquí 🤓 ➡️ [Parte 2](/post/apis-monetizacion-parte-2).
 
 ### Algunos conceptos antes de empezar
 
@@ -98,6 +98,6 @@ Cualquier mecanismo para recoger los pagos es perfectamente adaptable e integrab
 
 En la arquitectura e implementación que presento en esta publicación usaremos una plataforma de pagos llamada Stripe ([https://stripe.com/es](https://stripe.com/es)).
 
-En el [próximo artículo](/apis/monetizacion/parte-2) exploraremos en detalle la arquitectura de la solución, nos centraremos en el modelo de negocio y el proveedor de pagos, y analizaremos la elección de Stripe como plataforma de pago.
+En el [próximo artículo](/post/apis-monetizacion-parte-2) exploraremos en detalle la arquitectura de la solución, nos centraremos en el modelo de negocio y el proveedor de pagos, y analizaremos la elección de Stripe como plataforma de pago.
 
 ¡No te lo pierdas y descubre cómo monetizar tus APIs de forma eficiente en el entorno de la nube!

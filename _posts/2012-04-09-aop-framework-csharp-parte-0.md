@@ -4,7 +4,7 @@ excerpt: "***Legacy*** - Introducción a cómo implementé un *framework* para P
 date: 2012-04-09 00:00:00 +0200
 last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
-permalink: /aop/parte-0
+permalink: /posts/aop-parte-0
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
@@ -27,9 +27,9 @@ Este es el primero de una serie de cuatro publicaciones que he realizando sobre 
 
 Mi intención inicial era que la primera parte incluyese una apropiada introducción teórica a la programación orientada a aspectos, adicional a los detalles propios de diseño e implementación de un framework. Sin embargo, la longitud que estaba adquiriendo esta primera publicación me ha obligado a dividirla en dos partes: una parte cero o introductoria con los conceptos y elementos teóricos, y una futura parte uno con el correspondiente detalle técnico de implementación.
 
-- [Parte 1: Implementación](/aop/parte-1)
-- [Parte 2: Un aspecto para el registro de eventos (_logging_)](/aop/parte-2)
-- [Parte 3: Un aspecto para el manejo de excepciones](/aop/parte-3)
+- [Parte 1: Implementación](/posts/aop-parte-1)
+- [Parte 2: Un aspecto para el registro de eventos (_logging_)](/posts/aop-parte-2)
+- [Parte 3: Un aspecto para el manejo de excepciones](/posts/aop-parte-3)
 {% endcapture %}
 
 <div class="notice--info" style="font-size: medium;">

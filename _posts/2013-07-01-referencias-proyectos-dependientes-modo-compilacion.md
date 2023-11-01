@@ -4,6 +4,7 @@ excerpt: "***Legacy*** - Veamos una de las formas que tenemos en soluciones de .
 date: 2013-07-01 00:00:00 +0200
 last_modified_at: 2023-10-29 00:00:00 +0200
 layout: post
+permalink: /posts/referencias-proyectos-dependientes-modo-compilacion
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif

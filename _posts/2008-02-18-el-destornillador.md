@@ -4,6 +4,7 @@ excerpt:          "Una divagación sobre el uso correcto y apropiado de las herr
 date:             2008-02-18 00:00:00 +0200
 last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
+permalink: /posts/el-destornillador
 image:
   path:           /images/2008-02-18-el-destornillador/header.jpg
   thumbnail:      /images/2008-02-18-el-destornillador/thumbnail.jpg

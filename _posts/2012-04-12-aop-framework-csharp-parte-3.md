@@ -4,7 +4,7 @@ excerpt: "***Legacy*** - Veamos cómo implementar el manejo de excepciones como 
 date: 2012-04-12 00:00:00 +0200
 last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
-permalink: /aop/parte-3
+permalink: /posts/aop-parte-3
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
@@ -25,9 +25,9 @@ Este tutorial es sobre una aproximación a la Programación Orinetada a Aspectos
 {% capture notice-text %}
 Este es la cuarta y última parte de una serie de cuatro publicaciones que he realizando sobre programación orientada a aspectos en .NET empleando el lenguaje de programación C#.
 
-- [Parte 0: Introducción](/aop/parte-0)
-- [Parte 1: Introducción](/aop/parte-1)
-- [Parte 2: Un aspecto para el registro de eventos (_logging_)](/aop/parte-2)
+- [Parte 0: Introducción](/posts/aop-parte-0)
+- [Parte 1: Introducción](/posts/aop-parte-1)
+- [Parte 2: Un aspecto para el registro de eventos (_logging_)](/posts/aop-parte-2)
 {% endcapture %}
 
 <div class="notice--info" style="font-size: medium;">
@@ -36,7 +36,7 @@ Este es la cuarta y última parte de una serie de cuatro publicaciones que he re
 
 A parte del registro de eventos, otro elemento muy común en la programación orientada a objetos y en los lenguajes actuales (como Java o C#) es la gestión de excepciones.
 
-El otro típico _infierno_ al que se enfrenta un arquitecto o líder técnico a la hora de establecer la política de gestión de errores y excepciones en su diseño es la gobernabilidad de dicho diseño, y la monitorización de su cumplimiento por parte del equipo de desarrollo, cosa que se torna excesivamente complicada por la creatividad de algunos miembros del equipo que rompe la homogeneidad del mecanismo elegido como parte del modelo. Hasta aquí, este párrafo es prácticamente igual al de la [Parte 2](/aop/parte-2) de esta serie de artículos.
+El otro típico _infierno_ al que se enfrenta un arquitecto o líder técnico a la hora de establecer la política de gestión de errores y excepciones en su diseño es la gobernabilidad de dicho diseño, y la monitorización de su cumplimiento por parte del equipo de desarrollo, cosa que se torna excesivamente complicada por la creatividad de algunos miembros del equipo que rompe la homogeneidad del mecanismo elegido como parte del modelo. Hasta aquí, este párrafo es prácticamente igual al de la [Parte 2](/posts/aop-parte-2) de esta serie de artículos.
 
 Y es que el diseño y la gobernabilidad del mecanismo de gestión y manejo de excepciones adoloce de los mismos problemas y retos que que podemos encontrar con el registro de eventos.
 
@@ -57,7 +57,7 @@ Al crear un mecanismo de gestión y manejo de excepciones, no deberíamos partir
 
 #### Implementación
 
-Es importante que si no han leido las primeras partes de esta serie de artículos, aprovechen este momento para hacerlo, sobre todo la [Parte 1](/aop/parte-1). A partir de este momento mis explicaciones considerarán que el conocimiento y los detalles técnicos explicados en esa parte ya son conocidos.
+Es importante que si no han leido las primeras partes de esta serie de artículos, aprovechen este momento para hacerlo, sobre todo la [Parte 1](/posts/aop-parte-1). A partir de este momento mis explicaciones considerarán que el conocimiento y los detalles técnicos explicados en esa parte ya son conocidos.
 
 El primer paso es crear el atributo (`Attribute`) que decorará las clases/interfaces para capturar su ejecución e inyectar el código de manejo de excepciones. Nuestro atributo se llamará `ExceptionHandlingAttribute` y extiende de `InterceptableAttribute`, la clase base en el _framework_ de AOP que sirve para definir atributos de intercepción.
 

@@ -4,11 +4,11 @@ excerpt: "Contar líneas de código no necesariamente puede considerarse como un
 date: 2014-03-24 00:00:00 +0200
 last_modified_at: 2023-10-29 00:00:00 +0200
 layout: post
+permalink: /posts/contar-lineas-de-codigo
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
 categories:
-    - Tutorial
     - Visual Studio
 ---
 

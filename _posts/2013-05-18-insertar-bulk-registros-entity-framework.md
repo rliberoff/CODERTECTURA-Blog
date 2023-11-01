@@ -4,6 +4,7 @@ excerpt: "***Legacy*** - Una implementación que nos ayudará a sembrar (*seed*)
 date: 2013-05-18 00:00:00 +0200
 last_modified_at: 2023-10-29 00:00:00 +0200
 layout: post
+permalink: /posts/ef-insertar-registros-bulk
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif

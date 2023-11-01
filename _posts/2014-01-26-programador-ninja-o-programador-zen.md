@@ -4,6 +4,7 @@ excerpt: "Hoy día las empresas se han vuelto adictas a implementar una u otra f
 date: 2014-01-26 00:00:00 +0200
 last_modified_at: 2023-10-29 00:00:00 +0200
 layout: post
+permalink: /posts/programador-ninja-o-programador-zen
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif

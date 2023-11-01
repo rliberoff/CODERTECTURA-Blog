@@ -4,6 +4,7 @@ excerpt: "Nunca me sentí más cerca a otra alma y a la vez estar tan desesperad
 date: 2012-11-08 00:00:00 +0200
 last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
+permalink: /posts/humor-2
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif

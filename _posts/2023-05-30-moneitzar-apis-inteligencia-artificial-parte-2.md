@@ -4,7 +4,7 @@ excerpt: "En esta serie de tres publicaciones, voy a ir mostrando los detalles t
 date: 2023-05-30 00:00:00 +0000
 last_modified_at: 2023-10-29 00:00:00 +0000
 layout: post
-permalink: /apis/monetizacion/parte-2
+permalink: /post/apis-monetizacion-parte-2
 image:
   path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
   thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
@@ -27,8 +27,8 @@ Artítculo publicado originalmente en el blog [«Piensa en software, desarrolla 
 {% capture notice-text %}
 Este es la primera parte de una serie de trest publicaciones:
 
-- [Parte 1: Introducción](/apis/monetizacion/parte-1)
-- [Parte 3: Delegación en el APIM](/apis/monetizacion/parte-3)
+- [Parte 1: Introducción](/post/apis-monetizacion-parte-1)
+- [Parte 3: Delegación en el APIM](/post/apis-monetizacion-parte-3)
 {% endcapture %}
 
 <div class="notice--success" style="font-size: medium;">
@@ -234,4 +234,4 @@ Tras ejecutar este *script*, si entramos en nuestra cuenta de Stripe veremos com
   </figcaption>
 </figure>
 <br>
-En la próxima publicación abordaremos la delegación de capacidades en Azure API Management, incluyendo la gestión de subscripciones y la integración con Stripe para la facturación 👉 [Parte 3](/apis/monetizacion/parte-3).
+En la próxima publicación abordaremos la delegación de capacidades en Azure API Management, incluyendo la gestión de subscripciones y la integración con Stripe para la facturación 👉 [Parte 3](/post/apis-monetizacion-parte-3).

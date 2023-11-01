@@ -4,6 +4,7 @@ excerpt:          "¿Cómo fue mi partida de Venezuela cuando me mude a España?
 date:             2008-03-07 00:00:00 +0200
 last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
+permalink: /posts/realizaciones
 image:
   path:           /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
   thumbnail:      /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif

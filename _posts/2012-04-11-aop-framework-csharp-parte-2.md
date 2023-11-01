@@ -4,7 +4,7 @@ excerpt: "***Legacy*** - Veamos cómo implementar el registro de eventos o traza
 date: 2012-04-11 00:00:00 +0200
 last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
-permalink: /aop/parte-2
+permalink: /posts/aop-parte-2
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
@@ -25,9 +25,9 @@ Este tutorial es sobre una aproximación a la Programación Orinetada a Aspectos
 {% capture notice-text %}
 Este es la tercera parte de una serie de cuatro publicaciones que he realizando sobre programación orientada a aspectos en .NET empleando el lenguaje de programación C#.
 
-- [Parte 0: Introducción](/aop/parte-0)
-- [Parte 1: Introducción](/aop/parte-1)
-- [Parte 3: Un aspecto para el manejo de excepciones](/aop/parte-3)
+- [Parte 0: Introducción](/posts/aop-parte-0)
+- [Parte 1: Introducción](/posts/aop-parte-1)
+- [Parte 3: Un aspecto para el manejo de excepciones](/posts/aop-parte-3)
 {% endcapture %}
 
 <div class="notice--info" style="font-size: medium;">
@@ -47,7 +47,7 @@ Al crear un sistema de registro de eventos, no deberíamos partir desde cero, ya
 
 #### Implementación
 
-Es importante que si no han leido las primeras partes de esta serie de artículos, aprovechen este momento para hacerlo, sobre todo la [Parte 1](/aop/parte-1).
+Es importante que si no han leido las primeras partes de esta serie de artículos, aprovechen este momento para hacerlo, sobre todo la [Parte 1](/posts/aop-parte-1).
 
 A partir de este momento mis explicaciones considerarán que el conocimiento y los detalles técnicos explicados en esa parte ya son conocidos.
 

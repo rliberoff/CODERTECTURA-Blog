@@ -4,6 +4,7 @@ excerpt: "Con la llegada del nuevo modelo GPT-4, cientos de veces más poderoso 
 date: 2023-04-02 00:00:00 +0000
 last_modified_at: 2023-10-29 00:00:00 +0000
 layout: post
+permalink: /posts/gpt-4-puede-pensar
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif

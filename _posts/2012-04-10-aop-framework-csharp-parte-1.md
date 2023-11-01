@@ -4,7 +4,7 @@ excerpt: "***Legacy*** - Cómo implementé un *framework* para Programación Ort
 date: 2012-04-10 00:00:00 +0200
 last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
-permalink: /aop/parte-1
+permalink: /posts/aop-parte-1
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
@@ -25,9 +25,9 @@ Este tutorial es sobre una aproximación a la Programación Orinetada a Aspectos
 {% capture notice-text %}
 Este es la segunda parte de una serie de cuatro publicaciones que he realizando sobre programación orientada a aspectos en .NET empleando el lenguaje de programación C#.
 
-- [Parte 0: Introducción](/aop/parte-0)
-- [Parte 2: Un aspecto para el registro de eventos (_logging_)](/aop/parte-2)
-- [Parte 3: Un aspecto para el manejo de excepciones](/aop/parte-3)
+- [Parte 0: Introducción](/posts/aop-parte-0)
+- [Parte 2: Un aspecto para el registro de eventos (_logging_)](/posts/aop-parte-2)
+- [Parte 3: Un aspecto para el manejo de excepciones](/posts/aop-parte-3)
 {% endcapture %}
 
 <div class="notice--info" style="font-size: medium;">

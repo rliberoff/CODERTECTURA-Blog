@@ -4,6 +4,7 @@ excerpt: "Primera parte de una serie de publicaciones donde comparto ideas y pen
 date: 2008-07-04 00:00:00 +0200
 last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
+permalink: /posts/tautologia-1
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif

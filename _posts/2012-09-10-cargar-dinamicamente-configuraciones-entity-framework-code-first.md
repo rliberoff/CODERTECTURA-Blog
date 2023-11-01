@@ -4,6 +4,7 @@ excerpt: "***Legacy*** - Una de las cosas que hace poderoso a este framework y q
 date: 2012-04-12 00:00:00 +0200
 last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
+permalink: /posts/ef-cargar-dinamicamente-configuraciones-de-entidades
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif

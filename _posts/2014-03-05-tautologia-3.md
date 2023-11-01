@@ -4,6 +4,7 @@ excerpt: "Tercera publicación donde comparto ideas y pensamientos afines con nu
 date: 2014-03-05 00:00:00 +0200
 last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
+permalink: /posts/tautologia-3
 image:
     path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
     thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif

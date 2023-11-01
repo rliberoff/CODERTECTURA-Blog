@@ -4,7 +4,7 @@ excerpt: "En esta serie de tres publicaciones, voy a ir mostrando los detalles t
 date: 2023-05-31 00:00:00 +0000
 last_modified_at: 2023-10-29 00:00:00 +0000
 layout: post
-permalink: /post/apis-monetizacion-parte-3
+permalink: /posts/apis-monetizacion-parte-3
 image:
  path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
  thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
@@ -27,8 +27,8 @@ Artítculo publicado originalmente en el blog [«Piensa en software, desarrolla 
 {% capture notice-text %}
 Este es la primera parte de una serie de trest publicaciones:
 
-- [Parte 1: Introducción](/post/apis-monetizacion-parte-1)
-- [Parte 2: Implementación](/post/apis-monetizacion-parte-2)
+- [Parte 1: Introducción](/posts/apis-monetizacion-parte-1)
+- [Parte 2: Implementación](/posts/apis-monetizacion-parte-2)
 {% endcapture %}
 
 <div class="notice--success" style="font-size: medium;">

@@ -4,7 +4,7 @@ excerpt: "Usando Semantic Kernel podemos integrar diversos tipos de Large Langua
 date: 2023-07-20 00:00:00 +0000
 last_modified_at: 2023-10-29 00:00:00 +0000
 layout: post
-permalink: /post/integrando-otros-llms-con-semantic-kernel
+permalink: /posts/integrando-otros-llms-con-semantic-kernel
 image:
  path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
  thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif

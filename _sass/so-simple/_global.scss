@@ -31,7 +31,10 @@
   ul {
     display: block;
     margin: 0;
-    padding: 0.25em 0.75em;
+    padding-top: 0.25em;
+    padding-bottom: 0.5em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
     list-style: none;
     border-radius: 0 0 (2 * $border-radius) (2 * $border-radius);
 
@@ -47,7 +50,10 @@
 
   a {
     display: block;
-    padding: 0.5em 0.75em;
+    padding-top: 0.9em;
+    padding-bottom: 0.5em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
     text-transform: uppercase;
     text-decoration: none;
     border: 1px solid;

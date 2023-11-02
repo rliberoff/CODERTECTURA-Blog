@@ -19,7 +19,7 @@ Por ejemplo, de acuerdo con el Centro Tecnológico de Calidad de Software (Softw
 «*El tamaño es una de las formas más antiguas y comunes de medición de software. El tamaño de los módulos es en sí misma un indicador de calidad. El tamaño puede ser medido a través del total de líneas de código, contando todas las líneas; que no correspondan a comentarios y que no esté en blanco, disminuyendo las líneas totales, por el número de espacios en blanco y comentarios, y todas aquellas sentencias ejecutables que se definen por un delimitador dependiente del lenguaje de programación.*»
 {: style="color:#696969; text-align: center;"}
 
-![image-center]({{ '/images/2014-03-24-contar-lineas-de-codigo/nasa.jpg' | absolute_url }}){: .align-center width="400"}
+![image-center]({{ '/images/2014-03-24-contar-lineas-de-codigo/nasa.jpg' | absolute_url }}){: .align-center .image-border width="400"}
 
 Sin embargo, con el paso del tiempo y medida que nuestra disciplina evolucionaba y maduraba, se determinó que por sí sólo el número de líneas de código en un proyecto de software no es un indicador de la calidad del mismo, o la productividad del trabajo realizado por los desarrolladores, si se podría afirmar que es una métrica confiable del tamaño real del proyecto. Habitualmente es una métrica que combinamos con índices como la Complejidad Ciclomática o el número de clases.
 
@@ -27,7 +27,7 @@ En el mundo de Visual Studio contamos con una funcionalidad denominada Code Metr
 
 <figure class="align-center">
   <a href="{{ '/images/2014-03-24-contar-lineas-de-codigo/metrics.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2014-03-24-contar-lineas-de-codigo/metrics.png' | absolute_url }}" alt="Diagrama de Clases">
+    <img src="{{ '/images/2014-03-24-contar-lineas-de-codigo/metrics.png' | absolute_url }}" class="image-border" >
   </a>
   <figcaption>Haz click para ver la imagen más grande.</figcaption>
 </figure>
@@ -36,12 +36,7 @@ Ahora, esta cuenta no es exactamente todas las líneas de código de nuestra sol
 
 Cuando necesito conocer las líneas reales de código fuente, su tipo (código, comentario o línea en blanco) y su distribución (SQL, XML, ASP.NET o C#) empleo y recomiendo un pequeño programa llamado [CLOC](https://github.com/AlDanial/cloc){:target="_blank"}, el cual no requiere instalacieon, es súper fácil de usar y soporta [cientos de tecnologías y lenguajes de programación](https://github.com/AlDanial/cloc#recognized-languages-){:target="_blank"}, incluyendo C#, ASP.NET, VB.NET y muchos más.
 
-<figure class="align-center">
-  <a href="{{ '/images/2014-03-24-contar-lineas-de-codigo/count.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2014-03-24-contar-lineas-de-codigo/count.png' | absolute_url }}" alt="Diagrama de Clases">
-  </a>
-  <figcaption>Haz click para ver la imagen más grande.</figcaption>
-</figure>
+![image-center]({{ '/images/2014-03-24-contar-lineas-de-codigo/count.png' | absolute_url }}){: .align-center }
 
 Entre sus características básicas, me es muy útil que es capaz de reconocer el número de líneas blancas dentro de código, y aquellas que se corresponden a texto de documentación y comentarios, con lo cual se puede obtener métricas, ahora si de la calidad del código, sobre cuanto documentado este puede estar. Por ejemplo, imaginen un código fuente sin ninguna documentación. A través de una aplicación como CLOC podríamos determinar esto y así levantar la correspondiente incidencia.
 

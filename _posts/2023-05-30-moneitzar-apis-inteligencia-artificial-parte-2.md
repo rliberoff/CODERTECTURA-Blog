@@ -57,7 +57,7 @@ En ese sentido, la forma en alto nivel que tendrá la arquitectura que implement
 
 <figure class="align-center">
   <a href="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/1.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/1.png' | absolute_url }}" >
+    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/1.png' | absolute_url }}" class="image-border" style="background: #fff; padding: 10px;" >
   </a>
   <figcaption>
     Arquitectura en alto nivel para la monetización de APIs con el Azure API Management.
@@ -89,7 +89,7 @@ Por temas de espacio de tiempo, crear tal tipo de aplicación se escapa al prop�
 Como tal, el fichero se ve así (lo pongo en un GIF animado porque es muy largo):
 
 <figure class="align-center">
-    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/2.gif' | absolute_url }}" style="width: 650px;" >
+    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/2.gif' | absolute_url }}" style="width: 650px;" class="image-border" >
   <figcaption>
     Extracto del JSON que representa (simula) el modelo de negocio.
   </figcaption>
@@ -101,7 +101,7 @@ Así mismo, el equivalente en el APIM a este modelo de negocio fue creado manual
 
 <figure class="align-center">
   <a href="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/3.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/3.png' | absolute_url }}" >
+    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/3.png' | absolute_url }}" class="image-border" >
   </a>
   <figcaption>
     Como se ve el modelo de negocio en el Azure API Management, en el apartado de «Productos».
@@ -149,7 +149,7 @@ Lo primero es que el *script* necesita cinco parámetros:
 
 <figure class="align-center">
   <a href="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/4.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/4.png' | absolute_url }}" >
+    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/4.png' | absolute_url }}" class="image-border" >
   </a>
   <figcaption>
     Ubicación de la URL del Azure API Management Gateway.
@@ -162,7 +162,7 @@ Lo primero es que el *script* necesita cinco parámetros:
 
 <figure class="align-center">
   <a href="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/5.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/5.png' | absolute_url }}" >
+    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/5.png' | absolute_url }}" class="image-border" >
   </a>
   <figcaption>
     Ubicación de las claves de subscripción en el Azure API Management.
@@ -227,7 +227,7 @@ Tras ejecutar este *script*, si entramos en nuestra cuenta de Stripe veremos com
 
 <figure class="align-center">
   <a href="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/10.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/10.png' | absolute_url }}" >
+    <img src="{{ '/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/10.png' | absolute_url }}" class="image-border" >
   </a>
   <figcaption>
     Haz click para ver la imagen más grande.

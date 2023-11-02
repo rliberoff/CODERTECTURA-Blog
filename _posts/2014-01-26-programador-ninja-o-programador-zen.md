@@ -19,7 +19,7 @@ Y de todos los guerreros, no se les ocurrió ninguno mejor que el Ninja. ¿Pero 
 
 ### El Programador Ninja
 
-![image-left]({{ '/images/2014-01-26-programador-ninja-o-programador-zen/ninja.jpg' | absolute_url }}){: .align-left width="250"}
+![image-left]({{ '/images/2014-01-26-programador-ninja-o-programador-zen/ninja.jpg' | absolute_url }}){: .align-left .image-border width="250" }
 
 Básicamente son programadores con un nivel de experiencia y una pasión efervescente, siempre encendida por nuestra disciplina. No sólo son ágiles, sino también disciplinados y centrados en su trabajo.
 
@@ -39,7 +39,7 @@ Y entonces… ¿son los programadores Ninja la única alternativa en una organiz
 
 ### Introduciendo al Programador Zen
 
-![image-right]({{ '/images/2014-01-26-programador-ninja-o-programador-zen/zen.webp' | absolute_url }}){: .align-right width="250"}El programador Zen comparte algunas características con el programador Ninja, pero su principal diferencia es que, aunque son ágiles, no están orientados a entregar software de forma rápida. Se toman su tiempo, meditan y vuelven a meditar antes de tomar alguna acción.
+![image-right]({{ '/images/2014-01-26-programador-ninja-o-programador-zen/zen.webp' | absolute_url }}){: .align-right .image-border width="250" }El programador Zen comparte algunas características con el programador Ninja, pero su principal diferencia es que, aunque son ágiles, no están orientados a entregar software de forma rápida. Se toman su tiempo, meditan y vuelven a meditar antes de tomar alguna acción.
 
 El programador Zen sólo sabe y sólo domina la tecnología base a la cual está orientado, es su dogma y su filosofía; la base de su ciencia y religión que es la programación. Y difícilmente se moverá de esta tecnología. Mientras un programador Ninja no tiene problemas en pasarse de .NET a Java a Rails a PHP… el programador Zen permanecerá inalterable fiel a la tecnología que a elegido para si.
 

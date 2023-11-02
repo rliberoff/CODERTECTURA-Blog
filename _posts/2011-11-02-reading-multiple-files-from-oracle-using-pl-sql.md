@@ -41,7 +41,7 @@ So, with this knowledge, We have new challenges:
 
 The following diagram depicts the design of this solution:
 
-![center-aligned-image](/images/2011-11-02-reading-multiple-files-from-oracle-using-pl-sql/1.png){: .align-center}
+![center-aligned-image](/images/2011-11-02-reading-multiple-files-from-oracle-using-pl-sql/1.png){: .align-center .image-border}
 
 We can solve challenges 1 and 2 creating a stored procedure which We will call `ListFiles`, and storing it in a new package under the `SYS` schema. This stored procedure will be a proxy or gateway to invoke the `SearchFiles` procedure. The values of the `X$KRBMSFT` table will be returned as a cursor, so the consumers of this stored procedure will no require access privileges to it. The script is as follows:
 

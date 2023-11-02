@@ -30,7 +30,7 @@ Parte de las reglas de negocio del proyecto exige, como también es común en ta
 
 Pero lamentablemente para Perú, uno de los países que tengo que gestionar, la cantidad y la calidad de la información disponible es decepcionante.
 
-![center-aligned-image](/images/2012-11-21-validar-dni-o-ruc-de-peru/dni.jpg){: .align-center}
+![center-aligned-image](/images/2012-11-21-validar-dni-o-ruc-de-peru/dni.png){: .align-center}
 
 Por otro lado, al hablar de documentos de identidad en Perú, debemos distinguir entre el <a href="http://es.wikipedia.org/wiki/Documento_de_identidad#Per.C3.BA" target="_blank" rel="noopener">DNI</a> (Documento Único de Identidad) y el <a href="http://es.wikipedia.org/wiki/RUC" target="_blank" rel="noopener">RUC</a> (Registro Único de Contribuyente). El primero aplica a los ciudadanos en general y cuenta con un identificador conocido como CUI (Cédula Única de Identidad), mientras que el segundo aplica a empresas y comercios.
 

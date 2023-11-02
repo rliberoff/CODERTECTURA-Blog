@@ -56,7 +56,7 @@ La delegación de servicios del APIM se puede realizar fácilmente desde el Azur
 
 <figure class="align-center">
  <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/1.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/1.png' | absolute_url }}" >
+  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/1.png' | absolute_url }}" class="image-border" >
  </a>
  <figcaption>
   Haz click para ver la imagen más grande.
@@ -118,7 +118,7 @@ Necesitaremos:
 
 <figure class="align-center">
  <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/4.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/4.png' | absolute_url }}" >
+  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/4.png' | absolute_url }}" class="image-border" >
  </a>
  <figcaption>
   Haz click para ver la imagen más grande.
@@ -129,7 +129,7 @@ Necesitaremos:
 
 <figure class="align-center">
  <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/5.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/5.png' | absolute_url }}" >
+  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/5.png' | absolute_url }}" class="image-border" >
  </a>
  <figcaption>
   Haz click para ver la imagen más grande.

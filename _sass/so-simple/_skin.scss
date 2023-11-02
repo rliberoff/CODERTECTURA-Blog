@@ -39,11 +39,11 @@ blockquote {
 }
 
 .taxonomy-title {
-  color: lighten($text-color, 60%);
+  color: lighten($text-color, 35%);
 }
 
 .taxonomy-count {
-  color: lighten($text-color, 50%);
+  color: lighten($text-color, 40%);
 }
 
 .taxonomy-index {
@@ -80,7 +80,7 @@ blockquote {
     border-color: $nav-background-color;
 
     &:hover {
-      border-color: $nav-color;
+      border-color: #1DBD13;
     }
   }
 }
@@ -274,13 +274,14 @@ td {
 
 code.highlighter-rouge {
   color: $base05;
-  background-color: $base00;
+  background-color: rgb(250, 250, 250, 0.5);
 }
 
 div.highlighter-rouge,
 figure.highlight {
   color: $base05;
   background-color: $base00;
+  border: solid 1px $border-color;
 }
 
 .highlight table {

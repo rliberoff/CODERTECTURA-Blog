@@ -70,7 +70,7 @@ La siguiente imagen corresponde al diagrama de clases de este _framework_ y cuyo
 
 <figure class="align-center">
   <a href="{{ '/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_clases.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_clases.png' | absolute_url }}" alt="Diagrama de Clases">
+    <img src="{{ '/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_clases.png' | absolute_url }}" alt="Diagrama de Clases" class="image-border">
   </a>
   <figcaption>Haz click para ver la imagen más grande.</figcaption>
 </figure>
@@ -309,7 +309,7 @@ El argumento detrás de una propiedad para definir una prioridad es que en .NET 
 
 <figure class="align-center">
   <a href="{{ '/images/2012-04-10-aop-framework-csharp-parte-1/aop_propiedad_prioridad.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2012-04-10-aop-framework-csharp-parte-1/aop_propiedad_prioridad.png' | absolute_url }}" alt="Diagrama de Clases">
+    <img src="{{ '/images/2012-04-10-aop-framework-csharp-parte-1/aop_propiedad_prioridad.png' | absolute_url }}" class="image-border">
   </a>
   <figcaption>Haz click para ver la imagen más grande.</figcaption>
 </figure>
@@ -485,7 +485,7 @@ La siguiente imagen corresponde al diagrama de dependencias de clases de este _f
 
 <figure class="align-center">
   <a href="{{ '/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_dependencias.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_dependencias.png' | absolute_url }}" alt="Diagrama de Clases">
+    <img src="{{ '/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_dependencias.png' | absolute_url }}" alt="Diagrama de Dependencias" class="image-border">
   </a>
   <figcaption>Haz click para ver la imagen más grande.</figcaption>
 </figure>

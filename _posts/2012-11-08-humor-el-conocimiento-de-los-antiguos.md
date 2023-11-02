@@ -13,7 +13,7 @@ categories:
 ---
 Los comics de <a href="http://xkcd.com/">XKCD</a> son uno de mis favoritos. Pero si hay uno que me ha marcado como ninguno ha sido este:
 
-![center-aligned-image](/images/2012-11-08-humor-el-conocimiento-de-los-antiguos/wisdom_of_the_ancients.png){: .align-center}
+![center-aligned-image](/images/2012-11-08-humor-el-conocimiento-de-los-antiguos/wisdom_of_the_ancients.png){: .align-center .image-border}
 
 > Nunca me sentí más cerca a otra alma y a la vez estar tan desesperadamente solo que cuando *googleo* un error, y hay un único resultado en un foro por alguien con el mismo problema pero sin respuesta. El post es de 2003…
 >

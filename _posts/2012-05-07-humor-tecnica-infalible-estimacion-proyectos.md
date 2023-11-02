@@ -16,4 +16,4 @@ Pero en estos días, <a href="http://es.linkedin.com/in/dcialdella/es" target="_
 
 Os dejo una imágen de como aplicarla efectivamente:
 
-![center-aligned-image](/images/2012-05-07-humor-tecnica-infalible-estimacion-proyectos/humor_001.webp){: .align-center}
+![center-aligned-image](/images/2012-05-07-humor-tecnica-infalible-estimacion-proyectos/humor_001.webp){: .align-center .image-border}

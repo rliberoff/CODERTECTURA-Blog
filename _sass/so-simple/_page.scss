@@ -14,23 +14,22 @@
   margin-bottom: 0.5em;
   font-family: $title-font-family;
   font-weight: $page-title-weight;
-  // font-style: italic;
-  letter-spacing: -2px;
+    letter-spacing: -2px;
 }
 
 .page-image {
   position: relative;
   text-align: center;
-  margin-top: (-1 * $site-logo-height) / 2;
+  margin-top: calc((-1 * $site-logo-height) / 2);
   margin-bottom: 2em;
   z-index: 1;
 
   @include breakpoint($medium) {
-    margin-top: (-1.5 * $site-logo-height) / 2;
+    margin-top: calc((-1.5 * $site-logo-height) / 2);
   }
 
   @include breakpoint($large) {
-    margin-top: (-2 * $site-logo-height) / 2;
+    margin-top: calc((-2 * $site-logo-height) / 2);
   }
   
   img {

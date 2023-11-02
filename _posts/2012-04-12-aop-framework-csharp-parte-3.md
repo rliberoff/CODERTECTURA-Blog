@@ -44,7 +44,7 @@ Particularmente se encuentra que los dos (2) aspectos más difíciles de gestion
 
 <figure class="align-center">
   <a href="{{ '/images/2012-04-12-aop-framework-csharp-parte-3/asp-net-yellow-page-of-death.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2012-04-12-aop-framework-csharp-parte-3/asp-net-yellow-page-of-death.png' | absolute_url }}" alt="ASP.NET Yellow Page of Death">
+    <img src="{{ '/images/2012-04-12-aop-framework-csharp-parte-3/asp-net-yellow-page-of-death.png' | absolute_url }}" alt="ASP.NET Yellow Page of Death" class="image-border">
   </a>
   <figcaption>Haz click para ver la imagen más grande.</figcaption>
 </figure>

@@ -28,12 +28,7 @@ Una de las cosas que más me gustan de la plataforma .NET y del Visual Studio es
 
 Sin embargo, y en particular, al trabajar con librerías de terceras partes o *third party libraries* que no estén disponibles a través de NuGet, existen diversas estrategias que ya se empleaban desde los principios de .NET. La que personal y profesionalmente considero la más apropiada es la de crear una carpeta `Lib` en la raíz del directorio que contiene al archivo de solución (`.sln`) e ir colocando allí los diferentes archivos `dll` que se van a emplear.
 
-<figure class="align-center">
-  <a href="{{ '/images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/file-system.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/file-system.png' | absolute_url }}" alt="Diagrama de Clases">
-  </a>
-  <figcaption>Haz click para ver la imagen más grande.</figcaption>
-</figure>
+![image-center]({{ '/images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/file-system.png' | absolute_url }}){: .align-center }
 
 La parte final sería agregar el contenido de la carpeta `Lib` a la solución (a través de las funcionalidades de *Add solution's folder* y de *Add existing item...*) para poder gestionar estas referencias a través del repositorio de versiones que empleemos: TFS, GitHub, SVN, o cualquier otro.
 
@@ -52,12 +47,7 @@ Supongamos que necesitamos referenciar una lirabría llamada `My.Special.Library
 3. Colocamos en cada nuevo directorio la versión de la libraría de terceros (en nuestro ejemplo `My.Special.Library`) donde corresponda, tal que la versión que queremos para el modo `DEBUG` esté en el directorio `Debug`, y de igual manera para el caso del modo `RELEASE`.
 4. Es importante desde el Visual Studio crear dos «Solution Folders» adicionales dentro del «Solution Folder» de `Lib` para mapear los directorios `Debug` y `Release` así como su contenido para poder gestionarlos a través de nuestro correspondiente sistema de gestión de versiones.
 
-<figure class="align-center">
-  <a href="{{ '/images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/lib.png' | absolute_url }}" target="_blank" rel="noopener">
-    <img src="{{ '/images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/lib.png' | absolute_url }}" alt="Diagrama de Clases">
-  </a>
-  <figcaption>Haz click para ver la imagen más grande.</figcaption>
-</figure>
+![image-center]({{ '/images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/lib.png' | absolute_url }}){: .align-center .image-border }
 
 {:start="5"}
 5. Luego, desde el Visual Studio, seleccionamos el proyecto que queremos trabajar desde el «Solutio Explorer».

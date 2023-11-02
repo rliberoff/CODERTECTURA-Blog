@@ -43,24 +43,24 @@
 
 .responsive-embed-21by9 {
   &::before {
-    padding-top: percentage(9 / 21);
+    padding-top: percentage(calc(9 / 21));
   }
 }
 
 .responsive-embed-16by9 {
   &::before {
-    padding-top: percentage(9 / 16);
+    padding-top: percentage(calc(9 / 16));
   }
 }
 
 .responsive-embed-4by3 {
   &::before {
-    padding-top: percentage(3 / 4);
+    padding-top: percentage(calc(3 / 4));
   }
 }
 
 .responsive-embed-1by1 {
   &::before {
-    padding-top: percentage(1 / 1);
+    padding-top: percentage(calc(1 / 1));
   }
 }

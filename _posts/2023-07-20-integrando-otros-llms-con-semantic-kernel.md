@@ -150,12 +150,12 @@ Para probar esto, os dejo una colección de Postman con esta llamada y que está
 Si tienes más curiosidad sobre Semantic Kernel, te dejo aquí algunas publicaciones de mi [YouTube](https://www.youtube.com/@CODERTECTURA){:target="_blank"} donde justamente trato sobre estos temas:
 
 - Configuración paso a paso del Semantic Kernel 👉🏻 [https://youtu.be/a8gNdF0D23g](https://youtu.be/a8gNdF0D23g){:target="_blank"}
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/a8gNdF0D23g" title="SEMANTIC KERNEL - Configuración PASO a PASO 👣" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/a8gNdF0D23g" title="SEMANTIC KERNEL - Configuración PASO a PASO 👣" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px; margin-left: 50px;" allowfullscreen></iframe>
 
 <br>
 - Las Funciones Semánticas en Semantic Kernel 👉🏻 [https://youtu.be/jc6H8gmXAAA](https://youtu.be/jc6H8gmXAAA){:target="_blank"}
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/jc6H8gmXAAA" title="Te eneseño cómo son las Funciones Semánticas en SEMANTIC KERNEL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/jc6H8gmXAAA" title="Te eneseño cómo son las Funciones Semánticas en SEMANTIC KERNEL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px; margin-left: 50px;"  allowfullscreen></iframe>
 
 <br>
 - Las Funciones Nativas en Semantic Kernel 👉🏻 [https://youtu.be/mSJa0oaS_XE](https://youtu.be/mSJa0oaS_XE){:target="_blank"}
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/mSJa0oaS_XE" title="💥🫵🏻 FUNCIONES NATIVAS en SEMANTIC KERNEL, y TODO lo que necesitas para implementarlas‼️" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/mSJa0oaS_XE" title="💥🫵🏻 FUNCIONES NATIVAS en SEMANTIC KERNEL, y TODO lo que necesitas para implementarlas‼️" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px; margin-left: 50px;" allowfullscreen></iframe>

@@ -43,11 +43,15 @@ $base0f: #d33682 !default;
 
 @import "so-simple/skin";
 
-.giscus
-{
+.giscus {
     padding-right: 2px !important;
 }
 
 .image-border {
     border: solid 1px $border-color;
+}
+
+.entry-feature-image {
+    border-top: solid 2px $border-color;
+    border-bottom: solid 2px $border-color;
 }

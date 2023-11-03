@@ -6,8 +6,8 @@ last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
 permalink: /posts/ef-cargar-dinamicamente-configuraciones-de-entidades
 image:
-    path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
-    thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
+    path: /images/2012-04-12-cargar-dinamicamente-configuraciones-entity-framework-code-first/header.webp
+    thumbnail: /images/2012-04-12-cargar-dinamicamente-configuraciones-entity-framework-code-first/thumbnail.webp
 categories:
     - Legacy
     - Tutorial

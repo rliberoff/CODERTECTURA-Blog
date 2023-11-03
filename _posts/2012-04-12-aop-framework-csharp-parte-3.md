@@ -6,8 +6,9 @@ last_modified_at: 2023-10-27 00:00:00 +0200
 layout: post
 permalink: /posts/aop-parte-3
 image:
-    path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
-    thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
+    path: /images/2012-04-12-aop-framework-csharp-parte-3/header.jpg
+    thumbnail: /images/2012-04-12-aop-framework-csharp-parte-3/thumbnail.jpg
+    caption: Imágen de [Pexels](https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis-17485819/){:target="_blank"}
 categories:
     - Legacy
     - Tutorial

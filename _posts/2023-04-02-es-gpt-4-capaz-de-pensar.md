@@ -6,8 +6,8 @@ last_modified_at: 2023-10-29 00:00:00 +0000
 layout: post
 permalink: /posts/gpt-4-puede-pensar
 image:
-    path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
-    thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
+    path: /images/2023-04-02-es-gpt-4-capaz-de-pensar/header.png
+    thumbnail: /images/2023-04-02-es-gpt-4-capaz-de-pensar/thumbnail.png
 categories:
     - Divagaciones
     - Inteligencia Artificial

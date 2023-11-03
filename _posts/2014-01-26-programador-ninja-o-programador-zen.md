@@ -1,13 +1,13 @@
 ---
 title: "Programador Ninja o Programador Zen"
-excerpt: "Hoy día las empresas se han vuelto adictas a implementar una u otra forma de «desarrollo ágil» de software, que en la gran mayoría de las veces termina convirtiéndose o traduciéndose en una forma degenerada y poco saludable de proceso de «construye-y-despliega».<br><br>Esta deformación de los procesos ágiles de desarrollo de software en las empresas ha hecho que muchos desarrolladores de alta profesionalidad hayan adquirido características más propias de guerreros míticos."
+excerpt: "Veamos como la forma degenerada y poco saludable de procesos de «*construye-y-despliega*» en que terminan convirtiendose la implementación de metodologías para el «*desarrollo ágil*» de software en muchas organizaciones ha hecho que muchos desarrolladores de alta profesionalidad hayan adquirido características más propias de guerreros míticos."
 date: 2014-01-26 00:00:00 +0200
 last_modified_at: 2023-10-29 00:00:00 +0200
 layout: post
 permalink: /posts/programador-ninja-o-programador-zen
 image:
-    path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
-    thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
+    path: /images/2014-01-26-programador-ninja-o-programador-zen/header.jpg
+    thumbnail: /images/2014-01-26-programador-ninja-o-programador-zen/thumbnail.jpg
 categories:
     - Divagaciones
 ---

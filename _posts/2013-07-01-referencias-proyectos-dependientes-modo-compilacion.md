@@ -6,8 +6,8 @@ last_modified_at: 2023-10-29 00:00:00 +0200
 layout: post
 permalink: /posts/referencias-proyectos-dependientes-modo-compilacion
 image:
-    path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
-    thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
+    path: /images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/header.jpg
+    thumbnail: /images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/thumbnail.jpg
 categories:
     - Legacy
     - Tutorial

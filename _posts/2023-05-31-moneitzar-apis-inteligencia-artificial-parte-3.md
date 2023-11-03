@@ -6,8 +6,8 @@ last_modified_at: 2023-10-29 00:00:00 +0000
 layout: post
 permalink: /posts/apis-monetizacion-parte-3
 image:
- path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
- thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
+ path: /images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/header.webp
+ thumbnail: /images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/thumbnail.webp
 categories:
  - Tutorial
  - Azure

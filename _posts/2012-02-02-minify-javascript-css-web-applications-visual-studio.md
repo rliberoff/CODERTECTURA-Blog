@@ -6,8 +6,8 @@ last_modified_at: 2023-11-01 00:00:00 +0200
 layout: post
 permalink: /posts/minify-javascript-and-css-for-web-application-from-visual-studio
 image:
-    path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
-    thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
+    path: /images/2012-02-02-minify-javascript-css-web-applications-visual-studio/header.jpg
+    thumbnail: /images/2012-02-02-minify-javascript-css-web-applications-visual-studio/thumbnail.jpg
 categories:
     - English
     - Tutorial

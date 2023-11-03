@@ -6,8 +6,9 @@ last_modified_at: 2023-11-01 00:00:00 +0200
 layout: post
 permalink: /posts/oracle-read-multiple-files-using-only-pl-sql
 image:
-    path: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/header.avif
-    thumbnail: /images/2008-03-07-realizaciones-o-de-cuando-me-fui-de-venezuela/thumbnail.avif
+    path: /images/2011-11-02-reading-multiple-files-from-oracle-using-pl-sql/header.jpg
+    thumbnail: /images/2011-11-02-reading-multiple-files-from-oracle-using-pl-sql/thumbnail.jpg
+    caption: Imágen de [Pexels](https://www.pexels.com/photo/gray-steel-file-cabinet-1370294/){:target="_blank"}
 categories:
     - Legacy    
     - Tutorial

@@ -102,6 +102,36 @@
   z-index: 10;
 }
 
+$arrow-down-width: 80px;
+$arrow-down-height: 80px;
+
+.arrow-down
+{
+  width: $arrow-down-width;
+  height: $arrow-down-height;   
+  opacity: 0.65;
+
+  @include breakpoint($small) {
+    width: 0;
+    height: 0;
+  }
+
+  @include breakpoint($medium) {
+    width: 0;
+    height: 0;
+  }
+
+  @include breakpoint($large) {
+    width: 0;
+    height: 0;
+  }
+
+  @include breakpoint($xlarge) {
+    width: 2 * $arrow-down-width;
+    height: 2 * $arrow-down-height;
+  }
+}
+
 .site-logo-img {
   width: $site-logo-width;
   height: $site-logo-height;

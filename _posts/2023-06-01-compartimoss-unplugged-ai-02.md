@@ -10,6 +10,7 @@ image:
 categories:
   - Inteligencia Artificial
   - CompartiMOSS
+  - Microsoft Build
 ---
 
 En esta segunda entrega del *spin-off* de las sesiones de *streaming* de CompartiMOSS sobre Inteligencia Artificial hemos conversado sobre las novedades de AI del Microsoft Build 2023, principalmente de:

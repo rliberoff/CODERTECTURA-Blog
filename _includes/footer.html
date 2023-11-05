@@ -5,12 +5,12 @@
         <a class="social-icon" href="{{ url }}" target="_blank"><i class="{{ footer_link.icon | default: 'fas fa-link' }} fa-2x" title="{{ footer_link.title }}"></i></a>
         {%- endfor -%} {% unless site.atom_feed.hide %}
         <a class="social-icon" href="{% if site.feed.path %}{{ site.feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}" target="_blank">
-            <i class="fas fa-2x fa-rss-square" aria-hidden="true"></i> 
+            <i class="fas fa-2x fa-rss-square" aria-hidden="true"></i>
         </a>
         {% endunless %}
     </div>
     {%- endif -%}
-    <br>
+    <br />
     <div class="copyright">
         {% if site.copyright %} {{ site.copyright | markdownify }} {% else %}
         <p>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }} - {{ site.author.name }}.</p>
@@ -19,5 +19,8 @@
             <a href="https://github.com/mmistakes/so-simple-theme" rel="nofollow" target="_blank">So Simple</a>.
         </p>
         {% endif %}
+    </div>
+    <div>        
+        <p style="font-size: xx-small; margin-top: 5px;"><a href="/privacy">Política de Privacidad</a></p>
     </div>
 </footer>

@@ -132,6 +132,23 @@ $arrow-down-height: 80px;
   }
 }
 
+.arrow-down-rotate
+{
+  transform: rotate(180deg);
+  width: calc($arrow-down-width * 1);
+  height: calc($arrow-down-height * 1);   
+}
+
+.top {
+  --offset: 160px;
+
+  position: sticky;
+  bottom: 10px;
+  margin-left: calc(100vw - var(--offset));
+  margin-top: calc(100vh + var(--offset));
+  place-self: end;  
+}
+
 .site-logo-img {
   width: $site-logo-width;
   height: $site-logo-height;

@@ -99,6 +99,19 @@ defaults:
       layout: post
       comments: true
       share: true
+      showBackTop: true
+  - scope:
+      path: "privacy.md"
+    values:
+      showBackTop: true
+  - scope:
+      path: "posts.md"
+    values:
+      showBackTop: true
+  - scope:
+      path: "categories.md"
+    values:
+      showBackTop: true
 
 # Site Author
 author:

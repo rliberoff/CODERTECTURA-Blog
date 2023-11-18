@@ -21,16 +21,20 @@
     position: -webkit-sticky;
     position: sticky;
     z-index: 9999;
-    width: 100%;
-    text-align: center;
-    bottom: calc((3 * $site-logo-height) + 20px);
-    height: calc($site-logo-height - 20px);
+    width: 100%;    
+    bottom: calc((3 * $site-logo-height));
+    height: 0;
+
+    svg {
+        margin-top: -160px;
+    }
 }
 
 .page-image {
     position: relative;
     text-align: center;
     margin-top: calc((-1 * $site-logo-height) / 2);
+    margin-bottom: 40px;
     z-index: 1;
 
     @include breakpoint($medium) {

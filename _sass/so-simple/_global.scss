@@ -108,8 +108,8 @@ $arrow-down-height: 80px;
 .arrow-down
 {
   width: $arrow-down-width;
-  height: $arrow-down-height;   
-  opacity: 0.65;
+  height: $arrow-down-height;
+  opacity: 0.60;
 
   @include breakpoint($small) {
     width: 0;
@@ -136,16 +136,17 @@ $arrow-down-height: 80px;
 {
   transform: rotate(180deg);
   width: calc($arrow-down-width * 1);
-  height: calc($arrow-down-height * 1);   
+  height: calc($arrow-down-height * 1);
 }
 
 .top {
-  --offset: 160px;
+  --offset-x: 100px;
+  --offset-y: 500px;
 
   position: sticky;
   bottom: 10px;
-  margin-left: calc(100vw - var(--offset));
-  margin-top: calc(100vh + var(--offset));
+  margin-left: calc(100vw - var(--offset-x));
+  margin-top: calc(100vh + var(--offset-y));
   place-self: end;  
 }
 

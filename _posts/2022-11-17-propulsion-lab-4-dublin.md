@@ -17,6 +17,7 @@ categories:
  - Inteligencia Artificial
  - Metaverso
  - Propulsion Lab
+ - Eventos
 ---
 Pues he vivido una experiencia increíble gracias a la oportunidad que me dió [ENCAMINA](https://www.encamina.com/){:target="_blank"} de participar en su evento [Propulsion Lab IV](https://blogs.encamina.com/encamina-se-mueve/propulsion-lab-iv-colaboracion-en-el-multiverso/){:target="_blank"}, que en esta ocación se realizó en Dublín (Irlanda) en las oficinas de Microsoft.
 

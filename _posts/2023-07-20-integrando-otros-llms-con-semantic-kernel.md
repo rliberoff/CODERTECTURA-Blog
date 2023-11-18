@@ -41,7 +41,6 @@ Para crear una Función Nativa, primero debemos definir un *plugin*. Esto es alg
 
 {% include figure class="align-center" imagePath="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/1.png" lightbox=false imageBorder=false %}
 
-
 En nuestro caso, vamos a realizar una integración con «`roberta-base-squad2`» disponible en [Hugging Face](https://huggingface.co/deepset/roberta-base-squad2){:target="_blank"}. Este modelo nos permite integrarnos con un LLM llamado [RoBERTa](https://arxiv.org/abs/1907.11692){:target="_blank"} (nombre gracioso para *Robustly Optimized BERT Approach*) desarrollado por la empresa [deepset](https://www.deepset.ai/){:target="_blank"} (los mismos de [Haystack](https://haystack.deepset.ai/){:target="_blank"}).
 
 El modelo «`roberta-base-squad2`» nos permitirá realizar preguntas que serán contestadas a partir del contenido de un contexto que también debemos suministrar. El resultado retornado nos dará la respuesta junto con un valor numérico que indicará el índice de confiabilidad de la calidad de dicha respuesta, es decir, un score cuyo valor cuánto más alto sea indicará que la respuesta es de mejor calidad y, por el contrario, cuanto más bajo sea que la respuesta es menos confiable.

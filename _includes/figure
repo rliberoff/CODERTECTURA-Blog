@@ -1,10 +1,17 @@
 <figure class="{{ include.class }}">  
-    {%- if include.lightbox == true -%}      
-    <a href="{{ include.image_path | absolute_url }}" target="_blank" rel="noopener" data-lity>
-        <img src="{{ include.image_path | relative_url }}" alt="{% if include.alt %}{{ include.alt }}{% endif %}" class="image-border" />
-    </a>
+    {%- if include.lightbox == false -%}      
+        <img src="{{ include.image_path | relative_url }}" 
+             alt="{% if include.alt %}{{ include.alt }}{% endif %}" 
+             class="{% unless include.imageBorder == false %}image-border{% endunless %} {{ include.imageClass }}" 
+             style="{% if include.imageStyle %}{{ include.imageStyle }}{% endif %}" />
+
     {%- else -%}
-        <img src="{{ include.image_path | relative_url }}" alt="{% if include.alt %}{{ include.alt }}{% endif %}" class="image-border" />
+        <a href="{{ include.image_path | absolute_url }}" target="_blank" rel="noopener" data-lity>
+            <img src="{{ include.image_path | relative_url }}" 
+                 alt="{% if include.alt %}{{ include.alt }}{% endif %}" 
+                 class="{% unless include.imageBorder == false %}image-border{% endunless %} {{ include.imageClass }}"
+                 style="{% if include.imageStyle %}{{ include.imageStyle }}{% endif %}" />
+        </a>        
     {%- endif -%}
     {%- if include.caption -%}
     <figcaption>

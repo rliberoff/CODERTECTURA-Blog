@@ -69,7 +69,7 @@ Al final del día lo que buscábamos era un mecanismo eficiente, simple, sencill
 
 La siguiente imagen corresponde al diagrama de clases de este _framework_ y cuyos elementos iremos describiendo y detallando a lo largo de esta publicación:
 
-{% include figure class="align-center" image_path="/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_clases.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" image_path="/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_clases.png" caption="Haz click para ver la imagen más grande." %}
 
 Recordando de la parte cero de esta serie de publicaciones, en .NET para que una clase sea interceptable debe cumplir con dos (2) condiciones:
 
@@ -303,7 +303,7 @@ El atributo `InterceptableAttribute` permite agregar dos propiedades a la meta-d
 
 El argumento detrás de una propiedad para definir una prioridad es que en .NET al recuperar los atributos (por _reflection_ por ejemplo), estos aparecen en el órden inverso a como fueron colocados en el código. Esto significa que los programadores estarían restringidos a colocar los atributos que definen aspectos en el órden preciso que se necesita para su inyección, lo cual primero no es flexible y segundo puede llevar a escenarios que rompan con la gobernabilidad que haya decidido el Arquitecto de Software o el Líder Técnico para la inyección de los aspectos.
 
-{% include figure class="align-center" image_path="/images/2012-04-10-aop-framework-csharp-parte-1/aop_propiedad_prioridad.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" image_path="/images/2012-04-10-aop-framework-csharp-parte-1/aop_propiedad_prioridad.png" caption="Haz click para ver la imagen más grande." %}
 
 Definiendo una prioridad para un aspecto como parte de sus propiedades y ordenando luego los aspectos que se deben aplicar a un método acorde a dicha prioridad se otorga a los programadores la libertad de agregar los atributos que los definen en el orden que deseen. Más aún, si durante la vida de un proyecto se crean o descartan aspectos, sólo bastará con agregar o remover el atributo correspondiente sin tomar en cuenta si esta de primero o último en la pila de atributos (ganando flexibilidad y escalabilidad en el diseño e implementación).
 
@@ -474,7 +474,7 @@ El método `SyncProcessMessage` es el principal responsable en esta clase, y se 
 
 La siguiente imagen corresponde al diagrama de dependencias de clases de este _framework_ y que muestra la relación de los elementos descritos y detallados en esta publicación:
 
-{% include figure class="align-center" image_path="/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_dependencias.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" image_path="/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_dependencias.png" caption="Haz click para ver la imagen más grande." %}
 
 Para emplear este _framework_ y crear aspectos se deben seguir los siguientes pasos:
 

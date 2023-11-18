@@ -68,9 +68,9 @@ Primero tenemos que entender cómo funciona el algoritmo y qué resultados arroj
 
 Los resultados han sido fascinantes, y podéis explorarlos en el mencionado paper. Aquí dejo unos cuantos:
 
-{% include figure class="align-center" image_path="/images/2023-04-02-es-gpt-4-capaz-de-pensar/1.png" caption="Comparación entre GPT-4 y GPT-3 (representado como ChatGPT) en un ejercicio sobre el razonamiento aplicado al comportamiento humano y la distinción de intenciones." %}
+{% include figure class="align-center" image_path="/images/2023-04-02-es-gpt-4-capaz-de-pensar/1.png" lightbox=false imageBorder=false caption="Comparación entre GPT-4 y GPT-3 (representado como ChatGPT) en un ejercicio sobre el razonamiento aplicado al comportamiento humano y la distinción de intenciones." %}
 
-{% include figure class="align-center" image_path="/images/2023-04-02-es-gpt-4-capaz-de-pensar/2.png" caption="Capacidad de GPT-4 de razonar sobre escenarios complejos, desafiantes y de naturaleza personal." %}
+{% include figure class="align-center" image_path="/images/2023-04-02-es-gpt-4-capaz-de-pensar/2.png" lightbox=false imageBorder=false caption="Capacidad de GPT-4 de razonar sobre escenarios complejos, desafiantes y de naturaleza personal." %}
 
 Una forma de probar el conocimiento de sentido común de un sistema de inteligencia artificial es plantear acertijos que requieren una comprensión básica del mundo. Un ejemplo clásico es:
 
@@ -80,7 +80,7 @@ Una forma de probar el conocimiento de sentido común de un sistema de inteligen
 
 La respuesta es «blanco», porque el único lugar donde este escenario es posible es el polo norte, donde viven los osos polares que son blancos. En este caso, GPT-4 identifica correctamente estos hechos y concluye que el oso es blanco, mientras que su predecesor se da por vencido.
 
-{% include figure class="align-center" image_path="/images/2023-04-02-es-gpt-4-capaz-de-pensar/3.png" %}
+{% include figure class="align-center" image_path="/images/2023-04-02-es-gpt-4-capaz-de-pensar/3.png" lightbox=false imageBorder=false %}
 
 Sin embargo, este rompecabezas es bien conocido en el mundo de la psicología e Internet, y es posible que GPT-4 lo haya encontrado durante su entrenamiento en un gran corpus de textos de la web. Para desafiar aún más a GPT-4, podemos crear un nuevo rompecabezas que tenga un estilo similar, pero que requiera un conocimiento de sentido común diferente, por ejemplo, que el ecuador terrestre tiene 24,901 millas de largo. El rompecabezas es:
 
@@ -90,7 +90,7 @@ Un piloto de avión que sale de su campamento se dirige directamente hacia el es
 
 La respuesta es cualquier especie de tigre nativa de Ecuador, como Bengala o Sumatra. El sistema de AI necesita saber que el ecuador terrestre tiene 24,901 millas de largo, que solo en el ecuador se puede viajar al este o al oeste y volver al mismo punto de partida, y qué especies de tigres viven en el ecuador. Una vez más, GPT-4 localiza con éxito la información clave y resuelve el rompecabezas, mientras que GPT-3 (nuevamente mencionado como ChatGPT) se da por vencido:
 
-{% include figure class="align-center" image_path="/images/2023-04-02-es-gpt-4-capaz-de-pensar/4.png" %}
+{% include figure class="align-center" image_path="/images/2023-04-02-es-gpt-4-capaz-de-pensar/4.png" lightbox=false imageBorder=false %}
 
 Todos estos ejemplos, y muchos más que salen en el mencionado paper son realmente increíbles.
 

@@ -25,7 +25,7 @@ Sin embargo, con el paso del tiempo y medida que nuestra disciplina evolucionaba
 
 En el mundo de Visual Studio contamos con una funcionalidad denominada Code Metrics la cual nos muestra una serie de estadísticas muy útiles sobre nuestra solución y sus proyectos. Entre estas métricas está la cuenta de líneas de código.
 
-{% include figure class="align-center" image_path="/images/2014-03-24-contar-lineas-de-codigo/metrics.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" image_path="/images/2014-03-24-contar-lineas-de-codigo/metrics.png" caption="Haz click para ver la imagen más grande." %}
 
 Ahora, esta cuenta no es exactamente todas las líneas de código de nuestra solución (o proyecto), sino una cuenta aproximada basada en el código IL generado por la compilación (vamos, más o menos lo que hace la NASA). Éste índice como tal es bastante útil en determinar si un método está haciendo más de lo que debe, pues aún cuando un método tenga cientos de líneas de código físico, la compilación puede hacer que el número de líneas sea radicalmente menos, y si el mismo no baja, puede indicar una pobre o inapropiada mantenibilidad del método.
 

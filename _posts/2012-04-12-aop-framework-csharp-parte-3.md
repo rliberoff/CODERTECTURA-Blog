@@ -43,7 +43,7 @@ Y es que el diseño y la gobernabilidad del mecanismo de gestión y manejo de ex
 
 Particularmente se encuentra que los dos (2) aspectos más difíciles de gestionar son el acto de capturar y apropiadamente manejar la excepción, seguidamente de la política a aplicar sobre ésta. Muchas veces podemos encontrarnos con aplicativos web que cuando una excepción ocurre nos muestra la temida pantalla amarilla de ASP.NET o directamente nos expone todo el _stack trace_ de la excepción (con información de base de datos y todo), lo cual fácilmente podría usar un potencial atacante para literalmente destruir el aplicativo.
 
-{% include figure class="align-center" image_path="/images/2012-04-12-aop-framework-csharp-parte-3/asp-net-yellow-page-of-death.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" image_path="/images/2012-04-12-aop-framework-csharp-parte-3/asp-net-yellow-page-of-death.png" caption="Haz click para ver la imagen más grande." %}
 
 A través del enfoque de AOP, es posible interceptar las llamadas a los métodos y determinar cuando estos han generado una excepción para posteriormente aplicar la política de manejo más apropiada. Estas políticas puede ser parte del propio aspecto de gestión de excepciones. Como en el caso del registro de eventos, la implementación de este aspecto buscará reducir su implementación (y aplicación) a un atributo que decore el método cuyas posibles excepciones se quieren gestionar.
 

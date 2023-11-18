@@ -1,5 +1,5 @@
 ---
-title: "Participé en el Propulsion Lab IV en Dublín"
+title: "Estuve en el Propulsion Lab IV en Dublín"
 excerpt: "Una muestra de mi participación en el evento Propulsion Lab IV de ENCAMINA realizado en Dublín, con temáticas tan interesantes como el Metaverso y las últimas novedades en Inteligencia Artificial aplicada a los negocios y la colaboración."
 date: 2022-11-17 00:00:00 +0000
 last_modified_at: 2023-11-03 00:00:00 +0000
@@ -9,9 +9,9 @@ image:
   thumbnail: /images/2022-11-17-propulsion-lab-4-dublin/thumbnail.png
 gallery:
   - url: /images/2022-11-17-propulsion-lab-4-dublin/A.jpg
-    image_path: /images/2022-11-17-propulsion-lab-4-dublin/A.jpg    
+    imagePath: /images/2022-11-17-propulsion-lab-4-dublin/A.jpg    
   - url: /images/2022-11-17-propulsion-lab-4-dublin/B.jpg
-    image_path: /images/2022-11-17-propulsion-lab-4-dublin/B.jpg
+    imagePath: /images/2022-11-17-propulsion-lab-4-dublin/B.jpg
 
 categories:
  - Inteligencia Artificial

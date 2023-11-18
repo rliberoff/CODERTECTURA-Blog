@@ -39,7 +39,7 @@ En Semantic Kernel, las Funciones Nativas son básicamente código en nuestro le
 
 Para crear una Función Nativa, primero debemos definir un *plugin*. Esto es algo súper sencillo, básicamente es crear un directorio dentro de nuestro proyecto en el cual dejaremos clases que representarán a nuestros plugins con métodos que representarán a nuestras funciones.
 
-{% include figure class="align-center" image_path="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/1.png" lightbox=false imageBorder=false %}
+{% include figure class="align-center" imagePath="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/1.png" lightbox=false imageBorder=false %}
 
 
 En nuestro caso, vamos a realizar una integración con «`roberta-base-squad2`» disponible en [Hugging Face](https://huggingface.co/deepset/roberta-base-squad2){:target="_blank"}. Este modelo nos permite integrarnos con un LLM llamado [RoBERTa](https://arxiv.org/abs/1907.11692){:target="_blank"} (nombre gracioso para *Robustly Optimized BERT Approach*) desarrollado por la empresa [deepset](https://www.deepset.ai/){:target="_blank"} (los mismos de [Haystack](https://haystack.deepset.ai/){:target="_blank"}).
@@ -50,17 +50,17 @@ Para esta integración es fundamental que tengas una cuenta en Hugging Face, ya 
 
 Para gestionar el token de Hugging Face crearemos una clase de opciones llamada `HuggingFaceOptions` con una propiedad Token que inicializaremos con un valor que obtendremos del fichero de configuración (`appsetttings.json`).
 
-{% include figure class="align-center" image_path="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/2.png" lightbox=false imageBorder=false %}
+{% include figure class="align-center" imagePath="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/2.png" lightbox=false imageBorder=false %}
 
 Recordemos que las clases de opciones las configuramos con inyección de dependencias en el archivo `Program.cs`:
 
-{% include figure class="align-center" image_path="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/3.png" lightbox=false imageBorder=false %}
+{% include figure class="align-center" imagePath="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/3.png" lightbox=false imageBorder=false %}
 
 Con esta parte de la carpintería básica ya montada, el siguiente paso será crear el directorio `Plugins` (no somos muy originales con los nombres 😅) y dentro de éste crearemos una clase llamada `HuggingFaceDeepsetRobertaQuestionsAnsweringPlugin` (de nuevo los nombres no son mi fuerte 😅). Esta clase representa al *plugin* que nos dará conectividad con el modelo, y cada uno de sus métodos públicos serán las Funciones Nativas que podemos utilizar con Semantic Kernel.
 
 En nuestro caso sólo tendremos un método llamado `AskQuestionWithContextAsync` para integrarnos al modelo «`roberta-base-squad2`». Este método toma dos variables: el contexto y la pregunta, las cuales son usadas para armar la llamada al modelo «`roberta-base-squad2`» mediante un API REST de Hugging Face (líneas 30 a 37).
 
-{% include figure class="align-center" image_path="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/4.png" caption="Haz click para ver la imagen más grande." imageBorder=false %}
+{% include figure class="align-center" imagePath="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/4.png" caption="Haz click para ver la imagen más grande." imageBorder=false %}
 
 Un detalle importante con las funciones en Semantic Kernel (sean Nativas o Semánticas) es que todo se gestiona con *strings*. Esto quiere decir que lo que retorne nuestra Función Nativa (el método `AskQuestionWithContextAsync`) sólo puede ser un `string`. La parte interesante, es que podemos devolver un JSON como `string` que después podemos parsear para crear un objeto más concreto y específico. Por esa razón es que, como ves en el código, se retorna directamente el contenido de la respuesta recibida de la llamada al API REST.
 
@@ -72,7 +72,7 @@ Ahora tenemos que configurar Semantic Kernel para que pueda hacer uso de nuestra
 
 Configurar el Semantic Kernel en nuestros proyectos es realmente sencillo. Todo se hace (habitualmente) en el `Program.cs`.
 
-{% include figure class="align-center" image_path="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/5.png" caption="Haz click para ver la imagen más grande." imageBorder=false %}
+{% include figure class="align-center" imagePath="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/5.png" caption="Haz click para ver la imagen más grande." imageBorder=false %}
 
 Nuestra Función Semántica la hemos codificado para que perfectamente pueda ser registrada en el contenedor de dependencias de .NET como un singleton, lo cual nos ayudará ligueramente con el desempeño del código.
 
@@ -90,7 +90,7 @@ Para probar nuestra integración, vamos a crear un `Controller` con una acción 
 
 Y no sólo eso, sino que también nos permita interpretar el resultado para saber a partir del score si vale la pena retornar la respuesta, o mejor contestar un “*no sé*”.
 
-{% include figure class="align-center" image_path="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/6.png" caption="Haz click para ver la imagen más grande." imageBorder=false %}
+{% include figure class="align-center" imagePath="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/6.png" caption="Haz click para ver la imagen más grande." imageBorder=false %}
 
 Para esta demo, estoy estableciendo el valor mínimo del *score* de la respuesta en un 0.7 (un 70% de confiabilidad) para considerarla como válida. Lo idea es que este valor esté parametrizado en una clase de opciones parecida a la que vimos como ejemplo antes con el caso de `HuggingFaceOptions`. De momento, nos vale con tenerlo como una constante dentro de la acción.
 
@@ -106,9 +106,9 @@ Finalmente, verificamos si el *score* recibido es mayor al valor mínimo que hem
 
 Para probar esto, os dejo una colección de Postman con esta llamada y que está disponible en el repo en [GitHub](https://github.com/rliberoff/BLOG-001-Semantic-Kernel-Native-Functions){:target="_blank"} mencionado al principio del artículo. Abajo tienes dos imágenes de una respuesta correcta y otra de “no sé” 👇🏻
 
-{% include figure class="align-center" image_path="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/7.png" imageBorder=false %}
+{% include figure class="align-center" imagePath="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/7.png" imageBorder=false %}
 
-{% include figure class="align-center" image_path="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/8.png" caption="Haz click para ver las imagenes más grandes." imageBorder=false %}
+{% include figure class="align-center" imagePath="/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/8.png" caption="Haz click para ver las imagenes más grandes." imageBorder=false %}
 
 ### Más información
 

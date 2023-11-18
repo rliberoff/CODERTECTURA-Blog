@@ -1,13 +1,13 @@
 <figure class="{{ include.class }}">  
     {%- if include.lightbox == false -%}      
-        <img src="{{ include.image_path | relative_url }}" 
+        <img src="{{ include.imagePath | relative_url }}" 
              alt="{% if include.alt %}{{ include.alt }}{% endif %}" 
              class="{% unless include.imageBorder == false %}image-border{% endunless %} {{ include.imageClass }}" 
              style="{% if include.imageStyle %}{{ include.imageStyle }}{% endif %}" />
 
     {%- else -%}
-        <a href="{{ include.image_path | absolute_url }}" target="_blank" rel="noopener" data-lity>
-            <img src="{{ include.image_path | relative_url }}" 
+        <a href="{{ include.imagePath | absolute_url }}" target="_blank" rel="noopener" data-lity>
+            <img src="{{ include.imagePath | relative_url }}" 
                  alt="{% if include.alt %}{{ include.alt }}{% endif %}" 
                  class="{% unless include.imageBorder == false %}image-border{% endunless %} {{ include.imageClass }}"
                  style="{% if include.imageStyle %}{{ include.imageStyle }}{% endif %}" />

@@ -13,6 +13,8 @@ categories:
   - Azure
   - C#
   - API
+  - APIM
+  - Azure API Management
   - Inteligencia Artificial
 ---
 
@@ -55,7 +57,7 @@ Con el APIM podrás afrontar, entre otros, los siguientes desafíos:
 
 En ese sentido, la forma en alto nivel que tendrá la arquitectura que implementaremos es la siguiente:
 
-{% include figure class="align-center" image_path="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/1.png" caption="Arquitectura en alto nivel para la monetización de APIs con el Azure API Management.<br>Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" imagePath="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/1.png" caption="Arquitectura en alto nivel para la monetización de APIs con el Azure API Management.<br>Haz click para ver la imagen más grande." %}
 
 En esta arquitectura contaremos con los siguientes componentes:
 
@@ -79,13 +81,13 @@ Por temas de espacio de tiempo, crear tal tipo de aplicación se escapa al prop�
 
 Como tal, el fichero se ve así (lo pongo en un GIF animado porque es muy largo):
 
-{% include figure class="align-center" image_path="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/2.gif" caption="Extracto del JSON que representa (simula) el modelo de negocio." lightbox=false imageStyle="width: 650px;" %}
+{% include figure class="align-center" imagePath="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/2.gif" caption="Extracto del JSON que representa (simula) el modelo de negocio." lightbox=false imageStyle="width: 650px;" %}
 
 Este archivo JSON lo mantendremos y accederemos desde un contenedor de Blobs en el Azure Storage Account.
 
 Así mismo, el equivalente en el APIM a este modelo de negocio fue creado manualmente y se ve de la siguiente forma:
 
-{% include figure class="align-center" image_path="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/3.png" caption="Como se ve el modelo de negocio en el Azure API Management, en el apartado de «Productos».<br>Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" imagePath="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/3.png" caption="Como se ve el modelo de negocio en el Azure API Management, en el apartado de «Productos».<br>Haz click para ver la imagen más grande." %}
 
 ### Inicializando el proveedor de pagos
 
@@ -124,23 +126,23 @@ Lo primero es que el *script* necesita cinco parámetros:
 - La URL al archivo JSON con el modelo de monetización. Al estar desplegado en un contenedor de Blobs, podemos obtener una URL pública para acceder a este recurso directamente.
 - La URL del gateway del Azure API Management (APIM).
 
-{% include figure class="align-center" image_path="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/4.png" caption="Ubicación de la URL del Azure API Management Gateway.<br>Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" imagePath="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/4.png" caption="Ubicación de la URL del Azure API Management Gateway.<br>Haz click para ver la imagen más grande." %}
 
 - Una de las claves de subscripción del APIM, siendo la recomendada la que ya trae definida al provisionarse el recurso:
 
-{% include figure class="align-center" image_path="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/5.png" caption="Ubicación de las claves de subscripción en el Azure API Management.<br>Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" imagePath="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/5.png" caption="Ubicación de las claves de subscripción en el Azure API Management.<br>Haz click para ver la imagen más grande." %}
 
 La llamada al *script* se ve de la siguiente forma:
 
-{% include figure class="align-center" image_path="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/6.png" caption="Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" imagePath="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/6.png" imageBorder=false caption="Haz click para ver la imagen más grande." %}
 
 La primera parte del *script* se encarga de instalar la versión más reciente del CLI de Stripe:
 
-{% include figure class="align-center" image_path="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/7.png" caption="Primera parte del *script* de PowerShell de configuración de Stripe que se encarga de capturar los parámetros y de instalar el CLI de Stripe.<br>Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" imagePath="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/7.png" imageBorder=false caption="Primera parte del *script* de PowerShell de configuración de Stripe que se encarga de capturar los parámetros y de instalar el CLI de Stripe.<br>Haz click para ver la imagen más grande." %}
 
 La siguiente parte del *script* hace dos cosas, por un lado, descarga el JSON con la  definición del modelo de negocio desde el contenedor de Blobs en el Azure Storage Account, y por otro se trae los productos definidos en el APIM a través del API REST de gestión.
 
-{% include figure class="align-center" image_path="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/8.png" caption="Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" imagePath="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/8.png" imageBorder=false caption="Haz click para ver la imagen más grande." %}
 
 Hago esto para poder asegurarme de que el producto que voy a crear en Stripe efectivamente existe configurado en el APIM y que concuerden los IDs de los mismos entre ambas plataformas, ya que será a través de dichos identificadores que, como veremos más adelante, se identificarán los consumos para generar la facturación y efectivamente monetizar nuestras APIs.
 
@@ -148,10 +150,10 @@ La siguiente parte del código es un poco más larga y os invito a leerla direct
 
 Por último, creamos el *webhook* y recuperamos su secreto para poder emplearlo como parámetro de configuración en la aplicación que desplegaremos en el Azure Container Application (ACA).
 
-{% include figure class="align-center" image_path="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/9.png" caption="Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" imagePath="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/9.png" imageBorder=false caption="Haz click para ver la imagen más grande." %}
 
 Tras ejecutar este *script*, si entramos en nuestra cuenta de Stripe veremos como los productos estarán configurados:
 
-{% include figure class="align-center" image_path="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/10.png" caption="Haz click para ver la imagen más grande." %}
+{% include figure class="align-center" imagePath="/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/10.png" caption="Haz click para ver la imagen más grande." %}
 
 En la próxima publicación abordaremos la delegación de capacidades en Azure API Management, incluyendo la gestión de subscripciones y la integración con Stripe para la facturación 👉 [Parte 3](/post/apis-monetizacion-parte-3).

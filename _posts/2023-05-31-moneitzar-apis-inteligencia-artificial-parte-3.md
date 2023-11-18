@@ -54,14 +54,7 @@ Para esta publicación, nos interesa concretamente la delegación de la gestión
 
 La delegación de servicios del APIM se puede realizar fácilmente desde el Azure Portal como se muestra en la siguiente imagen:
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/1.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/1.png' | absolute_url }}" class="image-border" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/1.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Es fundamental saber que no existe una "Delegation Validation Key" hasta tanto no le  demos al botón de generar y salvemos los cambios. Una vez hecho eso, guardar en un lugar seguro el valor del "Delegation Validation Key" ya que lo necesitaremos más adelante (aunque perfectamente podemos volver a esta pantalla para recuperarlo o generar uno nuevo).
 
@@ -83,14 +76,7 @@ Como nuestra aplicación se va a integrar con Stripe, primero es necesario tener
 
 Luego, necesitamos configurar algunos parámetros que conservaremos en el `appsettings.json` de nuestra aplicación y que recuperaremos con una clase de opciones como la siguiente:
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/2.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/2.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/2.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Necesitaremos:
 
@@ -102,52 +88,24 @@ Para trabajar con el APIM desde código C#, lo más conveniente es usar el paque
 
 Para poder usar las librerías de este paquete necesitamos ciertos valores a obtener de nuestra instancia del APIM a conservar en el `appsettings.json` de nuestra aplicación y que recuperaremos con una clase de opciones como la siguiente:
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/3.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/3.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/3.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Necesitaremos:
 
 - El valor del «Delegation Validation Key» generado al configurar la delegación de capacidades del APIM en el Azure Portal.
 - La URL al Developers Portal.
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/4.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/4.png' | absolute_url }}" class="image-border" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/4.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 - La URL para la gestión del APIM, que se puede obtener como se muestra en la siguiente imagen. También es importante encenderla.
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/5.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/5.png' | absolute_url }}" class="image-border" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/5.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 - Por último, necesitamos el nombre de la instancia del APIM, el nombre del grupo de recursos donde la hemos desplegado y el identificador de la subscripción de Azure a la que pertenece dicho grupo de recursos.
 
 Con este paquete agregado a nuestro proyecto de aplicación web, y los valores de integración ya configurados, sólo necesitamos registrarlos en nuestro `Program.cs` de la siguiente forma:
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/6.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/6.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/6.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Cada vez que el APIM envíe una delegación de operaciones, lo hará a una ruta que hayamos definido al configurar la delegación, y siempre acompañada de un parámetro (por query string) llamado `operation` que identifica la operación que el usuario quiere realizar.
 
@@ -162,38 +120,17 @@ En concreto nos interesan dos operaciones:
 
 Ahora procedemos a crear una interfaz que defina las operaciones que realizaremos desde código con C# sobre el Azure API Management usando el paquete NuGet importado anteriormente.
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/7.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/7.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/7.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Cada una de estas operaciones están implementadas en la clase `ApiService`, la cual usamos como un Singleton que registramos en nuestro contenedor de dependencias en el `Program.cs`.
 
 El constructor de la clase `ApiService` se encarga de crear una instancia de la clase ArmClient (que obtenemos del paquete NuGet) la cual a su vez necesita de las credenciales de Azure para operar correctamente.
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/8.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/8.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/8.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 La clase `ArmClient` es como un cliente agnóstico del tipo de servicio o recurso de Azure que vamos a gestionar. Para identificar el recurso del APIM necesitamos ciertos parámetros que hemos configurado en el appsettings.json y que obtenemos de la clase de opciones ApimServiceOptions, que son el identificador de la subscripción de Azure, el nombre del grupo de recursos y el nombre del servicio, los cuales usaremos para crear un identificador del recurso APIM gracias al método `CreateResourceIdentifier` de la clase `ApiManagementServiceResource` la cual representa un APIM junto con las operaciones de instancia que se pueden realizar el mismo.
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/9.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/9.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/9.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 En el código anterior se obtiene una instancia de `ApiManagementServiceResource`, que sirve para gestionar aspectos tales como las subscripciones. Sin embargo, existen muchas más como `ApiManagementProductResource` que sirve para gestionar productos (por ejemplo, obtenerlos a partir de su identificador), `ApiManagementUserResource` que sirve para gestionar los usuarios creados desde el Developer Portal, entre otros.
 
@@ -211,14 +148,7 @@ Un de los primeros métodos a implementar es el `ValidateRequest`, ya que cada v
 
 Así, la implementación del método `ValidateRequest` sería la siguiente:
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/10.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/10.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/10.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 La clase `HMACSHA512` la proporciona .NET 6 en `System.Security.Cryptography`.
 
@@ -228,14 +158,7 @@ Dependiendo de cada operación que envíe desde el APIM a la aplicación externa
 
 En el caso de nuestro código tenemos las siguientes implementaciones:
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/11.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/11.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/11.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Para cada situación de delegación necesitaremos controladores y pantallas concretas para atenderlas.
 
@@ -249,25 +172,11 @@ Cubrir todo el código que las implementa en una publicación como esta puede se
 
 - `StripeCheckout` → Se encarga de configurar el cliente JavaScript de Stripe para realizar la redirección a la pantalla que capturará la información de la tarjeta de crédito. Recordemos que como ni Azure ni el APIM están certificadas en certificadas en [PCI-DSS](https://www.pcisecuritystandards.org/){:target="_blank"}, la pantalla que se muestra para obtener esta información del cliente está en la infraestructura y contexto de ejecución de Stripe, por lo cual Stripe debe eventualmente conocer a donde redirigir si todo ha salido bien. Para ello, la pantalla de `StripeCheckout` primero hace un POST a su Controller inicializar una sesión de pago con Stripe. El identificador de esa sesión es lo que se usará en el código del cliente para renderizar la pantalla de Stripe en el navegador, fuera de Azure y nuestra web app, y dentro e Stripe. Uno de esos datos es la dirección donde se está ejecutando nuestra aplicación, la cual tenemos que capturar desde el navegador pues nuestro aplicativo está en Docker y de hacerlo en el lado servidor nos retornaría siempre `localhost`.
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/12.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/12.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/12.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Al recibir el POST, una de las primeras cosas que se hacen es construir las URLs para escenarios de cancelación y éxito del pago (ver líneas 12 a 32 en la siguiente imagen), las cuales necesitan una URL de retorno que se obtiene del lado cliente como se muestra en la imagen anterior, en la línea morada dentro del recuadro verde.
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/13.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/13.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/13.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Con esta información (líneas 36 a 75) se crea una sesión de Stripe.
 
@@ -306,51 +215,23 @@ La Azure Function se debe ejecutar periódicamente. Para la demo tengo puesto qu
 
 A la hora de recuperar información, hay que decidir que plataforma (el APIM o Stripe)  consideramos como el maestro de los datos. En mi caso, para la demo he considerado que Stripe lleva la voz cantante en cuanto al estado de las subscripciones, razón por la cual comienza la ejecución de la Azure Function recuperando las subscripciones activas desde Stripe. No obstante, otra alternativa es obtener las subscripciones activas desde el APIM y luego consultar Stripe. Elegí este enfoque porque es el que realiza menos llamadas.
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/14.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/14.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/14.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Una vez que tenemos las subscripciones activas desde Stripe, iteramos sobre éstas hasta que ya no queden subscripciones por procesar.
 
 Por cada subscripción, se obtiene el identificador de esta en el APIM (el cual es  almacenado como metadata en Stripe al crear la subscripción). También se obtiene de la metadata un valor identificado como `last-usage-update` el cual es utilizado para calcular que no existan espacios de tiempo entre los usos habidos de un API y sus usos reportados, tal que no se pierda datos de facturación. Esto lo hago entre las líneas 26 y 39 de la  siguiente imagen, aunque la mayoría de las veces es un código que rara vez se ejecuta; no  obstante, es importante entender que el "tema del dinero" es delicado y que tenemos que  considerar las casuísticas límite (o borde) para asegurar que no se pierde facturación.
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/15.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/15.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/15.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Nótese que en la línea 30 estamos obteniendo el reporte de uso de la subscripción en un  período específico. El método `GetUsageReportAsync` está implementado de forma  privada dentro de la función de la siguiente manera:
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/16.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/16.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/16.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 Los filtros usados para obtener el reporte de consumo usan notación de OData.
 
 Luego tenemos el método privado `ProcessReportAsync` que toma el reporte de uso y lo procesa de forma tal que se envía información a Stripe sobre el consumo. Su  implementación es la siguiente:
 
-<figure class="align-center">
- <a href="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/17.png' | absolute_url }}" target="_blank" rel="noopener">
-  <img src="{{ '/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/17.png' | absolute_url }}" >
- </a>
- <figcaption>
-  Haz click para ver la imagen más grande.
- </figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/17.png" lightbox=true caption="Haz click para ver la imagen más grande." %}
 
 El código determina si existen datos de uso en el reporte obtenido desde el APIM. De haberlos, se crea un registro de consumo con la cantidad de unidades reportadas y en una fecha específica. Luego se actualiza la subscripción en Stripe con un nuevo valor para la metadata identificada como `last-usage-update` para asegurarnos como mencionamos antes que no se pierden datos de facturación.
 

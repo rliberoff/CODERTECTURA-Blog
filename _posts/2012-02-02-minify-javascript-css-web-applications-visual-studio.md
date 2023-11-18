@@ -9,6 +9,7 @@ image:
     path: /images/2012-02-02-minify-javascript-css-web-applications-visual-studio/header.jpg
     thumbnail: /images/2012-02-02-minify-javascript-css-web-applications-visual-studio/thumbnail.jpg
 categories:
+    - Legacy
     - English
     - Tutorial
     - JavaScript

@@ -38,6 +38,7 @@ $h6-min: calc($base-font-size / $modular-scale-1) !default;
 $h6-max: calc($base-font-size / $modular-scale-2) !default;
 
 /* Font Families */
+$serif: 'Inter', sans-serif;
 $serif-font-family: 'Inter', sans-serif;
 $sans-serif-font-family: 'Noto Sans Symbols 2', sans-serif;
 $monospace-font-family: Menlo, Consolas, Monaco, "Courier New", Courier, monospace !default;

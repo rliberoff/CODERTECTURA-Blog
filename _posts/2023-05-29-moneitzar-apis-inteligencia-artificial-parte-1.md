@@ -72,10 +72,7 @@ Freemium → El término es acuñado a partir de una contracción en inglés de 
 
 - Flat Tier → Traducido habitualmente como "tarifa plana", es un modelo de negocio donde el consumidor paga una cantidad fija cada período de tiempo preestablecido (habitualmente mensual), independientemente del número de llamadas que realice al API.
 
-<figure class="align-center">
-    <img src="{{ '/images/2023-05-29-moneitzar-apis-inteligencia-artificial-parte-1/1.png' | absolute_url }}">
-  <figcaption>Comparación de funcionamiento entre diversos modelos de negocio.</figcaption>
-</figure>
+{% include figure class="align-center" image_path="/images/2023-05-29-moneitzar-apis-inteligencia-artificial-parte-1/1.png" caption="Comparación de funcionamiento entre diversos modelos de negocio." %}
 
 En la documentación oficial de Microsoft para el Azure API Management, se cuenta con una excelente sección que describe las características organizacionales y de gestión para la monetización de APIs. Está disponible en el siguiente enlace: [https://learn.microsoft.com/es-es/azure/api-management/monetization-overview](https://learn.microsoft.com/es-es/azure/api-management/monetization-overview).
 

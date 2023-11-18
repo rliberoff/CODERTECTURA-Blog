@@ -1,0 +1,14 @@
+<figure class="{{ include.class }}">  
+    {%- if include.lightbox == true -%}      
+    <a href="{{ include.image_path | absolute_url }}" target="_blank" rel="noopener" data-lity>
+        <img src="{{ include.image_path | relative_url }}" alt="{% if include.alt %}{{ include.alt }}{% endif %}" class="image-border" />
+    </a>
+    {%- else -%}
+        <img src="{{ include.image_path | relative_url }}" alt="{% if include.alt %}{{ include.alt }}{% endif %}" class="image-border" />
+    {%- endif -%}
+    {%- if include.caption -%}
+    <figcaption>
+        {{ include.caption | markdownify | remove: "<p>" | remove: "</p>" }}
+    </figcaption>
+    {%- endif -%}
+</figure>

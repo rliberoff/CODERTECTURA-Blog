@@ -21,12 +21,14 @@
     {% if img.url %}
       <a href="{{ img.url | relative_url }}" class="image-popup"
         {% if img.title %}title="{{ img.title }}"{% endif %}>
-          <img src="{{ img.image_path | relative_url }}"
-               alt="{% if img.alt %}{{ img.alt }}{% endif %}">
+           <img src="{{ img.image_path | relative_url }}"
+               alt="{% if img.alt %}{{ img.alt }}{% endif %}"
+               class="image-border" >
       </a>
     {% else %}
       <img src="{{ img.image_path | relative_url }}"
-           alt="{% if img.alt %}{{ img.alt }}{% endif %}">
+           alt="{% if img.alt %}{{ img.alt }}{% endif %}"
+           class="image-border" > 
     {% endif %}
   {% endfor %}
   {% if include.caption %}

@@ -1,17 +1,18 @@
 {
-    "MD033": {
-      "allowed_elements": [
-        "a",
-        "br",
-        "div",
-        "figcaption",
-        "figure",
-        "hr",
-        "iframe",
-        "img",
-        "p",
-        "span"
-      ]
-    },
-    "MD013": false
-  }
+  "MD013": false,
+  "MD033": {
+    "allowed_elements": [
+      "a",
+      "br",
+      "div",
+      "figcaption",
+      "figure",
+      "hr",
+      "iframe",
+      "img",
+      "p",
+      "span"
+    ]
+  },
+  "MD034": false
+}

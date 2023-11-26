@@ -17,4 +17,4 @@ Tengo el honor y el placer de haber sido invitado a participar en la sesión #48
 
 La sesión ya está disponible en YouTube y la podéis disfrutar aquí 👉🏻
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DdMaPar3URg?si=cnsn281iqwkWlNYr" title="Unplugged 48: Microsoft Build 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px; margin-left: 50px;" allowfullscreen></iframe>
+{% include responsive-embed url="https://www.youtube.com/embed/DdMaPar3URg?si=cnsn281iqwkWlNYr" ratio="16:9" title="Unplugged 48: Microsoft Build 2022" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px;" %}

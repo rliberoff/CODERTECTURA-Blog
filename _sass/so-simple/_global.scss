@@ -121,10 +121,10 @@ $arrow-down-height: 80px;
     height: 0;
   }
 
-  @include breakpoint($large) {
-    width: 0;
-    height: 0;
-  }
+  // @include breakpoint($large) {
+  //   width: 0;
+  //   height: 0;
+  // }
 
   @include breakpoint($xlarge) {
     width: 2 * $arrow-down-width;

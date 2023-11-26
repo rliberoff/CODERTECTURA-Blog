@@ -16,4 +16,4 @@ Tengo el honor y el placer de participar activamente en un *spin-off* de las ses
 
 La primera sesión ya está disponible en YouTube y la podéis disfrutar aquí 👉🏻
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kGkfcYX_sDg?si=Hdo3nK3zYYm5mKFx" title="Unplugged AI 01: Meta, ImageBind, Segment-Anything, Tokens" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px; margin-left: 50px;" allowfullscreen></iframe>
+{% include responsive-embed url="https://www.youtube.com/embed/kGkfcYX_sDg?si=Hdo3nK3zYYm5mKFx" ratio="16:9" title="Unplugged AI 01: Meta, ImageBind, Segment-Anything, Tokens" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px;" %}

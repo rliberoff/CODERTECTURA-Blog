@@ -21,4 +21,4 @@ Durante nuestra sesión, analizamos dos proyectos súper interesantes:
   
 La sesión ya está disponible en YouTube y la podéis disfrutar aquí 👉🏻
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/a7P8ACtzGkQ?si=o3MKqWfbxlth91Ya" title="Unplugged AI 04: Meta I-JEPA y Voicebox" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px; margin-left: 50px;" allowfullscreen></iframe>
+{% include responsive-embed url="https://www.youtube.com/embed/a7P8ACtzGkQ?si=o3MKqWfbxlth91Ya" ratio="16:9" title="Unplugged AI 04: Meta I-JEPA y Voicebox" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px;" %}

@@ -20,4 +20,4 @@ En esta segunda entrega del *spin-off* de las sesiones de *streaming* de Compart
   
 La sesión ya está disponible en YouTube y la podéis disfrutar aquí 👉🏻
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/C1yMYU4E3-U?si=zlDPeqPVFCGLrAXn" title="Unplugged AI 02: Azure Content Safety, Azure ML Prompt Flow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px; margin-left: 50px;" allowfullscreen></iframe>
+{% include responsive-embed url="https://www.youtube.com/embed/C1yMYU4E3-U?si=zlDPeqPVFCGLrAXn" ratio="16:9" title="Unplugged AI 02: Azure Content Safety, Azure ML Prompt Flow" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="image-border" style="margin-top: 20px;" %}

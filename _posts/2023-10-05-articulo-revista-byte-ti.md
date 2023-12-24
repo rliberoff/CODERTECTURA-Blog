@@ -18,5 +18,3 @@ La prestigiosa revista [ByteTI](https://revistabyte.es/){:target='_blank'} ha pu
 En esta versión, que tuve que resumir signigicativamente para que entrara en una página, dejo plasmadas las ideas principales sobre lo que entendemos por inteligencia y por consciencia y cómo estas fueron probadas contra GPT-4.
 
 Puedes obtener una copia digital de la revista con el artículo [aquí](https://revistabyte.es/wp-content/uploads/2023/10/Revista-Byte-TI-319-1.pdf){:target="_blank"}.
-
-

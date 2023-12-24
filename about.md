@@ -12,7 +12,7 @@ La idea de «Codertectura» es la de crear un espacio donde conversar y estudiar
 
 ![image-left]({{ '/images/avatar.png' | absolute_url }}){: .align-left width="222" style="border: 5px solid #4e9b39;border-radius:50%;"}
 
-##### !Hola! Mi nombre es Rodrigo Liberoff &nbsp; <a class="social-icon" href="https://www.linkedin.com/in/rliberoff/" target="_blank"><i class="fab fa-fw fa-linkedin fa-lg" title="LinkedIn"></i></a><a class="social-icon" href="https://twitter.com/rliberoff" target="_blank"><i class="fab fa-fw fa-x-twitter fa-lg" title="X (antes Twitter)"></i></a>
+##### !Hola! Mi nombre es Rodrigo Liberoff &nbsp; <a class="social-icon" href="https://www.linkedin.com/in/rliberoff/" target="_blank"><i class="fab fa-fw fa-linkedin fa-lg" title="LinkedIn"></i></a><a class="social-icon" href="https://twitter.com/rliberoff" target="_blank"><i class="fab fa-fw fa-x-twitter fa-lg" title="X (antes Twitter)"></i></a><a class="social-icon" href="https://www.threads.net/@rliberoff" target="_blank"><i class="fab fa-fw fa-threads fa-lg" title="Threads"></i></a>
 
 Soy un profesional de la Ingeniería Informática (o de la Computación) con más de 20 años de experiencia práctica, de actitud dinámica y con adaptabilidad para el cambio.
 

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale | default `es` }}">
+
+<head>
+    {{ partial "head.html" . }}
+</head>
+
+<body
+    class="{{ if .IsHome }}is-home has-scenic-bg{{ end }}{{ if eq .Section `posts` }} is-posts has-scenic-bg{{ end }}{{ if eq .Layout `about` }} is-about has-scenic-bg{{ end }}">
+    <div class="d-grid" aria-hidden="true"></div>
+    {{ if or .IsHome (eq .Section `posts`) (eq .Layout `about`) }}
+    <div class="home-ridge" aria-hidden="true">
+        <svg viewBox="0 0 1600 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="home-ridge-glow" x="-8%" y="-24%" width="116%" height="160%">
+                    <feGaussianBlur stdDeviation="2.6" result="blur" />
+                    <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <linearGradient id="home-ridge-face-a" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="rgba(0,44,42,0.95)" />
+                    <stop offset="1" stop-color="rgba(0,8,14,0.99)" />
+                </linearGradient>
+                <linearGradient id="home-ridge-face-b" x1="1" x2="0" y1="0" y2="1">
+                    <stop offset="0" stop-color="rgba(0,80,62,0.72)" />
+                    <stop offset="1" stop-color="rgba(0,6,13,0.99)" />
+                </linearGradient>
+            </defs>
+            <g class="home-ridge__range" filter="url(#home-ridge-glow)">
+                <g class="home-ridge__range-back">
+                    <polygon class="face-a" points="0,220 0,150 96,132 180,220" />
+                    <polygon class="face-b" points="96,132 206,118 306,220 180,220" />
+                    <polygon class="face-a" points="206,118 318,156 426,220 306,220" />
+                    <polygon class="face-b" points="318,156 458,104 586,220 426,220" />
+                    <polygon class="face-a" points="458,104 588,148 704,220 586,220" />
+                    <polygon class="face-b" points="588,148 742,92 890,220 704,220" />
+                    <polygon class="face-a" points="742,92 900,142 1028,220 890,220" />
+                    <polygon class="face-b" points="900,142 1042,112 1176,220 1028,220" />
+                    <polygon class="face-a" points="1042,112 1188,158 1308,220 1176,220" />
+                    <polygon class="face-b" points="1188,158 1350,122 1468,220 1308,220" />
+                    <polygon class="face-a" points="1350,122 1496,140 1600,164 1600,220 1468,220" />
+                    <path class="ridge"
+                        d="M0 150L96 132L206 118L318 156L458 104L588 148L742 92L900 142L1042 112L1188 158L1350 122L1496 140L1600 164" />
+                </g>
+                <g class="home-ridge__range-front">
+                    <polygon class="face-a" points="0,220 0,152 74,136 126,220" />
+                    <polygon class="face-b" points="74,136 158,114 232,220 126,220" />
+                    <polygon class="face-a" points="158,114 238,158 318,220 232,220" />
+                    <polygon class="face-b" points="238,158 346,82 448,220 318,220" />
+                    <polygon class="face-a" points="346,82 458,132 548,220 448,220" />
+                    <polygon class="face-b" points="458,132 572,108 672,220 548,220" />
+                    <polygon class="face-a" points="572,108 686,154 780,220 672,220" />
+                    <polygon class="face-b" points="686,154 812,72 920,220 780,220" />
+                    <polygon class="face-a" points="812,72 944,144 1038,220 920,220" />
+                    <polygon class="face-b" points="944,144 1056,94 1162,220 1038,220" />
+                    <polygon class="face-a" points="1056,94 1168,164 1262,220 1162,220" />
+                    <polygon class="face-b" points="1168,164 1292,112 1376,220 1262,220" />
+                    <polygon class="face-a" points="1292,112 1398,146 1488,220 1376,220" />
+                    <polygon class="face-b" points="1398,146 1512,104 1600,158 1600,220 1488,220" />
+                    <path class="ridge"
+                        d="M0 152L74 136L158 114L238 158L346 82L458 132L572 108L686 154L812 72L944 144L1056 94L1168 164L1292 112L1398 146L1512 104L1600 158" />
+                    <path class="wire"
+                        d="M74 136L126 220M158 114L232 220M238 158L346 82L448 220M458 132L548 220M572 108L672 220M686 154L812 72L920 220M944 144L1038 220M1056 94L1162 220M1168 164L1262 220M1292 112L1376 220M1398 146L1488 220M1512 104L1600 220" />
+                </g>
+            </g>
+        </svg>
+    </div>
+    {{ end }}
+
+   
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+    {{ partial "header.html" . }}
+    <main id="main-content" class="site-main" tabindex="-1">
+        {{ block "main" . }}{{ end }}
+    </main>
+    <aside class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" data-cookie-banner
+        hidden>
+        <div class="cookie-banner__content">
+            <p>Este sitio utiliza cookies propias y de terceros para ofrecer una mejor experiencia y servicio.</p>
+            <div class="cookie-banner__actions">
+                <button class="button button--primary cookie-banner__accept" type="button"
+                    data-cookie-accept>Aceptar</button>
+                <a class="button button--ghost cookie-banner__more" href="{{ relURL `privacy/` }}">Más información</a>
+            </div>
+        </div>
+    </aside>
+    {{ partial "footer.html" . }}
+    {{ partial "scripts.html" . }}
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+{{- $src := or (.Get "src") (.Get "imagePath") -}}
+{{- $src = or $src (.Get "path") -}}
+{{- $src = or $src (.Get "image") -}}
+{{- $caption := .Get "caption" -}}
+{{- with $caption -}}
+{{- $caption = replaceRE `\s*<br\s* /?>\s*Haz click para ver las? im[aá]gen(es)? m[aá]s grandes?\.\s*$` "" . -}}
+    {{- $caption = replaceRE `^\s*Haz click para ver las? im[aá]gen(es)? m[aá]s grandes?\.\s*$` "" $caption -}}
+    {{- end -}}
+    {{- $figureClass := .Get "class" -}}
+    {{- $imageClass := .Get "imageClass" -}}
+    {{- $imageStyle := .Get "imageStyle" -}}
+    {{- $imageBorder := "" -}}
+    {{- with .Get "imageBorder" }}{{ $imageBorder = lower (printf "%v" .) }}{{ end -}}
+    {{- $lightbox := "" -}}
+    {{- with .Get "lightbox" }}{{ $lightbox = lower (printf "%v" .) }}{{ end -}}
+    {{- $inner := .Inner -}}
+    {{- $lightboxEnabled := and $src (not (in (slice "false" "0" "no" "none") $lightbox)) -}}
+    {{- $alt := or (.Get "alt") $caption -}}
+    {{- $alt = or $alt .Page.Title -}}
+    {{- $figureClasses := slice "content-figure" -}}
+    {{- if $figureClass }}{{ $figureClasses = $figureClasses | append $figureClass }}{{ end -}}
+    {{- if and $imageBorder (not (in (slice "false" "0" "no" "none") $imageBorder)) }}{{ $figureClasses = $figureClasses
+    |
+    append "image-border" }}{{ end -}}
+    {{- $imageClasses := slice -}}
+    {{- if $imageClass }}{{ $imageClasses = $imageClasses | append $imageClass }}{{ end -}}
+    {{- if and $src $lightboxEnabled -}}
+    {{- $figureClasses = $figureClasses | append "content-figure--lightbox" -}}
+    {{- end -}}
+
+    {{- if $src -}}
+    <figure class="{{ delimit $figureClasses ` ` }}">
+        {{- if $lightboxEnabled -}}
+        <a class="content-figure__link" href="{{ $src | relURL }}" aria-label="Ampliar imagen: {{ $alt | plainify }}"
+            data-lightbox-image data-lightbox-group="content-figure">
+            {{- end -}}
+            <img src="{{ $src | relURL }}" alt="{{ $alt | plainify }}" loading="lazy" decoding="async" {{ with
+                $imageClasses }} class="{{ delimit . ` ` }}" {{ end }}{{ with $imageStyle }} style="{{ . | safeCSS }}"
+                {{ end }}>
+            {{- if $lightboxEnabled -}}
+            <span class="content-figure__zoom-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" focusable="false">
+                    <path d="M8 3H3v5" />
+                    <path d="M3 3l7 7" />
+                    <path d="M16 3h5v5" />
+                    <path d="M21 3l-7 7" />
+                    <path d="M8 21H3v-5" />
+                    <path d="M3 21l7-7" />
+                    <path d="M16 21h5v-5" />
+                    <path d="M21 21l-7-7" />
+                </svg>
+            </span>
+        </a>
+        {{- end -}}
+        {{- with $caption }}
+        <figcaption>{{ . | markdownify }}</figcaption>
+        {{- end }}
+    </figure>
+    {{- end -}}

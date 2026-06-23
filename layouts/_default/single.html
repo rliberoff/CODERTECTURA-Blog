@@ -1,0 +1,62 @@
+{{ define "main" }}
+<article class="post">
+    {{ $image := "" }}
+    {{ if or .Params.image .Params.imagePath }}
+    {{ $img := or .Params.image .Params.imagePath }}
+    {{ if reflect.IsMap $img }}{{ $image = or $img.path $img.src }}{{ else }}{{ $image = $img }}{{ end }}
+    {{ end }}
+    <header class="post__header{{ if $image }} post__header--with-image{{ end }}">
+        {{ with $image }}
+        <span class="post__header-bg" style="background-image: url('{{ . | relURL }}');" aria-hidden="true"></span>
+        <span class="post__header-overlay" aria-hidden="true"></span>
+        {{ end }}
+        <div class="post__header-content">
+            <p class="eyebrow">{{ .Section | default "Página" }}</p>
+            <h1>{{ .Title }}</h1>
+            <div class="post__meta" aria-label="Metadatos del artículo">
+                {{ with .Date }}<time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 Jan 2006" }}</time>{{ end }}
+                {{ with .ReadingTime }}<span>{{ . }} min lectura</span>{{ end }}
+                {{ with .Params.categories }}{{ range . }}<span class="category-badge">{{ . }}</span>{{ end }}{{ end }}
+            </div>
+        </div>
+    </header>
+
+    <div class="post__layout{{ if ne .Section `posts` }} post__layout--page{{ end }}">
+        {{ if eq .Section `posts` }}
+        <aside class="post__aside" aria-label="Información del artículo" data-reveal>
+            <a class="back-link" href="{{ relURL `posts/` }}">← Todos los posts</a>
+            {{ with .GetTerms "categories" }}
+            <div class="term-list" aria-label="Categorías">
+                <span>Categorías</span>
+                {{ range . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+            </div>
+            {{ end }}
+            {{ with .GetTerms "tags" }}
+            <div class="term-list" aria-label="Etiquetas">
+                <span>Etiquetas</span>
+                {{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+            </div>
+            {{ end }}
+            <div class="share-links" aria-label="Compartir artículo">
+                <span>Compartir</span>
+                <a class="share-links__button share-links__button--x"
+                    href="https://twitter.com/intent/tweet?url={{ .Permalink | urlquery }}&amp;text={{ .Title | urlquery }}"
+                    target="_blank" rel="noopener noreferrer" aria-label="Compartir &quot;{{ .Title }}&quot; en X">X</a>
+                <a class="share-links__button share-links__button--linkedin"
+                    href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ .Permalink | urlquery }}&amp;title={{ .Title | urlquery }}"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="Compartir &quot;{{ .Title }}&quot; en LinkedIn">LinkedIn</a>
+                <a class="share-links__button share-links__button--reddit"
+                    href="https://www.reddit.com/submit?url={{ .Permalink | urlquery }}&amp;title={{ .Title | urlquery }}"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="Compartir &quot;{{ .Title }}&quot; en Reddit">Reddit</a>
+            </div>
+        </aside>
+        {{ end }}
+        <div class="content post__content">
+            {{ .Content }}
+        </div>
+    </div>
+    {{ if eq .Section "posts" }}{{ partial "comments.html" . }}{{ end }}
+</article>
+{{ end }}

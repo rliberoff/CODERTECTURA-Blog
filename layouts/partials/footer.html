@@ -1,0 +1,32 @@
+<footer class="site-footer">
+    <div class="footer__brand">
+        <img src="{{ site.Params.logo }}" alt="" width="44" height="44">
+        <div>
+            <strong>{{ site.Title }}</strong>
+            <p>{{ site.Params.description }}</p>
+        </div>
+    </div>
+    <nav class="footer__links" aria-label="Redes y enlaces">
+        {{ with site.Params.author.social.youtube }}<a class="footer__social footer__social--youtube" href="{{ . }}"
+            target="_blank" rel="me noopener" aria-label="CODERTECTURA en YouTube"><i class="fa-brands fa-youtube"
+                aria-hidden="true"></i></a>{{ end }}
+        {{ with site.Params.author.social.twitch }}<a class="footer__social footer__social--twitch" href="{{ . }}"
+            target="_blank" rel="me noopener" aria-label="CODERTECTURA en Twitch"><i class="fa-brands fa-twitch"
+                aria-hidden="true"></i></a>{{ end }}
+        {{ with site.Params.author.social.linkedin }}<a class="footer__social footer__social--linkedin" href="{{ . }}"
+            target="_blank" rel="me noopener" aria-label="Rodrigo Liberoff en LinkedIn"><i
+                class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>{{ end }}
+        {{ with site.Params.author.social.x }}<a class="footer__social footer__social--x" href="{{ . }}" target="_blank"
+            rel="me noopener" aria-label="Rodrigo Liberoff en X"><i class="fa-brands fa-x-twitter"
+                aria-hidden="true"></i></a>{{ end }}
+        {{ with site.Params.author.social.threads }}<a class="footer__social footer__social--threads" href="{{ . }}"
+            target="_blank" rel="me noopener" aria-label="Rodrigo Liberoff en Threads"><i class="fa-brands fa-threads"
+                aria-hidden="true"></i></a>{{ end }}
+        {{ with site.Params.author.social.github }}<a class="footer__social footer__social--github" href="{{ . }}"
+            target="_blank" rel="me noopener" aria-label="Rodrigo Liberoff en GitHub"><i class="fa-brands fa-github"
+                aria-hidden="true"></i></a>{{ end }}
+        <a class="footer__social footer__social--rss" href="{{ relURL `index.xml` }}" target="_blank"
+            aria-label="RSS de CODERTECTURA"><i class="fa-solid fa-rss" aria-hidden="true"></i></a>
+    </nav>
+    <p class="footer__meta">© {{ now.Year }} CODERTECTURA</p>
+</footer>

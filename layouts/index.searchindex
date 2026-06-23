@@ -1,0 +1,16 @@
+{{- /* This file is a Hugo template that emits JSON. No .json extension, so JSON formatters cannot rewrite Go template delimiters. */ -}}
+{{- $items := slice -}}
+{{- range where site.RegularPages "Section" "posts" -}}
+  {{- $summary := .Description | default .Summary | plainify | htmlUnescape | replaceRE "\\s+" " " | strings.TrimSpace -}}
+  {{- $content := .Plain | htmlUnescape | replaceRE "\\s+" " " | strings.TrimSpace -}}
+  {{- $items = $items | append (dict
+    "title" .Title
+    "permalink" .RelPermalink
+    "date" (.Date.Format "2006-01-02")
+    "summary" $summary
+    "content" $content
+    "categories" (.Params.categories | default (slice))
+    "tags" (.Params.tags | default (slice))
+  ) -}}
+{{- end -}}
+{{- $items | jsonify -}}

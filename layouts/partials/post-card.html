@@ -1,0 +1,25 @@
+<article class="post-card" data-reveal>
+    {{ with .Params.image }}
+    {{ $image := . }}
+    {{ if reflect.IsMap . }}{{ $image = .thumbnail | default .path }}{{ end }}
+    {{ with $image }}
+    <a class="post-card__media" href="{{ $.RelPermalink }}" aria-label="Leer {{ $.Title }}">
+        <img class="post-card__image" src="{{ . | relURL }}" alt="{{ $.Params.imageAlt | default $.Title }}"
+            loading="lazy">
+    </a>
+    {{ end }}
+    {{ end }}
+    <div class="post-card__body">
+        <div class="post-card__meta" aria-label="Metadatos">
+            {{ with .Date }}<time datetime="{{ .Format `2006-01-02` }}">{{ .Format "2 Jan 2006" }}</time>{{ end }}
+            {{ with .ReadingTime }}<span>{{ . }} min</span>{{ end }}
+        </div>
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p>{{ .Summary | plainify | truncate 150 }}</p>
+        {{ with .GetTerms "categories" }}
+        <div class="post-card__terms" aria-label="Categorías">
+            {{ range first 2 . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+        </div>
+        {{ end }}
+    </div>
+</article>

@@ -1,0 +1,47 @@
+{{- $class := .Get "class" -}}
+{{- $id := .Get "id" -}}
+{{- $caption := .Get "caption" -}}
+{{- $images := or (.Get "images") (.Get "src") -}}
+{{- $items := cond (ne $id "") (index .Page.Params $id) nil -}}
+{{- $alt := or (.Get "alt") .Page.Title -}}
+{{- $lightbox := "true" -}}
+{{- with .Get "lightbox" }}{{ $lightbox = lower (printf "%v" .) }}{{ end -}}
+{{- $inner := .Inner -}}
+{{- $lightboxEnabled := not (in (slice "false" "0" "no" "none") $lightbox) -}}
+{{- $galleryCounter := .Page.Scratch.Get "galleryCounter" | default 0 -}}
+{{- $galleryCounter = add $galleryCounter 1 -}}
+{{- .Page.Scratch.Set "galleryCounter" $galleryCounter -}}
+{{- $groupName := cond (ne $id "") (printf "gallery-%s" ($id | anchorize)) (printf "gallery-%d" $galleryCounter) -}}
+
+<figure class="content-gallery{{ with $class }} {{ . }}{{ end }}" {{ with $id }} id="{{ . | anchorize }}" {{ end }}>
+    {{- with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end -}}
+    <div class="content-gallery__grid">
+        {{- if $items -}}
+        {{- range $items -}}
+        {{- $src := or .imagePath .url -}}
+        {{- if $src -}}
+        <figure class="content-gallery__item">
+            {{- if $lightboxEnabled }}<a href="{{ $src | relURL }}" aria-label="Abrir imagen de galería"
+                data-lightbox-image data-lightbox-group="{{ $groupName }}">{{ end -}}
+                <img src="{{ $src | relURL }}" alt="{{ $alt | plainify }}" loading="lazy" decoding="async">
+                {{- if $lightboxEnabled }}</a>{{ end -}}
+        </figure>
+        {{- end -}}
+        {{- end -}}
+        {{- else if $images -}}
+        {{- range split $images "," -}}
+        {{- $src := strings.TrimSpace . -}}
+        {{- if $src -}}
+        <figure class="content-gallery__item">
+            {{- if $lightboxEnabled }}<a href="{{ $src | relURL }}" aria-label="Abrir imagen de galería"
+                data-lightbox-image data-lightbox-group="{{ $groupName }}">{{ end -}}
+                <img src="{{ $src | relURL }}" alt="{{ $alt | plainify }}" loading="lazy" decoding="async">
+                {{- if $lightboxEnabled }}</a>{{ end -}}
+        </figure>
+        {{- end -}}
+        {{- end -}}
+        {{- else -}}
+        {{ $inner | markdownify }}
+        {{- end -}}
+    </div>
+</figure>

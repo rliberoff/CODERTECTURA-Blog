@@ -1,0 +1,26 @@
+{{- $src := or (.Get "src") (.Get "url") -}}
+{{- $poster := .Get "poster" -}}
+{{- $title := or (.Get "title") (.Get "caption") "Vídeo" -}}
+{{- $class := .Get "class" -}}
+{{- $ratio := replace (or (.Get "ratio") "16 / 9") ":" " / " -}}
+{{- $referrerPolicy := or (.Get "referrerpolicy") (.Get "referrerPolicy") (.Get "referrer-policy")
+"strict-origin-when-cross-origin" -}}
+
+{{- if $src -}}
+<figure class="content-video{{ with $class }} {{ . }}{{ end }}">
+    <div class="responsive-embed responsive-embed--video" style="--embed-ratio: {{ $ratio | safeCSS }};">
+        {{- if or (strings.HasSuffix $src ".mp4") (strings.HasSuffix $src ".webm") (strings.HasSuffix $src ".ogg") -}}
+        <video controls preload="metadata" {{ with $poster }} poster="{{ . | relURL }}" {{ end }}>
+            <source src="{{ $src | relURL }}">
+            Tu navegador no puede reproducir este vídeo.
+        </video>
+        {{- else -}}
+        <iframe src="{{ $src | safeURL }}" title="{{ $title | plainify }}" loading="lazy"
+            referrerpolicy="{{ $referrerPolicy }}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        {{- end -}}
+    </div>
+    {{- with .Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end -}}
+</figure>
+{{- end -}}

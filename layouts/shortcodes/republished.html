@@ -1,0 +1,22 @@
+{{- /*
+republished: cross-post attribution banner.
+Renders the standard "Artículo publicado originalmente en el blog «X» de Y" notice
+used by posts that were first published on another blog.
+
+Params:
+url (required) URL of the original publication.
+blog (required) Display name of the origin blog (guillemets are added automatically).
+publisher (optional) Publisher name. Default: "ENCAMINA".
+publisherURL (optional) Publisher URL. Default: "https://www.encamina.com/".
+type (optional) Notice colour variant. Default: "info".
+*/ -}}
+{{- $url := .Get "url" -}}
+{{- $blog := .Get "blog" -}}
+{{- $publisher := or (.Get "publisher") "ENCAMINA" -}}
+{{- $publisherURL := or (.Get "publisherURL") "https://www.encamina.com/" -}}
+{{- $type := or (.Get "type") "info" -}}
+<aside class="notice notice--{{ $type }} notice--republished" role="note">
+    <div class="notice__body">Artículo publicado originalmente en el blog <a href="{{ $url | safeURL }}" target="_blank"
+            rel="noopener noreferrer">«{{ $blog }}»</a> de <a href="{{ $publisherURL | safeURL }}" target="_blank"
+            rel="noopener noreferrer">{{ $publisher }}</a>.</div>
+</aside>

@@ -1,0 +1,7 @@
+{{- $type := lower (or (.Get "type") (.Get 0) "info") -}}
+{{- $title := or (.Get "title") (.Get "caption") -}}
+{{- $class := .Get "class" -}}
+<aside class="notice notice--{{ $type }}{{ with $class }} {{ . }}{{ end }}" role="note">
+    {{- with $title }}<strong class="notice__title">{{ . | markdownify }}</strong>{{ end -}}
+    <div class="notice__body">{{ .Inner | markdownify }}</div>
+</aside>

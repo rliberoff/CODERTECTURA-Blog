@@ -1,0 +1,81 @@
+baseURL: "https://codertectura.com/"
+locale: "es"
+defaultContentLanguage: "es"
+title: "CODERTECTURA"
+timeZone: "Europe/Madrid"
+
+enableRobotsTXT: true
+enableGitInfo: false
+summaryLength: 30
+
+pagination:
+  pagerSize: 6
+
+permalinks:
+  posts: "/posts/:slug/"
+
+taxonomies:
+  category: "categories"
+  tag: "tags"
+
+mediaTypes:
+  text/searchindex:
+    delimiter: ""
+
+outputFormats:
+  SearchIndex:
+    mediaType: "text/searchindex"
+    baseName: "search-index.json"
+    isPlainText: true
+    notAlternative: true
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "SearchIndex"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+params:
+  description: "Blog de la comunidad técnica CODERTECTURA, sobre arquitectura de software y cloud, desarrollo, Microsoft, IA, tecnología y mucho más."
+  logo: "/images/logo.png"
+  avatar: "/images/avatar.png"
+  author:
+    name: "Rodrigo Liberoff"
+    location: "Spain"
+    social:
+      x: "https://twitter.com/rliberoff"
+      threads: "https://www.threads.net/@rliberoff"
+      linkedin: "https://www.linkedin.com/in/rliberoff/"
+      youtube: "https://www.youtube.com/@CODERTECTURA"
+      twitch: "https://www.twitch.tv/codertectura"
+      github: "https://github.com/rliberoff"
+  ai:
+    defaultDisclosure: "AI-assisted draft; reviewed by a human before publication."
+
+menus:
+  main:
+    - name: "Inicio"
+      pageRef: "/"
+      weight: 10
+    - name: "Posts"
+      pageRef: "/posts"
+      weight: 20
+    - name: "Categorías"
+      pageRef: "/categories"
+      weight: 30
+    - name: "Acerca de"
+      url: "/about/"
+      weight: 40
+    - name: "Buscar artículos"
+      url: "/search/"
+      weight: 50
+      params:
+        ariaLabel: "Buscar artículos"
+        icon: "fa-solid fa-magnifying-glass"

@@ -1,0 +1,7 @@
+{{ if gt .Paginator.TotalPages 1 }}
+<nav class="pagination" aria-label="Paginación">
+    {{ with .Paginator.Prev }}<a class="pagination__link" href="{{ .URL }}" rel="prev">← Posts recientes</a>{{ end }}
+    <span>Página {{ .Paginator.PageNumber }} de {{ .Paginator.TotalPages }}</span>
+    {{ with .Paginator.Next }}<a class="pagination__link" href="{{ .URL }}" rel="next">Posts anteriores →</a>{{ end }}
+</nav>
+{{ end }}

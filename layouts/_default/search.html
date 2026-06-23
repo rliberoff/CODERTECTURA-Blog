@@ -1,0 +1,31 @@
+{{ define "main" }}
+<article class="search-page">
+    <header class="page-header search-page__header">
+        <p class="eyebrow">CODERTECTURA</p>
+        <h1>{{ .Title }}</h1>
+        {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    </header>
+
+    <section class="search-panel" aria-labelledby="search-form-title" data-search-page
+        data-index-url="{{ relURL `search-index.json` }}">
+        <div class="search-panel__intro">
+            <h2 id="search-form-title">Encuentra un artículo</h2>
+            <p>Escribe una o varias palabras clave para buscar en los artículos del blog.</p>
+        </div>
+
+        <form class="search-form" role="search" data-search-form>
+            <label for="search-input">Palabra clave</label>
+            <div class="search-form__row">
+                <input id="search-input" name="q" type="search" placeholder="Buscar por .NET, IA, APIs..."
+                    autocomplete="off" data-search-input>
+                <button class="button button--primary" type="submit">Buscar</button>
+            </div>
+            <p class="search-status" role="status" aria-live="polite" data-search-status>Cargando índice de artículos…
+            </p>
+        </form>
+
+        <ol class="search-results" data-search-results></ol>
+        <p class="search-empty" data-search-empty hidden>Escribe una búsqueda para ver resultados.</p>
+    </section>
+</article>
+{{ end }}

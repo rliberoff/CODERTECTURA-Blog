@@ -1,10 +1,8 @@
 <footer class="site-footer">
     <div class="footer__brand">
         <img src="{{ site.Params.logo }}" alt="" width="44" height="44">
-        <div>
-            <strong>{{ site.Title }}</strong>
-            <p>{{ site.Params.description }}</p>
-        </div>
+        <strong>© {{ now.Year }} {{ site.Title }}</strong>
+        <p>{{ site.Params.description }}</p>
     </div>
     <nav class="footer__links" aria-label="Redes y enlaces">
         {{ with site.Params.author.social.youtube }}<a class="footer__social footer__social--youtube" href="{{ . }}"
@@ -28,5 +26,5 @@
         <a class="footer__social footer__social--rss" href="{{ relURL `index.xml` }}" target="_blank"
             aria-label="RSS de CODERTECTURA"><i class="fa-solid fa-rss" aria-hidden="true"></i></a>
     </nav>
-    <p class="footer__meta">© {{ now.Year }} CODERTECTURA</p>
+    <p class="footer__meta"></p>
 </footer>

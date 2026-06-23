@@ -43,7 +43,7 @@ markup:
     noClasses: false
 
 params:
-  description: "Blog de la comunidad técnica CODERTECTURA, sobre arquitectura de software y cloud, desarrollo, Microsoft, IA, tecnología y mucho más."
+  description: "Blog de comunidad técnica sobre arquitectura de software y cloud, desarrollo con .NET, el ecosistema tecnológico de Microsoft, Inteligencia Artificial, y mucho más."
   logo: "/images/logo.png"
   avatar: "/images/avatar.png"
   author:

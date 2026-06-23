@@ -1,0 +1,10 @@
+{{ with resources.Get "js/hugo-main.js" }}
+{{ $js := . | minify | fingerprint }}
+<script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
+{{ if eq .Layout "search" }}
+{{ with resources.Get "js/search.js" }}
+{{ $searchJs := . | minify | fingerprint }}
+<script defer src="{{ $searchJs.RelPermalink }}" integrity="{{ $searchJs.Data.Integrity }}"></script>
+{{ end }}
+{{ end }}

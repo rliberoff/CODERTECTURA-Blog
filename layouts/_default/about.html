@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article class="post about-page">
+    <div class="post__layout post__layout--about">
+        <aside class="about__avatar" aria-label="Avatar del autor">
+            <img src="{{ .Params.avatar | default `/images/avatar.png` | relURL }}"
+                alt="Avatar de {{ .Site.Params.author | default `Autor` }}" loading="eager" decoding="async">
+        </aside>
+        <div class="about__content post__content">
+            {{ .Content }}
+        </div>
+    </div>
+</article>
+{{ end }}

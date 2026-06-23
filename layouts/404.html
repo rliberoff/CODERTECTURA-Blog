@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section class="not-found" aria-labelledby="not-found-title" data-reveal>
+    <p class="eyebrow">Error 404</p>
+    <h1 id="not-found-title">Página no encontrada</h1>
+    <div class="not-found__actions" aria-label="Acciones para continuar">
+        <a class="button button--primary" href="{{ site.Home.RelPermalink }}">Volver al inicio</a>
+        <a class="button button--ghost" href="{{ relURL `posts/` }}">Ver todos los posts</a>
+    </div>
+</section>
+{{ end }}

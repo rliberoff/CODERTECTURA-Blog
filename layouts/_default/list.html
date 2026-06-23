@@ -1,0 +1,24 @@
+{{ define "main" }}
+<header class="page-header">
+    <p class="eyebrow">CODERTECTURA</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+</header>
+
+<section class="section" aria-label="Listado de contenido">
+    {{ if .Pages }}
+    <div class="post-grid">
+        {{ range .Paginator.Pages }}
+        {{ partial "post-card.html" . }}
+        {{ end }}
+    </div>
+    {{ partial "pagination.html" . }}
+    {{ else }}
+    <article class="empty-state">
+        <p class="eyebrow">Sin elementos todavía</p>
+        <h2>Contenido pendiente</h2>
+        <p>Esta sección todavía no tiene contenido publicado.</p>
+    </article>
+    {{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,539 @@
+{
+  "communities": {
+    "0": [
+      "templates_ralph_triage",
+      "templates_ralph_triage_cleancell",
+      "templates_ralph_triage_execsync",
+      "templates_ralph_triage_fetchsquadissues",
+      "templates_ralph_triage_findbestmodulematch",
+      "templates_ralph_triage_findbestrulematch",
+      "templates_ralph_triage_findcolumnindex",
+      "templates_ralph_triage_findleadfallback",
+      "templates_ralph_triage_findmember",
+      "templates_ralph_triage_findrolekeywordmatch",
+      "templates_ralph_triage_fs",
+      "templates_ralph_triage_getownerrepofromgit",
+      "templates_ralph_triage_githubrequestjson",
+      "templates_ralph_triage_https",
+      "templates_ralph_triage_issuehaslabel",
+      "templates_ralph_triage_isuntriagedissue",
+      "templates_ralph_triage_main",
+      "templates_ralph_triage_normalizeeol",
+      "templates_ralph_triage_normalizemodulepath",
+      "templates_ralph_triage_normalizename",
+      "templates_ralph_triage_normalizeoptionalowner",
+      "templates_ralph_triage_normalizetextforpathmatch",
+      "templates_ralph_triage_parseargs",
+      "templates_ralph_triage_parsemoduleownership",
+      "templates_ralph_triage_parseownerrepofromremote",
+      "templates_ralph_triage_parseroster",
+      "templates_ralph_triage_parseroutingrules",
+      "templates_ralph_triage_parsetableline",
+      "templates_ralph_triage_parsetablesection",
+      "templates_ralph_triage_path",
+      "templates_ralph_triage_printusage",
+      "templates_ralph_triage_slugify",
+      "templates_ralph_triage_splitkeywords",
+      "templates_ralph_triage_triageissue"
+    ],
+    "1": [
+      "js_main_min_d",
+      "lunr_lunr_tr_min",
+      "lunr_lunr_tr_min_a",
+      "lunr_lunr_tr_min_b",
+      "lunr_lunr_tr_min_c",
+      "lunr_lunr_tr_min_d",
+      "lunr_lunr_tr_min_e",
+      "lunr_lunr_tr_min_er",
+      "lunr_lunr_tr_min_f",
+      "lunr_lunr_tr_min_g",
+      "lunr_lunr_tr_min_h",
+      "lunr_lunr_tr_min_i",
+      "lunr_lunr_tr_min_ir",
+      "lunr_lunr_tr_min_j",
+      "lunr_lunr_tr_min_k",
+      "lunr_lunr_tr_min_l",
+      "lunr_lunr_tr_min_m",
+      "lunr_lunr_tr_min_n",
+      "lunr_lunr_tr_min_o",
+      "lunr_lunr_tr_min_p",
+      "lunr_lunr_tr_min_q",
+      "lunr_lunr_tr_min_r",
+      "lunr_lunr_tr_min_rr",
+      "lunr_lunr_tr_min_s",
+      "lunr_lunr_tr_min_t",
+      "lunr_lunr_tr_min_u",
+      "lunr_lunr_tr_min_v",
+      "lunr_lunr_tr_min_w",
+      "lunr_lunr_tr_min_x",
+      "lunr_lunr_tr_min_y",
+      "lunr_lunr_tr_min_z"
+    ],
+    "2": [
+      "plugins_lity",
+      "plugins_lity_appendqueryparams",
+      "plugins_lity_currentinstance",
+      "plugins_lity_error",
+      "plugins_lity_facebookvideohandler",
+      "plugins_lity_factory",
+      "plugins_lity_googlemapshandler",
+      "plugins_lity_handletabkey",
+      "plugins_lity_iframe",
+      "plugins_lity_iframehandler",
+      "plugins_lity_imagehandler",
+      "plugins_lity_inlinehandler",
+      "plugins_lity_keydown",
+      "plugins_lity_lity",
+      "plugins_lity_parsequeryparams",
+      "plugins_lity_registerinstance",
+      "plugins_lity_removeinstance",
+      "plugins_lity_resize",
+      "plugins_lity_settings",
+      "plugins_lity_transferhash",
+      "plugins_lity_transitionend",
+      "plugins_lity_vimeohandler",
+      "plugins_lity_winheight",
+      "plugins_lity_youtubehandler"
+    ],
+    "3": [
+      "js_main_min",
+      "js_main_min_a",
+      "js_main_min_c",
+      "js_main_min_e",
+      "js_main_min_f",
+      "js_main_min_hidetoc",
+      "js_main_min_i",
+      "js_main_min_l",
+      "js_main_min_m",
+      "js_main_min_n",
+      "js_main_min_o",
+      "js_main_min_p",
+      "js_main_min_r",
+      "js_main_min_s",
+      "js_main_min_showtoc",
+      "js_main_min_t",
+      "js_main_min_toggletoc",
+      "js_main_min_u",
+      "js_main_min_z"
+    ],
+    "4": [
+      "lunr_lunr_ro_min",
+      "lunr_lunr_ro_min_a",
+      "lunr_lunr_ro_min_b",
+      "lunr_lunr_ro_min_c",
+      "lunr_lunr_ro_min_d",
+      "lunr_lunr_ro_min_e",
+      "lunr_lunr_ro_min_f",
+      "lunr_lunr_ro_min_l",
+      "lunr_lunr_ro_min_m",
+      "lunr_lunr_ro_min_n",
+      "lunr_lunr_ro_min_o",
+      "lunr_lunr_ro_min_p",
+      "lunr_lunr_ro_min_s",
+      "lunr_lunr_ro_min_t",
+      "lunr_lunr_ro_min_u",
+      "lunr_lunr_ro_min_v",
+      "lunr_lunr_ro_min_w"
+    ],
+    "5": [
+      "lunr_lunr_es_min",
+      "lunr_lunr_es_min_a",
+      "lunr_lunr_es_min_b",
+      "lunr_lunr_es_min_c",
+      "lunr_lunr_es_min_d",
+      "lunr_lunr_es_min_e",
+      "lunr_lunr_es_min_f",
+      "lunr_lunr_es_min_h",
+      "lunr_lunr_es_min_i",
+      "lunr_lunr_es_min_l",
+      "lunr_lunr_es_min_m",
+      "lunr_lunr_es_min_n",
+      "lunr_lunr_es_min_o",
+      "lunr_lunr_es_min_t",
+      "lunr_lunr_es_min_u",
+      "lunr_lunr_es_min_w"
+    ],
+    "6": [
+      "lunr_lunr_fr_min",
+      "lunr_lunr_fr_min_a",
+      "lunr_lunr_fr_min_b",
+      "lunr_lunr_fr_min_c",
+      "lunr_lunr_fr_min_d",
+      "lunr_lunr_fr_min_e",
+      "lunr_lunr_fr_min_f",
+      "lunr_lunr_fr_min_i",
+      "lunr_lunr_fr_min_k",
+      "lunr_lunr_fr_min_l",
+      "lunr_lunr_fr_min_m",
+      "lunr_lunr_fr_min_n",
+      "lunr_lunr_fr_min_o",
+      "lunr_lunr_fr_min_t",
+      "lunr_lunr_fr_min_u",
+      "lunr_lunr_fr_min_w"
+    ],
+    "7": [
+      "lunr_lunr_it_min",
+      "lunr_lunr_it_min_a",
+      "lunr_lunr_it_min_b",
+      "lunr_lunr_it_min_c",
+      "lunr_lunr_it_min_d",
+      "lunr_lunr_it_min_e",
+      "lunr_lunr_it_min_f",
+      "lunr_lunr_it_min_i",
+      "lunr_lunr_it_min_l",
+      "lunr_lunr_it_min_m",
+      "lunr_lunr_it_min_o",
+      "lunr_lunr_it_min_s",
+      "lunr_lunr_it_min_t",
+      "lunr_lunr_it_min_u",
+      "lunr_lunr_it_min_v",
+      "lunr_lunr_it_min_w"
+    ],
+    "8": [
+      "lunr_lunr_pt_min",
+      "lunr_lunr_pt_min_a",
+      "lunr_lunr_pt_min_c",
+      "lunr_lunr_pt_min_d",
+      "lunr_lunr_pt_min_e",
+      "lunr_lunr_pt_min_f",
+      "lunr_lunr_pt_min_i",
+      "lunr_lunr_pt_min_l",
+      "lunr_lunr_pt_min_m",
+      "lunr_lunr_pt_min_n",
+      "lunr_lunr_pt_min_o",
+      "lunr_lunr_pt_min_p",
+      "lunr_lunr_pt_min_t",
+      "lunr_lunr_pt_min_u",
+      "lunr_lunr_pt_min_v",
+      "lunr_lunr_pt_min_w"
+    ],
+    "9": [
+      "lunr_lunr_hu_min",
+      "lunr_lunr_hu_min_a",
+      "lunr_lunr_hu_min_c",
+      "lunr_lunr_hu_min_d",
+      "lunr_lunr_hu_min_e",
+      "lunr_lunr_hu_min_f",
+      "lunr_lunr_hu_min_i",
+      "lunr_lunr_hu_min_k",
+      "lunr_lunr_hu_min_l",
+      "lunr_lunr_hu_min_m",
+      "lunr_lunr_hu_min_o",
+      "lunr_lunr_hu_min_s",
+      "lunr_lunr_hu_min_t",
+      "lunr_lunr_hu_min_u",
+      "lunr_lunr_hu_min_w"
+    ],
+    "10": [
+      "lunr_lunr_ru_min",
+      "lunr_lunr_ru_min_a",
+      "lunr_lunr_ru_min_c",
+      "lunr_lunr_ru_min_d",
+      "lunr_lunr_ru_min_e",
+      "lunr_lunr_ru_min_f",
+      "lunr_lunr_ru_min_i",
+      "lunr_lunr_ru_min_l",
+      "lunr_lunr_ru_min_m",
+      "lunr_lunr_ru_min_o",
+      "lunr_lunr_ru_min_p",
+      "lunr_lunr_ru_min_s",
+      "lunr_lunr_ru_min_t",
+      "lunr_lunr_ru_min_u",
+      "lunr_lunr_ru_min_w"
+    ],
+    "11": [
+      "lunr_lunr_du_min",
+      "lunr_lunr_du_min_a",
+      "lunr_lunr_du_min_c",
+      "lunr_lunr_du_min_d",
+      "lunr_lunr_du_min_l",
+      "lunr_lunr_du_min_m",
+      "lunr_lunr_du_min_n",
+      "lunr_lunr_du_min_o",
+      "lunr_lunr_du_min_r",
+      "lunr_lunr_du_min_s",
+      "lunr_lunr_du_min_t",
+      "lunr_lunr_du_min_u"
+    ],
+    "12": [
+      "lunr_lunr_fi_min",
+      "lunr_lunr_fi_min_a",
+      "lunr_lunr_fi_min_c",
+      "lunr_lunr_fi_min_i",
+      "lunr_lunr_fi_min_l",
+      "lunr_lunr_fi_min_m",
+      "lunr_lunr_fi_min_n",
+      "lunr_lunr_fi_min_o",
+      "lunr_lunr_fi_min_s",
+      "lunr_lunr_fi_min_t",
+      "lunr_lunr_fi_min_u",
+      "lunr_lunr_fi_min_w"
+    ],
+    "13": [
+      "lunr_lunr_de_min",
+      "lunr_lunr_de_min_a",
+      "lunr_lunr_de_min_c",
+      "lunr_lunr_de_min_e",
+      "lunr_lunr_de_min_i",
+      "lunr_lunr_de_min_o",
+      "lunr_lunr_de_min_s",
+      "lunr_lunr_de_min_t",
+      "lunr_lunr_de_min_u"
+    ],
+    "14": [
+      "lunr_lunr_da_min",
+      "lunr_lunr_da_min_e",
+      "lunr_lunr_da_min_n",
+      "lunr_lunr_da_min_o",
+      "lunr_lunr_da_min_s",
+      "lunr_lunr_da_min_t"
+    ],
+    "15": [
+      "lunr_lunr_no_min",
+      "lunr_lunr_no_min_e",
+      "lunr_lunr_no_min_i",
+      "lunr_lunr_no_min_o",
+      "lunr_lunr_no_min_t"
+    ],
+    "16": [
+      "lunr_lunr_sv_min",
+      "lunr_lunr_sv_min_e",
+      "lunr_lunr_sv_min_i",
+      "lunr_lunr_sv_min_s",
+      "lunr_lunr_sv_min_t"
+    ],
+    "17": [
+      "mcp",
+      "mcp_command_npx",
+      "mcp_mcp_server_squad_state",
+      "mcp_package_bradygaster_squad_cli"
+    ],
+    "18": [
+      "plugins_table_of_contents",
+      "plugins_table_of_contents_hidetoc",
+      "plugins_table_of_contents_showtoc",
+      "plugins_table_of_contents_toggletoc"
+    ],
+    "19": [
+      "f_repos_personal_codertectura_blog_squad_templates_skills_distributed_mesh_sync_mesh_sh__entry",
+      "squad_templates_skills_distributed_mesh_sync_mesh_sh_distributed_mesh_sync_mesh"
+    ],
+    "20": [
+      "notes_fetch",
+      "notes_fetch_log"
+    ],
+    "21": [
+      "notes_write_note",
+      "notes_write_note_log"
+    ],
+    "22": [
+      "templates_package",
+      "templates_package_type"
+    ],
+    "23": [
+      "js_hugo_main"
+    ],
+    "24": [
+      "js_main"
+    ],
+    "25": [
+      "js_search_data"
+    ],
+    "26": [
+      "lunr_lunr_ja_min"
+    ],
+    "27": [
+      "lunr_lunr_jp_min"
+    ],
+    "28": [
+      "lunr_lunr_min"
+    ],
+    "29": [
+      "lunr_lunr_multi_min"
+    ],
+    "30": [
+      "lunr_lunr_stemmer_support_min"
+    ],
+    "31": [
+      "plugins_jquery_magnific_popup"
+    ],
+    "32": [
+      "plugins_jquery_smooth_scroll"
+    ],
+    "33": [
+      "squad_templates_skills_distributed_mesh_sync_mesh_ps1_distributed_mesh_sync_mesh"
+    ]
+  },
+  "cohesion": {
+    "0": 0.12299465240641712,
+    "1": 0.2129032258064516,
+    "2": 0.14130434782608695,
+    "3": 0.15204678362573099,
+    "4": 0.19117647058823528,
+    "5": 0.24166666666666667,
+    "6": 0.21666666666666667,
+    "7": 0.21666666666666667,
+    "8": 0.225,
+    "9": 0.2761904761904762,
+    "10": 0.22857142857142856,
+    "11": 0.3333333333333333,
+    "12": 0.22727272727272727,
+    "13": 0.3333333333333333,
+    "14": 0.4,
+    "15": 0.4,
+    "16": 0.4,
+    "17": 0.5,
+    "18": 0.8333333333333334,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0
+  },
+  "gods": [
+    {
+      "id": "lunr_lunr_tr_min",
+      "label": "_()",
+      "degree": 31
+    },
+    {
+      "id": "lunr_lunr_tr_min_n",
+      "label": "n()",
+      "degree": 19
+    },
+    {
+      "id": "lunr_lunr_es_min",
+      "label": "_()",
+      "degree": 17
+    },
+    {
+      "id": "lunr_lunr_fr_min",
+      "label": "_()",
+      "degree": 17
+    },
+    {
+      "id": "lunr_lunr_it_min",
+      "label": "_()",
+      "degree": 17
+    },
+    {
+      "id": "lunr_lunr_pt_min",
+      "label": "_()",
+      "degree": 17
+    },
+    {
+      "id": "lunr_lunr_fi_min",
+      "label": "_()",
+      "degree": 13
+    },
+    {
+      "id": "lunr_lunr_hu_min_i",
+      "label": "i()",
+      "degree": 11
+    },
+    {
+      "id": "lunr_lunr_tr_min_g",
+      "label": "g()",
+      "degree": 11
+    },
+    {
+      "id": "lunr_lunr_tr_min_c",
+      "label": "c()",
+      "degree": 9
+    }
+  ],
+  "surprises": [
+    {
+      "source": "T()",
+      "target": "g()",
+      "source_files": [
+        "assets/js/main.min.js",
+        "assets/js/lunr/lunr.tr.min.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities; peripheral node `T()` unexpectedly reaches hub `g()`"
+    },
+    {
+      "source": "f()",
+      "target": "g()",
+      "source_files": [
+        "assets/js/main.min.js",
+        "assets/js/lunr/lunr.tr.min.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "p()",
+      "target": "g()",
+      "source_files": [
+        "assets/js/main.min.js",
+        "assets/js/lunr/lunr.tr.min.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "I()",
+      "target": "y()",
+      "source_files": [
+        "assets/js/main.min.js",
+        "assets/js/lunr/lunr.tr.min.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "p()",
+      "target": "y()",
+      "source_files": [
+        "assets/js/main.min.js",
+        "assets/js/lunr/lunr.tr.min.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `g()` connect `Community 1` to `Community 3`?",
+      "why": "High betweenness centrality (0.008) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `y()` connect `Community 1` to `Community 3`?",
+      "why": "High betweenness centrality (0.005) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `npx`, `@bradygaster/squad-cli`, `type` to the rest of the system?",
+      "why": "8 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12299465240641712 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 2` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14130434782608695 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

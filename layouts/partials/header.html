@@ -1,0 +1,18 @@
+<header class="site-header" data-site-header>
+    <a class="brand" href="{{ relURL `` }}" aria-label="CODERTECTURA inicio">
+        <img src="{{ site.Params.logo }}" alt="" width="52" height="52">
+        <span>{{ site.Title }}</span>
+    </a>
+    <nav class="site-nav" aria-label="Navegación principal">
+        {{ $current := . }}
+        {{ range site.Menus.main }}
+        {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+        {{ $icon := .Params.icon }}
+        {{ $ariaLabel := .Params.ariaLabel | default .Name }}
+        <a href="{{ .URL | relURL }}" {{ if $icon }} class="site-nav__icon-link" {{ end }}{{ with .Params.ariaLabel }}
+            aria-label="{{ . }}" {{ end }}{{ if $active }} aria-current="page" {{ end }}>{{ with $icon }}<i
+                class="{{ . }}" aria-hidden="true"></i><span class="sr-only">{{ $ariaLabel }}</span>{{ else }}{{ .Name
+            }}{{ end }}</a>
+        {{ end }}
+    </nav>
+</header>

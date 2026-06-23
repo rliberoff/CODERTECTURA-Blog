@@ -1,0 +1,33 @@
+{{- $class := .Get "class" -}}
+{{- $title := or (.Get "title") (.Get "caption") -}}
+{{- $src := or (.Get "src") (.Get "url") -}}
+{{- $ratio := replace (or (.Get "ratio") "16 / 9") ":" " / " -}}
+{{- $defaultAllow := slice
+"accelerometer"
+"autoplay"
+"clipboard-write"
+"encrypted-media"
+"gyroscope"
+"picture-in-picture"
+"web-share"
+-}}
+{{- $allow := or (.Get "allow") (delimit $defaultAllow "; ") -}}
+{{- $defaultReferrerPolicy := "strict-origin-when-cross-origin" -}}
+{{- $referrerPolicy := or (.Get "referrerpolicy") (.Get "referrerPolicy") (.Get "referrer-policy")
+$defaultReferrerPolicy -}}
+{{- $style := .Get "style" -}}
+{{- $embedStyle := printf "--embed-ratio: %s;" $ratio -}}
+{{- with $style }}{{- $embedStyle = printf "%s %s" $embedStyle . -}}{{- end -}}
+{{- $embedClass := "responsive-embed" -}}
+{{- with $class }}{{- $embedClass = printf "%s %s" $embedClass . -}}{{- end -}}
+{{- $inner := .Inner -}}
+<div class="{{ $embedClass }}" style="{{ $embedStyle | safeCSS }}">
+    {{- if $src -}}
+    <iframe src="{{ $src | safeURL }}" {{ with $title }} title="{{ . | plainify }}" {{ else }}
+        title="Contenido embebido" {{ end }} frameborder="0" referrerpolicy="{{ $referrerPolicy }}" allow="{{ $allow }}"
+        allowfullscreen></iframe>
+    {{- else -}}
+    {{ $inner | safeHTML }}
+    {{- end -}}
+    {{- with $title }}<span class="sr-only">{{ . | plainify }}</span>{{ end -}}
+</div>

@@ -1,0 +1,87 @@
+{{ define "main" }}
+{{ $posts := where site.RegularPages "Section" "posts" }}
+<section class="hero parallax-panel" aria-labelledby="hero-title" data-parallax data-reveal>
+    <div class="hero__mountains-scene" aria-hidden="true">
+        <svg class="hero__mountains" viewBox="0 0 1320 240" preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="mountain-glow" x="-8%" y="-20%" width="116%" height="150%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur" />
+                    <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <linearGradient id="mountain-face-a" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="rgba(0,42,40,0.82)" />
+                    <stop offset="1" stop-color="rgba(0,5,10,0.98)" />
+                </linearGradient>
+                <linearGradient id="mountain-face-b" x1="1" x2="0" y1="0" y2="1">
+                    <stop offset="0" stop-color="rgba(0,76,58,0.62)" />
+                    <stop offset="1" stop-color="rgba(0,8,16,0.98)" />
+                </linearGradient>
+            </defs>
+            <g class="hero__mountains-layer hero__mountains-layer--back" filter="url(#mountain-glow)">
+                <path
+                    d="M0 240V132L105 110L210 136L320 78L435 132L530 94L640 126L745 70L870 136L960 96L1080 128L1195 86L1320 128V240Z" />
+                <polyline
+                    points="0,132 105,110 210,136 320,78 435,132 530,94 640,126 745,70 870,136 960,96 1080,128 1195,86 1320,128" />
+                <path
+                    d="M105 110L130 240M210 136L320 78L338 240M435 132L320 78M530 94L562 240M640 126L745 70L770 240M870 136L745 70M960 96L1005 240M1080 128L1195 86L1225 240" />
+            </g>
+            <g class="hero__mountains-layer hero__mountains-layer--front" filter="url(#mountain-glow)">
+                <polygon class="face-a" points="0,240 0,150 84,128 168,240" />
+                <polygon class="face-b" points="84,128 168,116 252,240 168,240" />
+                <polygon class="face-a" points="168,240 168,116 294,58 392,240" />
+                <polygon class="face-b" points="294,58 426,132 520,240 392,240" />
+                <polygon class="face-a" points="392,240 426,132 532,90 624,240" />
+                <polygon class="face-b" points="532,90 654,142 742,240 624,240" />
+                <polygon class="face-a" points="624,240 654,142 768,38 880,240" />
+                <polygon class="face-b" points="768,38 906,120 1008,240 880,240" />
+                <polygon class="face-a" points="880,240 906,120 1008,76 1116,240" />
+                <polygon class="face-b" points="1008,76 1144,128 1230,240 1116,240" />
+                <polygon class="face-a" points="1116,240 1144,128 1248,92 1320,154 1320,240" />
+                <path class="ridge"
+                    d="M0 150L84 128L168 116L294 58L426 132L532 90L654 142L768 38L906 120L1008 76L1144 128L1248 92L1320 154" />
+                <path class="wire"
+                    d="M84 128L168 240M168 116L294 58L392 240M294 58L426 132M426 132L532 90L624 240M532 90L654 142M654 142L768 38L880 240M768 38L906 120M906 120L1008 76L1116 240M1008 76L1144 128M1144 128L1248 92L1320 240" />
+            </g>
+        </svg>
+    </div>
+    <div class="hero__content">
+        <div class="hero__brand-lockup">
+            <img class="hero__logo" src="{{ site.Params.logo }}" alt="CODERTECTURA" width="152" height="152">
+            <div class="hero__brand-copy">
+                <p class="eyebrow">Arquitectura · Desarrollo · Inteligencia Artificial</p>
+                <h1 id="hero-title">{{ or .Title site.Title }}</h1>
+            </div>
+        </div>
+        <div class="hero__actions" aria-label="Acciones principales">
+            <a class="button button--primary" href="{{ relURL `posts/` }}">Explorar artículos</a>
+            <a class="button button--ghost" href="{{ relURL `categories/` }}">Ver categorías</a>
+            <a class="scroll-cue is-hidden" href="#latest-posts" aria-label="Desplazarse hacia los artículos"
+                data-scroll-cue>
+                <span class="scroll-cue__chevron"></span>
+                <span class="scroll-cue__chevron"></span>
+                <span class="scroll-cue__label">Scroll</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="latest-posts" class="section section--featured" aria-label="Últimos posts" data-reveal>
+    {{ if $posts }}
+    <div class="post-grid post-grid--featured">
+        {{ range first 6 $posts.ByDate.Reverse }}
+        {{ partial "post-card.html" . }}
+        {{ end }}
+    </div>
+    {{ else }}
+    <article class="empty-state" data-reveal>
+        <p class="eyebrow">Archivo</p>
+        <h3>Sin posts publicados</h3>
+        <p>El archivo de artículos todavía no tiene contenido publicado.</p>
+    </article>
+    {{ end }}
+</section>
+{{ end }}

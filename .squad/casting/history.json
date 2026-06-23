@@ -1,0 +1,26 @@
+{
+  "universe_usage_history": [
+    {
+      "universe": "Marvel Cinematic Universe",
+      "assigned_at": "2026-06-10T19:54:59.5570800+02:00",
+      "project": "CODERTECTURA-Blog"
+    }
+  ],
+  "assignment_cast_snapshots": {
+    "2026-06-10-codertectura-blog-modernization": {
+      "universe": "Marvel Cinematic Universe",
+      "assigned_at": "2026-06-10T19:54:59.5570800+02:00",
+      "agents": {
+        "tony": "Lead / Architect",
+        "wanda": "Visual Design Analyst",
+        "peter": "Frontend Dev",
+        "bruce": "Backend / Automation",
+        "shuri": "Content & Migration",
+        "natasha": "Tester / Reviewer",
+        "scribe": "Session Logger",
+        "ralph": "Work Monitor",
+        "rai": "RAI Reviewer"
+      }
+    }
+  }
+}

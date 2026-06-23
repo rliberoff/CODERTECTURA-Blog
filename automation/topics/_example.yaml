@@ -1,0 +1,57 @@
+# =============================================================================
+# PLANTILLA / EJEMPLO — el escáner de temas IGNORA este archivo.
+#
+# Motivo: su nombre empieza por "_" (guion bajo). Convención del ledger:
+# cualquier fichero "automation/topics/_*.yaml" se trata como plantilla o
+# ejemplo y NO se procesa.
+#
+# Para crear un tema real, copia este archivo a "automation/topics/<id>.yaml"
+# (sin guion bajo) y rellena los campos con valores reales.
+# =============================================================================
+
+# Identificador único y estable del tema. Se usa como nombre de archivo
+# (<id>.yaml) y como clave primaria del ledger. Formato kebab-case.
+id: dotnet-aspire-observabilidad-opentelemetry
+
+# Título propuesto para el artículo (en español). Junto con el slug forma
+# parte de la clave de deduplicación EXACTA (clave a).
+title: "Observabilidad en .NET Aspire con OpenTelemetry"
+
+# Slug del artículo (kebab-case, ASCII). Cuando el tema se publique, debe
+# coincidir con el nombre del fichero final en content/posts/<slug>.md.
+# También forma parte de la deduplicación EXACTA (clave a).
+slug: dotnet-aspire-observabilidad-opentelemetry
+
+# Estado del tema dentro del ciclo de vida. Valores permitidos:
+#   candidate  -> descubierto, todavía sin validar
+#   queued     -> aprobado y en cola para generación
+#   in_review  -> hay un PR abierto, pendiente de revisión humana
+#   published  -> publicado (existe el .md correspondiente en content/posts/)
+#   rejected   -> descartado (sin valor editorial / fuera de alcance)
+#   parked     -> aparcado temporalmente (se podrá retomar más adelante)
+status: candidate
+
+# URL oficial de Microsoft que respalda y autoriza el tema (fuente fiable).
+source: https://learn.microsoft.com/dotnet/aspire/fundamentals/telemetry
+
+# Marca temporal de descubrimiento en formato ISO 8601 (con zona horaria).
+discovered_at: 2026-06-23T10:28:05+02:00
+
+# Idioma del contenido. Para este blog, siempre "es".
+language: es
+
+# Resultado de la deduplicación SEMÁNTICA (clave b), calculada con embeddings.
+similarity:
+  # Máxima similitud (coseno, 0..1) frente a temas publicados o encolados.
+  max_score: 0.71
+  # id o slug del tema más parecido encontrado (la "coincidencia más cercana").
+  closest_match: integrando-otros-llms-con-semantic-kernel
+  # Umbral de novedad. Si max_score es MAYOR que este umbral, el tema se
+  # considera "demasiado parecido" y se omite. Valor por defecto: 0.82.
+  threshold: 0.82
+
+# Notas libres para personas: contexto, ángulo editorial, recordatorios, etc.
+notes: "Centrar el artículo en el panel de Aspire y la correlación de trazas; evitar solapamiento con el artículo de Semantic Kernel."
+
+# URL del Pull Request asociado. Permanece null hasta que se abre un PR.
+pr_url: null

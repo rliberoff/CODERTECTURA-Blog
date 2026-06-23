@@ -1,6 +1,10 @@
 {
   "mcpServers": {
-    "squad_state": {
+    "mcp-github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "mcp-squad-state": {
       "command": "npx",
       "args": [
         "-y",

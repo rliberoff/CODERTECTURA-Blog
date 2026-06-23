@@ -1,0 +1,182 @@
+# =============================================================================
+# ai-article-auth-check.yml
+# -----------------------------------------------------------------------------
+# PURPOSE
+#   Cheap, end-to-end validation of the auth plumbing that the future
+#   article-generation pipeline will rely on. It exercises the full chain:
+#
+#       GitHub Actions OIDC token
+#         -> federated credential (FIC) on a user-assigned managed identity (UAMI)
+#           -> Azure RBAC on the Foundry (Azure AI) resource
+#             -> ONE minimal data-plane inference call to a text deployment
+#
+#   It does NOT generate articles or images and does NOT open pull requests.
+#   Its only job is to prove the credentials, the endpoint, the deployment and
+#   the role assignment all line up BEFORE we build anything on top.
+#
+# ASSUMPTIONS (sanity-check these, Rodrigo)
+#   * Azure AI (Foundry) resource name is "asi-relv-blog". Rodrigo wrote
+#     "rg-relv-blog" for the resource, but that is the RESOURCE GROUP; the real
+#     resource name is deduced from the endpoint host asi-relv-blog.services.ai.azure.com.
+#   * Federated credential subject (what GitHub's OIDC token carries on this run):
+#         repo:rliberoff/CODERTECTURA-Blog:ref:refs/heads/main
+#     => run this workflow from the "main" branch, otherwise the subject differs
+#        and Azure will reject the OIDC exchange.
+#   * Token scope: verified on Microsoft Learn. The Azure CLI testing command uses
+#     --resource https://cognitiveservices.azure.com, but Foundry inference tokens
+#     are documented to require scope https://ai.azure.com/.default. We therefore
+#     try cognitiveservices first and fall back to ai.azure.com on a 401.
+#
+# WHY THE IDENTIFIERS LIVE IN THIS FILE (and not in Secrets)
+#   In the UAMI + OIDC model there are ZERO stored secrets. Tenant ID, UAMI client
+#   ID, subscription ID, endpoint and deployment name are all PUBLIC identifiers:
+#   leaking them does not authenticate anyone. Only a GitHub Actions run from the
+#   exact federated repo+branch can mint a token Azure will accept. For this MVP
+#   they live in the top-level env: block for transparency. They can be moved to
+#   repo Variables later with no behavioural change.
+# =============================================================================
+
+name: ai-article-auth-check
+
+on:
+  workflow_dispatch:
+    inputs:
+      verbose:
+        description: "Print extra diagnostics (HTTP response body). Never prints tokens."
+        type: boolean
+        default: false
+        required: false
+
+# Least privilege: id-token:write is mandatory to fetch the OIDC token; contents:read
+# is the minimal default. Nothing else is granted (no packages, no PR/issue write).
+permissions:
+  id-token: write
+  contents: read
+
+# Public, non-secret identifiers (see header note). Available to every step as
+# environment variables and via the ${{ env.* }} context in `with:` inputs.
+env:
+  AZURE_TENANT_ID: 5b0f673d-cf04-4766-a808-7d5ae537ae70
+  AZURE_CLIENT_ID: 35ba2675-01fb-4d7e-9370-fe7fe606f4dd
+  AZURE_SUBSCRIPTION_ID: 4a18f6a5-cb94-41f6-85f9-8e1e5e0ce71e
+  AOAI_ENDPOINT: https://asi-relv-blog.services.ai.azure.com/
+  AOAI_TEXT_DEPLOYMENT: gpt-5.4-mini
+
+jobs:
+  auth-check:
+    name: Validate OIDC -> UAMI -> RBAC -> Foundry inference
+    runs-on: ubuntu-latest
+    steps:
+      # ---------------------------------------------------------------------
+      # 1) Sign in to Azure using GitHub OIDC. No secrets: azure/login@v2
+      #    exchanges the workflow's OIDC token for an Azure token via the UAMI's
+      #    federated credential. Action version is pinned for supply-chain safety.
+      # ---------------------------------------------------------------------
+      - name: Azure login (OIDC, no secrets)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ env.AZURE_CLIENT_ID }}
+          tenant-id: ${{ env.AZURE_TENANT_ID }}
+          subscription-id: ${{ env.AZURE_SUBSCRIPTION_ID }}
+
+      # ---------------------------------------------------------------------
+      # 2+3+4) Acquire a data-plane token, make ONE minimal inference call, and
+      #        assert the result. Token acquisition + call + assertion live in a
+      #        SINGLE step so the bearer token never crosses a step boundary
+      #        (it is never written to env, outputs or logs).
+      #
+      #        `verbose` is passed through env (not interpolated into the script)
+      #        to follow GitHub's script-injection hardening guidance. It is a
+      #        typed boolean, so its value can only be "true"/"false" anyway.
+      # ---------------------------------------------------------------------
+      - name: Acquire token and validate Foundry inference
+        shell: bash
+        env:
+          VERBOSE: ${{ inputs.verbose }}
+        run: |
+          set -euo pipefail
+
+          VERBOSE="${VERBOSE:-false}"
+          ENDPOINT="${AOAI_ENDPOINT%/}"                 # tolerate optional trailing slash
+          URL="${ENDPOINT}/openai/v1/chat/completions"  # Foundry Models v1 GA inference surface
+          DEPLOYMENT="${AOAI_TEXT_DEPLOYMENT}"
+          RESPONSE_FILE="${RUNNER_TEMP}/aoai_response.json"
+
+          # Smallest valid request: a one-word user message and a tiny token cap.
+          # gpt-5.x are reasoning models -> they require "max_completion_tokens"
+          # ("max_tokens" is rejected). A 200 proves auth + RBAC + endpoint +
+          # deployment even if finish_reason ends up being "length".
+          REQUEST_BODY="{\"model\":\"${DEPLOYMENT}\",\"messages\":[{\"role\":\"user\",\"content\":\"ping\"}],\"max_completion_tokens\":16}"
+
+          echo "Endpoint  : ${URL}"
+          echo "Deployment: ${DEPLOYMENT}"
+
+          http_status="000"
+
+          call_inference() {
+            # $1 = AAD resource (token audience). The token is local to this
+            # function and is NEVER printed, exported or written to outputs.
+            local resource="$1"
+            local token
+            token="$(az account get-access-token --resource "${resource}" --query accessToken --output tsv --only-show-errors)"
+            # No --fail: we WANT to capture 4xx/5xx status codes for diagnostics.
+            # No -v / no set -x: request headers (and the token) are never echoed.
+            http_status="$(curl --silent --show-error \
+              --output "${RESPONSE_FILE}" \
+              --write-out '%{http_code}' \
+              --request POST "${URL}" \
+              --header "Authorization: Bearer ${token}" \
+              --header "Content-Type: application/json" \
+              --data "${REQUEST_BODY}")" || http_status="000"
+          }
+
+          # Attempt 1 - classic Azure OpenAI audience (Cognitive Services OpenAI User).
+          echo "-> Attempt 1: token audience https://cognitiveservices.azure.com"
+          call_inference "https://cognitiveservices.azure.com"
+          echo "   HTTP ${http_status}"
+
+          # Documented fallback - Foundry resources expect inference tokens issued
+          # with scope https://ai.azure.com/.default (per Microsoft Learn).
+          if [ "${http_status}" = "401" ]; then
+            echo "-> 401 on attempt 1; retrying with Foundry audience https://ai.azure.com"
+            call_inference "https://ai.azure.com"
+            echo "   HTTP ${http_status}"
+          fi
+
+          if [ "${VERBOSE}" = "true" ]; then
+            echo "----- response body (model output only, contains no secrets) -----"
+            cat "${RESPONSE_FILE}" 2>/dev/null || echo "(no response body captured)"
+            echo
+            echo "------------------------------------------------------------------"
+          fi
+
+          if [ "${http_status}" = "200" ]; then
+            echo "OK - Auth + Foundry inference verified: OIDC -> UAMI -> RBAC -> ${ENDPOINT}"
+            echo "::notice title=Auth check::Auth + Foundry inference OK (HTTP 200)"
+            exit 0
+          fi
+
+          # Non-200 -> fail with an actionable, secret-free hint.
+          echo "FAILED - Auth/inference check returned HTTP ${http_status}"
+          case "${http_status}" in
+            401|403)
+              echo "Hint: Azure was reached but the call was rejected."
+              echo "  - FIC subject mismatch: expected repo:rliberoff/CODERTECTURA-Blog:ref:refs/heads/main"
+              echo "    (run from 'main'; other branches mint a different OIDC subject)."
+              echo "  - RBAC missing/not propagated: assign 'Cognitive Services OpenAI User' to the"
+              echo "    UAMI on asi-relv-blog (use 'Cognitive Services User' for non-OpenAI models)."
+              echo "    Role changes can take ~5 minutes to take effect."
+              ;;
+            404)
+              echo "Hint: wrong endpoint or deployment name."
+              echo "  - Verify AOAI_ENDPOINT host (${ENDPOINT}) and deployment '${DEPLOYMENT}'."
+              ;;
+            000)
+              echo "Hint: no HTTP response (DNS/network/endpoint typo). Verify the endpoint host."
+              ;;
+            *)
+              echo "Hint: unexpected status. Re-run with verbose=true to inspect the response body."
+              ;;
+          esac
+          echo "::error title=Auth check::Foundry auth/inference check failed (HTTP ${http_status})"
+          exit 1

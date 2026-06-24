@@ -7,11 +7,11 @@ PNG to the path given by ``COVER_PATH`` (``static/images/<slug>/cover.png``).
 
 Design notes
 ------------
-* Authentication uses the Foundry resource API KEY (env ``AOAI_API_KEY``), passed
-  in by the workflow from a GitHub secret. MAI-Image-2.5 is a Foundry first-party
-  model and is NOT reachable with an Entra ID (OIDC) token, only with the key.
-* The API key is only ever used in the Authorization header; it is never printed,
-  exported or written to step outputs/logs.
+* The script NEVER calls the Azure CLI. The workflow acquires a data-plane bearer
+  token (``az account get-access-token``) via OIDC/UAMI and passes it in via the
+  ``AOAI_TOKEN`` environment variable, so the credential stays out of argv.
+* The bearer token is only ever used in the Authorization header; it is never
+  printed, exported or written to step outputs/logs.
 * The prompt is read from a file (``IMAGE_PROMPT_FILE``) so multi-line text never
   travels through the shell/argv.
 * The Foundry response may carry the image inline as ``b64_json`` or as a
@@ -23,7 +23,7 @@ Inputs (environment variables only)
 ------------------------------------
 AOAI_ENDPOINT           Foundry endpoint, e.g. https://asi-relv-blog.services.ai.azure.com/
 AOAI_IMAGE_DEPLOYMENT   Image deployment name, e.g. MAI-Image-2.5.
-AOAI_API_KEY           Required. Foundry resource API key, used as a Bearer token (env ONLY).
+AOAI_TOKEN              Required. Pre-acquired bearer token (env ONLY).
 COVER_PATH             Required. Output file path, e.g. static/images/<slug>/cover.png.
 IMAGE_PROMPT_FILE      Path to a UTF-8 file holding the image prompt.
 IMAGE_PROMPT           Inline fallback prompt if IMAGE_PROMPT_FILE is absent/empty.
@@ -47,11 +47,11 @@ import urllib.error
 import urllib.request
 from typing import NoReturn
 
-# Foundry v1 image-generation surface. NOTE: this resource serves MAI-Image-2.5 on
-# the DEFAULT v1 surface (no api-version). Sending "?api-version=preview" makes the
-# backend reject the model with {"code":"unknown_model"}, so we call the bare path,
-# exactly like the Foundry Playground curl for this resource.
-IMAGE_API_PATH = "/openai/v1/images/generations"
+# MAI-Image-2.5 is a Microsoft first-party model, served on the "/mai/v1/" surface
+# (NOT "/openai/v1/", which is Azure OpenAI and returns {"code":"unknown_model"} for
+# this model). This surface accepts a Microsoft Entra ID (OIDC/UAMI) token, so no API
+# key is needed. No api-version query string is required.
+IMAGE_API_PATH = "/mai/v1/images/generations"
 IMAGE_API_QUERY = ""
 
 # Fixed style wrapper appended to every prompt so covers stay visually consistent
@@ -91,7 +91,7 @@ def request_image(
     *,
     endpoint: str,
     deployment: str,
-    api_key: str,
+    token: str,
     prompt: str,
     size: str,
     timeout: float,
@@ -112,7 +112,7 @@ def request_image(
         url,
         data=json.dumps(body).encode("utf-8"),
         headers={
-            "Authorization": f"Bearer {api_key}",
+            "Authorization": f"Bearer {token}",
             "Content-Type": "application/json"
         },
         method="POST",
@@ -177,9 +177,9 @@ def main() -> None:
     if not deployment:
         fail("no image deployment provided (set AOAI_IMAGE_DEPLOYMENT)")
 
-    api_key = os.environ.get("AOAI_API_KEY", "").strip()
-    if not api_key:
-        fail("no API key provided (set AOAI_API_KEY; never pass it on the command line)")
+    token = os.environ.get("AOAI_TOKEN", "").strip()
+    if not token:
+        fail("no bearer token provided (set AOAI_TOKEN; never pass it on the command line)")
 
     cover_path = os.environ.get("COVER_PATH", "").strip()
     if not cover_path:
@@ -196,7 +196,7 @@ def main() -> None:
     envelope = request_image(
         endpoint=endpoint,
         deployment=deployment,
-        api_key=api_key,
+        token=token,
         prompt=prompt,
         size=size,
         timeout=timeout,

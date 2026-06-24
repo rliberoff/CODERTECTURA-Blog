@@ -1,0 +1,9 @@
+# Dependencies for automation/scripts/generate_article.py
+#
+# Kept intentionally minimal:
+#   * The HTTP call to Azure AI Foundry uses the Python standard library
+#     (urllib), so no HTTP client dependency is required.
+#   * PyYAML is the ONLY dependency: front matter is serialised with
+#     yaml.safe_dump() so untrusted model output is never string-concatenated
+#     into YAML (injection-safe, correctly escaped, Unicode-preserving).
+PyYAML>=6.0.2,<7.0

@@ -1,5 +1,9 @@
 node_modules
 
+# Python bytecode cache (automation scripts)
+__pycache__/
+*.py[cod]
+
 # Local project tooling and generated Hugo preview output
 .tools/
 public/

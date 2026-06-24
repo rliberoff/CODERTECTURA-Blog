@@ -126,7 +126,7 @@ jobs:
       # 4b) Generate the AI cover image from the prompt produced above. A fresh
       #     data-plane token is acquired and consumed inside THIS single step so
       #     it never crosses a step boundary. Foundry v1 image surface:
-      #       POST {endpoint}/openai/v1/images/generations?api-version=preview
+      #       POST {endpoint}/openai/v1/images/generations
       #     Fails closed: a failure here aborts the run (no PR without a cover).
       # ---------------------------------------------------------------------
       - name: Generar la imagen de portada (static/images/<slug>/cover.png)

@@ -47,10 +47,12 @@ import urllib.error
 import urllib.request
 from typing import NoReturn
 
-# Foundry v1 image-generation surface (preview query string per Microsoft Learn:
-# POST {endpoint}/openai/v1/images/generations?api-version=preview).
+# Foundry v1 image-generation surface. NOTE: this resource serves MAI-Image-2.5 on
+# the DEFAULT v1 surface (no api-version). Sending "?api-version=preview" makes the
+# backend reject the model with {"code":"unknown_model"}, so we call the bare path,
+# exactly like the Foundry Playground curl for this resource.
 IMAGE_API_PATH = "/openai/v1/images/generations"
-IMAGE_API_QUERY = "?api-version=preview"
+IMAGE_API_QUERY = ""
 
 # Fixed style wrapper appended to every prompt so covers stay visually consistent
 # across posts. Deliberately generic and text/logo-free (text in generated images
@@ -101,6 +103,10 @@ def request_image(
         "prompt": prompt,
         "n": 1,
         "size": size,
+        # MAI-Image-2.5 returns the image inline as base64; request PNG explicitly
+        # (mirrors the Foundry Playground call for this resource).
+        "output_format": "png",
+        "output_compression": 100,
     }
     request = urllib.request.Request(
         url,

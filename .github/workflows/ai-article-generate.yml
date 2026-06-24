@@ -18,11 +18,13 @@
 #     a shell `run:` line. `topic` is passed to the script through an env var; the
 #     generated slug (already sanitised to [a-z0-9-] by the script) is only used in
 #     action `with:` inputs, never in shell.
-#   * The data-plane bearer token is acquired and consumed inside a SINGLE step,
-#     passed to the Python process via a process-scoped env var. It is never written
-#     to $GITHUB_ENV, step outputs or logs, and never crosses a step boundary.
-#   * Only the GitHub App private key is a secret; all Azure/App IDs below are public
-#     identifiers (leaking them authenticates no one), mirroring ai-article-auth-check.yml.
+#   * The text data-plane bearer token (OIDC -> Entra ID) is acquired and consumed
+#     inside a SINGLE step, passed to the Python process via a process-scoped env
+#     var. It is never written to $GITHUB_ENV, step outputs or logs.
+#   * Secrets: the GitHub App private key (PR creation) and the Foundry API key
+#     (image generation -- MAI-Image-2.5 is not reachable via OIDC/Entra ID). Both
+#     reach the scripts via process-scoped env vars, never argv/logs. All Azure/App
+#     IDs below are public identifiers (leaking them authenticates no one).
 # =============================================================================
 
 name: ai-article-generate
@@ -123,9 +125,9 @@ jobs:
           AOAI_TOKEN="${TOKEN}" python automation/scripts/generate_article.py
 
       # ---------------------------------------------------------------------
-      # 4b) Generate the AI cover image from the prompt produced above. A fresh
-      #     data-plane token is acquired and consumed inside THIS single step so
-      #     it never crosses a step boundary. Foundry v1 image surface:
+      # 4b) Generate the AI cover image from the prompt produced above, using the
+      #     Foundry resource API key (MAI-Image-2.5 is not reachable via OIDC).
+      #     Foundry v1 image surface:
       #       POST {endpoint}/openai/v1/images/generations
       #     Fails closed: a failure here aborts the run (no PR without a cover).
       # ---------------------------------------------------------------------
@@ -134,10 +136,14 @@ jobs:
         env:
           IMAGE_PROMPT_FILE: ${{ runner.temp }}/image_prompt.txt
           COVER_PATH: ${{ steps.generate.outputs.cover_path }}
+          # MAI-Image-2.5 is a Foundry first-party model: it is NOT reachable with an
+          # Entra ID (OIDC) token (returns unknown_model), only with the resource API
+          # key. This is the only stored secret consumed here; it reaches the script
+          # via a process-scoped env var (never argv, never logged).
+          AOAI_API_KEY: ${{ secrets.AZURE_AI_API_KEY }}
         run: |
           set -euo pipefail
-          TOKEN="$(az account get-access-token --resource "${TOKEN_SCOPE}" --query accessToken --output tsv --only-show-errors)"
-          AOAI_TOKEN="${TOKEN}" python automation/scripts/generate_image.py
+          python automation/scripts/generate_image.py
 
       # ---------------------------------------------------------------------
       # 5) Build gate. Render drafts (-D) so the new draft post is built; this

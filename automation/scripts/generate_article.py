@@ -57,7 +57,12 @@ PROMPT_VERSION = "2026-06-23.1"
 
 # Honest disclosure string, kept in sync with the archetype and hugo.yaml
 # (params.ai.defaultDisclosure).
-DISCLOSURE = "AI-assisted draft; reviewed by a human before publication."
+DISCLOSURE = "Borrador asistido por IA; revisado por una persona antes de su publicación."
+
+# Cover-image convention: the image lives at static/images/<slug>/cover.png, which
+# Hugo serves at /images/<slug>/cover.png. The relative URL goes in the front
+# matter `image` field; the on-disk path is emitted for the workflow to commit.
+COVER_FILENAME = "cover.png"
 
 # -----------------------------------------------------------------------------
 # Editorial system prompt — FIRST DRAFT. This encodes the blog voice and the
@@ -92,6 +97,10 @@ las tarjetas; texto plano, sin Markdown.
 (por ejemplo "Inteligencia Artificial", "Arquitectura de Software", ".NET", "Azure").
 - "body_markdown": el artículo completo en Markdown (aproximadamente 800-1500 \
 palabras), empezando por un párrafo de introducción que enganche.
+- "image_prompt": una descripción EN INGLÉS (1-3 frases) para generar la imagen \
+de portada del artículo. Describe una ilustración conceptual, moderna y limpia, \
+relacionada con el tema; SIN texto, SIN letras, SIN logos ni marcas, y sin rostros \
+reconocibles.
 
 No añadas claves adicionales ni ningún texto fuera del objeto JSON.\
 """
@@ -256,8 +265,8 @@ def call_foundry(
     return article
 
 
-def build_document(article: dict, *, deployment: str, now_iso: str) -> "tuple[str, str]":
-    """Validate the model output and return (slug, full markdown document)."""
+def build_document(article: dict, *, deployment: str, now_iso: str) -> "tuple[str, str, str]":
+    """Validate the model output and return (slug, markdown document, image prompt)."""
     title = require_str(article, "title")
     description = require_str(article, "description")
     body_markdown = require_str(article, "body_markdown")
@@ -266,6 +275,18 @@ def build_document(article: dict, *, deployment: str, now_iso: str) -> "tuple[st
     if not slug:
         fail("could not derive a valid slug from the model 'slug' or 'title'")
     slug = slug[:80].strip("-")
+
+    # Deterministic cover URL derived from the slug; the image is produced by the
+    # next pipeline step and committed alongside the post.
+    cover_url = f"/images/{slug}/{COVER_FILENAME}"
+
+    image_prompt = (article.get("image_prompt") or "").strip()
+    if not image_prompt:
+        warn("model returned no 'image_prompt'; deriving one from the title")
+        image_prompt = (
+            f"Modern, clean and conceptual editorial illustration about: {title}. "
+            "Abstract technology theme."
+        )
 
     categories = clean_terms(article.get("categories"), cap=3)
     tags = clean_terms(article.get("tags"), cap=6)
@@ -282,9 +303,9 @@ def build_document(article: dict, *, deployment: str, now_iso: str) -> "tuple[st
         "description": description,
         "categories": categories,
         "tags": tags,
-        # Increment 1 produces no cover image. The theme treats an empty string
-        # as "no image", a valid draft state.
-        "image": "",
+        # Cover image produced by the next step. The theme reads this string as the
+        # header background and the post-card image (see layouts/_default/single.html).
+        "image": cover_url,
         "comments": True,
         "ai": {
             "assisted": True,
@@ -305,7 +326,7 @@ def build_document(article: dict, *, deployment: str, now_iso: str) -> "tuple[st
     ).strip()
 
     document = f"---\n{yaml_block}\n---\n\n{body_markdown.strip()}\n"
-    return slug, document
+    return slug, document, image_prompt
 
 
 def main() -> None:
@@ -347,7 +368,7 @@ def main() -> None:
         timeout=timeout,
     )
 
-    slug, document = build_document(article, deployment=deployment, now_iso=now_iso)
+    slug, document, image_prompt = build_document(article, deployment=deployment, now_iso=now_iso)
 
     posts_dir = args.posts_dir.strip() or "content/posts"
     rel_path = f"{posts_dir.rstrip('/')}/{slug}.md"
@@ -366,11 +387,24 @@ def main() -> None:
     print(f"Generated article: {rel_path}")
     print(f"slug={slug}")
 
+    # Deterministic cover-image locations derived from the slug.
+    cover_path = f"static/images/{slug}/{COVER_FILENAME}"
+    cover_url = f"/images/{slug}/{COVER_FILENAME}"
+
+    # Hand the image prompt to the image-generation step via a file (keeps the
+    # multi-line text out of shell/argv and out of step outputs).
+    image_prompt_file = os.environ.get("IMAGE_PROMPT_FILE")
+    if image_prompt_file:
+        with open(image_prompt_file, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write(image_prompt)
+
     github_output = os.environ.get("GITHUB_OUTPUT")
     if github_output:
         with open(github_output, "a", encoding="utf-8") as handle:
             handle.write(f"slug={slug}\n")
             handle.write(f"path={rel_path}\n")
+            handle.write(f"cover_path={cover_path}\n")
+            handle.write(f"cover_url={cover_url}\n")
 
 
 if __name__ == "__main__":

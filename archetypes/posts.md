@@ -16,7 +16,7 @@ ai:
   generated_at: ""
   reviewed_by: ""
   review_status: "draft"
-  disclosure: "AI-assisted draft; reviewed by a human before publication."
+  disclosure: "Borrador asistido por IA; revisado por una persona antes de su publicación."
 ---
 
 Write the post summary here.

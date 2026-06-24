@@ -2,14 +2,15 @@
 # ai-article-generate.yml
 # -----------------------------------------------------------------------------
 # PURPOSE (Increment 1: text only)
-#   Generate a Spanish blog-post DRAFT with Azure AI Foundry, validate it with a
-#   Hugo build, and (optionally) open a human-reviewed Pull Request. No image
-#   generation in this increment.
+#   Generate a Spanish blog-post DRAFT (text + AI cover image) with Azure AI
+#   Foundry, validate it with a Hugo build, and (optionally) open a
+#   human-reviewed Pull Request.
 #
 #   Pipeline per run:
-#     OIDC -> azure/login -> data-plane token -> generate_article.py
+#     OIDC -> azure/login -> data-plane token -> generate_article.py (text)
+#       -> generate_image.py (cover image -> static/images/<slug>/cover.png)
 #       -> Hugo build gate (fails fast on broken front matter)
-#       -> dry_run=true : upload the .md as an artifact, NO PR
+#       -> dry_run=true : upload the .md + image as an artifact, NO PR
 #       -> dry_run=false: GitHub App token -> branch -> commit -> PR (labelled)
 #
 # SECURITY (OWASP A03 Injection hardening)
@@ -60,6 +61,10 @@ env:
   AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
   AOAI_ENDPOINT: ${{ vars.AZURE_OPENAI_ENDPOINT }}
   AOAI_TEXT_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT_TEXT }}
+  AOAI_IMAGE_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT_IMAGE }}
+  # Cover-image size. 1024x1024 is the most broadly supported; a landscape size
+  # (e.g. 1792x1024) usually looks better as a header -- tune after the first run.
+  AOAI_IMAGE_SIZE: "1024x1024"
   # Confirmed working token audience (Attempt 1 returned HTTP 200 in the auth check).
   TOKEN_SCOPE: https://cognitiveservices.azure.com
   # GitHub App used to open PRs. App ID and Installation ID are public identifiers;
@@ -109,11 +114,30 @@ jobs:
         shell: bash
         env:
           ARTICLE_TOPIC: ${{ inputs.topic }}
+          # The script writes the model's image prompt here for the next step.
+          IMAGE_PROMPT_FILE: ${{ runner.temp }}/image_prompt.txt
         run: |
           set -euo pipefail
           # Token stays in a local shell variable; never printed, exported or logged.
           TOKEN="$(az account get-access-token --resource "${TOKEN_SCOPE}" --query accessToken --output tsv --only-show-errors)"
           AOAI_TOKEN="${TOKEN}" python automation/scripts/generate_article.py
+
+      # ---------------------------------------------------------------------
+      # 4b) Generate the AI cover image from the prompt produced above. A fresh
+      #     data-plane token is acquired and consumed inside THIS single step so
+      #     it never crosses a step boundary. Foundry v1 image surface:
+      #       POST {endpoint}/openai/v1/images/generations?api-version=preview
+      #     Fails closed: a failure here aborts the run (no PR without a cover).
+      # ---------------------------------------------------------------------
+      - name: Generar la imagen de portada (static/images/<slug>/cover.png)
+        shell: bash
+        env:
+          IMAGE_PROMPT_FILE: ${{ runner.temp }}/image_prompt.txt
+          COVER_PATH: ${{ steps.generate.outputs.cover_path }}
+        run: |
+          set -euo pipefail
+          TOKEN="$(az account get-access-token --resource "${TOKEN_SCOPE}" --query accessToken --output tsv --only-show-errors)"
+          AOAI_TOKEN="${TOKEN}" python automation/scripts/generate_image.py
 
       # ---------------------------------------------------------------------
       # 5) Build gate. Render drafts (-D) so the new draft post is built; this
@@ -138,7 +162,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ai-article-${{ steps.generate.outputs.slug }}
-          path: ${{ steps.generate.outputs.path }}
+          path: |
+            ${{ steps.generate.outputs.path }}
+            ${{ steps.generate.outputs.cover_path }}
           if-no-files-found: error
           retention-days: 14
 
@@ -174,7 +200,9 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           branch: bot/ai-article-${{ steps.meta.outputs.today }}-${{ steps.generate.outputs.slug }}
           base: main
-          add-paths: ${{ steps.generate.outputs.path }}
+          add-paths: |
+            ${{ steps.generate.outputs.path }}
+            ${{ steps.generate.outputs.cover_path }}
           commit-message: "feat - content: borrador IA «${{ steps.generate.outputs.slug }}»"
           title: "feat - content: borrador IA «${{ steps.generate.outputs.slug }}»"
           labels: |
@@ -184,8 +212,10 @@ jobs:
             ## Borrador de artículo generado por IA
 
             - **Tema solicitado:** ${{ inputs.topic }}
-            - **Modelo:** ${{ env.AOAI_TEXT_DEPLOYMENT }} (Azure AI Foundry)
+            - **Modelo (texto):** ${{ env.AOAI_TEXT_DEPLOYMENT }} (Azure AI Foundry)
+            - **Modelo (imagen):** ${{ env.AOAI_IMAGE_DEPLOYMENT }} (Azure AI Foundry)
             - **Fichero:** `${{ steps.generate.outputs.path }}`
+            - **Portada:** `${{ steps.generate.outputs.cover_path }}`
             - **Estado:** `draft: true` · `ai.review_status: pending`
 
             Este PR lo ha generado automáticamente el workflow `ai-article-generate`.
@@ -194,6 +224,6 @@ jobs:
 
             - Revisa y edita el texto (rigor técnico, voz del blog, enlaces).
             - Ajusta `categories` y `tags` si procede.
-            - Añade imagen de portada si la quieres (Incremento 2).
+            - Revisa la imagen de portada (`image:` en el front matter); regénerala o reemplázala si no encaja.
             - Cambia `ai.review_status` a `reviewed` y rellena `ai.reviewed_by`.
             - Quita `draft: true` cuando esté listo para publicar.

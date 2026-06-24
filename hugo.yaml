@@ -57,7 +57,7 @@ params:
       twitch: "https://www.twitch.tv/codertectura"
       github: "https://github.com/rliberoff"
   ai:
-    defaultDisclosure: "AI-assisted draft; reviewed by a human before publication."
+    defaultDisclosure: "Borrador asistido por IA; revisado por una persona antes de su publicación."
 
 menus:
   main:

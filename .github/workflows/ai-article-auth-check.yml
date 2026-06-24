@@ -27,13 +27,11 @@
 #     are documented to require scope https://ai.azure.com/.default. We therefore
 #     try cognitiveservices first and fall back to ai.azure.com on a 401.
 #
-# WHY THE IDENTIFIERS LIVE IN THIS FILE (and not in Secrets)
-#   In the UAMI + OIDC model there are ZERO stored secrets. Tenant ID, UAMI client
-#   ID, subscription ID, endpoint and deployment name are all PUBLIC identifiers:
-#   leaking them does not authenticate anyone. Only a GitHub Actions run from the
-#   exact federated repo+branch can mint a token Azure will accept. For this MVP
-#   they live in the top-level env: block for transparency. They can be moved to
-#   repo Variables later with no behavioural change.
+# WHY THESE IDENTIFIERS COME FROM REPOSITORY VARIABLES
+#   In the UAMI + OIDC model there are ZERO stored Azure secrets. Tenant ID, UAMI
+#   client ID, subscription ID, endpoint and deployment name are all PUBLIC
+#   identifiers: leaking them does not authenticate anyone. We keep them in
+#   Repository Variables for consistency across workflows.
 # =============================================================================
 
 name: ai-article-auth-check
@@ -53,14 +51,15 @@ permissions:
   id-token: write
   contents: read
 
-# Public, non-secret identifiers (see header note). Available to every step as
-# environment variables and via the ${{ env.* }} context in `with:` inputs.
+# Public, non-secret identifiers from Repository Variables (see header note).
+# Available to every step as environment variables and via the ${{ env.* }}
+# context in `with:` inputs.
 env:
-  AZURE_TENANT_ID: 5b0f673d-cf04-4766-a808-7d5ae537ae70
-  AZURE_CLIENT_ID: 35ba2675-01fb-4d7e-9370-fe7fe606f4dd
-  AZURE_SUBSCRIPTION_ID: 4a18f6a5-cb94-41f6-85f9-8e1e5e0ce71e
-  AOAI_ENDPOINT: https://asi-relv-blog.services.ai.azure.com/
-  AOAI_TEXT_DEPLOYMENT: gpt-5.4-mini
+  AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+  AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+  AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+  AOAI_ENDPOINT: ${{ vars.AZURE_OPENAI_ENDPOINT }}
+  AOAI_TEXT_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT_TEXT }}
 
 jobs:
   auth-check:

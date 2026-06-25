@@ -59,8 +59,7 @@ IMAGE_API_QUERY = ""
 # tends to render poorly).
 STYLE_SUFFIX = (
     " -- wide editorial blog cover illustration, modern and clean, conceptual "
-    "technology theme, soft gradients, blue and teal palette, subtle geometric "
-    "shapes, high quality, no text, no letters, no logos, no watermarks"
+    "technology theme, subtle geometric shapes, high quality, no watermarks, logos are allowed."
 )
 
 

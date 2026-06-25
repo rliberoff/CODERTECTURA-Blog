@@ -35,10 +35,10 @@ on:
         type: string
         required: true
       dry_run:
-        description: "true (por defecto): genera y valida, sube el .md como artefacto y NO abre PR. false: abre el PR."
+        description: "true: genera y valida, sube el .md como artefacto y NO abre PR. false: abre el PR. Es false por defecto."
         type: boolean
         required: false
-        default: true
+        default: false
 
 # Least privilege for the whole job:
 #   id-token:write     -> mint the OIDC token for azure/login (no Azure secrets)
@@ -64,7 +64,7 @@ env:
   AOAI_IMAGE_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT_IMAGE }}
   # Cover-image size. 1024x1024 is the most broadly supported; a landscape size
   # (e.g. 1792x1024) usually looks better as a header -- tune after the first run.
-  AOAI_IMAGE_SIZE: "1024x1024"
+  AOAI_IMAGE_SIZE: "1792x1024"
   # Confirmed working token audience (Attempt 1 returned HTTP 200 in the auth check).
   TOKEN_SCOPE: https://cognitiveservices.azure.com
   # GitHub App used to open PRs. App ID and Installation ID are public identifiers;

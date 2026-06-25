@@ -78,3 +78,129 @@ Los ficheros cuyo nombre empieza por `_` (guion bajo) son plantillas o ejemplos 
 
 - Ejemplo: `automation/topics/_example.yaml` documenta el esquema completo pero nunca se procesa.
 - Para crear un tema real, copia la plantilla a `automation/topics/<id>.yaml` (sin guion bajo) y rellena los campos con valores reales.
+
+## Agente de descubrimiento de temas (Tavily)
+
+El script `automation/scripts/discover_topics.py` (apoyado en el módulo compartido `automation/scripts/_foundry.py`) descubre artículos técnicos recientes en los dominios oficiales de Microsoft y GitHub, valida sus fechas, deduplica y escribe los que pasan como ficheros `candidate` en este ledger. Es la **Fase 1** del pipeline; las fases de redacción e imágenes consumirán estos candidatos más adelante.
+
+### Cómo funciona
+
+- **Bucle agéntico (ReAct)** sobre la superficie sin claves `POST {endpoint}/openai/v1/chat/completions` con una única herramienta, `tavily_search`. El modelo decide *qué* buscar; el **orquestador** (este script) ejecuta cada búsqueda HTTP en Tavily.
+- La **lista blanca de dominios es una constante del servidor** y nunca procede de la salida del modelo: `learn.microsoft.com`, `devblogs.microsoft.com`, `techcommunity.microsoft.com`, `azure.microsoft.com`, `microsoft.com`, `github.blog`, `github.com`, `githubnext.com`.
+- Todo el contenido web se trata como **datos no fiables** (mitigación de inyección de prompts): se sanea, se delimita en un bloque "UNTRUSTED" y el orquestador es quien aplica la lista blanca, los topes y la escritura de ficheros con `yaml.safe_dump`.
+
+### Validación de fechas (fail-closed)
+
+- La fecha de publicación se resuelve en este orden: `published_date` de Tavily → fecha extraída de la URL o del contenido → si no hay ninguna fiable, se considera **sin fecha**.
+- *Fresco* = dentro de `TAVILY_FRESHNESS_DAYS` (por defecto 30). Cualquier cosa más antigua que el tope duro (`TAVILY_HARD_CAP_DAYS`, por defecto 90) se descarta.
+- Un candidato necesita **al menos una fuente primaria fresca y con fecha**. Las fuentes sin fecha solo se adjuntan como secundarias.
+
+### Deduplicación en el descubrimiento
+
+- **Exacta**: `slug`/`title` del candidato frente a los temas del ledger y a los posts publicados en `content/posts/*.md`.
+- **Semántica**: similitud coseno de *embeddings* frente a temas publicados o encolados; se registra en `similarity` y se omite el candidato si `max_score` supera el umbral (`SIMILARITY_THRESHOLD`, por defecto 0.82).
+
+### Campo añadido al esquema: `sources`
+
+Además de los campos del [esquema de un tema](#esquema-de-un-tema), los candidatos generados por este agente incluyen una clave **`sources`**: una lista (máximo 5) de los artículos de respaldo, con la fuente primaria primero. Cada entrada tiene `url`, `title`, `published_date`, `host` y `kind` (`primary` o `secondary`). Sirve de contexto de redacción e imágenes para la Fase 2. El campo `source` (singular, obligatorio) sigue apuntando a la fuente primaria.
+
+### Variables de entorno
+
+La autenticación de Azure no cambia: el workflow adquiere el token con OIDC/UAMI y lo pasa por `AOAI_TOKEN` (scope `https://cognitiveservices.azure.com`, válido para chat y embeddings). El script nunca llama a la CLI de Azure.
+
+| Variable | Tipo | Por defecto | Descripción |
+| ---------- | ------ | ------------- | ------------- |
+| `TAVILY_API_KEY` | Secret | — | Clave de Tavily. Solo en GitHub Secrets; nunca se imprime ni se registra. |
+| `AOAI_TOKEN` | Token efímero | — | Bearer pre-adquirido (env únicamente). |
+| `AOAI_ENDPOINT` | Variable | — | Endpoint de Foundry (ya existe en el pipeline). |
+| `AOAI_TEXT_DEPLOYMENT` | Variable | `gpt-5.4-mini` | Despliegue de chat usado como planificador. |
+| `AZURE_OPENAI_DEPLOYMENT_EMBEDDINGS` | Variable | `text-embedding-3-large` | Despliegue de embeddings para la dedup semántica. |
+| `TAVILY_FRESHNESS_DAYS` | Variable | `30` | Ventana de frescura en días. |
+| `TAVILY_HARD_CAP_DAYS` | Variable | `90` | Edad máxima absoluta en días. |
+| `TAVILY_MAX_RESULTS` | Variable | `8` | Resultados por llamada a Tavily. |
+| `TAVILY_TIMEOUT` | Variable | `60` | Timeout HTTP de Tavily (segundos). |
+| `SIMILARITY_THRESHOLD` | Variable | `0.82` | Umbral de novedad semántica. |
+| `MAX_CANDIDATES` | Variable | `10` | Máximo de candidatos escritos por ejecución. |
+| `DISCOVERY_MAX_ITERATIONS` | Variable | `6` | Máximo de turnos modelo↔herramienta. |
+| `DISCOVERY_MAX_SEARCHES` | Variable | `8` | Máximo de rondas de búsqueda (cada una son 2 llamadas HTTP). |
+| `DISCOVERY_FOCUS` | Variable | (vacío) | Tema opcional para sesgar el descubrimiento. |
+
+### Cómo ejecutarlo
+
+Prepara las credenciales (el token cubre chat y embeddings) y lanza primero una vista previa:
+
+```bash
+export AOAI_TOKEN="$(az account get-access-token --resource https://cognitiveservices.azure.com --query accessToken -o tsv)"
+export TAVILY_API_KEY="<tu-clave>"   # env únicamente; nunca se imprime
+export AOAI_ENDPOINT="https://asi-relv-blog.services.ai.azure.com/"
+export AOAI_TEXT_DEPLOYMENT="gpt-5.4-mini"
+export AZURE_OPENAI_DEPLOYMENT_EMBEDDINGS="text-embedding-3-large"
+
+# Vista previa: imprime los candidatos que escribiría, sin tocar ficheros.
+python automation/scripts/discover_topics.py --dry-run
+
+# Ejecución real: escribe automation/topics/<id>.yaml por cada candidato válido.
+python automation/scripts/discover_topics.py
+```
+
+Las dependencias siguen siendo solo la biblioteca estándar más PyYAML (la misma de `requirements.txt`).
+
+### Pruebas
+
+Las pruebas offline no usan red (respuestas de Tavily simuladas y cliente de embeddings *mock*):
+
+```bash
+python -m pytest tests/
+```
+
+## Redacción con fundamento e imágenes de cuerpo (Fase 2)
+
+La **Fase 2** consume el campo `sources` de los candidatos para fundar el artículo en fuentes reales y enriquecerlo con imágenes en el cuerpo. Reutiliza el módulo compartido `automation/scripts/_sources.py` (lista blanca de dominios y saneado de texto no fiable) y `automation/scripts/_foundry.py` (`FoundryImageClient`, la llamada a MAI-Image-2.5 que también usa `generate_image.py`). No añade dependencias: sigue siendo biblioteca estándar más PyYAML.
+
+### Redacción con fundamento (`generate_article.py`)
+
+- Las fuentes llegan por **fichero** (`SOURCES_FILE`, JSON UTF-8), nunca por argumentos, igual que `IMAGE_PROMPT_FILE`. Se aceptan tanto una lista como un objeto con clave `sources`; cada entrada es `{url, title, published_date, host, kind}` y, opcionalmente, un extracto (`raw_content`/`text`/`snippet`) y candidatos de imagen (`images`).
+- Todo el contenido se trata como **DATOS EXTERNOS NO FIABLES**: el host se revalida contra la lista blanca, el texto se sanea y se inyecta en el prompt dentro de un bloque delimitado con la instrucción de no seguir órdenes que aparezcan dentro y de citar **solo** las URLs proporcionadas (enlaces Markdown).
+- La portada (`image_prompt`) se ancla al título y al contenido real del artículo, y comparte con las imágenes de cuerpo de IA una única **familia visual de CODERTECTURA**: fondo oscuro azul medianoche con acentos en turquesa, cian y verde neón, brillo suave y formas geométricas limpias, sin texto ni logos; la portada reserva una zona inferior más sobria para el título superpuesto, y las imágenes de cuerpo son variantes más planas y explicativas del mismo estilo.
+- El front matter incorpora `ai.sources` (lista de `{url, title, published_date}` usadas) para que la revisión pueda auditar el origen.
+- Si `BODY_IMAGES_FILE` está definido, el modelo puede proponer un array opcional `body_images`. El orquestador lo valida y escribe la especificación resuelta a ese fichero para el paso siguiente. Si **no** está definido (flujo manual actual), se eliminan todos los marcadores `{{img:<id>}}` y el comportamiento es idéntico al anterior (compatibilidad hacia atrás).
+
+Esquema de cada elemento de `body_images` (lo que devuelve el modelo):
+
+```json
+{
+  "placeholder": "{{img:<id>}}",
+  "type": "ai | source",
+  "alt": "texto alternativo",
+  "caption": "pie de figura",
+  "prompt_en": "(solo type=ai) descripción en inglés de la ilustración/diagrama",
+  "source_url": "(solo type=source) una de las URLs de las fuentes proporcionadas"
+}
+```
+
+Para `type: "source"`, el modelo **solo** indica `source_url` (el artículo, para la atribución). El orquestador selecciona la URL de imagen concreta a partir de los candidatos `images` de esa fuente y la fija en la especificación (`image_url`), de modo que una URL de imagen **nunca** procede de la salida del modelo (defensa SSRF).
+
+### Resolución de imágenes de cuerpo (`resolve_body_images.py`)
+
+Sustituye cada marcador por una llamada al shortcode `figure` apuntando al fichero guardado. Es **tolerante por imagen** (si una falla, se avisa y se elimina su marcador) y **seguro en conjunto** (una especificación ausente o vacía es un no-op correcto). La portada (`generate_image.py`) sigue siendo la única imagen obligatoria.
+
+- `type: "ai"`: genera la imagen con MAI-Image-2.5 y la guarda en `static/images/<slug>/body-<n>.png`.
+- `type: "source"` (extracción real, sensible a derechos de autor): el host de la imagen debe estar en la lista blanca; **no** se siguen redirecciones a hosts fuera de ella y se revalida la URL **final**; se validan los **números mágicos** (PNG, JPEG, WebP, GIF) y un **tope de tamaño** (8 MB por defecto) **antes** de escribir; se guarda en `static/images/<slug>/source-<n>.<ext>`. El pie incluye atribución visible: `Fuente: [<host>](<source_url>)`.
+
+### Variables de entorno (Fase 2)
+
+| Variable | Tipo | Por defecto | Descripción |
+| ---------- | ------ | ------------- | ------------- |
+| `SOURCES_FILE` | Variable | (vacío) | Ruta a un JSON con las fuentes de fundamento (`generate_article.py`). Ausente → flujo manual sin cambios. |
+| `BODY_IMAGES_FILE` | Variable | (vacío) | Ruta donde `generate_article.py` escribe la especificación de imágenes y de donde `resolve_body_images.py` la lee. Ausente → sin imágenes de cuerpo. |
+| `POST_PATH` | Variable | (de la especificación) | `.md` a reescribir (`resolve_body_images.py`). |
+| `POST_SLUG` | Variable | (de la especificación) | Slug para derivar `static/images/<slug>/`. |
+| `STATIC_IMAGES_DIR` | Variable | `static/images` | Raíz de imágenes. |
+| `AOAI_IMAGE_DEPLOYMENT` | Variable | — | Despliegue de imagen (MAI-Image-2.5) para imágenes `type:ai`. |
+| `AOAI_BODY_IMAGE_SIZE` | Variable | `1024x1024` | Tamaño de las imágenes de cuerpo generadas por IA. |
+| `AOAI_IMAGE_TIMEOUT` | Variable | `300` | Timeout HTTP de generación de imagen (segundos). |
+| `BODY_IMAGE_DOWNLOAD_TIMEOUT` | Variable | `30` | Timeout de descarga de imágenes de fuente (segundos). |
+| `BODY_IMAGE_MAX_BYTES` | Variable | `8388608` | Tamaño máximo aceptado de una imagen de fuente (bytes). |
+
+Las pruebas offline cubren el parseo del fichero de fuentes, la validación del contrato `body_images`, la reescritura de marcadores a `figure`, los números mágicos (aceptar/rechazar), el rechazo de redirecciones fuera de la lista blanca y el no-op con especificación vacía (cliente de imagen y descarga HTTP simulados; sin red).
+

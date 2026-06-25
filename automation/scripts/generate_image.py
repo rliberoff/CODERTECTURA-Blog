@@ -38,29 +38,25 @@ Output
 
 from __future__ import annotations
 
-import base64
-import binascii
-import json
 import os
 import sys
-import urllib.error
-import urllib.request
 from typing import NoReturn
 
-# MAI-Image-2.5 is a Microsoft first-party model, served on the "/mai/v1/" surface
-# (NOT "/openai/v1/", which is Azure OpenAI and returns {"code":"unknown_model"} for
-# this model). This surface accepts a Microsoft Entra ID (OIDC/UAMI) token, so no API
-# key is needed. No api-version query string is required.
-IMAGE_API_PATH = "/mai/v1/images/generations"
-IMAGE_API_QUERY = ""
+from _foundry import FoundryError, FoundryImageClient
 
-# Fixed style wrapper appended to every prompt so covers stay visually consistent
-# across posts. Deliberately generic and text/logo-free (text in generated images
-# tends to render poorly).
+# Shared CODERTECTURA visual family (grounded in the logo + site theme): a dark,
+# retro-futuristic synthwave-tech look -- deep midnight navy-to-black backgrounds,
+# luminous teal/cyan with neon-green accents, soft volumetric glow, clean geometric
+# shapes and subtle grid/circuit lines. Cover, AI body images and this suffix must
+# stay siblings; mirror any change in resolve_body_images.BODY_STYLE_SUFFIX.
+# Cover-specific: a wide editorial header whose lower third stays calm/darker so the
+# title overlay keeps good contrast. Always text/letter/logo/brand/watermark-free.
 STYLE_SUFFIX = (
-    " -- wide editorial blog cover illustration, modern and clean, conceptual "
-    "technology theme, soft gradients, blue and teal palette, subtle geometric "
-    "shapes, high quality, no text, no letters, no logos, no watermarks"
+    " -- wide editorial blog cover illustration, deep midnight navy-to-black "
+    "background with luminous teal, cyan and neon-green accents, soft volumetric "
+    "glow, clean geometric shapes and subtle grid lines, modern retro-futuristic "
+    "tech mood, calmer darker lower area for a title overlay, high quality, "
+    "no text, no letters, no numbers, no logos, no brands, no watermarks, no faces."
 )
 
 
@@ -85,87 +81,6 @@ def read_prompt() -> str:
     if inline:
         return inline
     fail("no image prompt provided (set IMAGE_PROMPT_FILE or IMAGE_PROMPT)")
-
-
-def request_image(
-    *,
-    endpoint: str,
-    deployment: str,
-    token: str,
-    prompt: str,
-    size: str,
-    timeout: float,
-) -> dict:
-    """Call the Foundry v1 image-generation endpoint and return the parsed JSON."""
-    url = f"{endpoint.rstrip('/')}{IMAGE_API_PATH}{IMAGE_API_QUERY}"
-    body = {
-        "model": deployment,
-        "prompt": prompt,
-        "n": 1,
-        "size": size,
-        # MAI-Image-2.5 returns the image inline as base64; request PNG explicitly
-        # (mirrors the Foundry Playground call for this resource).
-        "output_format": "png",
-        "output_compression": 100,
-    }
-    request = urllib.request.Request(
-        url,
-        data=json.dumps(body).encode("utf-8"),
-        headers={
-            "Authorization": f"Bearer {token}",
-            "Content-Type": "application/json"
-        },
-        method="POST",
-    )
-
-    try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            raw = response.read().decode("utf-8")
-    except urllib.error.HTTPError as exc:
-        snippet = ""
-        try:
-            # The body is API/model output (no secrets) -> safe to show a snippet.
-            snippet = exc.read().decode("utf-8", "replace")[:800]
-        except Exception:  # noqa: BLE001 - diagnostics only, never fatal here
-            snippet = "(no response body)"
-        fail(
-            f"image generation failed with HTTP {exc.code}. "
-            f"Endpoint/deployment: {url} / {deployment}. Response snippet: {snippet}"
-        )
-    except urllib.error.URLError as exc:
-        fail(f"could not reach the image endpoint {url}: {exc.reason}")
-
-    try:
-        return json.loads(raw)
-    except json.JSONDecodeError:
-        fail("the image endpoint returned a non-JSON HTTP body")
-
-
-def extract_image_bytes(envelope: dict, *, timeout: float) -> bytes:
-    """Return raw image bytes from a Foundry image response (b64_json or url)."""
-    data = envelope.get("data") or []
-    if not data:
-        fail("image response contained no data")
-
-    first = data[0] or {}
-
-    encoded = first.get("b64_json")
-    if isinstance(encoded, str) and encoded:
-        try:
-            # Default (validate=False) tolerates whitespace/newlines in the payload.
-            return base64.b64decode(encoded)
-        except (binascii.Error, ValueError):
-            fail("could not decode the base64 image payload")
-
-    url = first.get("url")
-    if isinstance(url, str) and url:
-        try:
-            with urllib.request.urlopen(url, timeout=timeout) as response:
-                return response.read()
-        except (urllib.error.URLError, urllib.error.HTTPError) as exc:
-            fail(f"could not download the generated image: {exc}")
-
-    fail("image response had neither 'b64_json' nor 'url'")
 
 
 def main() -> None:
@@ -193,16 +108,21 @@ def main() -> None:
 
     prompt = read_prompt() + STYLE_SUFFIX
 
-    envelope = request_image(
+    client = FoundryImageClient(
         endpoint=endpoint,
         deployment=deployment,
         token=token,
-        prompt=prompt,
-        size=size,
         timeout=timeout,
     )
+    try:
+        image_bytes = client.generate(prompt, size=size)
+    except FoundryError as exc:
+        # Fail closed: no PR without a valid cover. The message carries no secret
+        # (only the endpoint/deployment and the API response snippet).
+        fail(
+            f"image generation failed. Endpoint/deployment: {endpoint} / {deployment}. {exc}"
+        )
 
-    image_bytes = extract_image_bytes(envelope, timeout=timeout)
     if len(image_bytes) < 100:
         fail("the generated image was unexpectedly small; aborting")
 

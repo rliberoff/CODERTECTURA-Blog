@@ -1,28 +1,22 @@
 # =============================================================================
 # ai-article-generate.yml
 # -----------------------------------------------------------------------------
-# PURPOSE (Increment 1: text only)
-#   Generate a Spanish blog-post DRAFT (text + AI cover image) with Azure AI
-#   Foundry, validate it with a Hugo build, and (optionally) open a
-#   human-reviewed Pull Request.
+# PURPOSE
+#   Manual, single-topic entry point. It generates a Spanish blog-post DRAFT
+#   (text + AI cover + AI/source body images) with Azure AI Foundry, validates it
+#   with a Hugo build and (optionally) opens a human-reviewed Pull Request.
 #
-#   Pipeline per run:
-#     OIDC -> azure/login -> data-plane token -> generate_article.py (text)
-#       -> generate_image.py (cover image -> static/images/<slug>/cover.png)
-#       -> Hugo build gate (fails fast on broken front matter)
-#       -> dry_run=true : upload the .md + image as an artifact, NO PR
-#       -> dry_run=false: GitHub App token -> branch -> commit -> PR (labelled)
+#   The actual build pipeline lives in the REUSABLE workflow
+#   `ai-article-build.yml`; this file only exposes the manual `workflow_dispatch`
+#   surface (topic + dry_run) and delegates to it. The scheduled discovery flow
+#   (`ai-article-weekly.yml`) calls the very same reusable workflow.
 #
 # SECURITY (OWASP A03 Injection hardening)
-#   * The workflow input `topic` and any model output are NEVER interpolated into
-#     a shell `run:` line. `topic` is passed to the script through an env var; the
-#     generated slug (already sanitised to [a-z0-9-] by the script) is only used in
-#     action `with:` inputs, never in shell.
-#   * The data-plane bearer token is acquired and consumed inside a SINGLE step,
-#     passed to the Python process via a process-scoped env var. It is never written
-#     to $GITHUB_ENV, step outputs or logs, and never crosses a step boundary.
-#   * Only the GitHub App private key is a secret; all Azure/App IDs below are public
-#     identifiers (leaking them authenticates no one), mirroring ai-article-auth-check.yml.
+#   * All hardening lives in `ai-article-build.yml`: `topic` is passed via env
+#     (never interpolated into a shell `run:` line); every data-plane bearer token
+#     is acquired and consumed inside a single step and never crosses a boundary.
+#   * Only the GitHub App private key is a secret (forwarded via `secrets: inherit`);
+#     all Azure/App IDs are public identifiers, mirroring ai-article-auth-check.yml.
 # =============================================================================
 
 name: ai-article-generate
@@ -35,10 +29,10 @@ on:
         type: string
         required: true
       dry_run:
-        description: "true (por defecto): genera y valida, sube el .md como artefacto y NO abre PR. false: abre el PR."
+        description: "true: genera y valida, sube el .md como artefacto y NO abre PR. false: abre el PR. Es false por defecto."
         type: boolean
         required: false
-        default: true
+        default: false
 
 # Least privilege for the whole job:
 #   id-token:write     -> mint the OIDC token for azure/login (no Azure secrets)
@@ -54,177 +48,15 @@ concurrency:
   group: ai-article-generate
   cancel-in-progress: false
 
-# Public, non-secret identifiers loaded from repository Variables.
-env:
-  AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
-  AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
-  AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
-  AOAI_ENDPOINT: ${{ vars.AZURE_OPENAI_ENDPOINT }}
-  AOAI_TEXT_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT_TEXT }}
-  AOAI_IMAGE_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT_IMAGE }}
-  # Cover-image size. 1024x1024 is the most broadly supported; a landscape size
-  # (e.g. 1792x1024) usually looks better as a header -- tune after the first run.
-  AOAI_IMAGE_SIZE: "1024x1024"
-  # Confirmed working token audience (Attempt 1 returned HTTP 200 in the auth check).
-  TOKEN_SCOPE: https://cognitiveservices.azure.com
-  # GitHub App used to open PRs. App ID and Installation ID are public identifiers;
-  # only the private key (secrets.APP_PRIVATE_KEY) is a secret.
-  GH_APP_ID: ${{ vars.APP_ID }}
-  GH_APP_INSTALLATION_ID: ${{ vars.APP_INSTALLATION_ID }}
-
+# The whole build lives in the reusable workflow `ai-article-build.yml`. This
+# manual entry point only forwards the dispatch inputs to it. `secrets: inherit`
+# passes APP_PRIVATE_KEY (and any other secrets) through; repository `vars` are
+# read directly inside the reusable workflow, so no `env:` block is needed here.
 jobs:
   generate:
     name: Generar borrador y (opcional) abrir PR
-    runs-on: ubuntu-latest
-    steps:
-      # ---------------------------------------------------------------------
-      # 1) Source checkout.
-      # ---------------------------------------------------------------------
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      # ---------------------------------------------------------------------
-      # 2) Azure sign-in via OIDC (no stored secrets). Version pinned.
-      # ---------------------------------------------------------------------
-      - name: Azure login (OIDC, sin secretos)
-        uses: azure/login@v2
-        with:
-          client-id: ${{ env.AZURE_CLIENT_ID }}
-          tenant-id: ${{ env.AZURE_TENANT_ID }}
-          subscription-id: ${{ env.AZURE_SUBSCRIPTION_ID }}
-
-      # ---------------------------------------------------------------------
-      # 3) Python + the single dependency (PyYAML).
-      # ---------------------------------------------------------------------
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Instalar dependencias del script
-        run: python -m pip install --disable-pip-version-check --no-input -r automation/scripts/requirements.txt
-
-      # ---------------------------------------------------------------------
-      # 4) Acquire the data-plane token AND run the generator in ONE step so the
-      #    bearer token never crosses a step boundary. `topic` is passed via env
-      #    (ARTICLE_TOPIC) and read by the script -> no shell interpolation.
-      # ---------------------------------------------------------------------
-      - name: Generar el artículo (texto -> content/posts/<slug>.md)
-        id: generate
-        shell: bash
-        env:
-          ARTICLE_TOPIC: ${{ inputs.topic }}
-          # The script writes the model's image prompt here for the next step.
-          IMAGE_PROMPT_FILE: ${{ runner.temp }}/image_prompt.txt
-        run: |
-          set -euo pipefail
-          # Token stays in a local shell variable; never printed, exported or logged.
-          TOKEN="$(az account get-access-token --resource "${TOKEN_SCOPE}" --query accessToken --output tsv --only-show-errors)"
-          AOAI_TOKEN="${TOKEN}" python automation/scripts/generate_article.py
-
-      # ---------------------------------------------------------------------
-      # 4b) Generate the AI cover image from the prompt produced above. A fresh
-      #     data-plane token is acquired and consumed inside THIS single step so
-      #     it never crosses a step boundary. MAI-Image-2.5 lives on the Foundry
-      #     first-party surface (NOT /openai/):
-      #       POST {endpoint}/mai/v1/images/generations
-      #     Fails closed: a failure here aborts the run (no PR without a cover).
-      # ---------------------------------------------------------------------
-      - name: Generar la imagen de portada (static/images/<slug>/cover.png)
-        shell: bash
-        env:
-          IMAGE_PROMPT_FILE: ${{ runner.temp }}/image_prompt.txt
-          COVER_PATH: ${{ steps.generate.outputs.cover_path }}
-        run: |
-          set -euo pipefail
-          TOKEN="$(az account get-access-token --resource "${TOKEN_SCOPE}" --query accessToken --output tsv --only-show-errors)"
-          AOAI_TOKEN="${TOKEN}" python automation/scripts/generate_image.py
-
-      # ---------------------------------------------------------------------
-      # 5) Build gate. Render drafts (-D) so the new draft post is built; this
-      #    fails fast if the generated front matter breaks the Hugo build.
-      #    Hugo setup matches the repo's deploy workflow (extended, latest).
-      # ---------------------------------------------------------------------
-      - name: Setup Hugo (extended)
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: latest
-          extended: true
-
-      - name: Build gate (Hugo con drafts)
-        run: hugo --gc --minify -D
-
-      # ---------------------------------------------------------------------
-      # 6a) DRY-RUN path: publish the generated .md as an artifact and STOP.
-      #     No branch, no commit, no PR.
-      # ---------------------------------------------------------------------
-      - name: Subir el borrador como artefacto (dry_run)
-        if: ${{ inputs.dry_run }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: ai-article-${{ steps.generate.outputs.slug }}
-          path: |
-            ${{ steps.generate.outputs.path }}
-            ${{ steps.generate.outputs.cover_path }}
-          if-no-files-found: error
-          retention-days: 14
-
-      # ---------------------------------------------------------------------
-      # 6b) REAL path (dry_run=false): App token -> labels -> branch + PR.
-      # ---------------------------------------------------------------------
-      - name: Fecha (YYYY-MM-DD) para el nombre de rama
-        if: ${{ !inputs.dry_run }}
-        id: meta
-        run: echo "today=$(date -u +%F)" >> "$GITHUB_OUTPUT"
-
-      - name: Mint GitHub App token (efímero)
-        if: ${{ !inputs.dry_run }}
-        id: app-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ env.GH_APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
-      - name: Asegurar etiquetas del PR (idempotente)
-        if: ${{ !inputs.dry_run }}
-        env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: |
-          set -euo pipefail
-          gh label create "ai-generated" --color "5319E7" --description "Contenido generado por el pipeline de IA" --force
-          gh label create "needs-review" --color "D93F0B" --description "Pendiente de revisión editorial humana" --force
-
-      - name: Crear rama y abrir Pull Request
-        if: ${{ !inputs.dry_run }}
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ steps.app-token.outputs.token }}
-          branch: bot/ai-article-${{ steps.meta.outputs.today }}-${{ steps.generate.outputs.slug }}
-          base: main
-          add-paths: |
-            ${{ steps.generate.outputs.path }}
-            ${{ steps.generate.outputs.cover_path }}
-          commit-message: "feat - content: borrador IA «${{ steps.generate.outputs.slug }}»"
-          title: "feat - content: borrador IA «${{ steps.generate.outputs.slug }}»"
-          labels: |
-            ai-generated
-            needs-review
-          body: |
-            ## Borrador de artículo generado por IA
-
-            - **Tema solicitado:** ${{ inputs.topic }}
-            - **Modelo (texto):** ${{ env.AOAI_TEXT_DEPLOYMENT }} (Azure AI Foundry)
-            - **Modelo (imagen):** ${{ env.AOAI_IMAGE_DEPLOYMENT }} (Azure AI Foundry)
-            - **Fichero:** `${{ steps.generate.outputs.path }}`
-            - **Portada:** `${{ steps.generate.outputs.cover_path }}`
-            - **Estado:** `draft: true` · `ai.review_status: pending`
-
-            Este PR lo ha generado automáticamente el workflow `ai-article-generate`.
-            El contenido es **asistido por IA y debe ser revisado por una persona** antes
-            de publicarse (gate editorial). Antes de aprobar:
-
-            - Revisa y edita el texto (rigor técnico, voz del blog, enlaces).
-            - Ajusta `categories` y `tags` si procede.
-            - Revisa la imagen de portada (`image:` en el front matter); regénerala o reemplázala si no encaja.
-            - Cambia `ai.review_status` a `reviewed` y rellena `ai.reviewed_by`.
-            - Quita `draft: true` cuando esté listo para publicar.
+    uses: ./.github/workflows/ai-article-build.yml
+    with:
+      topic: ${{ inputs.topic }}
+      dry_run: ${{ inputs.dry_run }}
+    secrets: inherit

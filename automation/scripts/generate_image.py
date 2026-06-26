@@ -44,19 +44,25 @@ from typing import NoReturn
 
 from _foundry import FoundryError, FoundryImageClient
 
-# Shared CODERTECTURA visual family (grounded in the logo + site theme): a dark,
-# retro-futuristic synthwave-tech look -- deep midnight navy-to-black backgrounds,
-# luminous teal/cyan with neon-green accents, soft volumetric glow, clean geometric
-# shapes and subtle grid/circuit lines. Cover, AI body images and this suffix must
-# stay siblings; mirror any change in resolve_body_images.BODY_STYLE_SUFFIX.
-# Cover-specific: a wide editorial header whose lower third stays calm/darker so the
-# title overlay keeps good contrast. Always text/letter/logo/brand/watermark-free.
+# CODERTECTURA cover look (grounded in the logo + site theme) -- now a HIGH-IMPACT,
+# cinematic editorial style: a bold conceptual scene built around a clear hero
+# subject and a memorable visual metaphor, with dramatic lighting and depth over a
+# deep midnight navy-to-black base. NOTE: this INTENTIONALLY diverges from
+# resolve_body_images.BODY_STYLE_SUFFIX -- covers are dramatic/cinematic, body images
+# stay flat/explanatory diagrams. Do NOT "re-sync" them. Cover-specific: keep the
+# lower third calmer/darker so the Hugo title overlay keeps good contrast. Always
+# text/letter/logo/brand/watermark-free and free of recognizable real human faces.
 STYLE_SUFFIX = (
-    " -- wide editorial blog cover illustration, deep midnight navy-to-black "
-    "background with luminous teal, cyan and neon-green accents, soft volumetric "
-    "glow, clean geometric shapes and subtle grid lines, modern retro-futuristic "
-    "tech mood, calmer darker lower area for a title overlay, high quality, "
-    "no text, no letters, no numbers, no logos, no brands, no watermarks, no faces."
+    " -- dramatic cinematic editorial blog cover, bold high-impact composition "
+    "built around a single strong focal subject with a clear visual metaphor, deep "
+    "sense of depth and scale (foreground, midground and background), moody "
+    "volumetric lighting with atmospheric haze and glowing light rays, rich "
+    "contrast and vivid expressive cinematic color over a deep midnight "
+    "navy-to-black base, immersive and energetic sci-fi tech atmosphere; allowed "
+    "subjects include silhouettes, figures seen from behind and stylised robots or "
+    "mascots, human faces as long as they are not recognizable real human faces; keep the lower third calmer and "
+    "darker so an overlaid title stays legible, ultra detailed, high quality, "
+    "no text, no letters, no numbers, no watermarks. You can use logos or brands as long as they are part of the blog post."
 )
 
 

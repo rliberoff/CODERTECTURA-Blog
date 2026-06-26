@@ -77,7 +77,7 @@ from _sources import (
 
 # Version of the editorial prompt below. Stored in the post's `ai.prompt_version`
 # for provenance/auditing. Bump it whenever the prompt/voice changes.
-PROMPT_VERSION = "2026-06-24.2"
+PROMPT_VERSION = "2026-06-26.1"
 
 # Honest disclosure string, kept in sync with the archetype and hugo.yaml
 # (params.ai.defaultDisclosure).
@@ -183,14 +183,19 @@ las tarjetas; texto plano, sin Markdown.
 (por ejemplo "Inteligencia Artificial", "Arquitectura de Software", ".NET", "Azure").
 - "body_markdown": el artículo completo en Markdown (aproximadamente 800-1500 \
 palabras), empezando por un párrafo de introducción que enganche.
-- "image_prompt": una descripción EN INGLÉS (1-3 frases) para generar la imagen de \
-PORTADA, FIEL al título y al contenido real del artículo que acabas de escribir. \
-Usa el estilo visual coherente de CODERTECTURA: fondo oscuro azul medianoche casi \
-negro con acentos luminosos en turquesa, cian y verde neón, brillo suave, formas \
-geométricas limpias y líneas de rejilla sutiles, ambiente tecnológico moderno y \
-retro-futurista; cabecera ancha con la zona inferior más sobria para un título \
-superpuesto. SIN texto, SIN letras, SIN números, SIN logos ni marcas, SIN marcas de \
-agua y sin rostros reconocibles.
+- "image_prompt": una descripción EN INGLÉS (2-4 frases) para generar la imagen de \
+PORTADA de ALTO IMPACTO, FIEL al título y al contenido real del artículo que acabas \
+de escribir. Concibe una ESCENA conceptual potente, cinematográfica y memorable, \
+construida en torno a un TEMA protagonista claro y una metáfora visual del tema \
+(por ejemplo: una silueta o figura vista de espaldas, un robot o mascota \
+estilizada, una estructura imponente o un objeto simbólico heroico). Busca \
+composición dramática, profundidad real (primer plano, plano medio y fondo), \
+iluminación volumétrica, sensación de escala y atmósfera inmersiva. Base con la zona inferior más sobria para un título \
+superpuesto, pero con color cinematográfico expresivo y vibrante (paleta libre: \
+turquesa, cian, verde neón, azul eléctrico, morado, magenta, ámbar). PUEDES USAR logos de servicios o de marcas. EVITA \
+ilustraciones planas, abstractas o minimalistas de simples formas geométricas y \
+rejillas. SIN texto, SIN letras, SIN números, SIN marcas de \
+agua y SIN rostros reales reconocibles.
 - "body_images" (OPCIONAL): lista de imágenes para el CUERPO del artículo. Cada \
 elemento es un objeto con esta forma exacta:
   {
@@ -207,10 +212,11 @@ elemento es un objeto con esta forma exacta:
   * Coloca cada "placeholder" en su PROPIA línea dentro de "body_markdown", en el punto \
 exacto donde debe ir la imagen.
   * "prompt_en" SOLO cuando "type" es "ai": descripción EN INGLÉS de una ilustración o \
-diagrama conceptual en el MISMO estilo visual de CODERTECTURA que "image_prompt" \
-(misma paleta oscura con acentos turquesa, cian y verde neón, plano y explicativo). \
-SIN texto, SIN letras, SIN números, SIN logos ni marcas, SIN marcas de agua y sin \
-rostros reconocibles.
+diagrama conceptual en el estilo CODERTECTURA LIMPIO y EXPLICATIVO para el cuerpo \
+(NO el estilo cinematográfico de la portada): fondo oscuro azul medianoche con \
+acentos turquesa, cian y verde neón, plano, claro y didáctico. SIN texto, SIN \
+letras, SIN números, SIN marcas de agua y sin rostros \
+reconocibles.
   * "source_url" SOLO cuando "type" es "source": DEBE ser EXACTAMENTE la "url" (el \
 artículo) de una de las fuentes proporcionadas.
   * "image_url" SOLO cuando "type" es "source": DEBE ser EXACTAMENTE una de las URLs de \

@@ -65,11 +65,13 @@ from _sources import (
     sanitize_untrusted_text,
 )
 
-# Style wrapper for AI body illustrations/diagrams. A coherent SIBLING of the cover
-# STYLE_SUFFIX in generate_image.py: same CODERTECTURA family -- deep midnight
+# Style wrapper for AI body illustrations/diagrams. This is INTENTIONALLY the calm,
+# explanatory counterpart to the cover STYLE_SUFFIX in generate_image.py: the cover
+# is now dramatic/cinematic with a hero subject, while body images stay flat, clean
+# and didactic for inline concepts/diagrams. Do NOT "re-sync" this with the cover
+# suffix -- the divergence is deliberate. Same CODERTECTURA palette: deep midnight
 # navy-to-black background, luminous teal/cyan with neon-green accents, soft glow,
-# clean geometric shapes and subtle grid lines -- but flatter and more explanatory
-# for inline concepts/diagrams. Keep both suffixes in sync. Always label/logo-free.
+# clean geometric shapes and subtle grid lines. Always label/logo-free.
 BODY_STYLE_SUFFIX = (
     " -- clean modern conceptual technical illustration or diagram, flat explanatory "
     "style, deep midnight navy-to-black background with luminous teal, cyan and "

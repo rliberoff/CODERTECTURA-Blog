@@ -144,6 +144,10 @@ _LINK_OR_AUTOLINK_RE = re.compile(
     r"(?<!\!)\[(?P<text>[^\]]*)\]\((?P<dest><[^>]*>|[^)\s]+)(?P<rest>[^)]*)\)"
     r"|<(?P<auto>https?://[^>\s]+)>"
 )
+# Markdown list prefixes (unordered/ordered/task list).
+_LIST_PREFIX_RE = re.compile(r"^(\s*(?:[-+*]|\d+[.)])\s+(?:\[[ xX]\]\s+)?)")
+# Markdown blockquote prefixes (supports nested quotes: "> ", ">> ", ...).
+_QUOTE_PREFIX_RE = re.compile(r"^(\s*(?:>\s*)+)")
 
 # -----------------------------------------------------------------------------
 # Reusable prompt fragments shared by BOTH generation passes (defined once so the
@@ -823,6 +827,67 @@ def neutralise_offallowlist_links(body_markdown: str) -> str:
     return "\n".join(out)
 
 
+def _capitalise_first_alpha(text: str) -> str:
+    """Uppercase the first alphabetic character in ``text`` (Unicode-aware)."""
+    for index, char in enumerate(text):
+        if char.isalpha():
+            upper = char.upper()
+            if upper == char:
+                return text
+            return text[:index] + upper + text[index + 1 :]
+    return text
+
+
+def capitalise_markdown_list_and_quote_starts(body_markdown: str) -> str:
+    """Capitalise list/blockquote item starts without touching code blocks.
+
+    The model occasionally starts Spanish bullets/citations in lowercase. This
+    post-processing pass normalises only Markdown list lines and blockquote lines,
+    preserving fenced/indented code exactly as generated.
+    """
+    if not isinstance(body_markdown, str) or not body_markdown:
+        return body_markdown
+    lines = body_markdown.split("\n")
+    out: list = []
+    fence: "str | None" = None
+    for line in lines:
+        if fence is not None:
+            out.append(line)
+            closing = _FENCE_RE.match(line.lstrip())
+            if (
+                closing
+                and closing.group(1)[0] == fence[0]
+                and len(closing.group(1)) >= len(fence)
+            ):
+                fence = None
+            continue
+        if _INDENTED_CODE_RE.match(line):
+            out.append(line)
+            continue
+        opening = _FENCE_RE.match(line.lstrip())
+        if opening:
+            fence = opening.group(1)
+            out.append(line)
+            continue
+
+        list_match = _LIST_PREFIX_RE.match(line)
+        if list_match:
+            prefix = list_match.group(1)
+            content = line[len(prefix) :]
+            out.append(prefix + _capitalise_first_alpha(content))
+            continue
+
+        quote_match = _QUOTE_PREFIX_RE.match(line)
+        if quote_match:
+            prefix = quote_match.group(1)
+            content = line[len(prefix) :]
+            out.append(prefix + _capitalise_first_alpha(content))
+            continue
+
+        out.append(line)
+    return "\n".join(out)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Generate a Hugo blog post draft via Azure AI Foundry (text only)."
@@ -1158,6 +1223,7 @@ def build_document(
     else:
         body_image_specs = []
     body_markdown = apply_body_image_placeholders(body_markdown, body_image_specs)
+    body_markdown = capitalise_markdown_list_and_quote_starts(body_markdown)
 
     categories = clean_terms(article.get("categories"), cap=3)
     tags = clean_terms(article.get("tags"), cap=6)

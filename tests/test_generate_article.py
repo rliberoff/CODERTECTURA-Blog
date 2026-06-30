@@ -544,6 +544,52 @@ def test_build_document_neutralises_offallowlist_body_link():
     assert "enlace" in document  # visible text preserved
 
 
+def test_capitalise_markdown_list_and_quote_starts_basic():
+    body = (
+        "- primer punto\n"
+        "1. segundo punto\n"
+        "> cita en minuscula\n"
+        "texto normal\n"
+    )
+    out = ga.capitalise_markdown_list_and_quote_starts(body)
+    assert "- Primer punto" in out
+    assert "1. Segundo punto" in out
+    assert "> Cita en minuscula" in out
+    assert "texto normal" in out  # non-list/non-quote lines unchanged
+
+
+def test_capitalise_markdown_list_and_quote_starts_skips_code():
+    body = (
+        "- primer punto\n"
+        "```md\n"
+        "- no tocar dentro del bloque\n"
+        "> tampoco tocar esta cita\n"
+        "```\n"
+        "    - tampoco tocar este codigo indentado\n"
+    )
+    out = ga.capitalise_markdown_list_and_quote_starts(body)
+    assert "- Primer punto" in out
+    assert "- no tocar dentro del bloque" in out
+    assert "> tampoco tocar esta cita" in out
+    assert "    - tampoco tocar este codigo indentado" in out
+
+
+def test_build_document_capitalises_lists_and_quotes():
+    article = {
+        "title": "Tema",
+        "description": "desc",
+        "body_markdown": "- primer bullet\n\n> cita en minuscula\n",
+        "categories": ["Azure"],
+        "tags": ["azure"],
+        "image_prompt": "Cover.",
+    }
+    _slug, document, _prompt, _specs = ga.build_document(
+        article, deployment="gpt-5.4-mini", now_iso=NOW_ISO
+    )
+    assert "- Primer bullet" in document
+    assert "> Cita en minuscula" in document
+
+
 # -----------------------------------------------------------------------------
 # Image-URL denylist hook (Rai R4): an optional post-incident kill-switch.
 # -----------------------------------------------------------------------------

@@ -84,7 +84,7 @@ from _sources import (
 
 # Version of the editorial prompt below. Stored in the post's `ai.prompt_version`
 # for provenance/auditing. Bump it whenever the prompt/voice changes.
-PROMPT_VERSION = "2026-06-30.4"
+PROMPT_VERSION = "2026-06-30.5"
 
 # Honest disclosure string, kept in sync with the archetype and hugo.yaml
 # (params.ai.defaultDisclosure).
@@ -215,7 +215,7 @@ Output language:
 - Write the ARTICLE AND ALL READER-FACING FIELDS IN SPANISH (Spain): "title", \
 "description", "tags", "categories", "body_markdown" and, inside "body_images", "alt" \
 and "caption". Only the image-generation fields "image_prompt" and "prompt_en" are \
-written IN ENGLISH (image models expect English).
+written IN SPANISH (es-ES) (image models handle Spanish prompts well).
 
 Voice and style (for the Spanish text you write):
 - This is a PERSONAL blog. Write in Spain Spanish in the FIRST PERSON SINGULAR — the \
@@ -257,7 +257,7 @@ description and cards; plain text, no Markdown.
 (for example "Inteligencia Artificial", "Arquitectura de Software", ".NET", "Azure").
 - "body_markdown": the complete article IN SPANISH in Markdown (roughly 800-1500 \
 words), starting with an engaging introductory paragraph.
-- "image_prompt": a description IN ENGLISH (2-4 sentences) to generate the HIGH-IMPACT \
+- "image_prompt": a description IN SPANISH (es-ES) (2-4 sentences) to generate the HIGH-IMPACT \
 COVER image, FAITHFUL to the title and to the actual content of the article you just \
 wrote. Conceive a powerful conceptual SCENE, cinematic and memorable, built around a \
 clear hero THEME and a visual metaphor of the topic (for example: a silhouette or \
@@ -269,7 +269,7 @@ cinematic colour (free palette: turquoise, cyan, neon green, electric blue, purp
 magenta, amber). YOU MAY USE service or brand logos. AVOID flat, abstract or minimalist \
 illustrations of simple geometric shapes and grids. NO text, NO letters, NO numbers, NO \
 watermarks and NO recognisable real faces.
-- "body_images" (OPTIONAL): list of images for the article BODY. Each element is an \
+- "body_images": list of images for the article BODY. Each element is an \
 object with this exact shape:
   {
     "placeholder": "{{img:<id>}}",
@@ -284,7 +284,7 @@ object with this exact shape:
   * "<id>" uses only [A-Za-z0-9_-] and is unique within the article.
   * Place each "placeholder" on its OWN line inside "body_markdown", at the exact point \
 where the image must go.
-  * "prompt_en" ONLY when "type" is "ai": a description IN ENGLISH of a SCHEMATIC \
+  * "prompt_en" ONLY when "type" is "ai": a description IN SPANISH (es-ES) of a SCHEMATIC \
 DIAGRAM or INFOGRAPHIC that genuinely explains a concept from the article (for example \
 an architecture diagram, a flowchart, a request/sequence flow, a data pipeline, a \
 layered model or a labelled comparison) in the CODERTECTURA body style (NOT the \
@@ -304,7 +304,11 @@ add more value than a generic illustration. You MAY use SEVERAL images from the 
 source when each illustrates a DIFFERENT point — give each one its own "{{img:<id>}}" \
 placeholder and a DISTINCT "image_url". Use "type":"ai" for concepts that no source \
 illustrates.
-  * Maximum 10 images. Omit the "body_images" key entirely if they add no value.
+  * The article MUST include between 3 and 8 body images whenever the topic allows — aim \
+for the middle of that range. Do NOT omit the "body_images" key. Distribute images \
+roughly across the article sections: place at least one image per major section, or at \
+least one every 300-400 words, whichever feels more natural for the flow. The article \
+should be visually rich and well-paced.
 
 """
     + CODE_RUBRIC

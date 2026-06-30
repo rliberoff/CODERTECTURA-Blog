@@ -333,7 +333,7 @@ def test_shortcode_safe_strips_dangerous_chars():
 
 def test_figure_shortcode_format():
     out = rb.figure_shortcode(src="/images/post/body-1.png", alt="alt", caption="cap")
-    assert out == '{{< figure src="/images/post/body-1.png" alt="alt" caption="cap" >}}'
+    assert out == '{{< figure src="/images/post/body-1.png" alt="alt" caption="cap" >}}{{< /figure >}}'
 
 
 def test_normalise_placeholder():
@@ -349,9 +349,9 @@ def test_normalise_placeholder():
 
 def test_rewrite_markdown_replaces_and_strips():
     body = "Intro.\n\n{{img:a}}\n\nMiddle.\n\n{{img:b}}\n\nEnd.\n"
-    replacements = {"{{img:a}}": '{{< figure src="/images/p/body-1.png" >}}'}
+    replacements = {"{{img:a}}": '{{< figure src="/images/p/body-1.png" >}}{{< /figure >}}'}
     out = rb.rewrite_markdown(body, replacements)
-    assert '{{< figure src="/images/p/body-1.png" >}}' in out
+    assert '{{< figure src="/images/p/body-1.png" >}}{{< /figure >}}' in out
     assert "{{img:a}}" not in out  # replaced
     assert "{{img:b}}" not in out  # unresolved -> stripped
     assert "\n\n\n" not in out
@@ -361,7 +361,7 @@ def test_rewrite_markdown_renders_repeated_placeholder_everywhere():
     # A placeholder used twice renders the figure at BOTH occurrences (chosen
     # behaviour: replace-all), leaving no raw token behind.
     body = "Intro {{img:a}} medio.\n\nY otra vez {{img:a}} al final.\n"
-    figure = '{{< figure src="/images/p/body-1.png" alt="a" >}}'
+    figure = '{{< figure src="/images/p/body-1.png" alt="a" >}}{{< /figure >}}'
     out = rb.rewrite_markdown(body, {"{{img:a}}": figure})
     assert out.count("{{< figure") == 2
     assert "{{img:a}}" not in out

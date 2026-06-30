@@ -40,8 +40,10 @@ USER_AGENT = "codertectura-automation-bot/1.0"
 # (NOT "/openai/v1/", which is Azure OpenAI and returns {"code":"unknown_model"}
 # for this model). The surface accepts a Microsoft Entra ID (OIDC/UAMI) token, so
 # no API key is needed and no api-version query string is required.
-IMAGE_API_PATH = "/mai/v1/images/generations"
+#IMAGE_API_PATH = "/mai/v1/images/generations"
 
+# OpenAI gpt-image-2
+IMAGE_API_PATH = "/openai/v1/images/generations"
 
 class FoundryError(RuntimeError):
     """Raised on any Foundry/HTTP/parse failure with a secret-free message."""

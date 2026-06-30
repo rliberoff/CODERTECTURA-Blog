@@ -38,6 +38,7 @@ Output
 
 from __future__ import annotations
 
+import json
 import os
 import sys
 from typing import NoReturn
@@ -89,6 +90,52 @@ def read_prompt() -> str:
     fail("no image prompt provided (set IMAGE_PROMPT_FILE or IMAGE_PROMPT)")
 
 
+def _write_debug_json(path: str, payload: dict) -> None:
+    """Persist a debug JSON payload (best effort, never raises)."""
+    if not path:
+        return
+    try:
+        out_dir = os.path.dirname(path)
+        if out_dir:
+            os.makedirs(out_dir, exist_ok=True)
+        with open(path, "w", encoding="utf-8", newline="\n") as handle:
+            json.dump(payload, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+        print(f"Wrote image debug trace: {path}")
+    except OSError as exc:
+        print(f"WARNING: could not write IMAGE_DEBUG_FILE ({path}): {exc}", file=sys.stderr)
+
+
+def _env_truthy(name: str, default: bool = False) -> bool:
+    """Interpret an env var as boolean (1/true/yes/on)."""
+    value = os.environ.get(name)
+    if value is None:
+        return default
+    return value.strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _emit_image_trace(payload: dict) -> None:
+    """Emit image-generation traces to stdout for Actions/Copilot UI."""
+    print("::group::AI TRACE - image prompts")
+    print("BASE_PROMPT:")
+    print(payload.get("base_prompt", ""))
+    print("\nSTYLE_SUFFIX:")
+    print(payload.get("style_suffix", ""))
+    print("\nFINAL_PROMPT:")
+    print(payload.get("final_prompt", ""))
+    print("::endgroup::")
+
+    print("::group::AI TRACE - image summary")
+    summary = {
+        "deployment": payload.get("deployment"),
+        "size": payload.get("size"),
+        "cover_path": payload.get("cover_path"),
+        "output_bytes": payload.get("output_bytes"),
+    }
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    print("::endgroup::")
+
+
 def main() -> None:
     endpoint = os.environ.get("AOAI_ENDPOINT", "").strip()
     if not endpoint:
@@ -112,7 +159,11 @@ def main() -> None:
     except ValueError:
         fail("AOAI_IMAGE_TIMEOUT must be a number (seconds)")
 
-    prompt = read_prompt() + STYLE_SUFFIX
+    image_debug_file = os.environ.get("IMAGE_DEBUG_FILE", "").strip()
+    trace_stdout = _env_truthy("IMAGE_TRACE_STDOUT", default=False)
+
+    base_prompt = read_prompt()
+    prompt = base_prompt + STYLE_SUFFIX
 
     client = FoundryImageClient(
         endpoint=endpoint,
@@ -137,6 +188,33 @@ def main() -> None:
         os.makedirs(out_dir, exist_ok=True)
     with open(cover_path, "wb") as handle:
         handle.write(image_bytes)
+
+    _write_debug_json(
+        image_debug_file,
+        {
+            "endpoint": endpoint,
+            "deployment": deployment,
+            "size": size,
+            "timeout": timeout,
+            "cover_path": cover_path,
+            "base_prompt": base_prompt,
+            "style_suffix": STYLE_SUFFIX,
+            "final_prompt": prompt,
+            "output_bytes": len(image_bytes),
+        },
+    )
+    if trace_stdout:
+        _emit_image_trace(
+            {
+                "deployment": deployment,
+                "size": size,
+                "cover_path": cover_path,
+                "base_prompt": base_prompt,
+                "style_suffix": STYLE_SUFFIX,
+                "final_prompt": prompt,
+                "output_bytes": len(image_bytes),
+            }
+        )
 
     print(f"Generated cover image: {cover_path} ({len(image_bytes)} bytes)")
 

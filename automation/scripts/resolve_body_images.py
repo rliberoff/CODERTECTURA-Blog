@@ -65,18 +65,23 @@ from _sources import (
     sanitize_untrusted_text,
 )
 
-# Style wrapper for AI body illustrations/diagrams. This is INTENTIONALLY the calm,
+# Style wrapper for AI body diagrams/infographics. This is INTENTIONALLY the calm,
 # explanatory counterpart to the cover STYLE_SUFFIX in generate_image.py: the cover
-# is now dramatic/cinematic with a hero subject, while body images stay flat, clean
-# and didactic for inline concepts/diagrams. Do NOT "re-sync" this with the cover
+# is dramatic/cinematic with a hero subject, while body images are SCHEMATIC diagrams
+# and infographics that add real explanatory value (architecture, flowcharts,
+# pipelines, layered or comparison diagrams). Do NOT "re-sync" this with the cover
 # suffix -- the divergence is deliberate. Same CODERTECTURA palette: deep midnight
 # navy-to-black background, luminous teal/cyan with neon-green accents, soft glow,
-# clean geometric shapes and subtle grid lines. Always label/logo-free.
+# clean geometric nodes, arrows and connectors. Concise labels are ALLOWED (the
+# per-image prompt decides whether to use them); only watermarks and recognisable
+# real human faces are forbidden.
 BODY_STYLE_SUFFIX = (
-    " -- clean modern conceptual technical illustration or diagram, flat explanatory "
+    " -- clean modern SCHEMATIC technical diagram or infographic, flat explanatory "
     "style, deep midnight navy-to-black background with luminous teal, cyan and "
-    "neon-green accents, soft glow, geometric shapes and subtle grid lines, "
-    "no text, no letters, no numbers, no labels, no logos, no brands, no watermarks."
+    "neon-green accents, soft glow, geometric nodes, arrows and connectors, clear "
+    "visual hierarchy; concise short labels and annotations are allowed where they "
+    "clarify the concept, otherwise keep it purely visual; no watermarks, "
+    "no recognisable real human faces."
 )
 
 # Default hard cap on a downloaded source image (8 MiB). Bytes are checked against

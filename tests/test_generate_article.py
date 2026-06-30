@@ -275,6 +275,89 @@ def test_select_body_images_source_drops_unprovided_or_offallowlist_image_url():
     assert ga.select_body_images(raw_off, body_markdown=body, sources=sources) == []
 
 
+def test_select_body_images_multiple_distinct_from_same_source():
+    # Aggressive extraction (owner pref): several images from the SAME source are
+    # allowed, but each must be DISTINCT. Without an explicit image_url the
+    # orchestrator bakes the next UNUSED allowlisted candidate; once the candidates
+    # run out, further source figures for that source are dropped.
+    sources = ga.parse_sources(
+        {
+            "sources": [
+                _source(
+                    "https://devblogs.microsoft.com/dotnet/post",
+                    images=[
+                        "https://devblogs.microsoft.com/a.png",
+                        "https://devblogs.microsoft.com/b.png",
+                        "https://devblogs.microsoft.com/c.png",
+                    ],
+                )
+            ]
+        }
+    )
+    body = (
+        "Uno.\n\n{{img:s1}}\n\nDos.\n\n{{img:s2}}\n\nTres.\n\n{{img:s3}}\n\n"
+        "Cuatro.\n\n{{img:s4}}\n"
+    )
+    raw = [
+        {
+            "placeholder": f"{{{{img:s{n}}}}}",
+            "type": "source",
+            "alt": "a",
+            "caption": "c",
+            "source_url": "https://devblogs.microsoft.com/dotnet/post",
+        }
+        for n in (1, 2, 3, 4)
+    ]
+    specs = ga.select_body_images(raw, body_markdown=body, sources=sources)
+    image_urls = [s["image_url"] for s in specs]
+    # The three distinct candidates are baked in order; the 4th figure has no unused
+    # image left for that source and is dropped.
+    assert image_urls == [
+        "https://devblogs.microsoft.com/a.png",
+        "https://devblogs.microsoft.com/b.png",
+        "https://devblogs.microsoft.com/c.png",
+    ]
+
+
+def test_select_body_images_source_drops_duplicate_image_url():
+    # The same exact source image must never back two different figures.
+    sources = ga.parse_sources(
+        {
+            "sources": [
+                _source(
+                    "https://devblogs.microsoft.com/dotnet/post",
+                    images=[
+                        "https://devblogs.microsoft.com/a.png",
+                        "https://devblogs.microsoft.com/b.png",
+                    ],
+                )
+            ]
+        }
+    )
+    body = "Uno.\n\n{{img:s1}}\n\nDos.\n\n{{img:s2}}\n"
+    raw = [
+        {
+            "placeholder": "{{img:s1}}",
+            "type": "source",
+            "alt": "a",
+            "caption": "c",
+            "source_url": "https://devblogs.microsoft.com/dotnet/post",
+            "image_url": "https://devblogs.microsoft.com/a.png",
+        },
+        {
+            "placeholder": "{{img:s2}}",
+            "type": "source",
+            "alt": "a",
+            "caption": "c",
+            "source_url": "https://devblogs.microsoft.com/dotnet/post",
+            "image_url": "https://devblogs.microsoft.com/a.png",  # duplicate -> dropped
+        },
+    ]
+    specs = ga.select_body_images(raw, body_markdown=body, sources=sources)
+    assert len(specs) == 1
+    assert specs[0]["image_url"] == "https://devblogs.microsoft.com/a.png"
+
+
 def test_select_body_images_source_drops_invented_source_url_even_with_image_url():
     sources = ga.parse_sources(
         {

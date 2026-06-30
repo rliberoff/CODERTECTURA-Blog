@@ -160,7 +160,10 @@ _DISCOVERY_UNTRUSTED_TOKENS = (
 # output; they are derived by the orchestrator from validated, allowlisted results.
 # Raised to 3000 (B.2) so the writer has enough real source text for faithful code.
 DEFAULT_SOURCE_EXCERPT_MAX_CHARS = 3000
-MAX_IMAGES_PER_SOURCE = 3
+# Generous per-source image capture (owner pref 2026-06-30): grab more candidate
+# images so the writer can extract several genuinely relevant first-party figures.
+# This is the FIRST limiter in the chain (discovery -> MAX_SOURCE_IMAGES -> body).
+MAX_IMAGES_PER_SOURCE = 8
 _IMAGE_EXTENSIONS = (".png", ".jpg", ".jpeg", ".webp", ".gif")
 # Markdown image syntax ``![alt](url "optional title")`` (url may be wrapped in <>).
 _MD_IMAGE_RE = re.compile(r"!\[([^\]]*)\]\(\s*(<[^>]+>|[^)\s]+)")

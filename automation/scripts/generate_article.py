@@ -84,7 +84,7 @@ from _sources import (
 
 # Version of the editorial prompt below. Stored in the post's `ai.prompt_version`
 # for provenance/auditing. Bump it whenever the prompt/voice changes.
-PROMPT_VERSION = "2026-06-30.3"
+PROMPT_VERSION = "2026-06-30.4"
 
 # Honest disclosure string, kept in sync with the archetype and hugo.yaml
 # (params.ai.defaultDisclosure).
@@ -112,9 +112,11 @@ UNTRUSTED_CLOSE = "[END UNTRUSTED EXTERNAL SOURCES]"
 _UNTRUSTED_TOKENS = (UNTRUSTED_OPEN, UNTRUSTED_CLOSE, "UNTRUSTED EXTERNAL SOURCES")
 
 # Caps applied to whatever the SOURCES_FILE / model proposes (defence in depth).
+# Source-image extraction is intentionally generous (owner pref 2026-06-30): pull as
+# many genuinely relevant first-party images as the sources offer, up to these caps.
 MAX_SOURCES = 5
-MAX_SOURCE_IMAGES = 4
-MAX_BODY_IMAGES = 5
+MAX_SOURCE_IMAGES = 8
+MAX_BODY_IMAGES = 10
 # Independent cap on a per-source grounding excerpt (newline-preserving). Matches
 # the discovery-side default; re-applied here so an over-long upstream excerpt can
 # never blow up the prompt regardless of how it was produced. Raised to 3000 (B.2)
@@ -144,6 +146,10 @@ _LINK_OR_AUTOLINK_RE = re.compile(
     r"(?<!\!)\[(?P<text>[^\]]*)\]\((?P<dest><[^>]*>|[^)\s]+)(?P<rest>[^)]*)\)"
     r"|<(?P<auto>https?://[^>\s]+)>"
 )
+# Markdown list prefixes (unordered/ordered/task list).
+_LIST_PREFIX_RE = re.compile(r"^(\s*(?:[-+*]|\d+[.)])\s+(?:\[[ xX]\]\s+)?)")
+# Markdown blockquote prefixes (supports nested quotes: "> ", ">> ", ...).
+_QUOTE_PREFIX_RE = re.compile(r"^(\s*(?:>\s*)+)")
 
 # -----------------------------------------------------------------------------
 # Reusable prompt fragments shared by BOTH generation passes (defined once so the
@@ -278,19 +284,27 @@ object with this exact shape:
   * "<id>" uses only [A-Za-z0-9_-] and is unique within the article.
   * Place each "placeholder" on its OWN line inside "body_markdown", at the exact point \
 where the image must go.
-  * "prompt_en" ONLY when "type" is "ai": a description IN ENGLISH of a conceptual \
-illustration or diagram in the CLEAN, EXPLANATORY CODERTECTURA style for the body (NOT \
-the cinematic cover style): deep midnight-navy background with turquoise, cyan and \
-neon-green accents, flat, clear and didactic. NO text, NO letters, NO numbers, NO \
-watermarks and no recognisable faces.
+  * "prompt_en" ONLY when "type" is "ai": a description IN ENGLISH of a SCHEMATIC \
+DIAGRAM or INFOGRAPHIC that genuinely explains a concept from the article (for example \
+an architecture diagram, a flowchart, a request/sequence flow, a data pipeline, a \
+layered model or a labelled comparison) in the CODERTECTURA body style (NOT the \
+cinematic cover style): deep midnight-navy background with turquoise, cyan and \
+neon-green accents, clean geometric nodes, arrows and connectors, flat and didactic. \
+Decide PER IMAGE whether short, legible labels or annotations (a few words, using real \
+terms from the article) make the diagram clearer: include them when they add value, or \
+keep the diagram purely visual when they do not. No watermarks and no recognisable real \
+faces.
   * "source_url" ONLY when "type" is "source": MUST be EXACTLY the "url" (the article) \
 of one of the provided sources.
   * "image_url" ONLY when "type" is "source": MUST be EXACTLY one of the URLs from the \
 "images" list of THAT SAME source. Do not invent or modify image URLs.
-  * Use "type":"source" only when a provided source includes a genuinely relevant image \
-in its "images"; in any other case use "type":"ai" (illustrations or diagrams you \
-describe with "prompt_en").
-  * Maximum 5 images. Omit the "body_images" key entirely if they add no value.
+  * PREFER "type":"source" whenever a provided source includes genuinely relevant \
+images in its "images": real screenshots, diagrams or charts from the source usually \
+add more value than a generic illustration. You MAY use SEVERAL images from the SAME \
+source when each illustrates a DIFFERENT point — give each one its own "{{img:<id>}}" \
+placeholder and a DISTINCT "image_url". Use "type":"ai" for concepts that no source \
+illustrates.
+  * Maximum 10 images. Omit the "body_images" key entirely if they add no value.
 
 """
     + CODE_RUBRIC
@@ -655,6 +669,9 @@ def select_body_images(raw: object, *, body_markdown: str, sources: list) -> lis
     sources_by_url = {s["url"]: s for s in sources}
     specs: list = []
     seen: set = set()
+    # Tracks the source image URLs already baked into a figure so several images from
+    # the SAME source stay DISTINCT and no exact image is reused across the article.
+    seen_image_urls: set = set()
     for item in raw:
         if len(specs) >= MAX_BODY_IMAGES:
             break
@@ -714,15 +731,27 @@ def select_body_images(raw: object, *, body_markdown: str, sources: list) -> lis
                 image_url = candidate
             else:
                 # Backward-compatible: the model cited a source but did not name an
-                # image; the orchestrator selects the source's first allowlisted
-                # candidate (so a raw image URL still never originates from the model).
-                image_url = provided_image_urls[0] if provided_image_urls else None
+                # image; the orchestrator picks the source's first allowlisted
+                # candidate NOT already used, so SEVERAL images from the SAME source
+                # stay DISTINCT (a raw image URL still never originates from the model).
+                image_url = next(
+                    (url for url in provided_image_urls if url not in seen_image_urls),
+                    None,
+                )
                 if image_url is None:
                     warn(
                         f"dropping source body image {placeholder}: source has no "
-                        "allowlisted image candidate"
+                        "unused allowlisted image candidate"
                     )
                     continue
+            if image_url in seen_image_urls:
+                # Never reuse the exact same source image for two different figures.
+                warn(
+                    f"dropping source body image {placeholder}: image_url already "
+                    "used by another figure"
+                )
+                continue
+            seen_image_urls.add(image_url)
             spec = {
                 "placeholder": placeholder,
                 "type": "source",
@@ -820,6 +849,67 @@ def neutralise_offallowlist_links(body_markdown: str) -> str:
             out.append(line)
             continue
         out.append(_LINK_OR_AUTOLINK_RE.sub(_neutralise_link_match, line))
+    return "\n".join(out)
+
+
+def _capitalise_first_alpha(text: str) -> str:
+    """Uppercase the first alphabetic character in ``text`` (Unicode-aware)."""
+    for index, char in enumerate(text):
+        if char.isalpha():
+            upper = char.upper()
+            if upper == char:
+                return text
+            return text[:index] + upper + text[index + 1 :]
+    return text
+
+
+def capitalise_markdown_list_and_quote_starts(body_markdown: str) -> str:
+    """Capitalise list/blockquote item starts without touching code blocks.
+
+    The model occasionally starts Spanish bullets/citations in lowercase. This
+    post-processing pass normalises only Markdown list lines and blockquote lines,
+    preserving fenced/indented code exactly as generated.
+    """
+    if not isinstance(body_markdown, str) or not body_markdown:
+        return body_markdown
+    lines = body_markdown.split("\n")
+    out: list = []
+    fence: "str | None" = None
+    for line in lines:
+        if fence is not None:
+            out.append(line)
+            closing = _FENCE_RE.match(line.lstrip())
+            if (
+                closing
+                and closing.group(1)[0] == fence[0]
+                and len(closing.group(1)) >= len(fence)
+            ):
+                fence = None
+            continue
+        if _INDENTED_CODE_RE.match(line):
+            out.append(line)
+            continue
+        opening = _FENCE_RE.match(line.lstrip())
+        if opening:
+            fence = opening.group(1)
+            out.append(line)
+            continue
+
+        list_match = _LIST_PREFIX_RE.match(line)
+        if list_match:
+            prefix = list_match.group(1)
+            content = line[len(prefix) :]
+            out.append(prefix + _capitalise_first_alpha(content))
+            continue
+
+        quote_match = _QUOTE_PREFIX_RE.match(line)
+        if quote_match:
+            prefix = quote_match.group(1)
+            content = line[len(prefix) :]
+            out.append(prefix + _capitalise_first_alpha(content))
+            continue
+
+        out.append(line)
     return "\n".join(out)
 
 
@@ -1158,6 +1248,7 @@ def build_document(
     else:
         body_image_specs = []
     body_markdown = apply_body_image_placeholders(body_markdown, body_image_specs)
+    body_markdown = capitalise_markdown_list_and_quote_starts(body_markdown)
 
     categories = clean_terms(article.get("categories"), cap=3)
     tags = clean_terms(article.get("tags"), cap=6)

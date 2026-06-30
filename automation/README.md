@@ -162,7 +162,7 @@ La **Fase 2** consume el campo `sources` de los candidatos para fundar el artíc
 - **Doble pasada (C.1)**: la pasada 1 redacta un borrador fundado en las fuentes con código real; la pasada 2 reescribe la prosa para la **voz del blog** y endurece los ejemplos de código, preservando intactos los marcadores `{{img:<id>}}`, el `slug`, la portada (`image_prompt`) y las `body_images`. Ambas pasadas usan el despliegue de generación (`AOAI_GENERATE_DEPLOYMENT`, p. ej. `gpt-5.4`, con *fallback* a `AOAI_TEXT_DEPLOYMENT`). La pasada 2 es *fail-open*: si falla, se conserva el borrador. El presupuesto de *grounding* por fuente sube a 3000 caracteres para ejemplos de código más fieles.
 - Las fuentes llegan por **fichero** (`SOURCES_FILE`, JSON UTF-8), nunca por argumentos, igual que `IMAGE_PROMPT_FILE`. Se aceptan tanto una lista como un objeto con clave `sources`; cada entrada es `{url, title, published_date, host, kind}` y, opcionalmente, un extracto (`raw_content`/`text`/`snippet`) y candidatos de imagen (`images`).
 - Todo el contenido se trata como **DATOS EXTERNOS NO FIABLES**: el host se revalida contra la lista blanca, el texto se sanea y se inyecta en el prompt dentro de un bloque delimitado con la instrucción de no seguir órdenes que aparezcan dentro y de citar **solo** las URLs proporcionadas (enlaces Markdown).
-- La portada (`image_prompt`) se ancla al título y al contenido real del artículo con un estilo **cinematográfico de alto impacto**: una escena conceptual con un sujeto protagonista (siluetas, figuras de espaldas o robots/mascotas, sin rostros reales), composición dramática, profundidad e iluminación volumétrica, sobre base oscura azul medianoche con color cinematográfico libre y vibrante; reserva una zona inferior más sobria para el título superpuesto y nunca lleva texto aun que si logos de productos o marcas. Las imágenes de cuerpo de IA divergen a propósito: mantienen la **familia visual de CODERTECTURA** plana y explicativa para ilustrar conceptos y diagramas.
+- La portada (`image_prompt`) se ancla al título y al contenido real del artículo con un estilo **cinematográfico de alto impacto**: una escena conceptual con un sujeto protagonista (siluetas, figuras de espaldas o robots/mascotas, sin rostros reales), composición dramática, profundidad e iluminación volumétrica, sobre base oscura azul medianoche con color cinematográfico libre y vibrante; reserva una zona inferior más sobria para el título superpuesto y nunca lleva texto aun que si logos de productos o marcas. Las imágenes de cuerpo de IA divergen a propósito: son **diagramas esquemáticos o infografías** (arquitecturas, flujos, *pipelines*, modelos por capas o comparativas) en la **familia visual de CODERTECTURA**, con nodos, flechas y conectores; pueden llevar **etiquetas cortas** cuando aclaran el concepto (el modelo lo decide por imagen) o quedarse puramente visuales.
 - El front matter incorpora `ai.sources` (lista de `{url, title, published_date}` usadas) para que la revisión pueda auditar el origen.
 - Si `BODY_IMAGES_FILE` está definido, el modelo puede proponer un array opcional `body_images`. El orquestador lo valida y escribe la especificación resuelta a ese fichero para el paso siguiente. Si **no** está definido (flujo manual actual), se eliminan todos los marcadores `{{img:<id>}}` y el comportamiento es idéntico al anterior (compatibilidad hacia atrás).
 
@@ -179,13 +179,13 @@ Esquema de cada elemento de `body_images` (lo que devuelve el modelo):
 }
 ```
 
-Para `type: "source"`, el modelo **solo** indica `source_url` (el artículo, para la atribución). El orquestador selecciona la URL de imagen concreta a partir de los candidatos `images` de esa fuente y la fija en la especificación (`image_url`), de modo que una URL de imagen **nunca** procede de la salida del modelo (defensa SSRF).
+Para `type: "source"`, el modelo indica `source_url` (el artículo, para la atribución) y **puede** nombrar un `image_url` concreto, que solo se acepta si coincide **exactamente** con uno de los candidatos `images` permitidos de esa fuente; si no lo nombra, el orquestador elige el primer candidato **no usado** de esa fuente. Así una URL de imagen **nunca** procede libremente del modelo (defensa SSRF) y se pueden extraer **varias imágenes distintas de la misma fuente** (cada una con su marcador y su `image_url`).
 
 ### Resolución de imágenes de cuerpo (`resolve_body_images.py`)
 
 Sustituye cada marcador por una llamada al shortcode `figure` apuntando al fichero guardado. Es **tolerante por imagen** (si una falla, se avisa y se elimina su marcador) y **seguro en conjunto** (una especificación ausente o vacía es un no-op correcto). La portada (`generate_image.py`) sigue siendo la única imagen obligatoria.
 
-- `type: "ai"`: genera la imagen con MAI-Image-2.5 y la guarda en `static/images/<slug>/body-<n>.png`.
+- `type: "ai"`: genera un **diagrama esquemático o infografía** (arquitecturas, flujos, *pipelines*, modelos por capas o comparativas) con el modelo de imagen configurado (p. ej. `gpt-image-2`) y la guarda en `static/images/<slug>/body-<n>.png`. Puede llevar **etiquetas cortas** cuando aclaran el concepto (el modelo lo decide por imagen).
 - `type: "source"` (extracción real, sensible a derechos de autor): el host de la imagen debe estar en la lista blanca; **no** se siguen redirecciones a hosts fuera de ella y se revalida la URL **final**; se validan los **números mágicos** (PNG, JPEG, WebP, GIF) y un **tope de tamaño** (8 MB por defecto) **antes** de escribir; se guarda en `static/images/<slug>/source-<n>.<ext>`. El pie incluye atribución visible: `Fuente: [<host>](<source_url>)`.
 
 ### Variables de entorno (Fase 2)
@@ -198,7 +198,7 @@ Sustituye cada marcador por una llamada al shortcode `figure` apuntando al fiche
 | `POST_SLUG` | Variable | (de la especificación) | Slug para derivar `static/images/<slug>/`. |
 | `STATIC_IMAGES_DIR` | Variable | `static/images` | Raíz de imágenes. |
 | `AOAI_GENERATE_DEPLOYMENT` | Variable | (`AOAI_TEXT_DEPLOYMENT`) | Despliegue de texto para **ambas pasadas** de redacción (p. ej. `gpt-5.4`). Si no se define, usa `AOAI_TEXT_DEPLOYMENT`. |
-| `AOAI_IMAGE_DEPLOYMENT` | Variable | — | Despliegue de imagen (MAI-Image-2.5) para imágenes `type:ai`. |
+| `AOAI_IMAGE_DEPLOYMENT` | Variable | — | Despliegue de imagen configurado (p. ej. `gpt-image-2`) para imágenes `type:ai`. |
 | `AOAI_BODY_IMAGE_SIZE` | Variable | `1024x1024` | Tamaño de las imágenes de cuerpo generadas por IA. |
 | `AOAI_IMAGE_TIMEOUT` | Variable | `300` | Timeout HTTP de generación de imagen (segundos). |
 | `BODY_IMAGE_DOWNLOAD_TIMEOUT` | Variable | `30` | Timeout de descarga de imágenes de fuente (segundos). |

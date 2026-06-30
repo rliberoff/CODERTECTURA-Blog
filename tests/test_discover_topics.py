@@ -290,7 +290,12 @@ def test_evaluate_source_collects_allowlisted_raw_content_images_capped():
         "![malo](https://evil.example/bad.png)\n"  # off-allowlist -> dropped
         "https://devblogs.microsoft.com/b.jpg\n"  # bare image URL (allowlisted)
         "https://learn.microsoft.com/c.png\n"
-        "https://learn.microsoft.com/d.png\n"  # 4th allowlisted -> over the cap of 3
+        "https://learn.microsoft.com/d.png\n"
+        "https://learn.microsoft.com/e.png\n"
+        "https://learn.microsoft.com/f.png\n"
+        "https://learn.microsoft.com/g.png\n"
+        "https://learn.microsoft.com/h.png\n"  # 8th allowlisted -> last kept (cap of 8)
+        "https://learn.microsoft.com/i.png\n"  # 9th allowlisted -> over the cap of 8
     )
     result = {
         "url": "https://learn.microsoft.com/dotnet/post",
@@ -303,11 +308,11 @@ def test_evaluate_source_collects_allowlisted_raw_content_images_capped():
         result, now=NOW, freshness_days=FRESHNESS_DAYS, hard_cap_days=HARD_CAP_DAYS
     )
     urls = [img["url"] for img in record["images"]]
-    assert len(urls) == dt.MAX_IMAGES_PER_SOURCE == 3
+    assert len(urls) == dt.MAX_IMAGES_PER_SOURCE == 8
     assert "https://learn.microsoft.com/a.png" in urls
     assert "https://devblogs.microsoft.com/b.jpg" in urls
     assert "https://evil.example/bad.png" not in urls  # off-allowlist dropped
-    assert "https://learn.microsoft.com/d.png" not in urls  # dropped by the cap
+    assert "https://learn.microsoft.com/i.png" not in urls  # dropped by the cap
     # The markdown alt text becomes the (sanitised) image description.
     assert record["images"][0]["description"] == "diagrama"
 

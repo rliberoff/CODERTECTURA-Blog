@@ -237,7 +237,7 @@ def figure_shortcode(*, src: str, alt: str, caption: str) -> str:
         parts.append(f'alt="{alt}"')
     if caption:
         parts.append(f'caption="{caption}"')
-    return "{{< figure " + " ".join(parts) + " >}}"
+    return "{{< figure " + " ".join(parts) + " >}}{{< /figure >}}"
 
 
 def normalise_placeholder(value: object) -> "str | None":

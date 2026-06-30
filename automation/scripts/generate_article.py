@@ -84,7 +84,7 @@ from _sources import (
 
 # Version of the editorial prompt below. Stored in the post's `ai.prompt_version`
 # for provenance/auditing. Bump it whenever the prompt/voice changes.
-PROMPT_VERSION = "2026-06-30.2"
+PROMPT_VERSION = "2026-06-30.3"
 
 # Honest disclosure string, kept in sync with the archetype and hugo.yaml
 # (params.ai.defaultDisclosure).
@@ -152,38 +152,42 @@ _LINK_OR_AUTOLINK_RE = re.compile(
 # is always written in Spanish.
 # -----------------------------------------------------------------------------
 CODE_RUBRIC = """\
-Code rubric (only when the topic genuinely needs code):
-- Include a code block ONLY when it teaches something non-obvious: the gotcha, the \
-non-default option, the tricky wiring or a meaningful before/after. NEVER ship \
-boilerplate (no trivial DI registration, no empty getters/setters, no ceremonial \
-Program.cs, no "var x = new Foo()" filler).
-- Keep each block focused (about 5-20 lines). If surrounding context is needed, elide \
-it with a short "// ..." comment instead of pasting dozens of ceremony lines.
-- Use REALISTIC names that match the article's narrative (real class, method and config \
-names), never Foo/Bar/MyClass placeholders.
-- Put a comment on the ONE line that matters explaining the WHY; never narrate the \
-obvious.
-- Code must be real and runnable for the stated version; name the package or version \
-when it matters. Prefer a concrete decision or value (a real threshold, a real setting) \
-over an abstract one.
-- If no example clears this bar, write NO code for that section: good prose beats filler \
-code.
+Code rubric (code is the EXCEPTION, not the default — most articles need little or none):
+- A code block must be SPECIFIC to THIS article's subject: show the actual command, API, \
+SDK call, CLI invocation, configuration or setting the article is really about. A snippet \
+that could be pasted into ANY post (generic dotnet restore/build/test scripts, generic CI \
+gates, generic DI registration, a stock Program.cs) is FORBIDDEN even if it is correct — \
+it reads as filler and feels disconnected from the text.
+- Many topics (news, product or strategy analysis, opinion, overviews, roadmaps) have NO \
+natural code artifact. For those, write NO code at all; do NOT invent a tangential snippet \
+just to "have code". At most, show ONE real command, flag or config line that the article \
+literally discusses.
+- When you DO include code, show the non-obvious part (the gotcha, the non-default option, \
+the tricky wiring, a real before/after), never boilerplate or empty getters/setters.
+- Keep each block focused (about 5-20 lines). If surrounding context is needed, elide it \
+with a short "// ..." comment instead of pasting dozens of ceremony lines.
+- Use REALISTIC names tied to the narrative (real class, method, package and config \
+names), never Foo/Bar/MyClass or invented project names.
+- Put a comment on the ONE line that matters explaining the WHY; never narrate the obvious.
+- Code must be real and runnable for the stated version; name the package or version when \
+it matters. Prefer a concrete value (a real threshold, a real setting) over an abstract one.
+- If no example clears this bar, write NO code: good prose always beats filler code.
 """
 
 STYLE_EXEMPLARS = """\
 STYLE EXEMPLARS — imitate this VOICE and RHYTHM, NOT the content. These are real \
-excerpts written by the blog's author. Reproduce the same close, opinionated, lightly \
-self-deprecating tone, the parenthetical asides, the rhetorical questions, the punchy \
-one-line reveals, the «guillemets» around identifiers or product names and the *italics* \
-around anglicisms. Do NOT copy these sentences; write new ones that FEEL like them:
-- "Con esta parte de la carpintería básica ya montada, el siguiente paso será crear el \
-directorio `Plugins` (no somos muy originales con los nombres 😅)."
-- "**Y como puedes apreciar, ¡no hay magia!** La integración con otros LLMs en Semantic \
-Kernel la podemos hacer de formas tan pueriles o triviales como llamadas a un API REST."
-- "Es recomendable para escenarios web que se registre como *Scoped*, ya que \
-internamente el Semantic Kernel gestiona estados y contextos que en escenarios \
-compartidos podrían producir efectos secundarios y comportamientos inesperados no \
-deseados."
+excerpts written by the blog's author. This is a PERSONAL blog: the author speaks in \
+the FIRST PERSON SINGULAR ("yo") and addresses ONE reader as "tú". Reproduce that \
+personal, opinionated, lightly self-deprecating tone, the parenthetical asides, the \
+rhetorical questions, the punchy one-line reveals, the «guillemets» around identifiers \
+or product names and the *italics* around anglicisms. Do NOT copy these sentences; write \
+new ones that FEEL like them:
+- "A mí particularmente me gusta usar Azure Application Insights como servicio para mis \
+trazas y registros de eventos."
+- "Mi recomendación es que inviertas cierto tiempo y esfuerzo en implementar un patrón \
+`Factory` para la *skill*."
+- "**Y como puedes apreciar, ¡no hay magia!**"
+- "(de nuevo los nombres no son mi fuerte 😅)"
 - "Y de todos los guerreros, no se les ocurrió ninguno mejor que el Ninja. ¿Pero qué es \
 exactamente un «Programador Ninja»?"
 """
@@ -208,9 +212,13 @@ and "caption". Only the image-generation fields "image_prompt" and "prompt_en" a
 written IN ENGLISH (image models expect English).
 
 Voice and style (for the Spanish text you write):
-- Write in Spain Spanish using the first person plural ("veamos", "analicemos", "os \
-mostramos"), with a close, editorial tone of a technical community.
-- Address the reader as "vosotros" where appropriate ("habréis visto", "podéis").
+- This is a PERSONAL blog. Write in Spain Spanish in the FIRST PERSON SINGULAR — the \
+author is always "yo", NEVER the editorial plural "nosotros" ("veo", "creo", "he \
+probado", "en mi experiencia", "os mostramos" -> "te muestro").
+- Address ONE reader directly as "tú" (singular): "te muestro", "si me preguntas", \
+"verás", "fíjate". Concretely: write "Si me preguntas por una hoja de ruta sensata, yo \
+iría por aquí", NOT "Si nos preguntáis... nosotros iríamos...". Close, personal and \
+opinionated tone.
 - Technical but accessible: explain the "why" before the "how", with concrete examples.
 - For any code, follow the "Code rubric" included below: real and runnable, focused on \
 the non-obvious, never boilerplate or filler, and omitted entirely when it adds no value.
@@ -306,6 +314,10 @@ Output language: keep everything reader-facing IN SPANISH (Spain). Do not transl
 any other language.
 
 Rules:
+- VOICE (most important): this is a PERSONAL blog. The author always writes in the FIRST \
+PERSON SINGULAR ("yo"), NEVER the editorial plural ("nosotros"); address ONE reader as \
+"tú". Rewrite every editorial plural, e.g. "Si nos preguntáis... nosotros iríamos" -> \
+"Si me preguntas... yo iría", "os mostramos" -> "te muestro", "veamos" -> "vamos a ver".
 - Return EXCLUSIVELY a valid JSON object (no code fences) with EXACTLY these keys: \
 "title", "description", "tags", "categories", "body_markdown". No other keys and no \
 text outside the JSON object.

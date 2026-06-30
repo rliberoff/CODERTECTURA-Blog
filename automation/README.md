@@ -23,7 +23,7 @@ Cada fichero YAML describe un único tema con los campos siguientes.
 | Campo | Tipo | Obligatorio | Descripción |
 | ------- | ------ | :-----------: | ------------- |
 | `id` | string | Sí | Identificador único y estable (kebab-case). Coincide con el nombre del fichero y es la clave primaria. |
-| `title` | string | Sí | Título propuesto del artículo, en español. Parte de la clave de deduplicación exacta. |
+| `title` | string | Sí | Título de trabajo del tema, en inglés (metadato interno de descubrimiento; el título final en español se genera al redactar el artículo). Parte de la clave de deduplicación exacta. |
 | `slug` | string | Sí | Slug del artículo (kebab-case, ASCII). Al publicar debe coincidir con `content/posts/<slug>.md`. Parte de la deduplicación exacta. |
 | `status` | enum | Sí | Estado en el ciclo de vida (ver tabla de estados). |
 | `source` | url | Sí | URL oficial de Microsoft que respalda el tema (fuente autorizada). |
@@ -159,6 +159,7 @@ La **Fase 2** consume el campo `sources` de los candidatos para fundar el artíc
 
 ### Redacción con fundamento (`generate_article.py`)
 
+- **Doble pasada (C.1)**: la pasada 1 redacta un borrador fundado en las fuentes con código real; la pasada 2 reescribe la prosa para la **voz del blog** y endurece los ejemplos de código, preservando intactos los marcadores `{{img:<id>}}`, el `slug`, la portada (`image_prompt`) y las `body_images`. Ambas pasadas usan el despliegue de generación (`AOAI_GENERATE_DEPLOYMENT`, p. ej. `gpt-5.4`, con *fallback* a `AOAI_TEXT_DEPLOYMENT`). La pasada 2 es *fail-open*: si falla, se conserva el borrador. El presupuesto de *grounding* por fuente sube a 3000 caracteres para ejemplos de código más fieles.
 - Las fuentes llegan por **fichero** (`SOURCES_FILE`, JSON UTF-8), nunca por argumentos, igual que `IMAGE_PROMPT_FILE`. Se aceptan tanto una lista como un objeto con clave `sources`; cada entrada es `{url, title, published_date, host, kind}` y, opcionalmente, un extracto (`raw_content`/`text`/`snippet`) y candidatos de imagen (`images`).
 - Todo el contenido se trata como **DATOS EXTERNOS NO FIABLES**: el host se revalida contra la lista blanca, el texto se sanea y se inyecta en el prompt dentro de un bloque delimitado con la instrucción de no seguir órdenes que aparezcan dentro y de citar **solo** las URLs proporcionadas (enlaces Markdown).
 - La portada (`image_prompt`) se ancla al título y al contenido real del artículo con un estilo **cinematográfico de alto impacto**: una escena conceptual con un sujeto protagonista (siluetas, figuras de espaldas o robots/mascotas, sin rostros reales), composición dramática, profundidad e iluminación volumétrica, sobre base oscura azul medianoche con color cinematográfico libre y vibrante; reserva una zona inferior más sobria para el título superpuesto y nunca lleva texto aun que si logos de productos o marcas. Las imágenes de cuerpo de IA divergen a propósito: mantienen la **familia visual de CODERTECTURA** plana y explicativa para ilustrar conceptos y diagramas.
@@ -196,6 +197,7 @@ Sustituye cada marcador por una llamada al shortcode `figure` apuntando al fiche
 | `POST_PATH` | Variable | (de la especificación) | `.md` a reescribir (`resolve_body_images.py`). |
 | `POST_SLUG` | Variable | (de la especificación) | Slug para derivar `static/images/<slug>/`. |
 | `STATIC_IMAGES_DIR` | Variable | `static/images` | Raíz de imágenes. |
+| `AOAI_GENERATE_DEPLOYMENT` | Variable | (`AOAI_TEXT_DEPLOYMENT`) | Despliegue de texto para **ambas pasadas** de redacción (p. ej. `gpt-5.4`). Si no se define, usa `AOAI_TEXT_DEPLOYMENT`. |
 | `AOAI_IMAGE_DEPLOYMENT` | Variable | — | Despliegue de imagen (MAI-Image-2.5) para imágenes `type:ai`. |
 | `AOAI_BODY_IMAGE_SIZE` | Variable | `1024x1024` | Tamaño de las imágenes de cuerpo generadas por IA. |
 | `AOAI_IMAGE_TIMEOUT` | Variable | `300` | Timeout HTTP de generación de imagen (segundos). |
@@ -203,4 +205,3 @@ Sustituye cada marcador por una llamada al shortcode `figure` apuntando al fiche
 | `BODY_IMAGE_MAX_BYTES` | Variable | `8388608` | Tamaño máximo aceptado de una imagen de fuente (bytes). |
 
 Las pruebas offline cubren el parseo del fichero de fuentes, la validación del contrato `body_images`, la reescritura de marcadores a `figure`, los números mágicos (aceptar/rechazar), el rechazo de redirecciones fuera de la lista blanca y el no-op con especificación vacía (cliente de imagen y descarga HTTP simulados; sin red).
-

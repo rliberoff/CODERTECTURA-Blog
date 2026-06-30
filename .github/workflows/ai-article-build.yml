@@ -82,6 +82,11 @@ env:
   AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
   AOAI_ENDPOINT: ${{ vars.AZURE_OPENAI_ENDPOINT }}
   AOAI_TEXT_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT_TEXT }}
+  # Article writing uses a dedicated (larger) deployment, e.g. full gpt-5.4. Falls
+  # back to the shared text deployment (used by discovery, e.g. gpt-5.4-mini) when
+  # AZURE_OPENAI_DEPLOYMENT_TEXT_GENERATE is not set, so nothing breaks before it
+  # is provisioned.
+  AOAI_GENERATE_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT_TEXT_GENERATE || vars.AZURE_OPENAI_DEPLOYMENT_TEXT }}
   AOAI_IMAGE_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT_IMAGE }}
   # Cover-image size. A landscape size looks better as a header background.
   AOAI_IMAGE_SIZE: "1792x1024"
@@ -138,6 +143,7 @@ jobs:
         env:
           ARTICLE_TOPIC: ${{ inputs.topic }}
           SOURCES_FILE_B64: ${{ inputs.sources_file_b64 }}
+          ARTICLE_TRACE_STDOUT: "true"
           # The script writes the model's cover-image prompt here for the next step.
           IMAGE_PROMPT_FILE: ${{ runner.temp }}/image_prompt.txt
         run: |
@@ -162,6 +168,7 @@ jobs:
       - name: Generar la imagen de portada (static/images/<slug>/cover.png)
         shell: bash
         env:
+          IMAGE_TRACE_STDOUT: "true"
           IMAGE_PROMPT_FILE: ${{ runner.temp }}/image_prompt.txt
           COVER_PATH: ${{ steps.generate.outputs.cover_path }}
         run: |
@@ -268,7 +275,7 @@ jobs:
             ## Borrador de artículo generado por IA
 
             - **Tema solicitado:** ${{ inputs.topic }}
-            - **Modelo (texto):** ${{ env.AOAI_TEXT_DEPLOYMENT }} (Azure AI Foundry)
+            - **Modelo (texto):** ${{ env.AOAI_GENERATE_DEPLOYMENT }} (Azure AI Foundry)
             - **Modelo (imagen):** ${{ env.AOAI_IMAGE_DEPLOYMENT }} (Azure AI Foundry)
             - **Fichero:** `${{ steps.generate.outputs.path }}`
             - **Portada:** `${{ steps.generate.outputs.cover_path }}`

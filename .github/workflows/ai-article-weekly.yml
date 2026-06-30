@@ -125,6 +125,7 @@ jobs:
         env:
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           DISCOVERY_FOCUS: ${{ inputs.focus }}
+          DISCOVERY_TRACE_STDOUT: "true"
           # schedule -> false (real run); manual -> follows the dry_run input.
           WEEKLY_DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
         run: |

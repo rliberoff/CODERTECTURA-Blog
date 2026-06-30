@@ -576,6 +576,99 @@ def test_validate_source_images_drops_denylisted(monkeypatch=None):
             os.environ["IMAGE_URL_DENYLIST"] = saved
 
 
+# -----------------------------------------------------------------------------
+# Two-pass voice/code polish merge (_merge_polished): prose-only, structure-safe.
+# -----------------------------------------------------------------------------
+
+
+def test_merge_polished_overwrites_prose_keeps_structure():
+    draft = {
+        "title": "Borrador",
+        "slug": "borrador-net",
+        "description": "desc vieja",
+        "tags": ["a"],
+        "categories": ["Azure"],
+        "image_prompt": "A cinematic cover.",
+        "body_markdown": "Intro.\n\n{{img:fig}}\n\nCuerpo.\n",
+        "body_images": [
+            {"placeholder": "{{img:fig}}", "type": "ai", "alt": "a", "caption": "c", "prompt_en": "p"}
+        ],
+    }
+    refined = {
+        "title": "Título con voz",
+        "description": "desc nueva y mejor",
+        "tags": ["dotnet", "azure"],
+        "categories": ["Inteligencia Artificial"],
+        "body_markdown": "Intro con gancho.\n\n{{img:fig}}\n\nCuerpo afilado.\n",
+        # Even if the model echoes these back, the merge MUST ignore them.
+        "slug": "otro-slug",
+        "image_prompt": "Hijacked.",
+        "body_images": [],
+    }
+    merged = ga._merge_polished(draft, refined)
+    # Prose fields updated...
+    assert merged["title"] == "Título con voz"
+    assert merged["description"] == "desc nueva y mejor"
+    assert merged["tags"] == ["dotnet", "azure"]
+    assert merged["categories"] == ["Inteligencia Artificial"]
+    assert "Cuerpo afilado." in merged["body_markdown"]
+    # ...structure preserved from the draft, never from the polish output.
+    assert merged["slug"] == "borrador-net"
+    assert merged["image_prompt"] == "A cinematic cover."
+    assert merged["body_images"] == draft["body_images"]
+    # Inputs are not mutated.
+    assert draft["title"] == "Borrador"
+
+
+def test_merge_polished_keeps_draft_body_when_placeholder_dropped():
+    draft = {
+        "title": "T",
+        "description": "d",
+        "body_markdown": "Intro.\n\n{{img:fig}}\n\nCuerpo.\n",
+        "body_images": [
+            {"placeholder": "{{img:fig}}", "type": "ai", "alt": "a", "caption": "c", "prompt_en": "p"}
+        ],
+    }
+    refined = {
+        "title": "T2",
+        # The polish output lost the {{img:fig}} placeholder -> body must be rejected.
+        "body_markdown": "Intro reescrita sin el marcador.\n\nCuerpo.\n",
+    }
+    merged = ga._merge_polished(draft, refined)
+    assert merged["title"] == "T2"  # other prose still applies
+    assert merged["body_markdown"] == draft["body_markdown"]  # body kept (placeholder safe)
+
+
+def test_merge_polished_ignores_invalid_or_empty_fields():
+    draft = {
+        "title": "Original",
+        "description": "desc",
+        "tags": ["x"],
+        "categories": ["Azure"],
+        "body_markdown": "Cuerpo.\n",
+    }
+    refined = {
+        "title": "   ",          # blank -> ignored
+        "description": 123,       # wrong type -> ignored
+        "tags": [],               # empty list -> ignored
+        "categories": "Azure",    # wrong type -> ignored
+        "body_markdown": "",      # empty -> ignored
+    }
+    merged = ga._merge_polished(draft, refined)
+    assert merged["title"] == "Original"
+    assert merged["description"] == "desc"
+    assert merged["tags"] == ["x"]
+    assert merged["categories"] == ["Azure"]
+    assert merged["body_markdown"] == "Cuerpo.\n"
+
+
+def test_merge_polished_non_dict_refined_returns_draft_copy():
+    draft = {"title": "T", "body_markdown": "B\n"}
+    merged = ga._merge_polished(draft, None)
+    assert merged == draft
+    assert merged is not draft  # a copy, not the same object
+
+
 def _run_all():
     """Tiny runner so the file also works under plain ``python``."""
     failures = 0

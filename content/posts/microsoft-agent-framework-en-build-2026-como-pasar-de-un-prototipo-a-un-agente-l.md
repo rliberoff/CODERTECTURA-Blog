@@ -2,7 +2,7 @@
 title: 'Microsoft Agent Framework en Build 2026: cómo pasar de un prototipo a un agente
   listo para producción'
 date: '2026-07-01T10:07:38+00:00'
-draft: true
+draft: false
 slug: microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l
 description: 'En Build 2026, Microsoft Agent Framework pone el foco donde de verdad
   importa: harnesses, aprobaciones, memoria, observabilidad y flujos multiagente en
@@ -25,8 +25,8 @@ ai:
   model: gpt-5.4
   prompt_version: 2026-06-30.5
   generated_at: '2026-07-01T10:07:38+00:00'
-  reviewed_by: ''
-  review_status: pending
+  reviewed_by: 'rliberoff'
+  review_status: approved
   disclosure: Borrador asistido por IA; revisado por una persona antes de su publicación.
   sources:
   - url: https://developer.microsoft.com/blog/build-recap

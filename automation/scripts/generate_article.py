@@ -249,7 +249,7 @@ the provided URLs; never invent or alter a URL.
 
 Return EXCLUSIVELY a valid JSON object (no code fences), with these keys:
 - "title": catchy headline IN SPANISH (without wrapping quotes).
-- "slug": ASCII kebab-case derived from the title (lowercase, only [a-z0-9-]).
+- "slug": ASCII kebab-case derived from the title and the final article filename convention (lowercase, only [a-z0-9-]). Do not invent a different slug for branding or style; derive it directly from the title and keep it stable and predictable.
 - "description": 1-2 sentences IN SPANISH (ideally <=160 characters) for the meta \
 description and cards; plain text, no Markdown.
 - "tags": list of 3 to 6 tags IN SPANISH.
@@ -314,7 +314,7 @@ should be visually rich and well-paced.
     + CODE_RUBRIC
     + """\
 
-Do not add extra keys or any text outside the JSON object.\
+Do not add extra keys or any text outside the JSON object. The slug must be the canonical, title-derived slug that will later be prefixed with the publication date in the filename (for example, YYYY-MM-DD-<slug>.md), so keep it simple, stable and directly traceable to the title.\
 """
 )
 
@@ -445,6 +445,12 @@ def slugify(value: str) -> str:
     hyphenated = re.sub(r"[^a-z0-9]+", "-", lowered)
     collapsed = re.sub(r"-{2,}", "-", hyphenated)
     return collapsed.strip("-")
+
+
+def _date_prefixed_filename(slug: str, now_iso: str) -> str:
+    """Return ``YYYY-MM-DD-<slug>.md`` derived from the ISO timestamp."""
+    date_prefix = now_iso[:10]  # YYYY-MM-DD
+    return f"{date_prefix}-{slug}.md"
 
 
 def require_str(payload: dict, key: str) -> str:
@@ -1401,8 +1407,9 @@ def main() -> None:
     article_debug_payload["body_image_specs"] = body_image_specs
 
     posts_dir = args.posts_dir.strip() or "content/posts"
-    rel_path = f"{posts_dir.rstrip('/')}/{slug}.md"
-    out_path = os.path.join(posts_dir, f"{slug}.md")
+    filename = _date_prefixed_filename(slug, now_iso)
+    rel_path = f"{posts_dir.rstrip('/')}/{filename}"
+    out_path = os.path.join(posts_dir, filename)
 
     if os.path.exists(out_path):
         fail(

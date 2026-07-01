@@ -76,7 +76,7 @@ from _sources import (
 # per-image prompt decides whether to use them); only watermarks and recognisable
 # real human faces are forbidden.
 BODY_STYLE_SUFFIX = (
-    " -- clean modern SCHEMATIC technical diagram or infographic, flat explanatory "
+    " -- clean modern SCHEMATIC technical diagram or infographic, flat explanatory " 
     "style, deep midnight navy-to-black background with luminous teal, cyan and "
     "neon-green accents, soft glow, geometric nodes, arrows and connectors, clear "
     "visual hierarchy; concise short labels and annotations are allowed where they "

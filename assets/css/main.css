@@ -1874,6 +1874,32 @@ button:focus-visible,
     --social-color: #ffb000;
 }
 
+.footer__humans {
+    display: inline-flex;
+    margin-top: 0.5rem;
+    opacity: 0.9;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.footer__humans img {
+    block-size: auto;
+    display: block;
+    filter: saturate(0.95);
+    inline-size: 88px;
+    transition: filter 0.18s ease;
+}
+
+.footer__humans:hover,
+.footer__humans:focus-visible {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+.footer__humans:hover img,
+.footer__humans:focus-visible img {
+    filter: saturate(1.1) drop-shadow(0 0 8px rgba(94, 234, 212, 0.45));
+}
+
 .content blockquote,
 .notice,
 .notice--info,

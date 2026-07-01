@@ -1,0 +1,15 @@
+{{- $src := .Get "src" | default "images/humanstxt-isolated-orange.gif" -}}
+{{- $alt := .Get "alt" | default "Humans.txt" -}}
+{{- $caption := .Get "caption" | default "Descubre quién hay detrás de este sitio en [humans.txt](/humans.txt)" -}}
+{{- $width := .Get "width" | default "88" -}}
+{{- $height := .Get "height" | default "31" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<figure class="humans-shortcode{{ with $class }} {{ . }}{{ end }}">
+    <a href="/humans.txt" target="_blank" rel="noopener" aria-label="humans.txt — conoce al equipo detrás del sitio">
+        <img src="{{ $src | relURL }}" alt="{{ $alt }}" width="{{ $width }}" height="{{ $height }}" loading="lazy">
+    </a>
+    {{- with $caption -}}
+    <figcaption>{{ $caption | markdownify }}</figcaption>
+    {{- end -}}
+</figure>

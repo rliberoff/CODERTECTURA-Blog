@@ -21,3 +21,24 @@ assets/css/*.tmp
 .squad/.cache/
 # Squad: SubSquad activation file (local to this machine)
 .squad-workstream
+
+# IDE local settings
+.vs/
+
+# Python tools cache
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+*.egg-info/
+dist/
+build/
+
+# Local environment files
+.env.local
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log

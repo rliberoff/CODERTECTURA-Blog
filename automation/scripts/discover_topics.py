@@ -245,6 +245,7 @@ Do not add extra keys or any text outside the JSON object.\
 # -----------------------------------------------------------------------------
 
 _CONTROL_CHARS = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
+_DATE_PREFIX_RE = re.compile(r"^\d{4}-\d{2}-\d{2}-")
 
 
 def slugify(value: str) -> str:
@@ -255,6 +256,12 @@ def slugify(value: str) -> str:
     hyphenated = re.sub(r"[^a-z0-9]+", "-", lowered)
     collapsed = re.sub(r"-{2,}", "-", hyphenated)
     return collapsed.strip("-")
+
+
+def _extract_slug_from_filename(name: str) -> str:
+    """Return the slug part of a filename, stripping any ``YYYY-MM-DD-`` prefix."""
+    stem = os.path.splitext(name)[0]
+    return _DATE_PREFIX_RE.sub("", stem)
 
 
 def sanitise_untrusted_text(value: object, *, max_length: int = 500) -> str:
@@ -794,7 +801,7 @@ def load_published_posts(posts_dir: str) -> list:
         front = _read_front_matter(text)
         slug = front.get("slug")
         if not isinstance(slug, str) or not slug.strip():
-            slug = os.path.splitext(name)[0]
+            slug = _extract_slug_from_filename(name)
         title = front.get("title")
         posts.append(
             {

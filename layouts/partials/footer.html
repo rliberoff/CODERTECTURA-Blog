@@ -3,6 +3,10 @@
         <img src="{{ site.Params.logo }}" alt="" width="44" height="44">
         <strong>© {{ now.Year }} {{ site.Title }}</strong>
         <p>{{ site.Params.description }}</p>
+        <a class="footer__humans" href="/humans.txt" target="_blank" rel="noopener"
+            aria-label="humans.txt — conoce al equipo detrás del sitio">
+            <img src="{{ relURL `images/humanstxt-isolated-blank.gif` }}" alt="Humans.txt" width="88" height="31">
+        </a>
     </div>
     <nav class="footer__links" aria-label="Redes y enlaces">
         {{ with site.Params.author.social.youtube }}<a class="footer__social footer__social--youtube" href="{{ . }}"

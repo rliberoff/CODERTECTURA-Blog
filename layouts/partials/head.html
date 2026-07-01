@@ -18,3 +18,7 @@
 {{ $css := . | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{ end }}
+{{ with resources.Get "css/syntax.css" }}
+{{ $syntax := . | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $syntax.RelPermalink }}" integrity="{{ $syntax.Data.Integrity }}">
+{{ end }}

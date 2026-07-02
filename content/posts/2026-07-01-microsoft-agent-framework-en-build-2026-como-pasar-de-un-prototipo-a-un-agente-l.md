@@ -3,7 +3,7 @@ title: 'Microsoft Agent Framework en Build 2026: cómo pasar de un prototipo a u
   listo para producción'
 date: '2026-07-01T10:07:38+00:00'
 draft: false
-slug: microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l
+slug: 2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l
 description: 'En Build 2026, Microsoft Agent Framework pone el foco donde de verdad
   importa: harnesses, aprobaciones, memoria, observabilidad y flujos multiagente en
   .NET.'
@@ -18,7 +18,7 @@ tags:
 - Observabilidad
 - Arquitectura de Software
 - Build 2026
-image: /images/microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/cover.png
+image: /images/2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/cover.png
 comments: true
 ai:
   assisted: true
@@ -123,7 +123,7 @@ Yo separaría, como mínimo, estas capas:
 
 La trampa habitual es mezclarlo todo y acabar con un agente que recuerda demasiado, recuerda mal o recuerda cosas que no debería recordar. Y cuando eso ocurre, el problema no es solo de calidad. También puede ser de cumplimiento, privacidad y trazabilidad.
 
-{{< figure src="/images/microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/body-2.png" alt="Capas de memoria de un sistema de agentes" caption="No toda la memoria cumple la misma función: separar sesión, estado operativo, preferencias y conocimiento recuperable evita muchos problemas." >}}{{< /figure >}}
+{{< figure src="/images/2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/body-2.png" alt="Capas de memoria de un sistema de agentes" caption="No toda la memoria cumple la misma función: separar sesión, estado operativo, preferencias y conocimiento recuperable evita muchos problemas." >}}{{< /figure >}}
 
 ### Observabilidad: si no ves por qué actuó, no puedes operarlo
 
@@ -152,7 +152,7 @@ Necesitas trazas que te permitan reconstruir:
 
 Si además trabajas con varios agentes, esta necesidad se multiplica. Ya no quieres solo *logs* aislados, sino una visión de extremo a extremo de todo el flujo.
 
-{{< figure src="/images/microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/source-3.webp" alt="Panel de Microsoft Foundry para operar agentes" caption="La operación real de agentes exige paneles, logs y trazabilidad; justo donde la observabilidad deja de ser opcional. Fuente: [devblogs.microsoft.com](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-at-build-2026-announce)" >}}{{< /figure >}}
+{{< figure src="/images/2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/source-3.webp" alt="Panel de Microsoft Foundry para operar agentes" caption="La operación real de agentes exige paneles, logs y trazabilidad; justo donde la observabilidad deja de ser opcional. Fuente: [devblogs.microsoft.com](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-at-build-2026-announce)" >}}{{< /figure >}}
 
 ### Multiagente: útil cuando divide responsabilidades, peligroso cuando solo añade complejidad
 
@@ -196,7 +196,7 @@ Y cuando aceptas esa idea, el diseño mejora muchísimo. Dejas de meter toda la 
 - Observabilidad;
 - Intervención humana.
 
-{{< figure src="/images/microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/source-4.webp" alt="Arquitectura con varios agentes especializados" caption="Una arquitectura multiagente tiene sentido cuando cada agente asume una responsabilidad concreta y observable. Fuente: [devblogs.microsoft.com](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-at-build-2026-announce)" >}}{{< /figure >}}
+{{< figure src="/images/2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/source-4.webp" alt="Arquitectura con varios agentes especializados" caption="Una arquitectura multiagente tiene sentido cuando cada agente asume una responsabilidad concreta y observable. Fuente: [devblogs.microsoft.com](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-at-build-2026-announce)" >}}{{< /figure >}}
 
 ### Un ejemplo sencillo de política de aprobación en .NET
 

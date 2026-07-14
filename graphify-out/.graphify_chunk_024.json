@@ -1,62 +1,62 @@
 {
-  "nodes": [
-    {
-      "id": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_abstract_3d_composition",
-      "label": "Abstract 3D Composition",
-      "file_type": "image",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-09-aop-framework-csharp-parte-0\\thumbnail.jpg",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_orange_radial_flower_form",
-      "label": "Orange Radial Flower-Like Form",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-09-aop-framework-csharp-parte-0\\thumbnail.jpg",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_pastel_geometric_background",
-      "label": "Pastel Geometric Background",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-09-aop-framework-csharp-parte-0\\thumbnail.jpg",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    }
-  ],
-  "edges": [
-    {
-      "source": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_abstract_3d_composition",
-      "target": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_orange_radial_flower_form",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-09-aop-framework-csharp-parte-0\\thumbnail.jpg",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_abstract_3d_composition",
-      "target": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_pastel_geometric_background",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-09-aop-framework-csharp-parte-0\\thumbnail.jpg",
-      "source_location": null,
-      "weight": 1.0
-    }
-  ],
-  "hyperedges": [],
-  "input_tokens": 0,
-  "output_tokens": 0
+    "nodes": [
+        {
+            "id": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_abstract_3d_composition",
+            "label": "Abstract 3D Composition",
+            "file_type": "image",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-09-aop-framework-csharp-parte-0\\thumbnail.jpg",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_orange_radial_flower_form",
+            "label": "Orange Radial Flower-Like Form",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-09-aop-framework-csharp-parte-0\\thumbnail.jpg",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_pastel_geometric_background",
+            "label": "Pastel Geometric Background",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-09-aop-framework-csharp-parte-0\\thumbnail.jpg",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        }
+    ],
+    "edges": [
+        {
+            "source": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_abstract_3d_composition",
+            "target": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_orange_radial_flower_form",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-09-aop-framework-csharp-parte-0\\thumbnail.jpg",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_abstract_3d_composition",
+            "target": "static_images_2012_04_09_aop_framework_csharp_parte_0_thumbnail_pastel_geometric_background",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-09-aop-framework-csharp-parte-0\\thumbnail.jpg",
+            "source_location": null,
+            "weight": 1.0
+        }
+    ],
+    "hyperedges": [],
+    "input_tokens": 0,
+    "output_tokens": 0
 }

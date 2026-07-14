@@ -1,355 +1,355 @@
 {
-  "nodes": [
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_microsoft_foundry_agent_playground",
-      "label": "Microsoft Foundry Agent Playground",
-      "file_type": "image",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
-      "label": "Support Intelligence Agent",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
-      "label": "Support Case Analysis Workflow",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_data_fetch",
-      "label": "Support Case Data Fetch",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_pattern_analysis",
-      "label": "Support Case Pattern Analysis",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_weekly_support_volume_forecast",
-      "label": "Weekly Support Volume Forecast",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_workspace_output",
-      "label": "Workspace Output",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_hosted_agent_runtime",
-      "label": "Hosted Agent Runtime",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_identity",
-      "label": "Entra Agent Identity",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_blueprint",
-      "label": "Entra Agent Blueprint",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_code_asset",
-      "label": "Support Intelligence Code Asset",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_container_log_stream",
-      "label": "Container Log Stream",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_azure_monitor_opentelemetry_exporter",
-      "label": "Azure Monitor OpenTelemetry Exporter",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_application_insights_endpoint",
-      "label": "Application Insights Endpoint",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    },
-    {
-      "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_telemetry_export_connection_failure",
-      "label": "Telemetry Export Connection Failure",
-      "file_type": "concept",
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null
-    }
-  ],
-  "edges": [
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_microsoft_foundry_agent_playground",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_data_fetch",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_pattern_analysis",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_weekly_support_volume_forecast",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_workspace_output",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_hosted_agent_runtime",
-      "relation": "conceptually_related_to",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_identity",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_blueprint",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_code_asset",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_hosted_agent_runtime",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_container_log_stream",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_container_log_stream",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_azure_monitor_opentelemetry_exporter",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_azure_monitor_opentelemetry_exporter",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_application_insights_endpoint",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_azure_monitor_opentelemetry_exporter",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_telemetry_export_connection_failure",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_telemetry_export_connection_failure",
-      "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_application_insights_endpoint",
-      "relation": "conceptually_related_to",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
-      "source_location": null,
-      "weight": 1.0
-    }
-  ],
-  "hyperedges": [
-    {
-      "id": "support_case_analysis_pipeline",
-      "label": "Support Case Analysis Pipeline",
-      "nodes": [
-        "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_data_fetch",
-        "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_pattern_analysis",
-        "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_weekly_support_volume_forecast",
-        "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_workspace_output"
-      ],
-      "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp"
-    },
-    {
-      "id": "hosted_agent_operational_surface",
-      "label": "Hosted Agent Operational Surface",
-      "nodes": [
-        "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
-        "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_hosted_agent_runtime",
-        "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_identity",
-        "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_blueprint",
-        "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_code_asset",
-        "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_container_log_stream"
-      ],
-      "relation": "participate_in",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp"
-    }
-  ],
-  "input_tokens": 0,
-  "output_tokens": 0
+    "nodes": [
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_microsoft_foundry_agent_playground",
+            "label": "Microsoft Foundry Agent Playground",
+            "file_type": "image",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
+            "label": "Support Intelligence Agent",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
+            "label": "Support Case Analysis Workflow",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_data_fetch",
+            "label": "Support Case Data Fetch",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_pattern_analysis",
+            "label": "Support Case Pattern Analysis",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_weekly_support_volume_forecast",
+            "label": "Weekly Support Volume Forecast",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_workspace_output",
+            "label": "Workspace Output",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_hosted_agent_runtime",
+            "label": "Hosted Agent Runtime",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_identity",
+            "label": "Entra Agent Identity",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_blueprint",
+            "label": "Entra Agent Blueprint",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_code_asset",
+            "label": "Support Intelligence Code Asset",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_container_log_stream",
+            "label": "Container Log Stream",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_azure_monitor_opentelemetry_exporter",
+            "label": "Azure Monitor OpenTelemetry Exporter",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_application_insights_endpoint",
+            "label": "Application Insights Endpoint",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_telemetry_export_connection_failure",
+            "label": "Telemetry Export Connection Failure",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        }
+    ],
+    "edges": [
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_microsoft_foundry_agent_playground",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_data_fetch",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_pattern_analysis",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_weekly_support_volume_forecast",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_analysis_workflow",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_workspace_output",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_hosted_agent_runtime",
+            "relation": "conceptually_related_to",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_identity",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_blueprint",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_code_asset",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_hosted_agent_runtime",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_container_log_stream",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_container_log_stream",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_azure_monitor_opentelemetry_exporter",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_azure_monitor_opentelemetry_exporter",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_application_insights_endpoint",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_azure_monitor_opentelemetry_exporter",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_telemetry_export_connection_failure",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_telemetry_export_connection_failure",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_application_insights_endpoint",
+            "relation": "conceptually_related_to",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp",
+            "source_location": null,
+            "weight": 1.0
+        }
+    ],
+    "hyperedges": [
+        {
+            "id": "support_case_analysis_pipeline",
+            "label": "Support Case Analysis Pipeline",
+            "nodes": [
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_data_fetch",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_pattern_analysis",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_weekly_support_volume_forecast",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_workspace_output"
+            ],
+            "relation": "form",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp"
+        },
+        {
+            "id": "hosted_agent_operational_surface",
+            "label": "Hosted Agent Operational Surface",
+            "nodes": [
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_hosted_agent_runtime",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_identity",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_blueprint",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_code_asset",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_container_log_stream"
+            ],
+            "relation": "participate_in",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\source-3.webp"
+        }
+    ],
+    "input_tokens": 0,
+    "output_tokens": 0
 }

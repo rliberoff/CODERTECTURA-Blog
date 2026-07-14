@@ -1,1 +1,129 @@
-{"nodes":[{"id":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_operator","label":"Human Operator","file_type":"image","source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png","source_location":null,"source_url":null,"captured_at":null,"author":null,"contributor":null},{"id":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_central_orchestration_core","label":"Central Orchestration Core","file_type":"image","source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png","source_location":null,"source_url":null,"captured_at":null,"author":null,"contributor":null},{"id":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_specialized_ai_agents","label":"Specialized AI Agents","file_type":"image","source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png","source_location":null,"source_url":null,"captured_at":null,"author":null,"contributor":null},{"id":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_operational_monitoring_dashboards","label":"Operational Monitoring Dashboards","file_type":"image","source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png","source_location":null,"source_url":null,"captured_at":null,"author":null,"contributor":null},{"id":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_supervised_multi_agent_orchestration","label":"Human-Supervised Multi-Agent Orchestration","file_type":"concept","source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png","source_location":null,"source_url":null,"captured_at":null,"author":null,"contributor":null}],"edges":[{"source":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_specialized_ai_agents","target":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_central_orchestration_core","relation":"shares_data_with","confidence":"EXTRACTED","confidence_score":1.0,"source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png","source_location":null,"weight":1.0},{"source":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_operator","target":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_operational_monitoring_dashboards","relation":"conceptually_related_to","confidence":"EXTRACTED","confidence_score":1.0,"source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png","source_location":null,"weight":1.0},{"source":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_operational_monitoring_dashboards","target":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_specialized_ai_agents","relation":"shares_data_with","confidence":"INFERRED","confidence_score":0.85,"source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png","source_location":null,"weight":1.0},{"source":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_supervised_multi_agent_orchestration","target":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_operator","relation":"conceptually_related_to","confidence":"INFERRED","confidence_score":0.85,"source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png","source_location":null,"weight":1.0},{"source":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_supervised_multi_agent_orchestration","target":"static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_central_orchestration_core","relation":"conceptually_related_to","confidence":"INFERRED","confidence_score":0.85,"source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png","source_location":null,"weight":1.0}],"hyperedges":[{"id":"human_supervised_multi_agent_operations","label":"Human-Supervised Multi-Agent Operations","nodes":["static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_operator","static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_central_orchestration_core","static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_specialized_ai_agents","static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_operational_monitoring_dashboards"],"relation":"form","confidence":"INFERRED","confidence_score":0.85,"source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png"}],"input_tokens":0,"output_tokens":0}
+{
+    "nodes": [
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_operator",
+            "label": "Human Operator",
+            "file_type": "image",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_central_orchestration_core",
+            "label": "Central Orchestration Core",
+            "file_type": "image",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_specialized_ai_agents",
+            "label": "Specialized AI Agents",
+            "file_type": "image",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_operational_monitoring_dashboards",
+            "label": "Operational Monitoring Dashboards",
+            "file_type": "image",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_supervised_multi_agent_orchestration",
+            "label": "Human-Supervised Multi-Agent Orchestration",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        }
+    ],
+    "edges": [
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_specialized_ai_agents",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_central_orchestration_core",
+            "relation": "shares_data_with",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_operator",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_operational_monitoring_dashboards",
+            "relation": "conceptually_related_to",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_operational_monitoring_dashboards",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_specialized_ai_agents",
+            "relation": "shares_data_with",
+            "confidence": "INFERRED",
+            "confidence_score": 0.85,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_supervised_multi_agent_orchestration",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_operator",
+            "relation": "conceptually_related_to",
+            "confidence": "INFERRED",
+            "confidence_score": 0.85,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_supervised_multi_agent_orchestration",
+            "target": "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_central_orchestration_core",
+            "relation": "conceptually_related_to",
+            "confidence": "INFERRED",
+            "confidence_score": 0.85,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png",
+            "source_location": null,
+            "weight": 1.0
+        }
+    ],
+    "hyperedges": [
+        {
+            "id": "human_supervised_multi_agent_operations",
+            "label": "Human-Supervised Multi-Agent Operations",
+            "nodes": [
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_operator",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_central_orchestration_core",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_specialized_ai_agents",
+                "static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_operational_monitoring_dashboards"
+            ],
+            "relation": "form",
+            "confidence": "INFERRED",
+            "confidence_score": 0.85,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l\\cover.png"
+        }
+    ],
+    "input_tokens": 0,
+    "output_tokens": 0
+}

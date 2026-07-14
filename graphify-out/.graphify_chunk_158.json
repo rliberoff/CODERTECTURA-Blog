@@ -1,1 +1,72 @@
-{"nodes":[{"id":"static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023_promotional_thumbnail","label":"Microsoft 365 Live 2023 Promotional Thumbnail","file_type":"image","source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png","source_location":null,"source_url":null,"captured_at":null,"author":null,"contributor":null},{"id":"static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023","label":"Microsoft 365 Live 2023","file_type":"concept","source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png","source_location":null,"source_url":null,"captured_at":null,"author":null,"contributor":null},{"id":"static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365","label":"Microsoft 365","file_type":"concept","source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png","source_location":null,"source_url":null,"captured_at":null,"author":null,"contributor":null}],"edges":[{"source":"static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023_promotional_thumbnail","target":"static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023","relation":"references","confidence":"EXTRACTED","confidence_score":1.0,"source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png","source_location":null,"weight":1.0},{"source":"static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023_promotional_thumbnail","target":"static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365","relation":"references","confidence":"EXTRACTED","confidence_score":1.0,"source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png","source_location":null,"weight":1.0},{"source":"static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023","target":"static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365","relation":"conceptually_related_to","confidence":"EXTRACTED","confidence_score":1.0,"source_file":"F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png","source_location":null,"weight":1.0}],"hyperedges":[],"input_tokens":0,"output_tokens":0}
+{
+    "nodes": [
+        {
+            "id": "static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023_promotional_thumbnail",
+            "label": "Microsoft 365 Live 2023 Promotional Thumbnail",
+            "file_type": "image",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023",
+            "label": "Microsoft 365 Live 2023",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        },
+        {
+            "id": "static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365",
+            "label": "Microsoft 365",
+            "file_type": "concept",
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png",
+            "source_location": null,
+            "source_url": null,
+            "captured_at": null,
+            "author": null,
+            "contributor": null
+        }
+    ],
+    "edges": [
+        {
+            "source": "static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023_promotional_thumbnail",
+            "target": "static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023_promotional_thumbnail",
+            "target": "static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365",
+            "relation": "references",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png",
+            "source_location": null,
+            "weight": 1.0
+        },
+        {
+            "source": "static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365_live_2023",
+            "target": "static_images_2023_10_25_nos_vemos_en_microsoft_365_live_2023_thumbnail_microsoft_365",
+            "relation": "conceptually_related_to",
+            "confidence": "EXTRACTED",
+            "confidence_score": 1.0,
+            "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2023-10-25-nos-vemos-en-microsoft-365-live-2023\\thumbnail.png",
+            "source_location": null,
+            "weight": 1.0
+        }
+    ],
+    "hyperedges": [],
+    "input_tokens": 0,
+    "output_tokens": 0
+}

@@ -1,0 +1,83 @@
+{
+  "nodes": [
+    {
+      "id": "static_images_2008_02_18_el_destornillador_header_cruciform_screwdriver_tip_patent_drawing",
+      "label": "Cruciform Screwdriver Tip Patent Drawing",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2008-02-18-el-destornillador\\header.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2008_02_18_el_destornillador_header_cruciform_screwdriver_tip_geometry",
+      "label": "Cruciform Screwdriver Tip Geometry",
+      "file_type": "concept",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2008-02-18-el-destornillador\\header.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2008_02_18_el_destornillador_header_henry_f_phillips",
+      "label": "Henry F. Phillips",
+      "file_type": "concept",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2008-02-18-el-destornillador\\header.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2008_02_18_el_destornillador_header_thomas_m_fitzpatrick",
+      "label": "Thomas M. Fitzpatrick",
+      "file_type": "concept",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2008-02-18-el-destornillador\\header.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "static_images_2008_02_18_el_destornillador_header_cruciform_screwdriver_tip_patent_drawing",
+      "target": "static_images_2008_02_18_el_destornillador_header_cruciform_screwdriver_tip_geometry",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2008-02-18-el-destornillador\\header.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2008_02_18_el_destornillador_header_cruciform_screwdriver_tip_patent_drawing",
+      "target": "static_images_2008_02_18_el_destornillador_header_henry_f_phillips",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2008-02-18-el-destornillador\\header.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2008_02_18_el_destornillador_header_cruciform_screwdriver_tip_patent_drawing",
+      "target": "static_images_2008_02_18_el_destornillador_header_thomas_m_fitzpatrick",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2008-02-18-el-destornillador\\header.jpg",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

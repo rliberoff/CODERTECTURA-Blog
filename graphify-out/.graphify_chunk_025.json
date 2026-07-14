@@ -1,0 +1,440 @@
+{
+  "nodes": [
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_marshalbyrefobject",
+      "label": "MarshalByRefObject",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_contextboundobject",
+      "label": "ContextBoundObject",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptableobject",
+      "label": "InterceptableObject",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_icontextattribute",
+      "label": "IContextAttribute",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_icontextproperty",
+      "label": "IContextProperty",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_contextattribute",
+      "label": "ContextAttribute",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_context",
+      "label": "Context",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_iconstructioncallmessage",
+      "label": "IConstructionCallMessage",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptcontextattribute",
+      "label": "InterceptContextAttribute",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_icontributeclientcontextsink",
+      "label": "IContributeClientContextSink",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_icontributeservercontextsink",
+      "label": "IContributeServerContextSink",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptproperty",
+      "label": "InterceptProperty",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imessagesink",
+      "label": "IMessageSink",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imessage",
+      "label": "IMessage",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imessagectrl",
+      "label": "IMessageCtrl",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptsink",
+      "label": "InterceptSink",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_attribute",
+      "label": "Attribute",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptableattribute",
+      "label": "InterceptableAttribute",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imethodcallmessage",
+      "label": "IMethodCallMessage",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imethodreturnmessage",
+      "label": "IMethodReturnMessage",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_iprocessor",
+      "label": "IProcessor",
+      "file_type": "image",
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_contextboundobject",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_marshalbyrefobject",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptableobject",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_contextboundobject",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_contextattribute",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_icontextattribute",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_contextattribute",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_icontextproperty",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptcontextattribute",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_contextattribute",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptcontextattribute",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_context",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptcontextattribute",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_iconstructioncallmessage",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptproperty",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_icontextproperty",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptproperty",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_icontributeclientcontextsink",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptproperty",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_icontributeservercontextsink",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptproperty",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_context",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptproperty",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imessagesink",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptsink",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imessagesink",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptsink",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imessage",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptsink",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imessagectrl",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptableattribute",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_attribute",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptableattribute",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_iprocessor",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_iprocessor",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imethodcallmessage",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_iprocessor",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_imethodreturnmessage",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_iprocessor",
+      "target": "static_images_2012_04_10_aop_framework_csharp_parte_1_aop_diagrama_clases_interceptableattribute",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "F:\\repos\\personal\\CODERTECTURA-Blog\\static\\images\\2012-04-10-aop-framework-csharp-parte-1\\aop_diagrama_clases.png",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

@@ -1,0 +1,2162 @@
+{
+  ".copilot/mcp-config.json": {
+    "mtime": 1782904201.1016183,
+    "ast_hash": "0693f6358cda724025f58a1d7c8d5df6",
+    "semantic_hash": ""
+  },
+  ".markdownlint.json": {
+    "mtime": 1781113623.5402076,
+    "ast_hash": "43d955f7a5f0944c95a1ba66c74fa16e",
+    "semantic_hash": ""
+  },
+  ".mcp.json": {
+    "mtime": 1782904201.1177416,
+    "ast_hash": "2f03a7464b73ca0c75b4d8193e9bc9f3",
+    "semantic_hash": ""
+  },
+  ".squad/casting/history.json": {
+    "mtime": 1782904201.1253347,
+    "ast_hash": "36234d70a81b6230fd57b22178338fd9",
+    "semantic_hash": ""
+  },
+  ".squad/casting/policy.json": {
+    "mtime": 1782904201.1253347,
+    "ast_hash": "62e06aaaa8a90bc5e557eaed778dee32",
+    "semantic_hash": ""
+  },
+  ".squad/casting/registry.json": {
+    "mtime": 1782904201.1253347,
+    "ast_hash": "9eed6b358379e378edce69bcfdfdf06d",
+    "semantic_hash": ""
+  },
+  ".squad/config.json": {
+    "mtime": 1782904201.125877,
+    "ast_hash": "4666a5342416c441fea0605bd7912800",
+    "semantic_hash": ""
+  },
+  ".squad/memory/config.json": {
+    "mtime": 1782904201.1275077,
+    "ast_hash": "abb94ddbb6b88a4e0066669399d69417",
+    "semantic_hash": ""
+  },
+  ".squad/memory/index.json": {
+    "mtime": 1782904201.1275077,
+    "ast_hash": "35d0e0b801444bb1f4c2115720f8e4f6",
+    "semantic_hash": ""
+  },
+  ".squad/templates/casting-history.json": {
+    "mtime": 1782904201.1285155,
+    "ast_hash": "c52071d1dcd59e9c84b87715cb613387",
+    "semantic_hash": ""
+  },
+  ".squad/templates/casting-policy.json": {
+    "mtime": 1782904201.1300228,
+    "ast_hash": "62e06aaaa8a90bc5e557eaed778dee32",
+    "semantic_hash": ""
+  },
+  ".squad/templates/casting-registry.json": {
+    "mtime": 1782904201.1300228,
+    "ast_hash": "455db635aac63fa22dbab85fee0c6791",
+    "semantic_hash": ""
+  },
+  ".squad/templates/casting/Futurama.json": {
+    "mtime": 1782904201.1300228,
+    "ast_hash": "39493201733e693a3c20d050a965324c",
+    "semantic_hash": ""
+  },
+  ".squad/templates/package.json": {
+    "mtime": 1782904201.1370294,
+    "ast_hash": "56368b3e2b84dac2c9ed38b5c4329ec2",
+    "semantic_hash": ""
+  },
+  ".squad/templates/ralph-triage.js": {
+    "mtime": 1782904201.139402,
+    "ast_hash": "f0a16a5fc40936fa5112e91c3d1c5fa3",
+    "semantic_hash": ""
+  },
+  ".squad/templates/schedule.json": {
+    "mtime": 1782904201.1404011,
+    "ast_hash": "8661902451bedf3589fa8e2b6b884bfb",
+    "semantic_hash": ""
+  },
+  ".squad/templates/scripts/notes/fetch.ps1": {
+    "mtime": 1782904201.1414032,
+    "ast_hash": "23664301f7bc708fc6bbf2fa88cc5928",
+    "semantic_hash": ""
+  },
+  ".squad/templates/scripts/notes/write-note.ps1": {
+    "mtime": 1782904201.1414032,
+    "ast_hash": "d09eed178302aa76364800927028a8b3",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/distributed-mesh/sync-mesh.ps1": {
+    "mtime": 1782904201.1461816,
+    "ast_hash": "09aec5c140d07b2a282e9aa7083cddbd",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/distributed-mesh/sync-mesh.sh": {
+    "mtime": 1782904201.1461816,
+    "ast_hash": "ae739f50aa5680e25123ac79066d4a42",
+    "semantic_hash": ""
+  },
+  ".vscode/settings.json": {
+    "mtime": 1782904201.1698003,
+    "ast_hash": "0d416e08a7a2504372fe84bf8d6e5e12",
+    "semantic_hash": ""
+  },
+  "assets/js/hugo-main.js": {
+    "mtime": 1782904201.1725643,
+    "ast_hash": "486ac521e68a24d2b3fe2ea164ef32a5",
+    "semantic_hash": ""
+  },
+  "assets/js/search.js": {
+    "mtime": 1782904201.1732774,
+    "ast_hash": "730f26e5617ab6fa5709d7a47f139c29",
+    "semantic_hash": ""
+  },
+  "automation/scripts/_foundry.py": {
+    "mtime": 1782904201.1738584,
+    "ast_hash": "2fba02971acf68bb9b57f7e5c3c83e72",
+    "semantic_hash": ""
+  },
+  "automation/scripts/_sources.py": {
+    "mtime": 1782904201.1744635,
+    "ast_hash": "5ac56559ea7be8528d2ca4bccd683c79",
+    "semantic_hash": ""
+  },
+  "automation/scripts/_text.py": {
+    "mtime": 1784026185.3497384,
+    "ast_hash": "5f81492ebee6063b21bf2f65ffa18e4a",
+    "semantic_hash": ""
+  },
+  "automation/scripts/discover_topics.py": {
+    "mtime": 1784029615.8844671,
+    "ast_hash": "2ec1cff4684f55d30da0677d3bdc2581",
+    "semantic_hash": ""
+  },
+  "automation/scripts/generate_article.py": {
+    "mtime": 1784030711.203646,
+    "ast_hash": "59e593711036c6e89a09ea6d1e10c974",
+    "semantic_hash": ""
+  },
+  "automation/scripts/generate_image.py": {
+    "mtime": 1784027896.451146,
+    "ast_hash": "f7be6225f4357db4d6ba688e8472e449",
+    "semantic_hash": ""
+  },
+  "automation/scripts/resolve_body_images.py": {
+    "mtime": 1782904201.1777444,
+    "ast_hash": "67f5c309319a972c88cec2c1c9684ecc",
+    "semantic_hash": ""
+  },
+  "automation/scripts/topic_ledger.py": {
+    "mtime": 1784026185.345609,
+    "ast_hash": "b5255a40a08da87235b4ae028a37dd38",
+    "semantic_hash": ""
+  },
+  "static/staticwebapp.config.json": {
+    "mtime": 1782904202.8774006,
+    "ast_hash": "7c90d1e308187b967b1b9960e310fba3",
+    "semantic_hash": ""
+  },
+  "tests/test_discover_topics.py": {
+    "mtime": 1784029485.385869,
+    "ast_hash": "6b4f938f6bf1bce16b874d99073d0ad5",
+    "semantic_hash": ""
+  },
+  "tests/test_gallery_shortcode.py": {
+    "mtime": 1782904202.8792548,
+    "ast_hash": "edc3dfb4a4b294ed00a91d006b92ffab",
+    "semantic_hash": ""
+  },
+  "tests/test_generate_article.py": {
+    "mtime": 1784030711.2136486,
+    "ast_hash": "b621f6ad0043da0160a67cc83b3662df",
+    "semantic_hash": ""
+  },
+  "tests/test_generate_image.py": {
+    "mtime": 1784027922.1026585,
+    "ast_hash": "e85d40c3a2fc5146cfe60df35d466cfc",
+    "semantic_hash": ""
+  },
+  "tests/test_resolve_body_images.py": {
+    "mtime": 1782904202.8803508,
+    "ast_hash": "c3b3cf906f90b15b3c674fad9026f83b",
+    "semantic_hash": ""
+  },
+  "tests/test_topic_ledger.py": {
+    "mtime": 1784026185.3466082,
+    "ast_hash": "ae158a099fca7419806582bfbd253015",
+    "semantic_hash": ""
+  },
+  "tests/test_topic_ledger_workflows.py": {
+    "mtime": 1784026185.345609,
+    "ast_hash": "d66722e9cf3713723e2f8a5efbecbc9d",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/agent-collaboration/SKILL.md": {
+    "mtime": 1782904201.102625,
+    "ast_hash": "f7eac9532b52f4e2e6da9205402f572b",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/blog-to-linkedin-article/SKILL.md": {
+    "mtime": 1784020378.2421203,
+    "ast_hash": "4353cdcae3bac4e480f4dfad3d0fa9bf",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/blog-to-linkedin-article/references/editor-scripts.md": {
+    "mtime": 1784020130.2645504,
+    "ast_hash": "0cee5b949d43e8a6bea3928302612135",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/error-recovery/SKILL.md": {
+    "mtime": 1782904201.1036253,
+    "ast_hash": "94925681da3fbd8671f783887ef328d2",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/git-workflow/SKILL.md": {
+    "mtime": 1782904201.1036253,
+    "ast_hash": "ba5a31e46184c19bf7110d95895b4a32",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/graphify/SKILL.md": {
+    "mtime": 1782904201.104625,
+    "ast_hash": "08cb485a0f0ee923bf80d96588afcb4c",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/graphify/references/add-watch.md": {
+    "mtime": 1782904201.104625,
+    "ast_hash": "e10311cd2f69de7d62674eff2b87420f",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/graphify/references/exports.md": {
+    "mtime": 1782904201.104625,
+    "ast_hash": "f8ab6da780543bb731f858496592ce88",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1782904201.104625,
+    "ast_hash": "a50d4409dbac381356a25ca0905d833c",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1782904201.105626,
+    "ast_hash": "aa0e7ef186392cad062e60483ca7dbbf",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/graphify/references/hooks.md": {
+    "mtime": 1782904201.105626,
+    "ast_hash": "0045c2f12c69bff3a641a8908a1ac057",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/graphify/references/query.md": {
+    "mtime": 1782904201.105626,
+    "ast_hash": "82efbb856d6a3e15e7d78743b34a63c1",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/graphify/references/transcribe.md": {
+    "mtime": 1782904201.105626,
+    "ast_hash": "cf217decf113af55483edfa042f22db5",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/graphify/references/update.md": {
+    "mtime": 1782904201.105626,
+    "ast_hash": "d9a58cbd4846113826f18de077d77f2b",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/reviewer-protocol/SKILL.md": {
+    "mtime": 1782904201.1066246,
+    "ast_hash": "7d1f06a94bfa7a1ce988bb6f0b34ca53",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/secret-handling/SKILL.md": {
+    "mtime": 1782904201.1066246,
+    "ast_hash": "cc10665d0e45254dbb3f25fa700523f6",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/session-recovery/SKILL.md": {
+    "mtime": 1782904201.1076257,
+    "ast_hash": "82e1f99ce6a6d96e0a88de471f2c1842",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/squad-conventions/SKILL.md": {
+    "mtime": 1782904201.1076257,
+    "ast_hash": "d4a4536b80d657b7ad1bd3fbd1ee4e89",
+    "semantic_hash": ""
+  },
+  ".copilot/skills/test-discipline/SKILL.md": {
+    "mtime": 1782904201.1086266,
+    "ast_hash": "861d432b5dbe4971a50077b957a8ebea",
+    "semantic_hash": ""
+  },
+  ".github/agents/squad.agent.md": {
+    "mtime": 1782904201.1096265,
+    "ast_hash": "48eb14c0d82b014c6d329358e9bbddd5",
+    "semantic_hash": ""
+  },
+  ".github/agents/thinking-beast-mode.agent.md": {
+    "mtime": 1782904201.1106322,
+    "ast_hash": "e5364368e15147ffe3e2e4a9881ec53b",
+    "semantic_hash": ""
+  },
+  ".github/copilot-instructions.md": {
+    "mtime": 1782904201.1106322,
+    "ast_hash": "e189bb65e7be098b3e93d800b892e09f",
+    "semantic_hash": ""
+  },
+  ".github/instructions/coding-style-markdown.instructions.md": {
+    "mtime": 1782904201.1112514,
+    "ast_hash": "7e234cfe484ef8e56ec1abec3815c9f8",
+    "semantic_hash": ""
+  },
+  ".github/instructions/coding-style-terraform-azure.instructions.md": {
+    "mtime": 1782904201.1112514,
+    "ast_hash": "66c762879a98c4d3aaf89d334e10d062",
+    "semantic_hash": ""
+  },
+  ".github/instructions/wow-conventional-commits.instructions.md": {
+    "mtime": 1782904201.1112514,
+    "ast_hash": "e60338bebe8508cebf013ccf68ae3a69",
+    "semantic_hash": ""
+  },
+  ".github/instructions/wow-follow-up-question.instructions.md": {
+    "mtime": 1782904201.1122587,
+    "ast_hash": "ec9b6f839ed8db9def1ec2ee2cfe45d8",
+    "semantic_hash": ""
+  },
+  ".github/instructions/wow-no-dummy-no-placholder-code.instructions.md": {
+    "mtime": 1782904201.1122587,
+    "ast_hash": "6fe56b8b3c7af4e152fc44483ed741be",
+    "semantic_hash": ""
+  },
+  ".github/skills/blog-to-linkedin-article/SKILL.md": {
+    "mtime": 1784020378.2421203,
+    "ast_hash": "4353cdcae3bac4e480f4dfad3d0fa9bf",
+    "semantic_hash": ""
+  },
+  ".github/skills/blog-to-linkedin-article/references/editor-scripts.md": {
+    "mtime": 1784020130.2645504,
+    "ast_hash": "0cee5b949d43e8a6bea3928302612135",
+    "semantic_hash": ""
+  },
+  ".github/skills/create-readme/SKILL.md": {
+    "mtime": 1782904201.113257,
+    "ast_hash": "f330478abbff3a7f3785c6edd2e4aeb5",
+    "semantic_hash": ""
+  },
+  ".github/skills/microsoft-docs-and-code-samples/SKILL.md": {
+    "mtime": 1782904201.1139176,
+    "ast_hash": "0ae12c567a445ee77761ae414ba60dff",
+    "semantic_hash": ""
+  },
+  ".github/workflows/ai-article-auth-check.yml": {
+    "mtime": 1782904201.1139176,
+    "ast_hash": "ea55c2d3680f5e56b612ab858a317e44",
+    "semantic_hash": ""
+  },
+  ".github/workflows/ai-article-build.yml": {
+    "mtime": 1784027533.6704187,
+    "ast_hash": "bcfc390d400d75db25b655cdfb2200c0",
+    "semantic_hash": ""
+  },
+  ".github/workflows/ai-article-generate.yml": {
+    "mtime": 1782904201.114967,
+    "ast_hash": "2b4ae5f02ceb0df412a6d0a878e4d72e",
+    "semantic_hash": ""
+  },
+  ".github/workflows/ai-article-weekly.yml": {
+    "mtime": 1784026185.3584015,
+    "ast_hash": "eea0f0ff32cb7fdc610e3d7e6e3ce069",
+    "semantic_hash": ""
+  },
+  ".github/workflows/auto-publish-after-codeowner-approval.yml": {
+    "mtime": 1784024337.0198784,
+    "ast_hash": "dae191fe697a7f35d5c4275c35fc9868",
+    "semantic_hash": ""
+  },
+  ".github/workflows/azure-static-web-apps-kind-bush-013e82603.yml": {
+    "mtime": 1782904201.1159744,
+    "ast_hash": "12d75027db94e284eab61c6bf9c37ed2",
+    "semantic_hash": ""
+  },
+  ".github/workflows/squad-heartbeat.yml": {
+    "mtime": 1782904201.1166556,
+    "ast_hash": "519acc7dc9cbf4c3e485c1d15504ecbe",
+    "semantic_hash": ""
+  },
+  ".github/workflows/squad-issue-assign.yml": {
+    "mtime": 1782904201.1166556,
+    "ast_hash": "1eab9c9fdbbec1520e8a4d80bf39cd21",
+    "semantic_hash": ""
+  },
+  ".github/workflows/squad-triage.yml": {
+    "mtime": 1782904201.1166556,
+    "ast_hash": "c2878a776c6078ac44b110048bd2c2e8",
+    "semantic_hash": ""
+  },
+  ".github/workflows/sync-squad-labels.yml": {
+    "mtime": 1782904201.1172085,
+    "ast_hash": "46f57a4b1596a1fe71610f385945cafe",
+    "semantic_hash": ""
+  },
+  ".squad/agents/Rai/charter.md": {
+    "mtime": 1782904201.1199012,
+    "ast_hash": "65347d0675adf0f7d66fee3770cfb781",
+    "semantic_hash": ""
+  },
+  ".squad/agents/Rai/history.md": {
+    "mtime": 1782904201.1204362,
+    "ast_hash": "ee7f03190799380a7cd07d23a0095bfa",
+    "semantic_hash": ""
+  },
+  ".squad/agents/bruce/charter.md": {
+    "mtime": 1782904201.1210048,
+    "ast_hash": "e254c206126c068f796510cf4623504c",
+    "semantic_hash": ""
+  },
+  ".squad/agents/bruce/history.md": {
+    "mtime": 1782904201.1210048,
+    "ast_hash": "1518646401ff927730cd39032e383e23",
+    "semantic_hash": ""
+  },
+  ".squad/agents/natasha/charter.md": {
+    "mtime": 1782904201.1210048,
+    "ast_hash": "e2fda4294c0495b383b4966a413c5cd4",
+    "semantic_hash": ""
+  },
+  ".squad/agents/natasha/history.md": {
+    "mtime": 1782904201.1215453,
+    "ast_hash": "7cc7db68da829144089a3bf6bb3f32b9",
+    "semantic_hash": ""
+  },
+  ".squad/agents/peter/charter.md": {
+    "mtime": 1782904201.1215453,
+    "ast_hash": "8848b04bd040343a07a2912229c43484",
+    "semantic_hash": ""
+  },
+  ".squad/agents/peter/history.md": {
+    "mtime": 1782904201.1220784,
+    "ast_hash": "39c03bef91d8084c1dbfdb6e5fa4e791",
+    "semantic_hash": ""
+  },
+  ".squad/agents/ralph/charter.md": {
+    "mtime": 1782904201.1226273,
+    "ast_hash": "c3001e25d60ae8f50a156fac93741f4e",
+    "semantic_hash": ""
+  },
+  ".squad/agents/ralph/history.md": {
+    "mtime": 1782904201.1226273,
+    "ast_hash": "2018c43137be4e54cbc103391a927931",
+    "semantic_hash": ""
+  },
+  ".squad/agents/scribe/charter.md": {
+    "mtime": 1782904201.1231585,
+    "ast_hash": "9ac55d527dc5d7a893e80355b42612f8",
+    "semantic_hash": ""
+  },
+  ".squad/agents/scribe/history.md": {
+    "mtime": 1782904201.1231585,
+    "ast_hash": "52c6fac87c617fc1a70e66b26a977528",
+    "semantic_hash": ""
+  },
+  ".squad/agents/shuri/charter.md": {
+    "mtime": 1782904201.1231585,
+    "ast_hash": "5b2fbf70c4e0077a2451f48efab53065",
+    "semantic_hash": ""
+  },
+  ".squad/agents/shuri/history.md": {
+    "mtime": 1782904201.123715,
+    "ast_hash": "f50342b254a7d887ccb4ece2d7885437",
+    "semantic_hash": ""
+  },
+  ".squad/agents/tony/charter.md": {
+    "mtime": 1782904201.124258,
+    "ast_hash": "fe0d98f5f2ca36bdf7423eb01d609815",
+    "semantic_hash": ""
+  },
+  ".squad/agents/tony/history.md": {
+    "mtime": 1782904201.124258,
+    "ast_hash": "da3166527f4fa666ebe1ea34c88d3fc5",
+    "semantic_hash": ""
+  },
+  ".squad/agents/wanda/charter.md": {
+    "mtime": 1782904201.124779,
+    "ast_hash": "27b8b5b0298524a6ca75426672caae93",
+    "semantic_hash": ""
+  },
+  ".squad/agents/wanda/history.md": {
+    "mtime": 1782904201.124779,
+    "ast_hash": "1241701300f0c01559f58459a7b95036",
+    "semantic_hash": ""
+  },
+  ".squad/ceremonies.md": {
+    "mtime": 1782904201.125877,
+    "ast_hash": "cbc0d610de65e526b87110bcfbfe1e94",
+    "semantic_hash": ""
+  },
+  ".squad/decisions.md": {
+    "mtime": 1782904201.1264465,
+    "ast_hash": "f18318aba073dc68982c5d9f298c4cff",
+    "semantic_hash": ""
+  },
+  ".squad/identity/now.md": {
+    "mtime": 1782904201.1264465,
+    "ast_hash": "571fd0cad89134e55978621eea784d73",
+    "semantic_hash": ""
+  },
+  ".squad/identity/wisdom.md": {
+    "mtime": 1782904201.1269755,
+    "ast_hash": "99077bd20761e36258691a51dffad066",
+    "semantic_hash": ""
+  },
+  ".squad/rai/audit-trail.md": {
+    "mtime": 1782904201.1285155,
+    "ast_hash": "0577b7b0e22e6d078a6293e11ec03d84",
+    "semantic_hash": ""
+  },
+  ".squad/rai/policy.md": {
+    "mtime": 1782904201.1285155,
+    "ast_hash": "49af82b9dcc6112792ca8c77879fbf86",
+    "semantic_hash": ""
+  },
+  ".squad/routing.md": {
+    "mtime": 1782904201.1285155,
+    "ast_hash": "8acb4755e457ccad685a59c1723551bb",
+    "semantic_hash": ""
+  },
+  ".squad/team.md": {
+    "mtime": 1782904201.1285155,
+    "ast_hash": "4fe3f6d5a7a518384db6835b51fc3354",
+    "semantic_hash": ""
+  },
+  ".squad/templates/after-agent-reference.md": {
+    "mtime": 1782904201.1285155,
+    "ast_hash": "25d251505ddb6fb52d5ac80cf8c6701a",
+    "semantic_hash": ""
+  },
+  ".squad/templates/casting-reference.md": {
+    "mtime": 1782904201.1300228,
+    "ast_hash": "7dcc4e7a68a43d6440fc2afba0e2ed17",
+    "semantic_hash": ""
+  },
+  ".squad/templates/ceremonies.md": {
+    "mtime": 1782904201.1310291,
+    "ast_hash": "cbc0d610de65e526b87110bcfbfe1e94",
+    "semantic_hash": ""
+  },
+  ".squad/templates/ceremony-reference.md": {
+    "mtime": 1782904201.1310291,
+    "ast_hash": "b4c0091a73613d3f7c083b9cf6c81473",
+    "semantic_hash": ""
+  },
+  ".squad/templates/charter.md": {
+    "mtime": 1782904201.1310291,
+    "ast_hash": "2981efcf2ba70d62ab56b22fb04e2f80",
+    "semantic_hash": ""
+  },
+  ".squad/templates/client-compatibility-reference.md": {
+    "mtime": 1782904201.1320307,
+    "ast_hash": "8ef746f1de719ad866ec85cc7ea905e7",
+    "semantic_hash": ""
+  },
+  ".squad/templates/constraint-tracking.md": {
+    "mtime": 1782904201.1320307,
+    "ast_hash": "4f611cff32dd7ff977a3e8fc51ce67e8",
+    "semantic_hash": ""
+  },
+  ".squad/templates/cooperative-rate-limiting.md": {
+    "mtime": 1782904201.1320307,
+    "ast_hash": "9e609cfd7cdcbfcd93304bc711435de1",
+    "semantic_hash": ""
+  },
+  ".squad/templates/copilot-agent.md": {
+    "mtime": 1782904201.1330304,
+    "ast_hash": "1ff2f17b78682d7a104d1ef7b5edbcd6",
+    "semantic_hash": ""
+  },
+  ".squad/templates/copilot-instructions.md": {
+    "mtime": 1782904201.1330304,
+    "ast_hash": "4554005d81b349b25199f01fb2ad8410",
+    "semantic_hash": ""
+  },
+  ".squad/templates/history.md": {
+    "mtime": 1782904201.1330304,
+    "ast_hash": "8ca36ebdad6edccbbff7927019e3976a",
+    "semantic_hash": ""
+  },
+  ".squad/templates/identity/now.md": {
+    "mtime": 1782904201.1340296,
+    "ast_hash": "423040ab6a239c64a0a88020fd05b663",
+    "semantic_hash": ""
+  },
+  ".squad/templates/identity/wisdom.md": {
+    "mtime": 1782904201.1340296,
+    "ast_hash": "3fa2ebefe198f8bbed1007ef39c5a034",
+    "semantic_hash": ""
+  },
+  ".squad/templates/issue-lifecycle.md": {
+    "mtime": 1782904201.1350286,
+    "ast_hash": "ab6a16a59d2d1b5b13fb994c4044243e",
+    "semantic_hash": ""
+  },
+  ".squad/templates/keda-scaler.md": {
+    "mtime": 1782904201.1350286,
+    "ast_hash": "7715b218fdcfc025b97fc4d22a6466dd",
+    "semantic_hash": ""
+  },
+  ".squad/templates/machine-capabilities.md": {
+    "mtime": 1782904201.1350286,
+    "ast_hash": "f1e65d037318384ddb52ee0c869c16be",
+    "semantic_hash": ""
+  },
+  ".squad/templates/mcp-config.md": {
+    "mtime": 1782904201.1360314,
+    "ast_hash": "b5ce6e8a203bb438f2e6f8c2942618be",
+    "semantic_hash": ""
+  },
+  ".squad/templates/model-selection-reference.md": {
+    "mtime": 1782904201.1360314,
+    "ast_hash": "14484587a31670405c80fd8f3e84504d",
+    "semantic_hash": ""
+  },
+  ".squad/templates/multi-agent-format.md": {
+    "mtime": 1782904201.1360314,
+    "ast_hash": "84c1436251c53a35bcf29fe59f164650",
+    "semantic_hash": ""
+  },
+  ".squad/templates/notes-protocol.md": {
+    "mtime": 1782904201.1360314,
+    "ast_hash": "5ec3a8a9d029dfd9cfe1d13ddff336d3",
+    "semantic_hash": ""
+  },
+  ".squad/templates/orchestration-log.md": {
+    "mtime": 1782904201.1370294,
+    "ast_hash": "ecbc30e355e28be0e97c6a3e9d256222",
+    "semantic_hash": ""
+  },
+  ".squad/templates/plugin-marketplace.md": {
+    "mtime": 1782904201.1370294,
+    "ast_hash": "16dc97fa1005c385da06e39e4e7bc447",
+    "semantic_hash": ""
+  },
+  ".squad/templates/prd-intake.md": {
+    "mtime": 1782904201.1370294,
+    "ast_hash": "4e6973d1d91c3cd37ca93858a6dff5df",
+    "semantic_hash": ""
+  },
+  ".squad/templates/rai-charter.md": {
+    "mtime": 1782904201.1370294,
+    "ast_hash": "68b1b17991440eacbfab4d5e95ba7845",
+    "semantic_hash": ""
+  },
+  ".squad/templates/rai-policy.md": {
+    "mtime": 1782904201.138394,
+    "ast_hash": "49af82b9dcc6112792ca8c77879fbf86",
+    "semantic_hash": ""
+  },
+  ".squad/templates/ralph-circuit-breaker.md": {
+    "mtime": 1782904201.138394,
+    "ast_hash": "9ab29ba450910271e7c628f04219d6f4",
+    "semantic_hash": ""
+  },
+  ".squad/templates/ralph-reference.md": {
+    "mtime": 1782904201.138394,
+    "ast_hash": "4fbb730deef701dfb0e69a25f4e63463",
+    "semantic_hash": ""
+  },
+  ".squad/templates/raw-agent-output.md": {
+    "mtime": 1782904201.139402,
+    "ast_hash": "6620b39ee69dd05f722f1ac2b3e58835",
+    "semantic_hash": ""
+  },
+  ".squad/templates/roster.md": {
+    "mtime": 1782904201.139402,
+    "ast_hash": "de47e415b639c970d68f4713d6ee8eba",
+    "semantic_hash": ""
+  },
+  ".squad/templates/routing.md": {
+    "mtime": 1782904201.139402,
+    "ast_hash": "118746d766edc801eaf088c262d93dbf",
+    "semantic_hash": ""
+  },
+  ".squad/templates/run-output.md": {
+    "mtime": 1782904201.1404011,
+    "ast_hash": "fd0ca3065c104df162d5a74c6e8eac4f",
+    "semantic_hash": ""
+  },
+  ".squad/templates/scribe-charter.md": {
+    "mtime": 1782904201.1404011,
+    "ast_hash": "88f1facbf9934fd9d36edee780c4259b",
+    "semantic_hash": ""
+  },
+  ".squad/templates/session-init-reference.md": {
+    "mtime": 1782904201.1420174,
+    "ast_hash": "2a23e9e757f979c3a8ff49bd20100e77",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skill.md": {
+    "mtime": 1782904201.1420174,
+    "ast_hash": "d3f27a643c23c7ef4cc69bb0117db11f",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/agent-collaboration/SKILL.md": {
+    "mtime": 1782904201.1425536,
+    "ast_hash": "f7eac9532b52f4e2e6da9205402f572b",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/agent-conduct/SKILL.md": {
+    "mtime": 1782904201.1425536,
+    "ast_hash": "03bea46bc3bbf6e543cc4bd67ea23e26",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/architectural-proposals/SKILL.md": {
+    "mtime": 1782904201.143561,
+    "ast_hash": "91448c72ec7857094feb46adb38192b8",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/ci-validation-gates/SKILL.md": {
+    "mtime": 1782904201.143561,
+    "ast_hash": "8c79394511e3e12e277a46483f5d697d",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/cli-wiring/SKILL.md": {
+    "mtime": 1782904201.144563,
+    "ast_hash": "cff84448d94fec3a0dad23661299d9e5",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/client-compatibility/SKILL.md": {
+    "mtime": 1782904201.144563,
+    "ast_hash": "f1662646d42685fd605cc019811fd43e",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/cross-machine-coordination/SKILL.md": {
+    "mtime": 1782904201.144563,
+    "ast_hash": "658b3d170df73d999b282eb7c94adb8c",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/cross-squad/SKILL.md": {
+    "mtime": 1782904201.144563,
+    "ast_hash": "def73a5172715c34903326c6e4660b68",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/distributed-mesh/SKILL.md": {
+    "mtime": 1782904201.1455636,
+    "ast_hash": "34c6e8cb53e58fb1d0a0dde9900792ff",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/docs-standards/SKILL.md": {
+    "mtime": 1782904201.1471891,
+    "ast_hash": "a856940f13ca3358a2a8b4175eb6ac72",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/e2e-template-testing/SKILL.md": {
+    "mtime": 1782904201.1471891,
+    "ast_hash": "037cd5a66939faedd60d2f61c715c9cd",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/economy-mode/SKILL.md": {
+    "mtime": 1782904201.1471891,
+    "ast_hash": "a5da74228f4575492a101328b762d309",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/error-recovery/SKILL.md": {
+    "mtime": 1782904201.1481905,
+    "ast_hash": "94925681da3fbd8671f783887ef328d2",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/external-comms/SKILL.md": {
+    "mtime": 1782904201.1491938,
+    "ast_hash": "768e174076e71fb45516e19540e320b3",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/fact-checking/SKILL.md": {
+    "mtime": 1782904201.1491938,
+    "ast_hash": "011d9b108cd00869ae5486bba317c883",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/gh-auth-isolation/SKILL.md": {
+    "mtime": 1782904201.1501894,
+    "ast_hash": "9f9684154a227dfba994b0bf71c674ee",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/git-workflow/SKILL.md": {
+    "mtime": 1782904201.1501894,
+    "ast_hash": "ba5a31e46184c19bf7110d95895b4a32",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/github-multi-account/SKILL.md": {
+    "mtime": 1782904201.151191,
+    "ast_hash": "bb0d8598201f88473fbb7c2dd1f9d5bb",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/history-hygiene/SKILL.md": {
+    "mtime": 1782904201.151191,
+    "ast_hash": "1128e6c36eabfedb91198de7419c87e4",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/humanizer/SKILL.md": {
+    "mtime": 1782904201.151191,
+    "ast_hash": "3000caa963a2b00a96b86ba8780b3600",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/init-mode/SKILL.md": {
+    "mtime": 1782904201.1521907,
+    "ast_hash": "9c324367b4ff8ffe0f04291a3b993bd7",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/iterative-retrieval/SKILL.md": {
+    "mtime": 1782904201.1531923,
+    "ast_hash": "5051f40ab74a47536ead0003801de9d3",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/model-selection/SKILL.md": {
+    "mtime": 1782904201.1531923,
+    "ast_hash": "c5dc8ea6abe6665618beda0dd3ed8e88",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/nap/SKILL.md": {
+    "mtime": 1782904201.1541946,
+    "ast_hash": "7e1ebe3213ec3b37d0b96f73afaed439",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/notification-routing/SKILL.md": {
+    "mtime": 1782904201.1549268,
+    "ast_hash": "833879398d102f8493df91c92d47bcd8",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/personal-squad/SKILL.md": {
+    "mtime": 1782904201.1554363,
+    "ast_hash": "941b54d6ccbd0d99c7a504fb25b2d659",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/pr-review-response/SKILL.md": {
+    "mtime": 1782904201.155973,
+    "ast_hash": "6c14eb84bb4d362944d3b75fa1aa5309",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/pr-screenshots/SKILL.md": {
+    "mtime": 1782904201.1565166,
+    "ast_hash": "fc0b2468babd3c8a31eeeeedbcbb8b84",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/project-conventions/SKILL.md": {
+    "mtime": 1782904201.1571913,
+    "ast_hash": "7c3475550798e01a6c33447ae6dcfc25",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/ralph-two-pass-scan/SKILL.md": {
+    "mtime": 1782904201.1578214,
+    "ast_hash": "faa0795674b0b41f27f347ce9449b3f4",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/reflect/SKILL.md": {
+    "mtime": 1782904201.158362,
+    "ast_hash": "5fbb5b07b595d7f8df52006c6d1b7f0b",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/release-process/SKILL.md": {
+    "mtime": 1782904201.1589031,
+    "ast_hash": "fdfd64bf4d5eeaef9ce18307ec2c11f8",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/reskill/SKILL.md": {
+    "mtime": 1782904201.1594331,
+    "ast_hash": "b6544f20c7e3fc64638d703cc83543e9",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/retro-enforcement/SKILL.md": {
+    "mtime": 1782904201.159963,
+    "ast_hash": "b1afd49804e206aeb11f27d82143aebb",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/reviewer-protocol/SKILL.md": {
+    "mtime": 1782904201.160498,
+    "ast_hash": "7d1f06a94bfa7a1ce988bb6f0b34ca53",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/secret-handling/SKILL.md": {
+    "mtime": 1782904201.16103,
+    "ast_hash": "cc10665d0e45254dbb3f25fa700523f6",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/session-recovery/SKILL.md": {
+    "mtime": 1782904201.1616,
+    "ast_hash": "82e1f99ce6a6d96e0a88de471f2c1842",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/squad-conventions/SKILL.md": {
+    "mtime": 1782904201.162143,
+    "ast_hash": "d4a4536b80d657b7ad1bd3fbd1ee4e89",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/test-discipline/SKILL.md": {
+    "mtime": 1782904201.162673,
+    "ast_hash": "861d432b5dbe4971a50077b957a8ebea",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/tiered-memory/SKILL.md": {
+    "mtime": 1782904201.163229,
+    "ast_hash": "87ddfe64224757dbfeb36227c57fe423",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/versioning-policy/SKILL.md": {
+    "mtime": 1782904201.163229,
+    "ast_hash": "3147c043b4a7e44c3ab071c7cd4c231d",
+    "semantic_hash": ""
+  },
+  ".squad/templates/skills/windows-compatibility/SKILL.md": {
+    "mtime": 1782904201.1637616,
+    "ast_hash": "3b17f54eb03c276b19cce2c328a81351",
+    "semantic_hash": ""
+  },
+  ".squad/templates/spawn-reference.md": {
+    "mtime": 1782904201.1637616,
+    "ast_hash": "144e5793b69d02bf03cf1a14bc132ba5",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflow-wiring-appendix-a-code-reviewer.md": {
+    "mtime": 1782904201.1648583,
+    "ast_hash": "bb3e3f50ca58848b2f5aec0ad30e0946",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflow-wiring-appendix-b-documenter.md": {
+    "mtime": 1782904201.1653943,
+    "ast_hash": "15085b0de6a60650e02bcea06bc5129f",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflow-wiring-guide.md": {
+    "mtime": 1782904201.1653943,
+    "ast_hash": "fbedc51f1c7367dca07d950ee2d1399d",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/squad-ci.yml": {
+    "mtime": 1782904201.1659544,
+    "ast_hash": "25b3247ea2bdbb45e1149078e341009c",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/squad-docs.yml": {
+    "mtime": 1782904201.1659544,
+    "ast_hash": "4316d200c2fd5b10c7e27e660d4ef525",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/squad-heartbeat.yml": {
+    "mtime": 1782904201.1665213,
+    "ast_hash": "519acc7dc9cbf4c3e485c1d15504ecbe",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/squad-insider-release.yml": {
+    "mtime": 1782904201.1670694,
+    "ast_hash": "d557b875b889ab6d1ba653e9432a1f38",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/squad-issue-assign.yml": {
+    "mtime": 1782904201.1670694,
+    "ast_hash": "1eab9c9fdbbec1520e8a4d80bf39cd21",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/squad-label-enforce.yml": {
+    "mtime": 1782904201.1676223,
+    "ast_hash": "e0d0d7c72f33013e0c84ebc0df646076",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/squad-preview.yml": {
+    "mtime": 1782904201.1676223,
+    "ast_hash": "e9ff54ba9051120bc8c5b70fa613476e",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/squad-promote.yml": {
+    "mtime": 1782904201.168154,
+    "ast_hash": "9e3c5158d342a7c2c5fcaa8305ba2e1f",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/squad-release.yml": {
+    "mtime": 1782904201.168154,
+    "ast_hash": "9cca1b802b65e99d63beeddcef04468e",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/squad-triage.yml": {
+    "mtime": 1782904201.1687286,
+    "ast_hash": "c2878a776c6078ac44b110048bd2c2e8",
+    "semantic_hash": ""
+  },
+  ".squad/templates/workflows/sync-squad-labels.yml": {
+    "mtime": 1782904201.1687286,
+    "ast_hash": "46f57a4b1596a1fe71610f385945cafe",
+    "semantic_hash": ""
+  },
+  ".squad/templates/worktree-reference.md": {
+    "mtime": 1782904201.1692646,
+    "ast_hash": "3cb05a1aa555132fd86ce7f06559cb66",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1782904201.1698003,
+    "ast_hash": "2a4d95bb7638e869abec843401b8203e",
+    "semantic_hash": ""
+  },
+  "archetypes/about.md": {
+    "mtime": 1782904201.1703613,
+    "ast_hash": "f62f0cec5b99b2a7716d855446c46099",
+    "semantic_hash": ""
+  },
+  "archetypes/posts.md": {
+    "mtime": 1782904201.1709325,
+    "ast_hash": "d02f7df379c97b58e7a8fde66ad65a0a",
+    "semantic_hash": ""
+  },
+  "automation/README.md": {
+    "mtime": 1784028234.186328,
+    "ast_hash": "7d002267db2b6d116487f2e3f864788d",
+    "semantic_hash": ""
+  },
+  "automation/scripts/requirements.txt": {
+    "mtime": 1782904201.177204,
+    "ast_hash": "37235118851fcad8a06669ed68eaa9ac",
+    "semantic_hash": ""
+  },
+  "automation/topics/_example.yaml": {
+    "mtime": 1784026185.367095,
+    "ast_hash": "5a60dc6f6afef973a32fea5f9241726c",
+    "semantic_hash": ""
+  },
+  "content/_index.md": {
+    "mtime": 1782904201.1793866,
+    "ast_hash": "81051bcc2cf1bedf378224b0a93e2877",
+    "semantic_hash": ""
+  },
+  "content/about.md": {
+    "mtime": 1782904201.179922,
+    "ast_hash": "399fd40a4a748172a88157a6343f4ffb",
+    "semantic_hash": ""
+  },
+  "content/posts/2008-02-18-el-destornillador.md": {
+    "mtime": 1783004355.7700765,
+    "ast_hash": "76a7699fa9225e71bb59a1c977a70df6",
+    "semantic_hash": ""
+  },
+  "content/posts/2008-03-07-realizaciones.md": {
+    "mtime": 1783004355.771077,
+    "ast_hash": "a3fac4908e35e71df94d2726d1912a66",
+    "semantic_hash": ""
+  },
+  "content/posts/2008-07-04-tautologia-1.md": {
+    "mtime": 1783004355.771077,
+    "ast_hash": "4c0d853be125bb98a437e8e1d8c1c7d4",
+    "semantic_hash": ""
+  },
+  "content/posts/2011-11-02-oracle-read-multiple-files-using-only-pl-sql.md": {
+    "mtime": 1783004355.771077,
+    "ast_hash": "2c32ce94366b2e4955ddecaa109e0339",
+    "semantic_hash": ""
+  },
+  "content/posts/2011-11-17-tautologia-2.md": {
+    "mtime": 1783004355.7720792,
+    "ast_hash": "9bda9b75270a6e91971ba822653fa5eb",
+    "semantic_hash": ""
+  },
+  "content/posts/2012-02-02-minify-javascript-and-css-for-web-application-from-visual-studio.md": {
+    "mtime": 1783004355.7720792,
+    "ast_hash": "5d4172d3f84ed447802d13ceb469770a",
+    "semantic_hash": ""
+  },
+  "content/posts/2012-04-09-aop-parte-0.md": {
+    "mtime": 1783004355.7720792,
+    "ast_hash": "38b10eaa0ab254195666d98d83147e2e",
+    "semantic_hash": ""
+  },
+  "content/posts/2012-04-10-aop-parte-1.md": {
+    "mtime": 1783004355.773082,
+    "ast_hash": "30bbe85be8d054ce15005356e9bc7b73",
+    "semantic_hash": ""
+  },
+  "content/posts/2012-04-11-aop-parte-2.md": {
+    "mtime": 1783004355.773082,
+    "ast_hash": "75a553e70bfb316561b47e16a93f0e69",
+    "semantic_hash": ""
+  },
+  "content/posts/2012-04-12-aop-parte-3.md": {
+    "mtime": 1783004355.773082,
+    "ast_hash": "96e723d9862f715182b0937525b585d8",
+    "semantic_hash": ""
+  },
+  "content/posts/2012-04-12-ef-cargar-dinamicamente-configuraciones-de-entidades.md": {
+    "mtime": 1783004355.7740784,
+    "ast_hash": "b9f5338240ead3c4373d086c1e4965cd",
+    "semantic_hash": ""
+  },
+  "content/posts/2012-05-07-humor-1.md": {
+    "mtime": 1783004355.7740784,
+    "ast_hash": "613020f8fa0f786ff91edc99836d323e",
+    "semantic_hash": ""
+  },
+  "content/posts/2012-07-24-evitar-ventana-adjuntar-advertencia-de-seguridad.md": {
+    "mtime": 1783004355.7740784,
+    "ast_hash": "ae270ca267512e42be09a04af0f99700",
+    "semantic_hash": ""
+  },
+  "content/posts/2012-11-08-humor-2.md": {
+    "mtime": 1783004355.7750823,
+    "ast_hash": "fa294e87cea9e922cdba1659716036cc",
+    "semantic_hash": ""
+  },
+  "content/posts/2012-11-21-validar-dni-ruc-peru.md": {
+    "mtime": 1783004355.7750823,
+    "ast_hash": "6c95f1dea68df0fc33001cd591616564",
+    "semantic_hash": ""
+  },
+  "content/posts/2013-05-18-ef-insertar-registros-bulk.md": {
+    "mtime": 1783004355.7750823,
+    "ast_hash": "d37c467872e287106a14c47d667eac88",
+    "semantic_hash": ""
+  },
+  "content/posts/2013-07-01-referencias-proyectos-dependientes-modo-compilacion.md": {
+    "mtime": 1783004355.7760775,
+    "ast_hash": "46a6c864f034c87782d2fc2882484218",
+    "semantic_hash": ""
+  },
+  "content/posts/2014-01-26-programador-ninja-o-programador-zen.md": {
+    "mtime": 1783004355.7760775,
+    "ast_hash": "5602f18c1fa5607c72a74338141c7bcd",
+    "semantic_hash": ""
+  },
+  "content/posts/2014-03-05-tautologia-3.md": {
+    "mtime": 1783004355.7760775,
+    "ast_hash": "a026b25f761e8dad87f685b6685f6cda",
+    "semantic_hash": ""
+  },
+  "content/posts/2014-03-24-contar-lineas-de-codigo.md": {
+    "mtime": 1783004355.7760775,
+    "ast_hash": "4cbfba182a1b10e3fee04bcedebb6117",
+    "semantic_hash": ""
+  },
+  "content/posts/2022-02-14-20-anos-dotnet.md": {
+    "mtime": 1783004355.777079,
+    "ast_hash": "7373a0d767803553641d6f16279e4d84",
+    "semantic_hash": ""
+  },
+  "content/posts/2022-06-01-compartimoss-unplugged-48.md": {
+    "mtime": 1783004355.777079,
+    "ast_hash": "2a92a3620fccf37ba82f7473698b0648",
+    "semantic_hash": ""
+  },
+  "content/posts/2022-11-17-propulsion-lab-4-dublin.md": {
+    "mtime": 1783004355.777079,
+    "ast_hash": "09eaa07b9aff984838a449cd868e2e30",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-04-02-gpt-4-puede-pensar.md": {
+    "mtime": 1783004355.778077,
+    "ast_hash": "59376a53ed134f1468cc6bf929b8d394",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-05-25-compartimoss-unplugged-ai-01.md": {
+    "mtime": 1783004355.778077,
+    "ast_hash": "ccfb57f48ae8626c4c434a2bfd29d121",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-05-29-apis-monetizacion-parte-1.md": {
+    "mtime": 1783004355.778077,
+    "ast_hash": "9cb9c71e15c067cecf8e462da1c949fd",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-05-30-apis-monetizacion-parte-2.md": {
+    "mtime": 1783004355.778077,
+    "ast_hash": "799c49aae426cf0608c82ea37bb80122",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-05-31-apis-monetizacion-parte-3.md": {
+    "mtime": 1783004355.779076,
+    "ast_hash": "1c67a67ceea06200d5f7e6efa0eafa7b",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-06-01-compartimoss-unplugged-ai-02.md": {
+    "mtime": 1783004355.779076,
+    "ast_hash": "34d01bd7866cf102fc829de1bb831805",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-06-29-compartimoss-unplugged-ai-04.md": {
+    "mtime": 1783004355.779076,
+    "ast_hash": "e6be86f7b6855560706bed29cc567fce",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-06-30-articulo-compartimoss-56.md": {
+    "mtime": 1783004355.779076,
+    "ast_hash": "ec8274b337fa0ece596b4b162c0a5cfe",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-07-20-integrando-otros-llms-con-semantic-kernel.md": {
+    "mtime": 1783004355.7800798,
+    "ast_hash": "6d3ecb29dd81de07b483c60a865b77af",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-10-05-articulo-revista-byte-ti.md": {
+    "mtime": 1783004355.7800798,
+    "ast_hash": "32d53754b88c279591d010d9d37a55cd",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-10-25-nos-vemos-en-microsoft-365-live-2023.md": {
+    "mtime": 1783004355.7800798,
+    "ast_hash": "ee6c08caaf1a9cd93b09dbd806873f50",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-11-13-nos-vemos-en-la-net-core-conf-2023-madrid.md": {
+    "mtime": 1783004355.7800798,
+    "ast_hash": "840845f706033fa200fd4df5796f6d6a",
+    "semantic_hash": ""
+  },
+  "content/posts/2023-11-20-netcoreconf-2023-madrid-planificando-para-el-exito.md": {
+    "mtime": 1783004355.781082,
+    "ast_hash": "910b21551fa48b172f2d1befeb50970d",
+    "semantic_hash": ""
+  },
+  "content/posts/2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l.md": {
+    "mtime": 1783004359.1481621,
+    "ast_hash": "de4c231f7eefde4ea719d8be81f25eb2",
+    "semantic_hash": ""
+  },
+  "content/posts/_index.md": {
+    "mtime": 1782904201.1804595,
+    "ast_hash": "df0f7ae3b608f3617eeb2ef9340a294a",
+    "semantic_hash": ""
+  },
+  "content/privacy.md": {
+    "mtime": 1782904201.1947553,
+    "ast_hash": "9953fdae074a289bbcbeeaee489c494c",
+    "semantic_hash": ""
+  },
+  "content/search.md": {
+    "mtime": 1782904201.1947553,
+    "ast_hash": "31b0f39029bf0becca1fb07d659d9bd5",
+    "semantic_hash": ""
+  },
+  "hugo.yaml": {
+    "mtime": 1782904201.2127666,
+    "ast_hash": "1a68df768a96e6469b2686894edd1153",
+    "semantic_hash": ""
+  },
+  "layouts/404.html": {
+    "mtime": 1782910345.7487733,
+    "ast_hash": "d07142aa4742e0064b10ae740595ca20",
+    "semantic_hash": ""
+  },
+  "layouts/_default/about.html": {
+    "mtime": 1782904201.2133133,
+    "ast_hash": "9bd3a094d58e214a676205f48c0e6c28",
+    "semantic_hash": ""
+  },
+  "layouts/_default/baseof.html": {
+    "mtime": 1782904201.2138512,
+    "ast_hash": "d019b630d723579434ad6062eedbeaf1",
+    "semantic_hash": ""
+  },
+  "layouts/_default/list.html": {
+    "mtime": 1782904201.2138512,
+    "ast_hash": "ab4661d6a07d1a8c11d32e756d30caed",
+    "semantic_hash": ""
+  },
+  "layouts/_default/search.html": {
+    "mtime": 1782904201.214375,
+    "ast_hash": "54480f50b2c30e1d07a7b8f35e3f824d",
+    "semantic_hash": ""
+  },
+  "layouts/_default/single.html": {
+    "mtime": 1782904201.214918,
+    "ast_hash": "aa6a6bcd2dbb964dd8f155cb16000971",
+    "semantic_hash": ""
+  },
+  "layouts/index.html": {
+    "mtime": 1782904201.214918,
+    "ast_hash": "c2ea355f59257e768ae6812e301ededf",
+    "semantic_hash": ""
+  },
+  "layouts/partials/comments.html": {
+    "mtime": 1782904201.2160203,
+    "ast_hash": "5396d28183679786afb7f25d4478ad76",
+    "semantic_hash": ""
+  },
+  "layouts/partials/footer.html": {
+    "mtime": 1783004355.781082,
+    "ast_hash": "96013077ac9fd133e328eb45797d6c7b",
+    "semantic_hash": ""
+  },
+  "layouts/partials/head.html": {
+    "mtime": 1784027533.2759843,
+    "ast_hash": "ef780a297fb5f5b0c35858ab01e53d06",
+    "semantic_hash": ""
+  },
+  "layouts/partials/header.html": {
+    "mtime": 1782904201.2165778,
+    "ast_hash": "65728fd51dfaec89fc74c5e5b44f3a25",
+    "semantic_hash": ""
+  },
+  "layouts/partials/pagination.html": {
+    "mtime": 1782904201.2171223,
+    "ast_hash": "c4a9e2b74926dda031074519bbfef758",
+    "semantic_hash": ""
+  },
+  "layouts/partials/post-card.html": {
+    "mtime": 1782904201.217662,
+    "ast_hash": "e8e37fd1cacc90ad5337fa3d715396f8",
+    "semantic_hash": ""
+  },
+  "layouts/partials/scripts.html": {
+    "mtime": 1782904201.217662,
+    "ast_hash": "b521bebbff8502c86ecf7ec0f0e272f8",
+    "semantic_hash": ""
+  },
+  "layouts/shortcodes/callout.html": {
+    "mtime": 1782904201.217662,
+    "ast_hash": "a795af769ab37cbd136548289721684c",
+    "semantic_hash": ""
+  },
+  "layouts/shortcodes/figure.html": {
+    "mtime": 1782904201.2183397,
+    "ast_hash": "c2a6d9fb10770d0102d6bfb14bda743d",
+    "semantic_hash": ""
+  },
+  "layouts/shortcodes/gallery.html": {
+    "mtime": 1782904201.2183397,
+    "ast_hash": "2e2e4e0c4e2eb7b1f7f7bc7320c14184",
+    "semantic_hash": ""
+  },
+  "layouts/shortcodes/humans.txt.html": {
+    "mtime": 1783004355.782079,
+    "ast_hash": "9b9d4e41eba4ebcd420c7282c1d84bb1",
+    "semantic_hash": ""
+  },
+  "layouts/shortcodes/notice.html": {
+    "mtime": 1782904201.2183397,
+    "ast_hash": "17354b2b83eda6c52c405f5613217f24",
+    "semantic_hash": ""
+  },
+  "layouts/shortcodes/republished.html": {
+    "mtime": 1782904201.2188709,
+    "ast_hash": "14a6dab872bf5e8345b3ff106e8feefb",
+    "semantic_hash": ""
+  },
+  "layouts/shortcodes/responsive-embed.html": {
+    "mtime": 1782904201.2194083,
+    "ast_hash": "9a82892c6808636ff9386ab0494c8c8a",
+    "semantic_hash": ""
+  },
+  "layouts/shortcodes/video.html": {
+    "mtime": 1782904201.2194083,
+    "ast_hash": "7cf9cd79b7b122703a25d080451e5e22",
+    "semantic_hash": ""
+  },
+  "static/humans.txt": {
+    "mtime": 1782904201.2199512,
+    "ast_hash": "ec7c63a64858b4e3059341c926fdb0a4",
+    "semantic_hash": ""
+  },
+  "static/images/2008-02-18-el-destornillador/header.jpg": {
+    "mtime": 1782904201.2216225,
+    "ast_hash": "1963839bba02a4577edf1d86b24472fa",
+    "semantic_hash": ""
+  },
+  "static/images/2008-02-18-el-destornillador/thumbnail.jpg": {
+    "mtime": 1782904201.2221658,
+    "ast_hash": "71beecbd9e9670f56c82f8d58ed195c3",
+    "semantic_hash": ""
+  },
+  "static/images/2008-07-04-tautologia-1/header.jpg": {
+    "mtime": 1782904201.2282486,
+    "ast_hash": "bdf664922f48fe2afb76f89ded555461",
+    "semantic_hash": ""
+  },
+  "static/images/2008-07-04-tautologia-1/thumbnail.jpg": {
+    "mtime": 1782904201.229008,
+    "ast_hash": "a92fc8e662055108a7b874b53f71158e",
+    "semantic_hash": ""
+  },
+  "static/images/2011-11-02-reading-multiple-files-from-oracle-using-pl-sql/1.png": {
+    "mtime": 1782904201.229008,
+    "ast_hash": "f7d025e0cdaa201f5d612a3c6aefc2ef",
+    "semantic_hash": ""
+  },
+  "static/images/2011-11-02-reading-multiple-files-from-oracle-using-pl-sql/header.jpg": {
+    "mtime": 1782904201.2346995,
+    "ast_hash": "4c9d4c696583d2bb2f02c2f145854355",
+    "semantic_hash": ""
+  },
+  "static/images/2011-11-02-reading-multiple-files-from-oracle-using-pl-sql/thumbnail.jpg": {
+    "mtime": 1782904201.2357574,
+    "ast_hash": "75f4c18272c44ab837a39dae51c313fd",
+    "semantic_hash": ""
+  },
+  "static/images/2011-11-17-tautologia-2/header.jpg": {
+    "mtime": 1782904201.238126,
+    "ast_hash": "80f161936ade5a791ee0168d4071664d",
+    "semantic_hash": ""
+  },
+  "static/images/2011-11-17-tautologia-2/thumbnail.jpg": {
+    "mtime": 1782904201.239231,
+    "ast_hash": "ee6bb6da5f4af3ac3492f5df4ccf7001",
+    "semantic_hash": ""
+  },
+  "static/images/2012-02-02-minify-javascript-css-web-applications-visual-studio/header.jpg": {
+    "mtime": 1782904201.2413757,
+    "ast_hash": "27c0d7556c69cdf94967f3faa0117fe1",
+    "semantic_hash": ""
+  },
+  "static/images/2012-02-02-minify-javascript-css-web-applications-visual-studio/thumbnail.jpg": {
+    "mtime": 1782904201.2424924,
+    "ast_hash": "2a5c4846c44982413d64d9ddac2d0217",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-09-aop-framework-csharp-parte-0/header.jpg": {
+    "mtime": 1782904201.2459414,
+    "ast_hash": "ec22a4d29e8b0c281a21dcee3e8d5298",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-09-aop-framework-csharp-parte-0/thumbnail.jpg": {
+    "mtime": 1782904201.2469504,
+    "ast_hash": "d208e19b7b60b4b06227eb9cf7dec731",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_clases.png": {
+    "mtime": 1782904201.2479498,
+    "ast_hash": "ab2ac8b6957d09c734e7f4e8975abe89",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-10-aop-framework-csharp-parte-1/aop_diagrama_dependencias.png": {
+    "mtime": 1782904201.2479498,
+    "ast_hash": "b185d43dfd5fa73418b1f8dc3969343d",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-10-aop-framework-csharp-parte-1/aop_propiedad_prioridad.png": {
+    "mtime": 1782904201.24895,
+    "ast_hash": "ed70b45bc9a3a9d68eabb8f2b1b44b5e",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-10-aop-framework-csharp-parte-1/header.jpg": {
+    "mtime": 1782904201.2529507,
+    "ast_hash": "9b6e4296d4b4dd261e08f43c6712edac",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-10-aop-framework-csharp-parte-1/thumbnail.jpg": {
+    "mtime": 1782904201.2539513,
+    "ast_hash": "7a5edad94a42b6b7505b5fb6b5a94270",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-11-aop-framework-csharp-parte-2/header.jpg": {
+    "mtime": 1782904201.2588477,
+    "ast_hash": "e618a0c28d800f5d5842d9bee830b5b8",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-11-aop-framework-csharp-parte-2/thumbnail.jpg": {
+    "mtime": 1782904201.2598488,
+    "ast_hash": "19dfb550bb851c29022e318e7814014d",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-12-aop-framework-csharp-parte-3/asp-net-yellow-page-of-death.png": {
+    "mtime": 1782904201.2611392,
+    "ast_hash": "9448f7e58f1f6c9db761ff804cccfda9",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-12-aop-framework-csharp-parte-3/header.jpg": {
+    "mtime": 1782904201.264985,
+    "ast_hash": "e6871379e7ed2a73cd82a2227dc7b4a3",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-12-aop-framework-csharp-parte-3/thumbnail.jpg": {
+    "mtime": 1782904201.265992,
+    "ast_hash": "06c24f2c9ab4979b79f25522900eb86b",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-12-cargar-dinamicamente-configuraciones-entity-framework-code-first/header.webp": {
+    "mtime": 1782904201.2669935,
+    "ast_hash": "1bd0e10d286cde48610681391b11db43",
+    "semantic_hash": ""
+  },
+  "static/images/2012-04-12-cargar-dinamicamente-configuraciones-entity-framework-code-first/thumbnail.webp": {
+    "mtime": 1782904201.2679935,
+    "ast_hash": "94b243972464fa2c90c7a25daf3775a5",
+    "semantic_hash": ""
+  },
+  "static/images/2012-05-07-humor-tecnica-infalible-estimacion-proyectos/humor_001.webp": {
+    "mtime": 1782904201.2689931,
+    "ast_hash": "f00bba7aa8722ebfccc206c7d4e6f1ec",
+    "semantic_hash": ""
+  },
+  "static/images/2012-05-07-humor-tecnica-infalible-estimacion-proyectos/thumbnail.webp": {
+    "mtime": 1782904201.2689931,
+    "ast_hash": "d94dc9d003c928d4ae26ff1a4e0761b3",
+    "semantic_hash": ""
+  },
+  "static/images/2012-07-24-evitar-ventana-adjuntar-advertencia-seguridad/1.png": {
+    "mtime": 1782904201.269994,
+    "ast_hash": "064a7a0b44dccdd385af99ab23c68081",
+    "semantic_hash": ""
+  },
+  "static/images/2012-07-24-evitar-ventana-adjuntar-advertencia-seguridad/2.webp": {
+    "mtime": 1782904201.269994,
+    "ast_hash": "6cd6a4b16221ad0282cbcf20df4d0ec4",
+    "semantic_hash": ""
+  },
+  "static/images/2012-07-24-evitar-ventana-adjuntar-advertencia-seguridad/header.jpg": {
+    "mtime": 1782904201.274469,
+    "ast_hash": "3fcc1cda7feb656bb593dbd50cd99881",
+    "semantic_hash": ""
+  },
+  "static/images/2012-07-24-evitar-ventana-adjuntar-advertencia-seguridad/thumbnail.jpg": {
+    "mtime": 1782904201.2759297,
+    "ast_hash": "70a2765461b21836ec5956f470fb94e6",
+    "semantic_hash": ""
+  },
+  "static/images/2012-11-08-humor-el-conocimiento-de-los-antiguos/thumbnail.png": {
+    "mtime": 1782904201.2764785,
+    "ast_hash": "e29fc0109426cfedefb2919d0bc7eaf2",
+    "semantic_hash": ""
+  },
+  "static/images/2012-11-08-humor-el-conocimiento-de-los-antiguos/wisdom_of_the_ancients.png": {
+    "mtime": 1782904201.2770028,
+    "ast_hash": "0ec3c70ac7845bd57a324224d4d6385d",
+    "semantic_hash": ""
+  },
+  "static/images/2012-11-21-validar-dni-o-ruc-de-peru/dni.png": {
+    "mtime": 1782904201.2780116,
+    "ast_hash": "e9e3cdc09c05e6b16ff65ae512045367",
+    "semantic_hash": ""
+  },
+  "static/images/2012-11-21-validar-dni-o-ruc-de-peru/thumbnail.webp": {
+    "mtime": 1782904201.2790105,
+    "ast_hash": "9d5e77447aa7d0cd850f8e86df75eac9",
+    "semantic_hash": ""
+  },
+  "static/images/2013-05-18-insertar-bulk-registros-entity-framework/header.png": {
+    "mtime": 1782904201.2830093,
+    "ast_hash": "6f1ee997d9fea1c3f48546ad8c016123",
+    "semantic_hash": ""
+  },
+  "static/images/2013-05-18-insertar-bulk-registros-entity-framework/thumbnail.png": {
+    "mtime": 1782904201.2840092,
+    "ast_hash": "78d31ef4f229ca45b296257ce168a04a",
+    "semantic_hash": ""
+  },
+  "static/images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/file-system.png": {
+    "mtime": 1782904201.2860093,
+    "ast_hash": "b4d70a389f18bba104f28ada9c58b1e3",
+    "semantic_hash": ""
+  },
+  "static/images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/header.jpg": {
+    "mtime": 1782904201.2870102,
+    "ast_hash": "5d685d4a330f45c6a47b68d357855467",
+    "semantic_hash": ""
+  },
+  "static/images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/lib.png": {
+    "mtime": 1782904201.2870102,
+    "ast_hash": "b7c48fda172d48a847bf73cecdadf804",
+    "semantic_hash": ""
+  },
+  "static/images/2013-07-01-referencias-proyectos-dependientes-modo-compilacion/thumbnail.jpg": {
+    "mtime": 1782904201.288016,
+    "ast_hash": "17a783bbc09097c09201f6b8a898e25b",
+    "semantic_hash": ""
+  },
+  "static/images/2014-01-26-programador-ninja-o-programador-zen/header.jpg": {
+    "mtime": 1782904201.2927597,
+    "ast_hash": "1f6073a28510c812dfcac2a8f5ad0b5f",
+    "semantic_hash": ""
+  },
+  "static/images/2014-01-26-programador-ninja-o-programador-zen/ninja.jpg": {
+    "mtime": 1782904201.2947595,
+    "ast_hash": "40bd454d183df5ed1d2652dcc4e72e61",
+    "semantic_hash": ""
+  },
+  "static/images/2014-01-26-programador-ninja-o-programador-zen/thumbnail.jpg": {
+    "mtime": 1782904201.2957604,
+    "ast_hash": "9ee82d4c67de71c4cef6ff74b1d8bec9",
+    "semantic_hash": ""
+  },
+  "static/images/2014-01-26-programador-ninja-o-programador-zen/zen.webp": {
+    "mtime": 1782904201.2966657,
+    "ast_hash": "708913b41b75abe133f959eb3a0e0f49",
+    "semantic_hash": ""
+  },
+  "static/images/2014-03-05-tautologia-3/header.jpg": {
+    "mtime": 1782904201.3119683,
+    "ast_hash": "4fa3e3f82f5c7c8a5ceaa6e92cd1a51f",
+    "semantic_hash": ""
+  },
+  "static/images/2014-03-05-tautologia-3/thumbnail.jpg": {
+    "mtime": 1782904201.3386872,
+    "ast_hash": "df145243a98698e8bc2b2bd4f23b18bd",
+    "semantic_hash": ""
+  },
+  "static/images/2014-03-24-contar-lineas-de-codigo/count.png": {
+    "mtime": 1782904201.3392322,
+    "ast_hash": "775aace9ccbc3dedb019d7cc52ef3b69",
+    "semantic_hash": ""
+  },
+  "static/images/2014-03-24-contar-lineas-de-codigo/header.png": {
+    "mtime": 1782904201.3415923,
+    "ast_hash": "5774aa1bfdf484ba17d88488381cbfd1",
+    "semantic_hash": ""
+  },
+  "static/images/2014-03-24-contar-lineas-de-codigo/metrics.png": {
+    "mtime": 1782904201.3421297,
+    "ast_hash": "d2b6687f3ac28df225f51b3e5ba2e34e",
+    "semantic_hash": ""
+  },
+  "static/images/2014-03-24-contar-lineas-de-codigo/nasa.jpg": {
+    "mtime": 1782904201.3426678,
+    "ast_hash": "adf9729cfbdd9eb6c125218e5cae9512",
+    "semantic_hash": ""
+  },
+  "static/images/2014-03-24-contar-lineas-de-codigo/thumbnail.png": {
+    "mtime": 1782904201.343238,
+    "ast_hash": "dcaf2025d38cdcd11e6166b13564e6a5",
+    "semantic_hash": ""
+  },
+  "static/images/2022-02-14-20-anos-dotnet/1.png": {
+    "mtime": 1782904201.3443277,
+    "ast_hash": "8b03267cfe4f16eff5d43ed863bcb017",
+    "semantic_hash": ""
+  },
+  "static/images/2022-02-14-20-anos-dotnet/2.png": {
+    "mtime": 1782904201.344884,
+    "ast_hash": "fc371a95191290de2159588844998771",
+    "semantic_hash": ""
+  },
+  "static/images/2022-02-14-20-anos-dotnet/3.gif": {
+    "mtime": 1782904201.345443,
+    "ast_hash": "71bdafc0005bd6ab03a0b77bbd94e6cf",
+    "semantic_hash": ""
+  },
+  "static/images/2022-02-14-20-anos-dotnet/4.gif": {
+    "mtime": 1782904201.3557966,
+    "ast_hash": "f5acf46a2979470eea5d9c5b90f27b4e",
+    "semantic_hash": ""
+  },
+  "static/images/2022-02-14-20-anos-dotnet/header.png": {
+    "mtime": 1782904201.3574963,
+    "ast_hash": "8dcea30338f6496614c0d2dab8139194",
+    "semantic_hash": ""
+  },
+  "static/images/2022-02-14-20-anos-dotnet/thumbnail.png": {
+    "mtime": 1782904201.3586047,
+    "ast_hash": "810f9c28fcd47f5c5bc8847234f08db1",
+    "semantic_hash": ""
+  },
+  "static/images/2022-06-01-compartimoss-unplugged-48/thumbnail.png": {
+    "mtime": 1782904201.3592403,
+    "ast_hash": "f1f9d919b0ca159dabdb3893b4fb80b7",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/foro_marcas_renombradas.jpg": {
+    "mtime": 1782904201.3855975,
+    "ast_hash": "20b4b6c1ef06b6dc37bac2ab414e0dff",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_1_A.jpg": {
+    "mtime": 1782904201.466874,
+    "ast_hash": "d810475bd8fea5e419bc6222de097dab",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_1_B.jpg": {
+    "mtime": 1782904201.4943125,
+    "ast_hash": "cd9408f8a5751dcfac92859abeac7d2c",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_1_C.jpg": {
+    "mtime": 1782904201.5184,
+    "ast_hash": "712303946bbdf19d373a3d05f4a8a8a8",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_1_D.jpg": {
+    "mtime": 1782904201.5292218,
+    "ast_hash": "dd2a80a220b1c284e05b802f8c66257a",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_1_E.jpg": {
+    "mtime": 1782904201.5514324,
+    "ast_hash": "32f8ec498f6a8e90f3a94fe809868e90",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_1_F.jpg": {
+    "mtime": 1782904201.5644312,
+    "ast_hash": "66e4ec07f49ce82fae1888600f2367b8",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_2_A.jpg": {
+    "mtime": 1782904201.575436,
+    "ast_hash": "a3a5e3e8c27e3ef2fb09d5d451eb0ffb",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_2_B.jpg": {
+    "mtime": 1782904201.587441,
+    "ast_hash": "876305188d7d7c79206f075418f7b9ad",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_2_C.jpg": {
+    "mtime": 1782904201.6015344,
+    "ast_hash": "993d133e7a0b5949e4552f2825d25cf7",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_2_D.jpg": {
+    "mtime": 1782904201.6115477,
+    "ast_hash": "5f0d9d141c80d32bcc31cc38383fb776",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_2_E.jpg": {
+    "mtime": 1782904201.6245456,
+    "ast_hash": "22c0c44b011182d61bb3dd48b911d81f",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_2_F.jpg": {
+    "mtime": 1782904201.6280587,
+    "ast_hash": "67733742483deac55b460a5a3f603cd4",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_A.jpg": {
+    "mtime": 1782904201.6456656,
+    "ast_hash": "da0789f705084f0e763a9c1a189cfe99",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_B.jpg": {
+    "mtime": 1782904201.7470665,
+    "ast_hash": "f226dedd9c9a7292f6910f27ec9bf2b8",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_C.jpg": {
+    "mtime": 1782904201.8002744,
+    "ast_hash": "fb798c0b627f029a5cd39ae80ef065c7",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_D.jpg": {
+    "mtime": 1782904201.8996975,
+    "ast_hash": "dd951e6e47b98440e34db2805d0d076f",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_E.jpg": {
+    "mtime": 1782904201.9215581,
+    "ast_hash": "2cac6349a7008199feddb3e63d14c919",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_F.jpg": {
+    "mtime": 1782904201.9565263,
+    "ast_hash": "b6c9727c7d5209d63fbf26a4c759e357",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_G.jpg": {
+    "mtime": 1782904202.0522156,
+    "ast_hash": "68cf10472cea0833a03f3c142d0b531d",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_H.jpg": {
+    "mtime": 1782904202.0755553,
+    "ast_hash": "357ed00a90e9e1f7d1b17d39b1632bc5",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_I.jpg": {
+    "mtime": 1782904202.2041528,
+    "ast_hash": "a8824905c19aecb4d109a24f78cf76cf",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_J.jpg": {
+    "mtime": 1782904202.216666,
+    "ast_hash": "9a07c3beaf498fad0e195f2f1c6fc95a",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_K.jpg": {
+    "mtime": 1782904202.2379434,
+    "ast_hash": "e400ede064b677dc63c988fc89751ab0",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/gallery_3_L.jpg": {
+    "mtime": 1782904202.267493,
+    "ast_hash": "2ae3417d6865109967199489d2606c77",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/revista_byte_ti.jpg": {
+    "mtime": 1782904202.2836168,
+    "ast_hash": "2b2d16c8e0a12a04cc087f2591b74d97",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/thumbnail.png": {
+    "mtime": 1782904202.2860713,
+    "ast_hash": "05a48f3e6c9226798966503a0b7d946b",
+    "semantic_hash": ""
+  },
+  "static/images/2023-04-02-es-gpt-4-capaz-de-pensar/1.png": {
+    "mtime": 1782904202.2918878,
+    "ast_hash": "af32eba67b71412747b21e848db086df",
+    "semantic_hash": ""
+  },
+  "static/images/2023-04-02-es-gpt-4-capaz-de-pensar/2.png": {
+    "mtime": 1782904202.2966685,
+    "ast_hash": "0982a6a7a5d567402a462913fe279c60",
+    "semantic_hash": ""
+  },
+  "static/images/2023-04-02-es-gpt-4-capaz-de-pensar/3.png": {
+    "mtime": 1782904202.2997231,
+    "ast_hash": "10c598720f92ca0dac961995027045cd",
+    "semantic_hash": ""
+  },
+  "static/images/2023-04-02-es-gpt-4-capaz-de-pensar/4.png": {
+    "mtime": 1782904202.301476,
+    "ast_hash": "880b74a03d6860d29f39222642a3bab3",
+    "semantic_hash": ""
+  },
+  "static/images/2023-04-02-es-gpt-4-capaz-de-pensar/header.png": {
+    "mtime": 1782904202.312693,
+    "ast_hash": "863fa3eb76a559dd47a113c04c82df97",
+    "semantic_hash": ""
+  },
+  "static/images/2023-04-02-es-gpt-4-capaz-de-pensar/thumbnail.png": {
+    "mtime": 1782904202.3132305,
+    "ast_hash": "babdf181f34928ff9ccda823da67adad",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-25-compartimoss-unplugged-ai-01/thumbnail.png": {
+    "mtime": 1782904202.3147428,
+    "ast_hash": "da1cf53443f93f22e1a54983a97fe00c",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-29-moneitzar-apis-inteligencia-artificial-parte-1/1.png": {
+    "mtime": 1782904202.3167875,
+    "ast_hash": "7b075e2d3f1ea5ab6fbcb236787ba464",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-29-moneitzar-apis-inteligencia-artificial-parte-1/header.png": {
+    "mtime": 1782904202.3172965,
+    "ast_hash": "99164575876cb1ae576ce7c981a54afd",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-29-moneitzar-apis-inteligencia-artificial-parte-1/thumbnail.png": {
+    "mtime": 1782904202.3179438,
+    "ast_hash": "125d48f83138d762d9d0e4fdf3546b9b",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/1.png": {
+    "mtime": 1782904202.3209498,
+    "ast_hash": "dd2904a6c8b0e7cd0e8d065e8aed1de8",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/10.png": {
+    "mtime": 1782904202.3232763,
+    "ast_hash": "bc780655f3164977f08f4cd9682671dc",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/2.gif": {
+    "mtime": 1782904202.344201,
+    "ast_hash": "29a26d0122812b383bbbbc50e98610ca",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/3.png": {
+    "mtime": 1782904202.345202,
+    "ast_hash": "cc194fcd412938e8e3ff4c05463c59a3",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/4.png": {
+    "mtime": 1782904202.3461976,
+    "ast_hash": "48defecac584c023592cc7a6d73762cf",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/5.png": {
+    "mtime": 1782904202.3477101,
+    "ast_hash": "7016c282f04a704bffb287339cfdf5aa",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/6.png": {
+    "mtime": 1782904202.3477101,
+    "ast_hash": "c5bf96a2568387845a530cf3088ff7aa",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/7.png": {
+    "mtime": 1782904202.3594222,
+    "ast_hash": "51742d8891f6789240ae78daa1790bcf",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/8.png": {
+    "mtime": 1782904202.3608859,
+    "ast_hash": "1f99640513c7b86f541ad7b39eedba8b",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/9.png": {
+    "mtime": 1782904202.3633919,
+    "ast_hash": "98dbc8ec6f38bf17fa7671bcfd9a8699",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/header.png": {
+    "mtime": 1782904202.367077,
+    "ast_hash": "3a30742eaf5221cd033f39d325b91ab3",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-30-moneitzar-apis-inteligencia-artificial-parte-2/thumbnail.png": {
+    "mtime": 1782904202.369177,
+    "ast_hash": "9b79b45ca8c79f6dee42ec10f5890508",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/1.png": {
+    "mtime": 1782904202.373216,
+    "ast_hash": "d5194818f279186ee3be77f0511845ed",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/10.png": {
+    "mtime": 1782904202.3765342,
+    "ast_hash": "36d8b500c40d4971318c43d55753f767",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/11.png": {
+    "mtime": 1782904202.3794131,
+    "ast_hash": "ab71911c7e589d60c66dba0b843d2259",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/12.png": {
+    "mtime": 1782904202.3842323,
+    "ast_hash": "4dd97831e95480b8dfabdeb099df9c6f",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/13.png": {
+    "mtime": 1782904202.387362,
+    "ast_hash": "6c2d1d2224095dd39e4fa93391b68297",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/14.png": {
+    "mtime": 1782904202.3894148,
+    "ast_hash": "8954619094f6c12b7f630a42d5ef4544",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/15.png": {
+    "mtime": 1782904202.3944874,
+    "ast_hash": "beca072751007eca6ede4c360ed58626",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/16.png": {
+    "mtime": 1782904202.3954868,
+    "ast_hash": "258148494dd33b397da8c50ce0cd3c8e",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/17.png": {
+    "mtime": 1782904202.399999,
+    "ast_hash": "9307dfa57906bab3955726012d4f4325",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/2.png": {
+    "mtime": 1782904202.4020307,
+    "ast_hash": "6fa0eb4effe13ea6ec8b22d0899c5703",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/3.png": {
+    "mtime": 1782904202.4048707,
+    "ast_hash": "481aafa05cdfd05cefb267798101eda8",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/4.png": {
+    "mtime": 1782904202.4058235,
+    "ast_hash": "f345e2634800e172e39866df04d23b50",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/5.png": {
+    "mtime": 1782904202.407341,
+    "ast_hash": "383c1ec0e6ba3c12105d494e7eb1c661",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/6.png": {
+    "mtime": 1782904202.4087389,
+    "ast_hash": "c61f76e5edebc8032acc7d74db5be80c",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/7.png": {
+    "mtime": 1782904202.409339,
+    "ast_hash": "6c8228eb54e190391a317f4ae34106e8",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/8.png": {
+    "mtime": 1782904202.4103508,
+    "ast_hash": "69aab5f1f4a1253ad8919551cac4432b",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/9.png": {
+    "mtime": 1782904202.4113858,
+    "ast_hash": "a4b48119172aa1b36c0c358dde0a9135",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/header.webp": {
+    "mtime": 1782904202.4146137,
+    "ast_hash": "582c5e49f10530f8444436972c8ab6e6",
+    "semantic_hash": ""
+  },
+  "static/images/2023-05-31-moneitzar-apis-inteligencia-artificial-parte-3/thumbnail.webp": {
+    "mtime": 1782904202.4157493,
+    "ast_hash": "1b8f99c17317abdbd0a3b79635826bb9",
+    "semantic_hash": ""
+  },
+  "static/images/2023-06-01-compartimoss-unplugged-ai-02/thumbnail.png": {
+    "mtime": 1782904202.4157493,
+    "ast_hash": "228dafd29ba2597d89411b223b7b9ec2",
+    "semantic_hash": ""
+  },
+  "static/images/2023-06-29-compartimoss-unplugged-ai-04/thumbnail.png": {
+    "mtime": 1782904202.4175115,
+    "ast_hash": "ff6712e3196a0df2f6c5e1139b658d87",
+    "semantic_hash": ""
+  },
+  "static/images/2023-06-30-articulo-en-compartimoss/1.jpg": {
+    "mtime": 1782904202.4185176,
+    "ast_hash": "df6bc169de1fab5b9500590a904b8528",
+    "semantic_hash": ""
+  },
+  "static/images/2023-06-30-articulo-en-compartimoss/header.png": {
+    "mtime": 1782904202.4225793,
+    "ast_hash": "4d50b3deae3eeb93adbe67c5a26da37f",
+    "semantic_hash": ""
+  },
+  "static/images/2023-06-30-articulo-en-compartimoss/thumbnail.png": {
+    "mtime": 1782904202.4231093,
+    "ast_hash": "8a2564d33a4ad1d15c32d4faad576acc",
+    "semantic_hash": ""
+  },
+  "static/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/1.png": {
+    "mtime": 1782904202.4231093,
+    "ast_hash": "57ad3fd92488010238ec8ead08237557",
+    "semantic_hash": ""
+  },
+  "static/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/2.png": {
+    "mtime": 1782904202.4246292,
+    "ast_hash": "bd65e72a7f76996405abf5f1a988eef5",
+    "semantic_hash": ""
+  },
+  "static/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/3.png": {
+    "mtime": 1782904202.4246292,
+    "ast_hash": "6eea5b0b2e82168183c67d02468cfd9c",
+    "semantic_hash": ""
+  },
+  "static/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/4.png": {
+    "mtime": 1782904202.429156,
+    "ast_hash": "e5a90f7d47d71e03f676b7796f887416",
+    "semantic_hash": ""
+  },
+  "static/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/5.png": {
+    "mtime": 1782904202.4311538,
+    "ast_hash": "ecb759cd01a82b6c97bb6b59ed31b30b",
+    "semantic_hash": ""
+  },
+  "static/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/6.png": {
+    "mtime": 1782904202.4336739,
+    "ast_hash": "fca9b77be1099c6b27c98cba00ac7282",
+    "semantic_hash": ""
+  },
+  "static/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/7.png": {
+    "mtime": 1782904202.43511,
+    "ast_hash": "4cb074ab27fb6f8d5cba17ce5c4e8002",
+    "semantic_hash": ""
+  },
+  "static/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/8.png": {
+    "mtime": 1782904202.4366195,
+    "ast_hash": "bbb495fb7d89210f0b5fc376c54f23cd",
+    "semantic_hash": ""
+  },
+  "static/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/header.png": {
+    "mtime": 1782904202.43778,
+    "ast_hash": "11b4df3f4cd611c4a66e7ca81ebad683",
+    "semantic_hash": ""
+  },
+  "static/images/2023-07-20-integrando-otros-llms-con-semantic-kernel/thumbnail.png": {
+    "mtime": 1782904202.4393117,
+    "ast_hash": "907a8c80f3bffe804a4999160878700b",
+    "semantic_hash": ""
+  },
+  "static/images/2023-10-05-articulo-revista-byte-ti/articulo.jpg": {
+    "mtime": 1782904202.447929,
+    "ast_hash": "3719255159b14c28cbf7cb72b52da76d",
+    "semantic_hash": ""
+  },
+  "static/images/2023-10-05-articulo-revista-byte-ti/portada.jpg": {
+    "mtime": 1782904202.4512174,
+    "ast_hash": "17febd17a67f73c2f335704aca07e124",
+    "semantic_hash": ""
+  },
+  "static/images/2023-10-05-articulo-revista-byte-ti/thumbnail.png": {
+    "mtime": 1782904202.45323,
+    "ast_hash": "3a62971bedbf5976b5ed4c6f534cc9ab",
+    "semantic_hash": ""
+  },
+  "static/images/2023-10-25-nos-vemos-en-microsoft-365-live-2023/1.jpg": {
+    "mtime": 1782904202.455259,
+    "ast_hash": "628caee04625712c905cc736cb7bb075",
+    "semantic_hash": ""
+  },
+  "static/images/2023-10-25-nos-vemos-en-microsoft-365-live-2023/thumbnail.png": {
+    "mtime": 1782904202.455259,
+    "ast_hash": "93a0a5aa739f34c394c5c1b040f78e39",
+    "semantic_hash": ""
+  },
+  "static/images/2023-11-13-nos-vemos-en-la-net-core-conf-2023-madrid/1.jpeg": {
+    "mtime": 1782904202.459315,
+    "ast_hash": "7bc48145753ccc838122be293a6d7bac",
+    "semantic_hash": ""
+  },
+  "static/images/2023-11-13-nos-vemos-en-la-net-core-conf-2023-madrid/thumbnail.png": {
+    "mtime": 1782904202.460825,
+    "ast_hash": "65b79b9ed1a65a0a923607e86ae779d4",
+    "semantic_hash": ""
+  },
+  "static/images/2023-11-20-netcoreconf-2023-madrid-planificando-para-el-exito/header.jpg": {
+    "mtime": 1782904202.4685519,
+    "ast_hash": "679b91a84db65dbf9b1c3511105b7280",
+    "semantic_hash": ""
+  },
+  "static/images/2023-11-20-netcoreconf-2023-madrid-planificando-para-el-exito/logs.png": {
+    "mtime": 1782904202.4716048,
+    "ast_hash": "04fbfb7287ae55c2d61c5f8073ff3c5f",
+    "semantic_hash": ""
+  },
+  "static/images/2023-11-20-netcoreconf-2023-madrid-planificando-para-el-exito/thumbnail.png": {
+    "mtime": 1782904202.473802,
+    "ast_hash": "119f20986a2c411c0e8c2edf8abc191d",
+    "semantic_hash": ""
+  },
+  "static/images/2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/body-1.png": {
+    "mtime": 1783004359.157169,
+    "ast_hash": "afd96dbc429dae3434bb82e89968560f",
+    "semantic_hash": ""
+  },
+  "static/images/2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/body-2.png": {
+    "mtime": 1783004359.1651824,
+    "ast_hash": "4fdfbbe382f6f4517adbc5893968deaa",
+    "semantic_hash": ""
+  },
+  "static/images/2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/cover.png": {
+    "mtime": 1783004359.1826975,
+    "ast_hash": "f3053e390021e11e320757391a2a3b01",
+    "semantic_hash": ""
+  },
+  "static/images/2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/source-3.webp": {
+    "mtime": 1783004359.1836972,
+    "ast_hash": "ff78079fa5c6c8092972ac2df20b4aa8",
+    "semantic_hash": ""
+  },
+  "static/images/2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l/source-4.webp": {
+    "mtime": 1783004359.1846993,
+    "ast_hash": "88dc7022fdafd1a78d8e6b43e80deeae",
+    "semantic_hash": ""
+  },
+  "static/images/avatar.png": {
+    "mtime": 1782904202.5054505,
+    "ast_hash": "8c0738063c1acbf72bbc4c7641c0e3ed",
+    "semantic_hash": ""
+  },
+  "static/images/humanstxt-isolated-blank.gif": {
+    "mtime": 1783004355.782079,
+    "ast_hash": "11bd916751bec9ca4d89cae6db6bf82c",
+    "semantic_hash": ""
+  },
+  "static/images/logo.png": {
+    "mtime": 1782904202.5093827,
+    "ast_hash": "08853cdcf34d4530a22ddc8f023a7732",
+    "semantic_hash": ""
+  },
+  "static/images/not-found.gif": {
+    "mtime": 1782904202.87685,
+    "ast_hash": "353451534e6fce64c5c100c80d43e787",
+    "semantic_hash": ""
+  },
+  "static/images/2022-11-17-propulsion-lab-4-dublin/bracito.mp4": {
+    "mtime": 1782904201.364197,
+    "ast_hash": "e5b3e8077da93424474472e6f39d5e17",
+    "semantic_hash": ""
+  }
+}

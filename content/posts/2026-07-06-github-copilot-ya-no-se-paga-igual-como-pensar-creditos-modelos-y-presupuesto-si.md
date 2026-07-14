@@ -1,12 +1,9 @@
 ---
-title: 'GitHub Copilot ya no se paga igual: cómo pensar créditos, modelos y presupuesto
-  sin perder el control'
+title: 'GitHub Copilot ya no se paga igual: cómo pensar créditos, modelos y presupuesto sin perder el control'
 date: '2026-07-06T10:32:04+00:00'
-draft: true
+draft: false
 slug: github-copilot-ya-no-se-paga-igual-como-pensar-creditos-modelos-y-presupuesto-si
-description: GitHub Copilot pasa a facturación por uso y eso cambia cómo elegir modelos,
-  controlar créditos y gobernar planes. Te cuento qué miraría yo si lideras plataforma
-  o arquitectura.
+description: GitHub Copilot pasa a facturación por uso y eso cambia cómo elegir modelos, controlar créditos y gobernar planes. Te cuento qué miraría yo si lideras plataforma o arquitectura.
 categories:
 - Inteligencia Artificial
 - Arquitectura de Software
@@ -25,8 +22,8 @@ ai:
   model: gpt-5.4
   prompt_version: 2026-06-30.5
   generated_at: '2026-07-06T10:32:04+00:00'
-  reviewed_by: ''
-  review_status: pending
+  reviewed_by: rliberoff
+  review_status: approved
   disclosure: Borrador asistido por IA; revisado por una persona antes de su publicación.
   sources:
   - url: https://github.blog/changelog/2026-07-01-github-models-is-being-fully-retired-on-july-30-2026
@@ -44,6 +41,7 @@ ai:
   - url: https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing
     title: GitHub Copilot is moving to usage-based billing
     published_date: null
+  reviewed_at: '2026-07-14T06:42:57Z'
 ---
 
 Si estás liderando arquitectura, plataforma o ingeniería, creo que estamos ante uno de esos cambios que, a primera vista, parecen puramente comerciales… pero no lo son en absoluto. En realidad, son profundamente técnicos. GitHub Copilot ya no se entiende bien si lo miras solo como una licencia por usuario.

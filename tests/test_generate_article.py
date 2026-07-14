@@ -718,6 +718,16 @@ def test_validate_source_images_drops_denylisted(monkeypatch=None):
 # -----------------------------------------------------------------------------
 
 
+def test_generation_prompts_require_deliberate_bold_emphasis():
+    expected_rule = "Use Markdown bold (**...**) deliberately"
+
+    assert expected_rule in ga.SYSTEM_PROMPT_DRAFT
+    assert expected_rule in ga.SYSTEM_PROMPT_POLISH
+    for prompt in (ga.SYSTEM_PROMPT_DRAFT, ga.SYSTEM_PROMPT_POLISH):
+        assert "one or two short, decisive phrases per major section" in prompt
+        assert "never bold a whole paragraph" in prompt
+
+
 def test_merge_polished_overwrites_prose_keeps_structure():
     draft = {
         "title": "Borrador",

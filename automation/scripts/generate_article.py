@@ -84,7 +84,7 @@ from _text import slugify
 
 # Version of the editorial prompt below. Stored in the post's `ai.prompt_version`
 # for provenance/auditing. Bump it whenever the prompt/voice changes.
-PROMPT_VERSION = "2026-07-14.1"
+PROMPT_VERSION = "2026-07-14.2"
 
 MIN_COVER_PROMPT_CHARS = 80
 MAX_COVER_PROMPT_CHARS = 2400
@@ -199,6 +199,17 @@ trazas y registros de eventos."
 - "(de nuevo los nombres no son mi fuerte 😅)"
 - "Y de todos los guerreros, no se les ocurrió ninguno mejor que el Ninja. ¿Pero qué es \
 exactamente un «Programador Ninja»?"
+"""
+
+EMPHASIS_RUBRIC = """\
+Editorial emphasis:
+- Use Markdown bold (**...**) deliberately to give weight to one or two short, decisive \
+phrases per major section: a strong opinion, a surprising contrast, a consequential \
+warning or the sentence that crystallises the point. For example, bold the decisive \
+claim inside a longer sentence, not merely a keyword.
+- Keep bold rare and meaningful: never bold a whole paragraph, a list, a heading, a \
+quotation, a link or several consecutive sentences. Do not add bold merely for visual \
+decoration; the article must still read naturally without it.
 """
 
 # -----------------------------------------------------------------------------
@@ -319,6 +330,7 @@ should be visually rich and well-paced.
 
 """
     + CODE_RUBRIC
+    + EMPHASIS_RUBRIC
     + """\
 
 Do not add extra keys or any text outside the JSON object. The slug must be the canonical, title-derived slug that will later be prefixed with the publication date in the filename (for example, YYYY-MM-DD-<slug>.md), so keep it simple, stable and directly traceable to the title.\
@@ -376,6 +388,7 @@ faces.
     + STYLE_EXEMPLARS
     + "\n"
     + CODE_RUBRIC
+    + EMPHASIS_RUBRIC
     + """\
 
 Apply the STYLE EXEMPLARS' voice and the Code rubric above to the draft you are given.\

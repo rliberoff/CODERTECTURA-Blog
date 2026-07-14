@@ -45,25 +45,25 @@ from typing import NoReturn
 
 from _foundry import FoundryError, FoundryImageClient
 
-# CODERTECTURA cover look (grounded in the logo + site theme) -- now a HIGH-IMPACT,
-# cinematic editorial style: a bold conceptual scene built around a clear hero
-# subject and a memorable visual metaphor, with dramatic lighting and depth over a
-# deep midnight navy-to-black base. NOTE: this INTENTIONALLY diverges from
-# resolve_body_images.BODY_STYLE_SUFFIX -- covers are dramatic/cinematic, body images
-# stay flat/explanatory diagrams. Do NOT "re-sync" them. Cover-specific: keep the
-# lower third calmer/darker so the Hugo title overlay keeps good contrast. Always
-# text/letter/logo/brand/watermark-free and free of recognizable real human faces.
+# Covers use article-specific advertising art direction. This suffix enforces only
+# campaign clarity, crop resilience and safety; it must not impose a recurring scene,
+# subject, palette or lighting recipe. It intentionally diverges from the schematic
+# BODY_STYLE_SUFFIX in resolve_body_images.py.
 STYLE_SUFFIX = (
-    " -- dramatic cinematic editorial blog cover, bold high-impact composition "
-    "built around a single strong focal subject with a clear visual metaphor, deep "
-    "sense of depth and scale (foreground, midground and background), moody "
-    "volumetric lighting with atmospheric haze and glowing light rays, rich "
-    "contrast and vivid expressive cinematic color over a deep midnight "
-    "navy-to-black base, immersive and energetic sci-fi tech atmosphere; allowed "
-    "subjects include silhouettes, figures seen from behind and stylised robots or "
-    "mascots, human faces as long as they are not recognizable real human faces; keep the lower third calmer and "
-    "darker so an overlaid title stays legible, ultra detailed, high quality, "
-    "no text, no letters, no numbers, no watermarks. You can use logos or brands as long as they are part of the blog post."
+    " -- premium advertising key visual for a professional technology publication "
+    "and social-media campaign. Preserve the article-specific concept, subject, "
+    "setting and meaningful colour palette from the brief; do not replace them with "
+    "generic futuristic technology imagery. Communicate one idea immediately at "
+    "thumbnail size with confident visual hierarchy, intentional art direction, "
+    "polished materials and production-quality detail. Keep the essential subject "
+    "and metaphor within the central 70% safe area so the image remains effective in "
+    "wide 2:1 LinkedIn and blog-card crops, and keep the lower band visually calm for "
+    "an overlaid title. Do not default to blue or cyan neon, back-facing people, "
+    "command centres, dashboard walls, glowing orbs, symmetric sci-fi halls, floating "
+    "interfaces or decorative circuit grids unless the supplied brief explicitly "
+    "makes that motif essential. No baked-in text, letters, numbers or watermarks, "
+    "and no recognisable real human faces. Relevant product logos or brands are "
+    "allowed only when requested by the supplied brief."
 )
 
 

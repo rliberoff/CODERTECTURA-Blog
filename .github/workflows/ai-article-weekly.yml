@@ -8,30 +8,23 @@
 #
 #   Flow:
 #     Job A (discover): OIDC -> token (1 step) -> discover_topics.py
-#                       (writes automation/topics/<id>.yaml + candidate_ids)
-#                       -> build a JSON matrix of the top-N candidates.
+#                       (writes automation/topics/<id>.yaml + final JSON matrix).
 #     Job B (write):    matrix fan-out (1 per article, serialised) -> each entry
-#                       calls ai-article-build.yml with the candidate's topic +
-#                       base64 sources -> one PR per article (needs-rai-review).
+#                       calls ai-article-build.yml with one complete candidate
+#                       payload -> one PR per article.
 #
 # SECURITY (OWASP A03 Injection hardening — same guarantees as ai-article-build)
 #   * The data-plane bearer token is acquired AND consumed inside the SINGLE
 #     discovery step; it never crosses a step boundary or reaches logs/outputs.
 #   * `TAVILY_API_KEY` is referenced ONLY in the discovery step's env, never
 #     echoed, and lives only as a GitHub Actions Secret.
-#   * Candidate titles, slugs, notes and sources (untrusted web-derived data) are
-#     NEVER interpolated into a shell `run:` line. The matrix is built by an
-#     inline Python reading env vars; candidate ids reach Python via the
-#     CANDIDATE_IDS env var; sources travel as base64 and are decoded to a file
-#     inside the reusable workflow.
+#   * The complete candidate YAML travels as base64 and is decoded to a file
+#     inside the reusable workflow. Web-derived values are never interpolated
+#     into a shell `run:` line.
 #
-# OPERATIONAL ASSUMPTION (dedup) — Natasha P2-4
-#   Merge or close the week's AI PRs before the next Monday run — the candidate
-#   ledger files are written in the runner and NOT committed, so an open-but-
-#   unmerged draft is not visible to next week's dedup (which reads merged posts
-#   on `main`). With the <=3/run cap this is easily managed. A fuller open-PR-aware
-#   dedup is a deferred design decision and is intentionally NOT implemented here;
-#   the same reminder is surfaced on each PR's review checklist.
+# OPEN-PR DEDUP
+#   Before discovery, ledger files from open AI PRs are overlaid on the checkout.
+#   This keeps in-review topics visible to dedup even before they reach `main`.
 # =============================================================================
 
 name: ai-article-weekly
@@ -92,8 +85,8 @@ jobs:
     name: Descubrir temas y construir la matriz
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.matrix.outputs.matrix }}
-      count: ${{ steps.matrix.outputs.count }}
+      matrix: ${{ steps.discover.outputs.matrix }}
+      count: ${{ steps.discover.outputs.count }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -113,6 +106,39 @@ jobs:
       - name: Instalar dependencias del script
         run: python -m pip install --disable-pip-version-check --no-input -r automation/scripts/requirements.txt
 
+      - name: Incorporar ledger de Pull Requests de IA abiertos
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          declare -A loaded_topics=()
+          while IFS=$'\t' read -r pr_number branch; do
+            [ -z "${pr_number}" ] && continue
+            git check-ref-format --branch "${branch}" > /dev/null
+            git fetch --quiet --no-tags origin "refs/heads/${branch}"
+            while IFS= read -r topic_path; do
+              [ -z "${topic_path}" ] && continue
+              if [[ "${topic_path}" =~ ^automation/topics/[a-z0-9]+(-[a-z0-9]+)*\.ya?ml$ ]]; then
+                if [ -n "${loaded_topics[${topic_path}]:-}" ]; then
+                  echo "::error::Topic ledger ${topic_path} is modified by open PRs #${loaded_topics[${topic_path}]} and #${pr_number}."
+                  exit 1
+                fi
+                git show "FETCH_HEAD:${topic_path}" > "${topic_path}"
+                loaded_topics["${topic_path}"]="${pr_number}"
+                echo "Loaded ledger entry from open PR #${pr_number}: ${topic_path}"
+              fi
+            done < <(
+              gh api --paginate \
+                "repos/${GITHUB_REPOSITORY}/pulls/${pr_number}/files" \
+                --jq '.[] | select(.status != "removed") | .filename'
+            )
+          done < <(
+            gh pr list --state open --label ai-generated --limit 1000 \
+              --json number,headRefName,isCrossRepository \
+              --jq '.[] | select(.isCrossRepository == false) | [.number, .headRefName] | @tsv'
+          )
+
       # ---------------------------------------------------------------------
       # Acquire the data-plane token AND run discovery in ONE step. The Tavily
       # key lives only in this step's env. On a manual dry-run the script is
@@ -126,6 +152,9 @@ jobs:
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           DISCOVERY_FOCUS: ${{ inputs.focus }}
           DISCOVERY_TRACE_STDOUT: "true"
+          DISCOVERY_DEBUG_FILE: ${{ runner.temp }}/discovery-debug.json
+          REQUIRE_EMBEDDINGS: "true"
+          MAX_CANDIDATES: ${{ env.MAX_ARTICLES_PER_RUN }}
           # schedule -> false (real run); manual -> follows the dry_run input.
           WEEKLY_DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
         run: |
@@ -138,73 +167,14 @@ jobs:
             AOAI_TOKEN="${TOKEN}" python automation/scripts/discover_topics.py
           fi
 
-      # ---------------------------------------------------------------------
-      # Build the fan-out matrix from the top-N candidate ledger files. The
-      # candidate ids arrive via CANDIDATE_IDS (env, never interpolated into the
-      # command). The inline Python (quoted heredoc -> no shell/Actions
-      # expansion) loads each automation/topics/<id>.yaml with PyYAML and emits
-      # { include: [{ id, topic, sources_file_b64 }] } plus a count, where
-      # sources_file_b64 is base64 of the candidate's `sources` array.
-      # ---------------------------------------------------------------------
-      - name: Seleccionar top-N y construir la matriz de artículos
-        id: matrix
-        shell: bash
-        env:
-          CANDIDATE_IDS: ${{ steps.discover.outputs.candidate_ids }}
-          TOPICS_DIR: automation/topics
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          import base64
-          import json
-          import os
-
-          import yaml
-
-          ids = [i.strip() for i in os.environ.get("CANDIDATE_IDS", "").split(",") if i.strip()]
-          try:
-              cap = int(os.environ.get("MAX_ARTICLES_PER_RUN", "3"))
-          except ValueError:
-              cap = 3
-          cap = max(cap, 0)
-          topics_dir = os.environ.get("TOPICS_DIR", "automation/topics").rstrip("/")
-
-          include = []
-          for cid in ids[:cap]:
-              path = os.path.join(topics_dir, f"{cid}.yaml")
-              try:
-                  with open(path, "r", encoding="utf-8") as handle:
-                      doc = yaml.safe_load(handle)
-              except OSError as exc:
-                  print(f"::warning::skipping {cid}: cannot read {path}: {exc}")
-                  continue
-              if not isinstance(doc, dict):
-                  print(f"::warning::skipping {cid}: topic file is not a mapping")
-                  continue
-              title = doc.get("title")
-              if not isinstance(title, str) or not title.strip():
-                  print(f"::warning::skipping {cid}: no usable title")
-                  continue
-              title = title.strip()
-              notes = doc.get("notes")
-              angle = notes.strip()[:200].strip() if isinstance(notes, str) else ""
-              topic = f"{title}. Enfoque: {angle}" if angle else title
-              sources = doc.get("sources")
-              if not isinstance(sources, list):
-                  sources = []
-              sources_b64 = base64.b64encode(
-                  json.dumps(sources, ensure_ascii=False).encode("utf-8")
-              ).decode("ascii")
-              include.append({"id": cid, "topic": topic, "sources_file_b64": sources_b64})
-
-          matrix = {"include": include}
-          github_output = os.environ.get("GITHUB_OUTPUT")
-          if github_output:
-              with open(github_output, "a", encoding="utf-8") as handle:
-                  handle.write(f"matrix={json.dumps(matrix, ensure_ascii=False)}\n")
-                  handle.write(f"count={len(include)}\n")
-          print(f"Seleccionados {len(include)} candidato(s) para generación (cap={cap}).")
-          PY
+      - name: Subir traza de descubrimiento
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-trace-${{ github.run_id }}
+          path: ${{ runner.temp }}/discovery-debug.json
+          if-no-files-found: warn
+          retention-days: 30
 
   # ---------------------------------------------------------------------------
   # Job B — one article (and one PR) per selected candidate. Serialised
@@ -221,8 +191,7 @@ jobs:
       matrix: ${{ fromJSON(needs.discover.outputs.matrix) }}
     uses: ./.github/workflows/ai-article-build.yml
     with:
-      topic: ${{ matrix.topic }}
-      sources_file_b64: ${{ matrix.sources_file_b64 }}
+      candidate_b64: ${{ matrix.candidate_b64 }}
       dry_run: false
       pr_extra_label: needs-rai-review
     secrets: inherit

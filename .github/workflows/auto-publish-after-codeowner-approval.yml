@@ -80,9 +80,26 @@ jobs:
               .map((f) => f.filename)
               .filter((name) => name.startsWith('content/posts/') && name.endsWith('.md'));
 
+            const topicFiles = files
+              .map((f) => f.filename)
+              .filter((name) => /^automation\/topics\/[a-z0-9]+(?:-[a-z0-9]+)*\.ya?ml$/.test(name));
+
             core.info(`Detected post files: ${postFiles.join(', ') || 'none'}`);
+            core.info(`Detected topic ledger files: ${topicFiles.join(', ') || 'none'}`);
             core.setOutput('count', String(postFiles.length));
             core.setOutput('files', postFiles.join('\n'));
+            core.setOutput('topic_count', String(topicFiles.length));
+            core.setOutput('topic_files', topicFiles.join('\n'));
+
+      - name: Mint GitHub App token
+        if: >-
+          steps.reviewer.outputs.is_codeowner == 'true' &&
+          steps.targets.outputs.count != '0'
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
       - name: Checkout PR branch
         if: >-
@@ -90,7 +107,26 @@ jobs:
           steps.targets.outputs.count != '0'
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.review.commit_id }}
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Verify the approved commit is still the PR head
+        if: >-
+          steps.reviewer.outputs.is_codeowner == 'true' &&
+          steps.targets.outputs.count != '0'
+        env:
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          REVIEWED_SHA: ${{ github.event.review.commit_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git check-ref-format --branch "${PR_HEAD_REF}" > /dev/null
+          git fetch --quiet --no-tags origin "refs/heads/${PR_HEAD_REF}"
+          CURRENT_SHA="$(git rev-parse FETCH_HEAD)"
+          if [ "${CURRENT_SHA}" != "${REVIEWED_SHA}" ]; then
+            echo "::error::PR head advanced after approval (${REVIEWED_SHA} -> ${CURRENT_SHA})."
+            exit 1
+          fi
 
       - name: Setup Python
         if: >-
@@ -187,10 +223,51 @@ jobs:
           print(f"Total updated files: {updated_count}")
           PY
 
+      - name: Update topic ledger status
+        if: >-
+          steps.reviewer.outputs.is_codeowner == 'true' &&
+          steps.targets.outputs.count != '0' &&
+          steps.targets.outputs.topic_count != '0'
+        env:
+          TARGET_TOPICS: ${{ steps.targets.outputs.topic_files }}
+          TARGET_FILES: ${{ steps.targets.outputs.files }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARTICLE_PATHS_FILE="${RUNNER_TEMP}/approved-article-paths.txt"
+          printf '%s\n' "${TARGET_FILES}" > "${ARTICLE_PATHS_FILE}"
+          while IFS= read -r topic_file; do
+            [ -z "${topic_file}" ] && continue
+            python automation/scripts/topic_ledger.py update \
+              --topic-file "${topic_file}" \
+              --status "published" \
+              --pr-url "${PR_URL}" \
+              --article-paths-file "${ARTICLE_PATHS_FILE}"
+          done <<< "${TARGET_TOPICS}"
+
+      - name: Setup Hugo (extended)
+        if: >-
+          steps.reviewer.outputs.is_codeowner == 'true' &&
+          steps.targets.outputs.count != '0'
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: latest
+          extended: true
+
+      - name: Build gate after publication metadata update
+        if: >-
+          steps.reviewer.outputs.is_codeowner == 'true' &&
+          steps.targets.outputs.count != '0'
+        run: hugo --gc --minify
+
       - name: Commit and push status changes
         if: >-
           steps.reviewer.outputs.is_codeowner == 'true' &&
           steps.targets.outputs.count != '0'
+        env:
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          REVIEWED_SHA: ${{ github.event.review.commit_id }}
         shell: bash
         run: |
           set -euo pipefail
@@ -201,6 +278,8 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/posts/*.md
+          git add -- content/posts automation/topics
           git commit -m "chore - content: publish reviewed ai article"
-          git push
+          git push \
+            --force-with-lease="refs/heads/${PR_HEAD_REF}:${REVIEWED_SHA}" \
+            origin "HEAD:refs/heads/${PR_HEAD_REF}"

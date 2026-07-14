@@ -7,7 +7,7 @@ El *ledger de temas* es la memoria persistente del pipeline de artículos asisti
 El ledger cumple tres funciones:
 
 - **Memoria**: recuerda qué temas se han descubierto, propuesto o descartado entre ejecuciones, para no empezar de cero cada vez.
-- **Deduplicación**: evita proponer temas repetidos o demasiado parecidos a lo ya publicado o encolado.
+- **Deduplicación**: evita proponer temas repetidos o demasiado parecidos a lo ya publicado, encolado o en revisión.
 - **Auditoría**: cada cambio queda registrado en el historial de git (quién, cuándo y por qué cambió un estado), sin necesidad de una base de datos externa.
 
 ## Estructura de archivos
@@ -24,43 +24,48 @@ Cada fichero YAML describe un único tema con los campos siguientes.
 | ------- | ------ | :-----------: | ------------- |
 | `id` | string | Sí | Identificador único y estable (kebab-case). Coincide con el nombre del fichero y es la clave primaria. |
 | `title` | string | Sí | Título de trabajo del tema, en inglés (metadato interno de descubrimiento; el título final en español se genera al redactar el artículo). Parte de la clave de deduplicación exacta. |
-| `slug` | string | Sí | Slug del artículo (kebab-case, ASCII). Al publicar debe coincidir con `content/posts/<slug>.md`. Parte de la deduplicación exacta. |
+| `slug` | string | Sí | Slug del artículo (kebab-case, ASCII). Al entrar en revisión se actualiza con el slug final generado. Parte de la deduplicación exacta. |
 | `status` | enum | Sí | Estado en el ciclo de vida (ver tabla de estados). |
-| `source` | url | Sí | URL oficial de Microsoft que respalda el tema (fuente autorizada). |
+| `status_history` | lista | Sí | Secuencia cronológica append-only de objetos `{status, at}`. Conserva transiciones ocurridas antes del primer commit. |
 | `discovered_at` | datetime | Sí | Fecha y hora de descubrimiento en ISO 8601 con zona horaria. |
-| `language` | string | Sí | Idioma del contenido. En este blog, siempre `es`. |
+| `sources` | lista | Sí | Fuentes validadas para redacción e imágenes, con la primaria en primer lugar. |
 | `similarity` | objeto | Sí | Resultado de la deduplicación semántica (ver subcampos). |
-| `similarity.max_score` | número | Sí | Máxima similitud (coseno, `0..1`) frente a temas publicados o encolados. |
+| `similarity.max_score` | número | Sí | Máxima similitud (coseno, `0..1`) frente a temas publicados, encolados o en revisión. |
 | `similarity.closest_match` | string | Sí | `id` o `slug` del tema más parecido encontrado. |
 | `similarity.threshold` | número | Sí | Umbral de novedad. Por defecto `0.82`. |
 | `notes` | string | No | Notas libres para personas (contexto, ángulo editorial, recordatorios). |
-| `pr_url` | url \| null | Sí | URL del Pull Request asociado. `null` hasta que se abre un PR. |
+| `article_path` | string \| null | Sí | Ruta exacta del post generado, incluido el prefijo de fecha. `null` hasta entrar en revisión. |
+| `pr_url` | url \| null | Sí | URL del Pull Request asociado. Se persiste al publicar; antes permanece `null`. |
 
 ## Ciclo de vida (estados)
 
 Un tema avanza por estos estados:
 
 ```text
-candidate -> queued -> in_review -> published
-                                 -> rejected
-                                 -> parked
+candidate ─────────> in_review -> published
+  │                    ├──────> rejected
+  ├──> queued ─────────┘
+  ├──> rejected
+  └──> parked -> queued
 ```
 
 | Estado | Significado |
 | ------ | ----------- |
 | `candidate` | Descubierto, todavía sin validar. |
-| `queued` | Aprobado y en cola para generación. |
+| `queued` | Aprobado manualmente y en cola para generación. El semanal no se detiene aquí. |
 | `in_review` | Hay un PR abierto, pendiente de revisión humana. |
 | `published` | Publicado; existe el `.md` correspondiente en `content/posts/`. |
 | `rejected` | Descartado por falta de valor editorial o estar fuera de alcance. |
 | `parked` | Aparcado temporalmente; se podrá retomar más adelante. |
+
+El pipeline valida las transiciones y rechaza saltos no permitidos. El flujo semanal mueve directamente cada candidato seleccionado a `in_review`; `queued` queda disponible para colas editoriales manuales. La aprobación del CODEOWNER registra `published`. Repetir cualquiera de esos pasos es idempotente y no duplica el historial.
 
 ## Deduplicación
 
 Antes de aceptar un tema nuevo se aplican dos claves complementarias:
 
 - **Clave exacta (a)**: coincidencia exacta de `slug` o `title` frente a temas existentes. Si coincide, es un duplicado y se omite.
-- **Clave semántica (b)**: comparación por *embeddings* (similitud coseno) contra todo lo publicado o encolado. Se calcula `similarity.max_score`.
+- **Clave semántica (b)**: comparación por *embeddings* (similitud coseno) contra todo lo publicado, encolado o en revisión. Se calcula `similarity.max_score`.
 
 El **umbral de novedad** (`threshold`, por defecto `0.82`) decide la novedad: si `max_score` es **estrictamente mayor** que el umbral, el tema se considera *demasiado parecido* a algo existente y se omite. Si es igual o menor, el tema se considera suficientemente nuevo.
 
@@ -79,6 +84,12 @@ Los ficheros cuyo nombre empieza por `_` (guion bajo) son plantillas o ejemplos 
 - Ejemplo: `automation/topics/_example.yaml` documenta el esquema completo pero nunca se procesa.
 - Para crear un tema real, copia la plantilla a `automation/topics/<id>.yaml` (sin guion bajo) y rellena los campos con valores reales.
 
+## Persistencia en GitHub Actions
+
+El script de descubrimiento aplica el límite una sola vez y emite directamente la matriz de fan-out. Cada entrada transporta un único YAML completo mediante base64; el workflow reutilizable deriva de él el id, el tema y las fuentes. El PR confirma juntos el post, sus imágenes y `automation/topics/<id>.yaml`. Los temas del flujo semanal usan una rama estable `bot/ai-article-<id>`, por lo que un *rerun* reutiliza el historial ya confirmado en vez de reconstruir sus fechas.
+
+Antes de una nueva búsqueda, el workflow superpone temporalmente solo las entradas de ledger modificadas por cada PR de IA abierto. Si dos PR abiertos reclaman el mismo fichero de tema, aborta en vez de elegir uno de forma ambigua. De este modo la deduplicación ve tanto lo fusionado en `main` como los temas todavía `in_review`. Cuando un CODEOWNER aprueba el artículo, el workflow de publicación cambia la entrada a `published` y conserva la ruta exacta en `article_path`.
+
 ## Agente de descubrimiento de temas (Tavily)
 
 El script `automation/scripts/discover_topics.py` (apoyado en el módulo compartido `automation/scripts/_foundry.py`) descubre artículos técnicos recientes en los dominios oficiales de Microsoft y GitHub, valida sus fechas, deduplica y escribe los que pasan como ficheros `candidate` en este ledger. Es la **Fase 1** del pipeline; las fases de redacción e imágenes consumirán estos candidatos más adelante.
@@ -91,18 +102,18 @@ El script `automation/scripts/discover_topics.py` (apoyado en el módulo compart
 
 ### Validación de fechas (fail-closed)
 
-- La fecha de publicación se resuelve en este orden: `published_date` de Tavily → fecha extraída de la URL o del contenido → si no hay ninguna fiable, se considera **sin fecha**.
+- La fecha de publicación se resuelve en este orden: `published_date` de Tavily → fecha estructural de la URL → si no hay ninguna fiable, se considera **sin fecha**. Las fechas encontradas en texto libre se ignoran.
 - *Fresco* = dentro de `TAVILY_FRESHNESS_DAYS` (por defecto 30). Cualquier cosa más antigua que el tope duro (`TAVILY_HARD_CAP_DAYS`, por defecto 90) se descarta.
 - Un candidato necesita **al menos una fuente primaria fresca y con fecha**. Las fuentes sin fecha solo se adjuntan como secundarias.
 
 ### Deduplicación en el descubrimiento
 
 - **Exacta**: `slug`/`title` del candidato frente a los temas del ledger y a los posts publicados en `content/posts/*.md`.
-- **Semántica**: similitud coseno de *embeddings* frente a temas publicados o encolados; se registra en `similarity` y se omite el candidato si `max_score` supera el umbral (`SIMILARITY_THRESHOLD`, por defecto 0.82).
+- **Semántica**: similitud coseno de *embeddings* frente a temas publicados, encolados o en revisión; se registra en `similarity` y se omite el candidato si `max_score` supera el umbral (`SIMILARITY_THRESHOLD`, por defecto 0.82).
 
-### Campo añadido al esquema: `sources`
+### Fuentes de *grounding*
 
-Además de los campos del [esquema de un tema](#esquema-de-un-tema), los candidatos generados por este agente incluyen una clave **`sources`**: una lista (máximo 5) de los artículos de respaldo, con la fuente primaria primero. Cada entrada tiene `url`, `title`, `published_date`, `host` y `kind` (`primary` o `secondary`). Sirve de contexto de redacción e imágenes para la Fase 2. El campo `source` (singular, obligatorio) sigue apuntando a la fuente primaria.
+`sources` contiene como máximo cinco artículos de respaldo, con la fuente primaria primero. Cada entrada tiene `url`, `title`, `published_date`, `host` y `kind` (`primary` o `secondary`). Los campos opcionales `excerpt` e `images` aportan contexto de redacción e imágenes a la Fase 2. No se mantiene una copia singular de la primera URL.
 
 ### Variables de entorno
 
@@ -115,6 +126,7 @@ La autenticación de Azure no cambia: el workflow adquiere el token con OIDC/UAM
 | `AOAI_ENDPOINT` | Variable | — | Endpoint de Foundry (ya existe en el pipeline). |
 | `AOAI_TEXT_DEPLOYMENT` | Variable | `gpt-5.4-mini` | Despliegue de chat usado como planificador. |
 | `AZURE_OPENAI_DEPLOYMENT_EMBEDDINGS` | Variable | `text-embedding-3-large` | Despliegue de embeddings para la dedup semántica. |
+| `REQUIRE_EMBEDDINGS` | Variable | `false` | Falla si no hay deployment de embeddings. El workflow semanal establece `true`. |
 | `TAVILY_FRESHNESS_DAYS` | Variable | `30` | Ventana de frescura en días. |
 | `TAVILY_HARD_CAP_DAYS` | Variable | `90` | Edad máxima absoluta en días. |
 | `TAVILY_MAX_RESULTS` | Variable | `8` | Resultados por llamada a Tavily. |
@@ -159,10 +171,10 @@ La **Fase 2** consume el campo `sources` de los candidatos para fundar el artíc
 
 ### Redacción con fundamento (`generate_article.py`)
 
-- **Doble pasada (C.1)**: la pasada 1 redacta un borrador fundado en las fuentes con código real; la pasada 2 reescribe la prosa para la **voz del blog** y endurece los ejemplos de código, preservando intactos los marcadores `{{img:<id>}}`, el `slug`, la portada (`image_prompt`) y las `body_images`. Ambas pasadas usan el despliegue de generación (`AOAI_GENERATE_DEPLOYMENT`, p. ej. `gpt-5.4`, con *fallback* a `AOAI_TEXT_DEPLOYMENT`). La pasada 2 es *fail-open*: si falla, se conserva el borrador. El presupuesto de *grounding* por fuente sube a 3000 caracteres para ejemplos de código más fieles.
+- **Doble pasada (C.1)**: la pasada 1 redacta un borrador fundado en las fuentes con código real; la pasada 2 reescribe la prosa para la **voz del blog**, endurece los ejemplos de código y sustituye `image_prompt` por una dirección de portada basada en el artículo final. El `slug`, los marcadores `{{img:<id>}}` y las `body_images` permanecen intactos. Ambas pasadas usan el despliegue de generación (`AOAI_GENERATE_DEPLOYMENT`, p. ej. `gpt-5.4`, con *fallback* a `AOAI_TEXT_DEPLOYMENT`). La pasada 2 es *fail-open*: si falla, se conserva el borrador. El presupuesto de *grounding* por fuente sube a 3000 caracteres para ejemplos de código más fieles.
 - Las fuentes llegan por **fichero** (`SOURCES_FILE`, JSON UTF-8), nunca por argumentos, igual que `IMAGE_PROMPT_FILE`. Se aceptan tanto una lista como un objeto con clave `sources`; cada entrada es `{url, title, published_date, host, kind}` y, opcionalmente, un extracto (`raw_content`/`text`/`snippet`) y candidatos de imagen (`images`).
 - Todo el contenido se trata como **DATOS EXTERNOS NO FIABLES**: el host se revalida contra la lista blanca, el texto se sanea y se inyecta en el prompt dentro de un bloque delimitado con la instrucción de no seguir órdenes que aparezcan dentro y de citar **solo** las URLs proporcionadas (enlaces Markdown).
-- La portada (`image_prompt`) se ancla al título y al contenido real del artículo con un estilo **cinematográfico de alto impacto**: una escena conceptual con un sujeto protagonista (siluetas, figuras de espaldas o robots/mascotas, sin rostros reales), composición dramática, profundidad e iluminación volumétrica, sobre base oscura azul medianoche con color cinematográfico libre y vibrante; reserva una zona inferior más sobria para el título superpuesto y nunca lleva texto aun que si logos de productos o marcas. Las imágenes de cuerpo de IA divergen a propósito: son **diagramas esquemáticos o infografías** (arquitecturas, flujos, *pipelines*, modelos por capas o comparativas) en la **familia visual de CODERTECTURA**, con nodos, flechas y conectores; pueden llevar **etiquetas cortas** cuando aclaran el concepto (el modelo lo decide por imagen) o quedarse puramente visuales.
+- La portada (`image_prompt`) se concibe como un **visual publicitario de campaña** derivado de la tesis final, el beneficio concreto para quien lee y la tensión o transformación central del artículo. La dirección de arte elige para cada tema una familia compositiva pertinente —objeto protagonista, bodegón editorial, acción o transformación, metáfora escultórica, entorno arquitectónico o campaña con personaje— y define una metáfora y una paleta con significado propio. No usa por defecto neón azul/cian, personas de espaldas, centros de mando, muros de paneles, orbes luminosos, salas futuristas simétricas, interfaces flotantes ni circuitos decorativos. El motivo esencial permanece en el 70 % central para resistir recortes 2:1 de LinkedIn y tarjetas del blog, y la franja inferior queda calmada para el título superpuesto. Nunca incorpora texto; puede usar logotipos relevantes. Las imágenes de cuerpo de IA divergen a propósito: son **diagramas esquemáticos o infografías** (arquitecturas, flujos, *pipelines*, modelos por capas o comparativas) en la **familia visual de CODERTECTURA**, con nodos, flechas y conectores; pueden llevar **etiquetas cortas** cuando aclaran el concepto (el modelo lo decide por imagen) o quedarse puramente visuales.
 - El front matter incorpora `ai.sources` (lista de `{url, title, published_date}` usadas) para que la revisión pueda auditar el origen.
 - Si `BODY_IMAGES_FILE` está definido, el modelo puede proponer un array opcional `body_images`. El orquestador lo valida y escribe la especificación resuelta a ese fichero para el paso siguiente. Si **no** está definido (flujo manual actual), se eliminan todos los marcadores `{{img:<id>}}` y el comportamiento es idéntico al anterior (compatibilidad hacia atrás).
 

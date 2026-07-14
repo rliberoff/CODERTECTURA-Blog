@@ -65,7 +65,6 @@ import json
 import os
 import re
 import sys
-import unicodedata
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -81,10 +80,14 @@ from _sources import (
     sanitize_untrusted_excerpt,
     sanitize_untrusted_text,
 )
+from _text import slugify
 
 # Version of the editorial prompt below. Stored in the post's `ai.prompt_version`
 # for provenance/auditing. Bump it whenever the prompt/voice changes.
-PROMPT_VERSION = "2026-06-30.5"
+PROMPT_VERSION = "2026-07-14.1"
+
+MIN_COVER_PROMPT_CHARS = 80
+MAX_COVER_PROMPT_CHARS = 2400
 
 # Honest disclosure string, kept in sync with the archetype and hugo.yaml
 # (params.ai.defaultDisclosure).
@@ -201,8 +204,9 @@ exactamente un «Programador Ninja»?"
 # -----------------------------------------------------------------------------
 # Two-pass editorial system prompts:
 #   * SYSTEM_PROMPT_DRAFT  -> pass 1: grounded, structured draft with real code.
-#   * SYSTEM_PROMPT_POLISH -> pass 2: lift the prose to the blog voice and harden
-#     the code, preserving structure, slug, cover prompt and {{img:<id>}} markers.
+#   * SYSTEM_PROMPT_POLISH -> pass 2: lift the prose to the blog voice, harden
+#     the code and direct a cover from the final article, preserving structure,
+#     slug and {{img:<id>}} markers.
 # Bump PROMPT_VERSION on any material change to either prompt.
 # -----------------------------------------------------------------------------
 SYSTEM_PROMPT_DRAFT = (
@@ -257,18 +261,21 @@ description and cards; plain text, no Markdown.
 (for example "Inteligencia Artificial", "Arquitectura de Software", ".NET", "Azure").
 - "body_markdown": the complete article IN SPANISH in Markdown (roughly 800-1500 \
 words), starting with an engaging introductory paragraph.
-- "image_prompt": a description IN SPANISH (es-ES) (2-4 sentences) to generate the HIGH-IMPACT \
-COVER image, FAITHFUL to the title and to the actual content of the article you just \
-wrote. Conceive a powerful conceptual SCENE, cinematic and memorable, built around a \
-clear hero THEME and a visual metaphor of the topic (for example: a silhouette or \
-figure seen from behind, a stylised robot or mascot, an imposing structure or a heroic \
-symbolic object). Aim for dramatic composition, real depth (foreground, midground and \
-background), volumetric lighting, a sense of scale and an immersive atmosphere. Base \
-with the lower area calmer for an overlaid title, but with expressive, vibrant \
-cinematic colour (free palette: turquoise, cyan, neon green, electric blue, purple, \
-magenta, amber). YOU MAY USE service or brand logos. AVOID flat, abstract or minimalist \
-illustrations of simple geometric shapes and grids. NO text, NO letters, NO numbers, NO \
-watermarks and NO recognisable real faces.
+- "image_prompt": an art-direction brief IN SPANISH (es-ES) (3-5 sentences) for a \
+PREMIUM ADVERTISING COVER, based on the final article's specific thesis, the concrete \
+benefit for the reader and its central tension or transformation. Express ONE instantly \
+legible, article-specific campaign idea through a concrete subject and visual metaphor. \
+Choose the most relevant composition family for THIS article: an object hero, editorial \
+still life, transformation or action, sculptural metaphor, architectural environment, \
+or character/mascot campaign. State the subject, action, setting, composition, materials, \
+lighting and a purposeful colour palette whose meaning comes from the article. Do NOT \
+default to generic blue/cyan neon technology, a person seen from behind, command centres, \
+dashboard walls, glowing orbs, symmetric sci-fi halls, floating interfaces or decorative \
+circuit grids; use any of them only when the article itself makes that motif essential. \
+Keep the core idea clear at thumbnail size and the essential subject inside the central \
+70% so it survives wide social-media crops; leave the lower band visually calm for the \
+blog title overlay. YOU MAY USE relevant service or brand logos. NO baked-in text, \
+letters, numbers or watermarks and NO recognisable real faces.
 - "body_images": list of images for the article BODY. Each element is an \
 object with this exact shape:
   {
@@ -337,8 +344,8 @@ PERSON SINGULAR ("yo"), NEVER the editorial plural ("nosotros"); address ONE rea
 "tú". Rewrite every editorial plural, e.g. "Si nos preguntáis... nosotros iríamos" -> \
 "Si me preguntas... yo iría", "os mostramos" -> "te muestro", "veamos" -> "vamos a ver".
 - Return EXCLUSIVELY a valid JSON object (no code fences) with EXACTLY these keys: \
-"title", "description", "tags", "categories", "body_markdown". No other keys and no \
-text outside the JSON object.
+"title", "description", "tags", "categories", "body_markdown", "image_prompt". No \
+other keys and no text outside the JSON object.
 - "title" IN SPANISH (no wrapping quotes); "description" 1-2 plain-text sentences IN \
 SPANISH (ideally <=160 characters); "tags" 3-6 IN SPANISH; "categories" 1-3 IN SPANISH; \
 "body_markdown" the full article IN SPANISH (keep roughly 800-1500 words).
@@ -352,6 +359,18 @@ provided sources; never invent or alter a URL.
 - Clean Markdown: "###" subheadings, short paragraphs, lists and fenced code blocks \
 with a language tag. Do not include the title as an H1 heading and do not include front \
 matter.
+- "image_prompt": after rewriting the article, replace the draft prompt with a 3-5 \
+sentence art-direction brief IN SPANISH for a PREMIUM COVER. Base it on the \
+FINAL article's specific thesis, concrete reader benefit, and central tension or \
+transformation. Express ONE instantly legible campaign idea through an article-specific \
+subject and metaphor; choose an object hero, editorial still life, transformation/action, \
+sculptural metaphor, architectural environment, or character/mascot campaign. Specify \
+subject, action, setting, composition, materials, lighting and a meaningful palette. Do \
+NOT default to blue/cyan neon, a back-facing person, command centres, dashboard walls, \
+glowing orbs, symmetric sci-fi halls, floating UI or decorative circuit grids. Keep the \
+essential idea in the central 70% for wide social crops and the lower band calm for the \
+blog title. Relevant product logos are allowed; no baked-in text or recognisable real \
+faces.
 """
     + "\n"
     + STYLE_EXEMPLARS
@@ -435,16 +454,6 @@ def _emit_article_trace(payload: dict) -> None:
     }
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     print("::endgroup::")
-
-
-def slugify(value: str) -> str:
-    """Lowercase ASCII slug limited to [a-z0-9-] (Spanish accents transliterated)."""
-    normalised = unicodedata.normalize("NFKD", value)
-    ascii_only = normalised.encode("ascii", "ignore").decode("ascii")
-    lowered = ascii_only.lower()
-    hyphenated = re.sub(r"[^a-z0-9]+", "-", lowered)
-    collapsed = re.sub(r"-{2,}", "-", hyphenated)
-    return collapsed.strip("-")
 
 
 def _date_prefixed_filename(slug: str, now_iso: str) -> str:
@@ -602,6 +611,18 @@ def load_sources() -> list:
         warn("SOURCES_FILE did not contain valid JSON; continuing without sources")
         return []
     return parse_sources(payload)
+
+
+def load_article_topic(value: object, topic_file: str) -> str:
+    """Return an explicit topic or load it from the workflow hand-off file."""
+    topic = value.strip() if isinstance(value, str) else ""
+    if topic or not topic_file:
+        return topic
+    try:
+        with open(topic_file, "r", encoding="utf-8") as handle:
+            return handle.read().strip()
+    except OSError as exc:
+        fail(f"could not read ARTICLE_TOPIC_FILE ({topic_file}): {exc}")
 
 
 def build_sources_block(sources: list) -> str:
@@ -1113,13 +1134,12 @@ def polish_article(
     sources_block: str = "",
     debug: "dict | None" = None,
 ) -> dict:
-    """Pass 2 (VOICE + CODE): lift the draft's prose to the blog voice and harden its
-    code, WITHOUT touching structure, slug, cover prompt or body images.
+    """Pass 2 (VOICE + CODE + COVER): refine prose, code and cover art direction.
 
-    Only the prose fields are sent and merged back, so the image pipeline and front
-    matter stay stable. Fail-open: on any API/parse error, or if the polish output
-    would drop a body-image placeholder, the draft is returned unchanged (the article
-    is still publishable; only the voice polish is skipped).
+    Only the editable prose and cover fields are sent and merged back; slug and body
+    images stay stable. Fail-open: on any API/parse error, or if the polish output would
+    drop a body-image placeholder, the draft is returned unchanged (the article is
+    still publishable; only the polish is skipped).
     """
     prose = {
         "title": draft.get("title"),
@@ -1127,11 +1147,12 @@ def polish_article(
         "tags": draft.get("tags"),
         "categories": draft.get("categories"),
         "body_markdown": draft.get("body_markdown"),
+        "image_prompt": draft.get("image_prompt"),
     }
     user_content = (
-        "Here is a DRAFT article (JSON) to refine. Rewrite ONLY its prose to the "
-        "editorial voice and harden its code per your instructions, returning the SAME "
-        "JSON keys:\n\n"
+        "Here is a DRAFT article (JSON) to refine. Rewrite its prose to the editorial "
+        "voice, harden its code, and replace its cover art direction from the FINAL "
+        "article per your instructions, returning the SAME JSON keys:\n\n"
         f"{json.dumps(prose, ensure_ascii=False, indent=2)}\n\n"
     )
     if sources_block:
@@ -1177,13 +1198,12 @@ def polish_article(
 
 
 def _merge_polished(draft: dict, refined: object) -> dict:
-    """Merge the polish pass's prose fields onto the draft (pure; never mutates inputs).
+    """Merge validated polish fields onto the draft (pure; never mutates inputs).
 
-    Only ``title``, ``description``, ``tags``, ``categories`` and ``body_markdown`` may
-    change; everything else (slug, image_prompt, body_images, ...) comes from the draft
-    untouched. Each refined field is accepted only when structurally valid, and the
-    refined ``body_markdown`` is accepted only when it preserves EVERY ``{{img:<id>}}``
-    placeholder present in the draft, so no body image is ever orphaned.
+    Prose and a substantial ``image_prompt`` may change; everything structural (slug,
+    body_images, ...) comes from the draft untouched. The refined ``body_markdown`` is
+    accepted only when it preserves EVERY ``{{img:<id>}}`` placeholder present in the
+    draft, so no body image is ever orphaned.
     """
     merged = dict(draft)
     if not isinstance(refined, dict):
@@ -1198,6 +1218,13 @@ def _merge_polished(draft: dict, refined: object) -> dict:
         value = refined.get(key)
         if isinstance(value, list) and value:
             merged[key] = value
+
+    image_prompt = refined.get("image_prompt")
+    if (
+        isinstance(image_prompt, str)
+        and MIN_COVER_PROMPT_CHARS <= len(image_prompt.strip()) <= MAX_COVER_PROMPT_CHARS
+    ):
+        merged["image_prompt"] = image_prompt.strip()
 
     new_body = refined.get("body_markdown")
     if isinstance(new_body, str) and new_body.strip():
@@ -1317,7 +1344,10 @@ def build_document(
 def main() -> None:
     args = parse_args()
 
-    topic = (args.topic or "").strip()
+    topic = load_article_topic(
+        args.topic,
+        os.environ.get("ARTICLE_TOPIC_FILE", "").strip(),
+    )
     if not topic:
         fail("no topic provided (set ARTICLE_TOPIC or pass --topic)")
 

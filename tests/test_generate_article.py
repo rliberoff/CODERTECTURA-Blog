@@ -122,6 +122,14 @@ def test_load_sources_tolerates_absent_and_malformed(monkeypatch=None):
             os.environ["SOURCES_FILE"] = saved
 
 
+def test_load_article_topic_prefers_explicit_value_and_supports_file(tmp_path):
+    topic_file = tmp_path / "topic.txt"
+    topic_file.write_text("Tema desde el ledger\n", encoding="utf-8")
+
+    assert ga.load_article_topic("Tema manual", str(topic_file)) == "Tema manual"
+    assert ga.load_article_topic("", str(topic_file)) == "Tema desde el ledger"
+
+
 def test_build_sources_block_surfaces_images_and_excerpt():
     sources = ga.parse_sources(
         {
@@ -729,9 +737,12 @@ def test_merge_polished_overwrites_prose_keeps_structure():
         "tags": ["dotnet", "azure"],
         "categories": ["Inteligencia Artificial"],
         "body_markdown": "Intro con gancho.\n\n{{img:fig}}\n\nCuerpo afilado.\n",
-        # Even if the model echoes these back, the merge MUST ignore them.
         "slug": "otro-slug",
-        "image_prompt": "Hijacked.",
+        "image_prompt": (
+            "Una llave de latón abre una caja negra de software y revela un mecanismo "
+            "modular en movimiento. Fotografía publicitaria cálida, composición "
+            "asimétrica y foco central preparado para un recorte panorámico."
+        ),
         "body_images": [],
     }
     merged = ga._merge_polished(draft, refined)
@@ -741,12 +752,25 @@ def test_merge_polished_overwrites_prose_keeps_structure():
     assert merged["tags"] == ["dotnet", "azure"]
     assert merged["categories"] == ["Inteligencia Artificial"]
     assert "Cuerpo afilado." in merged["body_markdown"]
+    assert "llave de latón" in merged["image_prompt"]
     # ...structure preserved from the draft, never from the polish output.
     assert merged["slug"] == "borrador-net"
-    assert merged["image_prompt"] == "A cinematic cover."
     assert merged["body_images"] == draft["body_images"]
     # Inputs are not mutated.
     assert draft["title"] == "Borrador"
+
+
+def test_merge_polished_rejects_invalid_cover_prompt_lengths():
+    draft = {"image_prompt": "Portada original."}
+
+    too_short = ga._merge_polished(draft, {"image_prompt": "Portada genérica."})
+    too_long = ga._merge_polished(
+        draft,
+        {"image_prompt": "x" * (ga.MAX_COVER_PROMPT_CHARS + 1)},
+    )
+
+    assert too_short["image_prompt"] == "Portada original."
+    assert too_long["image_prompt"] == "Portada original."
 
 
 def test_merge_polished_keeps_draft_body_when_placeholder_dropped():

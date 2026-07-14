@@ -1,1105 +1,1231 @@
-# Graph Report - CODERTECTURA-Blog  (2026-07-14)
+# Graph Report - F:\repos\personal\CODERTECTURA-Blog  (2026-07-14)
 
 ## Corpus Check
-- 223 files · ~6,296,630 words
+- 432 files · ~6,296,630 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2207 nodes · 2412 edges · 257 communities (230 shown, 27 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 83 edges (avg confidence: 0.75)
+- 1934 nodes · 2212 edges · 259 communities (221 shown, 38 thin omitted)
+- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 192 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
-## Graph Freshness
-- Built from commit: `6807dc45`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
-
 ## Community Hubs (Navigation)
-- Community 0
-- Community 1
-- Community 2
-- Community 3
-- Community 4
-- Community 5
-- Community 6
-- Community 7
-- Community 8
-- Community 9
-- Community 10
-- Community 11
-- Community 12
-- Community 13
-- Community 14
-- Community 15
-- Community 16
-- Community 17
-- Community 18
-- Community 19
-- Community 20
-- Community 21
-- Community 22
-- Community 23
-- Community 24
-- Community 25
-- Community 26
-- Community 27
-- Community 28
-- Community 29
-- Community 30
-- Community 31
-- Community 32
-- Community 33
-- Community 34
-- SKILL.md
-- datetime
-- FoundryError
+- resolve body images
+- Build a SOURCES FILE shaped
+- Agent Spawn Protocol
+- discover topics
+- Cooperative Rate Limiting
+- generate article
+- ralph triage
+- Graphify Workflow
+- resolve body images
+- Squad Coordinator
+- topic ledger
+- foundry Components
+- generate image
+- Comparti MOSS No 56 June
+- Propulsion Lab IV
+- Article Text Generation
+- Memoria multicapa para sistemas de
+- discover topics
+- API Monetization
+- discover topics
+- Topic Ledger
+- Logging as an Aspect
+- External Communications
+- Intercept Property
+- Blog Post to Linked In
+- Blog Post to Linked In
+- discover topics
+- Aspect Oriented Programming AOP
+- Squad Git Workflow
+- Platform Detection
+- Squad Member Label Routing
+- discover topics
+- sources Components
+- Semantic Kernel Planners
+- Support Intelligence Agent
 - Terraform for Azure Guidelines
-- Patterns
-- Skill: Retro Enforcement
-- run_discovery_loop
-- LinkedIn Article editor scripts
-- LinkedIn Article editor scripts
-- Squad Notes Protocol
-- process_candidates
-- Blog post to LinkedIn Article
-- Patterns
-- Copilot instructions
-- Blog post to LinkedIn Article
-- Reusable content components (Hugo shortcodes)
-- How I Work
-- Step 1: Update Check
-- SKILL.md
-- Iterative Retrieval Skill
-- Model Selection
-- Patterns
-- Squad Workflow Wiring Guide
-- Tipos de ‘cookies’ utilizadas
-- Patterns
-- Patterns
-- Microsoft Docs
-- Patterns
-- GitHub Multi-Account — AI-Driven Setup
-- Examples
-- Patterns
-- Patterns
-- Patterns
-- 2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l.md
-- KEDA External Scaler for GitHub Issue-Driven Agent Autoscaling
-- Ralph Circuit Breaker — Model Rate Limit Fallback
-- Process
-- SKILL.md
-- _ChunkedResponse
-- EmbeddingsClient
-- warn
-- Machine Capability Discovery & Label-Based Routing
-- Run Output — {task title}
-- Patterns
-- Patterns
-- Patterns
-- Patterns
-- Appendix B: Wiring a Documenter/Librarian — Complete Walkthrough
-- discover_topics.py
-- 2012-04-10-aop-parte-1.md
-- graphify reference: extra exports and benchmark
-- {Name} — {Role}
-- Copilot Coding Agent Member
-- Ralph — Work Monitor
-- Patterns
-- Patterns
-- Patterns
-- Personal Squad — Skill Document
-- Step-by-Step Walkthrough
-- _registry_from
-- tavily_search
-- _AllowlistRedirectHandler
-- Patterns
+- Git Workflow
+- Squad Release Process
+- discover topics
+- generate article
+- sources Components
+- Distributed Mesh
 - Error Recovery Patterns
-- Complex Validation Patterns
-- Conventional Commits Guidelines
-- Follow-up Question Guidelines
-- Casting Reference
-- Copilot Coding Agent — Squad Instructions
-- MCP Integration — Configuration and Samples
-- PRD Intake
-- Patterns
-- Error Recovery Patterns
-- Pattern
-- Step-by-Step Walkthrough
-- _HTMLTextExtractor
-- FoundryImageClient
-- 2023-11-20-netcoreconf-2023-madrid-planificando-para-el-exito.md
-- SKILL.md
-- Azure-Specific Best Practices
-- File-Based Resource Seeding
-- Code Generation and Real Values over Placeholders Instructions
-- Client Compatibility
-- Cooperative Rate Limiting for Multi-Agent Deployments
-- Solution: 6-Pattern Architecture
-- Plugin Marketplace
-- Team Roster
-- Scribe
-- SKILL.md
-- SKILL.md
-- How to Wire Up a New Team Member
-- _FakeResponse
-- build_workflow_matrix
-- collect_source_images
-- load_published_posts
-- 2012-04-09-aop-parte-0.md
-- 2013-05-18-ef-insertar-registros-bulk.md
-- `azapi` Provider Usage
-- Bruce — Backend / Automation
-- Natasha — Tester / Reviewer
-- Peter — Frontend Dev
-- Project Context
-- Shuri — Content & Migration
-- Tony — Lead / Architect
-- Wanda — Visual Design Analyst
-- Work Routing
-- Ceremony Reference
-- PowerShell Functions
-- Work Routing
-- SKILL.md
-- Skill: CLI Command Wiring
-- Skill: nap
-- Pattern
-- How to Wire Up a Custom Workflow Step
-- collect_rss_candidates
-- _http_chat_json
-- Intro
-- 2023-07-20-integrando-otros-llms-con-semantic-kernel.md
-- SKILL.md
-- mcp-squad-state
-- Bruce History
-- Rai — Rai
-- Ralph — Ralph
-- Project Context
-- Scribe — Scribe
-- Project Context
-- Wanda History
-- Ceremonies
-- Squad Team
-- Ceremonies
-- Constraint Budget Tracking
-- Quick Start
-- Raw Agent Output — Appendix Format
-- skill.md
-- SKILL.md
-- SKILL.md
-- Worktree Reference
-- test_topic_ledger_workflows.py
-- Autores
-- 2014-01-26-programador-ninja-o-programador-zen.md
-- 2022-02-14-20-anos-dotnet.md
-- Algunos conceptos antes de empezar
-- 2023-05-30-apis-monetizacion-parte-2.md
-- 2023-05-31-apis-monetizacion-parte-3.md
-- graphify reference: add a URL and watch a folder
-- graphify reference: commit hook and native CLAUDE.md integration
-- graphify reference: query, path, explain
-- graphify reference: incremental update and cluster-only
-- Application Configuration Patterns
-- Anti-Patterns to Avoid
-- Project Structure and Organization
-- Resource Configuration
-- Settings Files Organization
-- File Organization
-- Variable Management
-- Natasha History
-- Tony History
-- Squad Decisions
-- 2026-06-30 — Prompt EN-rewrite safety verification (discover_topics.py, generate_article.py)
-- Team Wisdom
-- Multi-Agent Artifact Format
+- discover topics
+- My Project Source Code Metrics
+- Microsoft Agent Framework at Build
+- GADA i Cloud Software Architecture
+- Per Agent Model Selection
+- Squad Codebase Conventions
+- GPT 4
+- Ralph Model Circuit Breaker
+- Architectural Proposals
+- Preview Release Readiness Checks
+- Web Asset Minification
+- Azure API Management Delegation
+- Cookie Consent Banner
+- GADA i Implementation Process
+- Triage Agent
+- Natasha Tester and Reviewer
+- Agentic Tavily Discovery Pipeline
+- Entity Framework Metadata Space Mapping
+- roberta base squad2
+- Git Hub Social Link
+- Site Credits
+- Roadmap Concept
+- Ask Question With Context Function
+- discover topics
+- Markdown Coding Style Guidelines
+- CODERTECTURA Blog
+- Prompt EN Rewrite Safety Verification
+- E2 E Template Testing
+- Git Hub Authentication Isolation
+- discover topics
+- Base HTML Structure
+- Documento Nacional de Identidad del
+- Ralph Two Pass Issue Scanning
+- Codertectura Concept
+- Propulsion Lab IV
+- Cruciform Screwdriver Tip Patent Drawing
+- Método A
+- Lib Solution Folder
+- Million Lines of Code Comparison
+- Deterministic network free embeddings client
+- Peter Frontend Developer
+- Scribe Session Logger
 - Orchestration Log Entry
-- How to Wire Up an Issue Lifecycle (Git Workflow)
-- 2012-04-11-aop-parte-2.md
-- 2012-04-12-aop-parte-3.md
-- graphify reference: GitHub clone and cross-repo merge
-- graphify reference: transcribe video and audio
-- Security Practices
-- Documentation and Comments
-- Tagging Strategy
-- Module Usage
-- Lifecycle Management
-- Naming Conventions
-- Provider Configuration
-- Role
-- Peter History
-- Shuri History
+- CI Validation Gates
+- discover topics
+- discover topics
+- Search Files Memory Risk
+- Dynamic Entity Configuration Loading
+- NET Concept
+- Content Image Lightbox Contract
+- Children Holding Balloons
+- Monumental Green Figure
+- Code Metrics Results
+- GADA i
+- Goal Achievement
+- Thinking Beast Mode
+- Bruce Backend and Automation
+- Shuri Content and Migration
+- Wanda Visual Design Analyst
+- Lead PRD Decomposition
+- Run Output Artifact
+- Work Handoff Protocol
+- Tiered Agent Memory
+- generate article
+- Advice Concept
+- Lines of Code
+- Semantic Kernel
+- CODERTECTURA Blog
+- Post Metadata and Taxonomies
+- Iframe Media Permission Allowlist
+- mcp Components
+- Crystal World Science Fiction Scene
+- Newspaper Index Archive
+- Children Holding Red Balloons Mural
+- IProcessor Concept
+- Debugger Process Attachment
+- IIS Application Pool Process Model
+- Unanswered Error Thread
+- Digital Information Workflow
+- AOPException Handling Root Directory Layout
+- Seated Zen Monk Portrait
+- Archaeological Excavation Scene
+- Informal Group Discussion
+- Central Orchestration Core
+- topic ledger workflows
+- Error Recovery Patterns
+- Conventional Commits Guidelines
+- OIDC to UAMI to RBAC
+- Squad Work Routing
+- Retrospective Concept
+- MCP Integration
+- Plugin Marketplace
+- Session Initialization
+- CLI Command Wiring
+- Coordinator Retro Blocking
+- Scribe Pre Commit Secret Scan
+- Session Store
+- Peruvian DNI
+- Ninja Programmer
+- Comparti MOSS Unplugged AI
+- Comparti MOSS Unplugged AI 2
+- Meta Concept
+- Cloud Native AI Architecture
+- Power Automate
+- Cookie Policy
+- Paginated Content Grid
+- ENCAMINA Default Publisher
+- Abstract Pastel 3 D Geometric
+- Abstract Geometric Composition
+- Abstract Geometric Header Illustration
+- Abstract 3 D Composition
+- Abstract Technology Banner
+- Repeated Interlocking Loop Composition
+- Abstract Loop Glyph Composition
+- Interlaced Loop Icon Gallery
+- Blindfolded Estimation Target Practice
+- Batch Data Transfer
+- Decision Uncertainty
+- Ninja Ambush Ukiyo e Print
+- Artifact Restoration Activity
+- Orbital Mechanics Equations
+- Codebase Size Comparison
+- Collaborative Workshop Interior
+- Semantic Kernel
+- Planificando para el éxito
+- Real Executable Code Policy
+- AI Review Gated Publishing
+- Deterministic Universe Selection
+- Multi Agent Artifact Format
+- Agent Conduct Skill
+- Final Outcome Recording
+- Squad Context Hygiene
+- Topic Based Notification Routing
+- Personal Squad
+- Individual Review Thread Reply
+- Visual PR Review
+- Learning Confidence Signal Classification
+- Charter and History Trimming
+- Strict Author Lockout
+- Discipline Concept
+- squad docs
+- Migration from Venezuela to Spain
+- Frozen Requirements
+- Pure PL SQL File Ingestion
+- Network Service
+- Configuration Dependent Project References
+- Theory of Mind
+- Byte TI Issue 319
+- Corporate Chat GPT
+- Multi agent Specialization
+- Client side Article Search Interface
+- Latest Six Posts
+- scripts Components
+- Crystalline Mountain
+- Physical Records Archive
+- Hands Compressing a Rusted Coil
+- Compression Concept
+- Abstract 3 D Composition
+- Context Bound Object
+- Abstract Modular Pieces
+- Interlocking Loop Motifs
+- Estimation Target Diagram
+- Figure Leaning Over Desk
+- Microsoft Visual Basic 6 0
+- Enterprise Architect
+- Astonishment Concept
+- Cosmic Visual Effect
+- NET Concept
+- Comparti MOSS Unplugged 48
+- Flexible Collaboration Space
+- Microsoft 365
+- Follow up Question Guidelines
+- Ceremony Execution Lifecycle
+- Coding Agent Risk Routing
+- AI Provenance Front Matter
+- Safe YAML Serialization
+- Unresolved Legacy Forum Error
+- Large Code First Seeding Problem
+- Comparti MOSS Unplugged 48
+- Cosmos DB Change Feed and
+- callout Components
+- figure Components
+- responsive embed
+- 404 Recovery Actions
+- Author Profile Layout
+- Post Card Content Contract
+- package Components
+- sync mesh
+- Mind the Gap Sign
+- Platform Gap Safety Warning
+- Decision Uncertainty
+- Anthropomorphic Stone Slabs
+- Monumental Robed Figure
+- Share Point
+- Modular AI Orchestration
+- Humans txt Initiative
+- discover topics
 - Team Wisdom
-- After Agent Reference
-- Project Context
-- Model Selection Reference
-- Spawn Reference
-- about.md
-- 2011-11-02-oracle-read-multiple-files-using-only-pl-sql.md
-- 2012-04-12-ef-cargar-dinamicamente-configuraciones-de-entidades.md
-- 2013-07-01-referencias-proyectos-dependientes-modo-compilacion.md
-- 2023-04-02-gpt-4-puede-pensar.md
-- extraction-spec.md
-- now.md
-- now.md
-- package.json
-- sync-mesh.sh script
-- _run_all
+- Project Context History
+- Project Conventions Template
+- Tool Mastery Before Upgrades
+- Software Project Estimation
+- Reciprocal Importance of Others Work
+- CODERTECTURA Posts Archive
+- CODERTECTURA Article Search
+- Desert Ruin Setting
+- Seated Reader
+- Aspire Integration
+- Retro Macintosh Style Computer Animation
 
 ## God Nodes (most connected - your core abstractions)
-1. `Team Mode` - 30 edges
-2. `Terraform for Azure Guidelines` - 28 edges
-3. `FoundryError` - 27 edges
-4. `main()` - 18 edges
-5. `_source()` - 18 edges
-6. `Markdown Coding Style Guidelines` - 16 edges
-7. `Quantum Cognitive Workflow Architecture` - 15 edges
-8. `host_is_allowed()` - 13 edges
-9. `run_discovery_loop()` - 13 edges
-10. `main()` - 13 edges
+1. `FoundryError` - 27 edges
+2. `main()` - 18 edges
+3. `_source()` - 18 edges
+4. `host_is_allowed()` - 13 edges
+5. `run_discovery_loop()` - 13 edges
+6. `main()` - 13 edges
+7. `Propulsion Lab IV` - 13 edges
+8. `build_document()` - 12 edges
+9. `LedgerError` - 12 edges
+10. `_registry_from()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `_ChunkedOpener` --uses--> `FoundryError`  [INFERRED]
-  tests/test_resolve_body_images.py → automation/scripts/_foundry.py
-- `_ChunkedResponse` --uses--> `FoundryError`  [INFERRED]
-  tests/test_resolve_body_images.py → automation/scripts/_foundry.py
-- `FakeImageClient` --uses--> `FoundryError`  [INFERRED]
-  tests/test_resolve_body_images.py → automation/scripts/_foundry.py
-- `_FakeResponse` --uses--> `FoundryError`  [INFERRED]
-  tests/test_resolve_body_images.py → automation/scripts/_foundry.py
-- `test_download_rejects_oversize_delivered_in_short_reads()` --indirect_call--> `FoundryError`  [INFERRED]
-  tests/test_resolve_body_images.py → automation/scripts/_foundry.py
+- `FakeChatClient` --uses--> `EmbeddingsClient`  [INFERRED]
+  tests/test_discover_topics.py → automation/scripts/_foundry.py
+- `FakeEmbeddings` --uses--> `EmbeddingsClient`  [INFERRED]
+  tests/test_discover_topics.py → automation/scripts/_foundry.py
+- `_SearchSpy` --uses--> `EmbeddingsClient`  [INFERRED]
+  tests/test_discover_topics.py → automation/scripts/_foundry.py
+- `Main Homepage Template` --references--> `Base HTML Structure`  [EXTRACTED]
+  index.html → _default/baseof.html
+- `Base HTML Structure` --implements--> `Header Navigation Component`  [EXTRACTED]
+  _default/baseof.html → partials/header.html
 
 ## Import Cycles
 - None detected.
 
-## Communities (257 total, 27 thin omitted)
+## Hyperedges (group relationships)
+- **LinkedIn Article Manifest Pipeline** — _copilot_skills_blog_to_linkedin_article_references_editor_scripts_extractcodertecturaarticle, _copilot_skills_blog_to_linkedin_article_references_editor_scripts_preflightcodertecturaarticle, _copilot_skills_blog_to_linkedin_article_references_editor_scripts_pastearticlehtml, _copilot_skills_blog_to_linkedin_article_references_editor_scripts_auditlinkedindraft, _copilot_skills_blog_to_linkedin_article_references_editor_scripts_preparenextimagepayload, _copilot_skills_blog_to_linkedin_article_references_editor_scripts_hydratetransferredimagefiles, _copilot_skills_blog_to_linkedin_article_references_editor_scripts_insertimageatmarker, _copilot_skills_blog_to_linkedin_article_references_editor_scripts_uploadarticlecover [EXTRACTED 1.00]
+- **Graphify Persistent Graph Pipeline** — _copilot_skills_graphify_skill_persistent_knowledge_graph, _copilot_skills_graphify_skill_parallel_semantic_extraction, _copilot_skills_graphify_references_extraction_spec_semantic_extraction_contract, _copilot_skills_graphify_skill_graph_outputs, _copilot_skills_graphify_references_query_bfs_query [EXTRACTED 1.00]
+- **Squad Operational Safeguards** — _copilot_skills_agent_collaboration_skill_decision_recording, _copilot_skills_reviewer_protocol_skill_strict_reviewer_lockout, _copilot_skills_secret_handling_skill_scribe_pre_commit_validation, _copilot_skills_test_discipline_skill_api_test_synchronization [INFERRED 0.85]
+- **AI Article Generation Entrypoints** — _github_workflows_ai_article_generate_manual_article_generation, _github_workflows_ai_article_weekly_weekly_article_discovery, _github_workflows_ai_article_build_ai_article_build [EXTRACTED 1.00]
+- **LinkedIn Marker Image Transfer Flow** — _github_skills_blog_to_linkedin_article_references_editor_scripts_preparenextimagepayload, _github_skills_blog_to_linkedin_article_references_editor_scripts_navigatepreparedimagepayload, _github_skills_blog_to_linkedin_article_references_editor_scripts_hydratetransferredimagefiles, _github_skills_blog_to_linkedin_article_references_editor_scripts_insertimageatmarker, _github_skills_blog_to_linkedin_article_references_editor_scripts_uploadarticlecover [EXTRACTED 1.00]
+- **Squad Issue Automation Contract** — _github_agents_squad_agent_team_roster_members_contract, _github_workflows_sync_squad_labels_sync_squad_labels, _github_workflows_squad_triage_squad_triage, _github_workflows_squad_issue_assign_squad_issue_assign, _github_workflows_squad_heartbeat_squad_heartbeat [EXTRACTED 1.00]
+- **CODERTECTURA-Blog Squad Roster** — _squad_team_tony, _squad_team_wanda, _squad_team_peter, _squad_team_bruce, _squad_team_shuri, _squad_team_natasha, _squad_team_scribe, _squad_team_ralph, _squad_team_rai [EXTRACTED 1.00]
+- **AI Article Pipeline Architecture** — _squad_decisions_ai_article_pipeline_mvp, _squad_decisions_direct_mvp_topology, _squad_decisions_least_privilege_github_app, _squad_decisions_two_lock_publishing, _squad_decisions_topic_ledger, _squad_decisions_agentic_tavily_pipeline, _squad_decisions_weekly_fail_closed_fanout, _squad_decisions_grounded_image_policy, _squad_decisions_embeddings_semantic_dedup, _squad_decisions_tavily_key_rotation_gate, _squad_decisions_english_processing_spanish_publishing [EXTRACTED 1.00]
+- **Cooperative Rate Limiting Six-Pattern Architecture** — _squad_templates_cooperative_rate_limiting_traffic_light_raas, _squad_templates_cooperative_rate_limiting_cooperative_token_pool_cmarp, _squad_templates_cooperative_rate_limiting_predictive_circuit_breaker_pcb, _squad_templates_cooperative_rate_limiting_priority_retry_windows_pwjg, _squad_templates_cooperative_rate_limiting_resource_epoch_tracker_ret, _squad_templates_cooperative_rate_limiting_cascade_dependency_detector_cdd [EXTRACTED 1.00]
+- **Configured Team Ceremonies** — _squad_templates_ceremonies_design_review, _squad_templates_ceremonies_retrospective, _squad_templates_ceremonies_retrospective_with_enforcement [EXTRACTED 1.00]
+- **Cross-Platform Issue Lifecycle Mappings** — _squad_templates_issue_lifecycle_github_lifecycle_mapping, _squad_templates_issue_lifecycle_azure_devops_lifecycle_mapping, _squad_templates_issue_lifecycle_planner_git_workflow, _squad_templates_issue_lifecycle_normalized_board_state [EXTRACTED 1.00]
+- **RAI Review System** — _squad_templates_rai_charter_rai_reviewer, _squad_templates_rai_charter_traffic_light_verdicts, _squad_templates_rai_policy_rai_policy, _squad_templates_rai_policy_reviewer_rejection_protocol [EXTRACTED 1.00]
+- **Workflow Enforcement Surface** — _squad_templates_workflow_wiring_guide_workflow_wiring, _squad_templates_workflow_wiring_guide_routing_rules_as_enforcement, _squad_templates_workflow_wiring_guide_reviewer_gate, _squad_templates_workflow_wiring_guide_issue_lifecycle_enforcement [EXTRACTED 1.00]
+- **Agent Context and State Flow** — _squad_templates_spawn_reference_agent_spawn_protocol, _squad_templates_worktree_reference_team_root_resolution, _squad_templates_scribe_charter_runtime_state_backend, _squad_templates_identity_now_current_focus, _squad_templates_identity_wisdom_team_wisdom [EXTRACTED 1.00]
+- **Git-Backed Distributed Coordination** — _squad_templates_skills_cross_machine_coordination_skill_cross_machine_coordination, _squad_templates_skills_cross_squad_skill_cross_squad_coordination, _squad_templates_skills_distributed_mesh_skill_distributed_mesh [INFERRED 0.75]
+- **Adaptive Agent Spawn Governance** — _squad_templates_skills_client_compatibility_skill_client_compatibility, _squad_templates_skills_economy_mode_skill_economy_mode, _squad_templates_skills_iterative_retrieval_skill_iterative_retrieval, _squad_templates_skills_model_selection_skill_model_selection [INFERRED 0.75]
+- **Notification Routing Components** — _squad_templates_skills_notification_routing_skill_topic_based_notification_routing, _squad_templates_skills_notification_routing_skill_channel_tag_convention, _squad_templates_skills_notification_routing_skill_provider_agnostic_adapter [EXTRACTED 1.00]
+- **PR Review Response Flow** — _squad_templates_skills_pr_review_response_skill_pr_review_response_workflow, _squad_templates_skills_pr_review_response_skill_individual_thread_reply, _squad_templates_skills_pr_review_response_skill_review_thread_resolution [EXTRACTED 1.00]
+- **Tiered Memory Model** — _squad_templates_skills_tiered_memory_skill_hot_memory, _squad_templates_skills_tiered_memory_skill_cold_memory, _squad_templates_skills_tiered_memory_skill_wiki_memory [EXTRACTED 1.00]
+- **Squad Release Promotion Flow** — _squad_templates_workflows_squad_promote_dev_to_preview_promotion, _squad_templates_workflows_squad_preview_squad_preview_validation, _squad_templates_workflows_squad_promote_preview_to_main_promotion, _squad_templates_workflows_squad_release_squad_release [INFERRED 0.85]
+- **AI Article Pipeline** — automation_readme_topic_ledger, automation_readme_tavily_topic_discovery_agent, automation_readme_two_pass_grounded_article_generation, automation_readme_body_image_resolution [EXTRACTED 1.00]
+- **Pure PL/SQL File Ingestion Flow** — content_posts_2011_11_02_oracle_read_multiple_files_using_only_pl_sql_listfiles, content_posts_2011_11_02_oracle_read_multiple_files_using_only_pl_sql_dbms_backup_restore_searchfiles, content_posts_2011_11_02_oracle_read_multiple_files_using_only_pl_sql_x_krbmsft, content_posts_2011_11_02_oracle_read_multiple_files_using_only_pl_sql_utl_file [EXTRACTED 1.00]
+- **AOP Framework Interception Flow** — content_posts_2012_04_10_aop_parte_1_interceptableobject, content_posts_2012_04_10_aop_parte_1_interceptcontextattribute, content_posts_2012_04_10_aop_parte_1_interceptproperty, content_posts_2012_04_10_aop_parte_1_interceptsink, content_posts_2012_04_10_aop_parte_1_interceptableattribute, content_posts_2012_04_10_aop_parte_1_iprocessor [EXTRACTED 1.00]
+- **GPT-4 Capability and Limit Assessment** — content_posts_2023_04_02_gpt_4_puede_pensar_gpt_4, content_posts_2023_04_02_gpt_4_puede_pensar_tool_use_and_reasoning, content_posts_2023_04_02_gpt_4_puede_pensar_confidence_calibration, content_posts_2023_04_02_gpt_4_puede_pensar_long_term_memory, content_posts_2023_04_02_gpt_4_puede_pensar_continuous_learning, content_posts_2023_04_02_gpt_4_puede_pensar_adaptability, content_posts_2023_04_02_gpt_4_puede_pensar_planning_and_conceptual_leaps, content_posts_2023_04_02_gpt_4_puede_pensar_cognitive_biases [EXTRACTED 1.00]
+- **Cloud-Native API Monetization System** — content_posts_2023_05_29_apis_monetizacion_parte_1_azure_api_management, content_posts_2023_05_29_apis_monetizacion_parte_1_stripe, content_posts_2023_05_30_apis_monetizacion_parte_2_azure_container_apps, content_posts_2023_05_30_apis_monetizacion_parte_2_usage_reporting_azure_function, content_posts_2023_05_30_apis_monetizacion_parte_2_azure_storage_account, content_posts_2023_05_30_apis_monetizacion_parte_2_business_model_json [EXTRACTED 1.00]
+- **Semantic Kernel Planner Family** — content_posts_2023_11_20_netcoreconf_2023_madrid_planificando_para_el_exito_action_planner, content_posts_2023_11_20_netcoreconf_2023_madrid_planificando_para_el_exito_sequential_planner, content_posts_2023_11_20_netcoreconf_2023_madrid_planificando_para_el_exito_stepwise_planner, content_posts_2023_11_20_netcoreconf_2023_madrid_planificando_para_el_exito_custom_planner [EXTRACTED 1.00]
+- **Corporate AI Low-code Flow** — content_posts_2023_10_25_nos_vemos_en_microsoft_365_live_2023_azure_openai, content_posts_2023_10_25_nos_vemos_en_microsoft_365_live_2023_power_automate, content_posts_2023_10_25_nos_vemos_en_microsoft_365_live_2023_power_virtual_agent, content_posts_2023_10_25_nos_vemos_en_microsoft_365_live_2023_microsoft_teams [EXTRACTED 1.00]
+- **Production Agent Operational Controls** — content_posts_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_agent_harness, content_posts_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_tool_approval_strategies, content_posts_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_layered_agent_memory, content_posts_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_agent_observability, content_posts_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_durable_workflows [EXTRACTED 1.00]
+- **Fantasy Crystal Landscape** — static_images_2008_07_04_tautologia_1_thumbnail_fantasy_traveler, static_images_2008_07_04_tautologia_1_thumbnail_crystalline_mountain, static_images_2008_07_04_tautologia_1_thumbnail_starry_night_sky [EXTRACTED 1.00]
+- **Visual Contrast of Childhood Hope and Urban Austerity** — static_images_2011_11_17_tautologia_2_thumbnail_children, static_images_2011_11_17_tautologia_2_thumbnail_red_balloons, static_images_2011_11_17_tautologia_2_thumbnail_gray_brick_wall, static_images_2011_11_17_tautologia_2_thumbnail_hope_amid_austerity [INFERRED 0.85]
+- **Interlocking Loop Visual System** — static_images_2012_04_12_cargar_dinamicamente_configuraciones_entity_framework_code_first_header_interlocking_loop_motif, static_images_2012_04_12_cargar_dinamicamente_configuraciones_entity_framework_code_first_header_multicolor_variation, static_images_2012_04_12_cargar_dinamicamente_configuraciones_entity_framework_code_first_header_scale_hierarchy [EXTRACTED 1.00]
+- **Built-in Account Identity Options** — static_images_2012_07_24_evitar_ventana_adjuntar_advertencia_seguridad_2_applicationpoolidentity, static_images_2012_07_24_evitar_ventana_adjuntar_advertencia_seguridad_2_localservice, static_images_2012_07_24_evitar_ventana_adjuntar_advertencia_seguridad_2_localsystem, static_images_2012_07_24_evitar_ventana_adjuntar_advertencia_seguridad_2_networkservice [EXTRACTED 1.00]
+- **Bulk Record Transfer and Organization** — static_images_2013_05_18_insertar_bulk_registros_entity_framework_header_bulk_record_insertion, static_images_2013_05_18_insertar_bulk_registros_entity_framework_header_batch_data_transfer, static_images_2013_05_18_insertar_bulk_registros_entity_framework_header_document_batch, static_images_2013_05_18_insertar_bulk_registros_entity_framework_header_record_organization [INFERRED 0.75]
+- **Digital Information Flow** — static_images_2013_05_18_insertar_bulk_registros_entity_framework_thumbnail_laptop_computing, static_images_2013_05_18_insertar_bulk_registros_entity_framework_thumbnail_electronic_messaging, static_images_2013_05_18_insertar_bulk_registros_entity_framework_thumbnail_digital_reading, static_images_2013_05_18_insertar_bulk_registros_entity_framework_thumbnail_document_processing [INFERRED 0.75]
+- **AOPExceptionHandling Root Contents** — static_images_2013_07_01_referencias_proyectos_dependientes_modo_compilacion_file_system_nuget_directory, static_images_2013_07_01_referencias_proyectos_dependientes_modo_compilacion_file_system_aopexceptionhandlingapplicationblock_directory, static_images_2013_07_01_referencias_proyectos_dependientes_modo_compilacion_file_system_lib_directory, static_images_2013_07_01_referencias_proyectos_dependientes_modo_compilacion_file_system_aopexceptionhandling_visual_studio_solution [EXTRACTED 1.00]
+- **Surreal Monument Conservation Activity** — static_images_2014_03_05_tautologia_3_header_monumental_green_figure, static_images_2014_03_05_tautologia_3_header_seated_conservator, static_images_2014_03_05_tautologia_3_header_standing_conservator, static_images_2014_03_05_tautologia_3_header_painted_sculptural_fragments [INFERRED 0.85]
+- **Surreal Desert Tableau** — static_images_2014_03_05_tautologia_3_thumbnail_monumental_robed_figure, static_images_2014_03_05_tautologia_3_thumbnail_staff_with_floating_mask, static_images_2014_03_05_tautologia_3_thumbnail_seated_reader, static_images_2014_03_05_tautologia_3_thumbnail_standing_observer, static_images_2014_03_05_tautologia_3_thumbnail_anthropomorphic_stone_slabs, static_images_2014_03_05_tautologia_3_thumbnail_desert_ruin_setting [EXTRACTED 1.00]
+- **Software Size Comparison by Category** — static_images_2014_03_24_contar_lineas_de_codigo_header_source_lines_of_code, static_images_2014_03_24_contar_lineas_de_codigo_header_operating_systems, static_images_2014_03_24_contar_lineas_de_codigo_header_web_platforms [EXTRACTED 1.00]
+- **Manual Orbital Mechanics Analysis** — static_images_2014_03_24_contar_lineas_de_codigo_nasa_engineers_at_chalkboard, static_images_2014_03_24_contar_lineas_de_codigo_nasa_orbital_mechanics_equations, static_images_2014_03_24_contar_lineas_de_codigo_nasa_orbital_geometry_diagrams, static_images_2014_03_24_contar_lineas_de_codigo_nasa_collaborative_manual_calculation [EXTRACTED 1.00]
+- **Propulsion Lab IV digital transformation topics** — static_images_2022_11_17_propulsion_lab_4_dublin_foro_marcas_renombradas_propulsion_lab_iv, static_images_2022_11_17_propulsion_lab_4_dublin_foro_marcas_renombradas_metaverso, static_images_2022_11_17_propulsion_lab_4_dublin_foro_marcas_renombradas_colaboracion_digital, static_images_2022_11_17_propulsion_lab_4_dublin_foro_marcas_renombradas_inteligencia_artificial, static_images_2022_11_17_propulsion_lab_4_dublin_foro_marcas_renombradas_innovacion, static_images_2022_11_17_propulsion_lab_4_dublin_foro_marcas_renombradas_accesibilidad [EXTRACTED 1.00]
+- **Microsoft Dublin Interactive Collaboration Environment** — static_images_2022_11_17_propulsion_lab_4_dublin_gallery_1_d_microsoft_dublin_office_atrium, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_1_d_interactive_digital_floor_installation, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_1_d_flexible_collaboration_space [INFERRED 0.75]
+- **The Garage Collaborative Environment** — static_images_2022_11_17_propulsion_lab_4_dublin_gallery_1_f_collaborative_workshop_interior, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_1_f_flexible_commons_seating, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_1_f_glass_enclosed_upper_work_area [INFERRED 0.85]
+- **GADA-i Implementation Stages** — static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_c_identity, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_c_deployment_and_configuration, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_c_automatic_business_rules, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_c_customization, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_c_initial_migration [EXTRACTED 1.00]
+- **Content Management Solution Landscape** — static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_d_sharepoint, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_d_microsoft_syntex, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_d_azure_files, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_d_gada_i [INFERRED 0.85]
+- **GADA-i External System Integrations** — static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_e_sap, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_e_salesforce, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_e_sharepoint, static_images_2022_11_17_propulsion_lab_4_dublin_gallery_2_e_rest_apis [EXTRACTED 1.00]
+- **Semantic Kernel Question Answering Flow** — static_images_2023_07_20_integrando_otros_llms_con_semantic_kernel_6_askasync, static_images_2023_07_20_integrando_otros_llms_con_semantic_kernel_6_contextvariables, static_images_2023_07_20_integrando_otros_llms_con_semantic_kernel_6_huggingfacedeepsetrobertaquestionsansweringplugin, static_images_2023_07_20_integrando_otros_llms_con_semantic_kernel_6_kernel_runasync, static_images_2023_07_20_integrando_otros_llms_con_semantic_kernel_6_askresponse [EXTRACTED 1.00]
+- **NETCoreConf Semantic Kernel Planners Session** — static_images_2023_11_13_nos_vemos_en_la_net_core_conf_2023_madrid_1_planificando_para_el_exito, static_images_2023_11_13_nos_vemos_en_la_net_core_conf_2023_madrid_1_netcoreconf, static_images_2023_11_13_nos_vemos_en_la_net_core_conf_2023_madrid_1_semantic_kernel_planners, static_images_2023_11_13_nos_vemos_en_la_net_core_conf_2023_madrid_1_rodrigo_liberoff, static_images_2023_11_13_nos_vemos_en_la_net_core_conf_2023_madrid_1_borja_piris_de_castro [EXTRACTED 1.00]
+- **Capas de memoria** — static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_body_2_memoria_de_sesion, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_body_2_memoria_operativa, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_body_2_memoria_de_preferencias, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_body_2_conocimiento_externo [EXTRACTED 1.00]
+- **Human-Supervised Multi-Agent Operations** — static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_human_operator, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_central_orchestration_core, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_specialized_ai_agents, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_cover_operational_monitoring_dashboards [INFERRED 0.85]
+- **Support Case Analysis Pipeline** — static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_data_fetch, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_case_pattern_analysis, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_weekly_support_volume_forecast, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_workspace_output [EXTRACTED 1.00]
+- **Hosted Agent Operational Surface** — static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_support_intelligence_agent, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_hosted_agent_runtime, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_identity, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_entra_agent_blueprint, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_code_asset, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_3_container_log_stream [EXTRACTED 1.00]
+- **Aspire Integrated Multi-Agent Interview Architecture** — static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_aspire_integration, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_blazor_frontend, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_ag_ui, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_agent_framework_backend, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_triage_agent, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_receptionist_agent, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_behavioral_interviewer_agent, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_technical_interviewer_agent, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_summarizer_agent, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_markitdown_mcp_server, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_sqlite_database [EXTRACTED 1.00]
+- **Agent Framework Interview Workflow** — static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_triage_agent, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_receptionist_agent, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_behavioral_interviewer_agent, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_technical_interviewer_agent, static_images_2026_07_01_microsoft_agent_framework_en_build_2026_como_pasar_de_un_prototipo_a_un_agente_l_source_4_summarizer_agent [EXTRACTED 1.00]
 
-### Community 0 - "Community 0"
+## Communities (259 total, 38 thin omitted)
+
+### Community 0 - "resolve body images"
+Cohesion: 0.06
+Nodes (32): FoundryError, Raised on any Foundry/HTTP/parse failure with a secret-free message., RuntimeError, _ChunkedOpener, _ChunkedResponse, FakeImageClient, _FakeOpener, _FakeResponse (+24 more)
+
+### Community 1 - "Build a SOURCES FILE shaped"
 Cohesion: 0.06
 Nodes (23): _front_matter(), Offline tests for the Phase-2 grounding + body-image changes in ``generate_arti, Build a SOURCES_FILE-shaped raw source entry., Tiny runner so the file also works under plain ``python``., _run_all(), _source(), test_build_document_backward_compatible_without_sources(), test_build_document_grounded_sources_without_images_or_excerpt() (+15 more)
 
-### Community 1 - "Community 1"
-Cohesion: 0.05
-Nodes (38): Background Mode (Default), Casting & Persistent Naming, Casting State Files, Check Categories (Phase 1), Connecting to a Repo, Constraint Budget Tracking, Constraints, Coordinator Identity (+30 more)
+### Community 2 - "Agent Spawn Protocol"
+Cohesion: 0.06
+Nodes (40): Current Team Focus, Team Wisdom, Guardrail, Not Wall, Project-Aware RAI Review, Rai RAI Reviewer, Redacted RAI Audit Trail, Traffic Light Verdicts, Advisory RAI Concerns (+32 more)
 
-### Community 2 - "Community 2"
+### Community 3 - "discover topics"
 Cohesion: 0.05
 Nodes (5): Offline tests for the agentic topic-discovery orchestrator.  No network is per, test_classify_freshness_buckets(), test_parse_published_date_falls_back_to_url(), test_parse_published_date_normalises_tz_offset_to_utc(), test_parse_published_date_prefers_explicit_field()
 
-### Community 3 - "Community 3"
+### Community 4 - "Cooperative Rate Limiting"
+Cohesion: 0.06
+Nodes (35): Cascade Dependency Detector (CDD), Cooperative Rate Limiting, Cooperative Token Pool (CMARP), KEDA Quota-Aware Scaling, Predictive Circuit Breaker (PCB), Priority Retry Windows (PWJG), Resource Epoch Tracker (RET), Traffic Light (RAAS) (+27 more)
+
+### Community 5 - "generate article"
 Cohesion: 0.09
 Nodes (33): apply_body_image_placeholders(), build_document(), build_sources_block(), call_foundry(), _capitalise_first_alpha(), capitalise_markdown_list_and_quote_starts(), clean_terms(), _date_prefixed_filename() (+25 more)
 
-### Community 4 - "Community 4"
-Cohesion: 0.06
-Nodes (34): Acknowledge Immediately — "Feels Heard", Adding Team Members, After Agent Work, Ceremonies, Client Compatibility, Consult Mode Detection, Detection, Directive Capture (+26 more)
-
-### Community 5 - "Community 5"
+### Community 6 - "ralph triage"
 Cohesion: 0.13
 Nodes (33): cleanCell(), { execSync }, fetchSquadIssues(), findBestModuleMatch(), findBestRuleMatch(), findColumnIndex(), findLeadFallback(), findMember() (+25 more)
 
-### Community 6 - "Community 6"
+### Community 7 - "Graphify Workflow"
 Cohesion: 0.06
-Nodes (30): 1. Think and Plan, 2. Fetch Provided URLs, 3. Deeply Understand the Problem, 4. Codebase Investigation, 5. Internet Research, 6. Develop a Detailed Plan, 7. Making Code Changes, 8. Debugging (+22 more)
+Nodes (33): Folder Watcher, URL Ingestion, Graphify Optional Exports, Extraction Confidence Rubric, Deterministic Node IDs, Semantic Extraction Contract, Cross-Repo Graph Merge, Monorepo Subgraph Merge (+25 more)
 
-### Community 7 - "Community 7"
+### Community 8 - "resolve body images"
 Cohesion: 0.11
 Nodes (29): detect_image_type(), download_allowlisted_image(), figure_shortcode(), _float_env(), _int_env(), load_spec(), main(), normalise_placeholder() (+21 more)
 
-### Community 8 - "Community 8"
-Cohesion: 0.07
-Nodes (29): Check Results, Check Task Queue, Configuration, Error Handling, Example 1: GPU Voice Cloning (Laptop → DevBox), Example 2: Urgent Debug Request (Human → DevBox via Issue), Examples, File Formats (+21 more)
-
-### Community 9 - "Community 9"
-Cohesion: 0.07
-Nodes (29): Agent Run Time Budget, `--allow-all-paths` for repos outside the CWD, Always pass `--allow-all-tools` in non-interactive mode, Anti-Patterns, Confidence, Context, Fast-Fail Rules, Handle Windows comment bodies safely (+21 more)
-
-### Community 10 - "Community 10"
-Cohesion: 0.07
-Nodes (28): 1. Scan, 2. Classify, 3. Draft, 4. Present, 5. Human Action, 6. Post, 7. Audit, Anti-Patterns (+20 more)
-
-### Community 11 - "Community 11"
-Cohesion: 0.18
-Nodes (25): ArgumentParser, _build_parser(), LedgerError, load_topic(), main(), prepare_candidate_build(), Path, Derive the article prompt and grounding sources from one ledger entry. (+17 more)
-
-### Community 12 - "Community 12"
-Cohesion: 0.07
-Nodes (27): 1. Issue Assignment (Triage), 2. Branch Creation (Start Work), 3. Implementation & Commit, 4. PR Creation, 5. PR Review & Updates, 6. PR Merge, 7. Cleanup, Anti-Patterns (+19 more)
-
-### Community 13 - "Community 13"
-Cohesion: 0.07
-Nodes (26): 1. Coordinator Does NOT Publish, 2. Pre-Publish Dependency Validation, 3. Never Use `npm -w` for Publishing, 4. Fallback Protocol, 5. Post-Publish Smoke Test, 6. npm Token Must Be Automation Type, 7. No Draft GitHub Releases, 8. Version Format (+18 more)
-
-### Community 14 - "Community 14"
-Cohesion: 0.11
-Nodes (24): _clean(), _neutralise_link_match(), normalise_placeholder(), Sanitise untrusted text, also stripping the source-block delimiter tokens., Return up to ``MAX_SOURCE_IMAGES`` allowlisted image candidates for a source., Validate one SOURCES_FILE entry into a clean record, or None to drop it., Return a canonical ``{{img:<id>}}`` token, or None if unusable., Validate the model's optional ``body_images`` into resolver-ready specs. (+16 more)
-
-### Community 15 - "Community 15"
-Cohesion: 0.11
-Nodes (12): FakeImageClient, _make_downloader(), Offline tests for ``resolve_body_images.py``.  No network is performed: the MA, In-memory stand-in for FoundryImageClient (no network)., Build a fake downloader matching download_allowlisted_image's signature., Tiny runner so the file also works under plain ``python``., _run_all(), test_process_rewrites_post_fail_open_per_image() (+4 more)
-
-### Community 16 - "Community 16"
+### Community 9 - "Squad Coordinator"
 Cohesion: 0.08
-Nodes (23): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+15 more)
+Nodes (29): Agent Orchestration, Directive Capture, Shared State Drop-Box Pattern, Parallel Fan-Out, Rai RAI Reviewer, Ralph Work Monitor, Response Mode Selection, Reviewer Rejection Protocol (+21 more)
 
-### Community 17 - "Community 17"
-Cohesion: 0.08
-Nodes (23): Agent Lifecycle (Distributed), AGENT WORKFLOW (Deterministic Setup), Anti-Patterns, Context, Developer Laptop + CI Squad (Zone 2), Examples, Mesh State Repo, Patterns (+15 more)
+### Community 10 - "topic ledger"
+Cohesion: 0.17
+Nodes (26): ArgumentParser, _build_parser(), LedgerError, load_topic(), main(), prepare_candidate_build(), Path, Derive the article prompt and grounding sources from one ledger entry. (+18 more)
 
-### Community 18 - "Community 18"
-Cohesion: 0.08
-Nodes (23): ❄️ Cold (include when task needs history — add `--include-cold`), ❄️ Cold Tier — Summarized Cross-Session History, Escalation, 🔥 Hot (always included), 🔥 Hot Tier — Current Session Context, Implementation Checklist, Integration with Scribe Agent, Measurement Data (+15 more)
-
-### Community 19 - "Community 19"
-Cohesion: 0.09
-Nodes (21): Agente de descubrimiento de temas (Tavily), Ciclo de vida (estados), Convención de plantillas, Cómo ejecutarlo, Cómo funciona, Deduplicación, Deduplicación en el descubrimiento, Esquema de un tema (+13 more)
-
-### Community 20 - "Community 20"
+### Community 11 - "foundry Components"
 Cohesion: 0.10
-Nodes (20): Example 1: User Correction, Example 2: Success Pattern, HIGH Confidence: Corrections, 🔴 HIGH Priority (Invoke Immediately), Integration with Squad Architecture, LOW Confidence: Preferences, 🟢 LOW Priority (Invoke at Session End), MEDIUM Confidence: Edge Cases (+12 more)
+Nodes (17): create_embeddings_client(), _HTMLTextExtractor, Create the semantic-dedup client or enforce the production requirement., EmbeddingsClient, fail(), FoundryChatClient, FoundryEmbeddingsClient, http_post_json() (+9 more)
 
-### Community 21 - "Community 21"
+### Community 12 - "generate image"
+Cohesion: 0.11
+Nodes (17): FoundryImageClient, Image-generation client for the Foundry MAI ``/mai/v1`` surface.      Shared b, Generate one image for ``prompt`` and return its raw bytes., Return image bytes from a MAI image response (``b64_json`` or ``url``)., _emit_image_trace(), _env_truthy(), fail(), main() (+9 more)
+
+### Community 13 - "Comparti MOSS No 56 June"
+Cohesion: 0.08
+Nodes (24): Artificial Intelligence, Azure Functions, Azure Notification Hub, Integrating Azure Notification Hub with Dapr (HTTP Output Binding), Azure Static Web Apps, Azure Static Web Apps with Azure Functions as an Integrated API, Breaking Changes, How to Build a 100% Cloud Native Architecture for Artificial Intelligence with Semantic Kernel and Qdrant (+16 more)
+
+### Community 14 - "Propulsion Lab IV"
+Cohesion: 0.11
+Nodes (23): Accesibilidad, FMRE article screenshot about ENCAMINA Propulsion Lab IV, Artificial intelligence, Business collaboration, Cloud technologies, Colaboración digital, Digital transformation, Dublin (+15 more)
+
+### Community 15 - "Article Text Generation"
+Cohesion: 0.09
+Nodes (22): AI Article Build Workflow, Article Text Generation, Body Image Resolution, Weekly Candidate Preparation, Cover Image Generation, Dry-Run Artifact Path, Hugo Draft Build Gate, Human-Reviewed Pull Request Gate (+14 more)
+
+### Community 16 - "Memoria multicapa para sistemas de"
+Cohesion: 0.11
+Nodes (22): Acción y respuesta, Agente, Aprendizaje operativo, Búsqueda y recuperación, Conocimiento externo, Contexto temporal, Diseño modular, escalable y adaptable, Documentación y bases (+14 more)
+
+### Community 17 - "discover topics"
+Cohesion: 0.10
+Nodes (21): build_dedup_index(), build_workflow_matrix(), candidate_to_yaml(), _emit_discovery_trace(), _env_truthy(), _float_env(), _int_env(), load_existing_topics() (+13 more)
+
+### Community 18 - "API Monetization"
+Cohesion: 0.11
+Nodes (20): API Monetization, Azure API Management, Flat Tier API Model, Free and Freemium API Models, Pay-as-you-use API Model, Payment Platform, Payment Provider, PCI-DSS (+12 more)
+
+### Community 19 - "discover topics"
 Cohesion: 0.20
 Nodes (16): FakeChatClient, _final_turn(), A scripted assistant turn with the final JSON answer (no tool calls)., Stand-in for ``search_both_strategies`` that records queries (no network)., Drive ``run_discovery_loop`` with a faked search, restoring it afterwards., Scripted, network-free chat client for the discovery ReAct loop.      ``comple, A scripted assistant turn that issues exactly one tool call., _run_loop() (+8 more)
 
-### Community 22 - "Community 22"
-Cohesion: 0.11
-Nodes (17): Code blocks, Emphasis, strong text, and inline code, Extended syntax, General Principles, Headings, Images and accessibility, Language, Tone and Style, Links and URLs (+9 more)
-
-### Community 23 - "Community 23"
-Cohesion: 0.11
-Nodes (17): Accessibility, Advisory Concerns (🟡 — Flagged, Not Blocked), Bias & Fairness, Credentials & Secrets, Critical Violations (🔴 — Always Blocked), Deceptive Patterns, Escalation Path, Harmful Content (+9 more)
-
-### Community 24 - "Community 24"
-Cohesion: 0.11
-Nodes (17): Accessibility, Advisory Concerns (🟡 — Flagged, Not Blocked), Bias & Fairness, Credentials & Secrets, Critical Violations (🔴 — Always Blocked), Deceptive Patterns, Escalation Path, Harmful Content (+9 more)
-
-### Community 25 - "Community 25"
+### Community 20 - "Topic Ledger"
 Cohesion: 0.12
-Nodes (17): build_dedup_index(), create_embeddings_client(), _emit_discovery_trace(), _env_truthy(), _float_env(), _int_env(), load_existing_topics(), main() (+9 more)
+Nodes (19): Body Image Contract, Body Image Resolution, Exact Topic Deduplication, Fail-Closed Publication Date Validation, Live Published Post Index, Open PR Ledger Overlay, ReAct Discovery Loop, Semantic Topic Deduplication (+11 more)
 
-### Community 26 - "Community 26"
-Cohesion: 0.16
-Nodes (13): _emit_image_trace(), _env_truthy(), fail(), main(), Interpret an env var as boolean (1/true/yes/on)., Emit image-generation traces to stdout for Actions/Copilot UI., Print a secret-free error to stderr and exit non-zero., Return the image prompt from IMAGE_PROMPT_FILE or IMAGE_PROMPT, or fail. (+5 more)
+### Community 21 - "Logging as an Aspect"
+Cohesion: 0.14
+Nodes (18): Aspect Priority Ordering, InterceptableAttribute, IProcessor, IProcessor.ProcessCallMessage, IProcessor.ProcessReturnMessage, InterceptSink.SyncProcessMessage, LogAttribute, Microsoft Enterprise Library Logging Application Block (+10 more)
 
-### Community 27 - "Community 27"
-Cohesion: 0.22
-Nodes (9): Footer Component, GitHub Social Link, Head Meta Tags & Resources, LinkedIn Social Link, RSS Feed Link, Threads Social Link, Twitch Social Link, X (Twitter) Social Link (+1 more)
-
-### Community 28 - "Community 28"
-Cohesion: 0.25
-Nodes (8): About Page Template, Base HTML Structure, Header Navigation Component, Main Homepage Template, List View Template, Pagination Controls, Post Card Component, Single Post/Page Template
-
-### Community 29 - "Community 29"
+### Community 22 - "External Communications"
 Cohesion: 0.12
-Nodes (16): Anti-Patterns, Branch Naming Convention, Cleanup After Merge, Context, Coordinated PRs, Local Linking for Testing, Multi-Repo Downstream Scenarios, Parallel Multi-Issue Work (Worktrees) (+8 more)
+Nodes (17): Documentation Standards, Documentation Test Synchronization, Microsoft Style Guide Rules, Squad Document Format, Bad Post Recovery, Communications Audit Log, Community Item Scan, Draft-Only Mode (+9 more)
 
-### Community 30 - "Community 30"
-Cohesion: 0.12
-Nodes (16): Anti-Patterns, Branch Naming Convention, Cleanup After Merge, Context, Coordinated PRs, Local Linking for Testing, Multi-Repo Downstream Scenarios, Parallel Multi-Issue Work (Worktrees) (+8 more)
-
-### Community 34 - "Community 34"
+### Community 23 - "Intercept Property"
 Cohesion: 0.13
-Nodes (12): cosine_similarity(), fail(), FoundryEmbeddingsClient, http_post_json(), Call chat completions once and return ``{"message", "finish_reason"}``., Embeddings client backed by the Foundry ``/openai/v1/embeddings`` surface., Return the cosine similarity of two equal-length vectors in ``[-1, 1]``., Print a secret-free error to stderr and exit non-zero.      Mirrors the helper (+4 more)
+Nodes (17): Context, ContextAttribute, IConstructionCallMessage, IContextProperty, IContributeClientContextSink, IContributeServerContextSink, IMessage, IMessageCtrl (+9 more)
 
-### Community 35 - "SKILL.md"
+### Community 24 - "Blog Post to Linked In"
+Cohesion: 0.16
+Nodes (16): auditLinkedInDraft, extractCodertecturaArticle, hydrateTransferredImageFiles, insertImageAtMarker, LinkedIn Article Editor Scripts, pasteArticleHtml, preflightCodertecturaArticle, prepareNextImagePayload (+8 more)
+
+### Community 25 - "Blog Post to Linked In"
 Cohesion: 0.12
-Nodes (15): AGENT WORKFLOW (Summary), Anti-Patterns, Context, Example: Copilot flags a potential null dereference, Example: Handling Copilot suggestion blocks, Example: Multiple review comments on one PR, Example: Pushing back on a review comment, Examples (+7 more)
+Nodes (16): auditLinkedInDraft, extractCodertecturaArticle, hydrateTransferredImageFiles, insertImageAtMarker, LinkedIn Article Editor Scripts, navigatePreparedImagePayload, pasteArticleHtml, preflightCodertecturaArticle (+8 more)
 
-### Community 36 - "datetime"
+### Community 26 - "discover topics"
+Cohesion: 0.13
+Nodes (15): is_exact_duplicate(), process_candidates(), True when the slug or title already exists in the ledger or posts., Return ``(max_score, closest_key)`` of the candidate vs the corpus.      ``cor, Resolve a model candidate's cited URLs against the validated registry.      Re, Build the final candidate YAML mapping, or None if the slug is unusable., Validate, deduplicate and shape raw candidates into final YAML mappings., select_candidate_sources() (+7 more)
+
+### Community 27 - "Aspect Oriented Programming AOP"
+Cohesion: 0.13
+Nodes (16): Aspect-Oriented Programming (AOP), ContextBoundObject, .NET Context, IMessage, IMessageSink, Loss of Uniformity, Minimal Extensible AOP Framework, Observer Pattern (+8 more)
+
+### Community 28 - "Squad Git Workflow"
+Cohesion: 0.13
+Nodes (15): Agent Collaboration Patterns, Decision Recording, Reviewer Protocol, Worktree Awareness, Squad Git Workflow, Multi-Repo Coordination, Parallel Multi-Issue Worktrees, Three-Branch Model (+7 more)
+
+### Community 29 - "Platform Detection"
+Cohesion: 0.13
+Nodes (15): CLI Spawn Mode, Client Compatibility, Filesystem State Portability, Inline Fallback Mode, Platform Detection, VS Code Spawn Mode, Cost-Optimized Layer 3, Economy Mode Activation (+7 more)
+
+### Community 30 - "Squad Member Label Routing"
+Cohesion: 0.13
+Nodes (15): Copilot Coding Agent Assignment, GitHub Agent Assignment API, Squad Issue Assignment, Squad Member Label Routing, Team Roster Fallback, Exclusive Label Namespaces, Go Verdict and Release Coordination, Squad Label Enforcement (+7 more)
+
+### Community 31 - "discover topics"
 Cohesion: 0.18
 Nodes (15): build_source_excerpt(), classify_freshness(), _coerce_date(), evaluate_source(), _parse_iso_datetime(), parse_published_date(), Build a UTC-midnight datetime, or None if the values are out of range., Parse an ISO-8601 date/datetime string into a tz-aware UTC datetime. (+7 more)
 
-### Community 37 - "FoundryError"
-Cohesion: 0.22
-Nodes (14): FoundryError, Raised on any Foundry/HTTP/parse failure with a secret-free message., RuntimeError, _FakeOpener, _raises(), Dual-mode assertion helper (works under plain ``python`` and pytest)., test_download_allowlisted_image_success(), test_download_rejects_denylisted_image_url() (+6 more)
+### Community 32 - "sources Components"
+Cohesion: 0.17
+Nodes (14): _clean(), Sanitise untrusted text, also stripping the source-block delimiter tokens., Return up to ``MAX_SOURCE_IMAGES`` allowlisted image candidates for a source., Validate one SOURCES_FILE entry into a clean record, or None to drop it., validate_source(), _validate_source_images(), _image_url_denylist(), is_denylisted_image() (+6 more)
 
-### Community 38 - "Terraform for Azure Guidelines"
+### Community 33 - "Semantic Kernel Planners"
 Cohesion: 0.13
-Nodes (14): Core Rules, Development Modes, Environment-Specific Configuration, General Principles, Idempotency, Informative Outputs, Output Management, Pre-Validation Steps (+6 more)
+Nodes (15): Netcoreconf 2023 Madrid Session Announcement, Borja Piris, Diego Zapi Zapico, ENCAMINA, Netcoreconf 2023 Madrid, Action Planner, Planning for Success with Semantic Kernel Planners, Custom Planner (+7 more)
 
-### Community 39 - "Patterns"
-Cohesion: 0.13
-Nodes (14): Anti-Patterns, Config Directory Isolation (Advanced), Context, ✓ Correct: Agent creates a PR from personal fork to upstream, ✓ Correct: Agent pushes blog post to personal GitHub Pages, ✓ Correct: Check before you push, Create PRs on Personal Forks, Detect Current Identity (+6 more)
+### Community 34 - "Support Intelligence Agent"
+Cohesion: 0.14
+Nodes (15): Application Insights Endpoint, Azure Monitor OpenTelemetry Exporter, Support Intelligence Code Asset, Container Log Stream, Entra Agent Blueprint, Entra Agent Identity, Hosted Agent Runtime, Microsoft Foundry Agent Playground (+7 more)
 
-### Community 40 - "Skill: Retro Enforcement"
-Cohesion: 0.13
-Nodes (14): Action Item Enforcement, Blocking Semantics, Cadence Enforcement, Coordinator Integration, Core Function: Test-RetroOverdue, Detection Logic, Purpose, Ralph integration example (+6 more)
+### Community 35 - "Terraform for Azure Guidelines"
+Cohesion: 0.15
+Nodes (14): App Configuration and Key Vault Pattern, AzAPI Provider, AzureRM Provider, Managed Identity Authentication, Modular Azure Terraform Architecture, Azure Remote State Backend, Terraform for Azure Guidelines, Terraform Idempotency (+6 more)
 
-### Community 41 - "run_discovery_loop"
+### Community 36 - "Git Workflow"
+Cohesion: 0.14
+Nodes (14): Branch Promotion Pipeline, Git Workflow, Issue Branch Workflow, Multi-Repository Coordination, Parallel Worktrees, Three-Branch Model, Casting and Persistent Naming, Init Mode (+6 more)
+
+### Community 37 - "Squad Release Process"
+Cohesion: 0.14
+Nodes (14): GITHUB_TOKEN Downstream Workflow Limitation, Package-Directory npm Publish, Post-Publish Smoke Test, Pre-Publish Dependency Validation, Squad Release Process, Ephemeral Build Prerelease Versions, SDK CLI and Root Version Synchronization, Prerelease Version Guard (+6 more)
+
+### Community 38 - "discover topics"
 Cohesion: 0.18
 Nodes (14): _assistant_echo(), clean_untrusted_text(), _extract_query(), format_rss_candidates(), format_tool_result(), parse_candidates(), Echo an assistant message back into history, keeping only allowed keys., Parse + sanitise the ``query`` argument of a tool call, or None. (+6 more)
 
-### Community 42 - "LinkedIn Article editor scripts"
-Cohesion: 0.14
-Nodes (13): Cover image, Extract the CODERTECTURA article, Fix a demoted heading, Insert a content image at its marker, Known dead ends (don't retry these), LinkedIn Article editor scripts, Navigate and hydrate the payload, Paste HTML (body text, formatting preserved) (+5 more)
-
-### Community 43 - "LinkedIn Article editor scripts"
-Cohesion: 0.14
-Nodes (13): Cover image, Extract the CODERTECTURA article, Fix a demoted heading, Insert a content image at its marker, Known dead ends (don't retry these), LinkedIn Article editor scripts, Navigate and hydrate the payload, Paste HTML (body text, formatting preserved) (+5 more)
-
-### Community 44 - "Squad Notes Protocol"
-Cohesion: 0.14
-Nodes (13): Conflict Handling, Decision notes, Every work round, Fetch / Push, Namespaces, Note JSON Schema, One-time setup, Overview (+5 more)
-
-### Community 45 - "process_candidates"
-Cohesion: 0.17
-Nodes (12): is_exact_duplicate(), process_candidates(), True when the slug or title already exists in the ledger or posts., Return ``(max_score, closest_key)`` of the candidate vs the corpus.      ``cor, Resolve a model candidate's cited URLs against the validated registry.      Re, Build the final candidate YAML mapping, or None if the slug is unusable., Validate, deduplicate and shape raw candidates into final YAML mappings., select_candidate_sources() (+4 more)
-
-### Community 46 - "Blog post to LinkedIn Article"
+### Community 39 - "generate article"
 Cohesion: 0.15
-Nodes (12): Blog post to LinkedIn Article, Generic interpretation rules, Operating rules, Prerequisites, Speed and stability rules, Step 1 - Resolve the source, Step 2 - Extract the Hugo article, Step 3 - Run source preflight (+4 more)
+Nodes (14): load_sources(), _merge_polished(), normalise_placeholder(), parse_sources(), polish_article(), Pass 2 (VOICE + CODE + COVER): refine prose, code and cover art direction., Merge validated polish fields onto the draft (pure; never mutates inputs)., Print a non-fatal warning to stderr (visible in the Actions log). (+6 more)
 
-### Community 47 - "Patterns"
-Cohesion: 0.15
-Nodes (12): ANSI Color Constants, Anti-Patterns, Context, Copy Pattern, Error Handling — `fatal()` Pattern, Examples, File Structure, Init Idempotency (+4 more)
-
-### Community 48 - "Copilot instructions"
-Cohesion: 0.15
-Nodes (12): Azure and Terraform Infrastructure as Code (IaC), Commits and Pull Requests, Copilot instructions, Core Directives & Hierarchy, General Interaction & Philosophy, Graphify, Intelligent Tool Usage, Language Policy (+4 more)
-
-### Community 49 - "Blog post to LinkedIn Article"
-Cohesion: 0.15
-Nodes (12): Blog post to LinkedIn Article, Generic interpretation rules, Operating rules, Prerequisites, Speed and stability rules, Step 1 - Resolve the source, Step 2 - Extract the Hugo article, Step 3 - Run source preflight (+4 more)
-
-### Community 50 - "Reusable content components (Hugo shortcodes)"
-Cohesion: 0.15
-Nodes (12): `callout`, CODERTECTURA Blog, Deployment, `figure`, `gallery`, Local build, Notes for maintainers, `notice` (+4 more)
-
-### Community 51 - "How I Work"
-Cohesion: 0.15
-Nodes (12): Activation Modes, Audit Trail, Boundaries, Check Categories (Phase 1 — High-Signal Only), How I Work, Identity, Opt-Out Model (Tiered, Not Binary), Performance Budget (+4 more)
-
-### Community 52 - "Step 1: Update Check"
-Cohesion: 0.15
-Nodes (12): 1.1 Kill Switch, 1.2 Channel Detection, 1.3 Hybrid Cache Strategy, 1.4 Comparison, 1.5 Greeting Append, 1.6 Upgrade Flow, 1.7 Failure Modes, For `insider` / `preview` channels — own probe with repo-local cache (+4 more)
-
-### Community 53 - "SKILL.md"
-Cohesion: 0.15
-Nodes (12): Activation Methods, AGENT WORKFLOW, Anti-Patterns, Config Schema, Context, Economy Model Selection Table, On Deactivation, On Every Agent Spawn (Economy Mode Active) (+4 more)
-
-### Community 54 - "Iterative Retrieval Skill"
-Cohesion: 0.15
-Nodes (12): 3-Cycle Protocol, Anti-Patterns, Bad spawn prompt (don't do this), Coordinator Validation Checklist, Examples, Good spawn prompt, Issue Dedup Check (Mandatory), Iterative Retrieval Skill (+4 more)
-
-### Community 55 - "Model Selection"
-Cohesion: 0.15
-Nodes (12): 5-Layer Model Resolution Hierarchy, AGENT WORKFLOW, Config Schema, Context, Fallback Chains, Model Selection, On Every Agent Spawn, On Session Start (+4 more)
-
-### Community 56 - "Patterns"
-Cohesion: 0.15
-Nodes (12): ANSI Color Constants, Anti-Patterns, Context, Copy Pattern, Error Handling — `fatal()` Pattern, Examples, File Structure, Init Idempotency (+4 more)
-
-### Community 57 - "Squad Workflow Wiring Guide"
-Cohesion: 0.15
-Nodes (13): Appendices, Common Mistakes, Configuration Surface Area, Decisions Audit, How They Interact, How to Wire Up a Reviewer Gate, Option A: Routing Rule (recommended for simple gates), Option A vs Option B (+5 more)
-
-### Community 58 - "Tipos de ‘cookies’ utilizadas"
-Cohesion: 0.17
-Nodes (11): ‘Cookies’ de análisis estadístico, ‘Cookies’ de personalización, ‘Cookies’ de terceros, ‘Cookies’ publicitarias, ‘Cookies’ técnicas, ¿Cómo administrar ‘cookies’ en el navegador?, ¿Cómo se utilizan las ‘cookies’?, ¡Gracias (+3 more)
-
-### Community 59 - "Patterns"
-Cohesion: 0.17
-Nodes (11): Anti-Patterns, Context, ✓ Correct: Reading Config Schema, ✓ Correct: Scribe Pre-Commit Validation, Examples, ✗ Incorrect: Reading Live Credentials, Patterns, Prohibited File Reads (+3 more)
-
-### Community 60 - "Patterns"
-Cohesion: 0.17
-Nodes (11): 1. Find Recent Sessions, 2. Filter Out Automated Sessions, 3. Search by Topic (FTS5), 4. Search by Working Directory, 5. Get Full Session Context Before Resuming, 6. Detect Orphaned Issue Work, 7. Resume a Session, Anti-Patterns (+3 more)
-
-### Community 61 - "Microsoft Docs"
-Cohesion: 0.17
-Nodes (11): API Lookups, Error Troubleshooting, Finding Code Samples, Microsoft Docs, Query Effectiveness, Tools, Validation Workflow, When to Fetch Full Page (+3 more)
-
-### Community 62 - "Patterns"
-Cohesion: 0.17
-Nodes (11): Anti-Patterns, Context, Context Sharing, Delegating work, Discovering squads, Discovery via Manifest, Examples, Feedback Loop (+3 more)
-
-### Community 63 - "GitHub Multi-Account — AI-Driven Setup"
-Cohesion: 0.17
-Nodes (11): After Setup — Usage Rules, For Squad Agents, GitHub Multi-Account — AI-Driven Setup, Repo-Specific Account Binding, Step 1: Detect accounts, Step 2: Ask the user, Step 3: Run the setup automatically, Step 4: Verify for the user (+3 more)
-
-### Community 64 - "Examples"
-Cohesion: 0.17
-Nodes (11): 1. Welcome, 2. Troubleshooting, 3. Feature guidance, 4. Redirect, 5. Acknowledgment, 6. Closing, 7. Technical uncertainty, Anti-Patterns (+3 more)
-
-### Community 65 - "Patterns"
-Cohesion: 0.17
-Nodes (11): 1. Capture screenshots with Playwright, 2. Host screenshots on a temporary branch, 3. Embed in PR description, 4. Cleanup after merge, 5. Gitignore screenshots locally, Anti-Patterns, Context, Example: Docs site PR with 3 pages (+3 more)
-
-### Community 66 - "Patterns"
-Cohesion: 0.17
-Nodes (11): Anti-Patterns, Context, ✓ Correct: Reading Config Schema, ✓ Correct: Scribe Pre-Commit Validation, Examples, ✗ Incorrect: Reading Live Credentials, Patterns, Prohibited File Reads (+3 more)
-
-### Community 67 - "Patterns"
-Cohesion: 0.17
-Nodes (11): 1. Find Recent Sessions, 2. Filter Out Automated Sessions, 3. Search by Topic (FTS5), 4. Search by Working Directory, 5. Get Full Session Context Before Resuming, 6. Detect Orphaned Issue Work, 7. Resume a Session, Anti-Patterns (+3 more)
-
-### Community 68 - "2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l.md"
+### Community 40 - "sources Components"
 Cohesion: 0.18
-Nodes (10): Aprobaciones: el detalle que separa confianza de pánico, El salto importante no es “hacer un agente”, sino gobernarlo, La idea de fondo que me deja Build 2026, Memoria: útil, sí; infinita, mejor no, Mi hoja de ruta sensata para pasar a producción, Multiagente: útil cuando divide responsabilidades, peligroso cuando solo añade complejidad, Observabilidad: si no ves por qué actuó, no puedes operarlo, Qué aporta Agent Harness y por qué me parece la pieza clave (+2 more)
+Nodes (13): _neutralise_link_match(), Replace one prose link/autolink, dropping off-allowlist http(s) targets., _AllowlistRedirectHandler, _build_allowlist_opener(), Redirect handler that refuses to follow redirects off the allowlist., Build an opener that re-validates every redirect target against the allowlist., extract_host(), host_is_allowed() (+5 more)
 
-### Community 69 - "KEDA External Scaler for GitHub Issue-Driven Agent Autoscaling"
+### Community 41 - "Distributed Mesh"
+Cohesion: 0.15
+Nodes (13): Cross-Machine Coordination, Git-Based Task Queue, GitHub Issue Supplement, Ralph Watch Cycle, Task and Result Files, Task Validation Pipeline, Distributed Agent Lifecycle, Distributed Mesh (+5 more)
+
+### Community 42 - "Error Recovery Patterns"
+Cohesion: 0.15
+Nodes (13): Diagnose and Fix, Error Recovery Patterns, Escalate with Context, Fallback Alternatives, Graceful Degradation, Retry with Backoff, Coordinator Validation, Cycle Exhaustion Escalation (+5 more)
+
+### Community 43 - "discover topics"
+Cohesion: 0.28
+Nodes (12): collect_rss_candidates(), _feed_child_text(), _feed_entry_link(), fetch_rss_feed(), _html_to_text(), _parse_feed_datetime(), parse_rss_feed(), Parse recent RSS/Atom entries into the same raw shape Tavily produces. (+4 more)
+
+### Community 44 - "My Project Source Code Metrics"
+Cohesion: 0.15
+Nodes (13): 232,042 Lines of Code, 520 Counted Files, ASP.NET, CLOC 1.60, C#, CSS, HTML, JavaScript (+5 more)
+
+### Community 45 - "Microsoft Agent Framework at Build"
+Cohesion: 0.17
+Nodes (12): Microsoft Agent Framework at BUILD 2026 Announcement, Agent Harness, Agent Harness: Working with Your Data Safely, ApprovalDecision, Microsoft Agent Framework at Build 2026, Microsoft Build 2026 Recap, .NET at Microsoft Build 2026, Build and Run Agents at Scale with Microsoft Foundry (+4 more)
+
+### Community 46 - "GADA i Cloud Software Architecture"
+Cohesion: 0.17
+Nodes (12): Automated File Lifecycle, Automatic File Classification, Azure Storage, Azure Table Storage, Cosmos DB Metadata, Custom AI, GADA-i Cloud Software Architecture, REST APIs (+4 more)
+
+### Community 47 - "Per Agent Model Selection"
 Cohesion: 0.18
-Nodes (11): Architecture, Configuration Reference, Cooperative Rate Limiting (#515), Integration with Squad, KEDA External Scaler for GitHub Issue-Driven Agent Autoscaling, Machine Capabilities (#514), Overview, Rate Limit Awareness (+3 more)
+Nodes (11): Agent Charter Template, Agent Ownership Boundaries, Cross-Platform Client Compatibility, Platform Detection, SQL Tool Caveat, VS Code Spawn Adaptations, Cost First Unless Code, Model Fallback Chains (+3 more)
 
-### Community 70 - "Ralph Circuit Breaker — Model Rate Limit Fallback"
+### Community 48 - "Squad Codebase Conventions"
 Cohesion: 0.18
-Nodes (11): Circuit Breaker States, CLOSED (normal operation), Configuration, Full integration example, HALF-OPEN (testing recovery), Integration with ralph-watch.ps1, Metrics, OPEN (rate limited — fallback active) (+3 more)
+Nodes (11): fatal Error Pattern, Squad Init Idempotency, Node.js Built-In Test Runner, Squad Codebase Conventions, Zero Runtime Dependencies, Platform-Aware Path Comparison, safeTimestamp Utility, Temporary-File Git Commit Message (+3 more)
 
-### Community 71 - "Process"
+### Community 49 - "GPT 4"
 Cohesion: 0.18
-Nodes (10): Anti-Patterns, Context, Minimal Charter Template (target format after reskill), Patterns, Process, Skill Extraction Threshold, Step 1: Audit, Step 2: Extract (+2 more)
+Nodes (11): Model Adaptability, Artificial General Intelligence, Cognitive Biases and Irrationality, Confidence Calibration, Continuous Learning, GPT-4, 1994 Consensus Definition of Intelligence, Long-Term Memory (+3 more)
 
-### Community 72 - "SKILL.md"
-Cohesion: 0.18
-Nodes (10): 1. Version Format, 2. Prerelease Versions Are Ephemeral, 3. SDK and CLI Version Sync, 4. npm Workspace Semver Footgun, 5. Who Bumps Versions, 6. Version Bump Lifecycle, 7. CI Enforcement, 8. Incident Reference — PR #640 (+2 more)
-
-### Community 73 - "_ChunkedResponse"
-Cohesion: 0.18
-Nodes (5): _ChunkedOpener, _ChunkedResponse, Response that yields at most ``chunk_size`` bytes per read (short reads)., test_download_accumulates_short_reads(), test_download_rejects_oversize_delivered_in_short_reads()
-
-### Community 74 - "EmbeddingsClient"
+### Community 50 - "Ralph Model Circuit Breaker"
 Cohesion: 0.20
-Nodes (7): EmbeddingsClient, Injectable embeddings interface.      Production code uses :class:`FoundryEmbe, FakeEmbeddings, Deterministic, network-free embeddings client for dedup tests., test_process_candidates_cosine_threshold_boundary(), test_process_candidates_exact_and_semantic_dedup(), test_process_candidates_semantically_deduplicates_within_the_same_run()
+Nodes (10): Circuit Breaker State File, Closed Circuit State, Free-Tier Model Fallback Chain, Half-Open Circuit State, Open Circuit State, Ralph Model Circuit Breaker, Continuous Work-Check Loop, Ralph Work Monitor (+2 more)
 
-### Community 75 - "warn"
-Cohesion: 0.22
-Nodes (10): load_sources(), _merge_polished(), parse_sources(), polish_article(), Pass 2 (VOICE + CODE + COVER): refine prose, code and cover art direction., Merge validated polish fields onto the draft (pure; never mutates inputs)., Print a non-fatal warning to stderr (visible in the Actions log)., Extract a validated, de-duplicated, capped source list from parsed JSON. (+2 more)
-
-### Community 76 - "Machine Capability Discovery & Label-Based Routing"
+### Community 51 - "Architectural Proposals"
 Cohesion: 0.20
-Nodes (8): 1. Create a Capabilities Manifest, 2. Label Issues with Requirements, 3. Run Ralph, How It Works, Kubernetes Integration, Machine Capability Discovery & Label-Based Routing, Overview, Setup
+Nodes (10): Alignment Before Implementation, Architectural Proposals, Decision Framing, Proposal Structure, Risk Documentation, Wave Restructuring, Challenger Ceremony, Counter-Hypothesis Testing (+2 more)
 
-### Community 77 - "Run Output — {task title}"
+### Community 52 - "Preview Release Readiness Checks"
 Cohesion: 0.20
-Nodes (9): APPENDIX: RAW AGENT OUTPUTS, Constraint Budgets, {Name} ({Role}) — Raw Output, {Name} ({Role}) — Raw Output, Result, Review by {Name} ({Role}), Reviewer Verdict, Run Output — {task title} (+1 more)
+Nodes (10): Forbidden Squad Files Check, Preview Release Readiness Checks, Squad Preview Validation, Dev to Preview Promotion, Forbidden Path Stripping, Preview to Main Promotion, Squad Promotion, Idempotent Tag Creation (+2 more)
 
-### Community 78 - "Patterns"
+### Community 53 - "Web Asset Minification"
 Cohesion: 0.20
-Nodes (9): Anti-Patterns, Context, Decision Framing, Examples, Patterns, Proposal Structure (docs/proposals/), Risk Documentation, Tone Ceiling Enforcement (+1 more)
+Nodes (10): AjaxMin Task, CompressJsAndCss Target, CopyAllFilesToSingleFolderForPackage Target, JSMin, Microsoft Ajax Minifier, MSBuild, Publish-Time Minification, UsingTask Over Import (+2 more)
 
-### Community 79 - "Patterns"
+### Community 54 - "Azure API Management Delegation"
 Cohesion: 0.20
-Nodes (9): Anti-Patterns, Build Script Protection, Context, Draft Release Detection, Known Failure Modes (v0.8.22 Incident), NPM Token Type Verification, Patterns, Retry Logic for npm Registry Propagation (+1 more)
+Nodes (10): Azure API Management Delegation, ApimService, ASP.NET MVC Razor Delegation App, Azure.ResourceManager.ApiManagement, Delegated Subscription Management, APIM Developer Portal, HMAC-SHA512 Delegation Request Validation, IApimService (+2 more)
 
-### Community 80 - "Patterns"
+### Community 55 - "Cookie Consent Banner"
 Cohesion: 0.20
-Nodes (9): Anti-Patterns, Code Style, Context, Error Handling, Examples, File Structure, [Pattern Name], Patterns (+1 more)
+Nodes (10): Base Page Template, Cookie Consent Banner, Scenic Page Chrome, Footer Partial, Social and RSS Links, Head Partial, Hugo CSS Minification and Fingerprinting, Open Graph and Page Metadata (+2 more)
 
-### Community 81 - "Patterns"
+### Community 56 - "GADA i Implementation Process"
 Cohesion: 0.20
-Nodes (9): Anti-Patterns, Commit Messages, Context, Examples, Filenames & Timestamps, Git Commands, Path Comparison (Case Sensitivity), Paths (+1 more)
+Nodes (10): Development of Automatic Business Rules, Azure Infrastructure, Customization, Deployment and Configuration, GADA-i, GADA-i Implementation Process, Identity, Infrastructure as Code (+2 more)
 
-### Community 82 - "Appendix B: Wiring a Documenter/Librarian — Complete Walkthrough"
-Cohesion: 0.20
-Nodes (7): Appendix A: Wiring a Code Reviewer — Complete Walkthrough, The Problem This Solves, What Each File Controls (Summary), Appendix B: Wiring a Documenter/Librarian — Complete Walkthrough, Gate vs Follow-Up Trigger, The Problem This Solves, What Each File Controls (Summary)
+### Community 57 - "Triage Agent"
+Cohesion: 0.27
+Nodes (10): AG-UI, Agent Framework Backend, Behavioral Interviewer Agent, Blazor Frontend, MarkItDown MCP Server, Receptionist Agent, SQLite Database, Summarizer Agent (+2 more)
 
-### Community 83 - "discover_topics.py"
-Cohesion: 0.44
-Nodes (8): _feed_child_text(), _feed_entry_link(), _html_to_text(), _parse_feed_datetime(), parse_rss_feed(), Parse recent RSS/Atom entries into the same raw shape Tavily produces., _xml_local_name(), Element
-
-### Community 84 - "2012-04-10-aop-parte-1.md"
+### Community 58 - "Natasha Tester and Reviewer"
 Cohesion: 0.22
-Nodes (8): Código Fuente, Finalizando, Implementación, Limitaciones, Referencias, Retomando el Sumidero, Un Tema de Prioridad, Un Tema de Procesamiento
+Nodes (9): Natasha Tester and Reviewer, Natasha Quality Review Context, Rai Responsible AI Reviewer, Rai Pipeline Safety Review, English Processing and Spanish Publishing, Review and Testing Work Routing, Responsible AI Review Routing, Natasha (+1 more)
 
-### Community 85 - "graphify reference: extra exports and benchmark"
+### Community 59 - "Agentic Tavily Discovery Pipeline"
+Cohesion: 0.28
+Nodes (9): Tony Architecture Context, Agentic Tavily Discovery Pipeline, AI Article Pipeline MVP, Direct MVP Execution Topology, Embeddings-Based Semantic Deduplication, Open Pull Request Deduplication Gap, Tavily Key Rotation Run Gate, Per-Topic Lifecycle Ledger (+1 more)
+
+### Community 60 - "Entity Framework Metadata Space Mapping"
+Cohesion: 0.25
+Nodes (9): BulkInsert, DbContextSqlServerExtensions, ExecuteBulkInsert, GetReferentialConstraints, Entity Framework Metadata Space Mapping, ODP.NET Array Binding, PopulateDataTable, Reflection over Entity Framework Internal APIs (+1 more)
+
+### Community 61 - "roberta base squad2"
 Cohesion: 0.22
-Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
+Nodes (9): Answer Score Threshold, AskQuestionWithContextAsync, Hugging Face, Hugging Face REST API, HuggingFaceDeepsetRobertaQuestionsAnsweringPlugin, HuggingFaceOptions, RoBERTa, roberta-base-squad2 (+1 more)
 
-### Community 86 - "{Name} — {Role}"
+### Community 62 - "Git Hub Social Link"
 Cohesion: 0.22
-Nodes (8): Boundaries, Collaboration, How I Work, Identity, Model, {Name} — {Role}, Voice, What I Own
+Nodes (9): Footer Component, GitHub Social Link, Head Meta Tags & Resources, LinkedIn Social Link, RSS Feed Link, Threads Social Link, Twitch Social Link, X (Twitter) Social Link (+1 more)
 
-### Community 87 - "Copilot Coding Agent Member"
+### Community 63 - "Site Credits"
 Cohesion: 0.22
-Nodes (8): Adding @copilot, Auto-Assign Behavior, Comparison: Spawned Agent vs. @copilot, Copilot Coding Agent Member, Lead Triage Integration, Monitoring @copilot Work, Roster Format, Routing Details
+Nodes (9): Humans.txt Badge Asset, Humans.txt Shortcode Renderer, CODERTECTURA Twitch Channel, CODERTECTURA YouTube Channel, LinkedIn Rodrigo Liberoff Profile, Rodrigo Liberoff, Site Credits, Spain (+1 more)
 
-### Community 88 - "Ralph — Work Monitor"
+### Community 64 - "Roadmap Concept"
 Cohesion: 0.22
-Nodes (8): Integration with Follow-Up Work, Ralph on the Board, Ralph Reference, Ralph State, Ralph — Work Monitor, Roster Entry, Triggers, Watch Mode (`squad watch`)
+Nodes (9): AI Knowledge Mining, Digital Signature, Document Immutability with Blockchain, Office 365 Integration, Questions and Answering, Roadmap, Roadmap Presentation, Semantic Searches (+1 more)
 
-### Community 89 - "Patterns"
-Cohesion: 0.22
-Nodes (8): Anti-Patterns, Context, Examples, Feature Degradation Table, Patterns, Platform Detection, SQL Tool Caveat, VS Code Spawn Adaptations
+### Community 65 - "Ask Question With Context Function"
+Cohesion: 0.25
+Nodes (9): AskAsync, AskQuestionWithContextFunction, AskResponse, ContextVariables, DemoController, HuggingFaceDeepsetRobertaQuestionsAnsweringPlugin, IKernel, Kernel RunAsync (+1 more)
 
-### Community 90 - "Patterns"
-Cohesion: 0.22
-Nodes (8): Anti-Patterns, Context, Examples, Microsoft Style Guide Rules, Patterns, Squad Formatting Patterns, Structure, Test Sync Rule
-
-### Community 91 - "Patterns"
-Cohesion: 0.22
-Nodes (8): Anti-Patterns, Channel Config Schema, CHANNEL: Tag Convention, Context, Distributed Systems Pattern, Patterns, Provider-Agnostic Adapter, Routing Dispatcher (shell pseudocode)
-
-### Community 92 - "Personal Squad — Skill Document"
-Cohesion: 0.22
-Nodes (8): Commands, Configuration, Directory Structure, Environment Variables, Ghost Protocol, How It Works, Personal Squad — Skill Document, What is a Personal Squad?
-
-### Community 93 - "Step-by-Step Walkthrough"
-Cohesion: 0.22
-Nodes (9): Step 1: Create the documenter's identity, Step 2: Add to team.md roster, Step 3: Add routing table entry, Step 4: Add follow-up trigger rule, Step 5: Wire into the coordinator's post-merge flow, Step 6: Worktree for doc changes, Step 7: Add to casting registry, Step 8: Verify (+1 more)
-
-### Community 94 - "_registry_from"
+### Community 66 - "discover topics"
 Cohesion: 0.22
 Nodes (9): _registry_from(), test_candidate_yaml_round_trips_images_and_excerpt(), test_process_candidates_deduplicates_titles_within_the_same_run(), test_process_candidates_falls_back_from_a_non_string_slug(), test_process_candidates_respects_max_cap(), test_select_candidate_sources_omits_empty_images_and_excerpt(), test_select_candidate_sources_persists_images_and_excerpt(), test_select_candidate_sources_requires_fresh_primary() (+1 more)
 
-### Community 95 - "tavily_search"
+### Community 67 - "Markdown Coding Style Guidelines"
+Cohesion: 0.25
+Nodes (8): CommonMark Portability, Markdown Coding Style Guidelines, Markdown Guide Basic Syntax, Markdown Guide Extended Syntax, Mermaid Diagrams, Create README Skill, GitHub Flavored Markdown, Project-Wide README Review
+
+### Community 68 - "CODERTECTURA Blog"
+Cohesion: 0.25
+Nodes (8): Ralph Work Monitor, Ralph Initialization, Tony Lead and Architect, Initial Setup Focus, Architecture Work Routing, CODERTECTURA-Blog, Ralph, Tony
+
+### Community 69 - "Prompt EN Rewrite Safety Verification"
+Cohesion: 0.25
+Nodes (8): Prompt EN-Rewrite Safety Verification, RAI Audit Trail, Seven Prompt Safety Invariants, Advisory Concerns, Critical Violations, RAI Policy Update Process, RAI Policy, Reviewer Rejection Protocol
+
+### Community 70 - "E2 E Template Testing"
+Cohesion: 0.25
+Nodes (8): Disposable Test Repository, E2E Template Testing, Evidence PII Protection, E2E Fast-Fail Rules, Local CLI Build and Link, PR Tracking Comment, Progressive Verdicting, Real Squad Session
+
+### Community 71 - "Git Hub Authentication Isolation"
+Cohesion: 0.25
+Nodes (8): Active Identity Detection, GitHub CLI Config Directory Isolation, GitHub Authentication Isolation, Per-Operation Token Use, Account Detection and Classification, Account-Locked GitHub CLI Aliases, GitHub Multi-Account Setup, Repository-Specific Account Binding
+
+### Community 72 - "discover topics"
 Cohesion: 0.25
 Nodes (8): parse_response_images(), parse_tavily_results(), Extract the ``results`` list from a Tavily response, defensively., Extract response-level images from a Tavily response, allowlist-filtered., Execute a single Tavily search and return ``(results, response_images)``., Run the news + docs freshness strategies; merge their results and images., search_both_strategies(), tavily_search()
 
-### Community 96 - "_AllowlistRedirectHandler"
+### Community 73 - "Base HTML Structure"
 Cohesion: 0.25
-Nodes (7): _AllowlistRedirectHandler, _build_allowlist_opener(), Redirect handler that refuses to follow redirects off the allowlist., Build an opener that re-validates every redirect target against the allowlist., is_http_url(), True only for absolute ``http``/``https`` URLs with a host.      Used as an SS, OpenerDirector
+Nodes (8): About Page Template, Base HTML Structure, Header Navigation Component, Main Homepage Template, List View Template, Pagination Controls, Post Card Component, Single Post/Page Template
 
-### Community 97 - "Patterns"
-Cohesion: 0.25
-Nodes (7): Anti-Patterns, Context, Cross-Agent Communication, Decision Recording, Patterns, Reviewer Protocol, Worktree Awareness
+### Community 74 - "Documento Nacional de Identidad del"
+Cohesion: 0.32
+Nodes (8): Ana Patricia Contreras Villavicencio, Chip de tarjeta inteligente, Código Único de Identificación (CUI), Datos biográficos de identidad, Documento Nacional de Identidad del Perú, Elementos biométricos de identificación, Muestra sin valor legal, Registro Nacional de Identificación y Estado Civil (RENIEC)
 
-### Community 98 - "Error Recovery Patterns"
-Cohesion: 0.25
-Nodes (7): 1. Retry with Backoff, 2. Fallback Alternatives, 3. Diagnose-and-Fix, 4. Escalate with Context, 5. Graceful Degradation, Applying These Patterns, Error Recovery Patterns
-
-### Community 99 - "Complex Validation Patterns"
-Cohesion: 0.25
-Nodes (8): Array Element Validation with `alltrue()`, Array Uniqueness Validation, Complex Validation Patterns, Conditional Required Values, Cross-Variable Validation, Multiple Validations Per Variable, Numeric Range Validation, Regex Pattern Validation
-
-### Community 100 - "Conventional Commits Guidelines"
-Cohesion: 0.25
-Nodes (7): Best Practices, Commit Message Format, Components, Conventional Commits Guidelines, Examples, Project Context, References
-
-### Community 101 - "Follow-up Question Guidelines"
-Cohesion: 0.25
-Nodes (7): Core Rule, Correct Response Example, Enforcement, Follow-up Question Guidelines, Incorrect Response Example, Priority, Summary
-
-### Community 102 - "Casting Reference"
-Cohesion: 0.25
-Nodes (7): Casting Reference, Casting State File Schemas, history.json, policy.json, registry.json, Selection Algorithm, Universe Table
-
-### Community 103 - "Copilot Coding Agent — Squad Instructions"
-Cohesion: 0.25
-Nodes (7): Branch Naming, Capability Self-Check, Coordinator Canary Check, Copilot Coding Agent — Squad Instructions, Decisions, PR Guidelines, Team Context
-
-### Community 104 - "MCP Integration — Configuration and Samples"
-Cohesion: 0.25
-Nodes (7): Authentication Notes, Config File Locations, MCP Integration — Configuration and Samples, Sample Config — Aspire, Sample Config — Azure, Sample Config — GitHub, Sample Config — Trello
-
-### Community 105 - "PRD Intake"
-Cohesion: 0.25
-Nodes (7): Intake Flow, Lead Decomposition Spawn Template, Mid-Project Updates, PRD Intake, State Tracking, Triggers, Work Item Presentation Format
-
-### Community 106 - "Patterns"
-Cohesion: 0.25
-Nodes (7): Anti-Patterns, Context, Cross-Agent Communication, Decision Recording, Patterns, Reviewer Protocol, Worktree Awareness
-
-### Community 107 - "Error Recovery Patterns"
-Cohesion: 0.25
-Nodes (7): 1. Retry with Backoff, 2. Fallback Alternatives, 3. Diagnose-and-Fix, 4. Escalate with Context, 5. Graceful Degradation, Applying These Patterns, Error Recovery Patterns
-
-### Community 108 - "Pattern"
-Cohesion: 0.25
-Nodes (7): Ceremony Integration, Confidence Levels, Context, Pattern, Review Methodology, Review Output Format, Skill: Fact Checking
-
-### Community 109 - "Step-by-Step Walkthrough"
-Cohesion: 0.25
-Nodes (8): Step 1: Create the reviewer's identity, Step 2: Add to team.md roster, Step 3: Add routing table entry, Step 4: Add enforcement rule (THIS IS THE CRITICAL STEP), Step 5: Wire into issue-lifecycle.md, Step 6: Add to casting registry, Step 7: Verify, Step-by-Step Walkthrough
-
-### Community 110 - "_HTMLTextExtractor"
-Cohesion: 0.29
-Nodes (4): _HTMLTextExtractor, FoundryChatClient, Minimal chat-completions client for the Foundry ``/openai/v1`` surface.      S, HTMLParser
-
-### Community 111 - "FoundryImageClient"
+### Community 75 - "Ralph Two Pass Issue Scanning"
 Cohesion: 0.33
-Nodes (4): FoundryImageClient, Image-generation client for the Foundry MAI ``/mai/v1`` surface.      Shared b, Generate one image for ``prompt`` and return its raw bytes., Return image bytes from a MAI image response (``b64_json`` or ``url``).
+Nodes (7): Lightweight Issue Scan, Selective Issue Hydration, Ralph Two-Pass Issue Scanning, Apply Triage Decisions Step, Copilot Auto-Assignment Step, Ralph Smart Triage Step, Squad Heartbeat Workflow
 
-### Community 112 - "2023-11-20-netcoreconf-2023-madrid-planificando-para-el-exito.md"
+### Community 76 - "Codertectura Concept"
 Cohesion: 0.29
-Nodes (6): Action Planner, ¿Dónde está la mágia?, Para cerrar, Sequential Planner, Stepwise Planner, Trucos, pros y contras
+Nodes (7): About Page Archetype, Clean Code and SOLID Principles, Codertectura, Microsoft AI Technology Stack, Rodrigo Liberoff, Semantic Kernel, Software Architecture and Coding
 
-### Community 113 - "SKILL.md"
+### Community 77 - "Propulsion Lab IV"
 Cohesion: 0.29
-Nodes (6): Anti-Patterns, Context, Examples, Patterns, Reviewer Rejection Protocol, Strict Lockout Semantics
+Nodes (7): Microsoft Accessibility, Bracito Robotic Arm, ENCAMINA, GADA-i, Metaverse Collaboration, Microsoft Europe, Propulsion Lab IV
 
-### Community 114 - "Azure-Specific Best Practices"
-Cohesion: 0.29
-Nodes (7): Azure-Specific Best Practices, Cost Management, Networking Considerations, Resource Group Strategy, Resource Naming and Tagging, Security and Compliance, State Management
-
-### Community 115 - "File-Based Resource Seeding"
-Cohesion: 0.29
-Nodes (7): Bulk File Discovery with `fileset()`, Conditional File Loading, Content-Based Change Detection, File-Based Resource Seeding, Folder Structure for Seed Data, Reading CSV Files for Table Storage, Uploading Files to Blob Storage
-
-### Community 116 - "Code Generation and Real Values over Placeholders Instructions"
-Cohesion: 0.29
-Nodes (6): Applicability, Code Generation and Real Values over Placeholders Instructions, Core Rules, Expected Result, Objective, Project Context
-
-### Community 117 - "Client Compatibility"
-Cohesion: 0.29
-Nodes (6): Client Compatibility, Client Compatibility Reference, Feature Degradation Table, Platform Detection, SQL Tool Caveat, VS Code Spawn Adaptations
-
-### Community 118 - "Cooperative Rate Limiting for Multi-Agent Deployments"
-Cohesion: 0.29
-Nodes (5): Cooperative Rate Limiting for Multi-Agent Deployments, Kubernetes Integration, Problem, Quick Start, References
-
-### Community 119 - "Solution: 6-Pattern Architecture"
-Cohesion: 0.29
-Nodes (7): Pattern 1: Traffic Light (RAAS — Rate-Aware Agent Scheduling), Pattern 2: Cooperative Token Pool (CMARP), Pattern 3: Predictive Circuit Breaker (PCB), Pattern 4: Priority Retry Windows (PWJG), Pattern 5: Resource Epoch Tracker (RET), Pattern 6: Cascade Dependency Detector (CDD), Solution: 6-Pattern Architecture
-
-### Community 120 - "Plugin Marketplace"
-Cohesion: 0.29
-Nodes (6): CLI Commands, Graceful Degradation, How to Install a Plugin, Marketplace State, Plugin Marketplace, When to Browse
-
-### Community 121 - "Team Roster"
-Cohesion: 0.29
-Nodes (6): Capabilities, Coding Agent, Coordinator, Members, Project Context, Team Roster
-
-### Community 122 - "Scribe"
-Cohesion: 0.29
-Nodes (6): Boundaries, How I Work, Identity, Scribe, The Memory Architecture, What I Own
-
-### Community 123 - "SKILL.md"
-Cohesion: 0.29
-Nodes (6): Anti-Patterns, Context, Examples, Patterns, Phase 1: Propose the Team, Phase 2: Create the Team
-
-### Community 124 - "SKILL.md"
-Cohesion: 0.29
-Nodes (6): Anti-Patterns, Context, Examples, Patterns, Reviewer Rejection Protocol, Strict Lockout Semantics
-
-### Community 125 - "How to Wire Up a New Team Member"
-Cohesion: 0.29
-Nodes (7): How to Wire Up a New Team Member, Step 1: Create the member (files), Step 2: Add to roster (`team.md`), Step 3: Add routing entry (`routing.md`), Step 4: Add issue routing (if applicable), Step 5: Add to casting registry, Step 6: Wire any gates (if this member is a reviewer/gate)
-
-### Community 127 - "build_workflow_matrix"
+### Community 78 - "Cruciform Screwdriver Tip Patent Drawing"
 Cohesion: 0.33
-Nodes (6): build_workflow_matrix(), candidate_to_yaml(), Serialise a candidate mapping to YAML with ``safe_dump`` (injection-safe)., Build the reusable-workflow fan-out from complete candidate documents., Write the candidate matrix and count when running inside GitHub Actions., write_workflow_outputs()
+Nodes (7): Cruciform Screwdriver Tip Geometry, Cruciform Screwdriver Tip Patent Drawing, Cruciform Tip Geometry, Henry F. Phillips, Phillips Screwdriver Tip, Phillips Screwdriver Tip Patent Drawing, Thomas M. Fitzpatrick
 
-### Community 128 - "collect_source_images"
+### Community 79 - "Método A"
+Cohesion: 0.48
+Nodes (7): Attribute 1 (Prioridad = 2), Clase X, Método A, Método B, Con prioridad: Método A y Método B usan Attribute 2 antes de Attribute 1, Sin prioridad: Método A usa Attribute 2 antes de Attribute 1 y Método B usa Attribute 1 antes de Attribute 2, Propiedad prioridad
+
+### Community 80 - "Lib Solution Folder"
+Cohesion: 0.38
+Nodes (7): Configuration-Specific Library Layout, Debug Library DLL, Debug Solution Folder, Lib Solution Folder, Release Library DLL, Release Solution Folder, Visual Studio Solution Explorer
+
+### Community 81 - "Million Lines of Code Comparison"
+Cohesion: 0.33
+Nodes (7): Million Lines of Code Comparison, Operating Systems, Orders of Magnitude in Software Size, Software Categories, Software Project Scale, Source Lines of Code, Web Platforms
+
+### Community 82 - "Deterministic network free embeddings client"
+Cohesion: 0.29
+Nodes (5): FakeEmbeddings, Deterministic, network-free embeddings client for dedup tests., test_process_candidates_cosine_threshold_boundary(), test_process_candidates_exact_and_semantic_dedup(), test_process_candidates_semantically_deduplicates_within_the_same_run()
+
+### Community 83 - "Peter Frontend Developer"
+Cohesion: 0.33
+Nodes (6): Peter Frontend Developer, Peter Frontend Priorities, Accessible Motion Modernization, Default-On Vanilla Figure Lightbox, Frontend Work Routing, Peter
+
+### Community 84 - "Scribe Session Logger"
+Cohesion: 0.33
+Nodes (6): Scribe Session Logger, Scribe Session Records, Hugo Build Blocker Resolution, Hugo Migration Validation Gate, Session Logging Routing, Scribe
+
+### Community 85 - "Orchestration Log Entry"
+Cohesion: 0.33
+Nodes (6): Lean Post-Work Turn, Scribe Post-Work Workflow, Silent Success Detection, Append-Only Spawn History, Orchestration Log Entry, Pre-Spawn Logging
+
+### Community 86 - "CI Validation Gates"
+Cohesion: 0.33
+Nodes (6): Build Script Protection, CI Validation Gates, Draft Release Detection, NPM Token Type Verification, Registry Propagation Retry, Semver Validation Gate
+
+### Community 87 - "discover topics"
 Cohesion: 0.33
 Nodes (6): collect_source_images(), _has_image_extension(), _iter_raw_content_images(), True when ``url``'s path ends in a known raster image extension., Yield ``(url, alt)`` pairs for images referenced in a result's raw content., Collect up to ``cap`` allowlisted candidate image URLs for one source.      Tw
 
-### Community 129 - "load_published_posts"
+### Community 88 - "discover topics"
 Cohesion: 0.33
 Nodes (6): _extract_slug_from_filename(), load_published_posts(), Return the slug part of a filename, stripping any ``YYYY-MM-DD-`` prefix., Return the parsed YAML front matter of a Hugo post, or ``{}``., Scan ``content/posts/*.md`` -> list of ``{slug, title}`` (source of truth)., _read_front_matter()
 
-### Community 130 - "2012-04-09-aop-parte-0.md"
-Cohesion: 0.33
-Nodes (5): Contextos en .NET, Origen y Razón de Ser, Referencias, Terminología, Un Framework para .NET
-
-### Community 131 - "2013-05-18-ef-insertar-registros-bulk.md"
-Cohesion: 0.33
-Nodes (5): El Problema, Kudos, Métodos Auxiliares, Otros Gestores de Bases de Datos, Una Alternativa de Solución
-
-### Community 132 - "`azapi` Provider Usage"
-Cohesion: 0.33
-Nodes (6): `azapi` Provider Usage, Best Practices for `azapi`, Creating Resources with `azapi_resource`, Provider Configuration, Updating Existing Resources with `azapi_update_resource`, When to Use `azapi`
-
-### Community 133 - "Bruce — Backend / Automation"
-Cohesion: 0.33
-Nodes (5): Boundaries, Bruce — Backend / Automation, Project Context, Responsibilities, Work Style
-
-### Community 134 - "Natasha — Tester / Reviewer"
-Cohesion: 0.33
-Nodes (5): Boundaries, Natasha — Tester / Reviewer, Project Context, Responsibilities, Work Style
-
-### Community 135 - "Peter — Frontend Dev"
-Cohesion: 0.33
-Nodes (5): Boundaries, Peter — Frontend Dev, Project Context, Responsibilities, Work Style
-
-### Community 136 - "Project Context"
-Cohesion: 0.33
-Nodes (5): Core Context, Cross-agent update — 2026-06-30, Learnings, Project Context, Recent Updates
-
-### Community 137 - "Shuri — Content & Migration"
-Cohesion: 0.33
-Nodes (5): Boundaries, Project Context, Responsibilities, Shuri — Content & Migration, Work Style
-
-### Community 138 - "Tony — Lead / Architect"
-Cohesion: 0.33
-Nodes (5): Boundaries, Project Context, Responsibilities, Tony — Lead / Architect, Work Style
-
-### Community 139 - "Wanda — Visual Design Analyst"
-Cohesion: 0.33
-Nodes (5): Boundaries, Project Context, Responsibilities, Wanda — Visual Design Analyst, Work Style
-
-### Community 140 - "Work Routing"
-Cohesion: 0.33
-Nodes (5): How Issue Assignment Works, Issue Routing, Routing Table, Rules, Work Routing
-
-### Community 141 - "Ceremony Reference"
-Cohesion: 0.33
-Nodes (5): Ceremony Reference, Config Format, Execution Rules, Facilitator Spawn Template, Field Definitions
-
-### Community 142 - "PowerShell Functions"
-Cohesion: 0.33
-Nodes (6): `Get-CircuitBreakerState`, `Get-CurrentModel`, PowerShell Functions, `Save-CircuitBreakerState`, `Update-CircuitBreakerOnRateLimit`, `Update-CircuitBreakerOnSuccess`
-
-### Community 143 - "Work Routing"
-Cohesion: 0.33
-Nodes (5): How Issue Assignment Works, Issue Routing, Routing Table, Rules, Work Routing
-
-### Community 144 - "SKILL.md"
-Cohesion: 0.33
-Nodes (5): Anti-Patterns, Context, Patterns, Peer Quality Check (hard rule), Product Isolation Rule (hard rule)
-
-### Community 145 - "Skill: CLI Command Wiring"
-Cohesion: 0.33
-Nodes (5): Checklist — Adding a New CLI Command, Common Import Pattern, History, Skill: CLI Command Wiring, Wiring Patterns by Command Type
-
-### Community 146 - "Skill: nap"
-Cohesion: 0.33
-Nodes (5): Confidence, Invocation, Skill: nap, What It Does, When To Use
-
-### Community 147 - "Pattern"
-Cohesion: 0.33
-Nodes (5): Context, Pass 1 — Lightweight Scan, Pass 2 — Selective Hydration, Pattern, Skill: Ralph — Two-Pass Issue Scanning
-
-### Community 148 - "How to Wire Up a Custom Workflow Step"
-Cohesion: 0.33
-Nodes (6): How to Wire Up a Custom Workflow Step, If it's a behavioral rule the coordinator should always follow:, If it's a team-wide constraint that should be visible to all agents:, If it's something agents should do as part of their work:, If it's something that applies only to issue-linked work:, If it should trigger automatically before/after specific work:
-
-### Community 149 - "collect_rss_candidates"
+### Community 89 - "Search Files Memory Risk"
 Cohesion: 0.40
-Nodes (5): collect_rss_candidates(), fetch_rss_feed(), Download one fixed RSS/Atom endpoint with a bounded response size., Fetch fixed feeds and return recent entries, isolated per feed on failure., ValueError
+Nodes (6): DBMS_BACKUP_RESTORE.SearchFiles, EXT_UTILS Package, EXT_UTILS.ListFiles, SearchFiles Memory Risk, SYS Schema Isolation, X$KRBMSFT
 
-### Community 150 - "_http_chat_json"
+### Community 90 - "Dynamic Entity Configuration Loading"
+Cohesion: 0.33
+Nodes (6): ConfigurationRegistrar.AddFromAssembly, ComplexTypeConfiguration, Dynamic Entity Configuration Loading, Entity Framework Code First, EntityTypeConfiguration, DbContext.OnModelCreating
+
+### Community 91 - "NET Concept"
+Cohesion: 0.33
+Nodes (6): C#, Visual Studio Debugger Execution Pointer, Developer-Centered Platform Design, .NET, Visual Studio .NET, XCopy-Style Web Deployment
+
+### Community 92 - "Content Image Lightbox Contract"
+Cohesion: 0.33
+Nodes (6): Content Image Lightbox Contract, Figure Renderer, Legacy Enlargement Caption Cleanup, Comma-Separated Image Source, Gallery Renderer, Page Parameter Gallery Source
+
+### Community 93 - "Children Holding Balloons"
+Cohesion: 0.40
+Nodes (6): Children Holding Balloons, Monochrome Street Art, Red Balloons, Selective Color Contrast, Selective Red Color, Street Art Scene
+
+### Community 94 - "Monumental Green Figure"
+Cohesion: 0.40
+Nodes (6): Arid Archaeological Setting, Monumental Green Figure, Painted Sculptural Fragments, Seated Conservator, Standing Conservator, Surreal Conservation Scene
+
+### Community 95 - "Code Metrics Results"
+Cohesion: 0.33
+Nodes (6): Class Coupling, Code Metrics Results, Cyclomatic Complexity, Depth of Inheritance, Lines of Code, Maintainability Index
+
+### Community 96 - "GADA i"
+Cohesion: 0.40
+Nodes (6): AI-Powered Content Classification, Azure Files, GADA-i, Managed Cloud File Shares, Microsoft Syntex, Multi-Source Corporate Information Repository
+
+### Community 97 - "Goal Achievement"
+Cohesion: 0.40
+Nodes (6): Borja Piris de Castro, Goal Achievement, NETCoreConf, Planificando para el éxito: Usando los Planners de Semantic Kernel para realizar metas, Rodrigo Liberoff, Semantic Kernel Planners
+
+### Community 98 - "Thinking Beast Mode"
+Cohesion: 0.40
+Nodes (5): Adversarial Solution Validation, Autonomous Completion, Constitutional Sequential Thinking, Recursive Internet Research, Thinking Beast Mode
+
+### Community 99 - "Bruce Backend and Automation"
+Cohesion: 0.40
+Nodes (5): Bruce Backend and Automation, Bruce Automation Context, Foundry Model Selection, Automation Work Routing, Bruce
+
+### Community 100 - "Shuri Content and Migration"
+Cohesion: 0.40
+Nodes (5): Shuri Content and Migration, Shuri Migration Context, Custom In-Repo Hugo Rebuild, Content Migration Work Routing, Shuri
+
+### Community 101 - "Wanda Visual Design Analyst"
+Cohesion: 0.40
+Nodes (5): Wanda Visual Design Analyst, Wanda Visual Guidance, Grounded Article Image Policy, Visual Work Routing, Wanda
+
+### Community 102 - "Lead PRD Decomposition"
+Cohesion: 0.40
+Nodes (5): Dependency-Ordered Work Items, Lead PRD Decomposition, PRD Delta Decomposition, PRD Intake, PRD Source State
+
+### Community 103 - "Run Output Artifact"
+Cohesion: 0.40
+Nodes (5): Diagnostic Integrity, Raw Agent Output Appendix, Constraint Budget, Reviewer Verdict, Run Output Artifact
+
+### Community 104 - "Work Handoff Protocol"
+Cohesion: 0.40
+Nodes (5): Cross-Squad Coordination, Delegation Feedback Loop, Minimal Context Sharing, Squad Manifest Discovery, Work Handoff Protocol
+
+### Community 105 - "Tiered Agent Memory"
+Cohesion: 0.50
+Nodes (5): Cold Memory Tier, Hot Memory Tier, Scribe Memory Promotion, Tiered Agent Memory, Wiki Memory Tier
+
+### Community 106 - "generate article"
 Cohesion: 0.40
 Nodes (5): _ChatError, _http_chat_json(), Low-level chat failure raised by :func:`_http_chat_json` so callers can choose, POST one chat-completions request; return ``(article, finish_reason, content)``., Exception
 
-### Community 151 - "Intro"
+### Community 107 - "Advice Concept"
 Cohesion: 0.40
-Nodes (4): Intro, References, The proper time to minify, The steps to minify
+Nodes (5): Advice, Aspect, Join Point, Pointcut, Weaving
 
-### Community 152 - "2023-07-20-integrando-otros-llms-con-semantic-kernel.md"
+### Community 108 - "Lines of Code"
+Cohesion: 0.50
+Nodes (5): CLOC, Cyclomatic Complexity, Lines of Code, Technical Code Audit, Visual Studio Code Metrics
+
+### Community 109 - "Semantic Kernel"
 Cohesion: 0.40
-Nodes (4): Configurando Semantic Kernel con la Función Nativa, Creando una Función Nativa para la integración con otro LLM, Llamando a nuestra Función Nativa para usar el LLM, Más información
+Nodes (5): Integrating Other LLMs with Semantic Kernel, Factory for Complex Plugin Initialization, Semantic Kernel Native Functions, Scoped Semantic Kernel Lifetime, Semantic Kernel
 
-### Community 153 - "SKILL.md"
+### Community 110 - "CODERTECTURA Blog"
 Cohesion: 0.40
-Nodes (4): Anti-Patterns, Context, Examples, Patterns
+Nodes (5): CODERTECTURA Hugo Site Configuration, SearchIndex Output Format, Azure Static Web Apps Deployment, CODERTECTURA Blog, Reusable Hugo Shortcodes
 
-### Community 154 - "mcp-squad-state"
+### Community 111 - "Post Metadata and Taxonomies"
+Cohesion: 0.40
+Nodes (5): Single Content Main Template, Post Metadata and Taxonomies, Post Social Sharing, Comments Partial, Giscus Comments
+
+### Community 112 - "Iframe Media Permission Allowlist"
+Cohesion: 0.60
+Nodes (5): Iframe Media Permission Allowlist, Responsive Embed Renderer, Strict Origin When Cross Origin Policy, Native Video Source Selection, Video Renderer
+
+### Community 113 - "mcp Components"
 Cohesion: 0.40
 Nodes (4): npx, mcp-github, mcp-squad-state, @bradygaster/squad-cli
 
-### Community 155 - "Bruce History"
+### Community 114 - "Crystal World Science Fiction Scene"
 Cohesion: 0.40
-Nodes (4): Bruce History, Cross-agent update — 2026-06-23, Cross-agent update — 2026-06-30, Seed Context — 2026-06-10
+Nodes (5): Crystal World Science Fiction Scene, Crystalline Mountain, Flying Craft, Staff-Bearing Explorer, Starry Alien Landscape
 
-### Community 156 - "Rai — Rai"
+### Community 115 - "Newspaper Index Archive"
+Cohesion: 0.50
+Nodes (5): Archival Information Retrieval, Bound Newspaper Index Volumes, Chronological Newspaper Indexing, Metal Filing Cabinets, Newspaper Index Archive
+
+### Community 116 - "Children Holding Red Balloons Mural"
+Cohesion: 0.60
+Nodes (5): Children, Children Holding Red Balloons Mural, Gray Brick Wall, Hope Amid Austerity, Red Balloons
+
+### Community 117 - "IProcessor Concept"
 Cohesion: 0.40
-Nodes (4): Project Context, Rai — Rai, Responsibilities, Work Style
+Nodes (5): Attribute, IMethodCallMessage, IMethodReturnMessage, InterceptableAttribute, IProcessor
 
-### Community 157 - "Ralph — Ralph"
+### Community 118 - "Debugger Process Attachment"
 Cohesion: 0.40
-Nodes (4): Project Context, Ralph — Ralph, Responsibilities, Work Style
+Nodes (5): Administrator Privileges, Attach Security Warning, Debugger Process Attachment, IIS APPPOOL\ASP.NET v4.0, w3wp.exe
 
-### Community 158 - "Project Context"
+### Community 119 - "IIS Application Pool Process Model"
 Cohesion: 0.40
-Nodes (4): Core Context, Learnings, Project Context, Recent Updates
+Nodes (5): ApplicationPoolIdentity, IIS Application Pool Process Model Identity, LocalService, LocalSystem, NetworkService
 
-### Community 159 - "Scribe — Scribe"
+### Community 120 - "Unanswered Error Thread"
+Cohesion: 0.60
+Nodes (5): Wisdom of the Ancients Comic, DenverCoder9, Developer Isolation, Google Error Search, Unanswered Error Thread
+
+### Community 121 - "Digital Information Workflow"
 Cohesion: 0.40
-Nodes (4): Project Context, Responsibilities, Scribe — Scribe, Work Style
+Nodes (5): Digital Information Workflow, Digital Reading, Document Processing, Electronic Messaging, Laptop Computing
 
-### Community 160 - "Project Context"
+### Community 122 - "AOPException Handling Root Directory Layout"
 Cohesion: 0.40
-Nodes (4): Core Context, Learnings, Project Context, Recent Updates
+Nodes (5): AOPExceptionHandling Root Directory Layout, AOPExceptionHandling Visual Studio Solution, AOPExceptionHandlingApplicationBlock Directory, Lib Directory, .nuget Directory
 
-### Community 161 - "Wanda History"
+### Community 123 - "Seated Zen Monk Portrait"
 Cohesion: 0.40
-Nodes (4): Cross-agent update — 2026-06-23, Cross-agent update — 2026-06-24, Seed Context — 2026-06-10, Wanda History
+Nodes (5): Calligraphic Inscription, Contemplative Practice, East Asian Ink Painting, Seated Zen Monk Portrait, Zen Monasticism
 
-### Community 162 - "Ceremonies"
+### Community 124 - "Archaeological Excavation Scene"
+Cohesion: 0.50
+Nodes (5): Archaeological Excavation Scene, Biomorphic Monument, Excavated Artifacts, Field Researchers, Surreal Archaeology
+
+### Community 125 - "Informal Group Discussion"
 Cohesion: 0.40
-Nodes (4): Ceremonies, Design Review, Retrospective, Retrospective with Enforcement
+Nodes (5): Collaborative Workplace Gathering, Illuminated Floor Installation, Informal Group Discussion, Modular Benches, Modern Office Atrium
 
-### Community 163 - "Squad Team"
-Cohesion: 0.40
-Nodes (4): Coordinator, Members, Project Context, Squad Team
+### Community 126 - "Central Orchestration Core"
+Cohesion: 0.50
+Nodes (5): Central Orchestration Core, Human Operator, Human-Supervised Multi-Agent Orchestration, Operational Monitoring Dashboards, Specialized AI Agents
 
-### Community 164 - "Ceremonies"
-Cohesion: 0.40
-Nodes (4): Ceremonies, Design Review, Retrospective, Retrospective with Enforcement
-
-### Community 165 - "Constraint Budget Tracking"
-Cohesion: 0.40
-Nodes (4): Constraint Budget Tracking, Example Session, Format, Rules
-
-### Community 166 - "Quick Start"
-Cohesion: 0.40
-Nodes (5): 1. Install the Scaler, 2. Create a ScaledObject, 3. Verify, Prerequisites, Quick Start
-
-### Community 167 - "Raw Agent Output — Appendix Format"
-Cohesion: 0.40
-Nodes (4): Format, Raw Agent Output — Appendix Format, Rules, Why This Exists
-
-### Community 168 - "skill.md"
-Cohesion: 0.40
-Nodes (4): Anti-Patterns, Context, Examples, Patterns
-
-### Community 169 - "SKILL.md"
-Cohesion: 0.40
-Nodes (4): Anti-Patterns, Context, Examples, Patterns
-
-### Community 170 - "SKILL.md"
-Cohesion: 0.40
-Nodes (4): Anti-Patterns, Context, Examples, Patterns
-
-### Community 171 - "Worktree Reference"
-Cohesion: 0.40
-Nodes (4): Pre-Spawn: Worktree Setup, Worktree Awareness, Worktree Lifecycle Management, Worktree Reference
-
-### Community 172 - "test_topic_ledger_workflows.py"
+### Community 127 - "topic ledger workflows"
 Cohesion: 0.70
 Nodes (4): test_approval_workflow_publishes_the_topic_ledger(), test_build_workflow_derives_everything_from_the_candidate(), test_weekly_workflow_transports_one_complete_candidate(), _workflow()
 
-### Community 173 - "Autores"
+### Community 128 - "Error Recovery Patterns"
 Cohesion: 0.50
-Nodes (3): Autores, ¡Bienvenido a Codertectura, ¡Hola! Mi nombre es Rodrigo Liberoff &nbsp; [LinkedIn](https://www.linkedin.com/in/rliberoff/) [X (antes Twitter)](https://twitter.com/rliberoff) [Threads](https://www.threads.net/@rliberoff)
+Nodes (4): Diagnose-and-Fix, Error Recovery Patterns, Graceful Degradation, Retry with Backoff
 
-### Community 174 - "2014-01-26-programador-ninja-o-programador-zen.md"
+### Community 129 - "Conventional Commits Guidelines"
 Cohesion: 0.50
-Nodes (3): El Programador Ninja, Introduciendo al Programador Zen, Y entonces… ¿qué es mejor, Programador Ninja o Programador Zen?
+Nodes (4): Atomic Commits, Project Commit Message Format, Conventional Commits Guidelines, Conventional Commits v1.0.0
 
-### Community 175 - "2022-02-14-20-anos-dotnet.md"
+### Community 130 - "OIDC to UAMI to RBAC"
 Cohesion: 0.50
-Nodes (3): ¿Cómo llegué hasta aquí?, Desembarcando en .NET, ¿Hacia dónde iremos ahora?
+Nodes (4): Foundry Authentication Check Workflow, OIDC to UAMI to RBAC to Foundry Chain, Single-Step Bearer Token Boundary, Foundry Token Audience Fallback
 
-### Community 176 - "Algunos conceptos antes de empezar"
+### Community 131 - "Squad Work Routing"
 Cohesion: 0.50
-Nodes (3): Algunos conceptos antes de empezar, Modelos de negocio para la monetización, Soluciones de Pago
+Nodes (4): Eager and Anticipatory Agent Routing, Label-Based Issue Assignment Flow, Squad Work Routing, Squad Coordinator
 
-### Community 177 - "2023-05-30-apis-monetizacion-parte-2.md"
+### Community 132 - "Retrospective Concept"
 Cohesion: 0.50
-Nodes (3): Arquitectura de la solución, Concibiendo el modelo de negocio, Inicializando el proveedor de pagos
+Nodes (4): Design Review, Retrospective, Retrospective with Enforcement, Ceremony Configuration
 
-### Community 178 - "2023-05-31-apis-monetizacion-parte-3.md"
+### Community 133 - "MCP Integration"
 Cohesion: 0.50
-Nodes (3): Configurando del Azure API Management, Recibiendo la delegación de subscripciones <br> desde el Azure API Management, Reportando consumo desde Azure API Management<br>a Stripe para su facturación
+Nodes (4): MCP Authentication Isolation, MCP Configuration Precedence, MCP Integration, MCP Service Servers
 
-### Community 179 - "graphify reference: add a URL and watch a folder"
+### Community 134 - "Plugin Marketplace"
 Cohesion: 0.50
-Nodes (3): For /graphify add, For --watch, graphify reference: add a URL and watch a folder
+Nodes (4): Graceful Marketplace Degradation, Marketplace Registry, Plugin Marketplace, Role-Matched Plugin Discovery
 
-### Community 180 - "graphify reference: commit hook and native CLAUDE.md integration"
+### Community 135 - "Session Initialization"
 Cohesion: 0.50
-Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify reference: commit hook and native CLAUDE.md integration
+Nodes (4): Confirmed Squad Upgrade Flow, Fail-Silent Update Check, Hybrid Update Cache Strategy, Session Initialization
 
-### Community 181 - "graphify reference: query, path, explain"
+### Community 136 - "CLI Command Wiring"
 Cohesion: 0.50
-Nodes (3): For /graphify explain, For /graphify path, graphify reference: query, path, explain
+Nodes (4): CLI Command Wiring, CLI Help Registration, Command Routing Block, Dynamic Command Loading
 
-### Community 182 - "graphify reference: incremental update and cluster-only"
-Cohesion: 0.50
-Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
-
-### Community 183 - "Application Configuration Patterns"
-Cohesion: 0.50
-Nodes (4): Aggregating Multi-Service Configurations, App Configuration Module Integration, Application Configuration Patterns, Label-Based Service Configuration
-
-### Community 184 - "Anti-Patterns to Avoid"
-Cohesion: 0.50
-Nodes (4): Anti-Patterns to Avoid, Configuration Anti-Patterns, Operational Anti-Patterns, Security Anti-Patterns
-
-### Community 185 - "Project Structure and Organization"
-Cohesion: 0.50
-Nodes (4): Backend Configuration, Modular Architecture, Organize Code Cleanly, Project Structure and Organization
-
-### Community 186 - "Resource Configuration"
-Cohesion: 0.50
-Nodes (4): Data Sources, Dynamic Blocks, Identity Management, Resource Configuration
-
-### Community 187 - "Settings Files Organization"
-Cohesion: 0.50
-Nodes (4): File Naming Convention, Settings Files Content Pattern, Settings Files Organization, Structure Example
-
-### Community 188 - "File Organization"
-Cohesion: 0.50
-Nodes (4): File Organization, Folder Structure Best Practices, Regarding `.tfvars` Files, Separation of Concerns
-
-### Community 189 - "Variable Management"
-Cohesion: 0.50
-Nodes (4): Variable Defaults, Variable Documentation, Variable Management, Variable Validation
-
-### Community 190 - "Natasha History"
-Cohesion: 0.50
-Nodes (3): Cross-agent update — 2026-06-30, Natasha History, Seed Context — 2026-06-10
-
-### Community 191 - "Tony History"
-Cohesion: 0.50
-Nodes (3): Cross-agent update — 2026-06-24, Seed Context — 2026-06-10, Tony History
-
-### Community 192 - "Squad Decisions"
-Cohesion: 0.50
-Nodes (3): Active Decisions, Governance, Squad Decisions
-
-### Community 193 - "2026-06-30 — Prompt EN-rewrite safety verification (discover_topics.py, generate_article.py)"
-Cohesion: 0.50
-Nodes (3): 2026-06-30 — Prompt EN-rewrite safety verification (discover_topics.py, generate_article.py), RAI Audit Trail, Verdict: 🟢 GREEN — all invariants intact, no new issues
-
-### Community 194 - "Team Wisdom"
-Cohesion: 0.50
-Nodes (3): Anti-Patterns, Patterns, Team Wisdom
-
-### Community 195 - "Multi-Agent Artifact Format"
-Cohesion: 0.50
-Nodes (3): Appendix Rules, Assembly Structure, Multi-Agent Artifact Format
-
-### Community 196 - "Orchestration Log Entry"
-Cohesion: 0.50
-Nodes (3): Orchestration Log Entry, Rules, {timestamp} — {task summary}
-
-### Community 197 - "How to Wire Up an Issue Lifecycle (Git Workflow)"
-Cohesion: 0.50
-Nodes (4): How to Wire Up an Issue Lifecycle (Git Workflow), Step 1: Create `templates/issue-lifecycle.md`, Step 2: Add enforcement rules to `routing.md`, Step 3: Verify your wiring
-
-### Community 202 - "Security Practices"
+### Community 137 - "Coordinator Retro Blocking"
 Cohesion: 0.67
-Nodes (3): Access Control, Secrets Management, Security Practices
+Nodes (4): Coordinator Retro Blocking, GitHub Issue Retro Action Items, Retrospective Enforcement, Test-RetroOverdue
 
-### Community 203 - "Documentation and Comments"
-Cohesion: 0.67
-Nodes (3): Code Comments, Documentation and Comments, Inline Documentation
+### Community 138 - "Scribe Pre Commit Secret Scan"
+Cohesion: 0.50
+Nodes (4): Credential Leak Remediation, Prohibited Environment File Reads, Scribe Pre-Commit Secret Scan, Secret Handling Policy
 
-### Community 204 - "Tagging Strategy"
-Cohesion: 0.67
-Nodes (3): Consistent Tagging, Tag Lifecycle, Tagging Strategy
+### Community 139 - "Session Store"
+Cohesion: 0.50
+Nodes (4): Automated Session Filter, Checkpoint Recovery Context, Copilot Session Recovery, Session Store
 
-### Community 205 - "Module Usage"
-Cohesion: 0.67
-Nodes (3): Dependency Management, Module Reusability, Module Usage
+### Community 140 - "Peruvian DNI"
+Cohesion: 0.50
+Nodes (4): Peruvian DNI, Modulo 11 Check Digit Validation, Peruvian RUC, ValidateIdentificationDocumentPeru
 
-### Community 206 - "Lifecycle Management"
+### Community 141 - "Ninja Programmer"
 Cohesion: 0.67
-Nodes (3): Lifecycle Management, Prevent Unwanted Updates, Trigger-Based Replacement
+Nodes (4): Balanced Ninja-Zen Programmer, Degenerated Agile Build-and-Deploy Delivery, Ninja Programmer, Zen Programmer
 
-### Community 207 - "Naming Conventions"
-Cohesion: 0.67
-Nodes (3): Naming Conventions, Resource Naming, Variable Naming
+### Community 142 - "Comparti MOSS Unplugged AI"
+Cohesion: 0.50
+Nodes (4): CompartiMOSS Unplugged AI, ImageBind, Segment Anything, AI Tokens
 
-### Community 208 - "Provider Configuration"
+### Community 143 - "Comparti MOSS Unplugged AI 2"
+Cohesion: 0.50
+Nodes (4): Azure Content Safety, Microsoft Build 2023, Azure Machine Learning Prompt Flow, CompartiMOSS Unplugged AI #2
+
+### Community 144 - "Meta Concept"
+Cohesion: 0.83
+Nodes (4): I-JEPA, Meta, CompartiMOSS Unplugged AI #4, Voicebox
+
+### Community 145 - "Cloud Native AI Architecture"
+Cohesion: 0.50
+Nodes (4): Cloud Native Semantic Kernel article in CompartiMOSS 56, Cloud Native AI Architecture, Qdrant, Semantic Kernel
+
+### Community 146 - "Power Automate"
+Cohesion: 0.50
+Nodes (4): Azure OpenAI, Microsoft Teams, Power Automate, Power Virtual Agent
+
+### Community 147 - "Cookie Policy"
+Cohesion: 0.50
+Nodes (4): Browser Cookie Management, Cookie Policy, Cookie Types, Third-Party Analytics Cookies
+
+### Community 148 - "Paginated Content Grid"
+Cohesion: 0.50
+Nodes (4): Content List Main Template, Paginated Content Grid, Bidirectional Post Pagination, Pagination Partial
+
+### Community 149 - "ENCAMINA Default Publisher"
+Cohesion: 0.50
+Nodes (4): Callout Renderer, Notice Renderer, ENCAMINA Default Publisher, Republished Attribution Renderer
+
+### Community 150 - "Abstract Pastel 3 D Geometric"
+Cohesion: 0.50
+Nodes (4): Abstract Pastel 3D Geometric Composition, Central Orange Radial Motif, Modular Radial Arrangement, Surrounding Pastel Curved Forms
+
+### Community 151 - "Abstract Geometric Composition"
 Cohesion: 0.67
-Nodes (3): Provider Configuration, Provider Features, Version Pinning
+Nodes (4): Abstract Geometric Composition, Connected Red Modules, Modular Assembly, Separated Colorful Forms
+
+### Community 152 - "Abstract Geometric Header Illustration"
+Cohesion: 0.50
+Nodes (4): Abstract Geometric Header Illustration, Central Gear-Like Form, Interlocking Rounded Forms, Layered Eye-Like Form
+
+### Community 153 - "Abstract 3 D Composition"
+Cohesion: 0.50
+Nodes (4): Abstract 3D Composition, Flower-Shaped Cylindrical Form, Neutral Palette with Green Accents, Repeated Cylindrical Modules
+
+### Community 154 - "Abstract Technology Banner"
+Cohesion: 0.50
+Nodes (4): Abstract Technology Banner, Green Eye-Shaped Emblem, Purple Rounded Geometric Mark, White Brace-Like Symbol
+
+### Community 155 - "Repeated Interlocking Loop Composition"
+Cohesion: 0.50
+Nodes (4): Interlocking Loop Motif, Multicolor Variation, Repeated Interlocking Loop Composition, Scale Hierarchy
+
+### Community 156 - "Abstract Loop Glyph Composition"
+Cohesion: 0.67
+Nodes (4): Abstract Loop Glyph Composition, Interwoven Loop Motif, Multicolor Variation, Two-Row Grid Layout
+
+### Community 157 - "Interlaced Loop Icon Gallery"
+Cohesion: 0.50
+Nodes (4): Interlaced Loop Icon Gallery, Interlaced Loop Motif, Multicolor Palette, Two-Row Variant Grid
+
+### Community 158 - "Blindfolded Estimation Target Practice"
+Cohesion: 0.83
+Nodes (4): Blindfolded Estimation Target Practice, Estimate Time Buckets, Estimation as Blind Guesswork, Project Effort Estimates
+
+### Community 159 - "Batch Data Transfer"
+Cohesion: 0.50
+Nodes (4): Batch Data Transfer, Bulk Record Insertion, Document Batch, Record Organization
+
+### Community 160 - "Decision Uncertainty"
+Cohesion: 0.50
+Nodes (4): Choosing Between Opposing Directions, Decision Uncertainty, Opposing Directional Choices, Undecided Person
+
+### Community 161 - "Ninja Ambush Ukiyo e Print"
+Cohesion: 0.67
+Nodes (4): Ninja, Ninja Ambush Ukiyo-e Print, Samurai, Ukiyo-e
+
+### Community 162 - "Artifact Restoration Activity"
+Cohesion: 0.83
+Nodes (4): Anthropomorphic Stone Fragments, Artifact Restoration Activity, Monumental Green Boot Structure, Surreal Archaeological Scene
+
+### Community 163 - "Orbital Mechanics Equations"
+Cohesion: 0.67
+Nodes (4): Collaborative Manual Calculation, Six Engineers Working at a Chalkboard, Orbital Geometry Diagrams, Orbital Mechanics Equations
+
+### Community 164 - "Codebase Size Comparison"
+Cohesion: 0.83
+Nodes (4): Codebase Size Comparison, Lines of Code, Software Codebase Size Chart, Software Systems
+
+### Community 165 - "Collaborative Workshop Interior"
+Cohesion: 0.50
+Nodes (4): Collaborative Workshop Interior, Flexible Commons Seating, Glass-Enclosed Upper Work Area, The Garage
+
+### Community 166 - "Semantic Kernel"
+Cohesion: 0.67
+Nodes (4): Large Language Models, Modular AI Integration, Semantic Kernel, Semantic Kernel Integration Header Artwork
+
+### Community 167 - "Planificando para el éxito"
+Cohesion: 0.50
+Nodes (4): Goal Achievement, Madrid 2023, ¡Planificando para el éxito!, Semantic Kernel Planners
+
+### Community 168 - "Real Executable Code Policy"
+Cohesion: 0.67
+Nodes (3): Idiomatic Parameterization, Placeholder Self-Check, Real Executable Code Policy
+
+### Community 169 - "AI Review Gated Publishing"
+Cohesion: 0.67
+Nodes (3): AI Review-Gated Publishing, Least-Privilege GitHub App, Two-Lock Publishing Model
+
+### Community 170 - "Deterministic Universe Selection"
+Cohesion: 0.67
+Nodes (3): Casting State Files, Squad Casting System, Deterministic Universe Selection
+
+### Community 171 - "Multi Agent Artifact Format"
+Cohesion: 0.67
+Nodes (3): Constraint Budget Tracking, Multi-Agent Artifact Format, Raw Agent Outputs Appendix
+
+### Community 172 - "Agent Conduct Skill"
+Cohesion: 0.67
+Nodes (3): Agent Conduct Skill, Peer Quality Check, Product Isolation Rule
+
+### Community 173 - "Final Outcome Recording"
+Cohesion: 0.67
+Nodes (3): Final Outcome Recording, History Hygiene, One Read, One Truth
+
+### Community 174 - "Squad Context Hygiene"
+Cohesion: 0.67
+Nodes (3): Squad Context Hygiene, Nap, State Compression, Pruning, and Archival
+
+### Community 175 - "Topic Based Notification Routing"
+Cohesion: 0.67
+Nodes (3): CHANNEL Tag Convention, Provider-Agnostic Notification Adapter, Topic-Based Notification Routing
+
+### Community 176 - "Personal Squad"
+Cohesion: 0.67
+Nodes (3): Ambient Personal-Agent Discovery, Ghost Protocol, Personal Squad
+
+### Community 177 - "Individual Review Thread Reply"
+Cohesion: 1.00
+Nodes (3): Individual Review Thread Reply, PR Review Response Workflow, Review Thread Resolution
+
+### Community 178 - "Visual PR Review"
+Cohesion: 0.67
+Nodes (3): Playwright Screenshot Capture, Temporary Screenshot Orphan Branch, Visual PR Review
+
+### Community 179 - "Learning Confidence Signal Classification"
+Cohesion: 1.00
+Nodes (3): Learning Confidence Signal Classification, Learning Promotion, Reflect Learning Capture
+
+### Community 180 - "Charter and History Trimming"
+Cohesion: 1.00
+Nodes (3): Charter and History Trimming, Shared Skill Extraction, Team Reskilling
+
+### Community 181 - "Strict Author Lockout"
+Cohesion: 0.67
+Nodes (3): Reviewer Lockout Deadlock Escalation, Reviewer Rejection Protocol, Strict Author Lockout
+
+### Community 182 - "Discipline Concept"
+Cohesion: 0.67
+Nodes (3): Assertion-to-Disk Synchronization, Same-Commit API Test Updates, Test Discipline
+
+### Community 183 - "squad docs"
+Cohesion: 1.00
+Nodes (3): Documentation Build Job, GitHub Pages Deploy Job, Squad Docs Build and Deploy Workflow
+
+### Community 184 - "Migration from Venezuela to Spain"
+Cohesion: 0.67
+Nodes (3): DBAccess Professional Growth, Migration from Venezuela to Spain, Santiago de Compostela Pilgrimage
+
+### Community 185 - "Frozen Requirements"
+Cohesion: 0.67
+Nodes (3): Edward V. Berard, Frozen Requirements, Requirements Control
+
+### Community 186 - "Pure PL SQL File Ingestion"
+Cohesion: 0.67
+Nodes (3): Christopher Poole PL/SQL Tips, Pure PL/SQL File Ingestion, UTL_FILE
+
+### Community 187 - "Network Service"
+Cohesion: 0.67
+Nodes (3): IIS Application Pool Identity, NetworkService, WCF Debug Security Warning
+
+### Community 188 - "Configuration Dependent Project References"
+Cohesion: 0.67
+Nodes (3): Configuration-Dependent Project References, Lib Debug/Release Layout, MSBuild Choose/When
+
+### Community 189 - "Theory of Mind"
+Cohesion: 0.67
+Nodes (3): Machine Consciousness, Sally-Anne Test, Theory of Mind
+
+### Community 190 - "Byte TI Issue 319"
+Cohesion: 0.67
+Nodes (3): ByteTI GPT-4 Article Announcement, ByteTI Issue 319, GPT-4 Intelligence and Consciousness Article
+
+### Community 191 - "Corporate Chat GPT"
+Cohesion: 0.67
+Nodes (3): Corporate ChatGPT, Enterprise AI Data and Access Control, Microsoft 365 Live 2023 Session
+
+### Community 192 - "Multi agent Specialization"
+Cohesion: 0.67
+Nodes (3): Agent Observability, Durable Agent Workflows, Multi-agent Specialization
+
+### Community 193 - "Client side Article Search Interface"
+Cohesion: 0.67
+Nodes (3): Client-side Article Search Interface, Search Main Template, search-index.json
+
+### Community 194 - "Latest Six Posts"
+Cohesion: 0.67
+Nodes (3): Latest Six Posts, Home Main Template, CODERTECTURA Mountain Hero
+
+### Community 195 - "scripts Components"
+Cohesion: 0.67
+Nodes (3): Hugo Main JavaScript Asset, Search JavaScript Asset, Site Script Pipeline
+
+### Community 196 - "Crystalline Mountain"
+Cohesion: 0.67
+Nodes (3): Crystalline Mountain, Fantasy Traveler, Starry Night Sky
+
+### Community 197 - "Physical Records Archive"
+Cohesion: 0.67
+Nodes (3): Bound Volumes, Filing Cabinets, Physical Records Archive
+
+### Community 198 - "Hands Compressing a Rusted Coil"
+Cohesion: 0.67
+Nodes (3): Hands Compressing a Rusted Coil Spring, Physical Compression, Rusted Coil Spring
+
+### Community 199 - "Compression Concept"
+Cohesion: 0.67
+Nodes (3): Compression, Hands Compressing a Coil, JavaScript and CSS Minification
+
+### Community 200 - "Abstract 3 D Composition"
+Cohesion: 0.67
+Nodes (3): Abstract 3D Composition, Orange Radial Flower-Like Form, Pastel Geometric Background
+
+### Community 201 - "Context Bound Object"
+Cohesion: 0.67
+Nodes (3): ContextBoundObject, InterceptableObject, MarshalByRefObject
+
+### Community 202 - "Abstract Modular Pieces"
+Cohesion: 1.00
+Nodes (3): Abstract Modular Pieces, Compatible Interfaces, Component Modularity
+
+### Community 203 - "Interlocking Loop Motifs"
+Cohesion: 0.67
+Nodes (3): Colorful Linked Symbol Grid, Interlocking Loop Motifs, Modular Configuration Variants
+
+### Community 204 - "Estimation Target Diagram"
+Cohesion: 0.67
+Nodes (3): Effort Estimates, Estimation Target Diagram, Estimation Variability
+
+### Community 205 - "Figure Leaning Over Desk"
+Cohesion: 1.00
+Nodes (3): Figure Leaning Over Desk, Urgent Question About Observation, What Did You See Cartoon
+
+### Community 206 - "Microsoft Visual Basic 6 0"
+Cohesion: 0.67
+Nodes (3): Microsoft Visual Basic 6.0 Enterprise Edition, Microsoft Visual Studio, Microsoft Visual Basic 6.0 Enterprise Edition Splash Screen
+
+### Community 207 - "Enterprise Architect"
+Cohesion: 1.00
+Nodes (3): Enterprise Architect, Microsoft Visual Studio .NET, Visual Studio .NET Enterprise Architect Banner
+
+### Community 208 - "Astonishment Concept"
+Cohesion: 1.00
+Nodes (3): Astonishment, Cosmic Mind-Blown Visual Metaphor, Mind-Blown Reaction GIF
+
+### Community 209 - "Cosmic Visual Effect"
+Cohesion: 1.00
+Nodes (3): Cosmic Visual Effect, Man Reacting with Astonishment, Mind-Blown Reaction
+
+### Community 210 - "NET Concept"
+Cohesion: 1.00
+Nodes (3): .NET, .NET 20 Years Banner, .NET 20th Anniversary
+
+### Community 211 - "Comparti MOSS Unplugged 48"
+Cohesion: 0.67
+Nodes (3): CompartiMOSS, CompartiMOSS Unplugged #48, YouTube
+
+### Community 212 - "Flexible Collaboration Space"
+Cohesion: 1.00
+Nodes (3): Flexible Collaboration Space, Interactive Digital Floor Installation, Microsoft Dublin Office Atrium
+
+### Community 213 - "Microsoft 365"
+Cohesion: 1.00
+Nodes (3): Microsoft 365, Microsoft 365 Live 2023, Microsoft 365 Live 2023 Promotional Thumbnail
 
 ## Ambiguous Edges - Review These
 - `Callout Shortcode Block` → `Notice/Alert Shortcode`  [AMBIGUOUS]
   shortcodes/callout.html · relation: semantically_similar_to
 
 ## Knowledge Gaps
-- **1241 isolated node(s):** `mcp-github`, `npx`, `@bradygaster/squad-cli`, `type`, `fs` (+1236 more)
+- **636 isolated node(s):** `Main Homepage Template`, `About Page Template`, `Head Meta Tags & Resources`, `Header Navigation Component`, `Pagination Controls` (+631 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **27 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **38 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **What is the exact relationship between `Callout Shortcode Block` and `Notice/Alert Shortcode`?**
   _Edge tagged AMBIGUOUS (relation: semantically_similar_to) - confidence is low._
-- **Why does `FoundryError` connect `FoundryError` to `_AllowlistRedirectHandler`, `Community 34`, `Community 7`, `_ChunkedResponse`, `_HTMLTextExtractor`, `FoundryImageClient`, `Community 15`, `_FakeResponse`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `Terraform for Azure Guidelines` connect `Terraform for Azure Guidelines` to `Complex Validation Patterns`, ``azapi` Provider Usage`, `Security Practices`, `Documentation and Comments`, `Tagging Strategy`, `Module Usage`, `Lifecycle Management`, `Naming Conventions`, `Provider Configuration`, `Azure-Specific Best Practices`, `File-Based Resource Seeding`, `Application Configuration Patterns`, `Anti-Patterns to Avoid`, `Project Structure and Organization`, `Resource Configuration`, `Settings Files Organization`, `File Organization`, `Variable Management`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `run_discovery_loop()` connect `run_discovery_loop` to `datetime`, `_HTMLTextExtractor`, `discover_topics.py`, `Community 25`, `tavily_search`?**
+- **Why does `FoundryError` connect `resolve body images` to `sources Components`, `resolve body images`, `foundry Components`, `generate image`?**
+  _High betweenness centrality (0.003) - this node is a cross-community bridge._
+- **Why does `FoundryChatClient` connect `foundry Components` to `discover topics`, `discover topics`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **Are the 20 inferred relationships involving `FoundryError` (e.g. with `_HTMLTextExtractor` and `_AllowlistRedirectHandler`) actually correct?**
   _`FoundryError` has 20 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `mcp-github`, `npx`, `@bradygaster/squad-cli` to the rest of the system?**
-  _1241 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.060129509713228495 - nodes in this community are weakly interconnected._
+- **Are the 4 inferred relationships involving `datetime` (e.g. with `test_classify_freshness_buckets()` and `test_parse_published_date_falls_back_to_url()`) actually correct?**
+  _`datetime` has 4 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 10 inferred relationships involving `host_is_allowed()` (e.g. with `collect_source_images()` and `evaluate_source()`) actually correct?**
+  _`host_is_allowed()` has 10 INFERRED edges - model-reasoned connections that need verification._
+- **What connects `Main Homepage Template`, `About Page Template`, `Head Meta Tags & Resources` to the rest of the system?**
+  _636 weakly-connected nodes found - possible documentation gaps or missing edges._

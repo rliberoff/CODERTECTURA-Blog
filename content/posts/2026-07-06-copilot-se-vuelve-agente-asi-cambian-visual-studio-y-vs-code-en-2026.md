@@ -1,10 +1,9 @@
 ---
 title: 'Copilot se vuelve agente: así cambian Visual Studio y VS Code en 2026'
 date: '2026-07-06T10:26:15+00:00'
-draft: true
+draft: false
 slug: copilot-se-vuelve-agente-asi-cambian-visual-studio-y-vs-code-en-2026
-description: Repaso las novedades más importantes de GitHub Copilot en Visual Studio
-  y VS Code en 2026 y qué significan para tu forma real de desarrollar.
+description: Repaso las novedades más importantes de GitHub Copilot en Visual Studio y VS Code en 2026 y qué significan para tu forma real de desarrollar.
 categories:
 - Inteligencia Artificial
 - .NET
@@ -23,8 +22,8 @@ ai:
   model: gpt-5.4
   prompt_version: 2026-06-30.5
   generated_at: '2026-07-06T10:26:15+00:00'
-  reviewed_by: ''
-  review_status: pending
+  reviewed_by: rliberoff
+  review_status: approved
   disclosure: Borrador asistido por IA; revisado por una persona antes de su publicación.
   sources:
   - url: https://github.blog/changelog/2026-04-08-github-copilot-in-visual-studio-code-march-releases
@@ -42,6 +41,7 @@ ai:
   - url: https://github.blog/changelog/2026-07-02-upcoming-deprecation-of-gemini-2-5-pro-and-gemini-3-flash
     title: Upcoming deprecation of Gemini 2.5 Pro and Gemini 3 Flash
     published_date: '2026-07-02'
+  reviewed_at: '2026-07-15T07:02:47Z'
 ---
 
 Si me preguntas qué está cambiando de verdad con GitHub Copilot en 2026, yo **no** te respondería «*ahora sugiere mejor código*». Eso, a estas alturas, se me queda cortísimo.

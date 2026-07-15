@@ -149,11 +149,11 @@ jobs:
         env:
           TARGET_FILES: ${{ steps.targets.outputs.files }}
           REVIEWER: ${{ github.event.review.user.login }}
+          REVIEWED_AT: ${{ github.event.review.submitted_at }}
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
-          import datetime
           import os
           import re
           from pathlib import Path
@@ -162,13 +162,15 @@ jobs:
 
           files_env = os.environ.get("TARGET_FILES", "").strip()
           reviewer = os.environ.get("REVIEWER", "").strip()
+          reviewed_at = os.environ.get("REVIEWED_AT", "").strip()
           paths = [Path(p) for p in files_env.splitlines() if p.strip()]
 
           if not paths:
               print("No target files to update.")
               raise SystemExit(0)
+          if not reviewed_at:
+              raise SystemExit("REVIEWED_AT is required")
 
-          reviewed_at = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
           updated_count = 0
 
           for path in paths:
@@ -182,6 +184,10 @@ jobs:
               body = raw[match.end():]
               data = yaml.safe_load(fm_raw) or {}
               changed = False
+
+              if data.get("date") != reviewed_at:
+                  data["date"] = reviewed_at
+                  changed = True
 
               if data.get("draft") is True:
                   data["draft"] = False

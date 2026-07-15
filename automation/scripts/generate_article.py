@@ -84,7 +84,7 @@ from _text import slugify
 
 # Version of the editorial prompt below. Stored in the post's `ai.prompt_version`
 # for provenance/auditing. Bump it whenever the prompt/voice changes.
-PROMPT_VERSION = "2026-07-14.2"
+PROMPT_VERSION = "2026-07-15.1"
 
 MIN_COVER_PROMPT_CHARS = 80
 MAX_COVER_PROMPT_CHARS = 2400
@@ -212,6 +212,25 @@ quotation, a link or several consecutive sentences. Do not add bold merely for v
 decoration; the article must still read naturally without it.
 """
 
+EDITORIAL_PROSE_RUBRIC = """\
+Editorial prose and source links:
+- Prefer substantial paragraphs that develop one idea through reasoning, implications, \
+trade-offs or a concrete example before moving on. As a guideline, most prose paragraphs \
+should contain 4-7 purposeful sentences; use shorter paragraphs only for deliberate \
+emphasis, insights, findings, takeaways, final conclusions, transitions or rhythm.
+- Add depth, not length for its own sake: every sentence must contribute evidence, \
+analysis, nuance, a consequence or practical value. Never pad the text, restate the same \
+point, use grandiose language or sacrifice clarity and accuracy merely to make a \
+paragraph longer.
+- Integrate each source link into meaningful words of the sentence, so the linked text \
+expresses the supported claim or identifies the source. Write "esto [cambia el modelo \
+de permisos](url)" or "según [la documentación de Azure](url)", NOT "esto cambia el \
+modelo de permisos ([fuente](url))", a bare "fuente"/"enlace"/"aquí", or a detached \
+citation after the sentence.
+- Make every link read naturally as part of the sentence, with anchor text that tells the \
+reader what the source supports or what they will find there.
+"""
+
 # -----------------------------------------------------------------------------
 # Two-pass editorial system prompts:
 #   * SYSTEM_PROMPT_DRAFT  -> pass 1: grounded, structured draft with real code.
@@ -246,7 +265,7 @@ the non-obvious, never boilerplate or filler, and omitted entirely when it adds 
 - Rigour: do not invent data, figures, quotes, API names, versions or URLs. When you \
 are given external sources, ground the article in them and cite ONLY the URLs of those \
 sources as Markdown links; never invent or alter a URL.
-- Clean Markdown: subheadings with "###", short paragraphs, lists and code blocks with \
+- Clean Markdown: subheadings with "###", well-developed paragraphs, lists and code blocks with \
 the language tag. Do not include the title as an H1 heading (Hugo renders it from the \
 front matter). Do not include front matter.
 - Emojis: occasional and measured, only if they fit the blog tone.
@@ -259,8 +278,9 @@ excerpts, image descriptions or content).
 "images" list with already-verified image URLs and their descriptions. Lean on the \
 "excerpts" for accuracy and currency and, when valuable, to write REAL, runnable code \
 examples faithful to the source.
-- Link (Markdown) to the source URL in the relevant claims and examples, using ONLY \
-the provided URLs; never invent or alter a URL.
+- Link meaningful words in the relevant claims and examples directly to the source URL, \
+using ONLY the provided URLs; never invent or alter a URL or append a parenthetical \
+"source" citation.
 
 Return EXCLUSIVELY a valid JSON object (no code fences), with these keys:
 - "title": catchy headline IN SPANISH (without wrapping quotes).
@@ -330,6 +350,7 @@ should be visually rich and well-paced.
 
 """
     + CODE_RUBRIC
+    + EDITORIAL_PROSE_RUBRIC
     + EMPHASIS_RUBRIC
     + """\
 
@@ -367,8 +388,9 @@ on its OWN line, same position. Do not add, rename, move or remove any placehold
 or code behaviour. Improve clarity, voice and the QUALITY of the examples, not their \
 meaning.
 - Markdown links: keep them and cite ONLY URLs already present in the draft or in the \
-provided sources; never invent or alter a URL.
-- Clean Markdown: "###" subheadings, short paragraphs, lists and fenced code blocks \
+provided sources; never invent or alter a URL. Rewrite detached or parenthetical source \
+citations so each link becomes a natural, meaningful part of the supported sentence.
+- Clean Markdown: "###" subheadings, well-developed paragraphs, lists and fenced code blocks \
 with a language tag. Do not include the title as an H1 heading and do not include front \
 matter.
 - "image_prompt": after rewriting the article, replace the draft prompt with a 3-5 \
@@ -388,6 +410,7 @@ faces.
     + STYLE_EXEMPLARS
     + "\n"
     + CODE_RUBRIC
+    + EDITORIAL_PROSE_RUBRIC
     + EMPHASIS_RUBRIC
     + """\
 

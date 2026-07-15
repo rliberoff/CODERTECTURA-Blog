@@ -728,6 +728,16 @@ def test_generation_prompts_require_deliberate_bold_emphasis():
         assert "never bold a whole paragraph" in prompt
 
 
+def test_generation_prompts_require_substantial_prose_and_integrated_links():
+    for prompt in (ga.SYSTEM_PROMPT_DRAFT, ga.SYSTEM_PROMPT_POLISH):
+        assert "most prose paragraphs should contain 4-7 purposeful sentences" in prompt
+        assert "Add depth, not length for its own sake" in prompt
+        assert "Never pad the text, restate the same point" in prompt
+        assert "Integrate each source link into meaningful words of the sentence" in prompt
+        assert "([fuente](url))" in prompt
+        assert "short paragraphs" not in prompt
+
+
 def test_merge_polished_overwrites_prose_keeps_structure():
     draft = {
         "title": "Borrador",

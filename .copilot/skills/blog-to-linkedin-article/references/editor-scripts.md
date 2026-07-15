@@ -649,7 +649,7 @@ function navigatePreparedImagePayload(editorUrl) {
 navigatePreparedImagePayload(editorUrl);
 ```
 
-Hydrate the files immediately after LinkedIn loads and strip the hash in the same call:
+Hydrate the files immediately after LinkedIn loads and strip the hash in the same call. This MUST be the first JavaScript call after the hash navigation. Do not inspect the tab, read the editor DOM, or run any other browser action first because its response can echo the complete base64 URL and overflow the tab context.
 
 ```js
 function hydrateTransferredImageFiles() {
@@ -700,8 +700,31 @@ async function insertImageAtMarker(marker, fileName, captionText = '') {
   }
   if (matches.length !== 1) throw new Error(`Expected one ${marker} match, found ${matches.length}.`);
 
-  const beforeFigures = new Set(editor.querySelectorAll('figure'));
+  const beforeFigures = [...editor.querySelectorAll('figure')];
   const match = matches[0];
+  let markerBlock = match.node.parentElement;
+  while (markerBlock?.parentElement && markerBlock.parentElement !== editor) {
+    markerBlock = markerBlock.parentElement;
+  }
+  if (!markerBlock || markerBlock.parentElement !== editor) {
+    throw new Error(`${marker} is not inside a top-level editor block.`);
+  }
+
+  window.__linkedinImageInsertions ??= {};
+  const insertionState = {
+    marker,
+    fileName,
+    captionText,
+    beforeFigures,
+    beforeFigureCount: beforeFigures.length,
+    markerBlock,
+    previousBlock: markerBlock.previousElementSibling,
+    nextBlock: markerBlock.nextElementSibling,
+    targetIndex: [...editor.children].indexOf(markerBlock),
+    status: 'targeted'
+  };
+  window.__linkedinImageInsertions[marker] = insertionState;
+
   const range = document.createRange();
   range.setStart(match.node, match.index);
   range.setEnd(match.node, match.index + marker.length);
@@ -718,17 +741,26 @@ async function insertImageAtMarker(marker, fileName, captionText = '') {
     bubbles: true,
     cancelable: true
   }));
+  insertionState.status = 'paste-dispatched';
 
   const deadline = Date.now() + 12000;
   let insertedFigure = null;
   while (Date.now() < deadline) {
     insertedFigure = [...editor.querySelectorAll('figure')]
-      .find(figure => !beforeFigures.has(figure));
+      .find(figure => !beforeFigures.includes(figure));
     if (insertedFigure && !editor.textContent.includes(marker)) break;
     await new Promise(resolve => setTimeout(resolve, 300));
   }
-  if (!insertedFigure) throw new Error(`${fileName} did not create a figure.`);
-  if (editor.textContent.includes(marker)) throw new Error(`${marker} was not removed.`);
+  if (!insertedFigure) {
+    insertionState.status = 'figure-not-observed';
+    throw new Error(`${fileName} did not create a figure.`);
+  }
+  insertionState.insertedFigure = insertedFigure;
+  insertionState.status = 'figure-created';
+  if (editor.textContent.includes(marker)) {
+    insertionState.status = 'marker-remained';
+    throw new Error(`${marker} was not removed.`);
+  }
 
   const caption = insertedFigure.querySelector('figcaption textarea');
   if (caption && captionText) {
@@ -738,6 +770,7 @@ async function insertImageAtMarker(marker, fileName, captionText = '') {
     caption.dispatchEvent(new Event('input', { bubbles: true }));
     caption.blur();
   }
+  insertionState.status = 'complete';
   return {
     figures: editor.querySelectorAll('figure').length,
     markerRemoved: !editor.textContent.includes(marker),
@@ -749,6 +782,120 @@ await insertImageAtMarker(mediaItem.marker, mediaItem.fileName, mediaItem.captio
 ```
 
 Verify the figure count, marker removal, and caption before inserting the next image. Retry once after re-querying the editor DOM.
+
+If the browser tool or CDP call times out, do not call `insertImageAtMarker()` again immediately. The paste can finish in the page after the tool stops waiting. Wait outside the browser tool for the upload to settle, then run this recovery in a new JavaScript call:
+
+```js
+function recoverTimedOutImageInsertion(marker) {
+  const editor = document.querySelector('div.ProseMirror[contenteditable="true"]');
+  const state = window.__linkedinImageInsertions?.[marker];
+  if (!editor) throw new Error('LinkedIn ProseMirror editor was not found.');
+  if (!state) throw new Error(`No insertion state was recorded for ${marker}.`);
+
+  const currentFigures = [...editor.querySelectorAll('figure')];
+  const createdFigures = currentFigures.filter(figure => !state.beforeFigures.includes(figure));
+  const insertedFigure = state.insertedFigure?.isConnected
+    ? state.insertedFigure
+    : createdFigures.length === 1
+      ? createdFigures[0]
+      : null;
+
+  const walker = document.createTreeWalker(editor, NodeFilter.SHOW_TEXT);
+  const markerMatches = [];
+  let node;
+  while ((node = walker.nextNode())) {
+    if (node.nodeValue.includes(marker)) markerMatches.push(node);
+  }
+
+  if (!insertedFigure) {
+    return {
+      outcome: 'not-created',
+      figuresBefore: state.beforeFigureCount,
+      figuresNow: currentFigures.length,
+      markerMatches: markerMatches.length,
+      safeToRetry: currentFigures.length === state.beforeFigureCount && markerMatches.length === 1
+    };
+  }
+  if (createdFigures.length > 1 && !state.insertedFigure?.isConnected) {
+    throw new Error(`Cannot identify one new figure for ${marker}.`);
+  }
+
+  let figureBlock = insertedFigure;
+  while (figureBlock.parentElement && figureBlock.parentElement !== editor) {
+    figureBlock = figureBlock.parentElement;
+  }
+  if (figureBlock.parentElement !== editor) {
+    throw new Error(`The new figure for ${marker} is not inside a top-level editor block.`);
+  }
+
+  let liveMarkerBlock = markerMatches[0]?.parentElement || null;
+  while (liveMarkerBlock?.parentElement && liveMarkerBlock.parentElement !== editor) {
+    liveMarkerBlock = liveMarkerBlock.parentElement;
+  }
+
+  const anchor = liveMarkerBlock?.isConnected
+    ? liveMarkerBlock
+    : state.markerBlock?.isConnected
+      ? state.markerBlock
+      : state.nextBlock?.isConnected
+        ? state.nextBlock
+        : null;
+  let moved = false;
+  if (anchor && figureBlock.nextElementSibling !== anchor) {
+    editor.insertBefore(figureBlock, anchor);
+    moved = true;
+  } else if (!anchor && state.previousBlock?.isConnected
+    && state.previousBlock.nextElementSibling !== figureBlock) {
+    state.previousBlock.after(figureBlock);
+    moved = true;
+  } else if (!anchor && !state.previousBlock?.isConnected) {
+    const indexedAnchor = [...editor.children]
+      .filter(child => child !== figureBlock)[state.targetIndex] || null;
+    if (indexedAnchor !== figureBlock) {
+      editor.insertBefore(figureBlock, indexedAnchor);
+      moved = true;
+    }
+  }
+
+  for (const markerNode of markerMatches) {
+    markerNode.nodeValue = markerNode.nodeValue.replace(marker, '');
+  }
+  const staleMarkerBlock = liveMarkerBlock?.isConnected
+    ? liveMarkerBlock
+    : state.markerBlock?.isConnected
+      ? state.markerBlock
+      : null;
+  if (staleMarkerBlock && staleMarkerBlock !== figureBlock
+    && !staleMarkerBlock.textContent.trim()) {
+    staleMarkerBlock.remove();
+  }
+
+  const caption = insertedFigure.querySelector('figcaption textarea');
+  if (caption && state.captionText && caption.value !== state.captionText) {
+    const setter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set;
+    caption.focus();
+    setter.call(caption, state.captionText);
+    caption.dispatchEvent(new Event('input', { bubbles: true }));
+    caption.blur();
+  }
+  editor.dispatchEvent(new Event('input', { bubbles: true }));
+  state.insertedFigure = insertedFigure;
+  state.status = moved ? 'placement-recovered' : 'complete';
+
+  return {
+    outcome: moved ? 'recovered' : 'already-inserted',
+    figuresBefore: state.beforeFigureCount,
+    figuresNow: currentFigures.length,
+    markerRemoved: !editor.textContent.includes(marker),
+    caption: caption?.value || '',
+    safeToRetry: false
+  };
+}
+
+recoverTimedOutImageInsertion(mediaItem.marker);
+```
+
+Continue without another upload when the outcome is `recovered` or `already-inserted`. Retry once only when the outcome is `not-created` and `safeToRetry` is `true`. Stop for manual inspection when the state is ambiguous.
 
 ## Retry one caption
 
@@ -770,21 +917,49 @@ function setImageCaption(figureIndex, text) {
 
 ## Cover image
 
-Upload the cover last. This function restores patched browser APIs in `finally` even when LinkedIn rejects the upload.
+Upload the cover last in two observable phases. Opening the crop dialog and applying the final cover are separate actions, so a timeout on the final selector cannot hide a successful file selection.
 
 ```js
-async function uploadArticleCover(fileName) {
+window.findArticleCoverCropDialog = function findArticleCoverCropDialog() {
+  return [...document.querySelectorAll('[role="dialog"]')].find(dialog => {
+    const hasPreview = !!dialog.querySelector('img, canvas');
+    const hasNext = [...dialog.querySelectorAll('button')]
+      .some(button => /^(next|siguiente)$/i.test(button.textContent.trim()));
+    return dialog.isConnected && hasPreview && hasNext;
+  }) || null;
+};
+
+window.getArticleCoverUploadState = function getArticleCoverUploadState() {
+  const coverImage = document.querySelector('[class*="cover-media"] img, [class*="coverMedia"] img');
+  const cropDialog = findArticleCoverCropDialog();
+  const nextButton = cropDialog
+    ? [...cropDialog.querySelectorAll('button')]
+      .find(button => /^(next|siguiente)$/i.test(button.textContent.trim()))
+    : null;
+  return {
+    stage: coverImage ? 'applied' : cropDialog ? 'crop-ready' : 'idle',
+    cover: !!coverImage,
+    cropDialog: !!cropDialog,
+    cropPreview: !!cropDialog?.querySelector('img, canvas'),
+    nextAvailable: !!nextButton,
+    nextEnabled: !!nextButton && !nextButton.disabled
+      && nextButton.getAttribute('aria-disabled') !== 'true'
+  };
+};
+
+window.waitForArticleCoverState = async function waitForArticleCoverState(predicate, timeout = 10000) {
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    const state = getArticleCoverUploadState();
+    if (predicate(state)) return state;
+    await new Promise(resolve => setTimeout(resolve, 250));
+  }
+  throw new Error('Timed out waiting for LinkedIn cover UI.');
+};
+
+window.openArticleCoverCrop = async function openArticleCoverCrop(fileName) {
   const file = window.__files?.[fileName];
   if (!file) throw new Error(`${fileName} is not hydrated.`);
-  const waitFor = async (getValue, timeout = 10000) => {
-    const deadline = Date.now() + timeout;
-    while (Date.now() < deadline) {
-      const value = getValue();
-      if (value) return value;
-      await new Promise(resolve => setTimeout(resolve, 250));
-    }
-    throw new Error('Timed out waiting for LinkedIn cover UI.');
-  };
   const originalInputClick = HTMLInputElement.prototype.click;
   const originalPicker = window.showOpenFilePicker;
 
@@ -808,26 +983,63 @@ async function uploadArticleCover(fileName) {
       .find(button => /upload from computer|subir desde el ordenador/i.test(button.textContent));
     if (!uploadButton) throw new Error('Cover upload button was not found.');
     uploadButton.click();
-
-    const dialog = await waitFor(() => document.querySelector('[role="dialog"]'));
-    const nextButton = await waitFor(() => [...dialog.querySelectorAll('button')]
-      .find(button => /^(next|siguiente)$/i.test(button.textContent.trim())));
-    nextButton.click();
-    await waitFor(() => document.querySelector('[class*="cover-media"] img, [class*="coverMedia"] img'));
-    return { cover: true };
+    return await waitForArticleCoverState(state => state.stage === 'crop-ready');
   } finally {
     HTMLInputElement.prototype.click = originalInputClick;
     if (originalPicker) window.showOpenFilePicker = originalPicker;
   }
+};
+
+await openArticleCoverCrop(manifest.coverFileName);
+```
+
+Require `stage: "crop-ready"` before continuing. In a separate JavaScript call, confirm the crop:
+
+```js
+async function confirmArticleCoverCrop() {
+  const initialState = getArticleCoverUploadState();
+  if (initialState.stage === 'applied') return initialState;
+  if (initialState.stage !== 'crop-ready') {
+    throw new Error(`Expected crop-ready cover state, found ${initialState.stage}.`);
+  }
+
+  const nextButton = await (async () => {
+    const deadline = Date.now() + 10000;
+    while (Date.now() < deadline) {
+      const dialog = findArticleCoverCropDialog();
+      const button = dialog
+        ? [...dialog.querySelectorAll('button')]
+          .find(candidate => /^(next|siguiente)$/i.test(candidate.textContent.trim()))
+        : null;
+      if (button && !button.disabled && button.getAttribute('aria-disabled') !== 'true') {
+        return button;
+      }
+      await new Promise(resolve => setTimeout(resolve, 250));
+    }
+    throw new Error('Timed out waiting for the enabled cover Next button.');
+  })();
+  nextButton.click();
+
+  try {
+    return await waitForArticleCoverState(state => state.stage === 'applied', 12000);
+  } catch (error) {
+    return {
+      ...getArticleCoverUploadState(),
+      confirmationTimedOut: true,
+      message: error.message
+    };
+  }
 }
 
 const coverResult = manifest.coverUrl
-  ? await uploadArticleCover(manifest.coverFileName)
-  : { cover: false, skipped: true };
+  ? await confirmArticleCoverCrop()
+  : { stage: 'skipped', cover: false };
 coverResult;
 ```
 
-When replacing an existing cover, use the edit or remove button inside the element whose class contains `cover-media`, then run the same upload function.
+If confirmation returns `confirmationTimedOut`, call `getArticleCoverUploadState()` before taking another action. Continue when the stage is `applied`. When it remains `crop-ready`, the file selection succeeded but Next was not accepted; click the enabled Next button once more through `confirmArticleCoverCrop()`. Do not reopen the file picker. Stop for inspection when the stage is `idle`.
+
+When replacing an existing cover, use the edit or remove button inside the element whose class contains `cover-media`, then run the same two-phase cover flow.
 
 ## Known dead ends (don't retry these)
 

@@ -128,11 +128,11 @@ LinkedIn's CSP blocks external image fetches and remote images in pasted HTML. U
 3. Fetch the cover and body images from their absolute manifest URLs.
 4. Normalize the remaining images with `prepareNextImagePayload()`. Keep small files unchanged; resize and recompress large raster images to stay within the hash budget. Preserve a small GIF; convert an oversized GIF to a static JPEG preview.
 5. Let the function fill one encoded payload below 1.2 MB and return `includedNames` plus `remainingNames`. Do not estimate batches manually.
-6. Navigate to the exact saved editor URL with the prepared hash, hydrate `window.__files`, and strip the hash with `history.replaceState` in the same call.
+6. Navigate to the exact saved editor URL with the prepared hash. The first JavaScript call after navigation MUST be `hydrateTransferredImageFiles()` so it hydrates `window.__files` and strips the hash with `history.replaceState` in that same call. Do not run another browser, DOM, or JavaScript action first because tool responses can echo the complete base64 URL and overflow the tab context.
 7. Insert each included body image with `insertImageAtMarker(marker, fileName, captionText)`, one at a time and in manifest order.
-8. After each upload, verify that the figure count increased by one and that the marker was removed. Retry that image once after re-querying the editor DOM.
+8. After each upload, verify that the figure count increased by one and that the marker was removed. A CDP timeout from `insertImageAtMarker()` is an indeterminate result, not proof of failure: wait outside the browser tool, re-query the editor, and run `recoverTimedOutImageInsertion(marker)` before any retry. If the figure exists, do not upload it again; relocate it to the recorded marker position when needed, then verify its caption. Retry once only when no figure was created and the marker still exists.
 9. If `remainingNames` is non-empty, return to the canonical post, rerun extraction, and prepare only those remaining media. Repeat until none remain.
-10. If the manifest has a cover URL, upload it in its own final payload. Patch the file picker, open "Upload from computer", choose the hydrated cover, complete the crop dialog, and restore every patched browser prototype in a `finally` path. Otherwise skip cover upload.
+10. If the manifest has a cover URL, upload it in its own final payload. Run `openArticleCoverCrop(fileName)` and verify the `crop-ready` state first; then run `confirmArticleCoverCrop()` as a separate action and require the `applied` state. A timeout waiting for the final cover image is also indeterminate: inspect `getArticleCoverUploadState()` before retrying. If the crop dialog remains open, click its enabled Next button once; if the cover is already applied, continue without uploading again. Restore every patched browser prototype in a `finally` path. Otherwise skip cover upload.
 
 Marker-based placement is mandatory. It works for images at the beginning, adjacent figures, repeated prose, and galleries, all of which make nearby-text anchoring unreliable.
 
@@ -174,6 +174,9 @@ If the user asked for edits to the teaser, edit in the dialog rather than starti
 - Allow at most one targeted retry per failed action.
 - Batch predictable steps with browser_batch.
 - After hash navigation, wait outside the browser tool so tool output does not echo the large URL.
+- Make `hydrateTransferredImageFiles()` the first JavaScript call after every hash navigation. Do not inspect the tab or editor before that call removes the payload URL.
+- Treat a browser or CDP timeout during an upload as unknown completion state. Inspect the live DOM and recover placement before deciding whether a retry is safe.
+- Treat cover selection, crop readiness, and final application as separate states. Never infer that the upload failed only because the final cover selector timed out.
 - Do not use `window.open`, `target=_blank`, or popups to bridge tabs.
 - Do not close tabs mid-flow.
 - Remote `<img src>` in pasted HTML is rejected by the editor schema; data transfer is genuinely required.

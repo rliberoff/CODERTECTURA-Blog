@@ -1,0 +1,29 @@
+id: azure-functions-powershell-7-6-preview
+title: Azure Functions Preview Support for PowerShell 7.6
+slug: azure-functions-ya-prueba-powershell-7-6-que-me-parece-util-y-que-revisaria-ante
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-07-20T08:55:22+00:00'
+- status: in_review
+  at: '2026-07-20T09:04:15+00:00'
+discovered_at: '2026-07-20T08:55:22+00:00'
+similarity:
+  max_score: 0.5414
+  closest_match: azure-functions-python-3-14-ga
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=567651
+  title: '[Launched] Public Preview: Azure Functions Support for PowerShell 7.6'
+  published_date: '2026-07-17'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: 'Azure Functions support for PowerShell 7.6 is now available in preview.
+    You can now develop apps using PowerShell 7.6 locally and deploy them to Azure
+    Functions plans. Learn more: What''s new in PowerShell 7.6 Azure Functions PowerShell
+    versions and their'
+notes: A useful update for teams automating Azure administration and application glue
+  code in PowerShell. The angle can explain what the new preview unlocks and what
+  architects should verify before standardizing on the runtime in production workflows.
+article_path: content/posts/2026-07-20-azure-functions-ya-prueba-powershell-7-6-que-me-parece-util-y-que-revisaria-ante.md
+pr_url: null

@@ -1,0 +1,287 @@
+id: microsoft-foundry-observability-agent-tracing-sensitive-telemetry
+title: Microsoft Foundry improves observability with agent tracing and sensitive telemetry
+  controls
+slug: microsoft-foundry-da-un-paso-serio-en-observabilidad-trazas-de-agentes-y-telemet
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-07-20T16:10:17+00:00'
+- status: in_review
+  at: '2026-07-20T16:15:13+00:00'
+discovered_at: '2026-07-20T16:10:17+00:00'
+similarity:
+  max_score: 0.3756
+  closest_match: 2026-07-01-microsoft-agent-framework-en-build-2026-como-pasar-de-un-prototipo-a-un-agente-l
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=567594
+  title: '[In preview] Public Preview: Protect sensitive generative AI telemetry in
+    Application Insights and Microsoft Foundry'
+  published_date: '2026-07-20'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: Azure Monitor Application Insights now stores generative AI content in
+    a dedicated GenAIContent table (AppGenAIContent in Log Analytics), making it possible
+    to apply newly available access controls to sensitive AI telemetry. Because Application
+    Insights p
+- url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete
+  title: Application Insights telemetry data model - Azure Monitor
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/media/data-model-complete/application-insights-data-model.png
+    description: The image illustrates a flow diagram of application telemetry and
+      access control for Microsoft Foundry July 2026, featuring components such as
+      a browser, server, dependency services like database and…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/customize-dashboard-2.png
+    description: The image shows a screenshot of the Microsoft Azure preview interface,
+      focusing on Application Insights for "e2e-testing," with a highlighted "Edit"
+      button and various performance metrics, trendlines,…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/customize-dashboard-3.png
+    description: A dashboard displays various analytics related to Application Insights,
+      including a line chart of token usage over time, with options to edit, add,
+      move, clone, or remove elements on the right menu.
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/query-link.png
+    description: A user interface displays application insights for Microsoft Foundry's
+      July 2026 preview telemetry, featuring metrics on token usage and inference
+      calls with options to view details and open query lin…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/create-new-alert-rule-1.png
+    description: The screenshot displays a log query interface with options for creating
+      a new alert rule, alongside code related to telemetry and AI response models,
+      and a table of log results with timestamps and tok…
+  excerpt: Application Insights sends telemetry from your web application to the Azure
+    portal to provide insights into the performance and usage of your application
+    and
+- url: https://learn.microsoft.com/en-us/semantic-kernel/concepts/enterprise-readiness/observability/telemetry-with-azure-ai-foundry-tracing
+  title: Visualize traces on Microsoft Foundry Tracing UI | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/media/data-model-complete/application-insights-data-model.png
+    description: The image illustrates a flow diagram of application telemetry and
+      access control for Microsoft Foundry July 2026, featuring components such as
+      a browser, server, dependency services like database and…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/customize-dashboard-2.png
+    description: The image shows a screenshot of the Microsoft Azure preview interface,
+      focusing on Application Insights for "e2e-testing," with a highlighted "Edit"
+      button and various performance metrics, trendlines,…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/customize-dashboard-3.png
+    description: A dashboard displays various analytics related to Application Insights,
+      including a line chart of token usage over time, with options to edit, add,
+      move, clone, or remove elements on the right menu.
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/query-link.png
+    description: A user interface displays application insights for Microsoft Foundry's
+      July 2026 preview telemetry, featuring metrics on token usage and inference
+      calls with options to view details and open query lin…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/create-new-alert-rule-1.png
+    description: The screenshot displays a log query interface with options for creating
+      a new alert rule, alongside code related to telemetry and AI response models,
+      and a table of log results with timestamps and tok…
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Visualize traces on Microsoft Foundry Tracing UI
+
+    ## In this article
+
+    [Microsoft Foundry](/en-us/azure/ai-studio/) Tracing UI is a web-based user interface
+    that allows you to visualize traces and logs generated by your applications. This
+    article provides a step-by-step guide on how to visualize traces on Foundry Tracing
+    UI.
+
+    Important
+
+    Before you start, make sure you have completed the tutorial on [inspecting telemetry
+    data with Application Insights](telemetry-with-app-insights).
+
+    Prerequisites:
+
+    ## Attach an Application Insights resource to the project
+
+    Go to the Foundry project, select the **Tracing** tab on the left blade, and use
+    the drop down to attach the Application Insights resource you created in the previous
+    tutorial then click **Connect**.
+
+    ![Attach an Application Insights resource to the project](../../../media/azure-ai-foundry-attach-app-insights.png)
+
+    ![Attach an Application Insights resource to the project](../../../media/azure-ai-foundry-attach-app-insights.png)
+
+    ## Use an AI service of your choice
+
+    All Semantic Kernel [AI connectors](../../ai-services/chat-completion/) emit GenAI
+    telemetry data that can be visualized in the Foundry Tracing UI.
+
+    Simply rerun the code from the [inspecting telemetry data with Application Insights](telemetry-with-app-insights)
+    tutorial.
+
+    ## Visualize traces on Foundry Tracing UI
+
+    After the script finishes running, head over to the Foundry tracing UI. You will
+    see a new trace in the trace UI.
+
+    ![Visualize traces on Foundry Tracing UI](../../../media/azure-ai-foundry-tracing-ui.gif)
+
+    ![Visualize traces on Foundry Tracing UI](../../../media/azure-ai-foundry-tracing-ui.gif)
+
+    Tip
+
+    It may take a few minutes for the traces to show up on the UI.
+
+    ## Next steps
+
+    Now that you have successfully visualize trace data with a Foundry project, you
+    can explore more features of Semantic Kernel that can help you monitor and diagnose
+    your application:
+
+    [Advanced telemetry with Semantic Kernel](telemetry-advanced)
+
+    ## Additional resources
+
+    ### In this article'
+- url: https://learn.microsoft.com/en-us/azure/foundry/observability/concepts/trace-agent-concept
+  title: Agent tracing in Microsoft Foundry (preview)
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/media/data-model-complete/application-insights-data-model.png
+    description: The image illustrates a flow diagram of application telemetry and
+      access control for Microsoft Foundry July 2026, featuring components such as
+      a browser, server, dependency services like database and…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/customize-dashboard-2.png
+    description: The image shows a screenshot of the Microsoft Azure preview interface,
+      focusing on Application Insights for "e2e-testing," with a highlighted "Edit"
+      button and various performance metrics, trendlines,…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/customize-dashboard-3.png
+    description: A dashboard displays various analytics related to Application Insights,
+      including a line chart of token usage over time, with options to edit, add,
+      move, clone, or remove elements on the right menu.
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/query-link.png
+    description: A user interface displays application insights for Microsoft Foundry's
+      July 2026 preview telemetry, featuring metrics on token usage and inference
+      calls with options to view details and open query lin…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/create-new-alert-rule-1.png
+    description: The screenshot displays a log query interface with options for creating
+      a new alert rule, alongside code related to telemetry and AI response models,
+      and a table of log results with timestamps and tok…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/articles/foundry/observability/concepts/trace-agent-concept.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Agent tracing overview
+
+    Important
+
+    Items marked (preview) in this article are currently in public preview. This preview
+    is provided without a service-level agreement, and we don''t recommend it for
+    production workloads. Certain features might not be supported or might have constrained
+    capabilities. For more information, see [Supplemental Terms of Use for Microsoft
+    Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+    Note
+
+    Tracing is generally available for prompt and hosted agents. Workflow and external
+    agents are in preview.
+
+    Microsoft Foundry provides an observability platform for monitoring and tracing
+    AI agents. It captures key details during an agent run, such as inputs, outputs,
+    tool usage, retries, latencies, and costs. Understanding the reasoning behind
+    your agent''s executions is important for troubleshooting and debugging. However,
+    understanding complex agents presents challenges for several reasons:
+
+    * There could be a high number of steps involved in generating a response, making
+    it hard to keep track of all of them.
+
+    * The sequence of steps might vary based on user input.
+
+    * The inputs/outputs at each stage might be long and deserve more detailed inspection.
+
+    * Each step of an agent''s runtime might also involve nesting. For example, an
+    agent might invoke a tool, which uses another process, which then invokes another
+    tool. If you notice strange or incorrect output from a top-level agent run, it
+    might be difficult to determine exactly where in the execution the issue was introduced.
+
+    Trace results solve this by allowing you to view the inputs and outputs of each
+    primitive involved in a particular agent run, displayed in the order they were
+    invoked, making it easy to understand and debug your AI agent''s behavior.
+
+    ## Prerequisites
+
+    To use tracing end-to-end, you need:
+
+    * A Foundry project with tracing enabled. To set it up, see [How to set up tracing
+    in Microsoft Foundry](../how-to/trace-agent-setup).
+
+    * Access to the Application Insights resource connected to your project. For background,
+    see [Azure Monitor Application Insights](/en-us/azure/azure-monitor/app/app-insights-overview).
+
+    * A Log Analytics reader role to view traces, insights, and visualizations in
+    Foundry.
+
+    Note
+
+    Tracing stores tel…'
+- url: https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/appgenaicontent
+  title: Azure Monitor Logs reference - AppGenAIContent - Azure Monitor
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/media/data-model-complete/application-insights-data-model.png
+    description: The image illustrates a flow diagram of application telemetry and
+      access control for Microsoft Foundry July 2026, featuring components such as
+      a browser, server, dependency services like database and…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/customize-dashboard-2.png
+    description: The image shows a screenshot of the Microsoft Azure preview interface,
+      focusing on Application Insights for "e2e-testing," with a highlighted "Edit"
+      button and various performance metrics, trendlines,…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/customize-dashboard-3.png
+    description: A dashboard displays various analytics related to Application Insights,
+      including a line chart of token usage over time, with options to edit, add,
+      move, clone, or remove elements on the right menu.
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/query-link.png
+    description: A user interface displays application insights for Microsoft Foundry's
+      July 2026 preview telemetry, featuring metrics on token usage and inference
+      calls with options to view details and open query lin…
+  - url: https://learn.microsoft.com/en-us/azure/foundry-classic/media/how-to/monitor-applications/create-new-alert-rule-1.png
+    description: The screenshot displays a log query interface with options for creating
+      a new alert rule, alongside code related to telemetry and AI response models,
+      and a table of log results with timestamps and tok…
+  excerpt: Column, Type, Description. AgentId, string, The unique identifier of the
+    GenAI agent. AgentName, string, The name of the GenAI agent.
+notes: 'Cover the new tracing and telemetry story in Microsoft Foundry: how agent
+  traces flow into Application Insights, what the preview status means, and how teams
+  should handle sensitive GenAI content. This is a strong architecture/security topic
+  for readers designing production-grade AI systems.'
+article_path: content/posts/2026-07-20-microsoft-foundry-da-un-paso-serio-en-observabilidad-trazas-de-agentes-y-telemet.md
+pr_url: null

@@ -84,7 +84,7 @@ from _text import slugify
 
 # Version of the editorial prompt below. Stored in the post's `ai.prompt_version`
 # for provenance/auditing. Bump it whenever the prompt/voice changes.
-PROMPT_VERSION = "2026-07-20.1"
+PROMPT_VERSION = "2026-07-20.2"
 
 MIN_COVER_PROMPT_CHARS = 80
 MAX_COVER_PROMPT_CHARS = 2400
@@ -300,13 +300,14 @@ legible, article-specific idea through a symbolic scene or visual metaphor with 
 narrative weight: a contrast, a threshold, a journey or a transformation the reader \
 can feel at a glance. State the subject, action, setting, composition, atmosphere and \
 dramatic lighting (for example a warm focal glow against a deep cool ambience) and a \
-purposeful colour palette whose meaning comes from the article. Do NOT \
-default to generic blue/cyan neon technology, a person seen from behind, command centres, \
-dashboard walls, glowing orbs, symmetric sci-fi halls, floating interfaces or decorative \
-circuit grids; use any of them only when the article itself makes that motif essential. \
+purposeful colour palette whose meaning comes from the article. Anchor the scene in the \
+CONTEMPORARY world of software and technology (modern people, present-day devices and \
+workplaces, flows of light and data); NEVER use fantasy, fairy-tale, steampunk, medieval \
+or antique imagery such as old workshops, brass machines, parchment or magical artifacts. \
 Keep the core idea clear at thumbnail size and the essential subject inside the central \
-70% so it survives wide social-media crops; leave the lower band visually calm for the \
-blog title overlay. YOU MAY USE relevant service or brand logos. NO baked-in text, \
+70% so it survives wide social-media crops; the scene must fill the whole canvas edge to \
+edge (no empty bars or unfinished areas), with a quieter, less detailed lower portion for \
+the blog title overlay. YOU MAY USE relevant service or brand logos. NO baked-in text, \
 letters, numbers or watermarks and NO recognisable real faces.
 - "body_images": list of images for the article BODY. Each element is an \
 object with this exact shape:
@@ -402,10 +403,11 @@ transformation. Express ONE instantly legible idea through an article-specific \
 symbolic scene or visual metaphor with narrative weight (a contrast, a threshold, a \
 journey, a transformation). Specify subject, action, setting, composition, atmosphere, \
 dramatic lighting (for example a warm focal glow against a deep cool ambience) and a \
-meaningful palette. Do \
-NOT default to blue/cyan neon, a back-facing person, command centres, dashboard walls, \
-glowing orbs, symmetric sci-fi halls, floating UI or decorative circuit grids. Keep the \
-essential idea in the central 70% for wide social crops and the lower band calm for the \
+meaningful palette. Anchor the scene in the CONTEMPORARY world of software and \
+technology (modern people, devices, workplaces, flows of light and data); NEVER fantasy, \
+fairy-tale, steampunk, medieval or antique imagery. Keep the \
+essential idea in the central 70% for wide social crops; the scene must fill the whole \
+canvas edge to edge, with a quieter lower portion (never an empty band) for the \
 blog title. Relevant product logos are allowed; no baked-in text or recognisable real \
 faces.
 """

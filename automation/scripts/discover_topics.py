@@ -168,7 +168,6 @@ RSS_FEED_URLS = (
     "https://openai.com/news/rss.xml",
     "https://huggingface.co/blog/feed.xml",
     "https://www.technologyreview.com/feed/",
-    "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml",
     "https://www.marktechpost.com/feed/",
     "https://thegradient.pub/rss/",
     "https://github.blog/feed",
@@ -177,7 +176,6 @@ RSS_FEED_URLS = (
     "https://github.blog/ai-and-ml/llms/feed",
     "https://github.blog/changelog/feed/",
     "https://github.blog/changelog/label/copilot/feed/",
-    "https://azurefeeds.com/feed/",
     "https://build5nines.com/category/azure/feed/",
 )
 RSS_LOOKBACK_HOURS = 72
@@ -1759,9 +1757,9 @@ def main() -> None:
         "SOURCE_EXCERPT_MAX_CHARS", DEFAULT_SOURCE_EXCERPT_MAX_CHARS
     )
     threshold = _float_env("SIMILARITY_THRESHOLD", 0.82)
-    max_candidates = _int_env("MAX_CANDIDATES", 10)
+    max_candidates = _int_env("MAX_CANDIDATES", 20)
     max_iterations = _int_env("DISCOVERY_MAX_ITERATIONS", 6)
-    max_searches = _int_env("DISCOVERY_MAX_SEARCHES", 8)
+    max_searches = _int_env("DISCOVERY_MAX_SEARCHES", 12)
     max_completion_tokens = _int_env("AOAI_MAX_COMPLETION_TOKENS", 8000)
     chat_timeout = _float_env("AOAI_TIMEOUT", 180.0)
     rss_timeout = _float_env("RSS_TIMEOUT", DEFAULT_RSS_TIMEOUT)

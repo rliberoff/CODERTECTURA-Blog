@@ -46,29 +46,35 @@ from typing import NoReturn
 from _foundry import FoundryError, FoundryImageClient
 
 # Covers use article-specific artistic art direction. This suffix enforces the
-# painterly medium, crop resilience and safety; it must not impose a recurring scene,
-# subject, palette or lighting recipe. It intentionally diverges from the schematic
-# BODY_STYLE_SUFFIX in resolve_body_images.py.
+# painterly medium, contemporary grounding, full-bleed composition, crop resilience
+# and safety; it must not impose a recurring scene, subject, palette or lighting
+# recipe. It intentionally diverges from the schematic BODY_STYLE_SUFFIX in
+# resolve_body_images.py.
 STYLE_SUFFIX = (
     " -- evocative editorial cover art for a professional technology publication, "
     "executed as a cinematic digital painting / concept-art illustration: visible "
-    "painterly brushwork, rich texture and a dreamlike, atmospheric quality. NOT a "
-    "photograph, NOT photorealistic, NOT a sterile 3D product render or industrial "
-    "advertising shot. Preserve the article-specific concept, subject, "
-    "setting and meaningful colour palette from the brief; do not replace them with "
-    "generic futuristic technology imagery. Tell the story through symbolism and "
-    "dramatic light: an expressive warm-versus-cool luminous contrast, a clear focal "
-    "glow, and any human presence rendered as small evocative silhouettes rather than "
-    "detailed realistic people. Communicate one idea immediately at "
-    "thumbnail size with confident visual hierarchy. Keep the essential subject "
-    "and metaphor within the central 70% safe area so the image remains effective in "
-    "wide 2:1 LinkedIn and blog-card crops, and keep the lower band visually calm for "
-    "an overlaid title. Do not default to blue or cyan neon, back-facing people, "
-    "command centres, dashboard walls, glowing orbs, symmetric sci-fi halls, floating "
-    "interfaces or decorative circuit grids unless the supplied brief explicitly "
-    "makes that motif essential. No baked-in text, letters, numbers or watermarks, "
-    "and no recognisable real human faces. Relevant product logos or brands are "
-    "allowed only when requested by the supplied brief."
+    "painterly brushwork, rich texture and atmospheric depth. NOT a photograph, NOT "
+    "photorealistic, NOT a sterile 3D product render or industrial advertising shot. "
+    "The scene MUST stay grounded in the CONTEMPORARY world of software and "
+    "technology: modern people, present-day devices and workplaces, cloud and code "
+    "concepts, or abstract flows of light and data. Strictly avoid fantasy, "
+    "fairy-tale, steampunk, medieval, retro-antique or alchemical imagery: no old "
+    "workshops, brass contraptions, parchment scrolls, magical artifacts, wizards or "
+    "toy automatons. Preserve the article-specific concept, subject, setting and "
+    "meaningful colour palette from the brief; do not replace them with generic "
+    "imagery. Dramatic, expressive lighting with one clear focal point is welcome "
+    "(for example a warm glow against deep cool blues); render any people as "
+    "stylised figures or silhouettes, never detailed realistic faces. Communicate "
+    "one idea immediately at thumbnail size with confident visual hierarchy, and "
+    "keep the essential subject and metaphor within the central 70% safe area so "
+    "the image survives wide 2:1 LinkedIn and blog-card crops. Paint the FULL "
+    "canvas edge to edge as one continuous scene: absolutely no empty bars, flat "
+    "borders, letterboxing or unfinished areas; make the lower portion of the "
+    "scene quieter and less detailed (floor, water, mist, shadow) so a title can "
+    "be overlaid, but keep it fully painted as part of the scene. No baked-in "
+    "text, letters, numbers or watermarks, and no recognisable real human faces. "
+    "Relevant product logos or brands are allowed only when requested by the "
+    "supplied brief."
 )
 
 

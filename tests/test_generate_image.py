@@ -25,7 +25,6 @@ def test_cover_style_preserves_article_direction_and_social_crops():
 def test_cover_style_does_not_impose_the_previous_recurring_scene():
     style = gi.STYLE_SUFFIX.lower()
 
-    assert "do not default to blue or cyan neon" in style
     assert "deep midnight navy-to-black base" not in style
     assert "moody volumetric lighting" not in style
     assert "allowed subjects include" not in style
@@ -40,3 +39,14 @@ def test_cover_style_is_painterly_not_photorealistic_advertising():
     assert "premium advertising key visual" not in style
     assert "polished materials" not in style
     assert "production-quality detail" not in style
+
+
+def test_cover_style_stays_contemporary_and_fills_the_canvas():
+    style = gi.STYLE_SUFFIX.lower()
+
+    assert "contemporary" in style
+    assert "avoid fantasy" in style
+    assert "steampunk" in style
+    assert "edge to edge" in style
+    assert "letterboxing" in style
+    assert "keep the lower band visually calm" not in style

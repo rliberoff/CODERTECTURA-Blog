@@ -122,6 +122,14 @@ def test_load_sources_tolerates_absent_and_malformed(monkeypatch=None):
             os.environ["SOURCES_FILE"] = saved
 
 
+def test_load_article_topic_prefers_explicit_value_and_supports_file(tmp_path):
+    topic_file = tmp_path / "topic.txt"
+    topic_file.write_text("Tema desde el ledger\n", encoding="utf-8")
+
+    assert ga.load_article_topic("Tema manual", str(topic_file)) == "Tema manual"
+    assert ga.load_article_topic("", str(topic_file)) == "Tema desde el ledger"
+
+
 def test_build_sources_block_surfaces_images_and_excerpt():
     sources = ga.parse_sources(
         {
@@ -710,6 +718,26 @@ def test_validate_source_images_drops_denylisted(monkeypatch=None):
 # -----------------------------------------------------------------------------
 
 
+def test_generation_prompts_require_deliberate_bold_emphasis():
+    expected_rule = "Use Markdown bold (**...**) deliberately"
+
+    assert expected_rule in ga.SYSTEM_PROMPT_DRAFT
+    assert expected_rule in ga.SYSTEM_PROMPT_POLISH
+    for prompt in (ga.SYSTEM_PROMPT_DRAFT, ga.SYSTEM_PROMPT_POLISH):
+        assert "one or two short, decisive phrases per major section" in prompt
+        assert "never bold a whole paragraph" in prompt
+
+
+def test_generation_prompts_require_substantial_prose_and_integrated_links():
+    for prompt in (ga.SYSTEM_PROMPT_DRAFT, ga.SYSTEM_PROMPT_POLISH):
+        assert "most prose paragraphs should contain 4-7 purposeful sentences" in prompt
+        assert "Add depth, not length for its own sake" in prompt
+        assert "Never pad the text, restate the same point" in prompt
+        assert "Integrate each source link into meaningful words of the sentence" in prompt
+        assert "([fuente](url))" in prompt
+        assert "short paragraphs" not in prompt
+
+
 def test_merge_polished_overwrites_prose_keeps_structure():
     draft = {
         "title": "Borrador",
@@ -729,9 +757,12 @@ def test_merge_polished_overwrites_prose_keeps_structure():
         "tags": ["dotnet", "azure"],
         "categories": ["Inteligencia Artificial"],
         "body_markdown": "Intro con gancho.\n\n{{img:fig}}\n\nCuerpo afilado.\n",
-        # Even if the model echoes these back, the merge MUST ignore them.
         "slug": "otro-slug",
-        "image_prompt": "Hijacked.",
+        "image_prompt": (
+            "Una llave de latón abre una caja negra de software y revela un mecanismo "
+            "modular en movimiento. Fotografía publicitaria cálida, composición "
+            "asimétrica y foco central preparado para un recorte panorámico."
+        ),
         "body_images": [],
     }
     merged = ga._merge_polished(draft, refined)
@@ -741,12 +772,25 @@ def test_merge_polished_overwrites_prose_keeps_structure():
     assert merged["tags"] == ["dotnet", "azure"]
     assert merged["categories"] == ["Inteligencia Artificial"]
     assert "Cuerpo afilado." in merged["body_markdown"]
+    assert "llave de latón" in merged["image_prompt"]
     # ...structure preserved from the draft, never from the polish output.
     assert merged["slug"] == "borrador-net"
-    assert merged["image_prompt"] == "A cinematic cover."
     assert merged["body_images"] == draft["body_images"]
     # Inputs are not mutated.
     assert draft["title"] == "Borrador"
+
+
+def test_merge_polished_rejects_invalid_cover_prompt_lengths():
+    draft = {"image_prompt": "Portada original."}
+
+    too_short = ga._merge_polished(draft, {"image_prompt": "Portada genérica."})
+    too_long = ga._merge_polished(
+        draft,
+        {"image_prompt": "x" * (ga.MAX_COVER_PROMPT_CHARS + 1)},
+    )
+
+    assert too_short["image_prompt"] == "Portada original."
+    assert too_long["image_prompt"] == "Portada original."
 
 
 def test_merge_polished_keeps_draft_body_when_placeholder_dropped():

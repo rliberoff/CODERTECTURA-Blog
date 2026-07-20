@@ -8,9 +8,8 @@
 #
 #   It is called by:
 #     * ai-article-generate.yml  -> manual single-topic flow (no sources).
-#     * ai-article-weekly.yml     -> scheduled fan-out, one call per article,
-#                                    grounded on the discovered candidate's
-#                                    sources (passed as base64 JSON).
+#     * ai-article-weekly.yml     -> scheduled fan-out, one complete candidate
+#                                    YAML payload per article.
 #
 #   Pipeline per call:
 #     OIDC -> azure/login -> data-plane token -> generate_article.py (text)
@@ -21,11 +20,10 @@
 #       -> dry_run=false: GitHub App token -> branch -> commit -> PR (labelled)
 #
 # SECURITY (OWASP A03 Injection hardening — preserved from ai-article-generate.yml)
-#   * `topic`, the base64 `sources_file_b64` and any model/web output are NEVER
-#     interpolated into a shell `run:` line. `topic` is passed via env
-#     (ARTICLE_TOPIC); the sources arrive as base64 and are decoded to a file
-#     under ${{ runner.temp }}; the generated slug (sanitised to [a-z0-9-] by the
-#     script) is only used in action `with:` inputs, never in shell.
+#   * `topic`, the base64 candidate and model/web output are NEVER interpolated
+#     into a shell `run:` line. The candidate is decoded to a file under
+#     ${{ runner.temp }} and validated before use; the generated slug is only
+#     used in action `with:` inputs, never in shell.
 #   * Every data-plane bearer token is acquired AND consumed inside a SINGLE
 #     step, passed to Python via a process-scoped env var. It is never written to
 #     $GITHUB_ENV, step outputs or logs, and never crosses a step boundary.
@@ -41,12 +39,12 @@ on:
       topic:
         description: "Tema del artículo a generar (en español)."
         type: string
-        required: true
-      sources_file_b64:
+        required: false
+        default: ""
+      candidate_b64:
         description: >-
-          Base64 del array JSON de fuentes del candidato (grounding). Vacío en el
-          flujo manual; relleno en el flujo semanal. Se decodifica a un fichero
-          para que el JSON multilínea nunca toque una línea de shell.
+          Base64 del YAML completo del candidato. Vacío en el flujo manual; el
+          flujo semanal lo decodifica y deriva de él tema, fuentes e id.
         type: string
         required: false
         default: ""
@@ -92,10 +90,8 @@ env:
   AOAI_IMAGE_SIZE: "1792x1024"
   # Confirmed working token audience for both Azure OpenAI and MAI surfaces.
   TOKEN_SCOPE: https://cognitiveservices.azure.com
-  # GitHub App used to open PRs. App ID and Installation ID are public identifiers;
-  # only the private key (secrets.APP_PRIVATE_KEY) is a secret.
+  # GitHub App used to open PRs. The App ID is public; only its key is secret.
   GH_APP_ID: ${{ vars.APP_ID }}
-  GH_APP_INSTALLATION_ID: ${{ vars.APP_INSTALLATION_ID }}
 
 jobs:
   build:
@@ -129,36 +125,75 @@ jobs:
       - name: Instalar dependencias del script
         run: python -m pip install --disable-pip-version-check --no-input -r automation/scripts/requirements.txt
 
+      - name: Preparar candidato semanal
+        if: ${{ inputs.candidate_b64 != '' }}
+        id: candidate
+        shell: bash
+        env:
+          CANDIDATE_B64: ${{ inputs.candidate_b64 }}
+        run: |
+          set -euo pipefail
+          CANDIDATE_FILE="${RUNNER_TEMP}/candidate.yaml"
+          TOPIC_TEXT_FILE="${RUNNER_TEMP}/topic.txt"
+          SOURCES_FILE="${RUNNER_TEMP}/sources.json"
+          printf '%s' "${CANDIDATE_B64}" | base64 -d > "${CANDIDATE_FILE}"
+          python automation/scripts/topic_ledger.py prepare-build \
+            --topic-file "${CANDIDATE_FILE}" \
+            --topic-text-file "${TOPIC_TEXT_FILE}" \
+            --sources-file "${SOURCES_FILE}"
+
       # ---------------------------------------------------------------------
       # 4) Acquire the data-plane token AND run the generator in ONE step so the
       #    bearer token never crosses a step boundary. `topic` is passed via env
-      #    (ARTICLE_TOPIC). When the caller supplies `sources_file_b64`, it is
-      #    decoded to a file under ${{ runner.temp }} (SOURCES_FILE) and body
-      #    images are enabled (BODY_IMAGES_FILE). Without sources (manual flow)
-      #    both stay unset, so the script runs its backward-compatible path.
+      #    (ARTICLE_TOPIC). The weekly flow reads its topic and sources from files
+      #    derived from the candidate. The manual flow leaves both files unset.
       # ---------------------------------------------------------------------
       - name: Generar el artículo (texto -> content/posts/<slug>.md)
         id: generate
         shell: bash
         env:
           ARTICLE_TOPIC: ${{ inputs.topic }}
-          SOURCES_FILE_B64: ${{ inputs.sources_file_b64 }}
+          ARTICLE_TOPIC_FILE: ${{ steps.candidate.outputs.topic_text_file }}
+          SOURCES_FILE: ${{ steps.candidate.outputs.sources_file }}
           ARTICLE_TRACE_STDOUT: "true"
           # The script writes the model's cover-image prompt here for the next step.
           IMAGE_PROMPT_FILE: ${{ runner.temp }}/image_prompt.txt
         run: |
           set -euo pipefail
-          # Grounding (weekly flow): decode the base64 sources to a file and turn
-          # on body images. The decoded JSON never touches a shell line.
-          if [ -n "${SOURCES_FILE_B64}" ]; then
-            SOURCES_FILE="${RUNNER_TEMP}/sources.json"
-            printf '%s' "${SOURCES_FILE_B64}" | base64 -d > "${SOURCES_FILE}"
-            export SOURCES_FILE
+          if [ -n "${SOURCES_FILE}" ]; then
             export BODY_IMAGES_FILE="${RUNNER_TEMP}/body_images.json"
           fi
           # Token stays in a local shell variable; never printed, exported or logged.
           TOKEN="$(az account get-access-token --resource "${TOKEN_SCOPE}" --query accessToken --output tsv --only-show-errors)"
           AOAI_TOKEN="${TOKEN}" python automation/scripts/generate_article.py
+
+      - name: Preparar entrada del ledger para revisión
+        if: ${{ inputs.candidate_b64 != '' }}
+        id: ledger
+        shell: bash
+        env:
+          TOPIC_ID: ${{ steps.candidate.outputs.topic_id }}
+          CANDIDATE_FILE: ${{ steps.candidate.outputs.topic_file }}
+          ARTICLE_SLUG: ${{ steps.generate.outputs.slug }}
+          ARTICLE_PATH: ${{ steps.generate.outputs.path }}
+        run: |
+          set -euo pipefail
+          SOURCE_FILE="${RUNNER_TEMP}/topic.yaml"
+          PR_BRANCH="bot/ai-article-${TOPIC_ID}"
+          TOPIC_PATH="automation/topics/${TOPIC_ID}.yaml"
+          if git fetch --quiet --no-tags origin "refs/heads/${PR_BRANCH}" 2>/dev/null && \
+             git cat-file -e "FETCH_HEAD:${TOPIC_PATH}" 2>/dev/null; then
+            git show "FETCH_HEAD:${TOPIC_PATH}" > "${SOURCE_FILE}"
+            echo "Reusing existing ledger history from ${PR_BRANCH}."
+          else
+            cp "${CANDIDATE_FILE}" "${SOURCE_FILE}"
+          fi
+          python automation/scripts/topic_ledger.py stage-review \
+            --source-file "${SOURCE_FILE}" \
+            --topics-dir automation/topics \
+            --topic-id "${TOPIC_ID}" \
+            --article-slug "${ARTICLE_SLUG}" \
+            --article-path "${ARTICLE_PATH}"
 
       # ---------------------------------------------------------------------
       # 4b) Generate the AI cover image from the prompt produced above. A fresh
@@ -218,6 +253,7 @@ jobs:
           path: |
             ${{ steps.generate.outputs.path }}
             static/images/${{ steps.generate.outputs.slug }}/
+            ${{ steps.ledger.outputs.path }}
           if-no-files-found: error
           retention-days: 14
 
@@ -258,12 +294,13 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ steps.app-token.outputs.token }}
-          branch: bot/ai-article-${{ steps.meta.outputs.today }}-${{ steps.generate.outputs.slug }}
+          branch: ${{ steps.candidate.outputs.topic_id != '' && format('bot/ai-article-{0}', steps.candidate.outputs.topic_id) || format('bot/ai-article-{0}-{1}', steps.meta.outputs.today, steps.generate.outputs.slug) }}
           base: main
           # The post plus everything under static/images/<slug>/ (cover + body images).
           add-paths: |
             ${{ steps.generate.outputs.path }}
             static/images/${{ steps.generate.outputs.slug }}/
+            ${{ steps.ledger.outputs.path }}
           commit-message: "feat - content: borrador IA «${{ steps.generate.outputs.slug }}»"
           title: "feat - content: borrador IA «${{ steps.generate.outputs.slug }}»"
           # An empty pr_extra_label line is trimmed and filtered by the action.
@@ -274,12 +311,13 @@ jobs:
           body: |
             ## Borrador de artículo generado por IA
 
-            - **Tema solicitado:** ${{ inputs.topic }}
+            - **Tema/ID:** ${{ inputs.topic || steps.candidate.outputs.topic_id }}
             - **Modelo (texto):** ${{ env.AOAI_GENERATE_DEPLOYMENT }} (Azure AI Foundry)
             - **Modelo (imagen):** ${{ env.AOAI_IMAGE_DEPLOYMENT }} (Azure AI Foundry)
             - **Fichero:** `${{ steps.generate.outputs.path }}`
             - **Portada:** `${{ steps.generate.outputs.cover_path }}`
             - **Imágenes en el cuerpo:** ${{ steps.generate.outputs.body_images_count }}
+            - **Ledger:** `${{ steps.ledger.outputs.path }}`
             - **Estado:** `draft: true` · `ai.review_status: pending`
 
             Este PR lo ha generado automáticamente el pipeline `ai-article-build`.
@@ -304,10 +342,3 @@ jobs:
             - [ ] He revisado el rigor técnico y la voz del blog.
             - [ ] `ai.review_status` cambiado a `reviewed` y `ai.reviewed_by` rellenado.
             - [ ] Quitar `draft: true` cuando esté listo.
-
-            > **Nota operativa (flujo semanal):** fusiona o cierra los PR de IA de la semana
-            > antes de la siguiente ejecución del lunes. El ledger de candidatos se escribe en
-            > el runner y no se confirma, por lo que un borrador abierto sin fusionar no es
-            > visible para la deduplicación de la próxima semana (que sólo lee los posts ya
-            > fusionados en `main`). Con el tope de ≤3 artículos por ejecución se gestiona sin
-            > esfuerzo.

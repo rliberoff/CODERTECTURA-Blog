@@ -1,0 +1,244 @@
+id: aks-azure-files-nfs-encryption-in-transit
+title: AKS Now Encrypts Azure Files NFS Traffic in Transit
+slug: aks-ya-cifra-en-transito-azure-files-nfs-por-que-cambia-de-verdad-el-juego-para
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-07-20T08:55:22+00:00'
+- status: in_review
+  at: '2026-07-20T09:09:08+00:00'
+discovered_at: '2026-07-20T08:55:22+00:00'
+similarity:
+  max_score: 0.3412
+  closest_match: azure-functions-python-3-14-ga
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=567787
+  title: '[Launched] Generally Available: Encryption in Transit for Azure Files NFS
+    Shares in Azure Kubernetes Service (AKS)'
+  published_date: '2026-07-17'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: Azure Kubernetes Service (AKS) now generally supports Encryption in Transit
+    (EiT) for Azure Files NFS v4.1 volumes through the Azure File CSI driver. With
+    EiT enabled, data transferred between AKS workloads and Azure Files NFS shares
+    is encrypted using TL
+- url: https://learn.microsoft.com/en-us/azure/sap/workloads/sap-azure-files-nfs-encryption-in-transit-guide
+  title: Azure Files NFS Encryption in Transit for SAP on Azure Systems | Microsoft
+    Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/files-whats-new/ad-domain-join-1.png
+    description: The image shows a Microsoft Azure portal page focused on configuring
+      Active Directory and related services for setting up Azure Files with NFS encryption
+      in transit, highlighting features like identit…
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/encryption-in-transit-nfs-shares/mount-using-encryption-in-transit.png
+    description: The screenshot shows a Windows Azure portal page for configuring
+      an Azure Files NFS share with the option to mount with encryption in transit
+      enabled, including instructions for Linux distribution sel…
+  - url: https://learn.microsoft.com/en-us/azure/aks/media/concepts-storage/aks-storage-concept.png
+    description: The diagram illustrates the architecture and components involved
+      in Azure Kubernetes Service (AKS) with an emphasis on persistent volume claims,
+      control plane, and node management, highlighting limita…
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/storage-files-networking-overview/smb-over-quic.png
+    description: The diagram illustrates the connection of users to an Azure File
+      Share through various components, including backup, file sync services, SMB/QUIC
+      endpoints, and different server locations for on-premi…
+  - url: https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/files/security/media/files-troubleshoot-linux-nfs/connectivity-using-public-endpoints.png
+    description: The diagram illustrates a network configuration with multiple virtual
+      machines and subnets interconnected through virtual network gateways, emphasizing
+      secure connectivity for Azure Files NFS encrypti…
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Azure Files NFS Encryption in Transit for SAP on Azure Systems
+
+    ## In this article
+
+    Azure Files NFS v4.1 volumes support [encryption in-transit](https://aka.ms/nfs/EiT/Announcement)
+    via TLS providing enterprise-grade security by encrypting all traffic between
+    clients and servers, without compromising performance. With Azure Files NFS, you
+    could encrypt your data end-to-end: at rest, in transit, and across the network.
+
+    For more information, refer the following document: [Encryption in transit for
+    NFS Azure file shares](../../storage/files/encryption-in-transit-for-nfs-shares).
+
+    ## Deploying Encryption in Transit (EiT) for Azure Files NFS Shares
+
+    For SAP on Azure environment, mount Azure Files NFS shares from within the VM
+    with two methods.
+
+    Steps for setting up Azure Files NFS Encryption in Transit for these two scenarios
+    are described in this document.
+
+    Important
+
+    For SAP on Azure environments in High Availability(HA) configuration, and file
+    system managed by Pacemaker, support for Azure Files NFS Encryption in Transit
+    (EiT) is restricted to:
+
+    Refer to [SAP Note 1928533](https://me.sap.com/notes/1928533) for Operating system
+    supportability for SAP on Azure systems.
+
+    ## Preparations for Azure Files NFS Encryption in Transit deployment
+
+    Configure an Azure Files storage account, NFS file share, and private endpoint
+    as described in [Create an NFS Azure file share](../../storage/files/storage-files-quick-create-use-linux)
+
+    Note
+
+    To enforce Encryption in Transit for all the file shares in the Azure Storage
+    account, enable [secure transfer required](../../storage/files/encryption-in-transit-for-nfs-shares#enforce-encryption-in-transit)
+    option in the configuration tab of the storage account.
+
+    Deploy the mount helper (AZNFS) package on the Linux VM.
+
+    Follow the AZNFS mount helper package installation steps based on operating system.
+
+    `curl -sSL -O https://packages.microsoft.com/config/$(source /etc/os-release &&
+    echo "$ID/${VERSION_ID%%.*}")/packages-microsoft-prod.rpm
+
+    sudo rpm -i packages-microsoft-prod.rpm
+
+    rm packages-microsoft-prod.rpm
+
+    sudo zypper refresh
+
+    sudo zypper install aznfs`
+
+    Choose `No` to autoupdate the package during installation. You can also turn off/on
+    autoupdate at any time by changing the value of `AUTO_UPDATE_AZNFS` to false/true
+    respectively in the file `/opt/microsoft/aznfs/data/config`.
+
+    `No`
+
+    `AUTO_UPDATE_AZNFS`
+
+    `/opt/microsoft/aznfs/data/config`
+
+    For more information, see the [package installation](../../storage/files/encryption-in-transit-for-nfs-shares#step-1-check-aznfs-mount-helper-package-installation)
+    section.
+
+    `curl -sSL -O https://packages.microsoft.com/config/$(source /etc/os-release &&
+    echo "$ID/${VERSION_ID%%.*}")/pack…'
+- url: https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies
+  title: List of built-in policy definitions - Azure Policy
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/files-whats-new/ad-domain-join-1.png
+    description: The image shows a Microsoft Azure portal page focused on configuring
+      Active Directory and related services for setting up Azure Files with NFS encryption
+      in transit, highlighting features like identit…
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/encryption-in-transit-nfs-shares/mount-using-encryption-in-transit.png
+    description: The screenshot shows a Windows Azure portal page for configuring
+      an Azure Files NFS share with the option to mount with encryption in transit
+      enabled, including instructions for Linux distribution sel…
+  - url: https://learn.microsoft.com/en-us/azure/aks/media/concepts-storage/aks-storage-concept.png
+    description: The diagram illustrates the architecture and components involved
+      in Azure Kubernetes Service (AKS) with an emphasis on persistent volume claims,
+      control plane, and node management, highlighting limita…
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/storage-files-networking-overview/smb-over-quic.png
+    description: The diagram illustrates the connection of users to an Azure File
+      Share through various components, including backup, file sync services, SMB/QUIC
+      endpoints, and different server locations for on-premi…
+  - url: https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/files/security/media/files-troubleshoot-linux-nfs/connectivity-using-public-endpoints.png
+    description: The diagram illustrates a network configuration with multiple virtual
+      machines and subnets interconnected through virtual network gateways, emphasizing
+      secure connectivity for Azure Files NFS encrypti…
+  excerpt: '[Skip to main content](https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies#main)[Skip
+    to Ask Learn chat experience](https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881)[More
+    info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Learn](https://learn.microsoft.com/en-us/)[](https://www.microsoft.com/)
+
+    Suggestions will filter as you type
+
+    [Sign in](https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies#)
+
+    ![Image 1](https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies)
+
+    ![Image 2](https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies)
+
+    * [Profile](https://learn.microsoft.com/en-us/users/me/activity/)
+
+    * [Analytics](https://learn.microsoft.com/en-us/users/me/analytics/)
+
+    * [Settings](https://learn.microsoft.com/en-us/users/me/settings/)
+
+    [Sign out](https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies#)
+
+    [](https://www.microsoft.com/)[Learn](https://learn.microsoft.com/en-us/)
+
+    * Documentation
+
+    * [All product documentation](https://learn.microsoft.com/en-us/docs/)
+
+    * [Azure documentation](https://learn.microsoft.com/en-us/azure/?product=popular)
+
+    * [Dynamics 365 documentation](https://learn.microsoft.com/en-us/dynamics365/)
+
+    * [Microsoft Copilot documentation](https://learn.microsoft.com/en-us/copilot/)
+
+    * [Microsoft 365 documentation](https://learn.microsoft.com/en-us/microsoft-365/)
+
+    * [Power Platform documentation](https://learn.microsoft.com/en-us/power-platform/)
+
+    * [Code samples](https://learn.microsoft.com/en-us/samples/)
+
+    * [Troubleshooting documentation](https://learn.microsoft.com/en-us/troubleshoot/)
+
+    Watch on demand
+
+    [Microsoft Build](https://build.microsoft.com/home?wt.mc_ID=msbuild26_ciarmar_corp_np_oo_MSL_reg)
+
+    Build, ship, and scale with AI-first tools and platforms.
+
+    * Training & Labs
+
+    * [All training](https://learn.microsoft.com/en-us/training/)
+
+    * [Azure training](https://learn.microsoft.com/en-us/training/browse/?products=azure)
+
+    * [Dynamics 365 training](https://learn.microsoft.com/en-us/training/browse/?products=dynamics-365)
+
+    * [Microsoft Copilot training](https://learn.microsoft.com/en-us/training/browse/?products=ms-copilot)
+
+    * [Microsoft 365 training](https://learn.microsoft.com/en-us/training/browse/?products=m365)
+
+    * [Microsoft Power Platform training](https://learn.microsoft.com/en-us/training/browse/?products=power-platform)
+
+    * [Labs](https://learn.microsoft.com/en-us/labs/)
+
+    * [Credentials](https://learn.microsoft.com/en-us/credentials/)
+
+    * [Career paths](https://learn.microsoft.com/en-us/training/career-paths/)
+
+    Watch on demand
+
+    [Microsoft Build](https://build.microsoft.com…'
+notes: This is a solid infrastructure and security topic for Kubernetes-heavy organizations.
+  The angle can focus on how encryption in transit for Azure Files NFS changes the
+  story for stateful workloads that need compliance, privacy, and simpler platform
+  hardening.
+article_path: content/posts/2026-07-20-aks-ya-cifra-en-transito-azure-files-nfs-por-que-cambia-de-verdad-el-juego-para.md
+pr_url: null

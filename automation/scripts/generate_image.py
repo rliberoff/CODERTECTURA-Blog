@@ -45,17 +45,22 @@ from typing import NoReturn
 
 from _foundry import FoundryError, FoundryImageClient
 
-# Covers use article-specific advertising art direction. This suffix enforces only
-# campaign clarity, crop resilience and safety; it must not impose a recurring scene,
+# Covers use article-specific artistic art direction. This suffix enforces the
+# painterly medium, crop resilience and safety; it must not impose a recurring scene,
 # subject, palette or lighting recipe. It intentionally diverges from the schematic
 # BODY_STYLE_SUFFIX in resolve_body_images.py.
 STYLE_SUFFIX = (
-    " -- premium advertising key visual for a professional technology publication "
-    "and social-media campaign. Preserve the article-specific concept, subject, "
+    " -- evocative editorial cover art for a professional technology publication, "
+    "executed as a cinematic digital painting / concept-art illustration: visible "
+    "painterly brushwork, rich texture and a dreamlike, atmospheric quality. NOT a "
+    "photograph, NOT photorealistic, NOT a sterile 3D product render or industrial "
+    "advertising shot. Preserve the article-specific concept, subject, "
     "setting and meaningful colour palette from the brief; do not replace them with "
-    "generic futuristic technology imagery. Communicate one idea immediately at "
-    "thumbnail size with confident visual hierarchy, intentional art direction, "
-    "polished materials and production-quality detail. Keep the essential subject "
+    "generic futuristic technology imagery. Tell the story through symbolism and "
+    "dramatic light: an expressive warm-versus-cool luminous contrast, a clear focal "
+    "glow, and any human presence rendered as small evocative silhouettes rather than "
+    "detailed realistic people. Communicate one idea immediately at "
+    "thumbnail size with confident visual hierarchy. Keep the essential subject "
     "and metaphor within the central 70% safe area so the image remains effective in "
     "wide 2:1 LinkedIn and blog-card crops, and keep the lower band visually calm for "
     "an overlaid title. Do not default to blue or cyan neon, back-facing people, "

@@ -29,3 +29,14 @@ def test_cover_style_does_not_impose_the_previous_recurring_scene():
     assert "deep midnight navy-to-black base" not in style
     assert "moody volumetric lighting" not in style
     assert "allowed subjects include" not in style
+
+
+def test_cover_style_is_painterly_not_photorealistic_advertising():
+    style = gi.STYLE_SUFFIX.lower()
+
+    assert "digital painting" in style
+    assert "painterly" in style
+    assert "not photorealistic" in style
+    assert "premium advertising key visual" not in style
+    assert "polished materials" not in style
+    assert "production-quality detail" not in style

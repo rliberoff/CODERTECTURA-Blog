@@ -84,7 +84,7 @@ from _text import slugify
 
 # Version of the editorial prompt below. Stored in the post's `ai.prompt_version`
 # for provenance/auditing. Bump it whenever the prompt/voice changes.
-PROMPT_VERSION = "2026-07-15.1"
+PROMPT_VERSION = "2026-07-20.1"
 
 MIN_COVER_PROMPT_CHARS = 80
 MAX_COVER_PROMPT_CHARS = 2400
@@ -292,14 +292,15 @@ description and cards; plain text, no Markdown.
 (for example "Inteligencia Artificial", "Arquitectura de Software", ".NET", "Azure").
 - "body_markdown": the complete article IN SPANISH in Markdown (roughly 800-1500 \
 words), starting with an engaging introductory paragraph.
-- "image_prompt": an art-direction brief IN SPANISH (es-ES) (3-5 sentences) for a \
-PREMIUM ADVERTISING COVER, based on the final article's specific thesis, the concrete \
+- "image_prompt": an art-direction brief IN SPANISH (es-ES) (3-5 sentences) for an \
+EVOCATIVE PAINTERLY COVER ILLUSTRATION (cinematic digital painting / concept art, NOT \
+photorealistic advertising), based on the final article's specific thesis, the concrete \
 benefit for the reader and its central tension or transformation. Express ONE instantly \
-legible, article-specific campaign idea through a concrete subject and visual metaphor. \
-Choose the most relevant composition family for THIS article: an object hero, editorial \
-still life, transformation or action, sculptural metaphor, architectural environment, \
-or character/mascot campaign. State the subject, action, setting, composition, materials, \
-lighting and a purposeful colour palette whose meaning comes from the article. Do NOT \
+legible, article-specific idea through a symbolic scene or visual metaphor with \
+narrative weight: a contrast, a threshold, a journey or a transformation the reader \
+can feel at a glance. State the subject, action, setting, composition, atmosphere and \
+dramatic lighting (for example a warm focal glow against a deep cool ambience) and a \
+purposeful colour palette whose meaning comes from the article. Do NOT \
 default to generic blue/cyan neon technology, a person seen from behind, command centres, \
 dashboard walls, glowing orbs, symmetric sci-fi halls, floating interfaces or decorative \
 circuit grids; use any of them only when the article itself makes that motif essential. \
@@ -394,12 +395,14 @@ citations so each link becomes a natural, meaningful part of the supported sente
 with a language tag. Do not include the title as an H1 heading and do not include front \
 matter.
 - "image_prompt": after rewriting the article, replace the draft prompt with a 3-5 \
-sentence art-direction brief IN SPANISH for a PREMIUM COVER. Base it on the \
+sentence art-direction brief IN SPANISH for an EVOCATIVE PAINTERLY COVER (cinematic \
+digital painting / concept art, NOT photorealistic advertising). Base it on the \
 FINAL article's specific thesis, concrete reader benefit, and central tension or \
-transformation. Express ONE instantly legible campaign idea through an article-specific \
-subject and metaphor; choose an object hero, editorial still life, transformation/action, \
-sculptural metaphor, architectural environment, or character/mascot campaign. Specify \
-subject, action, setting, composition, materials, lighting and a meaningful palette. Do \
+transformation. Express ONE instantly legible idea through an article-specific \
+symbolic scene or visual metaphor with narrative weight (a contrast, a threshold, a \
+journey, a transformation). Specify subject, action, setting, composition, atmosphere, \
+dramatic lighting (for example a warm focal glow against a deep cool ambience) and a \
+meaningful palette. Do \
 NOT default to blue/cyan neon, a back-facing person, command centres, dashboard walls, \
 glowing orbs, symmetric sci-fi halls, floating UI or decorative circuit grids. Keep the \
 essential idea in the central 70% for wide social crops and the lower band calm for the \

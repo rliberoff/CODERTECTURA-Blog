@@ -1,0 +1,30 @@
+id: azure-functions-python-3-14-ga
+title: Azure Functions Adds Official Support for Python 3.14
+slug: azure-functions-ya-soporta-python-3-14-como-planificar-la-actualizacion-sin-romp
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-07-20T08:55:22+00:00'
+- status: in_review
+  at: '2026-07-20T08:59:38+00:00'
+discovered_at: '2026-07-20T08:55:22+00:00'
+similarity:
+  max_score: 0.2757
+  closest_match: copilot-se-vuelve-agente-asi-cambian-visual-studio-y-vs-code-en-2026
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=567646
+  title: '[Launched] Generally Available: Azure Functions support for Python 3.14'
+  published_date: '2026-07-17'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: You can now develop functions using Python 3.14 locally and deploy them
+    to Azure Functions plans on Linux. Upgrade your apps to Python 3.14 to take advantage
+    of enhanced security, a longer support window, and continued compatibility with
+    the Azure Functio
+notes: This is highly relevant for .NET and cloud architects who maintain polyglot
+  serverless estates. The angle can cover upgrade planning, runtime compatibility,
+  and the security/value proposition of moving Function Apps to a newer Python LTS-style
+  release window.
+article_path: content/posts/2026-07-20-azure-functions-ya-soporta-python-3-14-como-planificar-la-actualizacion-sin-romp.md
+pr_url: null

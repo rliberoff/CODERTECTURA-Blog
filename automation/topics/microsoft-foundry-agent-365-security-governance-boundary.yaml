@@ -1,0 +1,338 @@
+id: microsoft-foundry-agent-365-security-governance-boundary
+title: 'Microsoft Foundry and Agent 365: the new security and governance boundary
+  for AI agents'
+slug: microsoft-foundry-y-agent-365-donde-cambia-de-verdad-la-frontera-de-seguridad-pa
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-07-20T16:10:17+00:00'
+- status: in_review
+  at: '2026-07-20T16:18:14+00:00'
+discovered_at: '2026-07-20T16:10:17+00:00'
+similarity:
+  max_score: 0.6014
+  closest_match: microsoft-foundry-observability-agent-tracing-sensitive-telemetry
+  threshold: 0.82
+sources:
+- url: https://www.microsoft.com/en-us/microsoft-cloud/blog/2026/06/29/the-2026-agent-confidence-index-where-300-builders-see-real-momentum
+  title: 'The 2026 Agent Confidence Index: Where 300 builders ...'
+  published_date: '2026-06-29'
+  host: microsoft.com
+  kind: primary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: Microsoft
+  - url: https://www.microsoft.com/en-us/microsoft-cloud/blog/wp-content/uploads/2026/06/Cloud-Fabric_2026-Agent-Confidence-Index-1.gif
+    description: ''
+  - url: https://www.microsoft.com/en-us/microsoft-cloud/blog/wp-content/uploads/2026/06/word-image-15364-2-2.webp
+    description: Chart showing trending AI agent tasks across AI, data, and cloud
+      workflows. Highest-confidence use cases include automated report generation
+      and distribution (84), certificate expiration monitoring an…
+  - url: https://www.microsoft.com/en-us/microsoft-cloud/blog/wp-content/uploads/2026/06/word-image-15364-3-2.webp
+    description: MIT Technology Review Insights survey chart titled “Concerns are
+      addressed by keeping humans in the loop and increasing observability.” Respondents
+      most frequently identified keeping humans in the loo…
+  - url: https://www.microsoft.com/en-us/microsoft-cloud/blog/wp-content/uploads/2026/06/word-image-15364-4-2.webp
+    description: MIT Technology Review Insights survey chart showing confidence that
+      AI agents will enhance careers across technology disciplines. System reliability
+      and site operations has the highest confidence leve…
+  - url: https://www.microsoft.com/en-us/microsoft-cloud/blog/wp-content/uploads/2026/06/CLO20b_Avery_Quinn_casual_office_001-scaled.jpg
+    description: two people sitting in front of the computer and looking at the code
+  - url: https://www.microsoft.com/en-us/microsoft-cloud/blog/wp-content/uploads/2026/06/Amanda-Silver_new-headshot_cropped.jpg
+    description: Amanda Silver
+  - url: https://www.microsoft.com/en-us/microsoft-cloud/blog/wp-content/uploads/2026/06/Small-businesses-ai-invitation-1.jpg
+    description: Abstract design with image of two small business workers opening
+      an package
+  excerpt: '[Skip to content](#wp--skip-link--target)
+
+    [![Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)](https://www.microsoft.com)
+    [Microsoft AI](https://www.microsoft.com/en-us/ai) [Frontier Transformation](https://www.microsoft.com/en-us/ai/frontier-transformation)
+    [AI for business](https://www.microsoft.com/en-us/ai/ai-business-value-and-benefits)
+    [Use cases](https://www.microsoft.com/en-us/ai/use-case) [Consumer goods](https://www.microsoft.com/en-us/ai/consumer-goods)
+    [Digital sovereignty](https://www.microsoft.com/en-us/sovereignty) [Education](https://www.microsoft.com/en-us/education)
+    [Overview](https://www.microsoft.com/en-us/ai/energy-resources) [Power and utilities](https://www.microsoft.com/en-us/ai/energy-resources/power-utilities)
+    [Oil and gas](https://www.microsoft.com/en-us/ai/energy-resources/oil-gas) [Mining](https://www.microsoft.com/en-us/ai/energy-resources/mining)
+    [Overview](https://www.microsoft.com/en-us/ai/financial-services) [Banking](https://www.microsoft.com/en-us/ai/financial-services/banking)
+    [Capital markets](https://www.microsoft.com/en-us/ai/financial-services/capital-markets)
+    [Insurance](https://www.microsoft.com/en-us/ai/financial-services/insurance) [Overview](https://www.microsoft.com/en-us/ai/government)
+    [Defense and intelligence](https://www.microsoft.com/en-us/ai/defense-intelligence)
+    [Transportation and urban infrastructure](https://www.microsoft.com/en-us/ai/government/transportation-urban-infrastructure)
+    [Social services and public health](https://www.microsoft.com/en-us/ai/government/public-health-social-services)
+    [Public safety and justice](https://www.microsoft.com/en-us/ai/government/public-safety-and-justice)
+    [Public finance](https://www.microsoft.com/en-us/ai/government/public-finance)
+    [Overview](https://www.microsoft.com/en-us/us-government) [Defense and intelligence](https://www.microsoft.com/en-us/us-government/defense-intelligence)
+    [Federal civilian](https://www.microsoft.com/en-us/us-government/federal-civilian)
+    [State and local governments](https://www.microsoft.com/en-us/us-government/state-local)
+    [Cloud for US government](https://www.microsoft.com/en-us/us-government/government-cloud)
+    [AI for US government](https://www.microsoft.com/en-us/us-government/ai-for-government)
+    [Overview](https://www.microsoft.com/en-us/ai/health) [Providers](https://www.microsoft.com/en-us/ai/health/providers)
+    [Payors](https://www.microsoft.com/en-us/ai/health/payors) [Life sciences](https://www.microsoft.com/en-us/ai/health/life-sciences)
+    [Health solutions](https://www.microsoft.com/en-us/health-solutions) [Overview](https://www.microsoft.com/en-us/ai/manufacturing)
+    [Industrial transformation](https://www.microsoft.com/en-us/ai/manufacturing/industrial-transformation)
+    [Media and entertainment](https://www.microsoft.com/en-us/ai/media-entertainment)
+    [Overview](https://www.microsoft.com/en-us/ai/mobility) [Automotive](https://www.microsoft.com/en-us/ai/mobility/automotive)
+    [Travel and transportation](http…'
+- url: https://adoption.microsoft.com/en-us/copilot-chat
+  title: Microsoft 365 Copilot Chat – Microsoft Adoption
+  published_date: null
+  host: adoption.microsoft.com
+  kind: secondary
+  excerpt: '[![Microsoft logo](/wp-content/uploads/2025/06/microsoft-logo.png)](https://www.microsoft.com
+    "Microsoft")
+
+    [Microsoft Adoption](/ "Microsoft Adoption")
+
+    * [Home](/)
+
+    * [Roles](#)
+
+    + [Business User](/en-us/roles/business-user/)
+
+    + [Champion](/en-us/roles/champion/)
+
+    + [Developer](/en-us/roles/developer/)
+
+    + [IT Professional](/en-us/roles/it-professional/)
+
+    * [Products](#)
+
+    + [AI Agents Hub](/en-us/ai-agents/)
+
+    - [Agents in Microsoft 365](/en-us/ai-agents/agents-in-microsoft-365/)
+
+    - [Build agents with Microsoft 365 Copilot](/en-us/ai-agents/build-agents/)
+
+    - [Microsoft Agent 365](/en-us/ai-agents/microsoft-agent-365/)
+
+    - [Microsoft Foundry](/en-us/ai-agents/microsoft-foundry/)
+
+    - [Employee Self-Service Agent in Microsoft 365 Copilot](/en-us/ai-agents/employee-self-service-agent/)
+
+    - [Microsoft Copilot Studio](/en-us/ai-agents/copilot-studio/)
+
+    - [People Skills](/en-us/ai-agents/people-skills/)
+
+    - [Agents in SharePoint](/en-us/ai-agents/agents-in-sharepoint/)
+
+    + [Microsoft 365](/en-us/microsoft-365/)
+
+    - [Microsoft 365 Archive](/en-us/microsoft-365-archive/)
+
+    - [Microsoft 365 Backup](/en-us/microsoft-365-backup/)
+
+    - [Microsoft 365 Backup Storage](/en-us/microsoft-365-backup-storage/)
+
+    + [Microsoft 365 Copilot](/en-us/copilot/)
+
+    - [Essential guide to Microsoft 365 Copilot adoption](/en-us/copilot/essential-guide/)
+
+    - [Frontier program](/en-us/copilot/frontier-program/)
+
+    - [Microsoft 365 Copilot advanced resources](/en-us/copilot/advanced-resources/)
+
+    - [Microsoft 365 Copilot Chat](/en-us/copilot-chat/)
+
+    - [Microsoft 365 Copilot for US Government](/en-us/copilot/us-government/)
+
+    - [Microsoft 365 Copilot for Sales](/en-us/copilot-for-sales/)
+
+    - [Microsoft 365 Copilot for Service](/en-us/copilot-for-service/)
+
+    - [Microsoft 365 Copilot for Small and Medium Business](/en-us/copilot/smb/)
+
+    - [Microsoft 365 Copilot in Teams](/en-us/copilot-in-teams/)
+
+    - [Prompt Gallery](/en-us/copilot/prompt-gallery/)
+
+    + [Microsoft Adoption Score](/en-us/adoption-score/)
+
+    + [Microsoft Clipchamp](/en-us/clipchamp/)
+
+    + [Microsoft Copilot Studio](/en-us/ai-agents/copilot-studio/)
+
+    + [Microsoft Dynamics 365](/en-us/dynamics-365/)
+
+    - [Microsoft Copilot in Dynamics 365 Customer Service](/en-us/copilot-in-dynamics-365-customer-service/)
+
+    + [Microsoft Edge for Business](/en-us/edge-for-business/)
+
+    + [Microsoft Graph](/en-us/microsoft-graph/)
+
+    + [Microsoft Lists](/en-us/microsoft-lists/)
+
+    + [Microsoft Loop](/en-us/microsoft-loop/)
+
+    + [Microsoft Places](/en-us/microsoft-places/)
+
+    + [Microsoft Planner](/en-us/microsoft-planner/)
+
+    + [Microsoft Power Platform](/en-us/powerplatform/)
+
+    + [Microsoft Security](/en-us/microsoft-security/)
+
+    - [Microsoft Entra](/en-us/microsoft-security/entra/)
+
+    - [Microsoft Intune](/en-us/microsoft-security/intune/)
+
+    - [Microsoft Purview](/en-us/microsoft-security/purview/)
+
+    - [Microsoft Security Copilot](/en-us/security-copilot/)
+
+    - [Microsoft Sentinel](/en-us/microsoft-security/sentinel/)
+
+    + [Microsoft Teams](/en-us/microsoft-teams/)
+
+    - [Microsoft Mesh](/en-us/mesh/)
+
+    - [Microsoft Teams Phone](/en-us/microso…'
+- url: https://techcommunity.microsoft.com/blog/azurearchitectureblog/from-policy-to-proof-governing-ai-to-scale-human-ambition-and-machine-intelligen/4535137
+  title: 'From Policy to Proof: Governing AI to Scale Human ...'
+  published_date: null
+  host: techcommunity.microsoft.com
+  kind: secondary
+  excerpt: '## Blog Post
+
+    ![](https://techcommunity.microsoft.com/t5/s/gxcuf89792/images/bS00NTM1MTM3LU40YmhNTg?revision=26&image-dimensions=2000x2000&constrain-image=true)
+
+    Azure Architecture Blog
+
+    12 MIN READ
+
+    # From Policy to Proof: Governing AI to Scale Human Ambition and Machine Intelligence
+
+    [![manasa_ramalinga''s avatar](https://techcommunity.microsoft.com/t5/s/gxcuf89792/m_assets/avatars/default/avatar-1.svg?image-dimensions=50x50)](/users/manasa_ramalinga/1084396)
+
+    [manasa\_ramalinga](/users/manasa_ramalinga/1084396)
+
+    ![Icon for Microsoft rank](https://techcommunity.microsoft.com/t5/s/gxcuf89792/images/cmstNC05WEo0blc?image-dimensions=100x16&constrain-image=true)Microsoft
+
+    Jul 15, 2026
+
+    ## A practical reference map for governing AI and agents across their lifecycle
+    from policy and data control to observability, security, runtime enforcement and
+    continuous proof.
+
+    Enterprises are moving from AI experiments to AI in production. Copilots are in
+    the flow of daily work, custom applications are built on foundation models, and
+    autonomous agents are beginning to take actions on behalf of the business. As
+    organizations combine **human ambition with machine intelligence****, trust becomes
+    the defining requirement** for scaling AI responsibly and realizing AI''s full
+    potential.
+
+    That shift changes the governance question from ***"can we use AI responsibly?"***to
+    a harder one:***"can we prove, continuously, that every AI system and agent in
+    our estate is safe, compliant, observable, and accountable?"***
+
+    The organizations getting this right have stopped treating governance as a static
+    document that lives in a policy binder. They treat it as an operating system:
+    a connected set of policies, controls, telemetry, and evidence that runs alongside
+    AI everywhere it operates. Governance defines what should happen. Observability
+    and evaluations verify what is actually happening. Audit and response prove it,
+    and feed what they learn back into policy. The loop, not any single control, is
+    what makes governance real.
+
+    Every control in this map ladders up to a principled foundation: [Microsoft''s
+    Responsible AI Standard](https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/final/en-us/microsoft-brand/documents/Microsoft-Responsible-AI-Standard-General-Requirements.pdf?culture=en-us&country=us),
+    whose six principles (fairness, reliability and safety, privacy and security,
+    inclusiveness, transparency, and accountability) set the bar these controls exist
+    to meet.
+
+    This post lays out a practical reference map for that operating system: the domains
+    AI governance must cover, the cross-cutting runtime enforcement layer that operationalizes
+    them, and the Microsoft services that support each one.
+
+    ## **The four pillars of AI governance**
+
+    At its core, AI governance does four things. Skip any one of them and a gap opens
+    up -policy without control is aspirational, control without visibility is blind,
+    and visibility without proof cannot withstand an audit.
+
+    1. **Policy - Define the rule…'
+- url: https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/transition-agent-security-to-agent-365
+  title: Transition Microsoft Copilot Studio and Microsoft Foundry ...
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/defender-docs/blob/public/defender-xdr/security-for-ai/transition-agent-security-to-agent-365.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Transition Microsoft Copilot Studio and Microsoft Foundry agent security capabilities
+    to Microsoft Agent 365
+
+    Effective July 1, 2026, AI agent security capabilities for Microsoft Copilot Studio
+    and Microsoft Foundry agents require a Microsoft Agent 365 license. These capabilities
+    are no longer covered by existing Defender for Cloud Apps or Defender for Cloud
+    licenses. Tenants without an Agent 365-eligible license lose access to these capabilities
+    on July 1, 2026.
+
+    Once you onboard to Agent 365, these experiences remain in the Microsoft Defender
+    portal — powered by Agent 365 observability logs and the agent registry as the
+    single source of truth for agent inventory, real-time threat protection, and consistent
+    posture across your environment.
+
+    The following sections list the capabilities that require an Agent 365 license,
+    describe how the experience changes after you transition, and provide step-by-step
+    actions to prepare your environment before July 1, 2026.
+
+    ## Capabilities that require a Microsoft Agent 365 license as of July 1, 2026
+
+    These capabilities, currently through Microsoft Defender for Cloud Apps and Microsoft
+    Defender for Cloud, will be fully disabled for tenants without an Agent 365-eligible
+    license starting July 1, 2026:
+
+    * **Microsoft Copilot Studio agents** — previously supported through Microsoft
+    Defender for Cloud Apps:
+
+    + Agent discovery and posture
+
+    + Agent threat detection and real-time protection
+
+    + Investigation of agent activity in Advanced Hunting, powered by Agent 365 observability
+    logs
+
+    * **Microsoft Foundry agents** — previously supported through Microsoft Defender
+    for Cloud:
+
+    + Discovery and security posture for cloud-hosted agents, including multi-cloud
+    (previously available with the Defender Cloud Security Posture Management plan)
+
+    + Threat protection for agents (previously available with the Defender for AI
+    Services plan)
+
+    Note
+
+    Defender Cloud Security Posture Management (CSPM) continues to discover Microsoft
+    Foundry accounts and projects, but agent-level discovery, posture, and threat
+    detection require an Agent 365 license.
+
+    ## How does the experience change when you transition to Microsoft Agent 365?
+
+    #### Advanced Hunting
+
+    The AI agent inventory in Advanced Hunting is moving from the `AIAgentsIn…'
+notes: Focus on the licensing and control-plane shift around Microsoft Foundry agents
+  now that security capabilities move under Microsoft Agent 365. The story is relevant
+  for architects because it changes how agent security, observability, and compliance
+  are operationalized across Microsoft’s AI stack.
+article_path: content/posts/2026-07-20-microsoft-foundry-y-agent-365-donde-cambia-de-verdad-la-frontera-de-seguridad-pa.md
+pr_url: null

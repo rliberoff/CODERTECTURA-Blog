@@ -1,0 +1,30 @@
+id: azure-firewall-http-header-insertion-ga
+title: HTTP header insertion becomes generally available in Azure Firewall
+slug: azure-firewall-ya-inserta-cabeceras-http-en-ga-por-que-me-parece-mas-importante
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-07-28T07:02:10+00:00'
+- status: in_review
+  at: '2026-07-28T07:06:58+00:00'
+discovered_at: '2026-07-28T07:02:10+00:00'
+similarity:
+  max_score: 0.3998
+  closest_match: microsoft-foundry-observability-agent-tracing-sensitive-telemetry
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=568115
+  title: '[Launched] Generally Available: HTTP header insertion in Azure Firewall'
+  published_date: '2026-07-27'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: Azure Firewall now supports HTTP header insertion, enabling organizations
+    to add or overwrite HTTP/HTTPS request headers directly from Azure Firewall application
+    rules. This capability helps customers enforce security controls, support tenant
+    restriction
+notes: This is an infrastructure and security operations update with practical value
+  for enterprise network and application teams. It can be framed around enforcing
+  tenant restrictions, request shaping, and edge-level controls without changing application
+  code.
+article_path: content/posts/2026-07-28-azure-firewall-ya-inserta-cabeceras-http-en-ga-por-que-me-parece-mas-importante.md
+pr_url: null

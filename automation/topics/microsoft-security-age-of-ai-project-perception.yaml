@@ -1,0 +1,120 @@
+id: microsoft-security-age-of-ai-project-perception
+title: Microsoft frames a new security stack for the age of AI
+slug: de-herramientas-reactivas-a-defensa-multiagente-asi-plantea-microsoft-la-segurid
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-07-28T07:02:10+00:00'
+- status: in_review
+  at: '2026-07-28T07:12:37+00:00'
+discovered_at: '2026-07-28T07:02:10+00:00'
+similarity:
+  max_score: 0.6232
+  closest_match: microsoft-foundry-agent-365-security-governance-boundary
+  threshold: 0.82
+sources:
+- url: https://blogs.microsoft.com/blog/2026/07/27/rethinking-security-for-the-age-of-ai/
+  title: Rethinking security for the age of AI
+  published_date: '2026-07-27'
+  host: blogs.microsoft.com
+  kind: primary
+  excerpt: Why security needs a new Cyber Stack — Introducing Project Perception The
+    physics of cybersecurity are changing. Autonomous systems can now reason, adapt
+    and operate continuously. At the same time, the cost of offense is falling, while
+    the volume, velocity and complexity of what must be secured continues to grow.
+    Attackers can generate exploits faster,... The post Rethinking security for the
+    age of AI appeared first on The Official Microsoft Blog .
+- url: https://www.microsoft.com/en-us/security/blog/2026/07/27/enhancing-ai-security-through-global-ai-red-teaming/
+  title: Enhancing AI security through global AI red teaming
+  published_date: '2026-07-27'
+  host: microsoft.com
+  kind: primary
+  excerpt: Microsoft's External Red Team Alliance (EXTRA) is a global AI security
+    initiative designed to advance AI safety research and red teaming. By partnering
+    with universities, researchers, and regional experts, EXTRA helps identify emerging
+    AI risks, improve security testing, and strengthen the resilience of frontier
+    AI systems. The post Enhancing AI security through global AI red teaming appeared
+    first on Microsoft Security Blog .
+- url: https://www.microsoft.com/en-us/security/blog/2026/06/30/securing-ai-agents-ai-tools-move-from-reading-acting
+  title: 'Securing AI agents: When AI tools move from reading to acting | Microsoft
+    Security Blog'
+  published_date: '2026-06-30'
+  host: microsoft.com
+  kind: secondary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: Microsoft
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/05/MS_Actional-Insights_AI.webp
+    description: Global AI Red Team Insights
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/06/image-62.webp
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/blog-in-a-box/dist/images/default-avatar.png
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/Featured-image-Q2.webp
+    description: Man typing at laptop
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/03/MS_Actional-Insights_Phishing-social-engineering.jpg
+    description: A graphic showing a phishing hook representing social engineering
+      and phishing
+  excerpt: '![Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg)
+
+    ![Global AI Red Team Insights](https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/05/MS_Actional-Insights_AI.webp)
+
+    # Securing AI agents: When AI tools move from reading to acting
+
+    ## Listen to this post
+
+    ![Copilot logo](https://www.microsoft.com/en-us/security/blog/wp-content/mu-plugins/ms-core/dist/svg/copilot-logo.svg)
+
+    ## Share
+
+    ## Content types
+
+    ## Products and services
+
+    ## Topics
+
+    As enterprise deployments mature, some enterprise AI agents are shifting from
+    reading content to taking action. In this post, Microsoft Incident Response walks
+    through an attack pattern that targets the fastest growing part of the agentic
+    AI supply chain: Model Context Protocol (MCP) tools. The post provides a practical
+    playbook for detecting, containing, and preventing this class of attack using
+    Microsoft security controls.
+
+    ## From reading to acting
+
+    This is the third post in the AI Application Security series. [AI Application
+    Series 1: Security considerations when adopting AI tools](https://www.microsoft.com/en-us/security/security-insider/emerging-trends/ai-application-security-considerations-for-organizations)
+    examined how AI adoption expands the enterprise attack surface. [AI Application
+    Series 2: Detecting and analyzing prompt abuse in AI tools](https://www.microsoft.com/en-us/security/blog/2026/03/12/detecting-analyzing-prompt-abuse-in-ai-tools/)
+    showed how indirect prompt injection can bias the output of a passive AI summarizer.
+    In both cases, the AI only read content and produced text, it did not take action.
+    This post addresses what happens when that boundary changes.
+
+    AI agents can plan multi-step tasks, decide which tools to invoke, and execute
+    actions on behalf of the user. Microsoft 365 Copilot can draft and send email,
+    create documents, and update calendar entries. Copilot Studio and Azure AI Foundry
+    allow organizations to build custom agents that connect to business systems through
+    MCP. As AI is increasingly used in read-write workflows, the impact profile of
+    vulnerabilities may shift. A prompt injection against a summarizer can bias an
+    output. A prompt injection against an agent can trigger an action.
+
+    According to the [International Data Corporation (IDC)](https://my.idc.com/getdoc.jsp?containerId=prUS53883425),
+    the number of active AI agents in enterprises is projected to grow from 28.6 million
+    in 2025 to more than 2.2 billion by 2030. That scale is why the [OWASP Top 10
+    for Agentic Applications, released in December 2025](https://genai.owasp.org/2025/12/09/owasp-genai-security-project-releases-top-10-risks-and-mitigations-for-agentic-ai-security/),
+    now sits alongside the LLM Top 10 as a reference framework for defenders. This
+    post focuses o…'
+notes: This is a broad strategic piece about how Microsoft sees agentic security evolving.
+  The editorial angle is the shift from reactive tooling to continuous, multi-agent
+  defense, a topic that connects well with software architecture, governance, and
+  AI security.
+article_path: content/posts/2026-07-28-de-herramientas-reactivas-a-defensa-multiagente-asi-plantea-microsoft-la-segurid.md
+pr_url: null

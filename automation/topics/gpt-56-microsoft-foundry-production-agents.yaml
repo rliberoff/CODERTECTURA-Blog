@@ -1,0 +1,211 @@
+id: gpt-56-microsoft-foundry-production-agents
+title: GPT-5.6 arrives in Microsoft Foundry with production agent capabilities
+slug: gpt-5-6-en-microsoft-foundry-cuando-el-modelo-deja-de-ser-la-noticia-y-empieza-l
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-07-28T07:02:10+00:00'
+- status: in_review
+  at: '2026-07-28T07:18:53+00:00'
+discovered_at: '2026-07-28T07:02:10+00:00'
+similarity:
+  max_score: 0.5323
+  closest_match: microsoft-foundry-observability-agent-tracing-sensitive-telemetry
+  threshold: 0.82
+sources:
+- url: https://blogs.microsoft.com/blog/2026/07/20/microsoft-expands-azure-ai-and-hpc-infrastructure-with-amd/
+  title: Microsoft expands Azure AI and HPC infrastructure with AMD
+  published_date: '2026-07-20'
+  host: blogs.microsoft.com
+  kind: primary
+  images:
+  - url: https://blogs.microsoft.com/wp-content/uploads/2026/07/OMB-Azure-AMD-Hero.jpg
+    description: Three glowing blue microchips labeled AMD Helios systems for AI data,
+      Silicon design and technical computing, and production-scale AI inference are
+      displayed with accompanying text highlighting their…
+  excerpt: AI workloads are scaling faster than any single infrastructure approach
+    can support — with more models, new agent-driven workloads and
+- url: https://github.com/orgs/microsoft-foundry/discussions/280
+  title: 'Python + AI Weekly Office Hours: Recordings & Resources #280'
+  published_date: null
+  host: github.com
+  kind: secondary
+  excerpt: '[Skip to content](#start-of-content)
+
+    ## Navigation Menu
+
+    [Sign in](/login?return_to=https%3A%2F%2Fgithub.com%2Forgs%2Fmicrosoft-foundry%2Fdiscussions%2F280)
+
+    Appearance settings
+
+    # Search code, repositories, users, issues, pull requests...
+
+    [Search syntax tips](https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax)
+
+    [Sign in](/login?return_to=https%3A%2F%2Fgithub.com%2Forgs%2Fmicrosoft-foundry%2Fdiscussions%2F280)
+
+    [Sign up](/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fdiscussions_fragments%2Fdiscussion_layout&source=header-repo&source_repo=microsoft-foundry%2Fdiscussions)
+
+    Appearance settings
+
+    You signed in with another tab or window. Reload to refresh your session. You
+    signed out in another tab or window. Reload to refresh your session. You switched
+    accounts on another tab or window. Reload to refresh your session. Dismiss alert
+
+    {{ message }}
+
+    # [@microsoft-foundry Microsoft Foundry](/microsoft-foundry)
+
+    # Python + AI Weekly Office Hours: Recordings & Resources #280
+
+    Pinned Unanswered
+
+    [pamelafox](/pamelafox) asked this question in [Ask Me Anything (AMA)](/orgs/microsoft-foundry/discussions/categories/ask-me-anything-ama)
+
+    [Python + AI Weekly Office Hours: Recordings & Resources](#top) #280
+
+    [![@pamelafox](https://avatars.githubusercontent.com/u/297042?s=40&v=4) pamelafox](/pamelafox)
+
+    Jan 7, 2026 · 187 comments · 6 replies
+
+    [Return to top](#top)
+
+    Discussion options
+
+    ### Uh oh!
+
+    There was an error while loading. Please reload this page.
+
+    ### Uh oh!
+
+    There was an error while loading. Please reload this page.
+
+    ## [pamelafox](/pamelafox) [Jan 7, 2026](#discussion-9316085)
+
+    -
+
+    | |
+
+    | --- |
+
+    | Each week, we hold weekly office hours about all things Python + AI in the Foundry
+    Discord. Join the Discord here: <http://aka.ms/aipython/oh> This thread will list
+    the recordings of each office hours, and any other resources that come out of
+    the OH sessions. The questions and answers are automatically posted (based on
+    the transcript) as comments in this thread. July 14, 2026 * [Recording](https://www.youtube.com/watch?v=Bvlb_LD7orA)
+    Topics covered: * [Announcements](#discussioncomment-17644885) * [Should a larger
+    model create the plan for a smaller model to implement?](#discussioncomment-17644886)
+    * [Can the Codex CLI run inside the GitHub Copilot desktop app?](#discussioncomment-17644887)
+    * [How should agents be built and deployed on AKS, and can they be registered
+    with Foundry?](#discussioncomment-17644888) * [What is different about deep-agent
+    architectures, and when are they useful?](#discussioncomment-17644889) * [What
+    is the state of knowledge graphs in Work IQ and Azure AI Search?](#discussioncomment-17644890)
+    * [What observability practices work well with Agent Framework and Langfuse?](#discussioncomment-17644891)
+    July 7, 2026 * [Recording](https://www.youtube.com/watch?v=hTzvm4Hk-wQ) Topics
+    covered: * [Announcements](#discussioncomment-17573549) * [Do agents need to be
+    ho…'
+- url: https://azure.microsoft.com/en-us/blog/att-and-microsoft-scale-trillion-token-workloads-with-microsoft-foundry-and-amd
+  title: AT&T and Microsoft scale trillion-token workloads with ...
+  published_date: null
+  host: azure.microsoft.com
+  kind: secondary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: ''
+  - url: https://azure.microsoft.com/en-us/blog/wp-content/uploads/2026/07/Foundry-AT-T-OTel-2_2-2-1.jpg
+    description: How Microsoft Foundry helped power AT&Ts OTel2.0
+  - url: https://azure.microsoft.com/en-us/blog/wp-content/uploads/2027/06/FY26AE-Azure-Composite-DeepBlue-006-H.jpg
+    description: Abstract shapes in blue and green and purple.
+  - url: https://azure.microsoft.com/en-us/blog/wp-content/uploads/2024/08/8.5-steve-headshot.jpg
+    description: ''
+  - url: https://azure.microsoft.com/en-us/blog/wp-content/themes/azure/dist/images/section-footer-bg-day.png
+    description: ''
+  - url: https://azure.microsoft.com/en-us/blog/wp-content/themes/azure/dist/images/section-footer-bg-night.png
+    description: ''
+  - url: https://azure.microsoft.com/en-us/blog/wp-content/uploads/2026/07/Azure-Databricks-Forrester-2.jpg
+    description: Image of datacenter with text reading The Total Economic Impact of
+      Azure Databricks
+  - url: https://azure.microsoft.com/en-us/blog/wp-content/uploads/2026/07/Foundry_7-9_GA-1.jpg
+    description: The newest Microsoft Foundry innovations
+  excerpt: '![](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)
+
+    ## Global
+
+    ![How Microsoft Foundry helped power AT&Ts OTel2.0](https://azure.microsoft.com/en-us/blog/wp-content/uploads/2026/07/Foundry-AT-T-OTel-2_2-2-1.jpg)
+
+    # AT&T and Microsoft scale trillion-token workloads with Microsoft Foundry and
+    AMD
+
+    ## Listen to this post
+
+    ![Copilot logo](https://azure.microsoft.com/en-us/blog/wp-content/mu-plugins/ms-core/dist/svg/copilot-logo.svg)
+
+    ## Share
+
+    ## Categories
+
+    ## Tags
+
+    ## Audience
+
+    ## Content types
+
+    ## Products
+
+    ## First-of-its-kind telecom AI deployment
+
+    Telecommunications organizations are increasingly looking to AI to help teams
+    navigate highly specialized domains, but generic models often lack the industry-specific
+    knowledge needed to understand telecom networks, standards, and operations. To
+    address that gap, AT&T created their Open Telco (OTel) models, the next generation
+    of telecom-focused AI designed to bring deeper telecommunications expertise into
+    AI systems. Building OTel2.0 required more than training a large language model,
+    it reflected a broader issue many organizations face: how to build domain-specific
+    AI systems at scale while balancing cost, performance, and operational complexity.
+    Cost management quickly became a key consideration. To continue advancing telecom-focused
+    AI, AT&T needed a platform capable of supporting OTel2.0 development at an entirely
+    new scale.
+
+    Where teams previously had to own and manage deployments, infrastructure, and
+    the associated operational overhead, [Foundry Managed Compute](https://learn.microsoft.com/en-us/azure/foundry/concepts/managed-compute-overview)
+    provided a more streamlined way to access dedicated graphics processing unit (GPU)
+    capacity. This transformation requires more than powerful models; it requires
+    the ability to scale without compromising cost, flexibility, or performance.
+
+    Using [Microsoft Foundry Managed Compute](https://devblogs.microsoft.com/foundry/announcing-foundry-managed-compute/),
+    AT&T was able to experiment across multiple open models, optimize workloads across
+    different GPU architectures, and process massive volumes of telecom data all within
+    a unified platform. The result was an AI development environment capable of supporting
+    trillions of tokens while giving teams the flexibility to iterate, optimize, and
+    innovate faster.
+
+    ## Model choice meets infrastructure flexibility
+
+    Building OTel2.0 required flexibility across both models and infrastructure. Rather
+    than standardizing on a single model, AT&T adopted a multi open-model strategy.
+    Open models were central to AT&T’s approach because they provided the flexibility
+    to work with approved telecom data, tailor the workflow for domain-specific model
+    development, and support large-scale experimentation with greater control over
+    cost and deployment strategy. Through [Microsoft Foundry](https://azure.microsoft.com/en-us/products/ai-foundry),
+    the team deployed several models from the Hugging Face collection, including [Phi-4](https://azure.micr…'
+- url: https://azure.microsoft.com/en-us/blog/gpt-5-6-now-available-in-microsoft-foundry/
+  title: 'GPT-5.6 now available in Microsoft Foundry: Frontier models, pricing, and
+    production agents'
+  published_date: null
+  host: azure.microsoft.com
+  kind: secondary
+  images:
+  - url: https://azure.microsoft.com/en-us/blog/wp-content/uploads/2026/07/Foundry_7-9_GA-1.jpg
+    description: ''
+  - url: https://azure.microsoft.com/en-us/blog/wp-content/uploads/2026/07/Foundry-AT-T-OTel-2_2-2-1.jpg
+    description: ''
+  - url: https://azure.microsoft.com/en-us/blog/wp-content/uploads/2026/06/Azure-Infrastructure-Dark-1-scaled.jpg
+    description: ''
+  excerpt: Introducing OpenAI's latest frontier model series, the Asia Pacific Data
+    Zone, and product agent capabilities, all generally available in
+notes: 'A strong Azure AI/architecture topic centered on frontier models moving into
+  production. The editorial angle is not just model availability, but the surrounding
+  platform story: governed tools, memory, observability, and enterprise-ready deployment
+  on Azure.'
+article_path: content/posts/2026-07-28-gpt-5-6-en-microsoft-foundry-cuando-el-modelo-deja-de-ser-la-noticia-y-empieza-l.md
+pr_url: null

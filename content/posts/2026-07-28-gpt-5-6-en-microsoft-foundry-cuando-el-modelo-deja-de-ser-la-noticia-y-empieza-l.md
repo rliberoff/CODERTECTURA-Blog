@@ -2,7 +2,7 @@
 title: 'GPT-5.6 en Microsoft Foundry: cuando el modelo deja de ser la noticia y empieza
   la plataforma'
 date: '2026-07-28T07:17:43+00:00'
-draft: true
+draft: false
 slug: gpt-5-6-en-microsoft-foundry-cuando-el-modelo-deja-de-ser-la-noticia-y-empieza-l
 description: 'GPT-5.6 llega a Microsoft Foundry, pero la lectura importante no es
   el modelo aislado: es el salto hacia agentes operables en producción.'

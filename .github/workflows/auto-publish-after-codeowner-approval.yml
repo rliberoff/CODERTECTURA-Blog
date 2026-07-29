@@ -267,7 +267,27 @@ jobs:
           steps.targets.outputs.count != '0'
         run: hugo --gc --minify
 
+      # The publication metadata only reaches main if it is committed while the
+      # PR is still open. A merge landed between approval and this point would
+      # strand the commit on an already-merged branch, so bail out loudly.
+      - name: Verify the PR is still open before committing
+        if: >-
+          steps.reviewer.outputs.is_codeowner == 'true' &&
+          steps.targets.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          STATE="$(gh pr view "${PR_NUMBER}" --json state --jq .state)"
+          if [ "${STATE}" != "OPEN" ]; then
+            echo "::error::PR #${PR_NUMBER} is ${STATE}; publication metadata cannot be pushed. Reopen the PR or fix the front matter on main by hand."
+            exit 1
+          fi
+
       - name: Commit and push status changes
+        id: publish
         if: >-
           steps.reviewer.outputs.is_codeowner == 'true' &&
           steps.targets.outputs.count != '0'
@@ -279,6 +299,7 @@ jobs:
           set -euo pipefail
           if git diff --quiet; then
             echo "No front matter updates to commit."
+            echo "head_sha=${REVIEWED_SHA}" >> "${GITHUB_OUTPUT}"
             exit 0
           fi
 
@@ -289,3 +310,26 @@ jobs:
           git push \
             --force-with-lease="refs/heads/${PR_HEAD_REF}:${REVIEWED_SHA}" \
             origin "HEAD:refs/heads/${PR_HEAD_REF}"
+          echo "head_sha=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
+
+      # Merging here — rather than by hand right after approving — is what keeps
+      # the publication metadata and the merge in the right order. --match-head-commit
+      # guarantees we merge exactly the commit built above.
+      #
+      # The App token (not GITHUB_TOKEN) is required: a merge pushed with GITHUB_TOKEN
+      # would not trigger the Azure Static Web Apps deploy on main.
+      - name: Merge the approved PR
+        if: >-
+          steps.reviewer.outputs.is_codeowner == 'true' &&
+          steps.targets.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          MERGE_SHA: ${{ steps.publish.outputs.head_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh pr merge "${PR_NUMBER}" \
+            --merge \
+            --delete-branch \
+            --match-head-commit "${MERGE_SHA}"

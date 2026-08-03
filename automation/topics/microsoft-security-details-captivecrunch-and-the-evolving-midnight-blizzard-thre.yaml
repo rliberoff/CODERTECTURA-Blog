@@ -1,0 +1,353 @@
+id: microsoft-security-details-captivecrunch-and-the-evolving-midnight-blizzard-thre
+title: Microsoft Security details CaptiveCrunch and the evolving Midnight Blizzard
+  threat
+slug: captivecrunch-la-leccion-arquitectonica-detras-del-nuevo-salto-de-midnight-blizz
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-08-03T09:40:44+00:00'
+- status: in_review
+  at: '2026-08-03T09:50:02+00:00'
+discovered_at: '2026-08-03T09:40:44+00:00'
+similarity:
+  max_score: 0.4417
+  closest_match: microsoft-security-age-of-ai-project-perception
+  threshold: 0.82
+sources:
+- url: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft
+  title: 'CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware
+    delivery and credential theft'
+  published_date: '2026-07-31'
+  host: microsoft.com
+  kind: primary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: 'Image 1: Microsoft'
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg
+    description: Image 2
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg
+    description: Image 3
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/Featured-image-CaptiveCrunch-1.webp
+    description: 'Image 4: Woman with glasses typing at laptop'
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/image-43.webp
+    description: 'Image 6: Diagram depicting an overview of the CaptiveCrunch campaign
+      attack flow'
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/08/Figure-2.-ClickFix-prompt-with-manual-user-instructions.webp
+    description: 'Image 7: A Windows Driver Repair Utility interface, with instructions
+      for manually repairing a failed automated driver repair, including steps to
+      run a verification script via Windows Terminal.'
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/08/Figure-3.-ClickFix-prompt-with-additional-user.webp
+    description: 'Image 8: A Google web page claiming the verification check failed
+      with additional manual instructions for the user to follow.'
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/08/Figure-4.-False-update-window.webp
+    description: 'Image 9: A false update window claiming the updates are 3 percent
+      downloaded.'
+  excerpt: '[Skip to main content](https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft#wp--skip-link--target)
+
+    [![Image 1: Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)](https://www.microsoft.com/)
+
+    [Security](https://www.microsoft.com/en-us/security)
+
+    Products
+
+    [Microsoft Defender](https://www.microsoft.com/en-us/security/business/microsoft-defender)[Microsoft
+    Entra](https://www.microsoft.com/en-us/security/business/microsoft-entra)[Microsoft
+    Intune](https://www.microsoft.com/en-us/security/business/microsoft-Intune)[Microsoft
+    Purview](https://www.microsoft.com/en-us/security/business/microsoft-purview)[Microsoft
+    Security Copilot](https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot)[Microsoft
+    Sentinel SIEM](https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-sentinel-siem)[Microsoft
+    Sentinel platform](https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-sentinel-platform)[View
+    all products](https://www.microsoft.com/en-us/security/view-all-products)
+
+    Solutions
+
+    [AI-powered cybersecurity](https://www.microsoft.com/en-us/security/business/solutions/generative-ai-cybersecurity)[Cloud
+    security](https://www.microsoft.com/en-us/security/business/solutions/cloud-security)[Data
+    security & governance](https://www.microsoft.com/en-us/security/business/solutions/data-security-governance)[Identity
+    & network access](https://www.microsoft.com/en-us/security/business/solutions/identity-access)[Privacy
+    & risk management](https://www.microsoft.com/en-us/security/business/solutions/privacy-risk-management)[Security
+    for AI](https://www.microsoft.com/en-us/security/business/solutions/security-for-ai)[Small
+    and medium business](https://www.microsoft.com/en-us/security/small-medium-business)[Unified
+    SecOps](https://www.microsoft.com/en-us/security/business/solutions/ai-powered-unified-secops-platform)[Zero
+    Trust](https://www.microsoft.com/en-us/security/business/zero-trust)
+
+    [Pricing](https://www.microsoft.com/en-us/security/pricing-overview)[Services](https://www.microsoft.com/en-us/security/services)[Partners](https://www.microsoft.com/en-us/security/business/partnerships)[Why
+    Microsoft Security](https://www.microsoft.com/en-us/security/why-microsoft-security)Resources
+
+    Get started
+
+    * [Cybersecurity awareness](https://www.microsoft.com/en-us/security/business/cybersecurity-awareness)
+
+    * [Customer stories](https://www.microsoft.com/en-us/customers/search?filters=product%3Amicrosoft-security)
+
+    * [Security 101](https://www.microsoft.com/en-us/security/business/security-101)
+
+    * [Product trials](https://www.microsoft.com/en-us/security/business/get-started/start-free-trial)
+
+    * [How we protect Microsoft](https://www.microsoft.com/en-us/insidetrack)
+
+    Reports and analysis
+
+    * [Industry recognition](https://www.microsoft.com/en-us/security/business/reports-analysis/industry-recognized-cybers…'
+- url: https://www.microsoft.com/en-us/security/blog/2026/07/27/enhancing-ai-security-through-global-ai-red-teaming
+  title: Enhancing AI security through global AI red teaming | Microsoft Security
+    Blog
+  published_date: '2026-07-27'
+  host: microsoft.com
+  kind: primary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: Microsoft
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/05/MS_Actional-Insights_Links.jpg
+    description: Supply chain attacks
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2020/02/RamShankar_SivaKumar.jpg
+    description: Ram Shankar Siva Kumar
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/Featured-image-Q2.webp
+    description: Man typing at laptop
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/03/MS_Actional-Insights_Phishing-social-engineering.jpg
+    description: A graphic showing a phishing hook representing social engineering
+      and phishing
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/03/MS_Actional-Insights_AI-agents.jpg
+    description: Graphic displaying a brain and gear icon set representing Agentic
+      AI
+  excerpt: '![Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg)
+
+    ![Supply chain attacks](https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/05/MS_Actional-Insights_Links.jpg)
+
+    # Enhancing AI security through global AI red teaming
+
+    ## Listen to this post
+
+    ![Copilot logo](https://www.microsoft.com/en-us/security/blog/wp-content/mu-plugins/ms-core/dist/svg/copilot-logo.svg)
+
+    ## Share
+
+    ## Tags
+
+    ## Content types
+
+    ## Products and services
+
+    ## Topics
+
+    Most AI safety testing still happens inside the walls of individual organizations.
+    That has resulted in a fundamental disconnect: many of the highest-risk failure
+    modes in modern AI systems require deep domain expertise, multilingual context,
+    or regional understanding that no single internal team can fully replicate on
+    its own.
+
+    As frontier models become more capable, the attack surface expands with them.
+    AI red teaming is no longer just about prompt injection or content safety edge
+    cases. It increasingly involves security operations, misuse scenarios, multilingual
+    harms, alignment failures, and domain-specific abuse patterns that can vary significantly
+    across geographies and languages.
+
+    Microsoft’s AI Red Team has observed that meaningful testing of advanced AI systems-
+    and models similarly requires broader participation from researchers and practitioners
+    who operate outside traditional corporate security boundaries. To address that
+    gap, today we are announcing the External Red Team Alliance (EXTRA), a formalized
+    global extension of Microsoft’s AI Red Team designed to support and encourage
+    external expertise to advance AI safety and security testing. We are proud to
+    share we are funding the development of new AI safety assessments on six continents
+    through unrestricted gifts.
+
+    ## **Building a global alliance**
+
+    EXTRA is a two-part initiative focused on expanding AI safety research and strengthening
+    external collaboration.
+
+    The first component supports a global academic network focused on advancing AI
+    safety and security research. Microsoft’s AI Red Team has provided unrestricted
+    gifts to 18 university labs spanning six continents. The goal is intentionally
+    broad: support researchers who are already investigating difficult, unresolved
+    questions in AI safety and help them continue pushing that work forward independently.
+
+    Some of the supporting institutions include:
+
+    “Academic research is critical to understanding the cyber security landscape and
+    finding solutions that work for all of society – and partnerships like this with
+    industry are essential to delivering on that promise. Through partnerships, civil
+    society and public institutions researchers gain access to frontier technology
+    to understand how models work and bring their expertise to the task of determining
+    risk a…'
+- url: https://www.microsoft.com/en-us/security/blog/2026/07/15/unpacking-asyncapi-npm-supply-chain-compromise-import-time-payload-delivery
+  title: Unpacking the AsyncAPI npm supply chain compromise and import-time payload
+    delivery
+  published_date: '2026-07-15'
+  host: microsoft.com
+  kind: secondary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: Microsoft
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/05/MS_Actional-Insights_Links.jpg
+    description: Supply chain attacks
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/image-14.webp
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/image-15.webp
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2023/04/microsoft_logo-300x300.png
+    description: Microsoft
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/blog-in-a-box/dist/images/default-avatar.png
+    description: ''
+  excerpt: '![Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg)
+
+    ![Supply chain attacks](https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/05/MS_Actional-Insights_Links.jpg)
+
+    # Unpacking the AsyncAPI npm supply chain compromise and import-time payload delivery
+
+    ## Listen to this post
+
+    ![Copilot logo](https://www.microsoft.com/en-us/security/blog/wp-content/mu-plugins/ms-core/dist/svg/copilot-logo.svg)
+
+    ## Share
+
+    ## Tags
+
+    ## Threats intelligence
+
+    ## Content types
+
+    ## Products and services
+
+    ## Topics
+
+    On July 14, 2026, Microsoft Threat Intelligence identified a coordinated supply
+    chain compromise of the @asyncapi npm organization, a widely used set of packages
+    for the AsyncAPI specification and code generation. Five package versions across
+    four package names were republished within roughly ninety minutes, each carrying
+    the same maliciously injected loader: @asyncapi/specs (in both the 6.11.2-alpha.1
+    prerelease and 6.11.2 stable release), @asyncapi/generator@3.3.1, @asyncapi/generator-components@0.7.1,
+    and @asyncapi/generator-helpers@1.1.1.
+
+    Because @asyncapi/specs is a transitive dependency of numerous AsyncAPI tooling
+    packages, this attack affected developer workstations, CI/CD pipelines, container
+    builds, or production services that resolved and imported the affected versions
+    during the exposure window. Unlike the more common postinstall-hook supply-chain
+    pattern, this campaign executes at module-load (import/require) time. When any
+    consuming build or application imports a poisoned package, the injected block
+    runs immediately. Because the trigger is an import rather than an install script,
+    the common npm *install –ignore-scripts* mitigation does not neutralize it. The
+    second stage decrypts and evaluates a Miasma modular runtime with active command
+    and control (C2), persistence, and decentralized fallback channels. Although disabled
+    in this instance, credential-harvesting, propagation, and additional high-risk
+    modules could be enabled through persistence.
+
+    Microsoft Defender Antivirus detects and blocks malicious artifacts as *Trojan:JS/MiasmStealer.SC*
+    and *Trojan:Script/Supychain.A*. Microsoft Defender for Endpoint provides behavioral
+    coverage for the suspicious detached Node.js process spawn, IPFS retrieval, and
+    persistence activity. Organizations should immediately remove all five affected
+    versions, purge npm and Yarn caches, hunt for *sync.js* under the *NodeJS* masquerade
+    directories, block outbound connections to 85.137.53[.]71 on ports 8080, 8081,
+    and 8091, and rotate all credentials accessible from any environment that imported
+    the compromised packages. Detailed hunting queries, indicators of compromise,
+    and mitigation guidance are provided in the succeeding sections.
+
+    ## Attack chain overview
+
+    ![](h…'
+- url: https://www.microsoft.com/en-us/security/blog/2026/07/13/microsoft-entra-id-security-updates-passkeys-are-the-default-authentication-method-in-entra-id
+  title: 'Microsoft Entra ID security updates: Passkeys are the default authentication
+    method in Entra ID | Microsoft Security Blog'
+  published_date: '2026-07-13'
+  host: microsoft.com
+  kind: secondary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: Microsoft
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/Security-ImageryScan-Modular-Blue-03-2026-1-scaled.jpg
+    description: A woman looks at her computer screen and holds a phone in her left
+      hand
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2021/09/Nadim-Abdo-Headshot-300x300.jpg
+    description: Photo of Nadim Abdo.
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/Featured-image-CaptiveCrunch-1.webp
+    description: Woman with glasses typing at laptop
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/Hero-July-2026.webp
+    description: Decorative image of a security worker looking at a computer screen
+      and holding a cup of coffee. It says in the loop July 2026
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/SCI_SFI-Q4-report.jpg
+    description: A decorative image of a professional reviewing the Secure Future
+      Initiative July 2026 report
+  excerpt: '![Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg)
+
+    ![A woman looks at her computer screen and holds a phone in her left hand](https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/Security-ImageryScan-Modular-Blue-03-2026-1-scaled.jpg)
+
+    # Microsoft Entra ID security updates: Passkeys are the default authentication
+    method in Entra ID
+
+    ## Listen to this post
+
+    ![Copilot logo](https://www.microsoft.com/en-us/security/blog/wp-content/mu-plugins/ms-core/dist/svg/copilot-logo.svg)
+
+    ## Share
+
+    ## Content types
+
+    ## Products and services
+
+    ## Topics
+
+    As identity attacks grow more sophisticated in the AI era, organizations need
+    stronger authentication methods that protect users from phishing, credential theft,
+    and social engineering. To address these evolving threats, [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id)
+    is updating its authentication experience by making passkeys the default phishing-resistant
+    authentication method, helping customers reduce reliance on phishable methods
+    such as SMS and voice.
+
+    Beginning September 1, 2026, Microsoft will begin rolling out passkeys as the
+    default authentication experience in Microsoft Entra ID. As the rollout reaches
+    each organization, users enabled for SMS or voice authentication will automatically
+    be enabled for passkeys, and the next time they perform multifactor authentication,
+    they’ll be prompted to register a passkey.
+
+    Following this transition, on February 1, 2027, Microsoft will retire Microsoft-provided
+    telecom delivery for SMS and voice authentication and will no longer offer SMS
+    and voice as a native [Microsoft Entra](https://www.microsoft.com/en-us/security/business/microsoft-entra)
+    capability. Organizations that still require SMS or voice authentication methods
+    will have the option to choose one of our telecom partners through the Microsoft
+    Security Store. Customers will be responsible for any associated telecom-related
+    costs charged by the telecom partners.
+
+    We strongly recommend moving users to passkeys or another phishing-resistant authentication
+    method as soon as possible.
+
+    ## Why stronger authentication matters in the AI era
+
+    Authentication methods that use SMS or voice rely on shared secrets or channels
+    that attackers increasingly intercept, phish, or manipulate. [Passkeys](https://www.microsoft.com/en-us/security/business/security-101/what-is-passkey)
+    use public-key cryptography rather than shared secrets, making them phishing-resistant
+    by design. They also provide a faster, simpler sign-in experience for users.
+
+    The case for moving beyond SMS and voice is no longer just that attackers intercept
+    or socially engineer these methods. The threat environment has changed in speed,
+    scale, and s…'
+notes: 'This is a timely security-intelligence story for architects and platform teams:
+  Microsoft’s disclosure shows how Midnight Blizzard sub-operations are targeting
+  hospitality captive portals to steal credentials and deliver malware. The angle
+  can connect threat intelligence to identity, phishing resilience, and secure access
+  design.'
+article_path: content/posts/2026-08-03-captivecrunch-la-leccion-arquitectonica-detras-del-nuevo-salto-de-midnight-blizz.md
+pr_url: null

@@ -72,6 +72,7 @@ from typing import NoReturn
 
 import yaml
 
+from _cover_style import COVER_BRIEF_SPEC
 from _sources import (
     extract_host,
     host_is_allowed,
@@ -84,7 +85,7 @@ from _text import slugify
 
 # Version of the editorial prompt below. Stored in the post's `ai.prompt_version`
 # for provenance/auditing. Bump it whenever the prompt/voice changes.
-PROMPT_VERSION = "2026-07-20.2"
+PROMPT_VERSION = "2026-08-04.1"
 
 MIN_COVER_PROMPT_CHARS = 80
 MAX_COVER_PROMPT_CHARS = 2400
@@ -161,7 +162,7 @@ _QUOTE_PREFIX_RE = re.compile(r"^(\s*(?:>\s*)+)")
 # is always written in Spanish.
 # -----------------------------------------------------------------------------
 CODE_RUBRIC = """\
-Code rubric (code is the EXCEPTION, not the default — most articles need little or none):
+Code rubric:
 - A code block must be SPECIFIC to THIS article's subject: show the actual command, API, \
 SDK call, CLI invocation, configuration or setting the article is really about. A snippet \
 that could be pasted into ANY post (generic dotnet restore/build/test scripts, generic CI \
@@ -248,7 +249,7 @@ Artificial Intelligence.
 Output language:
 - Write the ARTICLE AND ALL READER-FACING FIELDS IN SPANISH (Spain): "title", \
 "description", "tags", "categories", "body_markdown" and, inside "body_images", "alt" \
-and "caption". Only the image-generation fields "image_prompt" and "prompt_en" are \
+and "caption". The image-generation fields "image_prompt" and "prompt_en" are also \
 written IN SPANISH (es-ES) (image models handle Spanish prompts well).
 
 Voice and style (for the Spanish text you write):
@@ -259,7 +260,7 @@ probado", "en mi experiencia", "os mostramos" -> "te muestro").
 "verás", "fíjate". Concretely: write "Si me preguntas por una hoja de ruta sensata, yo \
 iría por aquí", NOT "Si nos preguntáis... nosotros iríamos...". Close, personal and \
 opinionated tone.
-- Technical but accessible: explain the "why" before the "how", with concrete examples.
+- Technical but accessible: explain both the "why" and the "how", with concrete examples.
 - For any code, follow the "Code rubric" included below: real and runnable, focused on \
 the non-obvious, never boilerplate or filler, and omitted entirely when it adds no value.
 - Rigour: do not invent data, figures, quotes, API names, versions or URLs. When you \
@@ -292,23 +293,9 @@ description and cards; plain text, no Markdown.
 (for example "Inteligencia Artificial", "Arquitectura de Software", ".NET", "Azure").
 - "body_markdown": the complete article IN SPANISH in Markdown (roughly 800-1500 \
 words), starting with an engaging introductory paragraph.
-- "image_prompt": an art-direction brief IN SPANISH (es-ES) (3-5 sentences) for an \
-EVOCATIVE PAINTERLY COVER ILLUSTRATION (cinematic digital painting / concept art, NOT \
-photorealistic advertising), based on the final article's specific thesis, the concrete \
-benefit for the reader and its central tension or transformation. Express ONE instantly \
-legible, article-specific idea through a symbolic scene or visual metaphor with \
-narrative weight: a contrast, a threshold, a journey or a transformation the reader \
-can feel at a glance. State the subject, action, setting, composition, atmosphere and \
-dramatic lighting (for example a warm focal glow against a deep cool ambience) and a \
-purposeful colour palette whose meaning comes from the article. Anchor the scene in the \
-CONTEMPORARY world of software and technology (modern people, present-day devices and \
-workplaces, flows of light and data); NEVER use fantasy, fairy-tale, steampunk, medieval \
-or antique imagery such as old workshops, brass machines, parchment or magical artifacts. \
-Keep the core idea clear at thumbnail size and the essential subject inside the central \
-70% so it survives wide social-media crops; the scene must fill the whole canvas edge to \
-edge (no empty bars or unfinished areas), with a quieter, less detailed lower portion for \
-the blog title overlay. YOU MAY USE relevant service or brand logos. NO baked-in text, \
-letters, numbers or watermarks and NO recognisable real faces.
+- "image_prompt": """
+    + COVER_BRIEF_SPEC
+    + """
 - "body_images": list of images for the article BODY. Each element is an \
 object with this exact shape:
   {
@@ -395,22 +382,8 @@ citations so each link becomes a natural, meaningful part of the supported sente
 - Clean Markdown: "###" subheadings, well-developed paragraphs, lists and fenced code blocks \
 with a language tag. Do not include the title as an H1 heading and do not include front \
 matter.
-- "image_prompt": after rewriting the article, replace the draft prompt with a 3-5 \
-sentence art-direction brief IN SPANISH for an EVOCATIVE PAINTERLY COVER (cinematic \
-digital painting / concept art, NOT photorealistic advertising). Base it on the \
-FINAL article's specific thesis, concrete reader benefit, and central tension or \
-transformation. Express ONE instantly legible idea through an article-specific \
-symbolic scene or visual metaphor with narrative weight (a contrast, a threshold, a \
-journey, a transformation). Specify subject, action, setting, composition, atmosphere, \
-dramatic lighting (for example a warm focal glow against a deep cool ambience) and a \
-meaningful palette. Anchor the scene in the CONTEMPORARY world of software and \
-technology (modern people, devices, workplaces, flows of light and data); NEVER fantasy, \
-fairy-tale, steampunk, medieval or antique imagery. Keep the \
-essential idea in the central 70% for wide social crops; the scene must fill the whole \
-canvas edge to edge, with a quieter lower portion (never an empty band) for the \
-blog title. Relevant product logos are allowed; no baked-in text or recognisable real \
-faces.
-"""
+- "image_prompt": after rewriting the article, replace the draft prompt with """
+    + COVER_BRIEF_SPEC
     + "\n"
     + STYLE_EXEMPLARS
     + "\n"

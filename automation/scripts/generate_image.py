@@ -43,39 +43,15 @@ import os
 import sys
 from typing import NoReturn
 
+from _cover_style import COVER_STYLE_SUFFIX
 from _foundry import FoundryError, FoundryImageClient
 
-# Covers use article-specific artistic art direction. This suffix enforces the
-# painterly medium, contemporary grounding, full-bleed composition, crop resilience
-# and safety; it must not impose a recurring scene, subject, palette or lighting
-# recipe. It intentionally diverges from the schematic BODY_STYLE_SUFFIX in
-# resolve_body_images.py.
-STYLE_SUFFIX = (
-    " -- evocative editorial cover art for a professional technology publication, "
-    "executed as a cinematic digital painting / concept-art illustration: visible "
-    "painterly brushwork, rich texture and atmospheric depth. NOT a photograph, NOT "
-    "photorealistic, NOT a sterile 3D product render or industrial advertising shot. "
-    "The scene MUST stay grounded in the CONTEMPORARY world of software and "
-    "technology: modern people, present-day devices and workplaces, cloud and code "
-    "concepts, or abstract flows of light and data. Strictly avoid fantasy, "
-    "fairy-tale, steampunk, medieval, retro-antique or alchemical imagery: no old "
-    "workshops, brass contraptions, parchment scrolls, magical artifacts, wizards or "
-    "toy automatons. Preserve the article-specific concept, subject, setting and "
-    "meaningful colour palette from the brief; do not replace them with generic "
-    "imagery. Dramatic, expressive lighting with one clear focal point is welcome "
-    "(for example a warm glow against deep cool blues); render any people as "
-    "stylised figures or silhouettes, never detailed realistic faces. Communicate "
-    "one idea immediately at thumbnail size with confident visual hierarchy, and "
-    "keep the essential subject and metaphor within the central 70% safe area so "
-    "the image survives wide 2:1 LinkedIn and blog-card crops. Paint the FULL "
-    "canvas edge to edge as one continuous scene: absolutely no empty bars, flat "
-    "borders, letterboxing or unfinished areas; make the lower portion of the "
-    "scene quieter and less detailed (floor, water, mist, shadow) so a title can "
-    "be overlaid, but keep it fully painted as part of the scene. No baked-in "
-    "text, letters, numbers or watermarks, and no recognisable real human faces. "
-    "Relevant product logos or brands are allowed only when requested by the "
-    "supplied brief."
-)
+# The cover art direction lives in _cover_style.py (single source of truth
+# shared with the article prompts in generate_article.py). COVER_STYLE_SUFFIX
+# carries only the format rules the article's brief cannot know — medium, safe
+# area, full-bleed canvas, quiet lower portion, no text or faces — while the
+# brief owns the concept, subject, setting and palette. It intentionally
+# diverges from the schematic BODY_STYLE_SUFFIX in resolve_body_images.py.
 
 
 def fail(message: str) -> NoReturn:
@@ -174,7 +150,7 @@ def main() -> None:
     trace_stdout = _env_truthy("IMAGE_TRACE_STDOUT", default=False)
 
     base_prompt = read_prompt()
-    prompt = base_prompt + STYLE_SUFFIX
+    prompt = base_prompt + COVER_STYLE_SUFFIX
 
     client = FoundryImageClient(
         endpoint=endpoint,
@@ -209,7 +185,7 @@ def main() -> None:
             "timeout": timeout,
             "cover_path": cover_path,
             "base_prompt": base_prompt,
-            "style_suffix": STYLE_SUFFIX,
+            "style_suffix": COVER_STYLE_SUFFIX,
             "final_prompt": prompt,
             "output_bytes": len(image_bytes),
         },
@@ -221,7 +197,7 @@ def main() -> None:
                 "size": size,
                 "cover_path": cover_path,
                 "base_prompt": base_prompt,
-                "style_suffix": STYLE_SUFFIX,
+                "style_suffix": COVER_STYLE_SUFFIX,
                 "final_prompt": prompt,
                 "output_bytes": len(image_bytes),
             }

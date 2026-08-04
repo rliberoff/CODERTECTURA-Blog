@@ -66,7 +66,7 @@ from _sources import (
 )
 
 # Style wrapper for AI body diagrams/infographics. This is INTENTIONALLY the calm,
-# explanatory counterpart to the cover STYLE_SUFFIX in generate_image.py: the cover
+# explanatory counterpart to the cover COVER_STYLE_SUFFIX in _cover_style.py: the cover
 # is dramatic/cinematic with a hero subject, while body images are SCHEMATIC diagrams
 # and infographics that add real explanatory value (architecture, flowcharts,
 # pipelines, layered or comparison diagrams). Do NOT "re-sync" this with the cover

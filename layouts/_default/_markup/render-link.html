@@ -1,0 +1,15 @@
+{{- /*
+  Markdown link render hook (applies to every Markdown link in content).
+
+  External links — any destination whose host differs from the site's own —
+  open in a new tab. rel="noopener noreferrer" prevents the linked page from
+  accessing window.opener (tab-nabbing) and suppresses the Referer header.
+
+  Relative links (/posts/...), pure anchors (#...), mailto: and same-host
+  absolute links keep the default same-tab behaviour.
+*/ -}}
+{{- $siteHost := (urls.Parse site.BaseURL).Host -}}
+{{- $destHost := (urls.Parse .Destination).Host -}}
+{{- $external := and $destHost (ne $destHost $siteHost) -}}
+<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text }}</a>
+{{- /* chomp trailing newline */ -}}

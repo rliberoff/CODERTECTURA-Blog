@@ -728,6 +728,15 @@ def test_generation_prompts_require_deliberate_bold_emphasis():
         assert "never bold a whole paragraph" in prompt
 
 
+def test_generation_prompts_share_the_single_cover_brief_spec():
+    from _cover_style import COVER_BRIEF_SPEC
+
+    # Both passes embed the exact same cover art-direction brief, once each,
+    # so the draft and polish instructions can never drift apart again.
+    assert ga.SYSTEM_PROMPT_DRAFT.count(COVER_BRIEF_SPEC) == 1
+    assert ga.SYSTEM_PROMPT_POLISH.count(COVER_BRIEF_SPEC) == 1
+
+
 def test_generation_prompts_require_substantial_prose_and_integrated_links():
     for prompt in (ga.SYSTEM_PROMPT_DRAFT, ga.SYSTEM_PROMPT_POLISH):
         assert "most prose paragraphs should contain 4-7 purposeful sentences" in prompt

@@ -15,7 +15,7 @@ categories:
   - Semantic Kernel
   - Tutorial
 ---
-¡Pues ya tenemos publicado en <a href="https://youtu.be/oE1NIXiq-hE?si=t7b_jr948XQGu-bi" target="_blank" rel="noopener noreferrer">YouTube</a> la sesión que di <a href="/posts/nos-vemos-en-la-net-core-conf-2023-madrid) en la [Netcoreconf 2023](https://netcoreconf.com/" target="_blank" rel="noopener noreferrer">hace unas semanas</a> de Madrid junto con mi complice habitual <a href="https://www.linkedin.com/in/borja-piris/" target="_blank" rel="noopener noreferrer">Borja Piris de Castro</a>.
+¡Pues ya tenemos publicado en <a href="https://youtu.be/oE1NIXiq-hE?si=t7b_jr948XQGu-bi" target="_blank" rel="noopener noreferrer">YouTube</a> la sesión que di [hace unas semanas](/posts/nos-vemos-en-la-net-core-conf-2023-madrid) en la [Netcoreconf 2023](https://netcoreconf.com/) de Madrid junto con mi complice habitual <a href="https://www.linkedin.com/in/borja-piris/" target="_blank" rel="noopener noreferrer">Borja Piris de Castro</a>.
 
 En esta charla, estuve dando una introducción técnica a una de las abstracciones más esotéricas dentro del Semantic Kernel conocidas como los Planificadores, los cuales no son más que plugins que trae por defecto la librería y que sirven principalmente como orquestadores que eligen y ejecutan de entre toda la colección de funciones que tenga cargada el *kernel* aquellas que permitirían cumplir con un objetivo específico.
 

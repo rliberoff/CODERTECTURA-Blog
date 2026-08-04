@@ -1,12 +1,9 @@
 ---
-title: 'Microsoft Foundry se pone serio con la observabilidad: trazas de agentes y
-  telemetría sensible bajo control'
-date: '2026-07-20T16:14:09+00:00'
-draft: true
+title: 'Microsoft Foundry se pone serio con la observabilidad: trazas de agentes y telemetría sensible bajo control'
+date: '2026-08-04T07:07:15Z'
+draft: false
 slug: microsoft-foundry-da-un-paso-serio-en-observabilidad-trazas-de-agentes-y-telemet
-description: Microsoft Foundry mejora el trazado de agentes y separa el contenido
-  GenAI sensible en Application Insights. Te cuento qué cambia y cómo lo aterrizaría
-  yo.
+description: Microsoft Foundry mejora el trazado de agentes y separa el contenido GenAI sensible en Application Insights. Te cuento qué cambia y cómo lo aterrizaría yo.
 categories:
 - Inteligencia Artificial
 - Azure
@@ -25,13 +22,12 @@ ai:
   model: gpt-5.4
   prompt_version: 2026-07-20.1
   generated_at: '2026-07-20T16:14:09+00:00'
-  reviewed_by: ''
-  review_status: pending
+  reviewed_by: rliberoff
+  review_status: approved
   disclosure: Borrador asistido por IA; revisado por una persona antes de su publicación.
   sources:
   - url: https://azure.microsoft.com/updates?id=567594
-    title: '[In preview] Public Preview: Protect sensitive generative AI telemetry
-      in Application Insights and Microsoft Foundry'
+    title: '[In preview] Public Preview: Protect sensitive generative AI telemetry in Application Insights and Microsoft Foundry'
     published_date: '2026-07-20'
   - url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete
     title: Application Insights telemetry data model - Azure Monitor
@@ -45,6 +41,7 @@ ai:
   - url: https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/appgenaicontent
     title: Azure Monitor Logs reference - AppGenAIContent - Azure Monitor
     published_date: null
+  reviewed_at: '2026-08-04T07:07:15Z'
 ---
 
 Si estás construyendo agentes con Microsoft Foundry, hay una pregunta que tarde o temprano acaba encima de la mesa: **¿cómo observo de verdad lo que hace el sistema sin convertir la telemetría en otro problema de seguridad?** Justo ahí encaja el movimiento reciente de Microsoft. Por un lado, Foundry refuerza el *tracing* de agentes conectándolo con Application Insights; por otro, separa el contenido generativo sensible en una tabla específica para poder aplicarle controles de acceso más finos. Para mí, estas dos piezas no son un detalle operativo ni una mejora cosmética: juntas empiezan a contar una historia de observabilidad bastante más madura para escenarios GenAI.

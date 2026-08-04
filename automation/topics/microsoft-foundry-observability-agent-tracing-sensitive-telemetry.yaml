@@ -2,12 +2,14 @@ id: microsoft-foundry-observability-agent-tracing-sensitive-telemetry
 title: Microsoft Foundry improves observability with agent tracing and sensitive telemetry
   controls
 slug: microsoft-foundry-da-un-paso-serio-en-observabilidad-trazas-de-agentes-y-telemet
-status: in_review
+status: published
 status_history:
 - status: candidate
   at: '2026-07-20T16:10:17+00:00'
 - status: in_review
   at: '2026-07-20T16:15:13+00:00'
+- status: published
+  at: '2026-08-04T07:07:38+00:00'
 discovered_at: '2026-07-20T16:10:17+00:00'
 similarity:
   max_score: 0.3756
@@ -284,4 +286,4 @@ notes: 'Cover the new tracing and telemetry story in Microsoft Foundry: how agen
   should handle sensitive GenAI content. This is a strong architecture/security topic
   for readers designing production-grade AI systems.'
 article_path: content/posts/2026-07-20-microsoft-foundry-da-un-paso-serio-en-observabilidad-trazas-de-agentes-y-telemet.md
-pr_url: null
+pr_url: https://github.com/rliberoff/CODERTECTURA-Blog/pull/40

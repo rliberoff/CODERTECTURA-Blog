@@ -1,0 +1,108 @@
+id: github-opens-third-party-apps-for-enterprises
+title: GitHub Opens Third-Party Apps for Enterprises
+slug: github-abre-las-github-apps-de-terceros-a-la-empresa-por-que-cambia-tu-gobierno
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-08-10T07:37:43+00:00'
+- status: in_review
+  at: '2026-08-10T07:42:41+00:00'
+discovered_at: '2026-08-10T07:37:43+00:00'
+similarity:
+  max_score: 0.3292
+  closest_match: gpt-56-microsoft-foundry-production-agents
+  threshold: 0.82
+sources:
+- url: https://github.blog/changelog/2026-08-07-enterprises-can-now-install-third-party-github-apps
+  title: Enterprises can now install third-party GitHub Apps
+  published_date: '2026-08-07'
+  host: github.blog
+  kind: primary
+  excerpt: Enterprise owners can now install public GitHub Apps created outside their
+    enterprise on their enterprise account. This allows third-party integrators to
+    build apps for enterprise management scenarios. Enterprise installations grant…
+    The post Enterprises can now install third-party GitHub Apps appeared first on
+    The GitHub Blog .
+- url: https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3
+  title: GitHub Copilot weekly releases — August 3 - GitHub Changelog
+  published_date: null
+  host: github.blog
+  kind: secondary
+  images:
+  - url: https://github.blog/wp-content/uploads/2026/08/Changelog_Impact_ROI_Improvement.jpg?resize=2064%2C1096
+    description: A digital dashboard displays metrics and visuals related to code
+      review efforts, API activity, and developer effort levels, with focus on ROI,
+      usage, and impact analysis for enterprise GitHub Apps, ov…
+  excerpt: '[Skip to content](#start-of-content) [Skip to sidebar](#sidebar)
+
+    / [Blog](https://github.blog/)
+
+    [Try GitHub Copilot app](https://github.com/features/ai/github-app?utm_source=blog-header-button-cta&utm_medium=blog&utm_campaign=github-app-cli-Q1-push)
+    [Attend GitHub Universe](https://githubuniverse.com/?utm_source=Blog-button&utm_medium=GitHub&utm_campaign=blog_button_seb_uni_26)
+
+    [Back to changelog](https://github.blog/changelog/)
+
+    Release
+
+    • 2 minute read
+
+    # GitHub Copilot weekly releases — August 3
+
+    ![](https://github.blog/wp-content/themes/github-2021-child/assets/img/featured-v3-new-releases.svg)
+
+    This week’s updates across GitHub Copilot in the desktop app, CLI, and VS Code
+    help you resume and organize work, review changes, and ask questions without losing
+    context.
+
+    ### [GitHub Copilot app](#github-copilot-app)
+
+    * `Auto` now shows which model handled each completed request, plus AI credit
+    and cache details when they’re available.
+
+    * Jump directly into shared sessions, or use `/side` to explore a parallel question
+    without disrupting your main task.
+
+    * Apply the updated Impeccable skill to mobile interfaces, diagnose its setup,
+    and run more focused design reviews.
+
+    * Sessions now start and switch more efficiently.
+
+    [Try the Copilot app](https://github.com/features/ai/github-app?utm_source=changelog-to-GHCP-week-aug-5&utm_medium=changelog&utm_campaign=weekly-moments-pmm-ghcp-cli-aug-2026).
+
+    ### [GitHub Copilot CLI](#github-copilot-cli)
+
+    * Easily manage multiple concurrent sessions from the Sessions sidebar. Simply
+    click **<** (left arrow) to open the Sessions sidebar and use shortcuts to open
+    new sessions (n), close current ones (x), and move between sessions with ease.
+    Click **>** right arrow to close the sidebar.
+
+    * Create an isolated worktree and begin a separate conversation with the new experimental
+    `/worktree` command. This gives you another workspace for exploring changes without
+    disrupting your current work.
+
+    * Use `/rewind` without Git to restore the conversation and files Copilot changed
+    while preserving subsequent edits.
+
+    * See live tool-call durations in the timeline to identify slow commands.
+
+    [Install the Copilot CLI](https://github.com/features/copilot/cli?utm_source=changelog-to-cli-week-aug-5&utm_medium=changelog&utm_campaign=weekly-moments-pmm-ghcp-cli-aug-2026).
+
+    ### [VS Code 1.132 Release updates](#vs-code-1-132-release-updates)
+
+    * **The integrated browser now supports element-level feedback.** Select specific
+    elements on a web page, attach a comment to each one, and send that precise visual
+    feedback to the agent. You can select and annotate multiple elements before submitting
+    your message.
+
+    * **Dictate in multiple languages.** Dictation now uses a multilingual on-device
+    model by default, keeping audio on your device. It can follow your configured
+    language, use your system or browser locale, or automatically detect the language.
+    A new onboarding experience also helps you select and test your microphone.
+
+    * **Ask side questions with `/btw`.** Open…'
+notes: This topic is relevant for platform and DevOps teams that manage enterprise
+  integrations and internal tooling. The new capability to install third-party GitHub
+  Apps directly on enterprise accounts expands the options for governance-friendly
+  automation and ecosystem integration.
+article_path: content/posts/2026-08-10-github-abre-las-github-apps-de-terceros-a-la-empresa-por-que-cambia-tu-gobierno.md
+pr_url: null

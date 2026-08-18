@@ -100,6 +100,37 @@ El script `automation/scripts/discover_topics.py` (apoyado en el módulo compart
 - La **lista blanca de dominios es una constante del servidor** y nunca procede de la salida del modelo: `learn.microsoft.com`, `devblogs.microsoft.com`, `techcommunity.microsoft.com`, `azure.microsoft.com`, `microsoft.com`, `github.blog`, `github.com`, `githubnext.com`.
 - Todo el contenido web se trata como **datos no fiables** (mitigación de inyección de prompts): se sanea, se delimita en un bloque "UNTRUSTED" y el orquestador es quien aplica la lista blanca, los topes y la escritura de ficheros con `yaml.safe_dump`.
 
+### Fuentes RSS oficiales y áreas editoriales
+
+El bucle arranca leyendo una lista fija de *feeds* RSS/Atom, en su inmensa mayoría **blogs oficiales de Microsoft** (equipos de producto e ingeniería). La lista vive en `RSS_FEEDS_BY_AREA` (`discover_topics.py`) agrupada por **área editorial**, y esa agrupación no es decorativa: es la palanca principal para equilibrar la cobertura del blog.
+
+| Área | Qué cubre |
+| ------ | ----------- |
+| `microsoft-news` | Anuncios corporativos y transversales (`blogs.microsoft.com`, el agregado de `devblogs`, Microsoft 365). |
+| `azure-platform` | Novedades de Azure y el flujo oficial de actualizaciones de servicio. |
+| `azure-infrastructure` | Infraestructura, cómputo, redes, Azure Arc, migración y operación. |
+| `azure-applications` | Plataforma de aplicaciones, arquitectura, observabilidad, gobierno y FinOps. |
+| `azure-data` | Plataforma de datos (Azure SQL, Cosmos DB, analítica). |
+| `dotnet-and-tooling` | .NET, Visual Studio, SDKs de Azure, TypeScript, PowerShell, terminal. |
+| `devops-and-github` | Azure DevOps, prácticas de ingeniería y GitHub. |
+| `identity-and-security` | Microsoft Entra ID y seguridad. |
+| `ai-platform` | Plataforma de IA (Foundry, Semantic Kernel, Copilot). **El grupo más pequeño a propósito.** |
+
+Dos detalles operativos:
+
+- **Selección *round-robin***: cada *feed* aporta primero su entrada más reciente, luego la segunda, y así hasta `RSS_MAX_ITEMS`. Con un ordenado global por fecha, un blog que publica varias veces al día llenaría la ventana del *prompt* y ocultaría al agente el resto de la plataforma. El tope por *feed* es de 3 entradas (`RSS_MAX_ITEMS_PER_FEED`).
+- **Presupuesto de tiempo**: `RSS_TOTAL_BUDGET` (240 s por defecto) acota el barrido completo. Al agotarse se omiten los *feeds* restantes con un aviso y el descubrimiento continúa con lo ya recogido; un *feed* caído nunca detiene la ejecución.
+
+### Equilibrio editorial (temas saturados)
+
+El blog está **sobrerrepresentado en Microsoft Foundry**, así que el descubrimiento se sesga hacia el resto de la plataforma por tres vías independientes:
+
+1. **Fuentes**: la lista de *feeds* está dominada por blogs de producto e ingeniería ajenos a la plataforma de IA (ver la tabla anterior).
+2. **Prompt**: el *system prompt* enumera las **áreas de cobertura** deseadas (`COVERAGE_AREAS`), exige que dos candidatos no compartan área y pide **como preferencia fuerte** no pasar de un candidato sobre Foundry por ejecución.
+3. **Orquestador (la que manda)**: `SATURATED_THEMES` aplica el tope del lado del servidor. El patrón se evalúa contra los metadatos del candidato **y contra las URLs y títulos de sus fuentes ya resueltas**, de modo que un tema fundado íntegramente en el blog de Foundry se detecta aunque evite la palabra en su título. Los candidatos que exceden el tope se descartan **antes** de la llamada a *embeddings*, y el descarte queda registrado en la traza (`editorial_balance`) y en los avisos del *log*.
+
+El tope es configurable con `MAX_PER_SATURATED_THEME` (por defecto `1`). Para ampliar el mecanismo a otro tema saturado, basta con añadir una entrada a `SATURATED_THEMES`.
+
 ### Validación de fechas (fail-closed)
 
 - La fecha de publicación se resuelve en este orden: `published_date` de Tavily → fecha estructural de la URL → si no hay ninguna fiable, se considera **sin fecha**. Las fechas encontradas en texto libre se ignoran.
@@ -109,11 +140,21 @@ El script `automation/scripts/discover_topics.py` (apoyado en el módulo compart
 ### Deduplicación en el descubrimiento
 
 - **Exacta**: `slug`/`title` del candidato frente a los temas del ledger y a los posts publicados en `content/posts/*.md`.
-- **Semántica**: similitud coseno de *embeddings* frente a temas publicados, encolados o en revisión; se registra en `similarity` y se omite el candidato si `max_score` supera el umbral (`SIMILARITY_THRESHOLD`, por defecto 0.82).
+- **Semántica**: similitud coseno de *embeddings* frente a temas publicados, encolados o en revisión; se registra en `similarity` y se omite el candidato si `max_score` supera el umbral (`SIMILARITY_THRESHOLD`, por defecto 0.82). Si el pase estricto dejaría la semana sin ningún artículo, el orquestador reintenta una sola vez con un umbral más laxo (`0.90`) para rescatar temas suficientemente distintos sin relajar ni la frescura ni la deduplicación exacta.
 
 ### Fuentes de *grounding*
 
 `sources` contiene como máximo cinco artículos de respaldo, con la fuente primaria primero. Cada entrada tiene `url`, `title`, `published_date`, `host` y `kind` (`primary` o `secondary`). Los campos opcionales `excerpt` e `images` aportan contexto de redacción e imágenes a la Fase 2. No se mantiene una copia singular de la primera URL.
+
+### Refrescar solo la portada de un PR
+
+Si el borrador ya está en revisión y solo quieres sustituir `cover.png`, usa el workflow manual `ai-cover-refresh`.
+
+- **Entrada**: número del PR y una descripción corta del cambio visual deseado
+- **Qué hace**: lee el artículo actual del PR, genera un nuevo brief de portada, reemplaza únicamente `static/images/<slug>/cover.png` y hace *push* al mismo branch del PR
+- **Qué no toca**: ni el Markdown del artículo, ni las imágenes del cuerpo, ni el ledger
+
+Esto permite iterar la portada varias veces sin volver a generar el artículo completo.
 
 ### Variables de entorno
 
@@ -133,6 +174,10 @@ La autenticación de Azure no cambia: el workflow adquiere el token con OIDC/UAM
 | `TAVILY_TIMEOUT` | Variable | `60` | Timeout HTTP de Tavily (segundos). |
 | `SIMILARITY_THRESHOLD` | Variable | `0.82` | Umbral de novedad semántica. |
 | `MAX_CANDIDATES` | Variable | `10` | Máximo de candidatos escritos por ejecución. |
+| `MAX_PER_SATURATED_THEME` | Variable | `1` | Máximo de candidatos aceptados por tema sobrerrepresentado (`SATURATED_THEMES`, hoy Microsoft Foundry). |
+| `RSS_MAX_ITEMS` | Variable | `60` | Máximo de entradas RSS recientes en el *prompt* inicial. |
+| `RSS_TIMEOUT` | Variable | `20` | Timeout HTTP por *feed* (segundos). |
+| `RSS_TOTAL_BUDGET` | Variable | `240` | Presupuesto de reloj para el barrido completo de *feeds* (segundos). Al agotarse se omiten los restantes. |
 | `DISCOVERY_MAX_ITERATIONS` | Variable | `6` | Máximo de turnos modelo↔herramienta. |
 | `DISCOVERY_MAX_SEARCHES` | Variable | `8` | Máximo de rondas de búsqueda (cada una son 2 llamadas HTTP). |
 | `DISCOVERY_FOCUS` | Variable | (vacío) | Tema opcional para sesgar el descubrimiento. |

@@ -1169,6 +1169,80 @@ def test_process_candidates_cosine_threshold_boundary():
         dt.semantic_similarity = saved
 
 
+def test_empty_week_fallback_relaxes_only_semantic_threshold():
+    url = "https://devblogs.microsoft.com/dotnet/post"
+    raw = [{"title": "Tema nuevo", "slug": "tema-nuevo", "primary_sources": [url]}]
+    dedup_index = dt.build_dedup_index(
+        [{"slug": "old", "title": "Tema antiguo", "status": "published"}], []
+    )
+    embeddings = FakeEmbeddings({"Tema antiguo": [1.0, 0.0], "Tema nuevo": [1.0, 0.0]})
+    selection_report = {}
+    theme_report = {}
+
+    saved = dt.semantic_similarity
+    try:
+        dt.semantic_similarity = lambda *a, **k: (0.85, "old")
+        accepted = dt.process_candidates_with_empty_week_fallback(
+            list(raw),
+            registry=_registry_from(
+                [{"url": url, "published_date": "2026-06-20", "title": "T", "score": 0.9}]
+            ),
+            dedup_index=dedup_index,
+            embeddings=embeddings,
+            discovered_at="2026-06-24T15:03:58+02:00",
+            threshold=0.82,
+            max_candidates=5,
+            theme_report=theme_report,
+            selection_report=selection_report,
+        )
+    finally:
+        dt.semantic_similarity = saved
+
+    assert [candidate["id"] for candidate in accepted] == ["tema-nuevo"]
+    assert selection_report == {
+        "strict_threshold": 0.82,
+        "strict_count": 0,
+        "relaxed_threshold": 0.9,
+        "relaxed_count": 1,
+        "used_relaxed_results": True,
+    }
+    assert theme_report == {
+        "max_per_saturated_theme": 1,
+        "accepted_per_theme": {},
+        "skipped_by_theme": [],
+    }
+
+
+def test_empty_week_fallback_keeps_exact_duplicates_rejected():
+    url = "https://devblogs.microsoft.com/dotnet/post"
+    selection_report = {}
+
+    accepted = dt.process_candidates_with_empty_week_fallback(
+        [{"title": "Tema repetido", "slug": "tema-repetido", "primary_sources": [url]}],
+        registry=_registry_from(
+            [{"url": url, "published_date": "2026-06-20", "title": "T", "score": 0.9}]
+        ),
+        dedup_index=dt.build_dedup_index(
+            [{"slug": "tema-repetido", "title": "Tema repetido", "status": "published"}],
+            [],
+        ),
+        embeddings=None,
+        discovered_at="2026-06-24T15:03:58+02:00",
+        threshold=0.82,
+        max_candidates=5,
+        selection_report=selection_report,
+    )
+
+    assert accepted == []
+    assert selection_report == {
+        "strict_threshold": 0.82,
+        "strict_count": 0,
+        "relaxed_threshold": 0.9,
+        "relaxed_count": 0,
+        "used_relaxed_results": False,
+    }
+
+
 # -----------------------------------------------------------------------------
 # parse_candidates (noisy JSON) + parse_published_date edges.
 # -----------------------------------------------------------------------------
@@ -1200,6 +1274,238 @@ def test_parse_published_date_ignores_dates_in_raw_content():
 def test_parse_published_date_rejects_future_url_date():
     result = {"url": "https://devblogs.microsoft.com/dotnet/2027/01/post/"}
     assert dt.parse_published_date(result, now=NOW) is None
+
+
+# -----------------------------------------------------------------------------
+# Curated feed breadth + editorial balance (Microsoft/Azure coverage spread).
+# -----------------------------------------------------------------------------
+
+
+def test_curated_feeds_are_dominated_by_non_ai_areas():
+    """The feed list must keep the AI platform a small minority of the sources."""
+    areas = dt.RSS_FEEDS_BY_AREA
+    ai_feeds = len(areas["ai-platform"])
+    total = len(dt.RSS_FEED_URLS)
+
+    assert total == sum(len(feeds) for feeds in areas.values())
+    assert len(set(dt.RSS_FEED_URLS)) == total, "duplicate feed URL in the curated list"
+    assert ai_feeds * 5 <= total, "the AI-platform group must stay a small minority"
+    # Every feed is tagged with the area it belongs to.
+    assert all(dt.RSS_AREA_BY_FEED_URL[url] for url in dt.RSS_FEED_URLS)
+
+
+def test_collect_rss_candidates_interleaves_feeds_instead_of_favouring_the_busiest():
+    """A busy feed must not push the other areas out of the prompt window."""
+
+    def _item(title, url, hour):
+        return (
+            f"<item><title>{title}</title><link>{url}</link>"
+            f"<pubDate>Tue, 23 Jun 2026 {hour:02d}:00:00 GMT</pubDate></item>"
+        )
+
+    busy = "https://devblogs.microsoft.com/foundry/feed/"
+    quiet = "https://devblogs.microsoft.com/dotnet/feed/"
+    payloads = {
+        # The busy feed holds the three NEWEST entries overall.
+        busy: "<rss version=\"2.0\"><channel>"
+        + "".join(
+            _item(f"AI {n}", f"https://devblogs.microsoft.com/foundry/{n}/", 20 + n)
+            for n in range(3)
+        )
+        + "</channel></rss>",
+        quiet: "<rss version=\"2.0\"><channel>"
+        + _item("Dotnet", "https://devblogs.microsoft.com/dotnet/one/", 1)
+        + "</channel></rss>",
+    }
+
+    def fake_fetch(feed_url, *, timeout):
+        return payloads[feed_url].encode("utf-8")
+
+    saved = dt.fetch_rss_feed
+    dt.fetch_rss_feed = fake_fetch
+    try:
+        candidates = dt.collect_rss_candidates(
+            now=NOW, timeout=5.0, max_items=2, feed_urls=(busy, quiet)
+        )
+    finally:
+        dt.fetch_rss_feed = saved
+
+    # With a plain "newest first" cut both slots would go to the busy feed.
+    assert {candidate["url"] for candidate in candidates} == {
+        "https://devblogs.microsoft.com/foundry/2/",
+        "https://devblogs.microsoft.com/dotnet/one/",
+    }
+    assert {candidate["area"] for candidate in candidates} == {
+        "ai-platform",
+        "dotnet-and-tooling",
+    }
+
+
+def test_collect_rss_candidates_stops_when_the_time_budget_is_spent():
+    payload = (
+        b"<rss version=\"2.0\"><channel><item><title>T</title>"
+        b"<link>https://devblogs.microsoft.com/dotnet/one/</link>"
+        b"<pubDate>Tue, 23 Jun 2026 12:00:00 GMT</pubDate></item></channel></rss>"
+    )
+    fetched = []
+    # Fake clock: the first fetch alone overshoots the budget.
+    ticks = iter([0.0, 0.0, 100.0])
+
+    def fake_fetch(feed_url, *, timeout):
+        fetched.append(feed_url)
+        return payload
+
+    saved_fetch = dt.fetch_rss_feed
+    saved_monotonic = dt.time.monotonic
+    dt.fetch_rss_feed = fake_fetch
+    dt.time.monotonic = lambda: next(ticks)
+    try:
+        candidates = dt.collect_rss_candidates(
+            now=NOW,
+            timeout=5.0,
+            feed_urls=(
+                "https://devblogs.microsoft.com/dotnet/feed/",
+                "https://devblogs.microsoft.com/devops/feed/",
+                "https://github.blog/feed",
+            ),
+            total_budget=10.0,
+        )
+    finally:
+        dt.fetch_rss_feed = saved_fetch
+        dt.time.monotonic = saved_monotonic
+
+    # Only the first feed was fetched; the rest were skipped, and the entries
+    # already collected still flow through.
+    assert fetched == ["https://devblogs.microsoft.com/dotnet/feed/"]
+    assert [candidate["url"] for candidate in candidates] == [
+        "https://devblogs.microsoft.com/dotnet/one/"
+    ]
+
+
+def test_detect_saturated_themes_recognises_foundry_topics():
+    for text in (
+        "Microsoft Foundry quota tiers explained",
+        "What's new in Azure AI Foundry",
+        "Running Foundry Local models on the edge",
+        "https://devblogs.microsoft.com/foundry/agent-service-build2026",
+    ):
+        assert dt.detect_saturated_themes(text) == ["microsoft-foundry"], text
+
+
+def test_detect_saturated_themes_ignores_unrelated_topics():
+    for text in (
+        "Deployment stacks reach GA in Bicep",
+        "What's new in .NET Aspire 13",
+        "A foundry worker's guide to metal casting",
+        "https://devblogs.microsoft.com/dotnet/whats-new",
+    ):
+        assert dt.detect_saturated_themes(text) == [], text
+
+
+def test_candidate_theme_text_covers_the_resolved_sources():
+    """A neutral title grounded in the Foundry blog is still detected."""
+    raw = {"title": "Shipping agents to production", "slug": "shipping-agents"}
+    resolved = {
+        "sources": [
+            {
+                "url": "https://devblogs.microsoft.com/foundry/agent-service",
+                "title": "Agent Service",
+            }
+        ]
+    }
+
+    assert dt.detect_saturated_themes(dt.candidate_theme_text(raw, resolved)) == [
+        "microsoft-foundry"
+    ]
+
+
+def test_process_candidates_caps_the_over_covered_theme():
+    urls = [f"https://devblogs.microsoft.com/foundry/{n}" for n in range(3)]
+    other = "https://devblogs.microsoft.com/dotnet/aspire-13"
+    registry = _registry_from(
+        [
+            {"url": url, "published_date": "2026-06-20", "title": f"Foundry {n}"}
+            for n, url in enumerate(urls)
+        ]
+        + [{"url": other, "published_date": "2026-06-21", "title": "Aspire 13"}]
+    )
+    candidates = [
+        {
+            "title": f"Microsoft Foundry topic {n}",
+            "slug": f"foundry-topic-{n}",
+            "primary_sources": [url],
+        }
+        for n, url in enumerate(urls)
+    ] + [
+        {
+            "title": "What is new in .NET Aspire 13",
+            "slug": "dotnet-aspire-13",
+            "primary_sources": [other],
+        }
+    ]
+
+    report = {}
+    accepted = dt.process_candidates(
+        candidates,
+        registry=registry,
+        dedup_index=dt.build_dedup_index([], []),
+        embeddings=None,
+        discovered_at="2026-06-24T15:03:58+02:00",
+        threshold=0.82,
+        max_candidates=5,
+        theme_report=report,
+    )
+
+    assert [candidate["id"] for candidate in accepted] == [
+        "foundry-topic-0",
+        "dotnet-aspire-13",
+    ]
+    assert report["accepted_per_theme"] == {"microsoft-foundry": 1}
+    assert [entry["slug"] for entry in report["skipped_by_theme"]] == [
+        "foundry-topic-1",
+        "foundry-topic-2",
+    ]
+
+
+def test_process_candidates_theme_cap_is_configurable():
+    urls = [f"https://devblogs.microsoft.com/foundry/{n}" for n in range(3)]
+    registry = _registry_from(
+        [
+            {"url": url, "published_date": "2026-06-20", "title": f"Foundry {n}"}
+            for n, url in enumerate(urls)
+        ]
+    )
+    candidates = [
+        {
+            "title": f"Microsoft Foundry topic {n}",
+            "slug": f"foundry-topic-{n}",
+            "primary_sources": [url],
+        }
+        for n, url in enumerate(urls)
+    ]
+
+    accepted = dt.process_candidates(
+        candidates,
+        registry=registry,
+        dedup_index=dt.build_dedup_index([], []),
+        embeddings=None,
+        discovered_at="2026-06-24T15:03:58+02:00",
+        threshold=0.82,
+        max_candidates=5,
+        max_per_saturated_theme=2,
+    )
+
+    assert len(accepted) == 2
+
+
+def test_system_prompt_states_the_editorial_balance_rules():
+    assert "AT MOST" in dt.SYSTEM_PROMPT
+    assert "Foundry" in dt.SYSTEM_PROMPT
+    # Every coverage area reaches the model verbatim.
+    for area in dt.COVERAGE_AREAS:
+        assert area in dt.SYSTEM_PROMPT
+    # The f-string braces of the response schema survived escaping.
+    assert '"candidates": [' in dt.SYSTEM_PROMPT
 
 
 def _run_all():

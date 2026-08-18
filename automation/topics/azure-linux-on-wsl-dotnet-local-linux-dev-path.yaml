@@ -1,0 +1,214 @@
+id: azure-linux-on-wsl-dotnet-local-linux-dev-path
+title: Azure Linux on WSL Gives .NET Teams a Faster Local Linux Dev Path
+slug: azure-linux-en-wsl-una-via-mas-rapida-para-que-tu-equipo-dotnet-pruebe-como-en-p
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-08-18T06:42:38+00:00'
+- status: in_review
+  at: '2026-08-18T06:47:32+00:00'
+discovered_at: '2026-08-18T06:42:38+00:00'
+similarity:
+  max_score: 0.4154
+  closest_match: microsoft-foundry-observability-agent-tracing-sensitive-telemetry
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=569376
+  title: '[In preview] Public Preview: Azure Linux on WSL'
+  published_date: '2026-08-17'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: Azure Linux on WSL is now available in Public Preview (Beta). Extending
+    Azure Linux to the developer workstation means that teams can now:Validate behavior
+    using production-aligned configurationsReproduce issues more reliablyReduce time
+    spent debugging c
+- url: https://learn.microsoft.com/en-us/azure/azure-linux/deployment-options
+  title: Overview of Azure Linux Deployment Options | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/windows/wsl/media/wsl-gui-screenshot.png
+    description: The image displays a Windows 11 desktop running Ubuntu via WSL, with
+      terminal windows showing commands related to setting up a Voice Gateway, along
+      with a calculator app, a file explorer with "Old Fir…
+  - url: https://learn.microsoft.com/en-us/azure/azure-linux/media/azure-linux-logo-new.png
+    description: A stylized, abstract wave-like logo featuring shades of blue, representing
+      the Azure cloud platform.
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-management-docs/blob/main/articles/azure-linux/deployment-options.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Azure Linux deployment options overview
+
+    Azure Linux is available across multiple Azure experiences, each optimized for
+    a specific scenario while sharing the same trusted Azure Linux foundation. Whether
+    you''re deploying virtual machines (VMs), running Kubernetes workloads, building
+    containerized applications, or setting up a local developer environment, Azure
+    Linux provides a consistent platform with Microsoft-managed engineering, security
+    response, and Azure-native integration.
+
+    This article provides an overview of the different Azure Linux deployment options,
+    explains the scenarios each option is optimized for, and helps you determine which
+    deployment approach is best suited for your workloads.
+
+    Note
+
+    Azure Linux 4.0 is now in **preview** and is strictly limited to evaluation and
+    testing purposes. It''s not suitable for production use.
+
+    ## Deployment options
+
+    The following table summarizes the primary Azure Linux deployment options, the
+    scenarios they are optimized for, and the key features and benefits each option
+    provides:
+
+    | Use case | Deployment option | Features and benefits |
+
+    | --- | --- | --- |
+
+    | **Run Kubernetes workloads on a secure, Azure-native container host** | [Azure
+    Linux container host for Azure Kubernetes Service (AKS)](azure-linux-aks-overview)
+    | A container host optimized for AKS that delivers fast boot times, predictable
+    updates, and strong security defaults with tight AKS lifecycle integration. Microsoft
+    owns the full stack from kernel to CVE response, simplifying operations and reducing
+    customer overhead. |
+
+    | **Run containers on an immutable, hardened operating system (OS) with a minimal
+    attack surface** | [Azure Container Linux (ACL)](azure-container-linux-overview)
+    | An immutable, container-optimized OS for AKS derived from Flatcar Container
+    Linux with Azure Linux packages and servicing. The OS uses kernel-enforced immutability
+    (dm-verity), SELinux, Trusted Launch with Secure Boot, and a minimal package set
+    to reduce the attack surface and block tampering. Automated weekly image-based
+    updates and supply-chain signing keep nodes current and verifiable. |
+
+    | **Run general-purpose VM workloads with Microsoft-supported Linux** | [Azure
+    Linux for Virtual Machines](azure-linux-vm-vmss-overview) | A Microsoft-supported,
+    Azu…'
+- url: https://learn.microsoft.com/en-us/azure/azure-linux/get-started-azure-linux
+  title: Get started with Azure Linux | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/windows/wsl/media/wsl-gui-screenshot.png
+    description: The image displays a Windows 11 desktop running Ubuntu via WSL, with
+      terminal windows showing commands related to setting up a Voice Gateway, along
+      with a calculator app, a file explorer with "Old Fir…
+  - url: https://learn.microsoft.com/en-us/azure/azure-linux/media/azure-linux-logo-new.png
+    description: A stylized, abstract wave-like logo featuring shades of blue, representing
+      the Azure cloud platform.
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-management-docs/blob/main/articles/azure-linux/get-started-azure-linux.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Get started with Azure Linux
+
+    This guide provides a set of quickstart tutorials to help you quickly deploy and
+    start using Azure Linux in your environment.
+
+    Note
+
+    Azure Linux 4.0 is now in **preview** and is strictly limited to evaluation and
+    testing purposes. It''s not suitable for production use.
+
+    ## Select your quickstart
+
+    | Quickstart | Description | Time to complete |
+
+    | --- | --- | --- |
+
+    | [Create an Azure Linux virtual machine (VM)](create-vm-azure-linux-4-0) | Deploy
+    an Azure Linux 4.0 VM using the Azure portal and connect to it over SSH. Azure
+    Linux VMs give you a Microsoft-supported, Azure-optimized Linux distribution for
+    general-purpose workloads. [Learn more](azure-linux-vm-vmss-overview). | 10 minutes
+    |
+
+    | [Deploy an Azure Linux container host for Azure Kubernetes Service (AKS)](deploy-azure-linux-aks-cli)
+    | Create an AKS cluster with Azure Linux as the container host using Azure CLI.
+    The Azure Linux container host delivers fast boot times, strong security defaults,
+    and end-to-end Microsoft ownership from kernel to CVE response. [Learn more](azure-linux-aks-overview).
+    | 10 minutes |
+
+    | [Deploy Azure Container Linux (ACL) for Azure Kubernetes Service (AKS)](quick-deploy-azure-container-linux-aks-cli)
+    | Create an AKS cluster using ACL, an immutable, container-optimized operating
+    system (OS) for AKS node pools with stronger security defaults and a read-only
+    root filesystem. [Learn more](azure-container-linux-overview). | 10 minutes |
+
+    | [Run Azure Linux on Windows Subsystem for Linux (WSL)](get-started-windows-subsystem-for-linux)
+    | Install Azure Linux as a WSL distribution on Windows and start using it as a
+    local development environment. [Learn more](windows-subsystem-for-linux-overview).
+    | 10 minutes |
+
+    ## Related content
+
+    After completing a quickstart, you can use the following resources to learn more
+    about deploying and managing Azure Linux in your environment:
+
+    * [Overview of Azure Linux deployment options](deployment-options)
+
+    * [Overview of Azure Linux security and compliance](security-overview)
+
+    ---
+
+    ## Feedback
+
+    Was this page helpful?
+
+    No
+
+    Need help with this topic?
+
+    Want to try using Ask Learn to clarify or guide you through this topic?
+
+    ---
+
+    ## Additional resources
+
+    ---
+
+    * Last updated on 2026-07-31'
+notes: For .NET teams that target Linux containers and Azure, this is a useful developer-experience
+  story rather than a pure infrastructure announcement. The angle can focus on reproducing
+  production behavior locally on Windows, speeding up debugging, and simplifying container-oriented
+  workflows.
+article_path: content/posts/2026-08-18-azure-linux-en-wsl-una-via-mas-rapida-para-que-tu-equipo-dotnet-pruebe-como-en-p.md
+pr_url: null

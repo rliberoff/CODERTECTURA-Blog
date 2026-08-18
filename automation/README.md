@@ -126,7 +126,7 @@ Dos detalles operativos:
 El blog está **sobrerrepresentado en Microsoft Foundry**, así que el descubrimiento se sesga hacia el resto de la plataforma por tres vías independientes:
 
 1. **Fuentes**: la lista de *feeds* está dominada por blogs de producto e ingeniería ajenos a la plataforma de IA (ver la tabla anterior).
-2. **Prompt**: el *system prompt* enumera las **áreas de cobertura** deseadas (`COVERAGE_AREAS`), exige que dos candidatos no compartan área y limita a **uno** los candidatos sobre Foundry por ejecución.
+2. **Prompt**: el *system prompt* enumera las **áreas de cobertura** deseadas (`COVERAGE_AREAS`), exige que dos candidatos no compartan área y pide **como preferencia fuerte** no pasar de un candidato sobre Foundry por ejecución.
 3. **Orquestador (la que manda)**: `SATURATED_THEMES` aplica el tope del lado del servidor. El patrón se evalúa contra los metadatos del candidato **y contra las URLs y títulos de sus fuentes ya resueltas**, de modo que un tema fundado íntegramente en el blog de Foundry se detecta aunque evite la palabra en su título. Los candidatos que exceden el tope se descartan **antes** de la llamada a *embeddings*, y el descarte queda registrado en la traza (`editorial_balance`) y en los avisos del *log*.
 
 El tope es configurable con `MAX_PER_SATURATED_THEME` (por defecto `1`). Para ampliar el mecanismo a otro tema saturado, basta con añadir una entrada a `SATURATED_THEMES`.
@@ -140,11 +140,21 @@ El tope es configurable con `MAX_PER_SATURATED_THEME` (por defecto `1`). Para am
 ### Deduplicación en el descubrimiento
 
 - **Exacta**: `slug`/`title` del candidato frente a los temas del ledger y a los posts publicados en `content/posts/*.md`.
-- **Semántica**: similitud coseno de *embeddings* frente a temas publicados, encolados o en revisión; se registra en `similarity` y se omite el candidato si `max_score` supera el umbral (`SIMILARITY_THRESHOLD`, por defecto 0.82).
+- **Semántica**: similitud coseno de *embeddings* frente a temas publicados, encolados o en revisión; se registra en `similarity` y se omite el candidato si `max_score` supera el umbral (`SIMILARITY_THRESHOLD`, por defecto 0.82). Si el pase estricto dejaría la semana sin ningún artículo, el orquestador reintenta una sola vez con un umbral más laxo (`0.90`) para rescatar temas suficientemente distintos sin relajar ni la frescura ni la deduplicación exacta.
 
 ### Fuentes de *grounding*
 
 `sources` contiene como máximo cinco artículos de respaldo, con la fuente primaria primero. Cada entrada tiene `url`, `title`, `published_date`, `host` y `kind` (`primary` o `secondary`). Los campos opcionales `excerpt` e `images` aportan contexto de redacción e imágenes a la Fase 2. No se mantiene una copia singular de la primera URL.
+
+### Refrescar solo la portada de un PR
+
+Si el borrador ya está en revisión y solo quieres sustituir `cover.png`, usa el workflow manual `ai-cover-refresh`.
+
+- **Entrada**: número del PR y una descripción corta del cambio visual deseado
+- **Qué hace**: lee el artículo actual del PR, genera un nuevo brief de portada, reemplaza únicamente `static/images/<slug>/cover.png` y hace *push* al mismo branch del PR
+- **Qué no toca**: ni el Markdown del artículo, ni las imágenes del cuerpo, ni el ledger
+
+Esto permite iterar la portada varias veces sin volver a generar el artículo completo.
 
 ### Variables de entorno
 

@@ -53,6 +53,22 @@ def test_build_workflow_derives_everything_from_the_candidate() -> None:
     assert "GH_APP_INSTALLATION_ID" not in workflow
 
 
+def test_cover_refresh_workflow_updates_only_cover_png_in_place() -> None:
+    workflow = _workflow("ai-cover-refresh.yml")
+
+    assert "workflow_dispatch" in workflow
+    assert "pr_number:" in workflow
+    assert "change_request:" in workflow
+    assert "refresh_cover_prompt.py" in workflow
+    assert "generate_image.py" in workflow
+    assert 'static/images/*/cover.png' in workflow
+    assert 'git add -- "${COVER_PATH}"' in workflow
+    assert 'git diff --cached --quiet -- "${COVER_PATH}"' in workflow
+    assert 'git push origin "HEAD:${PR_BRANCH}"' in workflow
+    assert "resolve_body_images.py" not in workflow
+    assert "create-pull-request" not in workflow
+
+
 def test_approval_workflow_publishes_the_topic_ledger() -> None:
     workflow = _workflow("auto-publish-after-codeowner-approval.yml")
     publication_script = _publication_script(workflow)

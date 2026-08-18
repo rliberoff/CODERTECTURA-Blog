@@ -29,7 +29,10 @@ surface ``POST {endpoint}/openai/v1/chat/completions`` with a single tool,
 5. The orchestrator re-validates every proposed candidate against the validated
    result registry (the model can only group URLs it was actually shown),
    enforces freshness fail-closed, deduplicates (exact + semantic), applies the
-   editorial-balance cap, and writes the YAML files.
+   editorial-balance cap, and writes the YAML files. If the strict semantic
+   dedup pass would otherwise leave the week empty, it retries once with a
+   slightly looser similarity threshold; freshness and exact-duplicate checks
+   remain hard requirements.
 
 Editorial balance
 -----------------
@@ -95,6 +98,9 @@ MAX_PER_SATURATED_THEME       Max accepted candidates per over-covered theme (se
 SOURCE_EXCERPT_MAX_CHARS      Max characters of the per-source ``excerpt`` captured
                               for code-example grounding. Default: 3000.
 SIMILARITY_THRESHOLD          Semantic-dedup novelty threshold. Default: 0.82.
+                              If it would reject every candidate in a run, the
+                              orchestrator retries once at 0.90 to avoid empty
+                              weeks while keeping freshness/exact dedup strict.
 MAX_CANDIDATES                Max candidate files written per run. Default: 10.
 DISCOVERY_MAX_ITERATIONS      Max model<->tool turns. Default: 6.
 DISCOVERY_MAX_SEARCHES        Max Tavily query rounds (each = 2 HTTP calls).
@@ -387,6 +393,7 @@ SATURATED_THEMES = {
     ),
 }
 DEFAULT_MAX_PER_SATURATED_THEME = 1
+EMPTY_WEEK_SIMILARITY_THRESHOLD = 0.90
 
 # Indented one level so the areas read as a sub-list of the balance rule that
 # introduces them, not as further rules.
@@ -403,10 +410,10 @@ backed by OFFICIAL Microsoft or GitHub sources. Work iteratively with the \
 a solid set of candidates. Write every search query in English.
 
 EDITORIAL BALANCE (as important as freshness):
-- The blog is currently OVER-COVERED on Microsoft Foundry / Azure AI Foundry. AT MOST \
-ONE of your candidates may be about Foundry, and only if it is genuinely significant \
-news. The orchestrator enforces this cap and silently DROPS the extra Foundry \
-candidates, so proposing more than one only wastes slots.
+- The blog is currently OVER-COVERED on Microsoft Foundry / Azure AI Foundry. Prefer \
+AT MOST ONE of your candidates about Foundry, and only if it is genuinely significant \
+news. The orchestrator starts with that cap and only relaxes the selection threshold \
+as a last resort if strict filtering would otherwise yield no article at all.
 - Every other candidate MUST come from a DIFFERENT area of the Microsoft and Azure \
 platform. Aim for candidates spread across these areas:
 {_COVERAGE_AREAS_BLOCK}
@@ -1887,6 +1894,88 @@ def process_candidates(
     return accepted
 
 
+def process_candidates_with_empty_week_fallback(
+    raw_candidates: list,
+    *,
+    registry: dict,
+    dedup_index: dict,
+    embeddings: "EmbeddingsClient | None",
+    discovered_at: str,
+    threshold: float,
+    max_candidates: int,
+    max_per_saturated_theme: int = DEFAULT_MAX_PER_SATURATED_THEME,
+    theme_report: "dict | None" = None,
+    selection_report: "dict | None" = None,
+) -> list:
+    """Retry semantic dedup once with a looser threshold when strict selection is empty.
+
+    This protects the weekly workflow from producing zero candidates solely
+    because the semantic-dedup threshold was too aggressive. Freshness,
+    fail-closed source validation and exact duplicates remain unchanged.
+    """
+    strict_theme_report: dict = {}
+    strict_candidates = process_candidates(
+        raw_candidates,
+        registry=registry,
+        dedup_index=dedup_index,
+        embeddings=embeddings,
+        discovered_at=discovered_at,
+        threshold=threshold,
+        max_candidates=max_candidates,
+        max_per_saturated_theme=max_per_saturated_theme,
+        theme_report=strict_theme_report,
+    )
+    if selection_report is not None:
+        selection_report["strict_threshold"] = threshold
+        selection_report["strict_count"] = len(strict_candidates)
+
+    if strict_candidates or not raw_candidates:
+        if theme_report is not None:
+            theme_report.update(strict_theme_report)
+        if selection_report is not None:
+            selection_report["relaxed_threshold"] = None
+            selection_report["relaxed_count"] = None
+            selection_report["used_relaxed_results"] = False
+        return strict_candidates
+
+    relaxed_threshold = max(threshold, EMPTY_WEEK_SIMILARITY_THRESHOLD)
+    if relaxed_threshold <= threshold:
+        if theme_report is not None:
+            theme_report.update(strict_theme_report)
+        if selection_report is not None:
+            selection_report["relaxed_threshold"] = None
+            selection_report["relaxed_count"] = None
+            selection_report["used_relaxed_results"] = False
+        return strict_candidates
+
+    warn(
+        "no candidates survived strict semantic selection; retrying with "
+        f"relaxed similarity threshold {relaxed_threshold:.2f} "
+        f"(was {threshold:.2f}) to avoid an empty week"
+    )
+    relaxed_theme_report: dict = {}
+    relaxed_candidates = process_candidates(
+        raw_candidates,
+        registry=registry,
+        dedup_index=dedup_index,
+        embeddings=embeddings,
+        discovered_at=discovered_at,
+        threshold=relaxed_threshold,
+        max_candidates=max_candidates,
+        max_per_saturated_theme=max_per_saturated_theme,
+        theme_report=relaxed_theme_report,
+    )
+    if selection_report is not None:
+        selection_report["relaxed_threshold"] = relaxed_threshold
+        selection_report["relaxed_count"] = len(relaxed_candidates)
+        selection_report["used_relaxed_results"] = bool(relaxed_candidates)
+
+    chosen_theme_report = relaxed_theme_report if relaxed_candidates else strict_theme_report
+    if theme_report is not None:
+        theme_report.update(chosen_theme_report)
+    return relaxed_candidates if relaxed_candidates else strict_candidates
+
+
 # -----------------------------------------------------------------------------
 # CLI plumbing.
 # -----------------------------------------------------------------------------
@@ -2002,6 +2091,7 @@ def _emit_discovery_trace(payload: dict) -> None:
         "stopped_reason": payload.get("stopped_reason"),
         "rss_entries_per_area": payload.get("rss", {}).get("entries_per_area", {}),
         "editorial_balance": payload.get("editorial_balance", {}),
+        "selection": payload.get("selection", {}),
         "raw_candidates_count": payload.get("raw_candidates_count"),
         "processed_candidates_count": payload.get("processed_candidates_count"),
         "processed_candidates": payload.get("processed_candidates", []),
@@ -2155,7 +2245,8 @@ def main() -> None:
     dedup_index = build_dedup_index(topics, posts)
 
     theme_report: dict = {}
-    candidates = process_candidates(
+    selection_report: dict = {}
+    candidates = process_candidates_with_empty_week_fallback(
         raw_candidates,
         registry=registry,
         dedup_index=dedup_index,
@@ -2165,8 +2256,10 @@ def main() -> None:
         max_candidates=max_candidates,
         max_per_saturated_theme=max_per_saturated_theme,
         theme_report=theme_report,
+        selection_report=selection_report,
     )
     debug_payload["editorial_balance"] = theme_report
+    debug_payload["selection"] = selection_report
 
     debug_payload["registry_snapshot"] = sorted(
         [

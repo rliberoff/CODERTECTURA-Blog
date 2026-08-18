@@ -1169,6 +1169,80 @@ def test_process_candidates_cosine_threshold_boundary():
         dt.semantic_similarity = saved
 
 
+def test_empty_week_fallback_relaxes_only_semantic_threshold():
+    url = "https://devblogs.microsoft.com/dotnet/post"
+    raw = [{"title": "Tema nuevo", "slug": "tema-nuevo", "primary_sources": [url]}]
+    dedup_index = dt.build_dedup_index(
+        [{"slug": "old", "title": "Tema antiguo", "status": "published"}], []
+    )
+    embeddings = FakeEmbeddings({"Tema antiguo": [1.0, 0.0], "Tema nuevo": [1.0, 0.0]})
+    selection_report = {}
+    theme_report = {}
+
+    saved = dt.semantic_similarity
+    try:
+        dt.semantic_similarity = lambda *a, **k: (0.85, "old")
+        accepted = dt.process_candidates_with_empty_week_fallback(
+            list(raw),
+            registry=_registry_from(
+                [{"url": url, "published_date": "2026-06-20", "title": "T", "score": 0.9}]
+            ),
+            dedup_index=dedup_index,
+            embeddings=embeddings,
+            discovered_at="2026-06-24T15:03:58+02:00",
+            threshold=0.82,
+            max_candidates=5,
+            theme_report=theme_report,
+            selection_report=selection_report,
+        )
+    finally:
+        dt.semantic_similarity = saved
+
+    assert [candidate["id"] for candidate in accepted] == ["tema-nuevo"]
+    assert selection_report == {
+        "strict_threshold": 0.82,
+        "strict_count": 0,
+        "relaxed_threshold": 0.9,
+        "relaxed_count": 1,
+        "used_relaxed_results": True,
+    }
+    assert theme_report == {
+        "max_per_saturated_theme": 1,
+        "accepted_per_theme": {},
+        "skipped_by_theme": [],
+    }
+
+
+def test_empty_week_fallback_keeps_exact_duplicates_rejected():
+    url = "https://devblogs.microsoft.com/dotnet/post"
+    selection_report = {}
+
+    accepted = dt.process_candidates_with_empty_week_fallback(
+        [{"title": "Tema repetido", "slug": "tema-repetido", "primary_sources": [url]}],
+        registry=_registry_from(
+            [{"url": url, "published_date": "2026-06-20", "title": "T", "score": 0.9}]
+        ),
+        dedup_index=dt.build_dedup_index(
+            [{"slug": "tema-repetido", "title": "Tema repetido", "status": "published"}],
+            [],
+        ),
+        embeddings=None,
+        discovered_at="2026-06-24T15:03:58+02:00",
+        threshold=0.82,
+        max_candidates=5,
+        selection_report=selection_report,
+    )
+
+    assert accepted == []
+    assert selection_report == {
+        "strict_threshold": 0.82,
+        "strict_count": 0,
+        "relaxed_threshold": 0.9,
+        "relaxed_count": 0,
+        "used_relaxed_results": False,
+    }
+
+
 # -----------------------------------------------------------------------------
 # parse_candidates (noisy JSON) + parse_published_date edges.
 # -----------------------------------------------------------------------------

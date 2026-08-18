@@ -1,12 +1,9 @@
 ---
-title: 'Azure Linux en WSL: una forma más rápida de probar tus aplicaciones .NET como
-  se ejecutan de verdad'
-date: '2026-08-18T06:46:24+00:00'
-draft: true
+title: 'Azure Linux en WSL: una forma más rápida de probar tus aplicaciones .NET como se ejecutan de verdad'
+date: '2026-08-18T09:01:50Z'
+draft: false
 slug: azure-linux-en-wsl-una-via-mas-rapida-para-que-tu-equipo-dotnet-pruebe-como-en-p
-description: Azure Linux en WSL me parece una mejora muy práctica si desarrollas en
-  Windows pero despliegas .NET sobre Linux y Azure. Reduce fricción local y acerca
-  antes la validación al entorno real.
+description: Azure Linux en WSL me parece una mejora muy práctica si desarrollas en Windows pero despliegas .NET sobre Linux y Azure. Reduce fricción local y acerca antes la validación al entorno real.
 categories:
 - .NET
 - Azure
@@ -25,8 +22,8 @@ ai:
   model: gpt-5.4
   prompt_version: 2026-08-04.1
   generated_at: '2026-08-18T06:46:24+00:00'
-  reviewed_by: ''
-  review_status: pending
+  reviewed_by: rliberoff
+  review_status: approved
   disclosure: Borrador asistido por IA; revisado por una persona antes de su publicación.
   sources:
   - url: https://azure.microsoft.com/updates?id=569376
@@ -38,6 +35,7 @@ ai:
   - url: https://learn.microsoft.com/en-us/azure/azure-linux/get-started-azure-linux
     title: Get started with Azure Linux | Microsoft Learn
     published_date: null
+  reviewed_at: '2026-08-18T09:01:50Z'
 ---
 
 Si trabajas con .NET pero despliegas en contenedores Linux o sobre servicios de Azure, seguramente conoces esa incomodidad bastante poco glamurosa: en tu portátil todo parece correcto, en CI tampoco salta nada especialmente raro y, aun así, cuando llega el momento de ejecutar en el entorno real aparecen diferencias de permisos, rutas, dependencias nativas o pequeños matices del *runtime* que nadie había visto venir. Por eso me ha parecido especialmente interesante la llegada en *public preview* de [Azure Linux on WSL](https://azure.microsoft.com/updates?id=569376). Yo no lo leo como una simple novedad de sistema operativo, sino como una mejora muy concreta de la experiencia de desarrollo para quienes queremos **probar más cerca de producción sin salir de Windows**, porque voy a ser honesto contigo… soy un total paleto en Linux 😅

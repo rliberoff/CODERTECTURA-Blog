@@ -1,12 +1,14 @@
 id: azure-linux-on-wsl-dotnet-local-linux-dev-path
 title: Azure Linux on WSL Gives .NET Teams a Faster Local Linux Dev Path
 slug: azure-linux-en-wsl-una-via-mas-rapida-para-que-tu-equipo-dotnet-pruebe-como-en-p
-status: in_review
+status: published
 status_history:
 - status: candidate
   at: '2026-08-18T06:42:38+00:00'
 - status: in_review
   at: '2026-08-18T06:47:32+00:00'
+- status: published
+  at: '2026-08-18T09:02:11+00:00'
 discovered_at: '2026-08-18T06:42:38+00:00'
 similarity:
   max_score: 0.4154
@@ -211,4 +213,4 @@ notes: For .NET teams that target Linux containers and Azure, this is a useful d
   production behavior locally on Windows, speeding up debugging, and simplifying container-oriented
   workflows.
 article_path: content/posts/2026-08-18-azure-linux-en-wsl-una-via-mas-rapida-para-que-tu-equipo-dotnet-pruebe-como-en-p.md
-pr_url: null
+pr_url: https://github.com/rliberoff/CODERTECTURA-Blog/pull/50

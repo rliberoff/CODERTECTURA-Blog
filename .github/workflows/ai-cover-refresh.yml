@@ -70,6 +70,17 @@ jobs:
       - name: Instalar dependencias del script
         run: python -m pip install --disable-pip-version-check --no-input -r automation/scripts/requirements.txt
 
+      - name: Preservar las herramientas del workflow antes de cambiar de rama
+        shell: bash
+        run: |
+          set -euo pipefail
+          TOOL_DIR="${RUNNER_TEMP}/cover-refresh-tools"
+          mkdir -p "${TOOL_DIR}"
+          cp automation/scripts/refresh_cover_prompt.py "${TOOL_DIR}/"
+          cp automation/scripts/generate_image.py "${TOOL_DIR}/"
+          cp automation/scripts/_cover_style.py "${TOOL_DIR}/"
+          cp automation/scripts/_foundry.py "${TOOL_DIR}/"
+
       - name: Mint GitHub App token (efímero)
         id: app-token
         uses: actions/create-github-app-token@v1
@@ -155,10 +166,11 @@ jobs:
           COVER_REVIEW_BRIEF: ${{ inputs.change_request }}
           IMAGE_PROMPT_FILE: ${{ runner.temp }}/cover-refresh-prompt.txt
           COVER_PROMPT_TRACE_STDOUT: "true"
+          COVER_REFRESH_TOOL_DIR: ${{ runner.temp }}/cover-refresh-tools
         run: |
           set -euo pipefail
           TOKEN="$(az account get-access-token --resource "${TOKEN_SCOPE}" --query accessToken --output tsv --only-show-errors)"
-          AOAI_TOKEN="${TOKEN}" python automation/scripts/refresh_cover_prompt.py
+          AOAI_TOKEN="${TOKEN}" python "${COVER_REFRESH_TOOL_DIR}/refresh_cover_prompt.py"
 
       - name: Regenerar solo cover.png
         shell: bash
@@ -166,10 +178,11 @@ jobs:
           IMAGE_TRACE_STDOUT: "true"
           IMAGE_PROMPT_FILE: ${{ runner.temp }}/cover-refresh-prompt.txt
           COVER_PATH: ${{ steps.target.outputs.cover_path }}
+          COVER_REFRESH_TOOL_DIR: ${{ runner.temp }}/cover-refresh-tools
         run: |
           set -euo pipefail
           TOKEN="$(az account get-access-token --resource "${TOKEN_SCOPE}" --query accessToken --output tsv --only-show-errors)"
-          AOAI_TOKEN="${TOKEN}" python automation/scripts/generate_image.py
+          AOAI_TOKEN="${TOKEN}" python "${COVER_REFRESH_TOOL_DIR}/generate_image.py"
 
       - name: Confirmar y subir solo la portada
         shell: bash

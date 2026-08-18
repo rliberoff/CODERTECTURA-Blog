@@ -61,6 +61,12 @@ Run `extractCodertecturaArticle()` from the scripts reference. It must return a 
 - A source snapshot with the original body selector and structural counts before conversion
 - Expected counts for headings, lists, blockquotes, code blocks, links, markers, and media
 
+NEVER return `bodyHtml`, `attributionHtml`, or any encoded payload as a tool result. Article HTML that contains tracking query strings is rejected by the output filter with `[BLOCKED: Cookie/query string data]`, and large payloads flood the context. Instead:
+
+- Return only a summary: title, canonical URL and source, cover fields, `sourceSnapshot`, `expected`, and a `media` array reduced to `id`, `marker`, `fileName`, `url`, `captionText`, `alt`.
+- Persist the full manifest on the canonical origin with `localStorage.setItem('__liManifest', JSON.stringify(manifest))`. Every later trip back to the post reads it instead of re-running extraction, so the manifest stays byte-identical across trips and the long extraction script is sent once.
+- Move `bodyHtml` to LinkedIn through the same hash channel used for images.
+
 The extraction script applies these deterministic conversions:
 
 - Replace every body image with a unique visible marker such as `[[LI_MEDIA_001]]`. Never locate an image by nearby prose.
@@ -110,29 +116,45 @@ Retry extraction once after a page reload if preflight fails. If only the cover 
 
 1. Navigate to `https://www.linkedin.com/article/new/`. Fallback: `linkedin.com/feed/` → "Write article".
 2. Click the Title field and type the title with the computer tool.
-3. Capture the resulting editor URL after LinkedIn creates the draft. Reuse this exact URL for image transfer.
-4. Insert the complete `bodyHtml` in one synthetic HTML paste into `div.ProseMirror[contenteditable="true"]`.
-5. Start the HTML with `<p></p>` so ProseMirror's first-block merge is absorbed.
-6. Run `auditLinkedInDraft(manifest)` immediately.
+3. Capture the resulting editor URL after LinkedIn creates the draft. Reuse this exact URL for every hash transfer.
+4. Return to the canonical post and send `bodyHtml` — and, when it fits the 1.2 MB budget, the body images in the same payload — to the editor URL as one `CLAUDEBUNDLE=` hash. One combined trip is preferred: fewer navigations mean fewer chances to lose editor state.
+5. Wait outside the browser tool, then make `hydrateBundleAndPaste()` the first JavaScript call. It hydrates `window.__files`, strips the hash with `history.replaceState`, and pastes the HTML into `div.ProseMirror[contenteditable="true"]` in that single call.
+6. Start the HTML with `<p></p>` so ProseMirror's first-block merge is absorbed.
+7. Run `auditLinkedInDraft(manifest)` immediately.
 
 The editor does not understand Markdown text. Paste HTML only. LinkedIn may normalize both `h2` and `h3` to `h3.article-editor-heading`, so compare total heading count rather than heading levels.
 
-If the first audit finds a merged first block, empty leading paragraph, or one demoted heading, use the targeted repair scripts. Never clear and repaste a non-empty draft unless the user explicitly asks to start over.
+The `<p></p>` prefix is usually NOT absorbed and survives as a leading empty paragraph. Remove it with real input, not DOM selection:
+
+1. Click the first line of the first text block (`children[1]`), a few pixels in from its left edge.
+2. Press `Home`, then `BackSpace`.
+3. Verify that the block count dropped by one and that heading, link, and code-block counts are unchanged.
+
+Setting a DOM range on the empty paragraph and pressing `Delete` looks correct and does nothing — ProseMirror keeps its own selection and ignores the synthetic one. Clicking slightly too high lands in the empty paragraph itself, where `BackSpace` is a no-op; if the block count does not change, re-measure and click lower, on actual text.
+
+Never clear and repaste a non-empty draft unless the user explicitly asks to start over. When they do, reuse the same draft rather than creating a second one: click into the body, `ctrl+a`, `BackSpace`, and confirm the editor reports one empty block and zero figures. The title survives. Never delete or discard the draft itself — that is the user's call, not yours.
 
 ## Step 5 - Transfer and place images
 
 LinkedIn's CSP blocks external image fetches and remote images in pasted HTML. Use the hash-transfer functions from the scripts reference in the same tab:
 
+Skip steps 1 to 6 for images already hydrated by the Step 4 bundle; go straight to placement.
+
 1. Wait until the draft reports saved before leaving LinkedIn.
-2. Navigate the same tab to the canonical CODERTECTURA URL.
+2. Navigate the same tab to the canonical CODERTECTURA URL and read the manifest from `localStorage`.
 3. Fetch the cover and body images from their absolute manifest URLs.
 4. Normalize the remaining images with `prepareNextImagePayload()`. Keep small files unchanged; resize and recompress large raster images to stay within the hash budget. Preserve a small GIF; convert an oversized GIF to a static JPEG preview.
 5. Let the function fill one encoded payload below 1.2 MB and return `includedNames` plus `remainingNames`. Do not estimate batches manually.
 6. Navigate to the exact saved editor URL with the prepared hash. The first JavaScript call after navigation MUST be `hydrateTransferredImageFiles()` so it hydrates `window.__files` and strips the hash with `history.replaceState` in that same call. Do not run another browser, DOM, or JavaScript action first because tool responses can echo the complete base64 URL and overflow the tab context.
-7. Insert each included body image with `insertImageAtMarker(marker, fileName, captionText)`, one at a time and in manifest order.
-8. After each upload, verify that the figure count increased by one and that the marker was removed. A CDP timeout from `insertImageAtMarker()` is an indeterminate result, not proof of failure: wait outside the browser tool, re-query the editor, and run `recoverTimedOutImageInsertion(marker)` before any retry. If the figure exists, do not upload it again; relocate it to the recorded marker position when needed, then verify its caption. Retry once only when no figure was created and the marker still exists.
-9. If `remainingNames` is non-empty, return to the canonical post, rerun extraction, and prepare only those remaining media. Repeat until none remain.
-10. If the manifest has a cover URL, upload it in its own final payload. Run `openArticleCoverCrop(fileName)` and verify the `crop-ready` state first; then run `confirmArticleCoverCrop()` as a separate action and require the `applied` state. A timeout waiting for the final cover image is also indeterminate: inspect `getArticleCoverUploadState()` before retrying. If the crop dialog remains open, click its enabled Next button once; if the cover is already applied, continue without uploading again. Restore every patched browser prototype in a `finally` path. Otherwise skip cover upload.
+7. Place each included body image with a real selection, one at a time and in manifest order:
+   1. `locateMarkerBlock(marker)` scrolls the marker block into view and returns click coordinates.
+   2. `triple_click` those coordinates with the computer tool. This selects the whole marker paragraph AND syncs ProseMirror's internal selection, which a synthetic DOM range does not.
+   3. In one JavaScript call, assert `window.getSelection().toString().trim() === marker` and THEN dispatch the file paste. Throw instead of pasting if the assertion fails — a mismatched selection is exactly how images land in the wrong place.
+   4. Wait outside the browser tool (about 12 s), then verify.
+8. After each image, verify that the figure count increased by exactly one, that the figure sits between the expected neighbours, and that the marker is gone. Two new figures, or a figure adjacent to the previous one instead of at the marker, means the selection was wrong: stop and report rather than continuing, because every later insertion compounds the damage.
+9. Type each caption with real keystrokes: click the figure's `figcaption textarea` and use the computer `type` action. Captions written through the native `value` setter look correct in the DOM and are silently discarded on save.
+10. If `remainingNames` is non-empty, return to the canonical post, read the manifest from `localStorage`, and prepare only those remaining media. Repeat until none remain.
+11. If the manifest has a cover URL, upload it in its own final payload. Run `openArticleCoverCrop(fileName)` and verify the `crop-ready` state first; then run `confirmArticleCoverCrop()` as a separate action and require the `applied` state. A timeout waiting for the final cover image is also indeterminate: inspect `getArticleCoverUploadState()` before retrying. If the crop dialog remains open, click its enabled Next button once; if the cover is already applied, continue without uploading again. Restore every patched browser prototype in a `finally` path. Otherwise skip cover upload.
 
 Marker-based placement is mandatory. It works for images at the beginning, adjacent figures, repeated prose, and galleries, all of which make nearby-text anchoring unreliable.
 
@@ -147,8 +169,12 @@ Run one manifest-aware DOM audit and require all of the following:
 - No `[[LI_MEDIA_` markers
 - Final attribution present and linked to the canonical URL
 - Cover presence matches the manifest: present when a dedicated or fallback cover was resolved, absent otherwise
-- No empty paragraphs except a transient editor placeholder
+- No empty paragraphs, EXCEPT a transient editor placeholder and the one LinkedIn inserts immediately after each figure
 - Draft saved indicator present
+
+LinkedIn adds an empty paragraph after every inserted image. LEAVE IT. It is invisible spacing in the published article, and removing it is actively harmful: placing the caret at the start of the following heading and pressing `BackSpace` demotes that heading to a paragraph instead of deleting the empty block. If this happens, `ctrl+z` restores the heading — verify the heading count returns to expected before continuing. Expect a final block count of `body blocks + one per figure`.
+
+Before the final audit, reload the editor URL once and re-verify. Inserted images stay as local `data:` URLs in the DOM until a reload, which is NOT evidence of a failed upload; after the reload they resolve to `media.licdn.com`. A figure whose `src` attribute is the literal string `null`, or whose `naturalWidth` is 0, IS a failed insertion.
 
 Repair only the failed element. Re-query the live DOM before one retry. Do not repeat successful uploads, repaste the body, or restart the article. If the second attempt fails, stop with the failed invariant, expected value, and observed value.
 
@@ -168,6 +194,9 @@ If the user asked for edits to the teaser, edit in the dialog rather than starti
 ## Speed and stability rules
 
 - Prefer DOM checks over screenshots.
+- Compute click coordinates from live rects, never from a screenshot by eye. The screenshot frame is scaled against CSS pixels: derive `k = screenshotWidth / window.innerWidth` once (0.6125 on a 2560 px viewport) and convert with `Math.round(cssX * k)`. Call `scrollIntoView({ block: 'center' })` and read the rect in the SAME JavaScript call that returns the coordinates, because the page can scroll between calls.
+- Do not trust a collapsed `window.getSelection()` read after a click; it can report the previously focused block. A non-collapsed selection (after `triple_click`) reads reliably, so verify by selected TEXT rather than by anchor node. When unsure whether clicks land where you think, type two throwaway characters, check where they appear, and remove them with `BackSpace` — verify by effect, not by selection state.
+- Any editor mutation driven by a synthetic DOM range is suspect. Real clicks and real keystrokes are the reliable path for caret placement, block joins, and captions; reserve JavaScript for reading state and for the file paste itself.
 - Use the canonical page DOM, never RSS `description`, as article content.
 - Carry one manifest through extraction, paste, upload, and final audit.
 - Batch read-only checks; keep image uploads sequential because each changes editor state.

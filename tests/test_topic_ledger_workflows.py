@@ -59,8 +59,10 @@ def test_cover_refresh_workflow_updates_only_cover_png_in_place() -> None:
     assert "workflow_dispatch" in workflow
     assert "pr_number:" in workflow
     assert "change_request:" in workflow
-    assert "refresh_cover_prompt.py" in workflow
-    assert "generate_image.py" in workflow
+    assert 'cp automation/scripts/refresh_cover_prompt.py "${TOOL_DIR}/"' in workflow
+    assert 'cp automation/scripts/generate_image.py "${TOOL_DIR}/"' in workflow
+    assert 'python "${COVER_REFRESH_TOOL_DIR}/refresh_cover_prompt.py"' in workflow
+    assert 'python "${COVER_REFRESH_TOOL_DIR}/generate_image.py"' in workflow
     assert 'static/images/*/cover.png' in workflow
     assert 'git add -- "${COVER_PATH}"' in workflow
     assert 'git diff --cached --quiet -- "${COVER_PATH}"' in workflow

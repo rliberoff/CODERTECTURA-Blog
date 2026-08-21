@@ -1,0 +1,371 @@
+id: azure-dns-traffic-manager-linked-records-public-preview
+title: Azure DNS adds Traffic Manager linked records in public preview
+slug: azure-dns-estrena-traffic-manager-linked-records-menos-cname-mas-control-global
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-08-21T11:26:02+00:00'
+- status: in_review
+  at: '2026-08-21T11:31:28+00:00'
+discovered_at: '2026-08-21T11:26:02+00:00'
+similarity:
+  max_score: 0.3883
+  closest_match: microsoft-foundry-observability-agent-tracing-sensitive-telemetry
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=569743
+  title: '[Launched] Generally Available: Summarized advertised gateway prefixes for
+    route advertisement'
+  published_date: '2026-08-20'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: Summarized advertised gateway prefixes for route advertisement is now generally
+    available. You can specify aggregated (summarized) prefixes for an Azure gateway
+    to advertise to your on-premises networks, rather than having every individual
+    virtual network
+- url: https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview
+  title: Azure Traffic Manager overview | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/traffic-manager/media/traffic-manager-how-traffic-manager-works/flow.png
+    description: The diagram illustrates how Azure DNS Traffic Manager links records
+      such as CNAME and A records for optimizing traffic routing and health checks
+      for various cloud resources like web applications, virt…
+  - url: https://learn.microsoft.com/en-us/azure/traffic-manager/media/traffic-manager-how-traffic-manager-works/dns-configuration.png
+    description: The diagram illustrates the configuration of Azure DNS Traffic Manager
+      with linked CNAME records for the partnership between partners.contoso.com and
+      contoso.trafficmanager.net, demonstrating region-s…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/traffic-manager/traffic-manager-overview.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # What is Azure Traffic Manager?
+
+    Azure Traffic Manager is a DNS-based traffic load balancer that distributes traffic
+    to your public-facing applications across global Azure regions. Traffic Manager
+    provides your public endpoints with high availability and quick responsiveness.
+
+    Traffic Manager uses DNS to direct client requests to the appropriate service
+    endpoint based on a traffic-routing method. Traffic Manager also provides health
+    monitoring for every endpoint. The endpoint can be any Internet-facing service
+    hosted inside or outside of Azure. Traffic Manager provides a range of [traffic-routing
+    methods](traffic-manager-routing-methods) and [endpoint monitoring options](traffic-manager-monitoring)
+    to suit different application needs and automatic failover models. Traffic Manager
+    is resilient to failure, including the failure of an entire Azure region.
+
+    Note
+
+    Azure provides a suite of fully managed load-balancing solutions for your scenarios.
+
+    * If you want to load balance between your servers in a region at the application
+    layer, review [Application Gateway](../application-gateway/overview).
+
+    * If you need to optimize global routing of your web traffic and optimize top-tier
+    end-user performance and reliability through quick global failover, see [Front
+    Door](../frontdoor/front-door-overview).
+
+    * To do network layer load balancing, review [Load Balancer](../load-balancer/load-balancer-overview).
+
+    Your end-to-end scenarios might benefit from combining these solutions as needed.
+    For an Azure load-balancing options comparison, see [Overview of load-balancing
+    options in Azure](/en-us/azure/architecture/guide/technology-choices/load-balancing-overview).
+
+    For more information about Traffic Manager, see:
+
+    * [How Traffic Manager works](traffic-manager-how-it-works)
+
+    * [Traffic Manager FAQs](traffic-manager-faqs)
+
+    * [Traffic Manager profiles](traffic-manager-manage-profiles)
+
+    * [Traffic Manager endpoints](traffic-manager-endpoint-types)
+
+    ## Key features
+
+    ### Increase application availability
+
+    Traffic Manager monitors your endpoints and provides automatic failover when an
+    endpoint goes down, delivering high availability for your critical applications.
+
+    ### Improve application performance
+
+    Traffic Manager improves your application''s responsiveness by directing traf…'
+- url: https://learn.microsoft.com/en-us/azure/traffic-manager/secure-traffic-manager
+  title: Secure your Azure Traffic Manager deployment | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/traffic-manager/media/traffic-manager-how-traffic-manager-works/flow.png
+    description: The diagram illustrates how Azure DNS Traffic Manager links records
+      such as CNAME and A records for optimizing traffic routing and health checks
+      for various cloud resources like web applications, virt…
+  - url: https://learn.microsoft.com/en-us/azure/traffic-manager/media/traffic-manager-how-traffic-manager-works/dns-configuration.png
+    description: The diagram illustrates the configuration of Azure DNS Traffic Manager
+      with linked CNAME records for the partnership between partners.contoso.com and
+      contoso.trafficmanager.net, demonstrating region-s…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/traffic-manager/secure-traffic-manager.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Secure your Azure Traffic Manager deployment
+
+    Azure Traffic Manager is a DNS-based traffic load balancer that distributes traffic
+    across global Azure regions, providing high availability and responsive performance
+    for your applications. Because Traffic Manager controls how clients are routed
+    to your service endpoints, securing your Traffic Manager configuration is essential
+    to prevent misrouting, unauthorized changes, and monitoring gaps that could affect
+    application availability.
+
+    This article provides security recommendations for Azure Traffic Manager. For
+    an overview of Azure''s network security services and how they work together,
+    see [What is Azure network security?](../networking/security/network-security)
+
+    The security recommendations in this article implement Zero Trust principles:
+    "Verify explicitly", "Use least privilege access", and "Assume breach". For comprehensive
+    Zero Trust guidance, see the [Zero Trust Guidance Center](/en-us/security/zero-trust/).
+
+    ## Network security
+
+    Network security for Traffic Manager focuses on ensuring that health probes can
+    reach your endpoints and that your DNS-based routing configuration prevents unintended
+    traffic patterns. Because Traffic Manager operates at the DNS layer rather than
+    as a proxy, network security focuses on probe access and endpoint configuration.
+
+    * **Allow Traffic Manager health probe traffic through firewalls**: For Azure-hosted
+    endpoints, configure network security groups (NSGs) or Azure Firewall rules to
+    permit inbound traffic from Traffic Manager health probes by using the `AzureTrafficManager`
+    service tag. For non-Azure endpoints, add the published Traffic Manager probe
+    IP ranges to the allow list in the endpoint''s firewall. If probes are blocked,
+    Traffic Manager marks endpoints as unhealthy and routes traffic away from otherwise
+    healthy services, causing unexpected outages. For more information, see [Traffic
+    Manager endpoint monitoring](traffic-manager-monitoring#firewall-setup-for-health-checks).
+
+    * **Configure endpoint health monitoring over HTTPS for web endpoints**: Select
+    HTTPS as the monitoring protocol for web endpoints in your Traffic Manager profile
+    instead of HTTP. Use HTTPS probes to verify endpoints accept HTTPS connections.
+    Probes don''t validate certificate validi…'
+- url: https://techcommunity.microsoft.com/blog/azurenetworkingblog/azure-dns-introduces-traffic-manager-linked-records-public-preview/4547112
+  title: Azure DNS introduces Traffic Manager linked records (Public Preview) | Microsoft
+    Community Hub
+  published_date: null
+  host: techcommunity.microsoft.com
+  kind: secondary
+  images:
+  - url: https://techcommunity.microsoft.com/t5/s/gxcuf89792/images/bS00NTQ3MTEyLVluOXVRdQ?image-dimensions=450x600&constrain-image=true
+    description: The diagram illustrates how Azure Public DNS records are linked to
+      Azure Traffic Manager profiles, showing the flow of DNS queries from clients
+      through various Azure services, including CNAME flatteni…
+  excerpt: '## Blog Post
+
+    Azure Networking Blog
+
+    3 MIN READ
+
+    # Azure DNS introduces Traffic Manager linked records (Public Preview)
+
+    [![samimodak''s avatar](https://techcommunity.microsoft.com/t5/s/gxcuf89792/m_assets/avatars/default/avatar-10.svg?image-dimensions=50x50)](/users/samimodak/3612001)
+
+    [samimodak](/users/samimodak/3612001)
+
+    ![Icon for Microsoft rank](https://techcommunity.microsoft.com/t5/s/gxcuf89792/images/cmstNC05WEo0blc?image-dimensions=100x16&constrain-image=true)Microsoft
+
+    Aug 18, 2026
+
+    ## Simpler, faster, and more secure DNS load balancing
+
+    We''re excited to announce the **public preview of Traffic Manager linked records**,
+    a new Azure DNS capability that enables customers to directly associate Azure
+    Public DNS record sets with Azure Traffic Manager profiles without using a CNAME
+    to trafficmanager.net.
+
+    With this capability, customers can use Traffic Manager''s DNS-based load balancing
+    capabilities without exposing the intermediate trafficmanager.net domain in DNS
+    responses. Azure DNS and Traffic Manager now work together to provide a more seamless,
+    integrated DNS experience for applications running across Azure, hybrid, and multi-cloud
+    environments.
+
+    ### Simplifying DNS-based traffic routing
+
+    Traditionally, customers using Azure DNS with Traffic Manager relied on CNAME
+    records that returned a Traffic Manager hostname. DNS clients would then perform
+    an additional lookup to resolve that hostname before reaching the application
+    endpoint.
+
+    Traffic Manager linked recordssimplifies this process by allowing Azure DNS to
+    resolve Traffic Manager routing decisions internally and return the appropriate
+    endpoint information directly to clients.
+
+    The result is a cleaner DNS resolution path while preserving all of Traffic Manager''s
+    existing routing methods, health monitoring, and failover capabilities.
+
+    ### Key benefits
+
+    **Better integration between Azure DNS and Azure Traffic Manager**
+
+    Traffic Manager linked records allow Azure DNS record sets to directly reference
+    Traffic Manager profiles, including nested profile configurations.
+
+    This enables sophisticated traffic routing architectures without relying on intermediate
+    CNAME records, making complex global deployments easier to build and manage.
+
+    **Improved security and DNS hygiene**
+
+    Because DNS responses no longer expose the intermediate **trafficmanager.net**
+    domain, organizations can simplify firewall rules and reduce reliance on intermediate
+    DNS names.
+
+    Traffic Manager linked records also help eliminate a common source of dangling
+    subdomains caused by orphaned or misconfigured **trafficmanager.net** records,
+    strengthening overall DNS hygiene and reducing operational risk.
+
+    **DNSSEC for Traffic Manager**
+
+    Traffic Manager routing decisions are now resolved within Azure DNS, If the DNS
+    zone is a DNSSEC signed zone the answers supplied by linked Traffic Manager profiles
+    are automatically signed as well. This enables customer to use Traffic Manager
+    profiles with DNSSEC, unlike a CNAME to trafficmanager.net which would break t…'
+- url: https://learn.microsoft.com/en-us/azure/dns/dns-traffic-manager-linked-records
+  title: Traffic Manager Linked Records overview - Azure DNS | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/traffic-manager/media/traffic-manager-how-traffic-manager-works/flow.png
+    description: The diagram illustrates how Azure DNS Traffic Manager links records
+      such as CNAME and A records for optimizing traffic routing and health checks
+      for various cloud resources like web applications, virt…
+  - url: https://learn.microsoft.com/en-us/azure/traffic-manager/media/traffic-manager-how-traffic-manager-works/dns-configuration.png
+    description: The diagram illustrates the configuration of Azure DNS Traffic Manager
+      with linked CNAME records for the partnership between partners.contoso.com and
+      contoso.trafficmanager.net, demonstrating region-s…
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Traffic Manager Linked Records overview
+
+    ## In this article
+
+    Traffic Manager Linked Records is an Azure DNS feature that creates a direct,
+    managed link between an Azure DNS record set and an Azure Traffic Manager profile.
+    When a DNS query is resolved, Azure DNS queries the linked Traffic Manager profile
+    and returns the appropriate IP addresses directly to the client—without an intermediate
+    CNAME redirect to `trafficmanager.net`.
+
+    `trafficmanager.net`
+
+    Important
+
+    Traffic Manager Linked Records is currently in PREVIEW. See the [Supplemental
+    Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+    for legal terms that apply to Azure features that are in beta, preview, or otherwise
+    not yet released into general availability.
+
+    ## How it works
+
+    With the existing [alias record](dns-alias) approach, an A, AAAA, or CNAME record
+    set can reference a Traffic Manager profile via the `targetResource` property.
+    In that model, CNAME alias records require an extra DNS lookup—the response includes
+    the `trafficmanager.net` FQDN, and the client must resolve that name to reach
+    an endpoint.
+
+    `targetResource`
+
+    `trafficmanager.net`
+
+    Traffic Manager Linked Records use a new record set property called `trafficManagementProfile`
+    to declare the link. When this property is set, Azure DNS resolves the Traffic
+    Manager profile internally and returns the endpoint IP addresses (for A and AAAA
+    records) or FQDNs (for CNAME records) directly in the DNS response. This process
+    is known as **DNS flattening**, because Azure DNS resolves the intermediate Traffic
+    Manager name on behalf of the client and returns the final answer directly. Integrated
+    mode is always active for Traffic Manager Linked Records.
+
+    `trafficManagementProfile`
+
+    ## Benefits
+
+    Traffic Manager Linked Records provide several advantages over alias records and
+    traditional CNAME configurations:
+
+    **No `trafficmanager.net` exposure** - Because Azure DNS resolves the Traffic
+    Manager profile internally, the `trafficmanager.net` domain is never returned
+    in the DNS response. Clients don''t need firewall rules for `trafficmanager.net`—a
+    shared domain that hosts profiles for all Azure customers. This isolation reduces
+    your attack surface and avoids unintentionally allowing access to other customers''
+    Traffic Manager profiles.
+
+    `trafficmanager.net`
+
+    `trafficmanager.net`
+
+    `trafficmanager.net`
+
+    **DNSSEC compatibility** - Traffic Manager Linked Records maintain the DNSSEC
+    chain of trust. Because DNS resolution stays within Azure DNS infrastructure,
+    there''s no unsigned intermediate hop to `trafficmanager.net` that would break
+    DNSSEC validation. This compatibility makes Traffic M…'
+notes: This is a meaningful networking update because it simplifies DNS-based traffic
+  management while removing an older CNAME pattern. It should interest architects
+  designing resilient global applications and teams that want cleaner DNS management
+  with Azure-native tooling.
+area: Azure networking, private connectivity and platform security
+code_example_ideas:
+- Create an Azure DNS linked record that points to a Traffic Manager profile without
+  using a CNAME to trafficmanager.net.
+- Use Azure CLI or ARM/Bicep to provision a public DNS zone and associate a linked
+  record with Traffic Manager.
+- Test failover behavior by switching endpoint health and observing DNS resolution
+  changes through Traffic Manager.
+article_path: content/posts/2026-08-21-azure-dns-estrena-traffic-manager-linked-records-menos-cname-mas-control-global.md
+pr_url: null

@@ -25,6 +25,9 @@ Cada fichero YAML describe un único tema con los campos siguientes.
 | `id` | string | Sí | Identificador único y estable (kebab-case). Coincide con el nombre del fichero y es la clave primaria. |
 | `title` | string | Sí | Título de trabajo del tema, en inglés (metadato interno de descubrimiento; el título final en español se genera al redactar el artículo). Parte de la clave de deduplicación exacta. |
 | `slug` | string | Sí | Slug del artículo (kebab-case, ASCII). Al entrar en revisión se actualiza con el slug final generado. Parte de la deduplicación exacta. |
+| `article_type` | enum | No | Clasificación editorial: `technical` (el lector puede reproducir el tema con código, configuración o comandos reales; la generación exige ≥2 ejemplos de código reales y ejecutables) o `business` (anuncio, estrategia, opinión o análisis; exento de código). Si falta o no es válido se trata como `business` (*fail-closed*). |
+| `area` | string | No | Área de cobertura editorial detectada en el descubrimiento (metadato interno, en inglés). |
+| `code_example_ideas` | lista | No | Solo temas `technical`: de 1 a 3 ideas concretas de ejemplos prácticos fundamentadas en las fuentes; la generación las desarrolla como código real. |
 | `status` | enum | Sí | Estado en el ciclo de vida (ver tabla de estados). |
 | `status_history` | lista | Sí | Secuencia cronológica append-only de objetos `{status, at}`. Conserva transiciones ocurridas antes del primer commit. |
 | `discovered_at` | datetime | Sí | Fecha y hora de descubrimiento en ISO 8601 con zona horaria. |

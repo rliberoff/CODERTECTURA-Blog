@@ -499,6 +499,150 @@ def test_shape_candidate_yaml_is_safe_and_complete():
     assert reloaded["similarity"]["threshold"] == 0.82
 
 
+# -----------------------------------------------------------------------------
+# Article-type classification: strict enum, fail-closed, hands-on-first ranking.
+# -----------------------------------------------------------------------------
+
+
+def test_normalise_article_type_is_a_strict_fail_closed_enum():
+    assert dt.normalise_article_type("technical") == "technical"
+    assert dt.normalise_article_type("business") == "business"
+    # Trim/case tolerance still resolves to the exact enum values.
+    assert dt.normalise_article_type("  Technical ") == "technical"
+    # Anything else (missing, misspelled, wrong type, injected) fails CLOSED.
+    for invalid in (None, "", "hands-on", "TECHNICAL_DEEP_DIVE", 42, ["technical"], {}):
+        assert dt.normalise_article_type(invalid) == "business"
+
+
+def test_shape_candidate_persists_classification_area_and_capped_ideas():
+    fresh_url = "https://devblogs.microsoft.com/dotnet/fresh"
+    registry = _registry_from(
+        [{"url": fresh_url, "published_date": "2026-06-20", "title": "Fresh", "score": 0.9}]
+    )
+    resolved = dt.select_candidate_sources({"primary_sources": [fresh_url]}, registry)
+    document = dt.shape_candidate(
+        {
+            "title": "Deploy .NET Aspire apps to Azure Container Apps",
+            "slug": "deploy-aspire-container-apps",
+            "area": "Azure compute and containers (AKS, Container Apps, Functions, App Service)",
+            "article_type": "technical",
+            "code_example_ideas": [
+                "Provision the Container Apps environment with azd up",
+                "  Wire the Aspire AppHost service discovery ",
+                12345,
+                "Inspect the deployed revisions with az containerapp revision list",
+                "A fifth idea dropped by the cap",
+            ],
+            "angle": "Hands-on deployment walkthrough",
+        },
+        resolved,
+        discovered_at="2026-06-24T15:03:58+02:00",
+        similarity={"max_score": 0.0, "closest_match": "", "threshold": 0.82},
+    )
+    assert document["article_type"] == "technical"
+    assert document["area"].startswith("Azure compute and containers")
+    # Non-strings dropped, whitespace collapsed, capped at MAX_CODE_EXAMPLE_IDEAS.
+    assert document["code_example_ideas"] == [
+        "Provision the Container Apps environment with azd up",
+        "Wire the Aspire AppHost service discovery",
+        "Inspect the deployed revisions with az containerapp revision list",
+    ]
+    reloaded = yaml.safe_load(dt.candidate_to_yaml(document))
+    assert reloaded["article_type"] == "technical"
+    assert len(reloaded["code_example_ideas"]) == dt.MAX_CODE_EXAMPLE_IDEAS
+
+
+def test_shape_candidate_fails_closed_to_business_and_drops_stray_ideas():
+    fresh_url = "https://devblogs.microsoft.com/dotnet/fresh"
+    registry = _registry_from(
+        [{"url": fresh_url, "published_date": "2026-06-20", "title": "Fresh", "score": 0.9}]
+    )
+    resolved = dt.select_candidate_sources({"primary_sources": [fresh_url]}, registry)
+    for invalid_type in (None, "promotional", 7):
+        document = dt.shape_candidate(
+            {
+                "title": "Microsoft licensing strategy shift",
+                "slug": "licensing-strategy-shift",
+                "article_type": invalid_type,
+                "code_example_ideas": ["a stray idea that must not persist"],
+            },
+            resolved,
+            discovered_at="2026-06-24T15:03:58+02:00",
+            similarity={"max_score": 0.0, "closest_match": "", "threshold": 0.82},
+        )
+        assert document["article_type"] == "business"
+        assert "code_example_ideas" not in document
+
+
+def test_shape_candidate_requires_a_hands_on_plan_for_technical():
+    fresh_url = "https://devblogs.microsoft.com/dotnet/fresh"
+    registry = _registry_from(
+        [{"url": fresh_url, "published_date": "2026-06-20", "title": "Fresh", "score": 0.9}]
+    )
+    resolved = dt.select_candidate_sources({"primary_sources": [fresh_url]}, registry)
+    # A technical classification without usable ideas degrades to business, so the
+    # downstream code mandate never fires without a concrete plan.
+    for unusable in (None, [], ["   "], "not a list", [42]):
+        document = dt.shape_candidate(
+            {
+                "title": "Deploy .NET Aspire apps to Azure Container Apps",
+                "slug": "deploy-aspire-container-apps",
+                "article_type": "technical",
+                "code_example_ideas": unusable,
+            },
+            resolved,
+            discovered_at="2026-06-24T15:03:58+02:00",
+            similarity={"max_score": 0.0, "closest_match": "", "threshold": 0.82},
+        )
+        assert document["article_type"] == "business"
+        assert "code_example_ideas" not in document
+
+
+def test_process_candidates_ranks_technical_ahead_of_business_when_trimming():
+    urls = [f"https://devblogs.microsoft.com/dotnet/rank-{i}" for i in range(3)]
+    registry = _registry_from(
+        [
+            {"url": url, "published_date": "2026-06-20", "title": f"R{i}", "score": 0.9}
+            for i, url in enumerate(urls)
+        ]
+    )
+    raw_candidates = [
+        {"title": "Business first", "slug": "business-first", "article_type": "business", "primary_sources": [urls[0]]},
+        {"title": "Technical walkthrough", "slug": "technical-walkthrough", "article_type": "technical", "primary_sources": [urls[1]]},
+        {"title": "Business second", "slug": "business-second", "primary_sources": [urls[2]]},  # unclassified -> business
+    ]
+
+    accepted = dt.process_candidates(
+        raw_candidates,
+        registry=registry,
+        dedup_index=dt.build_dedup_index([], []),
+        embeddings=None,
+        discovered_at="2026-06-24T15:03:58+02:00",
+        threshold=0.82,
+        max_candidates=2,
+    )
+
+    # Technical wins the trimmed slot; the stable sort keeps the model's own
+    # order within the business group.
+    assert [candidate["id"] for candidate in accepted] == [
+        "technical-walkthrough",
+        "business-first",
+    ]
+
+
+def test_rank_candidates_hands_on_first_is_stable_and_fail_closed():
+    raw = [
+        {"slug": "b1", "article_type": "business"},
+        "junk",
+        {"slug": "t1", "article_type": "technical"},
+        {"slug": "b2"},
+        {"slug": "t2", "article_type": "TECHNICAL"},
+    ]
+    ranked = dt.rank_candidates_hands_on_first(raw)
+    keys = [item.get("slug") if isinstance(item, dict) else item for item in ranked]
+    assert keys == ["t1", "t2", "b1", "junk", "b2"]
+
+
 def test_build_workflow_matrix_round_trips_complete_candidate():
     document = {
         "id": "foundry-agent-observability",
@@ -1294,6 +1438,11 @@ def test_curated_feeds_are_dominated_by_non_ai_areas():
     assert all(dt.RSS_AREA_BY_FEED_URL[url] for url in dt.RSS_FEED_URLS)
 
 
+def test_curated_feeds_stay_inside_the_official_allowlist():
+    """Discovery may only fetch official Microsoft/GitHub feeds (source policy)."""
+    assert [url for url in dt.RSS_FEED_URLS if not dt.host_is_allowed(url)] == []
+
+
 def test_collect_rss_candidates_interleaves_feeds_instead_of_favouring_the_busiest():
     """A busy feed must not push the other areas out of the prompt window."""
 
@@ -1506,6 +1655,18 @@ def test_system_prompt_states_the_editorial_balance_rules():
         assert area in dt.SYSTEM_PROMPT
     # The f-string braces of the response schema survived escaping.
     assert '"candidates": [' in dt.SYSTEM_PROMPT
+
+
+def test_system_prompt_states_the_hands_on_priority_and_classification():
+    assert "ARTICLE TYPE CLASSIFICATION" in dt.SYSTEM_PROMPT
+    assert "HANDS-ON PRIORITY" in dt.SYSTEM_PROMPT
+    assert "TWO of every THREE" in dt.SYSTEM_PROMPT
+    # Both types are defined and both new schema keys reach the model.
+    assert '"technical": the reader can REPRODUCE the topic hands-on' in dt.SYSTEM_PROMPT
+    assert '"business": an announcement, strategy piece, opinion' in dt.SYSTEM_PROMPT
+    assert '"article_type"' in dt.SYSTEM_PROMPT
+    assert '"code_example_ideas"' in dt.SYSTEM_PROMPT
+    assert "real commands, API calls or configuration" in dt.SYSTEM_PROMPT
 
 
 def _run_all():

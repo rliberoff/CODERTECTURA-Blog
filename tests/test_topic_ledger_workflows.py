@@ -46,6 +46,9 @@ def test_build_workflow_derives_everything_from_the_candidate() -> None:
     assert "topic_ledger.py prepare-build" in workflow
     assert "ARTICLE_TOPIC_FILE:" in workflow
     assert "SOURCES_FILE:" in workflow
+    assert "--code-ideas-file" in workflow
+    assert "ARTICLE_TYPE: ${{ steps.candidate.outputs.article_type }}" in workflow
+    assert "CODE_IDEAS_FILE: ${{ steps.candidate.outputs.code_ideas_file }}" in workflow
     assert "${{ steps.ledger.outputs.path }}" in workflow
     assert "steps.create-pr.outputs.pull-request-url" not in workflow
     assert "topic_ledger.py set-pr" not in workflow

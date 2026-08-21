@@ -19,6 +19,15 @@ from _sources import sanitize_untrusted_text
 
 TOPIC_ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 SLUG_PATTERN = TOPIC_ID_PATTERN
+# Editorial classification of a ledger entry. Entries without the field (or with
+# an unknown value) degrade FAIL-CLOSED to "business", so legacy topics keep the
+# permissive no-code-mandate path they had before classification existed.
+ARTICLE_TYPES = ("technical", "business")
+DEFAULT_ARTICLE_TYPE = "business"
+# Bounds mirrored from discover_topics.py: the ideas are untrusted ledger text
+# (hand-editable YAML), so they are re-sanitised and re-capped here.
+MAX_CODE_EXAMPLE_IDEAS = 3
+CODE_EXAMPLE_IDEA_MAX_CHARS = 300
 ALLOWED_TRANSITIONS = {
     "candidate": {"queued", "in_review", "rejected", "parked"},
     "queued": {"in_review", "rejected", "parked"},
@@ -165,8 +174,16 @@ def prepare_candidate_build(
     topic_file: Path,
     topic_text_file: Path,
     sources_file: Path,
-) -> str:
-    """Derive the article prompt and grounding sources from one ledger entry."""
+    code_ideas_file: "Path | None" = None,
+) -> dict:
+    """Derive the article prompt, grounding sources and code plan from one entry.
+
+    Returns ``{"topic_id", "article_type"}`` so the workflow can surface both as
+    step outputs. The hands-on ideas travel via ``code_ideas_file`` (the same
+    file-based hand-off pattern as ``SOURCES_FILE``); the file is written whenever
+    the path is provided — an empty JSON list for business or legacy entries — so
+    the consumer always has a deterministic input.
+    """
     document = load_topic(topic_file)
     title = sanitize_untrusted_text(document.get("title"), max_length=300)
     if not title:
@@ -177,6 +194,25 @@ def prepare_candidate_build(
     if not isinstance(sources, list):
         sources = []
 
+    article_type = document.get("article_type")
+    if article_type not in ARTICLE_TYPES:
+        article_type = DEFAULT_ARTICLE_TYPE
+
+    code_ideas: list = []
+    if article_type == "technical":
+        raw_ideas = document.get("code_example_ideas")
+        if isinstance(raw_ideas, list):
+            for item in raw_ideas:
+                if not isinstance(item, str):
+                    continue
+                idea = sanitize_untrusted_text(
+                    item, max_length=CODE_EXAMPLE_IDEA_MAX_CHARS
+                )
+                if idea:
+                    code_ideas.append(idea)
+                if len(code_ideas) >= MAX_CODE_EXAMPLE_IDEAS:
+                    break
+
     topic_text_file.parent.mkdir(parents=True, exist_ok=True)
     sources_file.parent.mkdir(parents=True, exist_ok=True)
     topic_text_file.write_text(topic_text, encoding="utf-8", newline="\n")
@@ -185,7 +221,14 @@ def prepare_candidate_build(
         encoding="utf-8",
         newline="\n",
     )
-    return document["id"]
+    if code_ideas_file is not None:
+        code_ideas_file.parent.mkdir(parents=True, exist_ok=True)
+        code_ideas_file.write_text(
+            json.dumps(code_ideas, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+            newline="\n",
+        )
+    return {"topic_id": document["id"], "article_type": article_type}
 
 
 def update_topic_status(
@@ -235,6 +278,7 @@ def _build_parser() -> argparse.ArgumentParser:
     prepare.add_argument("--topic-file", type=Path, required=True)
     prepare.add_argument("--topic-text-file", type=Path, required=True)
     prepare.add_argument("--sources-file", type=Path, required=True)
+    prepare.add_argument("--code-ideas-file", type=Path)
 
     update = subparsers.add_parser("update")
     update.add_argument("--topic-file", type=Path, required=True)
@@ -261,16 +305,23 @@ def main() -> int:
             _write_output("path", path.as_posix())
             print(f"Staged topic ledger for review: {path.as_posix()}")
         elif args.command == "prepare-build":
-            topic_id = prepare_candidate_build(
+            build = prepare_candidate_build(
                 args.topic_file,
                 args.topic_text_file,
                 args.sources_file,
+                args.code_ideas_file,
             )
-            _write_output("topic_id", topic_id)
+            _write_output("topic_id", build["topic_id"])
+            _write_output("article_type", build["article_type"])
             _write_output("topic_file", args.topic_file.as_posix())
             _write_output("topic_text_file", args.topic_text_file.as_posix())
             _write_output("sources_file", args.sources_file.as_posix())
-            print(f"Prepared candidate for article generation: {topic_id}")
+            if args.code_ideas_file is not None:
+                _write_output("code_ideas_file", args.code_ideas_file.as_posix())
+            print(
+                "Prepared candidate for article generation: "
+                f"{build['topic_id']} ({build['article_type']})"
+            )
         else:
             allowed_article_paths = None
             if args.article_paths_file is not None:

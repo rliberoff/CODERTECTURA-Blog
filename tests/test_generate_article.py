@@ -851,6 +851,321 @@ def test_merge_polished_non_dict_refined_returns_draft_copy():
     assert merged is not draft  # a copy, not the same object
 
 
+# -----------------------------------------------------------------------------
+# Article-type classification + deterministic hands-on code gate (technical
+# articles): strict enum, TECHNICAL_CODE_REQUIREMENT injection, fenced-block and
+# placeholder validation, ai.article_type provenance.
+# -----------------------------------------------------------------------------
+
+
+def test_normalise_article_type_fails_closed_to_business():
+    assert ga.normalise_article_type("technical") == "technical"
+    assert ga.normalise_article_type(" TECHNICAL ") == "technical"
+    assert ga.normalise_article_type("business") == "business"
+    for invalid in (None, "", "opinion", 7, ["technical"]):
+        assert ga.normalise_article_type(invalid) == "business"
+
+
+def test_load_code_ideas_tolerates_absent_malformed_and_caps():
+    saved = os.environ.get("CODE_IDEAS_FILE")
+    try:
+        # Absent -> [].
+        os.environ.pop("CODE_IDEAS_FILE", None)
+        assert ga.load_code_ideas() == []
+        # Nonexistent path -> [] (warns, never raises).
+        os.environ["CODE_IDEAS_FILE"] = os.path.join(
+            tempfile.gettempdir(), "codertectura-missing-code-ideas.json"
+        )
+        assert ga.load_code_ideas() == []
+        with tempfile.NamedTemporaryFile(
+            "w", suffix=".json", delete=False, encoding="utf-8"
+        ) as handle:
+            handle.write("{not json")
+            malformed_path = handle.name
+        os.environ["CODE_IDEAS_FILE"] = malformed_path
+        assert ga.load_code_ideas() == []
+        with tempfile.NamedTemporaryFile(
+            "w", suffix=".json", delete=False, encoding="utf-8"
+        ) as handle:
+            json.dump(
+                [
+                    "Deploy the agent with azd up",
+                    12345,
+                    "  Query traces from the SDK  ",
+                    "Enable redaction in tracing settings",
+                    "A fourth valid idea dropped by the cap",
+                ],
+                handle,
+            )
+            ideas_path = handle.name
+        os.environ["CODE_IDEAS_FILE"] = ideas_path
+        assert ga.load_code_ideas() == [
+            "Deploy the agent with azd up",
+            "Query traces from the SDK",
+            "Enable redaction in tracing settings",
+        ]
+    finally:
+        if saved is None:
+            os.environ.pop("CODE_IDEAS_FILE", None)
+        else:
+            os.environ["CODE_IDEAS_FILE"] = saved
+        for path in (locals().get("malformed_path"), locals().get("ideas_path")):
+            if path and os.path.exists(path):
+                os.unlink(path)
+
+
+def test_technical_code_requirement_mandates_the_hands_on_contract():
+    fragment = ga.TECHNICAL_CODE_REQUIREMENT
+    assert "AT LEAST 2" in fragment
+    assert "Antes de empezar" in fragment
+    assert "expected output" in fragment
+    assert "language tag" in fragment
+    assert "setup -> core action -> verify" in fragment
+    assert "IN SPANISH" in fragment
+    assert "stay in English" in fragment
+    assert "FORBIDDEN" in fragment
+
+
+def test_call_foundry_injects_technical_requirement_only_for_technical():
+    captured = {}
+
+    def fake_http(**kwargs):
+        captured["user_content"] = kwargs["user_content"]
+        return (
+            {"title": "t", "description": "d", "body_markdown": "b"},
+            "stop",
+            '{"title": "t"}',
+        )
+
+    saved = ga._http_chat_json
+    ga._http_chat_json = fake_http
+    try:
+        ga.call_foundry(
+            endpoint="https://example.services.ai.azure.com",
+            deployment="gpt-5.4-mini",
+            token="test-token",
+            topic="Tema técnico",
+            max_completion_tokens=100,
+            timeout=5.0,
+            article_type="technical",
+            code_ideas=["Provision the environment with azd up", "Verify with az show"],
+        )
+        assert ga.TECHNICAL_CODE_REQUIREMENT in captured["user_content"]
+        assert "Provision the environment with azd up" in captured["user_content"]
+        # The final instruction still closes the message.
+        assert captured["user_content"].rstrip().endswith(
+            "Reply only with the specified JSON object."
+        )
+
+        ga.call_foundry(
+            endpoint="https://example.services.ai.azure.com",
+            deployment="gpt-5.4-mini",
+            token="test-token",
+            topic="Tema de negocio",
+            max_completion_tokens=100,
+            timeout=5.0,
+            article_type="business",
+            code_ideas=["an idea that must not leak"],
+        )
+        assert ga.TECHNICAL_CODE_REQUIREMENT not in captured["user_content"]
+        assert "an idea that must not leak" not in captured["user_content"]
+
+        # Default (no classification) behaves as business.
+        ga.call_foundry(
+            endpoint="https://example.services.ai.azure.com",
+            deployment="gpt-5.4-mini",
+            token="test-token",
+            topic="Tema sin clasificar",
+            max_completion_tokens=100,
+            timeout=5.0,
+        )
+        assert ga.TECHNICAL_CODE_REQUIREMENT not in captured["user_content"]
+    finally:
+        ga._http_chat_json = saved
+
+
+_CLEAN_TECHNICAL_BODY = """\
+Introducción al despliegue.
+
+### Antes de empezar
+
+Necesitas la Azure CLI 2.75 y permisos de Contributor.
+
+```bash
+az group create --name rg-codertectura-blog --location westeurope
+```
+
+Deberías ver el JSON del grupo con "provisioningState": "Succeeded".
+
+```csharp
+var builder = DistributedApplication.CreateBuilder(args);
+// Registramos el proyecto de la API para el descubrimiento de servicios.
+builder.AddProject<Projects.CodertecturaApi>("api");
+builder.Build().Run();
+```
+
+Cierre del artículo.
+"""
+
+
+def test_extract_fenced_code_blocks_captures_language_and_code():
+    blocks = ga.extract_fenced_code_blocks(_CLEAN_TECHNICAL_BODY)
+    assert [block["language"] for block in blocks] == ["bash", "csharp"]
+    assert "az group create" in blocks[0]["code"]
+    assert "DistributedApplication" in blocks[1]["code"]
+    # Untagged and tilde fences are still extracted (language empty when untagged).
+    mixed = "```\nplain\n```\n\n~~~yaml\nkey: value\n~~~\n"
+    blocks = ga.extract_fenced_code_blocks(mixed)
+    assert [block["language"] for block in blocks] == ["", "yaml"]
+
+
+def test_validate_technical_code_passes_with_real_examples():
+    assert ga.validate_technical_code(_CLEAN_TECHNICAL_BODY) == []
+
+
+def test_validate_technical_code_fails_when_blocks_are_missing():
+    no_code = "Un artículo técnico sin ningún bloque de código.\n"
+    errors = ga.validate_technical_code(no_code)
+    assert len(errors) == 1
+    assert "at least 2" in errors[0]
+
+    one_block = "Intro.\n\n```bash\naz account show\n```\n\nFin.\n"
+    errors = ga.validate_technical_code(one_block)
+    assert any("at least 2" in error for error in errors)
+
+
+def test_validate_technical_code_fails_on_untagged_fences():
+    body = (
+        "Intro.\n\n```bash\naz account show\n```\n\n"
+        "```\ndotnet run\n```\n\nFin.\n"
+    )
+    errors = ga.validate_technical_code(body)
+    assert any("missing a language tag" in error for error in errors)
+    # Only one tagged block -> the minimum is also unmet.
+    assert any("at least 2" in error for error in errors)
+
+
+def test_validate_technical_code_fails_on_empty_fences():
+    # Tagged but empty fences are not runnable examples: they must never satisfy
+    # the hands-on minimum.
+    body = "Intro.\n\n```bash\n```\n\n```csharp\n\n```\n\nFin.\n"
+    errors = ga.validate_technical_code(body)
+    assert any("are empty" in error for error in errors)
+    assert any("at least 2" in error for error in errors)
+
+
+def test_validate_technical_code_accepts_tagged_tilde_fences_and_crlf():
+    # Tagged ~~~ fences satisfy the gate exactly like ``` fences.
+    tilde_body = (
+        "Intro.\n\n~~~bash\naz account show\n~~~\n\n"
+        "~~~csharp\nvar total = pedidos.Count;\n~~~\n\nFin.\n"
+    )
+    assert ga.validate_technical_code(tilde_body) == []
+    # CRLF line endings never break fence detection.
+    crlf_body = (
+        "```bash\r\naz account show\r\n```\r\n\r\n"
+        "```bash\r\naz group list\r\n```\r\n"
+    )
+    assert ga.validate_technical_code(crlf_body) == []
+
+
+def test_validate_technical_code_indented_blocks_do_not_count():
+    # Indented (non-fenced) code never satisfies the >=2 tagged-fence minimum.
+    body = (
+        "Intro.\n\n    az group create --name rg-demo\n    dotnet run\n\n"
+        "```bash\naz account show\n```\n\nFin.\n"
+    )
+    errors = ga.validate_technical_code(body)
+    assert any("at least 2" in error for error in errors)
+
+
+def test_validate_technical_code_flags_placeholder_tokens():
+    body = (
+        "Intro.\n\n"
+        "```bash\naz keyvault secret set --vault-name <YOUR_VAULT> --name secret\n```\n\n"
+        "```csharp\n// TODO: rellenar\nvar client = new FooClient(\"REPLACE_ME\");\n```\n\n"
+        "Fin.\n"
+    )
+    errors = ga.validate_technical_code(body)
+    joined = " ".join(errors)
+    assert "<YOUR" in joined
+    assert "TODO" in joined
+    assert "REPLACE_ME" in joined
+
+    # 'your-' prefixes and standalone foo/bar identifiers are flagged too.
+    body2 = "```bash\naz group delete --name your-resource-group\n```\n\n```python\nfoo = bar\n```\n"
+    errors2 = ga.validate_technical_code(body2)
+    assert any("your-" in error for error in errors2)
+    assert any("foo/bar" in error for error in errors2)
+
+
+def test_validate_technical_code_ignores_spanish_todo_and_substrings():
+    # Lowercase Spanish "todo" in comments and substrings like "food"/"barra"
+    # must NOT trip the placeholder scan; prose outside code is never scanned.
+    body = (
+        "TODO el mundo escribe prosa; aquí no se valida.\n\n"
+        "```bash\n# Con esto queda todo listo para desplegar\naz staticwebapp list\n```\n\n"
+        "```csharp\n// La barra de progreso usa foodDeliveryService\nvar total = pedidos.Count;\n```\n"
+    )
+    assert ga.validate_technical_code(body) == []
+
+
+def test_build_document_technical_gate_fails_hard_without_code():
+    article = {
+        "title": "Tema técnico sin código",
+        "slug": "tema-tecnico-sin-codigo",
+        "description": "desc",
+        "categories": ["Azure"],
+        "tags": ["azure"],
+        "image_prompt": "Cover.",
+        "body_markdown": "Solo prosa, sin ningún bloque de código.\n",
+    }
+    try:
+        ga.build_document(
+            article,
+            deployment="gpt-5.4-mini",
+            now_iso=NOW_ISO,
+            article_type="technical",
+        )
+    except SystemExit as exc:
+        assert exc.code == 1
+    else:
+        raise AssertionError("expected the technical code gate to fail hard")
+
+
+def test_build_document_records_article_type_in_front_matter():
+    article = {
+        "title": "Despliegue paso a paso",
+        "slug": "despliegue-paso-a-paso",
+        "description": "desc",
+        "categories": ["Azure"],
+        "tags": ["azure"],
+        "image_prompt": "Cover.",
+        "body_markdown": _CLEAN_TECHNICAL_BODY,
+    }
+    _slug, document, _prompt, _specs = ga.build_document(
+        article,
+        deployment="gpt-5.4-mini",
+        now_iso=NOW_ISO,
+        article_type="technical",
+    )
+    assert _front_matter(document)["ai"]["article_type"] == "technical"
+
+    # Default (manual/legacy flow) records the permissive classification.
+    business_article = {
+        "title": "Tema manual",
+        "description": "desc",
+        "categories": ["Azure"],
+        "tags": ["azure"],
+        "image_prompt": "Cover.",
+        "body_markdown": "Prosa sin código.\n",
+    }
+    _slug, document, _prompt, _specs = ga.build_document(
+        business_article, deployment="gpt-5.4-mini", now_iso=NOW_ISO
+    )
+    assert _front_matter(document)["ai"]["article_type"] == "business"
+
+
 def _run_all():
     """Tiny runner so the file also works under plain ``python``."""
     failures = 0

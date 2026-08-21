@@ -136,11 +136,13 @@ jobs:
           CANDIDATE_FILE="${RUNNER_TEMP}/candidate.yaml"
           TOPIC_TEXT_FILE="${RUNNER_TEMP}/topic.txt"
           SOURCES_FILE="${RUNNER_TEMP}/sources.json"
+          CODE_IDEAS_FILE="${RUNNER_TEMP}/code_ideas.json"
           printf '%s' "${CANDIDATE_B64}" | base64 -d > "${CANDIDATE_FILE}"
           python automation/scripts/topic_ledger.py prepare-build \
             --topic-file "${CANDIDATE_FILE}" \
             --topic-text-file "${TOPIC_TEXT_FILE}" \
-            --sources-file "${SOURCES_FILE}"
+            --sources-file "${SOURCES_FILE}" \
+            --code-ideas-file "${CODE_IDEAS_FILE}"
 
       # ---------------------------------------------------------------------
       # 4) Acquire the data-plane token AND run the generator in ONE step so the
@@ -155,6 +157,10 @@ jobs:
           ARTICLE_TOPIC: ${{ inputs.topic }}
           ARTICLE_TOPIC_FILE: ${{ steps.candidate.outputs.topic_text_file }}
           SOURCES_FILE: ${{ steps.candidate.outputs.sources_file }}
+          # Classification + hands-on plan from the ledger. Empty in the manual
+          # flow -> generate_article.py fails closed to "business" (no code gate).
+          ARTICLE_TYPE: ${{ steps.candidate.outputs.article_type }}
+          CODE_IDEAS_FILE: ${{ steps.candidate.outputs.code_ideas_file }}
           ARTICLE_TRACE_STDOUT: "true"
           # The script writes the model's cover-image prompt here for the next step.
           IMAGE_PROMPT_FILE: ${{ runner.temp }}/image_prompt.txt

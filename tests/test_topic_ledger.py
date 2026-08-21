@@ -1,3 +1,4 @@
+import json
 import sys
 from pathlib import Path
 
@@ -11,7 +12,7 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 import topic_ledger as ledger  # noqa: E402
 
 
-def _write_candidate(path: Path) -> None:
+def _write_candidate(path: Path, extra: "dict | None" = None) -> None:
     document = {
         "id": "foundry-agent-observability",
         "title": "Observability for Microsoft Foundry agents",
@@ -35,6 +36,8 @@ def _write_candidate(path: Path) -> None:
         ],
         "pr_url": None,
     }
+    if extra:
+        document.update(extra)
     path.write_text(
         yaml.safe_dump(document, sort_keys=False, allow_unicode=True),
         encoding="utf-8",
@@ -176,15 +179,93 @@ def test_prepare_candidate_build_derives_topic_and_sources(tmp_path: Path) -> No
     sources_file = tmp_path / "sources.json"
     _write_candidate(topic_file)
 
-    topic_id = ledger.prepare_candidate_build(
+    build = ledger.prepare_candidate_build(
         topic_file,
         topic_text_file,
         sources_file,
     )
 
-    assert topic_id == "foundry-agent-observability"
+    assert build["topic_id"] == "foundry-agent-observability"
+    # Legacy entry without article_type -> permissive business path (fail-closed).
+    assert build["article_type"] == "business"
     assert topic_text_file.read_text(encoding="utf-8") == (
         "Observability for Microsoft Foundry agents"
     )
     sources = yaml.safe_load(sources_file.read_text(encoding="utf-8"))
     assert sources[0]["kind"] == "primary"
+
+
+def test_prepare_candidate_build_emits_article_type_and_capped_code_ideas(
+    tmp_path: Path,
+) -> None:
+    topic_file = tmp_path / "candidate.yaml"
+    topic_text_file = tmp_path / "topic.txt"
+    sources_file = tmp_path / "sources.json"
+    code_ideas_file = tmp_path / "code_ideas.json"
+    _write_candidate(
+        topic_file,
+        extra={
+            "article_type": "technical",
+            "code_example_ideas": [
+                "Trace an agent run with the OpenTelemetry exporter",
+                "  Query traces from the Foundry portal with the SDK  ",
+                12345,
+                "Enable sensitive-data redaction in tracing settings",
+                "A fourth valid idea that must be dropped by the cap",
+            ],
+        },
+    )
+
+    build = ledger.prepare_candidate_build(
+        topic_file,
+        topic_text_file,
+        sources_file,
+        code_ideas_file,
+    )
+
+    assert build["topic_id"] == "foundry-agent-observability"
+    assert build["article_type"] == "technical"
+    ideas = json.loads(code_ideas_file.read_text(encoding="utf-8"))
+    assert ideas == [
+        "Trace an agent run with the OpenTelemetry exporter",
+        "Query traces from the Foundry portal with the SDK",
+        "Enable sensitive-data redaction in tracing settings",
+    ]
+
+
+def test_prepare_candidate_build_business_writes_empty_ideas(tmp_path: Path) -> None:
+    topic_file = tmp_path / "candidate.yaml"
+    topic_text_file = tmp_path / "topic.txt"
+    sources_file = tmp_path / "sources.json"
+    code_ideas_file = tmp_path / "code_ideas.json"
+    _write_candidate(
+        topic_file,
+        extra={
+            "article_type": "business",
+            # Stray ideas on a business entry never reach the generator.
+            "code_example_ideas": ["a stray idea"],
+        },
+    )
+
+    build = ledger.prepare_candidate_build(
+        topic_file,
+        topic_text_file,
+        sources_file,
+        code_ideas_file,
+    )
+
+    assert build["article_type"] == "business"
+    assert json.loads(code_ideas_file.read_text(encoding="utf-8")) == []
+
+
+def test_prepare_candidate_build_fails_closed_on_invalid_article_type(
+    tmp_path: Path,
+) -> None:
+    topic_file = tmp_path / "candidate.yaml"
+    topic_text_file = tmp_path / "topic.txt"
+    sources_file = tmp_path / "sources.json"
+    _write_candidate(topic_file, extra={"article_type": "hands-on"})
+
+    build = ledger.prepare_candidate_build(topic_file, topic_text_file, sources_file)
+
+    assert build["article_type"] == "business"

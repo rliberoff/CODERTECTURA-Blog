@@ -1,0 +1,355 @@
+id: mssql-extension-vscode-azure-sql-provisioning-sql-formatter
+title: Azure SQL Database provisioning and SQL formatting arrive in the MSSQL extension
+  for VS Code
+slug: azure-sql-y-formateo-sql-en-vs-code-menos-friccion-mas-flujo-real-con-la-extensi
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-08-21T11:26:02+00:00'
+- status: in_review
+  at: '2026-08-21T11:37:10+00:00'
+discovered_at: '2026-08-21T11:26:02+00:00'
+similarity:
+  max_score: 0.4352
+  closest_match: azure-linux-on-wsl-dotnet-local-linux-dev-path
+  threshold: 0.82
+sources:
+- url: https://devblogs.microsoft.com/azure-sql/upgrade-from-sql-server-express-to-azure-sql-database/
+  title: Outgrowing SQL Server Express? Upgrade to Azure SQL Database Free Tier in
+    3 Steps
+  published_date: '2026-08-19'
+  host: devblogs.microsoft.com
+  kind: primary
+  excerpt: 'If you’ve been building local prototypes, internal tools, web backends,
+    or lightweight services on SQL Server Express, you know the routine: it’s free,
+    familiar, and gets the job done – until you hit hardware limits or spend weekends
+    manual backup scripts and handling OS patches. Learn how to upgrade from SQL Server
+    Express to Azure […] The post Outgrowing SQL Server Express? Upgrade to Azure
+    SQL Database Free Tier in 3 Steps appeared first on Azure SQL Dev Corner .'
+- url: https://learn.microsoft.com/en-us/azure/azure-sql/database/connect-query-vscode?view=azuresql
+  title: Use Visual Studio Code to connect and query - Azure SQL Database & SQL Managed
+    Instance | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/sql-docs/blob/live/azure-sql/database/connect-query-vscode.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Quickstart: Use Visual Studio Code to connect and query Azure SQL Database or
+    Azure SQL Managed Instance
+
+    **Applies to:** ![](../media/applies-to/yes-icon.svg?view=azuresql) [Azure SQL
+    Database](/en-us/sql/sql-server/sql-docs-navigation-guide#applies-to) ![](../media/applies-to/yes-icon.svg?view=azuresql)
+    [Azure SQL Managed Instance](/en-us/sql/sql-server/sql-docs-navigation-guide#applies-to)
+
+    [Visual Studio Code](https://code.visualstudio.com/docs) is a graphical code editor
+    for Linux, macOS, and Windows. It supports extensions, including the [mssql extension](https://aka.ms/mssql-marketplace)
+    for querying SQL Server, Azure SQL Database, Azure SQL Managed Instance, [SQL
+    database in Microsoft Fabric](/en-us/fabric/database/sql/connect), and other platforms.
+    In this quickstart, you use Visual Studio Code to connect to Azure SQL Database
+    or Azure SQL Managed Instance and then run Transact-SQL statements to query, insert,
+    update, and delete data.
+
+    ## Prerequisites
+
+    * A database in Azure SQL Database or Azure SQL Managed Instance. You can use
+    one of these quickstarts to create and then configure a database in Azure SQL
+    Database:
+
+    | Action | Azure SQL Database | Azure SQL Managed Instance |
+
+    | --- | --- | --- |
+
+    | Create | [Portal](single-database-create-quickstart?view=azuresql) | [Portal](../managed-instance/instance-create-quickstart?view=azuresql)
+    |
+
+    | [CLI](scripts/create-and-configure-database-cli?view=azuresql) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)
+    |
+
+    | [PowerShell](scripts/create-and-configure-database-powershell?view=azuresql)
+    | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell?view=azuresql)
+    |
+
+    | Configure | [Server-level IP firewall rule](firewall-create-server-level-portal-quickstart?view=azuresql))
+    | [Connectivity from a virtual machine (VM)](../managed-instance/connect-vm-instance-configure?view=azuresql)
+    |
+
+    | [Connectivity from on-premises](../managed-instance/point-to-site-p2s-configure?view=azuresql)
+    |
+
+    | Load data | Wide World Importers loaded per quickstart | [Restore Wide World
+    Importers](../managed-instance/restore-sample-database-quickstart?view=azuresql)
+    |
+
+    | Restore or import Adventure Works from a [BACPAC](database-import?v…'
+- url: https://learn.microsoft.com/en-us/ssms/release-notes-22
+  title: Release Notes for SQL Server Management Studio (SSMS)
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/data-tools/blob/main/ssms/release-notes-22.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Release notes for SQL Server Management Studio (SSMS)
+
+    **Applies to**: ![](includes/media/yes-icon.svg) [SQL Server](/en-us/sql/sql-server/sql-docs-navigation-guide#applies-to)
+    ![](includes/media/yes-icon.svg) [Azure SQL Database](/en-us/sql/sql-server/sql-docs-navigation-guide#applies-to)
+    ![](includes/media/yes-icon.svg) [Azure SQL Managed Instance](/en-us/sql/sql-server/sql-docs-navigation-guide#applies-to)
+    ![](includes/media/yes-icon.svg) [Azure Synapse Analytics](/en-us/sql/sql-server/sql-docs-navigation-guide#applies-to)
+
+    This article provides details about updates, improvements, and bug fixes for the
+    current version of SQL Server Management Studio 22.
+
+    ## Current SQL Server Management Studio release
+
+    **[Download SQL Server Management Studio (SSMS) 22](https://aka.ms/ssms/22/release/vs_SSMS.exe)**
+
+    SQL Server Management Studio 22 is the latest general availability (GA) release
+    of SSMS.
+
+    For previous versions of SSMS, see:
+
+    * [Release notes for SQL Server Management Studio (SSMS) 21](release-notes-21)
+
+    * [Release notes for SQL Server Management Studio (SSMS) 20](release-notes-20)
+
+    * [Release notes for SQL Server Management Studio (SSMS) 19 and earlier versions](release-notes-19)
+
+    ### 22.9.0
+
+    **[Download SQL Server Management Studio (SSMS) 22](https://aka.ms/ssms/22/release/vs_SSMS.exe)**
+
+    * Release number: 22.9.0
+
+    * Release date: August 11, 2026
+
+    #### What''s new in 22.9.0
+
+    | Feature | Details |
+
+    | --- | --- |
+
+    | Azure SQL Database | Updated the **Create Database** dialog for Azure SQL Databases
+    with separate fields for compute and storage selection, removed options that don''t
+    apply to Azure SQL Databases, and changed the default tier to Hyperscale Gen5
+    2 vCore. |
+
+    | Connection Dialog | Added the **hostname in certificate** field to the default
+    connection properties view. |
+
+    | Connection Dialog | Added support for subscription search and filtering when
+    browsing Azure resources and workspaces, and when browsing Fabric resources. |
+
+    | Connection Dialog | Added horizontal layout support. |
+
+    | Connection Dialog | Changed the server name field to an editable drop-down menu
+    for improved keyboard accessibility. |
+
+    | Connection Dialog | Increased the maximum number of recent and favorite connections
+    to 60. |
+
+    | Connection Dialog | Added support for browsing Managed Instances for Azure.
+    |
+
+    |…'
+- url: https://devblogs.microsoft.com/azure-sql/vscode-mssql-august2026
+  title: 'MSSQL Extension for VS Code: SQL Formatter, Azure SQL Database Provisioning,
+    and More'
+  published_date: null
+  host: devblogs.microsoft.com
+  kind: secondary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: Microsoft
+  - url: https://devblogs.microsoft.com/azure-sql/wp-content/uploads/sites/56/2025/04/profile-pic-Copy-96x96.jpeg
+    description: ''
+  - url: https://devblogs.microsoft.com/azure-sql/wp-content/uploads/sites/56/2023/05/Spock_150x150-96x96.png
+    description: ''
+  - url: https://devblogs.microsoft.com/azure-sql/wp-content/uploads/sites/56/2026/07/azuresqldb-ga.webp
+    description: A screenshot displays the Visual Studio Code interface with options
+      to create a new Azure SQL Database, including shortcuts for creating a local
+      Docker SQL Server, an Azure SQL Database, and a Fabric-…
+  - url: https://devblogs.microsoft.com/azure-sql/wp-content/uploads/sites/56/2026/08/settings-formatter.webp
+    description: The image shows the settings interface of Visual Studio Code with
+      options related to configuring the format for an Azure SQL Database, including
+      enabling preview formatter, keyword casing, and externa…
+  - url: https://devblogs.microsoft.com/azure-sql/wp-content/uploads/sites/56/2020/04/sql-database-3-560.png
+    description: A blue cylindrical icon with "SQL" written in white letters inside,
+      representing a database or extension related to SQL in Visual Studio Code.
+  - url: https://devblogs.microsoft.com/azure-sql/wp-content/uploads/sites/56/2026/08/mssql.webp
+    description: The image shows a Visual Studio Code interface connected to an Azure
+      SQL Database, with a query for fetching top 1000 budget records from the dbo.BudgetCalculator
+      table, alongside the server explorer…
+  excerpt: '[![Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)](https://www.microsoft.com)
+    [Dev Blogs](https://devblogs.microsoft.com) [AI](https://devblogs.microsoft.com/ai)
+    [All .NET posts](https://devblogs.microsoft.com/dotnet/) [.NET MAUI](https://devblogs.microsoft.com/dotnet/category/maui/)
+    [ASP.NET Core](https://devblogs.microsoft.com/dotnet/category/dotnet-aspire/)
+    [Blazor](https://devblogs.microsoft.com/dotnet/category/blazor/) [Entity Framework](https://devblogs.microsoft.com/dotnet/category/entity-framework/)
+    [C++](https://devblogs.microsoft.com/cppblog/) [C#](https://devblogs.microsoft.com/dotnet/category/csharp/)
+    [F#](https://devblogs.microsoft.com/dotnet/category/fsharp/) [TypeScript](https://devblogs.microsoft.com/typescript/)
+    [NuGet](https://devblogs.microsoft.com/dotnet/category/nuget/) [Servicing](https://devblogs.microsoft.com/dotnet/category/maintenance-and-updates/)
+    [.NET Blog in Chinese](https://devblogs.microsoft.com/dotnet-ch/) [Microsoft for
+    Developers](https://developer.microsoft.com/blog) [Agent Framework](https://devblogs.microsoft.com/agent-framework/)
+    [Develop from the cloud](https://devblogs.microsoft.com/develop-from-the-cloud/)
+    [Xcode](https://devblogs.microsoft.com/xcode/) [ISE Developer](https://devblogs.microsoft.com/ise/)
+    [TypeScript](https://devblogs.microsoft.com/typescript/) [PowerShell](https://devblogs.microsoft.com/powershell/)
+    [Python](https://devblogs.microsoft.com/python/) [Java](https://devblogs.microsoft.com/java/)
+    [Java Blog in Chinese](https://devblogs.microsoft.com/java-ch/) [Go](https://devblogs.microsoft.com/go/)
+    [Microsoft Edge Dev](https://blogs.windows.com/msedgedev/) [Microsoft 365 Developer](https://devblogs.microsoft.com/microsoft365dev/)
+    [Microsoft Entra Identity Developer](https://devblogs.microsoft.com/identity/)
+    [Microsoft Entra PowerShell](https://devblogs.microsoft.com/entrapowershell/)
+    [Visual Studio](https://devblogs.microsoft.com/visualstudio/) [Visual Studio Code](https://devblogs.microsoft.com/vscode-blog)
+    [Aspire](https://devblogs.microsoft.com/aspire/) [All things Azure](https://devblogs.microsoft.com/all-things-azure/)
+    [Azure SDK](https://devblogs.microsoft.com/azure-sdk/) [Azure VM Runtime Team](https://devblogs.microsoft.com/azure-vm-runtime/)
+    [Microsoft Azure](https://azure.microsoft.com/blog/) [Azure Cosmos DB](https://devblogs.microsoft.com/cosmosdb/)
+    [Azure DocumentDB](https://devblogs.microsoft.com/documentdb/) [Azure Data Studio](https://cloudblogs.microsoft.com/sqlserver/?product=azure-data-studio)
+    [Azure SQL](https://devblogs.microsoft.com/azure-sql/) [DevOps](https://devblogs.microsoft.com/devops/)
+    [DirectX](https://devblogs.microsoft.com/directx/) [Microsoft Foundry](https://devblogs.microsoft.com/foundry/)
+    [Power Platform](https://devblogs.microsoft.com/powerplatform/) [OData](https://devblogs.microsoft.com/odata/)
+    [Unified Data Model (IDEAs)](https://devblogs.microsoft.com/udm/) [Windows Command
+    Line](https://devblogs.microsoft.com/commandline/) [#ifdef…'
+- url: https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code?view=sql-server-ver17
+  title: Overview - MSSQL Extension for Visual Studio Code
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/media/mssql-extension-visual-studio-code/mssql-extension-vscode.png?view=sql-server-ver17
+    description: 'Image 5: Screenshot of the MSSQL extension in Visual Studio Code.'
+  - url: https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/media/mssql-extension-visual-studio-code/mssql-connection-dialog-parameters.png?view=sql-server-ver17
+    description: 'Image 6: Screenshot of the connection dialog feature.'
+  - url: https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/media/mssql-extension-visual-studio-code/object-explorer-filtering.png?view=sql-server-ver17
+    description: 'Image 7: Screenshot of the object explorer filter feature.'
+  - url: https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/media/mssql-extension-visual-studio-code/table-designer.png?view=sql-server-ver17
+    description: 'Image 8: Screenshot of the table designer feature.'
+  - url: https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/media/mssql-extension-visual-studio-code/edit-data.png?view=sql-server-ver17
+    description: 'Image 9: Screenshot of the Edit Data screen.'
+  - url: https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/media/mssql-extension-visual-studio-code/query-results-vscode.png?view=sql-server-ver17
+    description: 'Image 10: Screenshot of the query results feature.'
+  - url: https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/media/mssql-extension-visual-studio-code/query-plan-visualizer-vscode.png?view=sql-server-ver17
+    description: 'Image 11: Screenshot of the query plan visualizer feature.'
+  - url: https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/media/mssql-extension-visual-studio-code/shortcuts-configuration-entry.png?view=sql-server-ver17
+    description: 'Image 12: Screenshot of the MSSQL extension toolbar showing the
+      Open Shortcuts Configuration button.'
+  excerpt: '[Skip to main content](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code?view=sql-server-ver17#main)[Skip
+    to Ask Learn chat experience](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code?view=sql-server-ver17#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881)[More
+    info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Learn](https://learn.microsoft.com/en-us/)[](https://www.microsoft.com/)
+
+    Suggestions will filter as you type
+
+    [Sign in](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code?view=sql-server-ver17#)
+
+    ![Image 1](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code?view=sql-server-ver17)
+
+    ![Image 2](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code?view=sql-server-ver17)
+
+    * [Profile](https://learn.microsoft.com/en-us/users/me/activity/)
+
+    * [Analytics](https://learn.microsoft.com/en-us/users/me/analytics/)
+
+    * [Settings](https://learn.microsoft.com/en-us/users/me/settings/)
+
+    [Sign out](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code?view=sql-server-ver17#)
+
+    [](https://www.microsoft.com/)[Learn](https://learn.microsoft.com/en-us/)
+
+    * Documentation
+
+    * [All product documentation](https://learn.microsoft.com/en-us/docs/)
+
+    * [Azure documentation](https://learn.microsoft.com/en-us/azure/?product=popular)
+
+    * [Dynamics 365 documentation](https://learn.microsoft.com/en-us/dynamics365/)
+
+    * [Microsoft Copilot documentation](https://learn.microsoft.com/en-us/copilot/)
+
+    * [Microsoft 365 documentation](https://learn.microsoft.com/en-us/microsoft-365/)
+
+    * [Power Platform documentation](https://learn.microsoft.com/en-us/power-platform/)
+
+    * [Code samples](https://learn.microsoft.com/en-us/samples/)
+
+    * [Troubleshooting documentation](https://learn.microsoft.com/en-us/troubleshoot/)
+
+    Register now
+
+    [Microsoft Ignite | November 17-20, 2026](https://ignite.microsoft.com/home?wt.mc_ID=msignite26_gmee_corp_np_oo_MSLearnRegLaunch)
+
+    Interactive learning, certifications, and direct access to experts all in one
+    place.
+
+    * Training & Labs
+
+    * [All training](https://learn.microsoft.com/en-us/training/)
+
+    * [Azure training](https://learn.microsoft.com/en-us/training/browse/?products=azure)
+
+    * [Dynamics 365 training](https://learn.microsoft.com/en-us/training/browse/?products=dynamics-365)
+
+    * [Microsoft Copilot training](https://learn.microsoft.com/en-us/training/browse/?products=ms-copilot)
+
+    * [Microsoft 365 training](https://learn.microsoft.com/en-us/training/browse/?produ…'
+notes: This is a highly actionable developer-tools update that removes friction from
+  the SQL workflow right inside VS Code. It is especially relevant for application
+  developers who want to go from local prototypes to Azure SQL with fewer context
+  switches.
+area: Azure data platform
+code_example_ideas:
+- Use the MSSQL extension in VS Code to provision a new Azure SQL Database free-tier
+  instance from the editor.
+- Apply the new SQL Formatter to an existing T-SQL script and compare formatted output
+  in source control.
+- Connect to Azure SQL Database from VS Code, run queries, and save shortcuts for
+  repeated tasks.
+article_path: content/posts/2026-08-21-azure-sql-y-formateo-sql-en-vs-code-menos-friccion-mas-flujo-real-con-la-extensi.md
+pr_url: null

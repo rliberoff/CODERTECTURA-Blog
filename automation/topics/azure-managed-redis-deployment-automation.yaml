@@ -1,0 +1,433 @@
+id: azure-managed-redis-deployment-automation
+title: Azure Managed Redis now has fresh deployment automation guidance
+slug: azure-managed-redis-no-va-solo-de-managed-asi-automatizo-el-despliegue-cuando-la
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-08-24T06:54:25+00:00'
+- status: in_review
+  at: '2026-08-24T07:05:29+00:00'
+discovered_at: '2026-08-24T06:54:25+00:00'
+similarity:
+  max_score: 0.4532
+  closest_match: mssql-extension-vscode-azure-sql-provisioning-sql-formatter
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/azure-paas-blog/azure-managed-redis-deployment-automation/ba-p/4547874
+  title: Azure Managed Redis Deployment Automation
+  published_date: '2026-08-21'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: 'Sometimes we may see some temporary capacity restrictions on some Azure
+    Regions, while deploying Azure Managed Redis (AMR), and when that happen, the
+    recommendation is usually retrying using a different Azure Region, a different
+    AMR SKU, or retrying during off-peak hours or weekends. Retrying the cache deployment
+    on a different region without capacity restrictions allow us to create the cache
+    immediately. But our business needs, requirements or company policies may not
+    allow us to use a different region, and in that case we may need to keep retrying
+    the AMR cache creation at different times of the day or during next days, or even
+    trying different AMR SKUs. This PowerShell script was build to help on those scenarios.
+    If this script was useful for you, please share your comments at the end of this
+    page. Thank you. Table of Contents Overview Requirements How to run Script parameters
+    Samples Authentication Logging Support Disclaimer The script Overview This script
+    will try to create one Azure Managed Redis recurrently at different times of the
+    day, based on just one SKU or on the list of SKUs provided. It will use different
+    and random time intervals between each attempt, based on parameters provided.
+    The script will remain in loop, trying to create an AMR cache with the details
+    provided and from the SKU list, waiting a random time between each attempt. Deleting
+    the failed resource is required before any other attempt to create another cache
+    with same name. For that reason, if the deployment fails due to capacity restrictions,
+    the script will delete the failed deployment before try to redeploy the same cache
+    name again. The script will stop only after successful cache creation or due to
+    any other exception not capacity related. It supports configuration for: Create
+    caches with no Geo-Replication, new or existent Geo-Replication group With or
+    without High Availability (HA) Eviction Policy definition Any supported clustering
+    Policy Max retries and and minimum and maximum time between retries (script will
+    use a random time between both) Requirements This script was written with the
+    minimum requirements, using only PowerShell v7.6.5 or above and ARM template.
+    It requires Az.Accounts and Az.Resources PowerShell modules that are usually already
+    installed on most common PowerShell environments. How to run This PowerShell script
+    can run on any environment that supports PowerShell, and includes three different
+    modes to run: Using by default values: on this case the default values can be
+    defined inside of script code. On this case just call script name: ./AMR_AutomatedCreation.ps1
+    Defining values on command line : on this case some (or all) script parameters
+    can be provided on the command line, that will override the default ones on script
+    code: ./AMR_AutomatedCreation.ps1 -CacheName "MyAMRCache" -HighAvailability "Enabled"
+    Providing values interactively: if script parameters are not provided by default
+    (inside script code) or on command line, it will be asked…'
+- url: https://learn.microsoft.com/en-us/azure/redis/entra-for-authentication
+  title: Use Microsoft Entra for cache authentication with Azure Managed Redis - Azure
+    Managed Redis | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/redis/media/tutorial-aks-get-started/cache-new-instance.png
+    description: The image shows a web interface for creating a new Azure Redis Cache,
+      with project details, resource group, instance name, location, and cache type
+      options, including a highlighted section for selecti…
+  - url: https://learn.microsoft.com/en-us/azure/redis/media/configure/managed-redis-microsoft-entra.png
+    description: The image displays a Microsoft Azure Portal interface focusing on
+      the authentication settings for an Azure Redis Cache instance, with the "Microsoft
+      Entra Authentication" option highlighted and the "A…
+  - url: https://learn.microsoft.com/en-us/azure/redis/includes/media/cache-delete-resource-group/cache-confirm-deletion.png
+    description: The image shows a user interface for managing an Azure Resource Group
+      named "cloud-shell-storage-westus" in the Azure portal, focusing on deleting
+      the resource group with a confirmation prompt to ente…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) Edit
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Use Microsoft Entra ID for cache authentication with Azure Managed Redis
+
+    * Applies to: ✅ Azure Managed Redis
+
+    Azure Managed Redis offers a password-free authentication mechanism by integrating
+    with [Microsoft Entra ID](/en-us/azure/active-directory/fundamentals/active-directory-whatis).
+    Azure Managed Redis caches use Microsoft Entra ID by default. When you create
+    a new cache, managed identity is enabled.
+
+    Although access key authentication is still available, it comes with a set of
+    challenges around security and password management. For contrast, in this article,
+    you learn how to use a Microsoft Entra token for cache authentication.
+
+    In this article, you learn how to use your service principal or managed identity
+    to connect to your Redis instance.
+
+    ## Prerequisites and limitations
+
+    * Microsoft Entra authentication is supported for SSL connections only.
+
+    * Microsoft Entra groups aren''t supported.
+
+    * Some Redis commands are blocked. For a full list of blocked commands, see [Redis
+    commands not supported in Azure Managed Redis](best-practices-client-libraries#blocked-commands).
+
+    Important
+
+    After a connection is established by using a Microsoft Entra token, client applications
+    must periodically refresh the Microsoft Entra token before expiry. Then the apps
+    must send an `AUTH` command to the Redis server to avoid disrupting connections.
+    For more information, see [Configure your Redis client to use Microsoft Entra](#configure-your-redis-client-to-use-microsoft-entra).
+
+    ## Configure your Redis client to use Microsoft Entra
+
+    If you used access keys in the past for authentication, update your client workflow
+    to support authentication by using Microsoft Entra ID. In this section, you learn
+    how to connect to Azure Managed Redis using a Microsoft Entra ID.
+
+    ### Add users or system principal to your cache
+
+    1. Connect to your cache in the Azure portal.
+
+    2. On the Resource menu, select **Authentication**.
+
+    3. On the **Microsoft Entra Authentication** tab, select **User or service principal**
+    and then **+ Select member**.
+
+    4. Type the name of the user who you want to run the program. Select the user
+    to add in the list and **Select**. The user is added to the list of Redis users.
+
+    ![Screenshot of the authentication tab in a Redis cache on the Azure portal.](media/entra-for-authentication/redis-add-user.png)
+
+    Tip
+
+    By default, users receive full access to all commands and keys. To…'
+- url: https://learn.microsoft.com/en-us/azure/redis/how-to-scale
+  title: Scale an Azure Managed Redis instance - Azure Managed Redis | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/reliability/media/reliability-managed-redis/active-geo-replication.svg
+    description: ''
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) Edit
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Scale an Azure Managed Redis instance
+
+    * Applies to: ✅ Azure Managed Redis
+
+    Azure Managed Redis offers different SKUs and tiers, so you can choose the cache
+    size and performance that fit your needs. You can scale to a larger memory size
+    or switch to a tier with more compute performance. You can also scale down to
+    a smaller or more appropriate tier. This article shows you how to scale your cache
+    by using the Azure portal and tools such as Azure PowerShell and Azure CLI.
+
+    Note
+
+    Because each tier of Azure Managed Redis has almost the same features, use scaling
+    mainly to change memory and performance characteristics. Scaling geo-replicated
+    Azure Managed Redis caches is in preview.
+
+    ## Types of scaling
+
+    Azure Managed Redis supports scaling in two dimensions:
+
+    * **Memory** Increasing memory increases the size of the Redis instance, so you
+    can store more data. When you reduce the memory, make sure your current memory
+    usage is less than the new memory size you want to use.
+
+    * **vCPUs** Azure Managed Redis offers three tiers (*Memory Optimized*, *Balanced*,
+    and *Compute Optimized*) that have an increasing number of vCPUs for each level
+    of memory. Scaling to a tier with more vCPUs increases the performance of your
+    instance without requiring you to increase memory. Unlike the Basic, Standard,
+    and Premium tiers of Azure Cache for Redis that only use a single vCPU, Azure
+    Managed Redis uses the Redis Enterprise stack. The Redis Enterprise stack can
+    use multiple vCPUs, which means that the number of vCPUs used by your Redis instance
+    directly correlates with throughput and latency performance.
+
+    ## Performance tiers
+
+    Four tiers of Azure Managed Redis are available, each with different performance
+    characteristics and price levels.
+
+    Important
+
+    All in-memory tiers that use over 350 GB of storage are in preview, including
+    Memory Optimized M500 and higher; Balanced B500 and higher; and Compute Optimized
+    X500 and higher. All these tiers and higher are in preview.
+
+    Flash Optimized tiers A2000 and A4500 are in preview.
+
+    ### Tiers and SKUs at a glance
+
+    Here are three tiers that store data in memory:
+
+    * **Memory Optimized** Ideal for memory-intensive use cases that require a high
+    memory-to-vCPU ratio (8:1) but don''t need the highest throughput performance.
+    It provides a lower price point for scenarios where less processing power or throughput
+    is necessary, making it an excellent choice for…'
+- url: https://learn.microsoft.com/en-us/azure/redis/overview
+  title: What is Azure Managed Redis? - Azure Managed Redis | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/reliability/media/reliability-managed-redis/active-geo-replication.svg
+    description: ''
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) Edit
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # What is Azure Managed Redis?
+
+    * Applies to: ✅ Azure Managed Redis
+
+    Azure Managed Redis provides an in-memory data store based on the [Redis Enterprise](https://redis.io/about/redis-enterprise/)
+    software. Redis Enterprise improves the performance and reliability of the community
+    edition of Redis, while maintaining compatibility. Microsoft operates the service,
+    hosts it on Azure, and any application within or outside of Azure can use it.
+    For more information on how Azure Managed Redis is built, see [Azure Managed Redis
+    Architecture](architecture).
+
+    Azure Managed Redis can improve the performance and scalability of an application
+    that heavily uses backend data stores. It''s able to process large volumes of
+    application requests by keeping frequently accessed data in the server memory,
+    which can be written to and read from quickly.
+
+    Redis brings a critical low-latency and high-throughput data storage solution
+    to modern applications. Additionally, Redis is increasingly used for noncaching
+    applications, including data ingestion, deduplication, messaging, and leaderboards
+
+    Azure Managed Redis can be deployed standalone, or deployed along with other Azure
+    app or database services, such as Azure Container Apps, Azure App Service, Azure
+    Functions, Azure SQL, or Azure Cosmos DB.
+
+    ## Key scenarios
+
+    Azure Managed Redis improves application performance by supporting common application
+    architecture patterns. Some of the most common patterns include the following:
+
+    | Pattern | Description |
+
+    | --- | --- |
+
+    | Data cache | Databases are often too large to load directly into a cache. Use
+    the [cache-aside](/en-us/azure/architecture/patterns/cache-aside) pattern to load
+    data into the cache only as needed. When the system makes changes to the data,
+    it can also update the cache, which is then distributed to other clients. Additionally,
+    the system can set an expiration on data, or use an eviction policy to trigger
+    data updates into the cache. |
+
+    | Content cache | Many web pages are generated from templates that use static
+    content such as headers, footers, and banners. These static items shouldn''t change
+    often. Using an in-memory cache provides quick access to static content compared
+    to backend datastores. This pattern reduces processing time and server load, allowing
+    web servers to be more responsive. It can reduce the number of servers needed
+    to handle loads. Azure Managed Redi…'
+- url: https://learn.microsoft.com/en-us/azure/redis/dotnet
+  title: 'Quickstart: Use Azure Managed Redis in .NET Core'
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/redis/media/tutorial-aks-get-started/cache-new-instance.png
+    description: The image shows a web interface for creating a new Azure Redis Cache,
+      with project details, resource group, instance name, location, and cache type
+      options, including a highlighted section for selecti…
+  - url: https://learn.microsoft.com/en-us/azure/redis/media/configure/managed-redis-microsoft-entra.png
+    description: The image displays a Microsoft Azure Portal interface focusing on
+      the authentication settings for an Azure Redis Cache instance, with the "Microsoft
+      Entra Authentication" option highlighted and the "A…
+  - url: https://learn.microsoft.com/en-us/azure/redis/includes/media/cache-delete-resource-group/cache-confirm-deletion.png
+    description: The image shows a user interface for managing an Azure Resource Group
+      named "cloud-shell-storage-westus" in the Azure portal, focusing on deleting
+      the resource group with a confirmation prompt to ente…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) Edit
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Quickstart: Use Azure Managed Redis in .NET Core
+
+    * Applies to: ✅ Azure Managed Redis
+
+    This .NET 8 console application demonstrates how to connect to **Azure Managed
+    Redis** by using **Microsoft Entra ID** authentication. The core value proposition
+    is **passwordless authentication** with automatic token refresh, providing a secure
+    and modern approach to Redis connectivity.
+
+    ## Skip to the code on GitHub
+
+    Clone the [Microsoft.Azure.StackExchangeRedis](https://github.com/Azure/Microsoft.Azure.StackExchangeRedis/tree/main/sample)
+    repo on GitHub.
+
+    ## Prerequisites
+
+    * [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+    * An **Azure Managed Redis** instance provisioned in your Azure subscription.
+
+    * Your Azure user or service principal must be added as a Redis user on the cache.
+    In the Azure portal, go to **Authentication** on the Resource menu, select **User
+    or service principal**, and add your identity.
+
+    * [Azure CLI](/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) for local
+    development authentication.
+
+    ## Required NuGet Packages
+
+    | Package | Purpose |
+
+    | --- | --- |
+
+    | `Microsoft.Azure.StackExchangeRedis` | Extension library that adds Microsoft
+    Entra ID authentication to StackExchange.Redis |
+
+    | `Azure.Identity` | Provides `DefaultAzureCredential` and other Azure identity
+    implementations |
+
+    | `StackExchange.Redis` | The underlying Redis client (pulled in as a dependency)
+    |
+
+    | `Microsoft.Extensions.Logging.Console` | Console logging for diagnostics |
+
+    ## Authentication methods
+
+    The extension supports multiple identity types, each with a corresponding `ConfigureForAzure*()`
+    extension method:
+
+    1. **`DefaultAzureCredential`** - The recommended approach. It chains multiple
+    credential sources (environment variables, managed identity, Azure CLI authentication,
+    Visual Studio credentials, and more) and uses the first one that works. It''s
+    ideal for code that runs both locally and in Azure.
+
+    2. **User-Assigned Managed Identity** - For Azure-hosted apps where you explicitly
+    specify which managed identity to use by providing its client ID.
+
+    3. **System-Assigned Managed Identity** - For Azure-hosted apps that use the identity
+    automatically assigned to the resource.
+
+    4. **Service Principal (Secret)** - Client ID, tenant ID, and secret for automated
+    or CI scenarios.
+
+    5. **Service Principal (Certificate)** - Client ID, tenant ID, and X.509 certificate
+    for high…'
+notes: The story is not just that Redis is managed; it is about the operational guidance
+  for deploying it when capacity is constrained. That makes it relevant for architects
+  who automate cloud platform provisioning and want resilient rollout strategies.
+area: Azure infrastructure and IaC
+code_example_ideas:
+- Reproduce a deployment with Azure CLI and compare retries across regions or SKUs.
+- Show how to provision Azure Managed Redis and then secure it with Microsoft Entra
+  ID authentication.
+- Add a Bicep or ARM snippet for an Azure Managed Redis instance and note the retry/placement
+  considerations.
+article_path: content/posts/2026-08-24-azure-managed-redis-no-va-solo-de-managed-asi-automatizo-el-despliegue-cuando-la.md
+pr_url: null

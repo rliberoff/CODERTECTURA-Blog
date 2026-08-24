@@ -1,0 +1,420 @@
+id: modernize-legacy-dotnet-app-to-dotnet-10-with-copilot
+title: Modernize a legacy .NET application to .NET 10 with GitHub Copilot in Visual
+  Studio
+slug: como-modernizo-una-aplicacion-legacy-de-net-a-net-10-con-github-copilot-en-visua
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-08-24T06:54:25+00:00'
+- status: in_review
+  at: '2026-08-24T06:59:22+00:00'
+discovered_at: '2026-08-24T06:54:25+00:00'
+similarity:
+  max_score: 0.5426
+  closest_match: copilot-se-vuelve-agente-asi-cambian-visual-studio-y-vs-code-en-2026
+  threshold: 0.82
+sources:
+- url: https://devblogs.microsoft.com/visualstudio/today-i-will-modernize-a-net-application/
+  title: Today I will… Modernize a .NET application
+  published_date: '2026-08-21'
+  host: devblogs.microsoft.com
+  kind: primary
+  excerpt: Today I will modernize a .NET Framework application to .NET 10 using the
+    GitHub Copilot modernization tooling built-in to Visual Studio. The tooling helps
+    us upgrade applications running on legacy versions of .NET and also migrate them
+    to Azure. Today we’re going to focus on the upgrade portion. And, the tooling
+    will do […] The post Today I will… Modernize a .NET application appeared first
+    on Visual Studio Blog .
+- url: https://learn.microsoft.com/en-us/dotnet/core/porting/github-copilot-upgrade/scenarios-and-skills
+  title: GitHub Copilot upgrade scenarios and skills - .NET Core
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/dotnet/docs/blob/main/docs/core/porting/github-copilot-upgrade/scenarios-and-skills.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Scenarios and skills reference
+
+    GitHub Copilot upgrade for .NET helps you upgrade and modernize through *scenarios*
+    and *skills*:
+
+    * **Scenarios** are end-to-end managed workflows for major upgrade goals, such
+    as upgrading from .NET Framework to .NET 10. Scenarios coordinate the full lifecycle:
+    assessment, planning, and task-by-task execution.
+
+    * **Skills** are focused capabilities for specific upgrade tasks, such as converting
+    EF6 to EF Core or replacing WCF with CoreWCF. Skills activate automatically when
+    the agent encounters relevant code during an upgrade.
+
+    The agent supports both C# and Visual Basic projects.
+
+    Tip
+
+    You don''t need to memorize names. Describe what you want (*"upgrade to .NET 10"*,
+    *"upgrade my EF6 code"*, *"replace Newtonsoft.Json"*) and the agent loads the
+    right scenario and skills automatically. You can also ask: *"What can you help
+    me with?"*
+
+    ## Scenarios
+
+    Scenarios are the agent''s top-level upgrade workflows. When you start a conversation,
+    the agent identifies the best scenario for your goal and walks you through it
+    step by step.
+
+    | Scenario | What it does | Example prompt |
+
+    | --- | --- | --- |
+
+    | [**.NET version upgrade**](#net-version-upgrade) | Upgrades projects from any
+    older .NET version to .NET 8 or later. | *"Upgrade my solution to .NET 10"* |
+
+    | [**.NET Framework version upgrade**](#net-framework-version-upgrade) | Upgrades
+    .NET Framework projects to .NET Framework 4.8.1, without moving to modern .NET.
+    | *"Upgrade to .NET Framework 4.8.1"* |
+
+    | [**SDK-style conversion**](#sdk-style-conversion) | Converts legacy project
+    files to modern SDK-style format. | *"Convert my projects to SDK-style"* |
+
+    | [**Visual Studio extension SDK-style conversion**](#visual-studio-extension-sdk-style-conversion)
+    | Converts VSIX/VSSDK extension projects to SDK-style format. | *"Convert my VSIX
+    project to SDK-style"* |
+
+    | [**NuGet package upgrade**](#nuget-package-upgrade) | Upgrades specific NuGet
+    packages and fixes the resulting breaking changes. | *"Upgrade Serilog to the
+    latest version"* |
+
+    | [**Newtonsoft.Json upgrade**](#newtonsoftjson-upgrade) | Replaces Newtonsoft.Json
+    with System.Text.Json across a solution. | *"Upgrade from Newtonsoft.Json"* |
+
+    | [**SqlClient upgrade**](#sqlclient-upgrade) | Upgrades System.Data.SqlClient
+    to Micros…'
+- url: https://learn.microsoft.com/en-us/dotnet/azure/migration/appmod/faq
+  title: GitHub Copilot modernization for .NET FAQ | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: 'What is GitHub Copilot modernization.
+
+    The tool requires one of the following GitHub Copilot subscriptions:
+
+    * Copilot Free (Starting with Visual Studio 2026 version 18.1)
+
+    * Copilot Pro
+
+    * Copilot Pro+
+
+    * Copilot Business
+
+    * Copilot Enterprise
+
+    GitHub Copilot modernization is available in Visual Studio, Visual Studio Code,
+    GitHub Copilot CLI, and on GitHub.com. For Visual Studio, it''s included in [Visual
+    Studio 2026](https://visualstudio.microsoft.com/downloads/) (or Visual Studio
+    2022 version 17.14.17 and newer).
+
+    For more information about installation, [Install GitHub Copilot modernization](install).
+
+    " name="summary">
+
+    [Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/dotnet/docs/blob/main/docs/azure/migration/appmod/faq.yml)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # GitHub Copilot modernization FAQ
+
+    GitHub Copilot modernization is an interactive GitHub Copilot agent that adds
+    capabilities to your development environment. This article answers frequently
+    asked questions. For more information, see [What is GitHub Copilot modernization](overview).
+
+    The tool requires one of the following GitHub Copilot subscriptions:
+
+    * Copilot Free (Starting with Visual Studio 2026 version 18.1)
+
+    * Copilot Pro
+
+    * Copilot Pro+
+
+    * Copilot Business
+
+    * Copilot Enterprise
+
+    GitHub Copilot modernization is available in Visual Studio, Visual Studio Code,
+    GitHub Copilot CLI, and on GitHub.com. For Visual Studio, it''s included in [Visual
+    Studio 2026](https://visualstudio.microsoft.com/downloads/) (or Visual Studio
+    2022 version 17.14.17 and newer).
+
+    For more information about installation, [Install GitHub Copilot modernization](install).
+
+    ## Modernization agent
+
+    ### What can the agent do?
+
+    GitHub Copilot modernization is focused on upgrading, migrating, and modernizing
+    your .NET applications for Azure. It helps assess your app for Azure readiness,
+    generates a migration plan, and guides you through the steps to deploy your app
+    to Azure. The agent performs the following steps in a Copilot chat session:
+
+    * Analyzes your projects and proposes a modernization plan.
+
+    * Runs a series of tasks to modernize your projects according to the plan.
+
+    * Operates in a working branch under a local Git repository.
+
+    * Fixes issues automatically during the code transformation.
+
+    * Reports progress and allows access to code changes and logs.
+
+    * Learns from your interactions during the session to improve subsequent transformations.
+
+    To upgrade your .NET projects to newer versions of .NET,…'
+- url: https://learn.microsoft.com/en-us/dotnet/core/porting/github-copilot-upgrade/overview
+  title: GitHub Copilot upgrade overview
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/dotnet/docs/blob/main/docs/core/porting/github-copilot-upgrade/overview.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # What is GitHub Copilot upgrade?
+
+    GitHub Copilot upgrade is a GitHub Copilot agent that helps you upgrade projects
+    to newer versions of .NET quickly and confidently. It guides you through assessment,
+    solution recommendations, code fixes, and validation across Visual Studio, Visual
+    Studio Code, GitHub Copilot CLI, and GitHub.com.
+
+    Use this agent to:
+
+    * Upgrade to a newer version of .NET.
+
+    * Modernize your .NET app, especially when upgrading from .NET Framework.
+
+    * Assess your application''s code, configuration, and dependencies.
+
+    * Validate that your app builds and tests successfully.
+
+    ## Scenarios
+
+    The agent provides multiple end-to-end modernization workflows called *scenarios*.
+    Each scenario is a managed workflow that guides you through a specific type of
+    upgrade or migration:
+
+    | Scenario | Description | Example prompt |
+
+    | --- | --- | --- |
+
+    | **.NET version upgrade** | Upgrades from older .NET versions to .NET 8, 9, 10,
+    or later. | *"Upgrade my solution to .NET 10"* |
+
+    | **SDK-style conversion** | Converts legacy project format to SDK-style. | *"Convert
+    to SDK-style"* |
+
+    | **Newtonsoft.Json upgrade** | Replaces Newtonsoft.Json with System.Text.Json.
+    | *"Upgrade from Newtonsoft.Json"* |
+
+    | **SqlClient upgrade** | Upgrades from System.Data.SqlClient to Microsoft.Data.SqlClient.
+    | *"Update SqlClient"* |
+
+    | **Azure Functions upgrade** | Upgrades Azure Functions from in-process to isolated
+    worker model. | *"Upgrade my Azure Functions"* |
+
+    | **Semantic Kernel to Agents** | Upgrades Semantic Kernel Agents to Microsoft
+    Agent Framework. | *"Upgrade my SK agents"* |
+
+    | **Aspire integration** | Adds [Aspire](https://aspire.dev) support for inner-loop
+    and Azure deployment. | *"Add Aspire to my app"* |
+
+    | **Aspire version upgrade** | Upgrades existing Aspire applications to newer
+    versions. | *"Upgrade my Aspire version"* |
+
+    | **WebForms-to-Blazor upgrade** | Upgrades ASP.NET Web Forms applications to
+    Blazor. | *"Migrate my Web Forms app to Blazor"* |
+
+    For a full reference of all scenarios and 30+ built-in upgrade skills, see [Scenarios
+    and skills reference](scenarios-and-skills).
+
+    ## Provide feedback
+
+    Microsoft values your feedback and uses it to improve the agent. Leave feedback
+    using either of these options:
+
+    * In Visual Studio, use the [Suggest a feature](/en-us/visualstudio/id…'
+- url: https://learn.microsoft.com/en-us/dotnet/core/porting/github-copilot-upgrade/install
+  title: Install GitHub Copilot upgrade - .NET Core | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/dotnet/docs/blob/main/docs/core/porting/github-copilot-upgrade/install.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Install GitHub Copilot upgrade
+
+    GitHub Copilot upgrade works across multiple development environments. Choose
+    your preferred environment to install and set up GitHub Copilot upgrade.
+
+    ## Prerequisites
+
+    Before you install, make sure you have:
+
+    * Windows operating system.
+
+    * [Visual Studio 2026](https://visualstudio.microsoft.com/downloads/) (or Visual
+    Studio 2022 version 17.14.17+).
+
+    * [.NET desktop development workload](/en-us/visualstudio/install/modify-visual-studio?view=visualstudio&preserve-view=true#change-workloads-or-individual-components)
+    with these optional components enabled: **GitHub Copilot**, **GitHub Copilot app
+    modernization**.
+
+    * GitHub Copilot subscription (paid or free).
+
+    * [Sign in to Visual Studio with a GitHub account](/en-us/visualstudio/ide/work-with-github-accounts)
+    that has [Copilot access](https://docs.github.com/copilot/get-started/plans#ready-to-choose-a-plan).
+
+    * Code written in C# or Visual Basic.
+
+    ## Install
+
+    Visual Studio includes GitHub Copilot upgrade through the **GitHub Copilot app
+    modernization** optional component, so you don''t need to install it separately.
+    Enable the **GitHub Copilot** and **GitHub Copilot app modernization** optional
+    components in the **.NET desktop development** workload through the Visual Studio
+    Installer.
+
+    ## Verify the installation
+
+    1. Open a solution in Visual Studio.
+
+    2. Right-click a project in **Solution Explorer** and select **Modernize**, or
+    open **GitHub Copilot Chat** and type `@Modernize`.
+
+    ## Prerequisites
+
+    Before you install, make sure you have:
+
+    * Visual Studio Code.
+
+    * GitHub Copilot extension installed.
+
+    * GitHub Copilot subscription (paid or free).
+
+    ## Install
+
+    Install as a Visual Studio Code extension:
+
+    1. In Visual Studio Code, open the **Extensions** view (`Ctrl+Shift+X`).
+
+    2. Search for **GitHub Copilot upgrade**.
+
+    3. Select **Install**.
+
+    The extension automatically acquires the .NET SDK if it''s missing, registers
+    tools, and adds the agent to Copilot Chat as `Upgrade`.
+
+    ## Verify the installation
+
+    1. Open a project in Visual Studio Code.
+
+    2. Open the **GitHub Copilot Chat** view.
+
+    3. Send `@upgrade` in chat and confirm the agent responds.
+
+    -or-
+
+    Select the **Agent** picker and find the `Upgrade` entry.
+
+    ## Prerequisites
+
+    Before you install, make sure you have:
+
+    * [GitHub Copilot CLI](https://gh.io/cli)…'
+notes: This is a hands-on modernization topic with immediate value for enterprise
+  .NET teams still on older frameworks. The post can emphasize the practical workflow
+  inside Visual Studio rather than a generic migration pitch.
+area: .NET and C#
+code_example_ideas:
+- Walk through the Visual Studio modernization flow on a .NET Framework solution and
+  inspect the generated upgrade plan.
+- Show the resulting project file and package changes needed to move to .NET 10.
+- Demonstrate how the modernization tooling can prepare an app for Azure migration
+  after the runtime upgrade.
+article_path: content/posts/2026-08-24-como-modernizo-una-aplicacion-legacy-de-net-a-net-10-con-github-copilot-en-visua.md
+pr_url: null

@@ -1,0 +1,482 @@
+id: azure-web-pubsub-chat-public-preview
+title: Azure Web PubSub chat enters public preview with room, message, member and
+  role APIs
+slug: azure-web-pubsub-chat-en-vista-previa-publica-menos-websockets-a-mano-mas-arquit
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-08-24T06:54:25+00:00'
+- status: in_review
+  at: '2026-08-24T07:11:08+00:00'
+discovered_at: '2026-08-24T06:54:25+00:00'
+similarity:
+  max_score: 0.4567
+  closest_match: azure-dns-traffic-manager-linked-records-public-preview
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/apps-on-azure-blog/announcing-azure-web-pubsub-chat-in-public-preview/ba-p/4548907
+  title: Announcing Azure Web PubSub chat in public preview
+  published_date: '2026-08-21'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: 'Chat is becoming a standard interaction model across customer support,
+    collaboration, gaming, marketplaces, healthcare, financial services, and AI-powered
+    applications. But building a production-ready chat system involves much more than
+    opening a WebSocket connection. Teams also need to manage rooms and membership,
+    deliver and order messages, retain conversation history, recover from connection
+    interruptions, and enforce permissions. Today, we are excited to announce that
+    Azure Web PubSub chat is available in public preview . Azure Web PubSub chat is
+    a managed capability built on Azure Web PubSub. It provides chat-focused client
+    and server APIs so developers can work directly with familiar concepts such as
+    rooms, messages, members, users, and roles , while Azure manages the underlying
+    real-time messaging infrastructure. Focus on the chat experience, not the messaging
+    plumbing Azure Web PubSub already helps developers build large-scale, real-time
+    applications. The new chat capability adds a higher-level abstraction for applications
+    whose primary interaction model is conversation. Instead of defining custom events,
+    message schemas, membership logic, persistence workflows, and reconnect behavior,
+    developers can use built-in chat operations to: Create one-to-one or group rooms.
+    Add and remove room members. Send ordered messages in real time. Retrieve persistent
+    room message history. Apply built-in or custom roles and permissions. Reconnect
+    clients and recover messages after temporary connection loss. These capabilities
+    run on Azure Web PubSub infrastructure and inherit its automatic scaling, geo-replication,
+    security, and compliance foundations. Chat-native APIs for clients and servers
+    Azure Web PubSub chat provides two complementary ways to build. The JavaScript
+    client SDK , available through the `@azure/web-pubsub-chat-client` npm package,
+    connects applications to a chat hub. Clients can create rooms, exchange messages,
+    load history, manage members, and subscribe to chat events. The Chat REST API
+    supports trusted server-side and administrative workflows, including managing
+    rooms, users, members, messages, roles, and permissions. This separation lets
+    client applications deliver responsive real-time experiences while backend services
+    retain control over identity, moderation, governance, and business rules. For
+    example, after connecting a `ChatClient`, creating a room and sending a message
+    takes only a few calls: const room = await client.createRoom("Project Falcon",
+    ["bob", "carol"]); client.on("message", ({ message }) => { console.log(`${message.createdBy}:
+    ${message.content.text}`); }); await client.sendToRoom(room.roomId, "Welcome to
+    the project room!"); Applications can also read message history through an asynchronous
+    iterator, making it straightforward to implement initial conversation loading
+    or incremental history as a user scrolls. Keep chat data in your Azure Storage
+    account Persistent chat data remains in an Azure Storage account selected…'
+- url: https://learn.microsoft.com/en-us/dotnet/api/overview/azure/microsoft.azure.functions.worker.extensions.webpubsub-readme?view=azure-dotnet
+  title: Azure Web PubSub extension of isolated-process Azure Functions client library
+    for .NET - Azure for .NET Developers | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://github.com/MicrosoftDocs/azure-docs-sdk-dotnet/blob/master/api/overview/azure/latest/microsoft.azure.functions.worker.extensions.webp
+    description: ''
+  - url: https://github.com/Azure/azure-sdk-for-net/tree/Microsoft.Azure.Functions.Worker.Extensions.WebPubSub_1.7.0/sdk/webpubsub/Microsoft.Azure.Functions.Worker.Extensions.WebP
+    description: ''
+  - url: https://github.com/Azure/azure-sdk-for-net/tree/Microsoft.Azure.Functions.Worker.Extensions.WebP
+    description: ''
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/tutorial-serverless-static-web-app/tutorial-serverless-static-web-app.png
+    description: The diagram illustrates the architecture of a web application using
+      Azure Static Web Apps, Azure Functions as an API, and Azure Web PubSub for real-time
+      messaging, integrating GitHub and Azure DevOps…
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/reference-functions-bindings/functions-workflow.png
+    description: A diagram illustrating the interaction flow between a client, Azure
+      Web PubSub, and Function Apps, with numbered arrows showing the sequence of
+      communication steps.
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/howto-integrate-app-gateway/overview.jpg
+    description: The diagram illustrates the architecture of Azure Web PubSub, showing
+      how a web client communicates through the Azure Application Gateway to the Azure
+      Private Endpoint within a virtual network, which…
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/create-instance-portal/search-web-pubsub-in-portal.png
+    description: A screenshot of the Microsoft Azure portal shows the process of creating
+      a Web PubSub service, highlighting the search for "Web PubSub" and the selection
+      of the "Web PubSub Service" option.
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/quickstart-serverless/chat-sample.png
+    description: A web interface demonstrates an Azure Web PubSub serverless chat
+      app with login and chat input fields, showcasing real-time message exchanges
+      between UserA and UserB.
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs-sdk-dotnet/blob/master/api/overview/azure/latest/microsoft.azure.functions.worker.extensions.webpubsub-readme.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Azure Web PubSub extension of isolated-process Azure Functions client library
+    for .NET - version 1.7.0
+
+    This extension defines the binding types and triggers in the .NET isolated worker
+    process for Azure Functions, allowing you to write functions that respond to any
+    event published to Web PubSub.
+
+    [Source code](https://github.com/Azure/azure-sdk-for-net/tree/Microsoft.Azure.Functions.Worker.Extensions.WebPubSub_1.7.0/sdk/webpubsub/Microsoft.Azure.Functions.Worker.Extensions.WebPubSub/src)
+    | Package | API reference documentation | [Product documentation](https://aka.ms/awps/doc)
+    | [Samples](https://github.com/Azure/azure-sdk-for-net/tree/Microsoft.Azure.Functions.Worker.Extensions.WebPubSub_1.7.0/sdk/webpubsub/Microsoft.Azure.Functions.Worker.Extensions.WebPubSub/samples)
+
+    ## Getting started
+
+    ### Install the package
+
+    Install the client library from [NuGet](https://www.nuget.org/):
+
+    ```
+
+    dotnet add package Microsoft.Azure.Functions.Worker.Extensions.WebPubSub
+
+    ```
+
+    ### Prerequisites
+
+    You must have an [Azure subscription](https://azure.microsoft.com/free/dotnet/)
+    and an Azure resource group with a Web PubSub resource. Follow this [step-by-step
+    tutorial](/en-us/azure/azure-web-pubsub/howto-develop-create-instance) to create
+    an Azure Web PubSub instance.
+
+    ### Authenticate the client
+
+    In order to let the extension work with Azure Web PubSub service, you will need
+    to provide a valid `ConnectionString`.
+
+    You can find the **Keys** for you Azure Web PubSub service in the [Azure Portal](https://portal.azure.com/).
+
+    The `AzureWebJobsStorage` connection string is used to preserve the processing
+    checkpoint information as required refer to [Storage considerations](/en-us/azure/azure-functions/storage-considerations#storage-account-requirements)
+
+    For the local development use the `local.settings.json` file to store the connection
+    string, can be set to `WebPubSubConnectionString` as default supported in the
+    extension, or you can set customized names by mapping it with `Connection =` in
+    function binding attributes:
+
+    ```
+
+    { "Values": { "AzureWebJobsStorage": "UseDevelopmentStorage=true", "": "Endpoint=https://.webpubsub.azure.com;AccessKey=;Version=1.0;"
+    } }
+
+    ```
+
+    When deployed use the [application settings](/en-us/azure/a…'
+- url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/tutorial-serverless-notification
+  title: Tutorial - Create a serverless notification app using Azure Web PubSub service
+    and Azure Functions | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/tutorial-serverless-static-web-app/tutorial-serverless-static-web-app.png
+    description: The diagram illustrates the architecture of a web application using
+      Azure Static Web Apps, Azure Functions as an API, and Azure Web PubSub for real-time
+      messaging, integrating GitHub and Azure DevOps…
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/reference-functions-bindings/functions-workflow.png
+    description: A diagram illustrating the interaction flow between a client, Azure
+      Web PubSub, and Function Apps, with numbered arrows showing the sequence of
+      communication steps.
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/howto-integrate-app-gateway/overview.jpg
+    description: The diagram illustrates the architecture of Azure Web PubSub, showing
+      how a web client communicates through the Azure Application Gateway to the Azure
+      Private Endpoint within a virtual network, which…
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/create-instance-portal/search-web-pubsub-in-portal.png
+    description: A screenshot of the Microsoft Azure portal shows the process of creating
+      a Web PubSub service, highlighting the search for "Web PubSub" and the selection
+      of the "Web PubSub Service" option.
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/quickstart-serverless/chat-sample.png
+    description: A web interface demonstrates an Azure Web PubSub serverless chat
+      app with login and chat input fields, showcasing real-time message exchanges
+      between UserA and UserB.
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-web-pubsub/tutorial-serverless-notification.md)
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Tutorial: Create a serverless notification app with Azure Functions and Azure
+    Web PubSub service
+
+    The Azure Web PubSub service helps you build real-time messaging web applications
+    using WebSockets. Azure Functions is a serverless platform that lets you run your
+    code without managing any infrastructure. In this tutorial, you learn how to use
+    Azure Web PubSub service and Azure Functions to build a serverless application
+    with real-time messaging under notification scenarios.
+
+    In this tutorial, you learn how to:
+
+    * Build a serverless notification app
+
+    * Work with Web PubSub function input and output bindings
+
+    * Run the sample functions locally
+
+    * Deploy the function to Azure Function App
+
+    Important
+
+    Raw connection strings appear in this article for demonstration purposes only.
+
+    A connection string includes the authorization information required for your application
+    to access Azure Web PubSub service. The access key inside the connection string
+    is similar to a root password for your service. In production environments, always
+    protect your access keys. Use Azure Key Vault to manage and rotate your keys securely
+    and [secure your connection with `WebPubSubServiceClient`](howto-create-serviceclient-with-net-and-azure-identity).
+
+    Avoid distributing access keys to other users, hard-coding them, or saving them
+    anywhere in plain text that is accessible to others. Rotate your keys if you believe
+    they may have been compromised.
+
+    ## Prerequisites
+
+    * [JavaScript Model v4](#tabpanel_1_javascript-v4)
+
+    * [JavaScript Model v3](#tabpanel_1_javascript-v3)
+
+    * [C# in-process](#tabpanel_1_csharp-in-process)
+
+    * [C# isolated process](#tabpanel_1_csharp-isolated-process)
+
+    * [Python](#tabpanel_1_python)
+
+    * A code editor, such as [Visual Studio Code](https://code.visualstudio.com/)
+
+    * [Node.js](https://nodejs.org/en/download/package-manager/), version 18.x or
+    above.
+
+    Note
+
+    For more information about the supported versions of Node.js, see [Azure Functions
+    runtime versions documentation](../azure-functions/functions-versions#languages).
+
+    * [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)
+    (V4 or higher preferred) to run Azure Function apps locally and deploy to Azure.
+
+    * The [Azure CLI](/en-us/cli/azure) to manage Azure resources.
+
+    * A code ed…'
+- url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/tutorial-serverless-static-web-app
+  title: Integrate - Create a chat app using Azure Web PubSub and deploy to Azure
+    Static Web Apps | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/tutorial-serverless-static-web-app/tutorial-serverless-static-web-app.png
+    description: The diagram illustrates the architecture of a web application using
+      Azure Static Web Apps, Azure Functions as an API, and Azure Web PubSub for real-time
+      messaging, integrating GitHub and Azure DevOps…
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/reference-functions-bindings/functions-workflow.png
+    description: A diagram illustrating the interaction flow between a client, Azure
+      Web PubSub, and Function Apps, with numbered arrows showing the sequence of
+      communication steps.
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/howto-integrate-app-gateway/overview.jpg
+    description: The diagram illustrates the architecture of Azure Web PubSub, showing
+      how a web client communicates through the Azure Application Gateway to the Azure
+      Private Endpoint within a virtual network, which…
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/create-instance-portal/search-web-pubsub-in-portal.png
+    description: A screenshot of the Microsoft Azure portal shows the process of creating
+      a Web PubSub service, highlighting the search for "Web PubSub" and the selection
+      of the "Web PubSub Service" option.
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/quickstart-serverless/chat-sample.png
+    description: A web interface demonstrates an Azure Web PubSub serverless chat
+      app with login and chat input fields, showcasing real-time message exchanges
+      between UserA and UserB.
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-web-pubsub/tutorial-serverless-static-web-app.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Tutorial: Create a serverless chat app with Azure Web PubSub service and Azure
+    Static Web Apps
+
+    Azure Web PubSub helps you build real-time messaging web applications using WebSocket.
+    Azure Static Web Apps helps you build and deploy full-stack web apps automatically
+    to Azure from a code repository. In this tutorial, you learn how to use Web PubSub
+    and Static Web Apps together to build a real-time chat room application.
+
+    More specifically, you learn how to:
+
+    * Build a serverless chat app
+
+    * Work with Web PubSub function input and output bindings
+
+    * Work with Static Web Apps
+
+    Important
+
+    Raw connection strings appear in this article for demonstration purposes only.
+
+    A connection string includes the authorization information required for your application
+    to access Azure Web PubSub service. The access key inside the connection string
+    is similar to a root password for your service. In production environments, always
+    protect your access keys. Use Azure Key Vault to manage and rotate your keys securely
+    and [secure your connection with `WebPubSubServiceClient`](howto-create-serviceclient-with-net-and-azure-identity).
+
+    Avoid distributing access keys to other users, hard-coding them, or saving them
+    anywhere in plain text that is accessible to others. Rotate your keys if you believe
+    they may have been compromised.
+
+    ## Overview
+
+    ![Diagram showing how Azure Web PubSub works with Azure Static Web Apps.](media/tutorial-serverless-static-web-app/tutorial-serverless-static-web-app.png)
+
+    GitHub or Azure Repos provide source control for Static Web Apps. Azure monitors
+    the repo branch you select, and every time there''s a code change to the source
+    repo a new build of your web app is automatically run and deployed to Azure. Continuous
+    delivery is provided by GitHub Actions and Azure Pipelines. Static Web Apps detects
+    the new build and presents it to the endpoint user.
+
+    The sample chat room application provided with this tutorial has the following
+    workflow.
+
+    1. When a user signs in to the app, the Azure Functions `login` API is triggered
+    to generate a Web PubSub service client connection URL.
+
+    2. When the client initializes the connection request to Web PubSub, the service
+    sends a system `connect` event that triggers the Functions `connect` API to authenticate
+    th…'
+- url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/overview
+  title: What is Azure Web PubSub service? | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/tutorial-serverless-static-web-app/tutorial-serverless-static-web-app.png
+    description: The diagram illustrates the architecture of a web application using
+      Azure Static Web Apps, Azure Functions as an API, and Azure Web PubSub for real-time
+      messaging, integrating GitHub and Azure DevOps…
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/howto-integrate-app-gateway/overview.jpg
+    description: The diagram illustrates the architecture of Azure Web PubSub, showing
+      how a web client communicates through the Azure Application Gateway to the Azure
+      Private Endpoint within a virtual network, which…
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/concept-disaster-recovery/topology.png
+    description: The diagram illustrates a multi-region setup for Azure Web PubSub,
+      showing primary and secondary connections between app servers and web PubSub
+      instances with event handlers designated as upstream, en…
+  - url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/media/concept-disaster-recovery/before-failover.png
+    description: The illustration depicts a communication architecture involving an
+      Azure Web PubSub system, with a client establishing a WebSocket connection to
+      a Web PubSub service within Region 1, which interacts w…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-web-pubsub/overview.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # What is Azure Web PubSub service?
+
+    Azure Web PubSub is a fully managed service for building applications that deliver
+    updates in real time. It manages long-lived client connections and message delivery
+    at scale, so you don''t have to operate the underlying real-time infrastructure.
+
+    Use Web PubSub to build chat apps, stream AI-generated tokens, update dashboards,
+    deliver notifications, coordinate multiplayer games, track locations, and create
+    other experiences where waiting for the next HTTP request isn''t fast enough.
+
+    Instead of spending development time managing connections, scaling messaging servers,
+    and implementing message fan-out, your team can focus on the experience your application
+    provides.
+
+    ## Choose the development experience that fits your application
+
+    Web PubSub offers multiple ways to build real-time applications. Each option solves
+    a different development need while providing managed, scalable real-time communication.
+
+    | Capability | Choose it when you want to | Developer value |
+
+    | --- | --- | --- |
+
+    | **Web PubSub (base service)** | Design a custom real-time application by using
+    connections, users, groups, and events. | Get flexible messaging primitives without
+    operating WebSocket infrastructure. |
+
+    | **[Socket.IO on Azure](socketio-overview)** | Use the Socket.IO programming
+    model or move an existing Socket.IO application to Azure. | Keep familiar Socket.IO
+    APIs while Azure manages connection scaling and coordination. |
+
+    | **[MQTT support](overview-mqtt)** | Connect MQTT clients over WebSocket or exchange
+    messages between MQTT and native Web PubSub clients. | Reuse MQTT libraries and
+    add protocol interoperability without building a translation layer. |
+
+    | **[Web PubSub chat](chat-overview)** | Build chat with rooms, members, ordered
+    messages, and message history. | Start with chat-specific APIs and managed capabilities
+    instead of assembling a chat backend yourself. |
+
+    If you''re not sure which option fits your application, see [Choose an Azure Web
+    PubSub capability](choose-web-pubsub-capability).
+
+    ## What can you build with the base service?
+
+    The base Web PubSub service is a good fit when your application needs low-latency
+    communication and you want control over its event model, message format, and business
+    logic.
+
+    ### Stream tokens in AI-assisted…'
+notes: This is a solid architecture-friendly messaging update because it adds a purpose-built
+  chat model on top of a real-time service. The post can highlight how teams can replace
+  custom WebSocket plumbing with managed chat primitives.
+area: Integration and messaging
+code_example_ideas:
+- Build the new chat experience using the Web PubSub service SDK and inspect the room/member/message
+  model.
+- Create a serverless chat app with Azure Functions and Azure Static Web Apps.
+- Use the existing chat tutorial to compare the new chat APIs with a simpler WebSocket-based
+  implementation.
+article_path: content/posts/2026-08-24-azure-web-pubsub-chat-en-vista-previa-publica-menos-websockets-a-mano-mas-arquit.md
+pr_url: null

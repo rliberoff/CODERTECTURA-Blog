@@ -1,0 +1,289 @@
+id: azure-files-csi-workload-identity-smb-aks
+title: Azure Files CSI driver now supports workload identity for SMB mounts in AKS
+slug: azure-files-csi-en-aks-ya-admite-workload-identity-para-smb-por-que-me-parece-un
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-08-31T12:44:15+00:00'
+- status: in_review
+  at: '2026-08-31T12:49:07+00:00'
+discovered_at: '2026-08-31T12:44:15+00:00'
+similarity:
+  max_score: 0.387
+  closest_match: azure-linux-on-wsl-dotnet-local-linux-dev-path
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=570120
+  title: '[Launched] Generally Available: Workload identity support for Azure Files
+    CSI driver (SMB) in Azure'
+  published_date: '2026-08-28'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: The Azure Files Container Storage Interface (CSI) driver in Azure Kubernetes
+    Service (AKS) now supports workload identity for pod-level authentication to SMB
+    file shares. Previously, managed identity support in AKS enabled workloads to
+    mount Azure Files w
+- url: https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers
+  title: Use Container Storage Interface (CSI) Drivers on Azure Kubernetes Service
+    (AKS) - Azure Kubernetes Service | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/aks/media/supported-kubernetes-versions/kubernetes-versions-gantt.png
+    description: A timeline illustrating the support lifecycle of various Kubernetes
+      versions (1.28 to 1.35) on AKS from 2014 to 2023, highlighting release dates,
+      end-of-life milestones, and support periods with color…
+  - url: https://learn.microsoft.com/en-us/azure/backup/media/azure-kubernetes-service-cluster-backup/enable-cross-region-restore.png
+    description: The image displays a configuration interface for enabling Azure Files
+      CSI driver workload identity with SMB GA on Azure Kubernetes Service, including
+      settings for vault security, managed identity, and…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-aks-docs/blob/main/articles/aks/csi-storage-drivers.md)
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Use Container Storage Interface (CSI) drivers on Azure Kubernetes Service (AKS)
+
+    The Container Storage Interface (CSI) is a standard for exposing arbitrary block
+    and file storage systems to containerized workloads on Kubernetes. When using
+    CSI, Azure Kubernetes Service (AKS) can write, deploy, and iterate plug-ins to
+    expose new or improve existing storage systems in Kubernetes without having to
+    touch the core Kubernetes code and wait for its release cycles.
+
+    The CSI storage driver support on AKS allows you to natively use **Azure Disks**,
+    **Azure Files**, or **Azure Blob storage** as persistent storage for your applications
+    running on AKS.
+
+    Tip
+
+    If you want a fully managed solution for block-level access to data, consider
+    using [Azure Container Storage](/en-us/azure/storage/container-storage/container-storage-introduction)
+    instead of CSI drivers. Azure Container Storage integrates with Kubernetes so
+    you can dynamically provision persistent volumes for stateful applications on
+    Kubernetes clusters.
+
+    Important
+
+    Beginning with Kubernetes version 1.26, in-tree persistent volume types `kubernetes.io/azure-disk`
+    and `kubernetes.io/azure-file` are deprecated and are no longer supported. *In-tree
+    drivers* refer to the storage drivers that are part of the core Kubernetes code
+    opposed to the CSI drivers, which are plug-ins.
+
+    Removing these drivers following their deprecation isn''t planned, however you
+    should migrate to the corresponding CSI drivers `disk.csi.azure.com` and `file.csi.azure.com`.
+    To review the migration options for your storage classes and upgrade your cluster
+    to use Azure Disks and Azure Files CSI drivers, see [Migrate from in-tree to CSI
+    drivers](csi-migrate-in-tree-volumes).
+
+    If you created in-tree driver storage classes, those storage classes continue
+    to work since CSI migration is turned on after upgrading your cluster to 1.21.x.
+    If you want to use CSI features, you need to perform the migration.
+
+    ## About Azure Disks CSI driver
+
+    The Azure Disks CSI driver is a [CSI specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-compliant
+    driver used by AKS to manage the lifecycle of Azure Disk resources. With the Azure
+    Disks CSI driver, you can create a Kubernetes *DataDisk* resource. Disks can use
+    Azure Premium Storage, backed…'
+- url: https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster
+  title: Deploy and Configure an Azure Kubernetes Service (AKS) Cluster with Microsoft
+    Entra Workload ID - Azure Kubernetes Service | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/aks/media/supported-kubernetes-versions/kubernetes-versions-gantt.png
+    description: A timeline illustrating the support lifecycle of various Kubernetes
+      versions (1.28 to 1.35) on AKS from 2014 to 2023, highlighting release dates,
+      end-of-life milestones, and support periods with color…
+  - url: https://learn.microsoft.com/en-us/azure/backup/media/azure-kubernetes-service-cluster-backup/enable-cross-region-restore.png
+    description: The image displays a configuration interface for enabling Azure Files
+      CSI driver workload identity with SMB GA on Azure Kubernetes Service, including
+      settings for vault security, managed identity, and…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-aks-docs/blob/main/articles/aks/workload-identity-deploy-cluster.md)
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Deploy and configure Microsoft Entra Workload ID on an Azure Kubernetes Service
+    (AKS) cluster
+
+    In this article, you learn how to deploy and configure an Azure Kubernetes Service
+    (AKS) cluster with [Microsoft Entra Workload ID](workload-identity-overview).
+    The steps in this article include:
+
+    * Create a new or update an existing AKS cluster using the Azure CLI or Terraform
+    with OpenID Connect (OIDC) issuer and Microsoft Entra Workload ID enabled.
+
+    * Create a workload identity and Kubernetes service account.
+
+    * Configure the managed identity for token federation.
+
+    * Deploy the workload and verify authentication with the workload identity.
+
+    * Optionally grant a pod in the cluster access to secrets in an Azure key vault.
+
+    ## Prerequisites
+
+    * If you don''t have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
+    before you begin.
+
+    * This article requires version 2.47.0 or later of the Azure CLI. If using Azure
+    Cloud Shell, the latest version is already installed. Run `az --version` to find
+    the version. If you need to install or upgrade, see [Install Azure CLI](/en-us/cli/azure/install-azure-cli).
+
+    * Make sure that the identity that you''re using to create your cluster has the
+    appropriate minimum permissions. For more information, see [Access and identity
+    options for Azure Kubernetes Service (AKS)](concepts-identity).
+
+    * Make sure that your identity has permission to create role assignments at the
+    key vault scope, such as the [Role Based Access Control Administrator](/en-us/azure/role-based-access-control/built-in-roles/privileged#role-based-access-control-administrator)
+    role. The Contributor and Key Vault Contributor roles can''t create role assignments.
+
+    * If you have multiple Azure subscriptions, select the appropriate subscription
+    ID in which the resources should be billed using the [`az account set`](/en-us/cli/azure/account#az-account-set)
+    command.
+
+    * Terraform installed locally. For installation instructions, see [Install Terraform](https://developer.hashicorp.com/terraform/install).
+
+    * The `ARM_SUBSCRIPTION_ID` environment variable set to the subscription ID where
+    you want to create the resources. AzureRM 4.x requires the subscription ID for
+    plan and apply operations.
+
+    Note
+
+    You can us…'
+- url: https://learn.microsoft.com/en-us/azure/aks/create-volume-azure-files
+  title: Create and Manage Persistent Volumes with Azure Files in Azure Kubernetes
+    Service (AKS) - Azure Kubernetes Service | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/aks/media/supported-kubernetes-versions/kubernetes-versions-gantt.png
+    description: A timeline illustrating the support lifecycle of various Kubernetes
+      versions (1.28 to 1.35) on AKS from 2014 to 2023, highlighting release dates,
+      end-of-life milestones, and support periods with color…
+  - url: https://learn.microsoft.com/en-us/azure/backup/media/azure-kubernetes-service-cluster-backup/enable-cross-region-restore.png
+    description: The image displays a configuration interface for enabling Azure Files
+      CSI driver workload identity with SMB GA on Azure Kubernetes Service, including
+      settings for vault security, managed identity, and…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-aks-docs/blob/main/articles/aks/create-volume-azure-files.md)
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Create and manage persistent volumes (PVs) with Azure Files in Azure Kubernetes
+    Service (AKS)
+
+    Azure Files enables multiple pods to share persistent storage in AKS using SMB
+    or NFS protocols, surviving pod restarts, node failures, and cluster scaling events.
+    This article shows you how to dynamically and statically create an Azure file
+    share for use by multiple pods in an Azure Kubernetes Service (AKS) cluster.
+
+    Note
+
+    The Azure Files CSI driver only permits the mounting of SMB file shares using
+    key-based (NTLM v2) authentication, and therefore doesn''t support the maximum
+    security profile of Azure File share settings. Mounting NFS file shares doesn''t
+    require key-based authentication.
+
+    Note
+
+    We recommend FIO when running benchmarking tests. For more information, see [benchmarking
+    tools and tests](/en-us/azure/storage/files/nfs-performance#benchmarking-tools-and-tests).
+
+    ## Quick-start checklist
+
+    1. **Verify prerequisites**: Ensure Azure CLI 2.0.59+, Azure Files CSI driver
+    enabled, and storage account available
+
+    2. **Choose or create a storage class**: Use built-in classes (`azurefile-csi`,
+    `azurefile-csi-premium`) or create a custom one
+
+    3. **Create a PersistentVolumeClaim (PVC)**: Define storage size and access mode
+    (typically ReadWriteMany)
+
+    4. **Create a pod**: Reference the PVC in your pod''s volume configuration
+
+    5. **Verify the mount**: Confirm the volume is mounted correctly using `kubectl
+    describe pod`
+
+    ## Prerequisites
+
+    * Azure CLI version 2.0.59 or later installed and configured. Find the version
+    using the `az --version` command. To install or upgrade, see [Install Azure CLI](/en-us/cli/azure/install-azure-cli).
+
+    * The [Azure Files CSI driver](csi-storage-drivers) enabled on your AKS cluster.
+
+    * An Azure [storage account](/en-us/azure/storage/common/storage-introduction).
+
+    * When choosing between SSD (Premium) and HDD (Standard) file shares, it''s important
+    you understand the provisioning model and requirements of the expected usage pattern
+    you plan to run on Azure Files. Azure Files has three billing models: [provisioned
+    v2](/en-us/azure/storage/files/understanding-billing#provisioned-v2-model) (recommended),
+    [pay-as-you-go](/en-us/azure/storage/files/understanding-billing#pay-as-you-go-model),
+    and the legacy [provisioned v1](/en-us/azure/storage/files/und…'
+notes: 'This is a practical AKS storage/security upgrade: pods can authenticate to
+  Azure Files at the workload level instead of tying access to node identity. It is
+  relevant for teams hardening multi-tenant clusters and least-privilege storage access.'
+area: Azure compute and containers
+code_example_ideas:
+- Create an AKS 1.35+ cluster and enable workload identity before deploying the Azure
+  Files CSI driver example.
+- Deploy a pod annotated with a Microsoft Entra workload identity and mount an Azure
+  Files SMB volume.
+- Compare the older managed-identity mount flow with the new workload-identity flow
+  in YAML and kubectl commands.
+article_path: content/posts/2026-08-31-azure-files-csi-en-aks-ya-admite-workload-identity-para-smb-por-que-me-parece-un.md
+pr_url: null

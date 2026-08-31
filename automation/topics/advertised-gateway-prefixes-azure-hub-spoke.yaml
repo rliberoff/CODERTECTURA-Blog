@@ -1,0 +1,280 @@
+id: advertised-gateway-prefixes-azure-hub-spoke
+title: Advertised gateway prefixes can reduce BGP route noise in Azure hub-and-spoke
+  networks
+slug: menos-ruido-bgp-en-azure-como-resumir-prefijos-anunciados-en-un-hub-and-spoke
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-08-31T12:44:15+00:00'
+- status: in_review
+  at: '2026-08-31T12:55:02+00:00'
+discovered_at: '2026-08-31T12:44:15+00:00'
+similarity:
+  max_score: 0.3895
+  closest_match: azure-dns-traffic-manager-linked-records-public-preview
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/azure-networking-blog/advertised-gateway-prefixes-in-azure/ba-p/4550940
+  title: Advertised gateway prefixes in Azure
+  published_date: '2026-08-28'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: 'Introduction Large Azure hub-and-spoke environments can advertise a significant
+    number of routes toward on-premises networks. By default, Azure VPN Gateway and
+    ExpressRoute Gateway advertise the address spaces of the hub virtual network and
+    the address spaces of peered spoke virtual networks that use gateway transit.
+    As the number of spokes and address spaces grows, the border gateway protocol
+    (BGP) route table grows as well. Advertised gateway prefixes provide a native
+    way to summarize those Azure-side routes. The feature is configured on the hub
+    virtual network through the summarizedGatewayPrefixes property, which is exposed
+    in the Azure portal as Advertised gateway prefixes . Fewer BGP prefixes Replace
+    many individual networks with one or more aggregated CIDRs. Better scale management
+    Help large hub-and-spoke designs stay within advertised-prefix limits. Cleaner
+    route visibility Make the intended Azure address plan easier to recognize on provider
+    and on-premises route views. In this blog we will demonstrate leveraging Advertised
+    gateway prefixes to summarize many Azure advertised prefixes into one. What are
+    advertised gateway prefixes? Advertised gateway prefixes are summarized CIDR blocks
+    that an Azure hybrid gateway advertises toward on-premises instead of advertising
+    every covered hub and spoke address space individually. The configuration belongs
+    on the gateway virtual network, usually the hub VNet that contains GatewaySubnet
+    and the ExpressRoute or VPN gateway. How the route advertisement changes Default
+    behavior With advertised gateway prefixes Hub: 10.27.0.0/24 Spoke 1: 10.27.1.0/24
+    Spoke 2: 10.27.2.0/24 Spoke 3: 10.27.3.0/24 Summary: 10.27.0.0/22 Four individual
+    prefixes are advertised. One summary prefix is advertised. A spoke outside the
+    summary is still advertised separately. Example: 172.16.1.0/24 remains visible
+    if it is not covered by 10.27.0.0/22. When should you use it? You use a hub-and-spoke
+    topology with gateway transit and many spoke address spaces. You want to advertise
+    a covering prefix, such as a /16, instead of many smaller prefixes, such as multiple
+    /24 networks. You are approaching ExpressRoute advertised-prefix limits or want
+    to reduce route-table growth before scale becomes a problem. Your Azure address
+    plan is sufficiently structured to create safe, intentional summary ranges. Note:
+    ExpressRoute scale context: Microsoft documentation lists a maximum of 1,000 IPv4
+    prefixes and 100 IPv6 prefixes advertised from a virtual network to on-premises
+    on a single ExpressRoute connection through private peering. Exceeding the connection
+    prefix limit can cause the connection between the circuit and gateway to disconnect
+    until the prefix count is reduced. Prerequisites A hub virtual network with GatewaySubnet.
+    An ExpressRoute gateway or VPN gateway deployed in the hub virtual network. One
+    or more peered spoke virtual networks if you want to demonstrate route summarization
+    across spokes. A planned IPv4 and, when applicable, IPv6…'
+- url: https://learn.microsoft.com/en-us/azure/virtual-network/advertised-gateway-prefixes-overview
+  title: Advertised gateway prefixes in Azure virtual networks
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/expressroute/media/expressroute-howto-add-gateway-portal-resource-manager/gateway-circuit.png
+    description: The diagram illustrates a network setup where an ExpressRoute circuit
+      connects to Microsoft edge routers, which then route traffic through an ExpressRoute
+      Gateway within a gateway subnet in a virtual…
+  - url: https://learn.microsoft.com/en-us/azure/virtual-wan/media/virtual-wan-expressroute-portal/expressroute-bowtie-virtual-network-virtual-wan.png
+    description: The image shows a network diagram with multiple virtual networks
+      (VNETs 1-4) connected through hubs and linked via an Azure Virtual WAN ExpressRoute
+      circuit.
+  - url: https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/images/expressroute-connectivity-with-vpn-backup.svg
+    description: ''
+  excerpt: Advertised gateway prefixes let you specify summarized (aggregated) CIDR
+    prefixes that Azure hybrid gateways advertise to on-premises networks instead
+    of
+- url: https://learn.microsoft.com/en-us/azure/expressroute/expressroute-routing
+  title: 'Azure ExpressRoute: Routing requirements | Microsoft Learn'
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/expressroute/media/expressroute-howto-add-gateway-portal-resource-manager/gateway-circuit.png
+    description: The diagram illustrates a network setup where an ExpressRoute circuit
+      connects to Microsoft edge routers, which then route traffic through an ExpressRoute
+      Gateway within a gateway subnet in a virtual…
+  - url: https://learn.microsoft.com/en-us/azure/virtual-wan/media/virtual-wan-expressroute-portal/expressroute-bowtie-virtual-network-virtual-wan.png
+    description: The image shows a network diagram with multiple virtual networks
+      (VNETs 1-4) connected through hubs and linked via an Azure Virtual WAN ExpressRoute
+      circuit.
+  - url: https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/images/expressroute-connectivity-with-vpn-backup.svg
+    description: ''
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/expressroute/expressroute-routing.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # ExpressRoute routing requirements
+
+    To connect to Microsoft cloud services by using ExpressRoute, you need to set
+    up and manage routing. Some connectivity providers offer setting up and managing
+    routing as a managed service. Check with your connectivity provider to see if
+    they offer this service. If they don''t, you must adhere to the following requirements.
+
+    For a description of the routing sessions that you need to set up to facilitate
+    connectivity, see [Circuits and routing domains](expressroute-circuit-peerings).
+
+    Note
+
+    Microsoft doesn''t support any router redundancy protocols, such as HSRP or VRRP,
+    for high availability configurations. Microsoft relies on a redundant pair of
+    BGP sessions per peering for high availability.
+
+    ## IP addresses used for peering
+
+    You need to reserve a few blocks of IP addresses to configure routing between
+    your network and Microsoft''s Enterprise edge (MSEEs) routers. This section provides
+    a list of requirements and describes the rules regarding how you must acquire
+    and use these IP addresses.
+
+    ### IP addresses used for Azure private peering
+
+    You can use either private IP addresses or public IP addresses to configure the
+    peering. The address range you use for configuring routes can''t overlap with
+    address ranges used for virtual networks in Azure.
+
+    * IPv4:
+
+    + Reserve a `/29` subnet or two `/30` subnets for routing interfaces.
+
+    + Use either private IP addresses or public IP addresses for the subnets used
+    for routing.
+
+    + The subnets must not conflict with the range reserved by the customer for use
+    in the Microsoft cloud.
+
+    + If you use a `/29` subnet, split it into two `/30` subnets.
+
+    - Use the first `/30` subnet for the primary link and the second `/30` subnet
+    for the secondary link.
+
+    - For each of the `/30` subnets, use the first IP address of the `/30` subnet
+    for your router. Microsoft uses the second IP address of the `/30` subnet to set
+    up a BGP session.
+
+    - You must set up both BGP sessions for the [availability SLA](https://azure.microsoft.com/support/legal/sla/)
+    to be valid.
+
+    * IPv6:
+
+    + Reserve a `/125` subnet or two `/126` subnets for routing interfaces.
+
+    + Use either private IP addresses or public IP addresses for the subnets used
+    for routing.
+
+    + The subnets must not conflict with the range reserved by the customer for use
+    in t…'
+- url: https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview
+  title: Azure Virtual Network Peering | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/virtual-network/media/virtual-networks-peering-overview/local-or-remote-gateway-in-peered-virual-network.png
+    description: The diagram illustrates interconnected Azure virtual networks (VNet
+      A and VNet B) with subnet configurations, peering connections, a hub virtual
+      network containing a network virtual appliance (NVA) an…
+  - url: https://learn.microsoft.com/en-us/azure/virtual-wan/media/virtual-wan-expressroute-portal/expressroute-bowtie-virtual-network-virtual-wan.png
+    description: The image shows a network diagram with multiple virtual networks
+      (VNETs 1-4) connected through hubs and linked via an Azure Virtual WAN ExpressRoute
+      circuit.
+  - url: https://learn.microsoft.com/en-us/azure/expressroute/media/expressroute-about-virtual-network-gateways/hobo-ip.png
+    description: The image displays a configuration interface for creating a virtual
+      network gateway in Azure, with options for subscription, resource group, gateway
+      name, region, gateway type, SKU, virtual network, a…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/virtual-network/virtual-network-peering-overview.md)
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Azure virtual network peering
+
+    Azure Virtual Network peering enables you to seamlessly connect two or more virtual
+    networks in Azure, making them appear as one for connectivity purposes. This powerful
+    feature allows you to create secure, high-performance connections between virtual
+    networks while keeping all traffic on Microsoft''s private backbone infrastructure,
+    eliminating the need for public internet routing.
+
+    **What you''ll learn in this article:**
+
+    * How virtual network peering works and its key benefits
+
+    * Different types of peering (local and global)
+
+    * How to implement connectivity and service chaining
+
+    * Troubleshooting common peering issues
+
+    Whether you''re designing a hub-and-spoke topology or connecting networks across
+    regions, this guide helps you understand the capabilities and limitations of virtual
+    network peering.
+
+    By default, a virtual network is peered with up to 500 other virtual networks.
+    By using the [connectivity configuration for Azure Virtual Network Manager](../virtual-network-manager/concept-connectivity-configuration),
+    you can increase this limit to peer up to 1,000 virtual networks to a single virtual
+    network. With this larger size, you can create a hub-and-spoke topology with 1,000-spoke
+    virtual networks, for example. You can also create a mesh of 1,000-spoke virtual
+    networks where all spoke virtual networks are directly interconnected.
+
+    Azure supports the following types of peering:
+
+    * **Virtual network peering**: Connect virtual networks within the same Azure
+    region.
+
+    * **Global virtual network peering**: Connect virtual networks across Azure regions.
+
+    The benefits of using virtual network peering, whether local or global, include:
+
+    * A low-latency, high-bandwidth connection between resources in different virtual
+    networks.
+
+    * The ability for resources in one virtual network to communicate with resources
+    in a different virtual network.
+
+    * The ability to transfer data between virtual networks across Azure subscriptions,
+    Microsoft Entra tenants, deployment models, and Azure regions.
+
+    * The ability to peer virtual networks created through Azure Resource Manager.
+
+    * The ability to peer a virtual network created through Resource Manager to one
+    created through the classic deployment model. To learn more about Azure deployment…'
+notes: A strong networking topic for architects who run large hybrid topologies. It
+  explains how Azure gateways can advertise summarized prefixes instead of many individual
+  spoke routes, which can simplify routing and improve operational control.
+area: Azure networking, private connectivity and platform security
+code_example_ideas:
+- Configure the `summarizedGatewayPrefixes` property on a hub virtual network using
+  Azure CLI or PowerShell.
+- Validate the advertised routes from VPN Gateway or ExpressRoute Gateway before and
+  after summarization.
+- Model a hub-and-spoke topology and measure how prefix aggregation changes on-prem
+  route tables.
+article_path: content/posts/2026-08-31-menos-ruido-bgp-en-azure-como-resumir-prefijos-anunciados-en-un-hub-and-spoke.md
+pr_url: null

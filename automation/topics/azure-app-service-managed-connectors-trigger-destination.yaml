@@ -1,0 +1,154 @@
+id: azure-app-service-managed-connectors-trigger-destination
+title: Azure App Service Can Now Receive Trigger Events from Azure Managed Connectors
+slug: azure-app-service-ya-puede-recibir-triggers-de-managed-connectors-asi-montaria-y
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-09-14T11:50:40+00:00'
+- status: in_review
+  at: '2026-09-14T11:57:13+00:00'
+discovered_at: '2026-09-14T11:50:40+00:00'
+similarity:
+  max_score: 0.4516
+  closest_match: azure-managed-redis-deployment-automation
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/apps-on-azure-blog/azure-app-service-is-now-a-trigger-destination-for-azure-managed/ba-p/4555785
+  title: Azure App Service is now a trigger destination for Azure Managed Connectors
+  published_date: '2026-09-11'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: 'Azure Managed Connectors, currently in public preview, now lets you choose
+    Azure App Service as a trigger destination . Connector events can be delivered
+    directly to applications running on App Service, including ASP.NET Core, Java,
+    Node.js, and Python applications. This is a new capability in the Managed Connectors
+    public preview . It is not the announcement of a separate App Service preview.
+    What''s new When you create a trigger in the Managed Connectors portal, App Service
+    now appears as a first-class destination alongside Azure Functions and the generic
+    HTTP endpoint option. After selecting an existing App Service app, you configure:
+    The application route that receives the event. New triggers default to POST /api/webhook
+    , and the route can be edited. The Connector Namespace managed identity used to
+    authenticate the callback. The Microsoft Entra audience expected by the receiving
+    application. Managed Connectors then records the selected App Service resource,
+    route, managed identity, and audience as part of the trigger configuration. You
+    no longer need to select the generic HTTP destination and manually assemble the
+    App Service callback URL. What are managed connectors? Managed connectors provide
+    a consistent way for applications to integrate with services such as Office 365,
+    SharePoint, Teams, Dataverse, and Salesforce. A Connector Namespace manages connections
+    and connector operations so developers do not need to build a separate OAuth flow
+    and service-specific client for every integration. Managed connectors support
+    both directions: Triggers deliver events to your application, such as a new Outlook
+    email or a file added to SharePoint. Actions let your application call operations
+    such as posting a Teams message, flagging an email, or creating a list item. The
+    App Service destination makes the trigger side a first-class option for existing
+    web applications and APIs. How it works In the Managed Connectors portal, create
+    a trigger and select App Service as its destination. Select the web app, callback
+    route, Connector Namespace managed identity, and Microsoft Entra audience. When
+    the source event occurs, Managed Connectors requests a token using the selected
+    managed identity and sends the event to the App Service route. App Service built-in
+    authentication validates the token before the request reaches application code.
+    The application processes the event and can use Managed Connectors actions to
+    continue the workflow. The callback is an ordinary authenticated HTTP request,
+    so the application can use its normal framework, routing, dependency injection,
+    logging, monitoring, and deployment practices. Configure receiving-app authentication
+    The App Service destination configures the Managed Connectors side of the callback.
+    The receiving application must still be configured to trust it. The reference
+    sample uses App Service built-in authentication, also known as Easy Auth, with:
+    A Microsoft Entra application that identifies the receiving application a…'
+- url: https://learn.microsoft.com/en-us/azure/azure-functions/functions-connectors-overview
+  title: Use managed connectors in Azure Functions | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Use managed connectors in Azure Functions
+
+    ## In this article
+
+    By using managed connectors, your functions can react to events and call operations
+    in services like Microsoft 365, Microsoft Teams, SharePoint, and many third-party
+    systems without writing webhook setup code or managing OAuth tokens. Azure Functions
+    integrates with Azure Connector Namespace to provide a trigger and an SDK that
+    lets you focus on business logic while the connector namespace handles webhooks,
+    authentication, and retries.
+
+    Note
+
+    Azure Connector Namespace integration for Azure Functions is currently in public
+    preview. Features, configuration names, and support for specific managed connectors
+    can change before general availability (GA). Use of this feature is subject to
+    the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+    Only C#, Node.js, and Python language stacks are currently supported.
+
+    ## How connectors enhance Functions
+
+    A connector namespace adds two capabilities to the Functions programming model:
+
+    `connectorTrigger`
+
+    You can use managed connectors alongside classic Functions triggers and bindings
+    such as HTTP, timer, queue, Service Bus, Event Grid, and Durable Functions.
+
+    ## Preview availability
+
+    | Dimension | Availability |
+
+    | --- | --- |
+
+    | **Connector Namespace region** | West Central US (`westcentralus`). Function
+    app can be in any supported region. |
+
+    | **Languages** | .NET 10/.NET 8 isolated, Python 3.13+, Node.js 22+ (JS/TS).
+    Java, PowerShell, and Go aren''t supported. |
+
+    | **Hosting plans** | [Flex Consumption](flex-consumption-plan) (recommended),
+    [Premium](functions-premium-plan), [Dedicated](dedicated-plan), and [Container
+    Apps](functions-container-apps-hosting). |
+
+    | **Pricing** | [Standard Functions pricing](https://azure.microsoft.com/pricing/details/functions/):
+    No extra charge for connector trigger/SDK during preview. *Connector Namespace
+    has separate billing.* |
+
+    `westcentralus`
+
+    ## When to use connectors
+
+    Use connectors when your functions mainly need to interact with external services
+    rather than run complex custom logic. Consider these ways to use managed connectors
+    in your function apps:
+
+    **React to external events**
+
+    Your app must handle events raised by externally connected services (new emails,
+    calendar invites, files, list items, Teams activity), but you don''t want to spend
+    the effort coding webhook registrations, handshake validation, and OAuth refreshes.
+    Consider a case where your function runs to process new emails delivered in a
+    monitored Office 365 Outlook folder, classifies the message, calls the Office
+    365 connector for enrichment, and flags or moves t…'
+notes: 'This is a strong modernization story for event-driven applications: App Service
+  apps can now act as a first-class destination for managed connector triggers. The
+  post can show how to connect SaaS events directly to existing .NET apps without
+  introducing extra infrastructure.'
+area: azure applications and integration
+code_example_ideas:
+- Create a Logic Apps workflow that uses a managed connector trigger and routes events
+  to an App Service endpoint.
+- Build a minimal ASP.NET Core webhook receiver on App Service and validate incoming
+  connector payloads.
+- Use the Azure portal or CLI to configure the App Service trigger destination and
+  test an end-to-end event flow.
+article_path: content/posts/2026-09-14-azure-app-service-ya-puede-recibir-triggers-de-managed-connectors-asi-montaria-y.md
+pr_url: null

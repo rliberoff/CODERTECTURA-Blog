@@ -1,0 +1,291 @@
+id: azure-storage-mover-agentless-smb-migration-azure-files
+title: Azure Storage Mover Adds Agentless SMB File Share Migration to Azure Files
+slug: storage-mover-ya-migra-compartidos-smb-a-azure-files-sin-agentes-que-cambia-de-v
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-09-14T11:50:40+00:00'
+- status: in_review
+  at: '2026-09-14T12:02:41+00:00'
+discovered_at: '2026-09-14T11:50:40+00:00'
+similarity:
+  max_score: 0.5029
+  closest_match: azure-files-csi-workload-identity-smb-aks
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=570910
+  title: '[In preview] Public Preview: Agentless migration of on-premises SMB file
+    shares to Azure Files (SMB)'
+  published_date: '2026-09-11'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: Azure Storage Mover now supports agentless migration of on-premises SMB
+    file shares to Azure Files (SMB), in public preview. You can move file data from
+    Windows Server or NAS shares into Azure without deploying, registering, or maintaining
+    a migration age
+- url: https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction
+  title: What is Azure Files? | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/storage-files-migration-overview/smb-migration-flowchart.png
+    description: The diagram illustrates a decision flowchart for transferring files
+      from SMB sources like Windows Server, NAS device, or Linux server to Azure Files
+      or Azure Storage using tools such as AzCopy, Azure…
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/files-whats-new/ad-domain-join-1.png
+    description: The image shows a Microsoft Azure portal page focused on configuring
+      Active Directory and related services for setting up Azure Files with NFS encryption
+      in transit, highlighting features like identit…
+  - url: https://learn.microsoft.com/en-us/azure/storage-mover/media/overview/storage-mover-video-still.png
+    description: The illustration depicts a data migration process involving Azure
+      Blob Storage, connecting on-premises NAS and NAS storage systems via an agent,
+      with integration to AWS S3 and Arc multi-cloud connecto…
+  - url: https://learn.microsoft.com/en-us/azure/architecture/example-scenario/hybrid/media/azure-files-on-premises-authentication.svg
+    description: ''
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/storage-files-active-directory-overview/files-microsoft-entra-kerberos-diagram.png
+    description: The image illustrates the process of enabling SMB encryption with
+      AES-256-GCM for Azure Files using Microsoft Entra ID and Kerberos authentication,
+      including steps for permissions setup and client con…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/storage/files/storage-files-introduction.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # What is Azure Files?
+
+    Azure Files provides fully managed file shares in the cloud that you can access
+    through the industry-standard [SMB](/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)
+    and [NFS](https://en.wikipedia.org/wiki/Network_File_System) protocols. You can
+    mount Azure file shares concurrently from cloud and on-premises clients on Windows,
+    Linux, and macOS — no additional software required.
+
+    | Protocol | Supported clients | Best for |
+
+    | --- | --- | --- |
+
+    | SMB | Windows, Linux, macOS | General-purpose file shares, lift-and-shift apps,
+    hybrid with Azure File Sync |
+
+    | NFS | Linux | Linux workloads, containers, HPC |
+
+    | [REST API](/en-us/rest/api/storageservices/file-service-rest-api) | All platforms
+    | Programmatic access from applications |
+
+    ## Why use Azure Files?
+
+    * **Replace or supplement on-premises file servers** — Mount Azure file shares
+    directly or cache them on Windows servers with [Azure File Sync](../file-sync/file-sync-introduction).
+    Use [identity-based authentication](storage-files-active-directory-overview) with
+    on-premises Active Directory for seamless access control.
+
+    * **Lift and shift applications** — Migrate applications that expect shared file
+    storage to Azure without code changes. Move both the application and its data,
+    or keep the app on-premises and move only the data.
+
+    * **Simplify cloud development** — Store shared application settings, write diagnostic
+    logs, and share dev/test tools across VMs — all from a centralized file share
+    accessible via the REST API or standard file system I/O.
+
+    * **Containerized workloads** — Use Azure file shares as persistent volumes for
+    stateful containers, providing shared storage regardless of which instance runs
+    the container.
+
+    ## Key benefits
+
+    * **Fully managed** — No hardware to manage, no OS to patch, no disks to replace.
+    Azure handles infrastructure, updates, and backups.
+
+    * **Shared access** — Industry-standard SMB and NFS protocols ensure compatibility
+    with existing applications, tools, and workflows.
+
+    * **Resilient** — Zone-redundant (ZRS) and geo-redundant (GRS) storage options
+    protect against hardware failures and datacenter outages.
+
+    * **Familiar programmability** — Access data through [file system I/O APIs](/en-us/dotnet/api/system.io.file),
+    [Az…'
+- url: https://learn.microsoft.com/en-us/azure/storage/files/storage-files-migration-overview
+  title: Migration Overview for SMB Azure File Shares | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/storage-files-migration-overview/smb-migration-flowchart.png
+    description: The diagram illustrates a decision flowchart for transferring files
+      from SMB sources like Windows Server, NAS device, or Linux server to Azure Files
+      or Azure Storage using tools such as AzCopy, Azure…
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/files-whats-new/ad-domain-join-1.png
+    description: The image shows a Microsoft Azure portal page focused on configuring
+      Active Directory and related services for setting up Azure Files with NFS encryption
+      in transit, highlighting features like identit…
+  - url: https://learn.microsoft.com/en-us/azure/storage-mover/media/overview/storage-mover-video-still.png
+    description: The illustration depicts a data migration process involving Azure
+      Blob Storage, connecting on-premises NAS and NAS storage systems via an agent,
+      with integration to AWS S3 and Arc multi-cloud connecto…
+  - url: https://learn.microsoft.com/en-us/azure/architecture/example-scenario/hybrid/media/azure-files-on-premises-authentication.svg
+    description: ''
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/storage-files-active-directory-overview/files-microsoft-entra-kerberos-diagram.png
+    description: The image illustrates the process of enabling SMB encryption with
+      AES-256-GCM for Azure Files using Microsoft Entra ID and Kerberos authentication,
+      including steps for permissions setup and client con…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/storage/files/storage-files-migration-overview.md)
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Migrate to SMB Azure file shares
+
+    ✔️ **Applies to:** Classic SMB file shares created with the Microsoft.Storage
+    resource provider
+
+    ✖️ **Doesn''t apply to:** All NFS file shares including file shares created with
+    the Microsoft.FileShares resource provider or classic file shares created with
+    the Microsoft.Storage resource provider
+
+    This article covers the basic aspects of a migration to SMB [Azure file shares](storage-files-introduction)
+    and contains a table of migration guides. The guides are organized based on where
+    your data is and what deployment model (cloud-only or hybrid) you''re moving to.
+    The goal is to move the data from existing file share locations to Azure.
+
+    ## Migration basics
+
+    During the migration, you need to guarantee the integrity of the production data
+    and availability. This requirement means preserving file fidelity and minimizing
+    downtime so that the migration can fit into or only slightly exceed your regular
+    maintenance windows.
+
+    ### Preserving file fidelity
+
+    A key aspect in any file share migration is capturing as much file fidelity as
+    possible when moving your files from their current storage location to Azure.
+
+    Here are the two basic components of a file:
+
+    * **Data stream**: The data stream of a file stores the file content.
+
+    * **File metadata**: Unlike object storage in Azure blobs, an Azure file share
+    can natively store [supported file metadata](#supported-metadata). General-purpose
+    file data traditionally depends on file metadata. App data might not. The file
+    metadata has these subcomponents:
+
+    + File attributes like read-only
+
+    + File permissions, which are often referred to as *NTFS permissions* or *file
+    and folder ACLs*
+
+    + Timestamps, most notably the creation and last-modified timestamps
+
+    + An [alternative data stream](storage-files-faq#alternate-data-streams), which
+    is a space to store larger amounts of nonstandard properties. This alternative
+    data stream can''t be stored on a file in an Azure file share. It''s preserved
+    on-premises when Azure File Sync is used.
+
+    File fidelity in a migration can be defined as the ability to:
+
+    * Store all applicable file information on the source.
+
+    * Transfer files with the migration tool.
+
+    * Store files in the target storage of the migration.
+
+    The target for migration guides in this article is…'
+- url: https://learn.microsoft.com/en-us/azure/storage/files/migrate-files-storage-mover
+  title: Migrate to Azure Files using Azure Storage Mover | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/storage-files-migration-overview/smb-migration-flowchart.png
+    description: The diagram illustrates a decision flowchart for transferring files
+      from SMB sources like Windows Server, NAS device, or Linux server to Azure Files
+      or Azure Storage using tools such as AzCopy, Azure…
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/files-whats-new/ad-domain-join-1.png
+    description: The image shows a Microsoft Azure portal page focused on configuring
+      Active Directory and related services for setting up Azure Files with NFS encryption
+      in transit, highlighting features like identit…
+  - url: https://learn.microsoft.com/en-us/azure/storage-mover/media/overview/storage-mover-video-still.png
+    description: The illustration depicts a data migration process involving Azure
+      Blob Storage, connecting on-premises NAS and NAS storage systems via an agent,
+      with integration to AWS S3 and Arc multi-cloud connecto…
+  - url: https://learn.microsoft.com/en-us/azure/architecture/example-scenario/hybrid/media/azure-files-on-premises-authentication.svg
+    description: ''
+  - url: https://learn.microsoft.com/en-us/azure/storage/files/media/storage-files-active-directory-overview/files-microsoft-entra-kerberos-diagram.png
+    description: The image illustrates the process of enabling SMB encryption with
+      AES-256-GCM for Azure Files using Microsoft Entra ID and Kerberos authentication,
+      including steps for permissions setup and client con…
+  excerpt: 'Title: Migrate to Azure Files using Azure Storage Mover | Microsoft Learn
+
+    # Use Azure Storage Mover to migrate to Azure file shares. **Applies to:** ✔️
+    Classic SMB and NFS file shares created with the Microsoft.Storage resource provider.
+    This migration guide describes how to migrate on-premises files to Azure file
+    shares with full fidelity using Azure Storage Mover, a fully managed migration
+    service. You can use Storage Mover to migrate from SMB or NFS source shares, including
+    Windows Server, Linux, or NAS. If you''re using or plan to use Azure File Sync
+    for cloud tiering and on-premises caching, you can use Azure File Sync to migrate
+    on-premises NAS or Windows Server file shares instead of using Storage Mover.
+    If you don''t plan to use Azure File Sync long term, use Storage Mover for your
+    migration. ## Why use Storage Mover to migrate to Azure file shares? There are
+    several reasons to use Storage Mover to migrate your on-premises file shares to
+    Azure file shares. Unlike object storage in Azure Blobs, an Azure file share can
+    natively store file metadata, and it''s important to make sure metadata gets copied
+    from source to target during a migration. * Storage Mover supports both SMB and
+    NFS source shares, giving you flexibility when migrating from different storage
+    systems. To use Storage Mover to migrate your file shares, the following are required:.
+    * An Azure storage account with at least one Azure file share. Use the connectivity
+    checker on the Storage Mover agent console to learn about the endpoint URLs in
+    Azure that you must allow. * For NFS source shares: The NFS export must be accessible
+    from the Storage Mover agent VM. ## Migrate files and metadata using Storage Mover.
+    2. Next, deploy one or more Storage Mover agents close to your on-premises migration
+    sources. 7. Define your first migration job in your Storage Mover project, using
+    the source and target pair you''ve created. When the migration job is complete,
+    you should find all the files and folders in your Azure file share, with full
+    fidelity. * Migrate to Azure file shares using Robocopy. * Migrate files from
+    one Azure file share to another when using Azure File Sync.'
+notes: 'A practical migration update for teams modernizing file workloads: Storage
+  Mover now supports agentless migration of SMB shares to Azure Files. This is useful
+  for infrastructure, migration and platform engineering readers who want a hands-on
+  path off legacy file servers.'
+area: hybrid edge and migration
+code_example_ideas:
+- Plan a migration from an on-premises SMB share to Azure Files using Azure Storage
+  Mover.
+- Demonstrate how file fidelity and ACL preservation are handled during migration.
+- Show a cutover checklist for moving a Windows Server file share to Azure Files with
+  minimal downtime.
+article_path: content/posts/2026-09-14-storage-mover-ya-migra-compartidos-smb-a-azure-files-sin-agentes-que-cambia-de-v.md
+pr_url: null

@@ -383,6 +383,105 @@ async function preflightCodertecturaArticle(manifest) {
 await preflightCodertecturaArticle(window.__linkedinArticleManifest);
 ```
 
+## Select the CODERTECTURA newsletter
+
+Run on the LinkedIn Article editor before typing the title. Every article is an edition of the CODERTECTURA newsletter. The option is in the header: **Manage** (`button.article-editor-manage-menu__dropdown-trigger`, `aria-label="Manage menu"`) → **Newsletter** (collapsible section) → **CODERTECTURA** (`[role="button"].artdeco-dropdown__item` holding `img.article-editor-manage-menu__newsletters--logo`). These functions only read state and compute coordinates; every click is a real `left_click` from the computer tool.
+
+```js
+window.LINKEDIN_NEWSLETTER_NAME = 'CODERTECTURA';
+
+window.findNewsletterMenuElements = function findNewsletterMenuElements(
+  name = window.LINKEDIN_NEWSLETTER_NAME || 'CODERTECTURA'
+) {
+  const clean = value => (value || '').replace(/\s+/g, ' ').trim();
+  const isCreateEntry = element => /create|crear/i.test(element.innerText || '');
+  const sectionPattern = /^(newsletters?|boletín|boletin(es)?)$/i;
+  const authorBlock = document.querySelector('.article-editor-nav__group-left');
+  const trigger = document.querySelector('button.article-editor-manage-menu__dropdown-trigger')
+    || document.querySelector('button[aria-label="Manage menu"]');
+  const menu = document.querySelector('.article-editor-manage-menu__dropdown-container')
+    || document.querySelector('.article-editor-manage-menu .artdeco-dropdown__content');
+  const menuItems = [...(menu?.querySelectorAll('.artdeco-dropdown__item, [role="button"], button') || [])];
+  const newsletterEntries = menuItems
+    .filter(element => element.querySelector('img[class*="newsletters--logo"]'));
+  const newsletterItem = menuItems
+    .find(element => clean(element.innerText) === name && !isCreateEntry(element)) || null;
+  const sectionHeader = menuItems.find(element => sectionPattern.test(clean(element.innerText)))
+    || [...(menu?.querySelectorAll('*') || [])]
+      .filter(element => sectionPattern.test(clean(element.innerText)))
+      .pop()?.closest('li, [role="button"], button')
+    || null;
+  return { authorBlock, trigger, menu, newsletterEntries, newsletterItem, sectionHeader };
+};
+
+window.getArticleNewsletterState = function getArticleNewsletterState(
+  name = window.LINKEDIN_NEWSLETTER_NAME || 'CODERTECTURA'
+) {
+  const clean = value => (value || '').replace(/\s+/g, ' ').trim();
+  const isVisible = element => {
+    if (!element?.isConnected) return false;
+    const rect = element.getBoundingClientRect();
+    return rect.width > 0 && rect.height > 0;
+  };
+  const found = findNewsletterMenuElements(name);
+  const authorText = clean(found.authorBlock?.innerText);
+  return {
+    name,
+    selected: authorText.includes(name),
+    authorText,
+    newsletterLogoInHeader: !!found.authorBlock?.querySelector('img[src*="series-logo"]'),
+    triggerFound: !!found.trigger,
+    menuOpen: found.trigger?.getAttribute('aria-expanded') === 'true' && isVisible(found.menu),
+    sectionFound: !!found.sectionHeader,
+    sectionExpanded: found.sectionHeader?.getAttribute('aria-expanded') ?? null,
+    newsletterItemVisible: isVisible(found.newsletterItem),
+    newsletters: [...new Set(found.newsletterEntries.map(element => clean(element.innerText)))]
+  };
+};
+
+window.locateNewsletterMenuTarget = function locateNewsletterMenuTarget(
+  k,
+  name = window.LINKEDIN_NEWSLETTER_NAME || 'CODERTECTURA'
+) {
+  if (!(k > 0)) throw new Error('Pass k = screenshotWidth / window.innerWidth.');
+  const state = getArticleNewsletterState(name);
+  if (state.selected) {
+    window.__newsletterSectionClicked = false;
+    return { next: 'done', state };
+  }
+
+  const { trigger, sectionHeader, newsletterItem } = findNewsletterMenuElements(name);
+  let target = null;
+  let next = '';
+  if (state.newsletterItemVisible) {
+    target = newsletterItem;
+    next = 'select-newsletter';
+  } else if (!state.menuOpen) {
+    if (!trigger) return { next: 'missing', reason: 'Manage menu trigger was not found.', state };
+    window.__newsletterSectionClicked = false;
+    target = trigger;
+    next = 'open-manage';
+  } else if (sectionHeader && state.sectionExpanded !== 'true' && !window.__newsletterSectionClicked) {
+    // The section header toggles: click it at most once per opening of the menu.
+    window.__newsletterSectionClicked = true;
+    target = sectionHeader;
+    next = 'expand-newsletter-section';
+  } else {
+    return { next: 'missing', reason: `Newsletter "${name}" is not listed in the Manage menu.`, state };
+  }
+
+  target.scrollIntoView({ block: 'center' });
+  const rect = target.getBoundingClientRect();
+  const cssX = rect.left + rect.width / 2;
+  const cssY = rect.top + rect.height / 2;
+  return { next, x: Math.round(cssX * k), y: Math.round(cssY * k), cssX, cssY, state };
+};
+
+locateNewsletterMenuTarget(k);
+```
+
+Loop: call `locateNewsletterMenuTarget(k)`, `left_click` its `x`, `y`, wait about 1 s, and repeat until `next` is `done`. A normal run is `open-manage` → (`expand-newsletter-section` only when collapsed) → `select-newsletter` → `done`. If `select-newsletter` was clicked and the next call is not `done`, retry the sequence once; then stop and report `state.authorText`. On `missing`, stop and report `reason` and `state.newsletters`. Never click an entry whose text contains *Create* / *Crear*.
+
 ## Paste HTML (body text, formatting preserved)
 
 ```js
@@ -488,7 +587,7 @@ function getLinkedInArticleTitle(editor) {
 }
 
 function auditLinkedInDraft(manifest, options = {}) {
-  const { requireMedia = false, requireSaved = false } = options;
+  const { requireMedia = false, requireSaved = false, newsletterName = 'CODERTECTURA' } = options;
   const editor = document.querySelector('div.ProseMirror[contenteditable="true"]');
   if (!editor) throw new Error('LinkedIn ProseMirror editor was not found.');
 
@@ -509,6 +608,8 @@ function auditLinkedInDraft(manifest, options = {}) {
       return false;
     }
   });
+  const authorBlockText = (document.querySelector('.article-editor-nav__group-left')?.innerText || '')
+    .replace(/\s+/g, ' ').trim();
   const saveText = document.body.innerText.match(
     /Draft\s*[-–·]\s*saved|Borrador\s*[-–·]\s*guardado/i
   )?.[0] || '';
@@ -525,6 +626,8 @@ function auditLinkedInDraft(manifest, options = {}) {
     attributionPresent,
     cover: !!document.querySelector('[class*="cover-media"] img, [class*="coverMedia"] img'),
     unexpectedEmptyParagraphs: unexpectedEmptyParagraphs.length,
+    newsletter: newsletterName ? authorBlockText.includes(newsletterName) : null,
+    authorBlockText,
     saveText
   };
   const failures = [];
@@ -537,6 +640,7 @@ function auditLinkedInDraft(manifest, options = {}) {
   if (observed.links !== manifest.expected.links) failures.push('links');
   if (!observed.attributionPresent) failures.push('attribution');
   if (observed.unexpectedEmptyParagraphs) failures.push('emptyParagraphs');
+  if (newsletterName && !observed.newsletter) failures.push('newsletter');
 
   if (requireMedia) {
     if (observed.figures !== manifest.expected.media) failures.push('figures');
@@ -1051,3 +1155,4 @@ When replacing an existing cover, use the edit or remove button inside the eleme
 - `resize_window` / `save_to_disk` on screenshots → may be unavailable; don't build plans on them.
 - Locating image positions by nearby paragraph text → fails with repeated prose, adjacent figures, galleries, or an image at the start.
 - Re-pasting the complete body after images exist → duplicates or displaces editor state.
+- *Create newsletter* / *Create a newsletter* in the Manage menu → starts creating a new newsletter; the CODERTECTURA newsletter already exists.

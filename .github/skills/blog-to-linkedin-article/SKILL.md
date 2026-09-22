@@ -1,13 +1,13 @@
 ---
 name: blog-to-linkedin-article
-description: Draft and publish a CODERTECTURA blog post as a native LinkedIn Article, preserving its cover, body structure, code, links, images, and captions. Resolves "latest post" automatically, extracts the canonical Hugo DOM, prepares the LinkedIn article and share teaser through the Claude in Chrome extension, audits the result, and stops for explicit confirmation at Publish. Use whenever the user asks to publish, republish, cross-post, or share a blog post or URL on LinkedIn as an Article.
+description: Draft and publish a CODERTECTURA blog post as a native LinkedIn Article inside the CODERTECTURA LinkedIn newsletter, preserving its cover, body structure, code, links, images, and captions. Resolves "latest post" automatically, extracts the canonical Hugo DOM, prepares the LinkedIn article and share teaser through the Claude in Chrome extension, audits the result, and stops for explicit confirmation at Publish. Use whenever the user asks to publish, republish, cross-post, or share a blog post or URL on LinkedIn as an Article or as an edition of the CODERTECTURA newsletter.
 ---
 
 # Blog post to LinkedIn Article
 
-Draft one CODERTECTURA post as a native LinkedIn Article, including its cover, text, formatting, links, code, body images, and captions. LinkedIn has no supported Article publishing API, so use the browser session. Drafting is reversible; publishing is not.
+Draft one CODERTECTURA post as a native LinkedIn Article, including its cover, text, formatting, links, code, body images, and captions. Every article is published as an edition of the **CODERTECTURA** LinkedIn newsletter, never as an individual article. LinkedIn has no supported Article publishing API, so use the browser session. Drafting is reversible; publishing is not, and publishing a newsletter edition also notifies its subscribers.
 
-Read `references/editor-scripts.md` before opening the editor. It contains the extraction, paste, image-transfer, placement, caption, cover, and audit scripts used by this workflow.
+Read `references/editor-scripts.md` before opening the editor. It contains the extraction, newsletter-selection, paste, image-transfer, placement, caption, cover, and audit scripts used by this workflow.
 
 ## Operating rules
 
@@ -15,7 +15,8 @@ Read `references/editor-scripts.md` before opening the editor. It contains the e
 - Keep the article body verbatim by default. Do not invent, summarize, translate, or rewrite technical claims.
 - Keep code blocks inline. Do not ask whether to include them.
 - Do not ask the user to confirm a title found in the RSS feed or canonical page.
-- Pause only when authentication is required, source content is genuinely ambiguous after the recovery steps, or the irreversible Publish action needs confirmation.
+- Always publish inside the **CODERTECTURA** LinkedIn newsletter. Never publish as an individual article, never pick another newsletter, and never click *Create newsletter* or *Create a newsletter*.
+- Pause only when authentication is required, source content is genuinely ambiguous after the recovery steps, the CODERTECTURA newsletter cannot be selected or verified, or the irreversible Publish action needs confirmation.
 - Never click Publish without explicit approval in the current chat. A previous approval is not reusable.
 - Process one article per run.
 
@@ -115,12 +116,13 @@ Retry extraction once after a page reload if preflight fails. If only the cover 
 ## Step 4 - Draft the text once
 
 1. Navigate to `https://www.linkedin.com/article/new/`. Fallback: `linkedin.com/feed/` → "Write article".
-2. Click the Title field and type the title with the computer tool.
-3. Capture the resulting editor URL after LinkedIn creates the draft. Reuse this exact URL for every hash transfer.
-4. Return to the canonical post and send `bodyHtml` — and, when it fits the 1.2 MB budget, the body images in the same payload — to the editor URL as one `CLAUDEBUNDLE=` hash. One combined trip is preferred: fewer navigations mean fewer chances to lose editor state.
-5. Wait outside the browser tool, then make `hydrateBundleAndPaste()` the first JavaScript call. It hydrates `window.__files`, strips the hash with `history.replaceState`, and pastes the HTML into `div.ProseMirror[contenteditable="true"]` in that single call.
-6. Start the HTML with `<p></p>` so ProseMirror's first-block merge is absorbed.
-7. Run `auditLinkedInDraft(manifest)` immediately.
+2. Select the CODERTECTURA newsletter before typing anything, as described in "Select the CODERTECTURA newsletter" below. Do not continue until `getArticleNewsletterState().selected` is `true`.
+3. Click the Title field and type the title with the computer tool.
+4. Capture the resulting editor URL after LinkedIn creates the draft. Reuse this exact URL for every hash transfer.
+5. Return to the canonical post and send `bodyHtml` — and, when it fits the 1.2 MB budget, the body images in the same payload — to the editor URL as one `CLAUDEBUNDLE=` hash. One combined trip is preferred: fewer navigations mean fewer chances to lose editor state.
+6. Wait outside the browser tool, then make `hydrateBundleAndPaste()` the first JavaScript call. It hydrates `window.__files`, strips the hash with `history.replaceState`, and pastes the HTML into `div.ProseMirror[contenteditable="true"]` in that single call.
+7. Start the HTML with `<p></p>` so ProseMirror's first-block merge is absorbed.
+8. Run `auditLinkedInDraft(manifest)` immediately.
 
 The editor does not understand Markdown text. Paste HTML only. LinkedIn may normalize both `h2` and `h3` to `h3.article-editor-heading`, so compare total heading count rather than heading levels.
 
@@ -133,6 +135,18 @@ The `<p></p>` prefix is usually NOT absorbed and survives as a leading empty par
 Setting a DOM range on the empty paragraph and pressing `Delete` looks correct and does nothing — ProseMirror keeps its own selection and ignores the synthetic one. Clicking slightly too high lands in the empty paragraph itself, where `BackSpace` is a no-op; if the block count does not change, re-measure and click lower, on actual text.
 
 Never clear and repaste a non-empty draft unless the user explicitly asks to start over. When they do, reuse the same draft rather than creating a second one: click into the body, `ctrl+a`, `BackSpace`, and confirm the editor reports one empty block and zero figures. The title survives. Never delete or discard the draft itself — that is the user's call, not yours.
+
+### Select the CODERTECTURA newsletter
+
+The control lives in the editor header, to the left of **Next**: **Manage** → **Newsletter** (a collapsible section) → **CODERTECTURA** (the entry with the newsletter logo). Drive it with real clicks from the computer tool; use JavaScript only to read state and compute coordinates. The scripts are in `references/editor-scripts.md`.
+
+1. Run `getArticleNewsletterState()`. If `selected` is already `true`, skip the rest of this section.
+2. Run `locateNewsletterMenuTarget(k)` and `left_click` the returned `x`, `y`. Its `next` field says what that click does: `open-manage` opens the Manage menu, `expand-newsletter-section` expands the Newsletter section, and `select-newsletter` picks CODERTECTURA. Wait about 1 s after each click and call it again until it returns `done`. Expect at most three clicks.
+3. The Newsletter section header toggles, so it is clicked at most once; the locator enforces this. When it returns `missing`, stop and tell the user which newsletters the menu listed (`state.newsletters`) instead of guessing.
+4. After `select-newsletter`, require `getArticleNewsletterState().selected === true`: the author block at the top left of the editor shows **CODERTECTURA** under the author's name. If the menu stays open, press `Escape`. If the page navigated or reloaded, run the check again before typing the title.
+5. If the selection cannot be verified after one retry, stop and report the observed `authorText`.
+
+When resuming an existing draft, run `getArticleNewsletterState()` before editing anything and select the newsletter if it is missing.
 
 ## Step 5 - Transfer and place images
 
@@ -171,6 +185,7 @@ Run one manifest-aware DOM audit and require all of the following:
 - Cover presence matches the manifest: present when a dedicated or fallback cover was resolved, absent otherwise
 - No empty paragraphs, EXCEPT a transient editor placeholder and the one LinkedIn inserts immediately after each figure
 - Draft saved indicator present
+- Newsletter selected: the editor author block shows CODERTECTURA (`newsletter` in the audit)
 
 LinkedIn adds an empty paragraph after every inserted image. LEAVE IT. It is invisible spacing in the published article, and removing it is actively harmful: placing the caret at the start of the following heading and pressing `BackSpace` demotes that heading to a paragraph instead of deleting the empty block. If this happens, `ctrl+z` restores the heading — verify the heading count returns to expected before continuing. Expect a final block count of `body blocks + one per figure`.
 
@@ -186,8 +201,9 @@ Take one screenshot at the top only after the DOM audit passes.
 2. Fill the share box with a warm teaser in the article language: two to four conversational, friendly, first-person sentences stating the hook and what the reader will get.
 3. Add three to five short, common hashtags on a separate line. Prefer tags already represented by the article title, categories, or tags. Avoid long compound hashtags.
 4. ALWAYS add the `#MVPBuzz` hashtag.
-5. Show the exact teaser and hashtags in chat and state that the dialog is ready.
-6. Stop before Publish and request explicit confirmation. If the user says "publish" in the current chat, click Publish once and verify the published confirmation or resulting article URL.
+5. Show the exact teaser and hashtags in chat, state that the dialog is ready, and state that the article will be published as an edition of the CODERTECTURA newsletter, so LinkedIn will notify its subscribers.
+6. If the publish step names a different newsletter or presents the article as an individual article, do not publish: go back to the editor, fix the selection with "Select the CODERTECTURA newsletter", and run the final audit again.
+7. Stop before Publish and request explicit confirmation. If the user says "publish" in the current chat, click Publish once and verify the published confirmation or resulting article URL.
 
 If the user asked for edits to the teaser, edit in the dialog rather than starting over.
 

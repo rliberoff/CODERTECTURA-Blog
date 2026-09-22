@@ -1,0 +1,252 @@
+id: guided-copilot-in-vs-code-promises-a-more-structured-way-to-build-azure-apps
+title: Guided Copilot in VS Code Promises a More Structured Way to Build Azure Apps
+slug: guided-copilot-en-vs-code-asi-cambia-de-verdad-la-forma-de-crear-apps-en-azure
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-09-21T12:02:09+00:00'
+- status: in_review
+  at: '2026-09-21T12:18:22+00:00'
+discovered_at: '2026-09-21T12:02:09+00:00'
+similarity:
+  max_score: 0.5907
+  closest_match: modernize-legacy-dotnet-app-to-dotnet-10-with-copilot
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/apps-on-azure-blog/introducing-a-guided-copilot-experience-for-building-azure-apps/ba-p/4557120
+  title: Introducing a Guided Copilot Experience for Building Azure Apps in VS Code
+  published_date: '2026-09-18'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: 'Today we''re previewing a new way to build cloud apps with GitHub Copilot
+    in VS Code: a guided Copilot experience that takes you from idea to a deployed
+    Azure app through a structured, predictable workflow instead of a free-form chat
+    session that may or may not land where you need it to. The problem: Copilot is
+    powerful, but unpredictable Ask Copilot to "build me a Node.js API on Azure Functions
+    with a Postgres database" today, and you might get a working project, or you might
+    not. Sometimes Copilot scaffolds the app but skips infrastructure. Sometimes it
+    generates a deployment script that fails halfway through. Sometimes it forgets
+    what you were building three prompts later. The underlying model is capable. The
+    problem is the shape of the experience: an open-ended chat with no checkpoints,
+    no guardrails, and no consistent path from "I have an idea" to "it''s running
+    in Azure." How it works The guided Copilot experience adds to that open-ended
+    flow with three clear, explicit stages: 1. Project scaffolding: Describe your
+    app in plain language. Copilot proposes an architecture and asks for anything
+    that is missing (e.g., language, app type, Azure services) through simple forms
+    and pickers, not more back-and-forth chat. You review and approve the plan before
+    any code is written. 2. Local development: Your project is scaffolded then Copilot
+    checks for the runtimes, emulators, and tools you''ll need and helps you install
+    what''s missing, so the project runs locally from the very first launch. Debug
+    configurations are wired up automatically, so you can test and iterate on your
+    app before it ever touches Azure. 3. Deployment: Copilot shows the tools that
+    will be used for deployment along with a summary of all resources that will be
+    created and a cost estimate so you can be confident in what you''re getting. Infrastructure
+    files are created for your app to ensure a consistent and reproducible deployment
+    environment for testing and staging before going to production. Deployment runs
+    through the same reliable tooling used across Azure (az and azd), so if something
+    goes wrong, you get a clear explanation and a concrete next step instead of a
+    wall of CLI output. Once your app is live, the guided experience doesn''t disappear,
+    Copilot retains context about your project''s architecture, so coming back later
+    to add a service or make a change picks up right where you left off. 🎉 What this
+    means for how you work Determinism over guesswork. The same input reliably produces
+    the same kind of outcome, so no more wondering which "mode" Copilot is going to
+    be in. First try success. Projects are built to run and deploy on the first attempt,
+    not after several rounds of manual repair. Structure over chat walls. Decisions
+    that matter such as architecture choices, missing configuration, and deployment
+    targets are surfaced through real UI, so you''re not parsing paragraphs of text
+    to figure out what Copilot needs from you. Stay in VS Code. The entire journey,
+    from planning through d…'
+- url: https://learn.microsoft.com/en-us/azure/devops/release-notes/features-timeline-released
+  title: Azure DevOps Released Features - Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/devops/repos/git/media/copilot-code-reviews/repository-level-preview-feature.png?view=azure-devops
+    description: A toggle switch is turned on next to the message "Enable Copilot
+      code review for pull requests in this repository," with explanation text about
+      GitHub Copilot's code review feature and a dropdown menu…
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Azure DevOps Released Features
+
+    ## In this article
+
+    | [What''s New](https://aka.ms/azuredevops/releasenotes)
+
+    | [Developer Community](https://developercommunity.visualstudio.com/spaces/21/index.html)
+
+    | [DevOps Blog](https://devblogs.microsoft.com/devops/)
+
+    | [Documentation](/en-us/azure/devops/?view=azure-devops&preserve-view=true) |
+
+    ## Released features
+
+    ## Azure DevOps Services
+
+    The released features timeline lists significant features delivered to Azure DevOps
+    Services and the corresponding version of Azure DevOps Server.
+
+    Versions in the "Server" column are linked to the appropriate download location.
+
+    You can also [view the build numbers for each version](#azure-devops-server-build-numbers).
+    Versions in italics are planned for the future and subject to change.
+
+    | Service Update | Feature | Area | Server |
+
+    | --- | --- | --- | --- |
+
+    | [September 4 2026](2026/sprint-279-update) | Remote MCP Server handling rate
+    limits | General | N/A |
+
+    | Azure DevOps plugin now available in GitHub Copilot app | General | N/A |
+
+    | Malware alerts (private preview) | GitHub Advanced Security for Azure DevOps
+    | N/A |
+
+    | Security overview metrics (private preview) | GitHub Advanced Security for Azure
+    DevOps | N/A |
+
+    | Project-level billing for Autofix AI credit usage | GitHub Advanced Security
+    for Azure DevOps | N/A |
+
+    | Improved security for work item notification emails | Boards | Future |
+
+    | GitHub Copilot Code Review (public preview) | Repos | N/A |
+
+    | Longer pull request descriptions in Azure Repos | Repos | Future |
+
+    | Azure DevOps Enterprise Live Migrations (public preview) | Repos | N/A |
+
+    | Automatic titles for multi-commit pull requests | Repos | Future |
+
+    | Docker socket no longer mapped by default for Linux container jobs | Pipelines
+    | Future |
+
+    | Faster wiki search by page title | Wiki | Future |
+
+    | [August 20 2026](2026/sprint-278-update) | Azure DevOps Remote MCP Server is
+    now generally available | General | N/A |
+
+    | Azure Monitor Logs audit streaming now uses Microsoft Entra authentication for
+    workspace authorization | General | Future |
+
+    | Audit events for expired Visual Studio subscriptions and GitHub Enterprise licenses
+    | General | Future |
+
+    | Audit events for service hooks | General | Future |
+
+    | Support for ARM64 with VSTest v3 task | Pipelines | N/A |
+
+    | Improved code coverage experience for Azure Pipelines | Pipelines | Future |
+
+    | Pipeline builds are moving to Microsoft Entra-issued access tokens | Pipelines
+    | Future |
+
+    | Improved Wiki page recovery | Wiki | Future |
+
+    | [July 30 2026](2026/sprint-277-update) | Enterprise Live Migration MCP Server
+    Tools (Preview) | General | N/A |
+
+    | View development dependency information on the Alerts page | GitHub…'
+- url: https://learn.microsoft.com/en-us/azure/devops/repos/git/review-pull-requests?view=azure-devops
+  title: Review and comment on pull requests - Azure Repos
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/devops/repos/git/media/copilot-code-reviews/repository-level-preview-feature.png?view=azure-devops
+    description: A toggle switch is turned on next to the message "Enable Copilot
+      code review for pull requests in this repository," with explanation text about
+      GitHub Copilot's code review feature and a dropdown menu…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-devops-docs/blob/main/docs/repos/git/review-pull-requests.md)
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Review pull requests
+
+    **Azure DevOps Services | Azure DevOps Server | Azure DevOps Server 2022**
+
+    Tip
+
+    You can use AI to help with Azure DevOps tasks. See [Enable AI assistance with
+    Azure DevOps MCP Server](/en-us/azure/devops/mcp-server/mcp-server-overview) to
+    get started.
+
+    When you create a [pull request](pull-requests?view=azure-devops) (PR) and specify
+    required and optional reviewers, Azure Repos notifies the reviewers that your
+    PR is ready for review. All required reviewers must approve the changes in your
+    PR before the changes can merge into the target branch. For PRs that change critical
+    branches like `main`, your team might have [branch policies](branch-policies?view=azure-devops)
+    that specify the reviewers or require a minimum number of reviewers. If branch
+    policies add optional reviewers to your PR, you can keep them, require them, or
+    remove them. If branch policies add required reviewers to your PR, you can''t
+    make them optional or remove them. For information about assigning reviewers through
+    branch policies and security best practices, see [Secure repositories and pull
+    requests](secure-repositories-pull-requests?view=azure-devops) and [Automatically
+    include code reviewers](branch-policies?view=azure-devops#include-code-reviewers).
+
+    When you review a PR, give constructive feedback that''s precise and easy to understand.
+    For more information, see [Pull request feedback](about-pull-requests?view=azure-devops#quality-feedback-for-pull-requests).
+
+    You can only review Azure DevOps PRs in the web portal by using your browser.
+
+    ## Prerequisites
+
+    | Category | Requirements |
+
+    | --- | --- |
+
+    | **Project** | An [Azure DevOps project](../../organizations/projects/create-project?view=azure-devops).
+    If you don''t have a project, create one or [sign up for free](../../user-guide/sign-up-invite-teammates?view=azure-devops).
+    |
+
+    | **Services** | **Repos** enabled in your project. If the **Repos** hub doesn''t
+    display, see [Turn an Azure DevOps service on or off](../../organizations/settings/set-services?view=azure-devops).
+    |
+
+    | **Access levels** | At least **Basic** access. For public projects, users with
+    **Stakeholder** access have full access to **Azure Repos**. |
+
+    | **Permissions** | Membership in the Azure DevOps project that contains the PR.
+    If you aren''t a projec…'
+notes: This is an interesting developer-experience story because it moves Azure app
+  creation from open-ended prompting to a more opinionated workflow. The piece can
+  appeal to teams using VS Code, GitHub Copilot, and Azure Developer tooling to ship
+  faster with fewer setup mistakes.
+area: developer-tooling
+code_example_ideas:
+- Start a guided Copilot session in VS Code and scaffold a cloud app from a prompt.
+- Deploy the generated app to Azure and verify the end-to-end flow.
+- Compare the guided workflow with a free-form Copilot chat approach for the same
+  app idea.
+article_path: content/posts/2026-09-21-guided-copilot-en-vs-code-asi-cambia-de-verdad-la-forma-de-crear-apps-en-azure.md
+pr_url: null

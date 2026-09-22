@@ -2,7 +2,7 @@
 title: 'Guided Copilot en VS Code: así cambia de verdad la forma de crear apps en
   Azure'
 date: '2026-09-21T12:17:02+00:00'
-draft: true
+draft: false
 slug: guided-copilot-en-vs-code-asi-cambia-de-verdad-la-forma-de-crear-apps-en-azure
 description: La experiencia guiada de Copilot en VS Code cambia el chat abierto por
   un flujo más predecible para crear y desplegar apps en Azure.

@@ -45,13 +45,13 @@ ai:
     published_date: null
 ---
 
-Cuando una aplicación con Azure Cosmos DB sale mal, casi nunca falla por el `await` que faltaba. Suele romperse mucho antes: en la clave de partición, en cómo he modelado los documentos, en los patrones de acceso que nadie dejó por escrito o en esa consulta que parecía inocente hasta que empezó a quemar RUs como si no hubiera mañana. Por eso me parece especialmente interesante que [Spec-Driven Development llegue a Azure Cosmos DB con GitHub Spec Kit](https://devblogs.microsoft.com/cosmosdb/spec-driven-development-comes-to-azure-cosmos-db-the-first-database-extension-for-github-spec-kit/): desplaza el foco desde “que la IA escriba código” hacia **“que la IA me ayude a tomar decisiones de diseño revisables”**.
+Cuando una aplicación con Azure Cosmos DB sale mal, casi nunca falla por el `await` que faltaba. Suele romperse mucho antes: en la clave de partición, en cómo he modelado los documentos, en los patrones de acceso que nadie dejó por escrito o en esa consulta que parecía inocente hasta que empezó a quemar RUs como si no hubiera mañana. Por eso me parece especialmente interesante que [Spec-Driven Development llegue a Azure Cosmos DB con GitHub Spec Kit](https://devblogs.microsoft.com/cosmosdb/spec-driven-development-comes-to-azure-cosmos-db-the-first-database-extension-for-github-spec-kit/), ya que desplaza el foco desde *“que la IA escriba código”* hacia ***“que la IA me ayude a tomar decisiones de diseño revisables”***.
 
-Si tú trabajas en .NET y Azure, este enfoque encaja sorprendentemente bien. Según la documentación de [Azure Cosmos DB Agent Kit](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/agent-kit), el valor real está en dar al asistente contexto experto sobre modelado, particionado, optimización de consultas, uso del SDK e incluso búsqueda vectorial y *full-text*. Y según las [buenas prácticas de GitHub Copilot para Azure Cosmos DB en Visual Studio Code](https://learn.microsoft.com/en-us/azure/cosmos-db/github-copilot-visual-studio-code-best-practices), ese contexto se integra directamente en el flujo del editor. En este artículo te voy a enseñar una forma bastante práctica de aterrizar todo eso: instalar el kit, redactar una especificación útil, obtener una propuesta inicial de diseño y validarla en local con el emulador y una pequeña aplicación en .NET.
+Trabajando con .NET y Azure, este enfoque encaja sorprendentemente bien. Según la documentación de [Azure Cosmos DB Agent Kit](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/agent-kit), el valor real está en dar al asistente contexto experto sobre modelado, particionado, optimización de consultas, uso del SDK e incluso búsqueda vectorial y *full-text*. Y según las [buenas prácticas de GitHub Copilot para Azure Cosmos DB en Visual Studio Code](https://learn.microsoft.com/en-us/azure/cosmos-db/github-copilot-visual-studio-code-best-practices), ese contexto se integra directamente en el flujo del editor. En este artículo te voy a enseñar una forma bastante práctica de aterrizar todo eso: instalar el GitHub Spec Kit, redactar una especificación útil, obtener una propuesta inicial de diseño y validarla en local con el emulador y una pequeña aplicación en .NET.
 
 ### Qué cambia de verdad con este enfoque
 
-La idea importante aquí no es “usar IA”. Eso, a estas alturas, ya lo hace medio mundo. La diferencia está en que la decisión arquitectónica deja de vivir en una conversación efímera con un chat y pasa a quedar expresada en una especificación: requisitos, operaciones principales, volumen esperado, restricciones de consistencia y límites operativos. En Cosmos DB esto importa muchísimo porque, como recuerda [el anuncio del soporte para Spec-Driven Development](https://devblogs.microsoft.com/cosmosdb/spec-driven-development-comes-to-azure-cosmos-db-the-first-database-extension-for-github-spec-kit/), elegir mal la `partition key` o ignorar los patrones de acceso afecta al coste, al rendimiento y a la fiabilidad mucho después de que el código compile sin protestar.
+La idea importante aquí no es *“usar IA”* simplemente por puro esnobismo. Eso, a estas alturas, ya lo hace medio mundo. La diferencia está en que la decisión arquitectónica deja de vivir en una conversación efímera con un chat y pasa a quedar expresada en una especificación: requisitos, operaciones principales, volumen esperado, restricciones de consistencia y límites operativos. En Cosmos DB esto importa muchísimo porque, como recuerda [el anuncio del soporte para Spec-Driven Development](https://devblogs.microsoft.com/cosmosdb/spec-driven-development-comes-to-azure-cosmos-db-the-first-database-extension-for-github-spec-kit/), elegir mal la `partition key` o ignorar los patrones de acceso afecta al coste, al rendimiento y a la fiabilidad mucho después de que el código compile sin protestar.
 
 A mí lo que me convence es esto: **la IA deja de improvisar y empieza a razonar sobre un contrato de diseño**. Eso no elimina la revisión humana (ni debería), pero sí mejora bastante la primera propuesta y, sobre todo, convierte las decisiones en algo discutible, documentado y auditable. Y en datos, eso vale oro.
 
@@ -64,7 +64,7 @@ Para reproducir el flujo de este artículo, yo partiría de esta base:
 - **Visual Studio Code** instalado.
 - **GitHub Copilot** activo en tu cuenta.
 - La extensión **Azure Cosmos DB para Visual Studio Code**, que según [la documentación de buenas prácticas](https://learn.microsoft.com/en-us/azure/cosmos-db/github-copilot-visual-studio-code-best-practices) instala automáticamente el Agent Kit al conectarte a una cuenta de Cosmos DB.
-- **.NET 8 SDK** instalado.
+- **.NET 10** instalado (obvio).
 - **Azure Cosmos DB Emulator** instalado en Windows, o acceso a un entorno donde ya lo tengas disponible.
 - Un conocimiento básico de Azure Cosmos DB for NoSQL.
 - Si prefieres conectar contra Azure real en lugar del emulador, permisos sobre una cuenta de Cosmos DB en tu suscripción.
@@ -74,7 +74,7 @@ El resultado final que quiero que compruebes es bastante concreto:
 1. Tienes una especificación funcional para una carga de trabajo real.
 2. La IA te devuelve una propuesta de contenedor y `partition key` razonada.
 3. Creas el contenedor en el emulador.
-4. Ejecutas una aplicación .NET 8 que inserta datos y lanza consultas representativas.
+4. Ejecutas una aplicación .NET que inserta datos y lanza consultas representativas.
 5. Verificas si el modelo responde de verdad a los patrones de acceso que definiste.
 
 ### Paso 1: instalar el contexto experto para Copilot
@@ -100,7 +100,7 @@ Si ya las tenías instaladas, no pasa nada: VS Code te lo dirá y seguirás con 
 
 ### Paso 2: escribir una especificación que la IA pueda discutir
 
-Aquí está, para mí, el paso que más diferencia marca. En vez de pedir “créame un esquema para pedidos”, yo prefiero dejar por escrito el contexto operativo. Voy a usar un ejemplo sencillo de comercio electrónico, pero lo bastante realista como para obligarnos a pensar en particionado y en lecturas por varios ejes.
+Aquí está, para mí, el paso que más diferencia marca. En vez de pedir *“créame un esquema para pedidos”*, yo prefiero dejar por escrito el contexto operativo. Voy a usar un ejemplo sencillo de comercio electrónico, pero lo bastante realista como para obligarnos a pensar en particionado y en lecturas por varios ejes.
 
 Crea un archivo `specs/order-workload.md` con este contenido:
 
@@ -111,14 +111,14 @@ Crea un archivo `specs/order-workload.md` con este contenido:
 Persistir pedidos de una plataforma B2C con lectura operativa en tiempo real.
 
 ## Entidad principal
-Order
+`Order`
 
 ## Operaciones principales
-1. Crear pedido desde checkout.
-2. Obtener un pedido por orderId y customerId.
+1. Crear pedido desde *checkout*.
+2. Obtener un pedido por `orderId` y `customerId`.
 3. Listar últimos 20 pedidos de un cliente.
 4. Listar pedidos por estado de procesamiento para un tenant.
-5. Actualizar estado del pedido durante fulfillment.
+5. Actualizar estado del pedido durante *fulfillment*.
 
 ## Volumen esperado
 - 2 millones de pedidos al mes.
@@ -154,19 +154,19 @@ Quiero:
 No te centres en código todavía; céntrate en decisiones de modelado y coste.
 ```
 
-Lo esperable es una respuesta razonada sobre modelado, `partition key`, consultas y compromisos. Y eso cuadra bastante bien con lo que [Azure Cosmos DB Agent Kit dice cubrir](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/agent-kit): *data modeling*, diseño de particionado, optimización de consultas y buenas prácticas del SDK.
+Lo esperable es una respuesta razonada sobre modelado, `partition key`, consultas y compromisos. Y eso cuadra bastante bien con lo que [Azure Cosmos DB Agent Kit dice cubrir](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/agent-kit): *data modeling*, diseño de particionado, optimización de consultas y buenas prácticas del SDK. 
 
 {{< figure src="/images/spec-driven-development-llega-a-azure-cosmos-db-con-github-spec-kit/body-2.png" alt="Comparativa de claves de partición candidatas" caption="La IA puede proponer opciones, pero la elección de partition key hay que contrastarla con patrones de acceso reales." >}}{{< /figure >}}
 
 ### Mi lectura de la propuesta: qué revisaría sí o sí
 
-Con una carga como esta, yo esperaría que la IA descarte bastante rápido `/status` o `/createdAt` como `partition key` principal, porque su cardinalidad o su distribución pueden salir mal para el patrón global. También miraría con recelo `/customerId` si un mismo cliente puede concentrar mucha actividad o si `tenantId` importa para el aislamiento lógico. Una propuesta razonable suele girar alrededor de `/tenantId` o de una clave compuesta lógica basada en el tenant y otro eje, según el patrón de acceso dominante.
+Con una carga como esta, yo esperaría que la IA descarte bastante rápido `/status` o `/createdAt` como `partition key` principal, porque su cardinalidad o su distribución pueden salir mal para el patrón global. También miraría con recelo `/customerId` si un mismo cliente puede concentrar mucha actividad o si `tenantId` importa para el aislamiento lógico. Una propuesta razonable suele girar alrededor de `/tenantId` o de una clave compuesta lógica basada en el tenant y otro eje, según el patrón de acceso dominante. Así, es importante destacar que esta primera respuesta es un punto de partida para iterar, refinar y mejorar la especificidad detallada de la especificación que estamos construyendo. Aceptarla a *"la primera"* es una mala idea.
 
-Aquí entra el criterio humano, claro. La IA puede ayudarte mucho, pero **la `partition key` no se aprueba por lo bien que suene una explicación, sino por cómo encaja con tus consultas reales**. Si una de tus operaciones críticas es listar los últimos pedidos de un cliente, ya puedes ir pensando si necesitas un modelo complementario, una vista materializada o asumir el coste de determinadas consultas cruzadas. De hecho, [el anuncio de esta integración](https://devblogs.microsoft.com/cosmosdb/spec-driven-development-comes-to-azure-cosmos-db-the-first-database-extension-for-github-spec-kit/) insiste precisamente en eso: estas decisiones sobreviven muchísimo más que el código generado.
+Aquí entra el criterio y el juicio crítico humano, una cualidad o *softskill* fundamental en la era de la IA. La IA puede ayudarte mucho, pero **la `partition key` no se aprueba por lo bien que suene una explicación, sino por cómo encaja con tus consultas reales**. Si una de tus operaciones críticas es listar los últimos pedidos de un cliente, ya puedes ir pensando si necesitas un modelo complementario, una vista materializada o asumir el coste de determinadas consultas cruzadas. De hecho, [el anuncio de esta integración](https://devblogs.microsoft.com/cosmosdb/spec-driven-development-comes-to-azure-cosmos-db-the-first-database-extension-for-github-spec-kit/) insiste precisamente en eso: estas decisiones sobreviven muchísimo más que el código generado.
 
-### Paso 3: levantar el emulador y crear la base de datos desde .NET 8
+### Paso 3: levantar el emulador y crear la base de datos desde .NET
 
-Ahora toca dejar de opinar y empezar a comprobar. Para la parte reproducible voy a usar **.NET 8** y el paquete **Azure.Cosmos 3.36.0 o superior** en una aplicación de consola muy pequeña.
+Ahora toca dejar de opinar y empezar a comprobar. Para la parte reproducible voy a usar **.NET 10** y el paquete **Azure.Cosmos 3.36.0 o superior** en una aplicación de consola muy pequeña.
 
 Primero crea el proyecto e instala el SDK:
 
@@ -183,7 +183,7 @@ info : PackageReference for package 'Azure.Cosmos' version '3.36.0' added.
 info : Restored CosmosSpecDemo.csproj.
 ```
 
-Con el emulador arrancado, normalmente lo tendrás respondiendo en `https://localhost:8081/`. Sustituye `Program.cs` por este código:
+Con el emulador arrancado, normalmente lo tendrás respondiendo en `https://localhost:8081/`. Sustituye `Program.cs` por este código cambiando los valores de `key` según corresponda:
 
 ```csharp
 using Azure.Cosmos;
@@ -291,9 +291,9 @@ Aquí estás comprobando algo bastante importante: una consulta alineada con `te
 
 ### Qué me llevo de esta validación
 
-Lo interesante del flujo no es solo que Copilot ayude a redactar o a generar ejemplos. Lo potente es el ciclo completo: especifico, genero una propuesta, la discuto y la valido con datos y consultas reales. Ahí es donde un enfoque *spec-driven* encaja especialmente bien con Cosmos DB, porque te obliga a hacer explícitas decisiones que demasiadas veces se quedan implícitas hasta que ya es caro cambiarlas.
+Lo interesante del flujo no es solo que GitHub Copilot ayude a redactar o a generar ejemplos. Lo potente es el ciclo completo: especifico, genero una propuesta, la discuto y la valido con datos y consultas reales. Ahí es donde un enfoque *spec-driven* encaja especialmente bien con Cosmos DB, porque te obliga a hacer explícitas decisiones que demasiadas veces se quedan implícitas hasta que ya es caro cambiarlas.
 
-También me parece importante recordar que [Azure Cosmos DB Agent Kit](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/agent-kit) no sustituye la responsabilidad arquitectónica. Te da reglas, contexto experto y un punto de partida mucho mejor. Pero no conoce por arte de magia tus picos de tráfico, tus restricciones regulatorias o cómo va a crecer de verdad tu negocio. Aun así, está a años luz de pedirle a una IA generalista “hazme un modelo NoSQL” y cruzar los dedos.
+También me parece importante recordar que [Azure Cosmos DB Agent Kit](https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/agent-kit) no sustituye la responsabilidad arquitectónica ni la supervisión humana. Te da reglas, contexto experto y un punto de partida mucho mejor. Pero no conoce por arte de magia tus picos de tráfico, tus restricciones regulatorias o cómo va a crecer de verdad tu negocio. Aun así, está a años luz de pedirle a una IA generalista *“hazme un modelo NoSQL”* y cruzar los dedos.
 
 ### Dónde le veo el valor en equipos .NET y Azure
 

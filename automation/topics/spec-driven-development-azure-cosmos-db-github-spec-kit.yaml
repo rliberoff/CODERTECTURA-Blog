@@ -1,0 +1,278 @@
+id: spec-driven-development-azure-cosmos-db-github-spec-kit
+title: Spec-Driven Development Comes to Azure Cosmos DB with GitHub Spec Kit
+slug: spec-driven-development-llega-a-azure-cosmos-db-con-github-spec-kit
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-09-21T12:02:09+00:00'
+- status: in_review
+  at: '2026-09-21T12:07:58+00:00'
+discovered_at: '2026-09-21T12:02:09+00:00'
+similarity:
+  max_score: 0.4051
+  closest_match: azure-linux-on-wsl-dotnet-local-linux-dev-path
+  threshold: 0.82
+sources:
+- url: https://devblogs.microsoft.com/cosmosdb/spec-driven-development-comes-to-azure-cosmos-db-the-first-database-extension-for-github-spec-kit/
+  title: 'Spec-Driven Development comes to Azure Cosmos DB: The First Database Extension
+    for GitHub Spec Kit'
+  published_date: '2026-09-21'
+  host: devblogs.microsoft.com
+  kind: primary
+  excerpt: 'AI coding agents can write much of an application’s code, but developers
+    still need to review the decisions behind it. For a Cosmos DB application, that
+    includes choosing partition keys, modeling access patterns, and configuring the
+    client. Those decisions affect cost, performance, and reliability long after the
+    code compiles. We’ve written before about how Azure […] The post Spec-Driven Development
+    comes to Azure Cosmos DB: The First Database Extension for GitHub Spec Kit appeared
+    first on Azure Cosmos DB Blog .'
+- url: https://devblogs.microsoft.com/cosmosdb/github-copilot-cli-cosmos-db-agent-kit
+  title: Accelerate Your Cosmos DB Infrastructure with GitHub Copilot CLI and Azure
+    Cosmos DB Agent Kit - Azure Cosmos DB Blog
+  published_date: null
+  host: devblogs.microsoft.com
+  kind: secondary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: Microsoft
+  - url: https://devblogs.microsoft.com/cosmosdb/wp-content/uploads/sites/52/2026/05/1762407254489-96x96.jpg
+    description: ''
+  - url: https://devblogs.microsoft.com/cosmosdb/wp-content/uploads/sites/52/2022/02/1732043306616-96x96.jpg
+    description: ''
+  - url: https://devblogs.microsoft.com/cosmosdb/wp-content/uploads/sites/52/2019/10/Mark-Brown-150x150.png
+    description: ''
+  - url: https://devblogs.microsoft.com/cosmosdb/wp-content/uploads/sites/52/2023/11/1642810222450-96x96.jpg
+    description: ''
+  - url: https://devblogs.microsoft.com/cosmosdb/wp-content/uploads/sites/52/2026/08/maturity-ladder.svg
+    description: ''
+  - url: https://devblogs.microsoft.com/cosmosdb/wp-content/uploads/sites/52/2026/08/extension-plug-in.svg
+    description: ''
+  - url: https://devblogs.microsoft.com/cosmosdb/wp-content/uploads/sites/52/2026/08/hero.svg
+    description: ''
+  excerpt: '[![Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)](https://www.microsoft.com)
+    [Dev Blogs](https://devblogs.microsoft.com) [AI](https://devblogs.microsoft.com/ai)
+    [All .NET posts](https://devblogs.microsoft.com/dotnet/) [.NET MAUI](https://devblogs.microsoft.com/dotnet/category/maui/)
+    [ASP.NET Core](https://devblogs.microsoft.com/dotnet/category/dotnet-aspire/)
+    [Blazor](https://devblogs.microsoft.com/dotnet/category/blazor/) [Entity Framework](https://devblogs.microsoft.com/dotnet/category/entity-framework/)
+    [C++](https://devblogs.microsoft.com/cppblog/) [C#](https://devblogs.microsoft.com/dotnet/category/csharp/)
+    [F#](https://devblogs.microsoft.com/dotnet/category/fsharp/) [TypeScript](https://devblogs.microsoft.com/typescript/)
+    [NuGet](https://devblogs.microsoft.com/dotnet/category/nuget/) [Servicing](https://devblogs.microsoft.com/dotnet/category/maintenance-and-updates/)
+    [.NET Blog in Chinese](https://devblogs.microsoft.com/dotnet-ch/) [Microsoft for
+    Developers](https://developer.microsoft.com/blog) [Agent Framework](https://devblogs.microsoft.com/agent-framework/)
+    [Develop from the cloud](https://devblogs.microsoft.com/develop-from-the-cloud/)
+    [Xcode](https://devblogs.microsoft.com/xcode/) [ISE Developer](https://devblogs.microsoft.com/ise/)
+    [TypeScript](https://devblogs.microsoft.com/typescript/) [PowerShell](https://devblogs.microsoft.com/powershell/)
+    [Python](https://devblogs.microsoft.com/python/) [Java](https://devblogs.microsoft.com/java/)
+    [Java Blog in Chinese](https://devblogs.microsoft.com/java-ch/) [Go](https://devblogs.microsoft.com/go/)
+    [Microsoft Edge Dev](https://blogs.windows.com/msedgedev/) [Microsoft 365 Developer](https://devblogs.microsoft.com/microsoft365dev/)
+    [Microsoft Entra Identity Developer](https://devblogs.microsoft.com/identity/)
+    [Microsoft Entra PowerShell](https://devblogs.microsoft.com/entrapowershell/)
+    [Visual Studio](https://devblogs.microsoft.com/visualstudio/) [Visual Studio Code](https://devblogs.microsoft.com/vscode-blog)
+    [Aspire](https://devblogs.microsoft.com/aspire/) [All things Azure](https://devblogs.microsoft.com/all-things-azure/)
+    [Azure SDK](https://devblogs.microsoft.com/azure-sdk/) [Azure VM Runtime Team](https://devblogs.microsoft.com/azure-vm-runtime/)
+    [Microsoft Azure](https://azure.microsoft.com/blog/) [Azure Cosmos DB](https://devblogs.microsoft.com/cosmosdb/)
+    [Azure DocumentDB](https://devblogs.microsoft.com/documentdb/) [Azure Data Studio](https://cloudblogs.microsoft.com/sqlserver/?product=azure-data-studio)
+    [Azure SQL](https://devblogs.microsoft.com/azure-sql/) [DevOps](https://devblogs.microsoft.com/devops/)
+    [DirectX](https://devblogs.microsoft.com/directx/) [Microsoft Foundry](https://devblogs.microsoft.com/foundry/)
+    [Power Platform](https://devblogs.microsoft.com/powerplatform/) [OData](https://devblogs.microsoft.com/odata/)
+    [Unified Data Model (IDEAs)](https://devblogs.microsoft.com/udm/) [Windows Command
+    Line](https://devblogs.microsoft.com/commandline/) [#ifdef…'
+- url: https://learn.microsoft.com/en-us/azure/cosmos-db/github-copilot-visual-studio-code-best-practices
+  title: Best practices in GitHub Copilot for Visual Studio Code - Azure Cosmos DB
+    | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) Edit
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Azure Cosmos DB for NoSQL best practices in GitHub Copilot for Visual Studio
+    Code
+
+    * Applies to: ✅ NoSQL
+
+    [GitHub Copilot](https://github.com/features/copilot) in Visual Studio Code provides
+    intelligent code suggestions, but those suggestions become even more powerful
+    when they understand your specific database context. The [Azure Cosmos DB for
+    Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
+    automatically installs the [Azure Cosmos DB Agent Kit](gen-ai/agent-kit), enabling
+    context-aware AI assistance for your database development.
+
+    When you connect to your Azure Cosmos DB account through the Visual Studio Code
+    extension, it automatically installs the Agent Kit, which provides GitHub Copilot
+    with expert-level Azure Cosmos DB best practices across data modeling, partition
+    key design, query optimization, SDK usage, and more.
+
+    ## Why context-aware AI matters
+
+    AI coding assistants like GitHub Copilot are only as effective as the context
+    they have. Without understanding how your application interacts with Azure Cosmos
+    DB—such as partitioning strategies, indexing patterns, or query design—Copilot
+    might generate suggestions that aren''t optimized for your database setup.
+
+    With the Agent Kit automatically installed, Copilot gains immediate access to:
+
+    * **Data modeling** best practices for structuring documents and relationships
+
+    * **Partition key design** guidelines for choosing effective partition keys
+
+    * **Query optimization** techniques to reduce RU consumption and improve performance
+
+    * **SDK best practices** for proper client initialization, retry logic, and error
+    handling
+
+    * **Vector search and full-text search** patterns for AI-powered applications
+
+    * **Indexing strategies** for efficient index policies
+
+    * **Throughput and scaling** guidance for autoscale and capacity planning
+
+    ## Prerequisites
+
+    * [Visual Studio Code](https://code.visualstudio.com/) installed on your machine
+
+    * [GitHub Copilot subscription](https://github.com/features/copilot) (individual,
+    business, or enterprise)
+
+    * An Azure Cosmos DB account (any API)
+
+    * Azure subscription with appropriate permissions to access Cosmos DB resources
+
+    ## Step 1: Install required extensions
+
+    First, ensure you have both the Azure Cosmos DB extension and GitHub Copilot extension
+    installed:
+
+    ### Install the Azure Cosmos DB extension
+
+    1. Open Visual Studio C…'
+- url: https://learn.microsoft.com/en-us/azure/cosmos-db/gen-ai/agent-kit
+  title: Azure Cosmos DB Agent Kit - Azure Cosmos DB for NoSQL | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) Edit
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Azure Cosmos DB Agent Kit for AI coding assistants
+
+    * Applies to: ✅ NoSQL
+
+    The Azure Cosmos DB Agent Kit ([AzureCosmosDB/cosmosdb-agent-kit](https://github.com/AzureCosmosDB/cosmosdb-agent-kit))
+    is an open-source collection of skills that extends AI coding assistants with
+    expert-level Azure Cosmos DB best practices. Built on the [Agent Skills](https://agentskills.io/)
+    format, the kit works seamlessly with **GitHub Copilot**, **Claude Code**, **Gemini
+    CLI**, and other Agent Skills-compatible tools.
+
+    Install it with one command, and your AI pair programmer instantly knows production-ready
+    Azure Cosmos DB patterns, optimization techniques, and best practices.
+
+    Watch a short overview of the kit in this video: [Azure Cosmos DB Agent Kit overview](https://www.youtube.com/watch?v=GWid8x3i9Cc&t=0s).
+
+    ## The challenge
+
+    When building applications with Azure Cosmos DB, developers often face critical
+    decisions:
+
+    * **Partition key selection**: Which key ensures high cardinality and supports
+    query patterns?
+
+    * **Query optimization**: Why is this query consuming so many RUs?
+
+    * **Data modeling**: Should data be embedded or referenced?
+
+    * **Hot partition prevention**: How do you avoid bottlenecks in production?
+
+    Poor decisions in these areas can lead to performance problems, scalability problems,
+    or unexpectedly high costs. The Agent Kit solves this problem by teaching your
+    AI coding assistant the answers.
+
+    ## What''s included
+
+    The Agent Kit includes **111 curated rules** across **12 categories**, each prioritized
+    by real-world effect:
+
+    | Category | Priority | Description |
+
+    | --- | --- | --- |
+
+    | **Data Modeling** | Critical | Best practices for structuring documents and
+    relationships |
+
+    | **Partition Key Design** | Critical | Guidelines for choosing effective partition
+    keys |
+
+    | **Query Optimization** | High | Techniques to reduce RU consumption and improve
+    performance |
+
+    | **SDK Best Practices** | High | Proper client initialization, retry logic, and
+    error handling |
+
+    | **Design Patterns** | High | LangGraph routing, change-feed materialized views,
+    efficient ranking |
+
+    | **Vector Search** | High | Vector embedding policies, index types, and similarity
+    queries |
+
+    | **Full-Text Search** | High | Full-text indexing, BM25 ranking, and hybrid search
+    patterns |
+
+    | **Indexing Strategies** | Medium-High | Efficient index policies for your workloads
+    |
+
+    | **Throughput & Scaling** | Medium…'
+notes: 'This is a strong hands-on story for teams building data-intensive .NET and
+  Azure apps: it turns database design decisions into an AI-assisted, spec-driven
+  workflow. The angle can focus on how the extension helps developers reason about
+  partitioning, queries, and cost before writing production code.'
+area: azure-data
+code_example_ideas:
+- Install the Azure Cosmos DB Agent Kit and connect it to GitHub Copilot or another
+  compatible coding assistant.
+- Use the extension to generate a Cosmos DB schema and review partition key and access-pattern
+  guidance.
+- Run the local Cosmos DB emulator and validate the generated design against sample
+  queries.
+article_path: content/posts/2026-09-21-spec-driven-development-llega-a-azure-cosmos-db-con-github-spec-kit.md
+pr_url: null

@@ -1,0 +1,274 @@
+id: storm-3168-agentic-driven-cloud-attacks-compromised-service-principals
+title: 'Storm-3168: Agentic-driven cloud attacks using compromised service principals'
+slug: storm-3168-lo-que-me-preocupa-de-los-ataques-agentic-contra-azure-con-service-pr
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-09-28T12:57:06+00:00'
+- status: in_review
+  at: '2026-09-28T13:01:39+00:00'
+discovered_at: '2026-09-28T12:57:06+00:00'
+similarity:
+  max_score: 0.3608
+  closest_match: microsoft-foundry-observability-agent-tracing-sensitive-telemetry
+  threshold: 0.82
+sources:
+- url: https://www.microsoft.com/en-us/security/blog/2026/09/25/storm-3168-agentic-driven-cloud-attacks-using-compromised-service-principals
+  title: 'Storm-3168: Agentic-driven cloud attacks using compromised service principals
+    | Microsoft Security Blog'
+  published_date: '2026-09-25'
+  host: microsoft.com
+  kind: primary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: Microsoft
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/03/MS_Actional-Insights_Adversarial-AI.webp
+    description: Graphic of an eye representing a threat actor abusing a malicious
+      AI extension to steal LLM chat history
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/image-62-468x1024.webp
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2023/04/microsoft_logo-300x300.png
+    description: Microsoft
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/blog-in-a-box/dist/images/default-avatar.png
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/In-The-Loop_SEPT_Blog.jpg
+    description: ''
+  excerpt: '![Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg)
+
+    ![Graphic of an eye representing a threat actor abusing a malicious AI extension
+    to steal LLM chat history](https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/03/MS_Actional-Insights_Adversarial-AI.webp)
+
+    # Storm-3168: Agentic-driven cloud attacks using compromised service principals
+
+    ## Listen to this post
+
+    ## Share
+
+    ## Content types
+
+    ## Products and services
+
+    ## Topics
+
+    Microsoft Security Research has identified malicious cloud activity associated
+    with JADEPUFFER, a threat actor discovered by Sysdig in July 2026 and reported
+    to be the first documented agentic ransomware operation. Our investigation found
+    an extensive Azure-focused resource destruction activity using compromised service
+    principals and cloud credential collection that could be used to facilitate future
+    exfiltration.
+
+    These findings expand the publicly documented activity associated with JADEPUFFER,
+    tracked by Microsoft as Storm-3168, demonstrating an evolution in the threat actor’s
+    cloud operations and providing the first detailed view into its Azure activity.
+    We identified bulk destructive operations in a compromised Azure environment.
+    The destructive operations were facilitated by compromising service principals
+    and targeted Azure Storage Accounts, SQL databases, Key Vaults, Function Apps,
+    recovery protection locks, Virtual Machines, and App Services.
+
+    Organizations can reduce exposure by protecting workload identities and secrets,
+    enforcing least privilege, safeguarding recovery resources, and enabling relevant
+    [Microsoft Defender for Cloud](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
+    protections. Publicly exposed credentials remain usable until revoked or rotated;
+    removing the original disclosure alone does not remediate the exposure.
+
+    This activity highlights a broader shift toward AI-orchestrated attacks, where
+    threat actors can coordinate complex post-compromise operations across cloud environments
+    with greater speed and scale. As these capabilities evolve, defenders must similarly
+    use AI to investigate and respond across large environments. Rather than requiring
+    analysts to manually follow each individual action, efforts such as [Project Perception](https://www.microsoft.com/en-us/security/business/ai-powered-cybersecurity/project-perception-agentic-system)
+    and [MDASH](https://learn.microsoft.com/en-us/security-exposure-management/ai-code-security-overview)
+    are intended to support a model in which defenders can investigate and respond
+    across increasingly large and complex environments using AI.
+
+    ## Attack overview
+
+    Microsoft observed two compromised service principals belonging to the same tenant.
+    One performed reconnaissance a…'
+- url: https://www.microsoft.com/en-us/security/blog/2026/09/22/unmasking-eviltokens-getting-to-the-root-of-device-code-phishing
+  title: 'Unmasking EvilTokens: Getting to the root of device code phishing | Microsoft
+    Security Blog'
+  published_date: '2026-09-22'
+  host: microsoft.com
+  kind: secondary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: Microsoft
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/EvilTokens-featured-image-1.webp
+    description: Photo of a response center
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/Fig1-EvilTokens-Telegram-bot-1.jpg
+    description: Screenshot of the EvilTokens Telegram bot
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/Fig2a-EvilTokens-store-bot-1.webp
+    description: Screenshots of the EvilTokens store bot
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/Fig3-EvilTokens-platform-welcome-page-1.jpg
+    description: Screenshot of the EvilTokens platform welcome page
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/Fig4-EvilTokens-platform-options-1.jpg
+    description: Screenshot of the EvilTokens platform showing options for managing
+      captured tokens
+  excerpt: '![Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg)
+
+    ![Photo of a response center](https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/EvilTokens-featured-image-1.webp)
+
+    # Unmasking EvilTokens: Getting to the root of device code phishing
+
+    ## Listen to this post
+
+    ## Share
+
+    ## Tags
+
+    ## Threats intelligence
+
+    ## Content types
+
+    ## Products and services
+
+    ## Topics
+
+    Following its emergence in February 2026, EvilTokens quickly became one of the
+    most widely used phishing-as-a-service (PhaaS) platforms, providing cybercriminals
+    with AI capabilities for tailoring phishing lures and analyzing compromised inboxes
+    to identify high-value targets. This AI-powered cybercrime platform facilitated
+    sophisticated business email compromise (BEC) campaigns that compromised more
+    than 12,000 inboxes in over 10,000 organizations worldwide.
+
+    EvilTokens enabled threat actors to abuse the device code authentication flow,
+    steal tokens, and compromise organizational accounts at scale using an AI-driven
+    infrastructure and automating multiple parts of the attack chain. The toolkit
+    offered a plethora of prebuilt phishing templates and landing pages with an AI-powered
+    assistant to aid in structuring target-specific emails.
+
+    Stolen tokens are used for email exfiltration and persistence, often through the
+    creation of malicious inbox rules that conceal communications. In some cases,
+    tokens can also be used to grant new devices access to a victim’s inbox, a particularly
+    durable method to maintain persistence. Microsoft Threat Intelligence tracks the
+    threat actor behind the development and support of the EvilTokens phish kit as
+    Storm-2992.
+
+    Post-compromise, EvilTokens enabled threat actors to utilize AI assistants to
+    sift through victim mailbox activity and engineer a phishing message based on
+    the accessible email content. EvilTokens also allowed threat actors to conduct
+    Microsoft Graph reconnaissance to map organizational structure and permissions,
+    enabling continued access and potential lateral movement while tokens remain valid.
+    While token-targeting phishing is not new, it has become far more common and industrialized
+    over the last several years as organizations adopted multifactor authentication
+    (MFA).
+
+    To evade detection, EvilTokens uses a multi-stage delivery pipeline designed to
+    bypass traditional email gateways and endpoint security. Targets are lured through
+    deceptive emails that use 44 different themes, including invoices and request
+    for proposals (RFPs), or shared files. These emails contained malicious URLs,
+    PDF attachments, and HTML files.
+
+    Campaigns leveraging EvilTokens have impacted organizations in various industries,
+    including wholesale distribution, construction, financial services, real estate,
+    higher education, a…'
+- url: https://www.microsoft.com/en-us/security/blog/2026/09/17/from-guidance-to-action-security-fundamentals-that-materially-reduce-risk
+  title: 'From guidance to action: Security fundamentals that materially reduce risk
+    | Microsoft Security Blog'
+  published_date: '2026-09-17'
+  host: microsoft.com
+  kind: secondary
+  images:
+  - url: https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png
+    description: Microsoft
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/Security-Reduce-Risk-3.jpg
+    description: ''
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2020/02/shared-image.webp
+    description: Headshot of Ron Pessner.
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/03/MS_Actional-Insights_Adversarial-AI.webp
+    description: Graphic of an eye representing a threat actor abusing a malicious
+      AI extension to steal LLM chat history
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/EvilTokens-featured-image-1.webp
+    description: Photo of a response center
+  - url: https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/03/MS_Actional-Insights_Phishing-social-engineering.jpg
+    description: A graphic showing a phishing hook representing social engineering
+      and phishing
+  excerpt: '![Microsoft](https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg.jpg)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/themes/security-blog-2025/dist/images/single-bg-dark.jpg)
+
+    ![](https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/Security-Reduce-Risk-3.jpg)
+
+    # From guidance to action: Security fundamentals that materially reduce risk
+
+    ## Listen to this post
+
+    ## Share
+
+    ## Content types
+
+    ## Topics
+
+    AI has already made fundamental changes to the operating environment for cybersecurity.
+    Cyberattackers are testing more paths, adapting their techniques, and moving across
+    digital environments with greater speed and persistence. The weaknesses they exploit
+    remain familiar: excessive permissions, unprotected authentication flows, unpatched
+    systems, exposed execution paths, and gaps between controls. What has changed
+    is how quickly these weaknesses can combine into attack paths that cross identities,
+    endpoints, applications, networks, and AI systems. A single foothold can become
+    a broader compromise, making it increasingly difficult for security teams to determine
+    which risks matter most and where to act first as their organizations adopt AI.
+
+    We introduced [Secure Now](https://aka.ms/securenow) within [Microsoft Security
+    Exposure Management](https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-security-exposure-management)
+    in May 2026 to help practitioners prioritize the action they need to take to be
+    prepared for this shift. It provides actionable guidance for strengthening the
+    foundational security needed for AI adoption, with recommendations focused on
+    areas where autonomous attacks can create outsized exposure.
+
+    We continue to see evidence that AI is reshaping the threat landscape. These developments
+    reinforce many of the foundational practices we use internally to secure Microsoft,
+    while also expanding our understanding of where organizations need additional
+    visibility, governance, and control. The examples in this blog illustrate how
+    familiar weaknesses are evolving in the AI era and why continuous exposure reduction
+    remains essential.
+
+    ## When AI agents test their boundaries
+
+    Recent frontier model-related agentic security disclosures offered early lessons
+    in how autonomous agents may test the boundaries of their instructions and environments.
+
+    In [an incident disclosed by OpenAI](https://openai.com/index/hugging-face-incident-and-the-road-ahead/),
+    agents moved beyond their intended isolation, exploited vulnerabilities in shared
+    Hugging Face infrastructure, and reached production systems. In [separate incidents
+    disclosed by Anthropic](https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals),
+    agents exploited familiar weaknesses, including SQL injection, exposed credentials,
+    weak passwords, and a malicious PyPI package.
+
+    Our customers are asking us how they can reduce this risk…'
+notes: A timely security post for architects and identity teams because it connects
+  modern cloud tradecraft with the realities of service principal governance. The
+  story is useful both for incident readiness and for hardening automation identities.
+area: Identity and access
+code_example_ideas:
+- Audit service principals and application credentials used in automation for over-privileged
+  access.
+- Review Entra ID sign-in and audit logs for suspicious service principal activity
+  and resource deletion patterns.
+- Build a defensive checklist for least privilege, credential rotation and conditional
+  access around non-human identities.
+article_path: content/posts/2026-09-28-storm-3168-lo-que-me-preocupa-de-los-ataques-agentic-contra-azure-con-service-pr.md
+pr_url: null

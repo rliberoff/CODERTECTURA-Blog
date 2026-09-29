@@ -1,0 +1,243 @@
+id: finops-ready-azure-landing-zones-turning-governance-into-cost-control
+title: 'FinOps-Ready Azure Landing Zones: Turning Governance Into Cost Control'
+slug: azure-landing-zones-preparadas-para-finops-cuando-la-gobernanza-se-convierte-en
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-09-21T12:02:09+00:00'
+- status: in_review
+  at: '2026-09-21T12:13:55+00:00'
+discovered_at: '2026-09-21T12:02:09+00:00'
+similarity:
+  max_score: 0.3956
+  closest_match: apis-monetizacion-parte-2
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/azure-infrastructure-blog/finops-ready-azure-landing-zone-part-2/ba-p/4555727
+  title: FinOps-Ready Azure Landing Zone - Part 2
+  published_date: '2026-09-18'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: 'Author''s Note: Vendor names referenced in this article are used solely
+    as illustrative architectural examples and should not be interpreted as endorsements,
+    recommendations, or advertisements. Introduction In Part 1, we looked at how Azure-native
+    services can establish the foundation for a FinOps-ready Azure Landing Zone. Azure
+    provides a strong set of capabilities for governance, monitoring, security, and
+    cost management through services such as Azure Policy, Azure Monitor, Azure Cost
+    Management, Azure Advisor, Microsoft Entra ID, and Log Analytics. Building a FinOps-Ready
+    Azure Landing Zone: Infrastructure Foundations for Cost Optimization | Microsoft
+    Community Hub Learn how to design and automate a FinOps-ready Azure Landing Zone
+    with tagging enforcement, budgets, policy controls, and centralized cost visibility.
+    This... techcommunity.microsoft.com For many organizations, these capabilities
+    are more than sufficient. However, as an Azure estate grows across multiple subscriptions,
+    applications, regions and business units, the challenge often changes. It is no
+    longer simply: “Can Azure monitor this resource?” Instead, teams need to understand
+    which business application a resource belongs to, who owns it, what dependencies
+    are affected, which team should receive an alert, whether known problems can be
+    remediated automatically, and how much the application actually costs. This is
+    where additional management and operational platforms can complement Azure-native
+    capabilities. One example is Turbo360. The objective here is not to replace Azure-native
+    services, but to explore where an additional operational layer can simplify management
+    of a large Azure estate. 1. Azure Native Services Remain the Foundation A good
+    enterprise architecture should continue to use Azure-native capabilities as the
+    foundation. Azure Policy → Governance and compliance Azure Monitor → Metrics,
+    logs and monitoring Log Analytics → Centralized telemetry and analysis Azure Cost
+    Management → Cost visibility and budgets Azure Advisor → Recommendations Azure
+    Automation / Logic Apps / Functions → Automation and remediation Microsoft Entra
+    ID + Azure RBAC → Identity and access These services should not disappear simply
+    because an organization introduces another management platform. Instead, an additional
+    platform can provide a higher-level operational experience across these capabilities.
+    2. The Difference Between Resource Monitoring and Application Monitoring One of
+    the biggest challenges in large Azure environments is the difference between resource-centric
+    monitoring and application-centric monitoring. Azure Monitor naturally provides
+    visibility into individual Azure resources: Virtual Machine Storage Account SQL
+    Database Service Bus App Service Key Vault Application Gateway But a business
+    application may depend on all of them: Customer Application | +----------------+----------------+
+    | | | App Service SQL Database Service Bus | | | +----------------+----------------+
+    | Key Vault…'
+- url: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone
+  title: What is an Azure landing zone? - Cloud Adoption Framework
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/media/azure-landing-zone-architecture-diagram-hub-spoke.svg
+    description: ''
+  - url: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/media/azure-landing-zone-detailed-architecture.svg
+    description: ''
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/cloud-adoption-framework/blob/main/docs/ready/landing-zone/index.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # What is an Azure landing zone?
+
+    The Ready phase of the Cloud Adoption Framework helps you design your Azure landing
+    zone to meet your organization''s requirements. An Azure landing zone is a proven
+    and flexible architecture for governing, securing, and scaling a multi-subscription
+    Azure environment. An Azure landing zone consists of two components:
+
+    * **Platform landing zone:** The centralized foundation that establishes governance,
+    security, and shared resources for all your Azure workloads.
+
+    * **Application (workload) landing zones:** The environments where workload teams
+    deploy and operate workload resources within the guardrails of the platform landing
+    zone. *A workload is a collection of Azure resources, code, AI models, data, and
+    infrastructure that work together to achieve a defined business outcome*.
+
+    You can implement each component of your Azure landing zone in one of two ways:
+
+    * **Accelerators**: Microsoft-provided accelerators for both platform landing
+    zone and application landing zone scenarios use infrastructure as code to deploy
+    Azure environments based on recommended practices.
+
+    * **Custom build**: You design and build the solution internally or with support
+    from Microsoft or Microsoft partners.
+
+    For most organizations, accelerators provide the fastest path to a deployment
+    that aligns with Microsoft''s recommended practices.
+
+    ## Azure landing zone architecture
+
+    Every Azure landing zone starts with the platform landing zone. Before you build
+    a platform landing zone, define organizational requirements across the Azure landing
+    zone [design areas](design-areas). These decisions determine how you design your
+    Azure landing zone.
+
+    The Azure landing zone reference architecture represents a recommended target
+    architecture. Use it as a starting point and adapt it to meet your organization''s
+    requirements.
+
+    * [Conceptual](#tabpanel_1_conceptual)
+
+    * [Hub & Spoke](#tabpanel_1_hubspoke)
+
+    * [Virtual WAN](#tabpanel_1_vwan)
+
+    * [Management Group Hierarchy Only](#tabpanel_1_mgonly)
+
+    * [Platform vs. application landing zones](#tabpanel_1_platvsapp)
+
+    [![Diagram that shows a conceptual view of an Azure landing zone and how it integrates
+    with key services across your organization.](media/conceptual-azure-landing-zone.svg)](media/conceptual-azure-landing-zone.svg#li…'
+- url: https://learn.microsoft.com/en-us/azure/well-architected/cost-optimization/set-spending-guardrails
+  title: Architecture strategies for setting spending guardrails - Microsoft Azure
+    Well-Architected Framework | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/media/azure-landing-zone-architecture-diagram-hub-spoke.svg
+    description: ''
+  - url: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/media/azure-landing-zone-detailed-architecture.svg
+    description: ''
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/well-architected/blob/main/well-architected/cost-optimization/set-spending-guardrails.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Architecture strategies for setting spending guardrails
+
+    **Applies to this Azure Well-Architected Framework Cost Optimization checklist
+    recommendation:**
+
+    | **CO:04** | Set spending guardrails. Guardrails should include release gates,
+    governance policies, resource limits, and access controls. Prioritize platform
+    automation over manual processes. |
+
+    | --- | --- |
+
+    Spending guardrails are controls that help manage costs within a defined budget,
+    prevent unexpected or excessive spending, and promote cost-effective resource
+    utilization. Without appropriate guardrails, workload costs can exceed budget
+    expectations, resulting in unplanned expenses and increased financial risk.
+
+    This guide provides recommendations for establishing effective spending guardrails.
+    It provides key strategies for determining when to use release gates, governance
+    policies, resource limits, and access controls to manage costs and promote responsible
+    resource utilization.
+
+    **Definitions**
+
+    | Term | Definition |
+
+    | --- | --- |
+
+    | Budget threshold | A predefined spending amount that triggers alerts or blocks
+    deployments when approached or exceeded. |
+
+    | Commitment-based discounts | Reduced rates earned by committing to a specific
+    amount of usage or spending over time, such as reservations, savings plans, or
+    prepaid subscriptions. |
+
+    | Commitment utilization | The percentage of a commitment-based discount (such
+    as a reservation or savings plan) that''s consumed by eligible resource usage
+    within a billing period. Low utilization means you''re paying for committed capacity
+    you aren''t using. |
+
+    | Ephemeral environment | A short-lived infrastructure environment created on
+    demand for development, testing, or staging, then destroyed when no longer needed.
+    |
+
+    | Governance | A set of policies, processes, and controls that help ensure that
+    the workload is managed effectively, securely, and in compliance with organizational
+    and regulatory requirements. |
+
+    | Governance policies | A set of rules that enforce compliance and enable auditing
+    of workload resources. |
+
+    | Infrastructure as code (IaC) | A descriptive model for defining and deploying
+    infrastructure, including networks, virtual machines, load balancers, and connection
+    topologies. |
+
+    | Release gate | A condition or checkpoint i…'
+notes: This is a strong architecture topic because it connects landing-zone design
+  with cost governance rather than treating FinOps as a separate discipline. It is
+  ideal for readers who build enterprise Azure foundations and want enforceable guardrails
+  from day one.
+area: azure-infrastructure-and-iac
+code_example_ideas:
+- Map Azure landing zone subscriptions, policies, and management groups to a FinOps
+  operating model.
+- Implement a small landing zone with Azure Policy and Cost Management guardrails.
+- Use Terraform or Bicep to provision core landing-zone resources and validate governance
+  controls.
+article_path: content/posts/2026-09-21-azure-landing-zones-preparadas-para-finops-cuando-la-gobernanza-se-convierte-en.md
+pr_url: null

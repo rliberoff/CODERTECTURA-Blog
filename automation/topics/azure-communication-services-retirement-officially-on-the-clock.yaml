@@ -1,0 +1,167 @@
+id: azure-communication-services-retirement-officially-on-the-clock
+title: Azure Communication Services retirement is now officially on the clock
+slug: azure-communication-services-se-retira-como-evaluar-el-impacto-y-planificar-la-m
+article_type: business
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-09-28T12:57:06+00:00'
+- status: in_review
+  at: '2026-09-28T13:07:12+00:00'
+discovered_at: '2026-09-28T12:57:06+00:00'
+similarity:
+  max_score: 0.4331
+  closest_match: azure-app-service-managed-connectors-trigger-destination
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/azure-communication-services/retirement-of-azure-communication-services/m-p/4560110#M490
+  title: Retirement of Azure Communication Services
+  published_date: '2026-09-27'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: Microsoft has announced several retirement and breaking changes in September
+    2026. One notable change is the retirement of Azure Communication Services as
+    a standalone offering , scheduled to take effect on September 30, 2028 . Organizations
+    currently using Azure Communication Services should review the announcement, assess
+    the potential impact on their environments, and begin planning accordingly. https://learn.microsoft.com/en-us/azure/communication-services/acs-retirement-and-breaking-changes-guide
+    Which Microsoft service would be the best option for sending approximately 10,000
+    bulk emails per day?
+- url: https://techcommunity.microsoft.com/discussions/exchange_general/retirement-of-azure-communication-services/4560108
+  title: Retirement of Azure Communication Services | Microsoft Community Hub
+  published_date: null
+  host: techcommunity.microsoft.com
+  kind: secondary
+  excerpt: '## Forum Discussion
+
+    [![Zohaib_Yousuf''s avatar](https://techcommunity.microsoft.com/t5/s/gxcuf89792/images/dS0xNzE4OTUxLXY3WU9TYQ?image-coordinates=0%2C6%2C325%2C331&image-dimensions=50x50)](/users/zohaib_yousuf/1718951)
+
+    [Zohaib\_Yousuf](/users/zohaib_yousuf/1718951)
+
+    MCT
+
+    Sep 26, 2026
+
+    # Retirement of Azure Communication Services
+
+    Microsoft has announced several retirement and breaking changes in September 2026.
+
+    One notable change is the retirement of **Azure Communication Services as a standalone
+    offering**, scheduled to take effect on **September 30, 2028**.
+
+    Organizations currently using Azure Communication Services should review the announcement,
+    assess the potential impact on their environments, and begin planning accordingly.
+
+    <https://learn.microsoft.com/en-us/azure/communication-services/acs-retirement-and-breaking-changes-guide>
+
+    [azure](/tag/azure?nodeId=board%3AExchange_General)
+
+    [exchange online](/tag/exchange%20online?nodeId=board%3AExchange_General)
+
+    [Exchange Server](/tag/exchange%20server?nodeId=board%3AExchange_General)
+
+    [hybrid](/tag/hybrid?nodeId=board%3AExchange_General)'
+- url: https://learn.microsoft.com/en-us/azure/communication-services/acs-retirement-and-breaking-changes-guide
+  title: Retirement and breaking changes guide for Azure Communication Services
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/communication-services/media/whats-new-images/real-time-transcription.png
+    description: The diagram illustrates a workflow where a customer initiates a call,
+      which is managed through Azure Communication Services for SMS and voice transcription,
+      involving APIs, websocket setup, and text-t…
+  - url: https://learn.microsoft.com/en-us/azure/communication-services/media/whats-new-images/teams-phone-extensibility-unified-communication.png
+    description: The image illustrates the transition from separate voice solutions
+      like Microsoft Teams, Teams Phone, CCaaS app, and third-party telephony infrastructure
+      to a unified communication and customer engage…
+  - url: https://learn.microsoft.com/en-us/azure/communication-services/media/whats-new-images/file-sharing-teams.png
+    description: The diagram illustrates the integration of Azure Communication Services
+      with Power Automate, showing steps where a user uploads files, a Teams message
+      with file attachments is sent, the ACS UI Library…
+  - url: https://learn.microsoft.com/en-us/media/open-graph-image.png
+    description: The image features a logo with colorful squares and the text "Microsoft
+      Learn" in a modern font set against a light background.
+  excerpt: '[Skip to main content](https://learn.microsoft.com/en-us/azure/communication-services/acs-retirement-and-breaking-changes-guide#main)[Skip
+    to Ask Learn chat experience](https://learn.microsoft.com/en-us/azure/communication-services/acs-retirement-and-breaking-changes-guide#)
+
+    ## Microsoft Ignite
+
+    November 17–20, 2026
+
+    Interactive learning, certifications, and direct access to experts all in one
+    place.
+
+    [Register now](https://ignite.microsoft.com/home?wt.mc_ID=msignite26_gmee_corp_np_oo_MSLearnRegLaunch)
+
+    Dismiss alert
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881)[More
+    info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Learn](https://learn.microsoft.com/en-us/)[](https://www.microsoft.com/)
+
+    Suggestions will filter as you type
+
+    [Sign in](https://learn.microsoft.com/en-us/azure/communication-services/acs-retirement-and-breaking-changes-guide#)
+
+    ![Image 1](https://learn.microsoft.com/en-us/azure/communication-services/acs-retirement-and-breaking-changes-guide)
+
+    ![Image 2](https://learn.microsoft.com/en-us/azure/communication-services/acs-retirement-and-breaking-changes-guide)
+
+    * [Profile](https://learn.microsoft.com/en-us/users/me/activity/)
+
+    * [Analytics](https://learn.microsoft.com/en-us/users/me/analytics/)
+
+    * [Settings](https://learn.microsoft.com/en-us/users/me/settings/)
+
+    [Sign out](https://learn.microsoft.com/en-us/azure/communication-services/acs-retirement-and-breaking-changes-guide#)
+
+    [](https://www.microsoft.com/)[Learn](https://learn.microsoft.com/en-us/)
+
+    * Documentation
+
+    * [All product documentation](https://learn.microsoft.com/en-us/docs/)
+
+    * [Azure documentation](https://learn.microsoft.com/en-us/azure/?product=popular)
+
+    * [Dynamics 365 documentation](https://learn.microsoft.com/en-us/dynamics365/)
+
+    * [Microsoft Copilot documentation](https://learn.microsoft.com/en-us/copilot/)
+
+    * [Microsoft 365 documentation](https://learn.microsoft.com/en-us/microsoft-365/)
+
+    * [Power Platform documentation](https://learn.microsoft.com/en-us/power-platform/)
+
+    * [Code samples](https://learn.microsoft.com/en-us/samples/)
+
+    * [Troubleshooting documentation](https://learn.microsoft.com/en-us/troubleshoot/)
+
+    Register now
+
+    [Microsoft Ignite | November 17-20, 2026](https://ignite.microsoft.com/home?wt.mc_ID=msignite26_gmee_corp_np_oo_MSLearnRegLaunch)
+
+    Interactive learning, certifications, and direct access to experts all in one
+    place.
+
+    * Training & Labs
+
+    * [All training](https://learn.microsoft.com/en-us/training/)
+
+    * [Azure training](https://learn.microsoft.com/en-us/training/browse/?products=azure)
+
+    * [Dynamics 365 training](https://learn.microsoft.com/en-us/training/browse/?products=dynamics-365)
+
+    * [Microsoft Copilot training](https://learn.microsoft.com/en-us/training/browse/?products=ms-copilot)
+
+    * [Microsoft 365 training](https…'
+notes: This is a migration-planning story rather than a feature story. The useful
+  editorial frame is how teams should assess impact, map dependencies and start planning
+  alternatives well before the 2028 retirement date.
+area: Hybrid, edge and migration
+article_path: content/posts/2026-09-28-azure-communication-services-se-retira-como-evaluar-el-impacto-y-planificar-la-m.md
+pr_url: null

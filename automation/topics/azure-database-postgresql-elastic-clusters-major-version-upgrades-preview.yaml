@@ -1,0 +1,527 @@
+id: azure-database-postgresql-elastic-clusters-major-version-upgrades-preview
+title: Azure Database for PostgreSQL elastic clusters get major version upgrades in
+  preview
+slug: actualizaciones-mayores-in-place-para-postgresql-elastic-clusters-en-azure-por-f
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-10-05T13:38:52+00:00'
+- status: in_review
+  at: '2026-10-05T13:44:56+00:00'
+discovered_at: '2026-10-05T13:38:52+00:00'
+similarity:
+  max_score: 0.3851
+  closest_match: spec-driven-development-azure-cosmos-db-github-spec-kit
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=571504
+  title: '[In preview] Public Preview: Major version upgrades (MVU) for Azure Database
+    for PostgreSQL elastic clusters'
+  published_date: '2026-10-02'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: MVUs are now available for elastic clusters in Azure Database for PostgreSQL.
+    You can upgrade an existing elastic cluster to a supported newer PostgreSQL version
+    in place without provisioning a replacement cluster, migrating distributed data,
+    or changing
+- url: https://learn.microsoft.com/en-us/azure/postgresql/configure-maintain/concepts-version-policy
+  title: Version Policy - Azure Database for PostgreSQL | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Azure Database for PostgreSQL flexible server version policy
+
+    ## In this article
+
+    This article describes the Azure Database for PostgreSQL versioning policy.
+
+    ## Major version
+
+    A major version is a change in the first number of the version. For example, PostgreSQL
+    16 to PostgreSQL 17 is a major version upgrade. Major versions introduce new features
+    and capabilities. They might include changes that require application code updates.
+    Azure Database for PostgreSQL supports each major PostgreSQL version from the
+    date Azure begins offering support until the version reaches end of life (end
+    of support) as defined by the PostgreSQL community. For details, see [PostgreSQL
+    community versioning policy](https://www.postgresql.org/support/versioning/).
+
+    ### Support policy
+
+    The following table provides the retirement details for PostgreSQL major versions.
+    The dates follow the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
+
+    | PostgreSQL Version | What''s New | Azure Standard Support Start Date | Azure
+    Standard Support End Date |
+
+    | --- | --- | --- | --- |
+
+    | [PostgreSQL 18](https://www.postgresql.org/about/press/) | [Release notes](https://www.postgresql.org/docs/18/release-18.html)
+    | 25-Sep-2025 | 14-Nov-2030 |
+
+    | [PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/)
+    | [Release notes](https://www.postgresql.org/docs/17/release-17.html) | 30-Sep-2024
+    | 8-Nov-2029 |
+
+    | [PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/)
+    | [Release notes](https://www.postgresql.org/docs/16/release-16.html) | 15-Oct-2023
+    | 9-Nov-2028 |
+
+    | [PostgreSQL 15](https://www.postgresql.org/about/news/postgresql-15-released-2526/)
+    | [Release notes](https://www.postgresql.org/docs/15/release-15.html) | 15-May-2023
+    | 11-Nov-2027 |
+
+    | [PostgreSQL 14](https://www.postgresql.org/about/news/postgresql-14-released-2318/)
+    | [Release notes](https://www.postgresql.org/docs/14/release-14.html) | 29-Jun-2022
+    | 11-Dec-2026 |
+
+    | [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/)
+    | [Release notes](https://www.postgresql.org/docs/13/release-13.html) | 25-May-2021
+    | 31-Jul-2026 |
+
+    | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/)
+    | [Release notes](https://www.postgresql.org/docs/12/release-12.html) | 22-Sep-2020
+    | 31-Jul-2026 |
+
+    | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/)
+    | [Release notes](https://www.postgresql.org/docs/11/release-11.html) | 24-Jul-2019
+    | 31-Jul-2026 |
+
+    For options available after the Azure Standard Support End Date, see [Azure Database
+    for PostgreSQL Extended Support](exte…'
+- url: https://learn.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql-flex-overview
+  title: About Azure Database for PostgreSQL Flexible server backup - Azure Backup
+    | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/elastic-clusters/media/create-elastic-cluster/1-elastic-clusters-create-cluster.png
+    description: A configuration panel for creating a new Azure Database for PostgreSQL
+      elastic cluster, highlighting options for server name, region, PostgreSQL version,
+      and workload type, with details on estimated c…
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/media/overview/overview-flexible-server.png
+    description: The diagram illustrates the architecture of Azure Database for PostgreSQL
+      with a focus on the Korea Flexible Server, showing components like virtual machines,
+      premium managed disks, zone-redundant sto…
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/elastic-clusters/media/create-elastic-cluster/7-elastic-clusters-create-cluster.png
+    description: A dashboard showing the deployment status of an Azure Database for
+      PostgreSQL elastic cluster, including notifications about a successful major
+      version upgrade.
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/high-availability/media/concepts-high-availability/concepts-zone-redundant-high-availability-architecture.png
+    description: The diagram illustrates a zone-redundant high-availability architecture
+      for a PostgreSQL Flexible Server deployment, showing primary and standby servers
+      in separate availability zones with synchroniza…
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # About Azure Database for PostgreSQL - Flexible Server backup
+
+    ## In this article
+
+    Note
+
+    **Azure Backup for PostgreSQL flexible server and elastic cluster (v2) is now
+    in preview.** The v2 solution takes physical backups from managed disk snapshots
+    instead of logical (`pg_dump` based) backups, and addresses the limitations of
+    the generally available solution described in this article:
+
+    `pg_dump`
+
+    The solution described in this article remains generally available. To learn more
+    about the preview, see [About Azure Backup for PostgreSQL flexible server and
+    elastic cluster (v2)](backup-azure-postgresql-flex-server-elastic-cluster-v2-overview).
+
+    Azure Backup and Azure Database Services have come together to build an enterprise-class
+    backup solution for Azure Database for PostgreSQL servers that retains backups
+    for up to 10 years. The feature offers the following capabilities:
+
+    ## Backup flow
+
+    To perform the backup operation:
+
+    Once the configuration is successful:
+
+    ## Azure Backup authentication with the PostgreSQL server
+
+    The Azure Backup service needs to connect to the Azure PostgreSQL Flexible server
+    while taking each backup.
+
+    ### Permissions for backup
+
+    For successful backup operations, the vault MSI needs the following permissions:
+
+    ## Understand pricing
+
+    You incur charges for:
+
+    **Protected instance fee**: Azure Backup for PostgreSQL - Flexible servers charges
+    a *protected instance fee* as per the size of the database. When you configure
+    backup for a PostgreSQL Flexible server, a protected instance is created. Each
+    instance is charged on the basis of its size (in GBs) on a per unit (250 GB) basis.
+
+    **Backup Storage fee**: Azure Backup for PostgreSQL - Flexible servers store backups
+    in Vault Tier. Restore points stored in the vault-standard tier are charged a
+    separate fee called Backup Storage fee as per the total data stored (in GBs) and
+    redundancy type enable on the Backup Vault.
+
+    ## Next steps
+
+    [Back up Azure Database for PostgreSQL - Flexible Server using Azure portal](tutorial-create-first-backup-azure-database-postgresql-flex).
+
+    ## Feedback
+
+    Was this page helpful?
+
+    Need help with this topic?
+
+    Want to try using Ask Learn to clarify or guide you through this topic?
+
+    ## Additional resources
+
+    ### In this article
+
+    Was this page helpful?
+
+    Need help with this topic?
+
+    Want to try using Ask Learn to clarify or guide you through this topic?
+
+    ![](https://learn.microsoft.com/akam/13/pixel_114aa818?a=dD1jYTQ4ODA4NmQ3NTUwMjg0NDFlODgyOGIyOWE4N2E0NTc1MDMzMmMyJmpzPW9mZg==)'
+- url: https://learn.microsoft.com/en-us/azure/postgresql/configure-maintain/concepts-major-version-upgrade
+  title: Major Version Upgrades - Azure Database for PostgreSQL | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/elastic-clusters/media/create-elastic-cluster/1-elastic-clusters-create-cluster.png
+    description: A configuration panel for creating a new Azure Database for PostgreSQL
+      elastic cluster, highlighting options for server name, region, PostgreSQL version,
+      and workload type, with details on estimated c…
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/media/overview/overview-flexible-server.png
+    description: The diagram illustrates the architecture of Azure Database for PostgreSQL
+      with a focus on the Korea Flexible Server, showing components like virtual machines,
+      premium managed disks, zone-redundant sto…
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/elastic-clusters/media/create-elastic-cluster/7-elastic-clusters-create-cluster.png
+    description: A dashboard showing the deployment status of an Azure Database for
+      PostgreSQL elastic cluster, including notifications about a successful major
+      version upgrade.
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/high-availability/media/concepts-high-availability/concepts-zone-redundant-high-availability-architecture.png
+    description: The diagram illustrates a zone-redundant high-availability architecture
+      for a PostgreSQL Flexible Server deployment, showing primary and standby servers
+      in separate availability zones with synchroniza…
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Major version upgrades in Azure Database for PostgreSQL flexible server
+
+    ## In this article
+
+    Your Azure Database for PostgreSQL flexible server supports PostgreSQL versions
+    18, 17, 16, 15, 14, 13, 12, 11. The Postgres community releases a new major version
+    that contains new features about once a year. Additionally, each major version
+    receives periodic bug fixes in the form of minor releases. Minor version upgrades
+    include changes that are backward compatible with existing applications. An Azure
+    Database for PostgreSQL flexible server periodically updates the minor versions
+    during a customer''s maintenance window.
+
+    Major version upgrades are more complicated than minor version upgrades. They
+    can include internal changes and new features that aren''t backward compatible
+    with existing applications.
+
+    Your Azure Database for PostgreSQL flexible server has a feature that performs
+    an in-place major version upgrade of the server. This feature simplifies the upgrade
+    process by minimizing the disruption to users and applications that access the
+    server.
+
+    In-place upgrades retain the server name and other settings of the current server
+    after the upgrade of a major version. They don''t require data migration or changes
+    to the application connection strings. In-place upgrades are faster and involve
+    shorter downtime than data migration.
+
+    Note
+
+    Azure Database for PostgreSQL supports in-place major version upgrades only to
+    currently supported PostgreSQL versions. The target version must be officially
+    supported by Azure at the time of the upgrade. The Azure portal prevents selecting
+    unsupported versions, but API or CLI calls that target a deprecated version fail.
+    Always consult the [Azure PostgreSQL versioning policy](/en-us/azure/postgresql/flexible-server/concepts-version-policy)
+    and [upgrade how-to guide](/en-us/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade)
+    before initiating a major version upgrade.
+
+    ## Upgrade validation checks
+
+    Azure Database for PostgreSQL flexible server provides Upgrade Validation Checks
+    to help assess upgrade readiness before starting a major version upgrade.
+
+    Upgrade Validation Checks run a series of compatibility and configuration validations
+    against the server to identify conditions that could cause the upgrade to fail
+    or behave unexpectedly. Common checks include unsupported extensions, logical
+    replication slots, prepared transactions, event triggers, unsupported object dependencies,
+    and pending restart-required configuration changes.
+
+    The validation process is designed to evaluate upgrade readiness without initiating
+    the actual upgrade operation. The same validation checks are also performed automatic…'
+- url: https://learn.microsoft.com/en-us/azure/postgresql/release-notes/release-notes
+  title: Release Notes for Azure Database for PostgreSQL flexible server - Azure Database
+    for PostgreSQL | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/elastic-clusters/media/create-elastic-cluster/1-elastic-clusters-create-cluster.png
+    description: A configuration panel for creating a new Azure Database for PostgreSQL
+      elastic cluster, highlighting options for server name, region, PostgreSQL version,
+      and workload type, with details on estimated c…
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/media/overview/overview-flexible-server.png
+    description: The diagram illustrates the architecture of Azure Database for PostgreSQL
+      with a focus on the Korea Flexible Server, showing components like virtual machines,
+      premium managed disks, zone-redundant sto…
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/elastic-clusters/media/create-elastic-cluster/7-elastic-clusters-create-cluster.png
+    description: A dashboard showing the deployment status of an Azure Database for
+      PostgreSQL elastic cluster, including notifications about a successful major
+      version upgrade.
+  - url: https://learn.microsoft.com/en-us/azure/postgresql/high-availability/media/concepts-high-availability/concepts-zone-redundant-high-availability-architecture.png
+    description: The diagram illustrates a zone-redundant high-availability architecture
+      for a PostgreSQL Flexible Server deployment, showing primary and standby servers
+      in separate availability zones with synchroniza…
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Release notes - Azure Database for PostgreSQL flexible server
+
+    ## In this article
+
+    This article highlights the latest updates and enhancements for Azure Database
+    for PostgreSQL service, including new feature releases, supported engine versions,
+    available extensions, and other important announcements.
+
+    ## Release: September 2026
+
+    `client_connections_total`
+
+    ## Release: August 2026
+
+    ## Release: July 2026
+
+    ## Release: June 2026
+
+    General availability
+
+    Preview
+
+    ## Release: April 2026
+
+    `logical_replication_slot_sync_status`
+
+    ## Release: March 2026
+
+    ## Release: February 2026
+
+    ## Release: January 2026
+
+    ## Release: December 2025
+
+    ## Release: November 2025
+
+    ## Release: October 2025
+
+    ## Release: September 2025
+
+    ## Release: July 2025
+
+    ## Release: June 2025
+
+    ## Release: May 2025
+
+    ## Release: April 2025
+
+    ## Release: March 2025
+
+    ## Release: February 2025
+
+    `TCP_connection_backlog`
+
+    `postmaster_process_cpu_usage`
+
+    ## Release: January 2025
+
+    ## Release: December 2024
+
+    ## Release: November 2024
+
+    ## Release: October 2024
+
+    ## Release: September 2024
+
+    `glibc`
+
+    ## Release: Aug 2024
+
+    ## Release: July 2024
+
+    ## Release: June 2024
+
+    ## Release: May 2024
+
+    ## Release: April 2024
+
+    ## Release: March 2024
+
+    ## Release: February 2024
+
+    ## Release: January 2024
+
+    ## Release: December 2023
+
+    ## Release: November 2023
+
+    ## Release: October 2023
+
+    ## Release: September 2023
+
+    ## Release: August 2023
+
+    ## Release: July 2023
+
+    ## Release: June 2023
+
+    ## Release: May 2023
+
+    ## Release: April 2023
+
+    ## Release: March 2023
+
+    ## Release: February 2023
+
+    ## Release: January 2023
+
+    ## Release: December 2022
+
+    ## Release: November 2022
+
+    ## Release: October 2022
+
+    ## Release: September 2022
+
+    ## Release: August 2022
+
+    ## Release: July 2022
+
+    ## Release: June 2022
+
+    ## Release: May 2022
+
+    ## Release: April 2022
+
+    ## Release: February 2022
+
+    ## Release: November 2021
+
+    ## Release: October 2021
+
+    `azure.enable_temp_tablespaces_on_local_ssd`
+
+    ## Release: September 2021
+
+    `require_secure_transport`
+
+    `log_line_prefix`
+
+    ## Release: July 2021
+
+    `ignore_startup_parameters`
+
+    `extra_float_digits`
+
+    `pgbouncer.query_wait_timeout`
+
+    `pg_stat_reset_shared(''bgwriter'');`
+
+    `pg_stat_reset_shared(''archiver'');`
+
+    `pg_stat_bgwriter`
+
+    `pg_stat_archiver`
+
+    ## Release: June 2021
+
+    `shared_preload_libraries`
+
+    ## Release: May 2021
+
+    ## Release: April 2021
+
+    ## Release: October 2020 - March 2021
+
+    `az postgres flexible- server connect`
+
+    Important
+
+    Features marked with a **$** are automatically available for newly created PostgreSQL
+    servers. For existing servers, these updates will roll out during your next scheduled
+    maintenance window.
+
+    ## Contacts
+
+    For any questions or suggestions you might have on Azure Database for PostgreSQL,
+    consider the following points of contact as appropriate:
+
+    ## Related content
+
+    ## Feedback
+
+    Wa…'
+notes: This is a useful platform update for teams running distributed PostgreSQL workloads
+  on Azure. The post can explain how the new in-place major version upgrade path changes
+  maintenance planning for elastic clusters and what to validate before doing it in
+  production.
+area: azure data platform
+code_example_ideas:
+- Show how to inspect supported PostgreSQL versions and plan an in-place major upgrade
+  path.
+- Demonstrate a CLI- or portal-based upgrade flow for an elastic cluster and validate
+  application compatibility afterward.
+- Compare the upgrade constraints for elastic clusters with the general major version
+  upgrade guidance in Azure Database for PostgreSQL.
+article_path: content/posts/2026-10-05-actualizaciones-mayores-in-place-para-postgresql-elastic-clusters-en-azure-por-f.md
+pr_url: null

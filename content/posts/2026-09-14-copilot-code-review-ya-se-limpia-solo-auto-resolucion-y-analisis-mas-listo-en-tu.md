@@ -185,8 +185,6 @@ git push
 
 En la PR deberías ver una de estas dos cosas: o bien la conversación de GitHub Copilot pasa automáticamente a resuelta, o bien queda marcada como abordada por el propio sistema. Ese es justamente el comportamiento que describe [la mejora de auto-resolución en Copilot code review](https://github.blog/changelog/2026-09-11-auto-resolution-and-analysis-updates-in-copilot-code-review).
 
-{{< figure src="/images/copilot-code-review-ya-se-limpia-solo-auto-resolucion-y-analisis-mas-listo-en-tu/source-3.jpg" alt="Captura de una conversación marcada como Addressed en Copilot Code Review" caption="Cuando la corrección ya está en la rama, Copilot puede marcar la conversación como abordada y resolverla automáticamente. Fuente: [github.blog](https://github.blog/changelog/2026-08-28-upcoming-changes-to-github-copilot-policies-and-billing)" >}}{{< /figure >}}
-
 Para mí, aquí está el valor real. En un repositorio con bastante movimiento, esta pequeña automatización evita que el PR termine convertido en una excavación arqueológica de comentarios que ya no aplican. **La limpieza del contexto también es productividad**. No suena épico, pero funciona.
 
 ### Aplicar una sugerencia de Copilot y observar el mensaje de commit

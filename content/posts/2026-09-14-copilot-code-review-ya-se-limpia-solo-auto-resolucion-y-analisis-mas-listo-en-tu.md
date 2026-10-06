@@ -1,5 +1,5 @@
 ---
-title: 'Copilot Code Review ya se limpia solo: auto-resolución y análisis más listo
+title: 'Copilot Code Review ya se limpia solo: auto-resolución y análisis más inteligente
   en tus PR'
 date: '2026-10-06T12:05:55+00:00'
 draft: false

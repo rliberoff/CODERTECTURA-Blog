@@ -1,0 +1,244 @@
+id: copilot-code-review-auto-resolution-smart-analysis
+title: Copilot Code Review Gets Auto-Resolution and Smarter Analysis
+slug: copilot-code-review-ya-se-limpia-solo-auto-resolucion-y-analisis-mas-listo-en-tu
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-09-14T11:50:40+00:00'
+- status: in_review
+  at: '2026-09-14T12:07:18+00:00'
+discovered_at: '2026-09-14T11:50:40+00:00'
+similarity:
+  max_score: 0.4898
+  closest_match: modernize-legacy-dotnet-app-to-dotnet-10-with-copilot
+  threshold: 0.82
+sources:
+- url: https://github.blog/changelog/2026-09-11-auto-resolution-and-analysis-updates-in-copilot-code-review
+  title: Auto-resolution and analysis updates in Copilot code review
+  published_date: '2026-09-11'
+  host: github.blog
+  kind: primary
+  excerpt: Copilot code review now resolves its own comments once you address them
+    and writes smart commit messages for you when you apply its code suggestions.
+    Behind the scenes, Copilot now… The post Auto-resolution and analysis updates
+    in Copilot code review appeared first on The GitHub Blog .
+- url: https://github.blog/changelog/2025-09-18-copilot-code-review-now-in-jetbrains-ides-and-visual-studio
+  title: 'Copilot code review: Now in JetBrains IDEs and Visual Studio - GitHub Changelog'
+  published_date: null
+  host: github.blog
+  kind: secondary
+  images:
+  - url: https://github.blog/wp-content/uploads/2026/09/649715376-08972ca9-fa83-4f6f-8c7e-171cad13b50d.jpg
+    description: A dark-themed interface displays a header titled "Auto-resolution
+      and analysis updates in Copilot code review," with a mouse cursor clicking on
+      a conversation marked as "Addressed," indicating automat…
+  - url: https://github.blog/wp-content/uploads/2026/09/649715394-bcdc7a69-c8f2-4029-925e-0b8844943d01.jpg?fit=2064%2C892
+    description: A user interface displays a GitHub Copilot code review conversation
+      with an option to resolve or unresolve the discussion, indicating ongoing automated
+      review and analysis updates anticipated for Sept…
+  - url: https://github.blog/wp-content/uploads/2026/09/640486942-c6980a41-e05e-475d-878a-90f6c8754525.png?fit=2064%2C992
+    description: A GitHub review dashboard displays a successful code review approval
+      for a Copilot-assisted change, indicating no conflicts or unresolved issues,
+      with options for merging the pull request.
+  - url: https://github.blog/wp-content/uploads/2026/09/649772462-cd2b8dcf-4eac-422d-81a2-5e9ef2709240.jpg?fit=2064%2C848
+    description: The image displays a graphic with the text "Weekly releases" alongside
+      the GitHub Copilot logo, featuring a stylized, futuristic robot head on a black
+      background with a subtle green grid.
+  - url: https://github.blog/wp-content/uploads/2026/08/633138121-4de3d5e8-faeb-47a4-9cef-a703cce2b7b2.jpg
+    description: A user interface displaying a GitHub Copilot code review platform
+      with features like auto-resolution, comments, and review status updates, highlighting
+      recent improvements and upcoming features.
+  - url: https://github.blog/wp-content/uploads/2026/08/642427460-c76a799a-c155-49c3-b440-8ec1a88ffc0d.jpg?fit=2400%2C1260
+    description: A screenshot displays a GitHub Copilot code review interface showing
+      suggested comment statuses labeled "Addressed," "Won't fix," and "Incorrect,"
+      with the "Addressed" option marked as selected, indic…
+  - url: https://github.blog/wp-content/uploads/2026/08/642427459-50900663-eb25-4b11-9e84-91f4bf6e4815.jpg
+    description: The image depicts a dark-themed interface related to GitHub Copilot's
+      code review feature, highlighting resolution reasons and auto-resolution suggestions
+      from September 2026.
+  excerpt: '[Skip to content](#start-of-content) [Skip to sidebar](#sidebar)
+
+    / [Blog](https://github.blog/)
+
+    [Try GitHub Copilot app](https://github.com/features/ai/github-app?utm_source=blog-header-button-cta&utm_medium=blog&utm_campaign=github-app-cli-Q1-push)
+    [Attend GitHub Universe](https://githubuniverse.com/?utm_source=Blog-button&utm_medium=GitHub&utm_campaign=blog_button_seb_uni_26)
+
+    [Back to changelog](https://github.blog/changelog/)
+
+    Release
+
+    • 1 minute read
+
+    # Copilot code review: Now in JetBrains IDEs and Visual Studio
+
+    ![](https://github.blog/wp-content/themes/github-2021-child/assets/img/featured-v3-new-releases.svg)
+
+    Copilot code review is now in most standard editors and IDEs! 🚀 With this update,
+    you can use Copilot code review directly in Visual Studio and JetBrains IDEs (including
+    IntelliJ IDEA, PyCharm, WebStorm, and more). This adds to existing support in
+    Xcode and Visual Studio Code.
+
+    You can now:
+
+    * Request Copilot code review feedback on your code before you open a pull request,
+    from within JetBrains IDEs and Visual Studio.
+
+    * Self-review your changes and get actionable feedback exactly where you write
+    your code.
+
+    * Use Copilot code review to catch logic, security, and performance issues, all
+    within your editor of choice.
+
+    Now you can get actionable feedback before others see your code, saving you time
+    in your pull request review process!
+
+    ## [Getting started](#getting-started)
+
+    To get started, make sure your Copilot plugin for Visual Studio or JetBrains is
+    up-to-date, stage your changes, and click the Copilot code review button.
+
+    In Visual Studio, this change updates the existing self-review option (detailed
+    in this [earlier announcement](https://devblogs.microsoft.com/visualstudio/catch-issues-before-you-commit-to-git/))
+    to Copilot code review.
+
+    ## [Questions or feedback?](#questions-or-feedback)
+
+    For questions about any of these updates, join the conversation in our [GitHub
+    Community](https://github.com/orgs/community/discussions/categories/copilot-conversations)
+    discussion. We’d love to hear your thoughts!
+
+    ## Related Posts
+
+    ### Improvement
+
+    [Enterprise managed permissions for GitHub Copilot agent operations](https://github.blog/changelog/2026-09-09-enterprise-managed-permissions-for-github-copilot-agent-operations)
+
+    [client apps](https://github.blog/changelog/2026/?label=client-apps) [copilot](https://github.blog/changelog/2026/?label=copilot)
+    [enterprise management tools](https://github.blog/changelog/2026/?label=enterprise-management-tools)
+
+    ### Release
+
+    [Enterprise-managed sandbox in Copilot for JetBrains](https://github.blog/changelog/2026-09-08-enterprise-managed-sandbox-in-copilot-for-jetbrains)
+
+    [copilot](https://github.blog/changelog/2026/?label=copilot) [enterprise management
+    tools](https://github.blog/changelog/2026/?label=enterprise-management-tools)
+
+    ### Release
+
+    [GitHub Copilot weekly releases — August 31](https://github.blog/changelog/2026-09-04-github-copilot-weekly-releases-august-31)
+
+    [copilot](https://github.blog/changelog/2026/?label=copi…'
+- url: https://github.blog/changelog/2026-08-28-upcoming-changes-to-github-copilot-policies-and-billing
+  title: Upcoming changes to GitHub Copilot policies and billing
+  published_date: null
+  host: github.blog
+  kind: secondary
+  images:
+  - url: https://github.blog/wp-content/uploads/2026/09/649715376-08972ca9-fa83-4f6f-8c7e-171cad13b50d.jpg
+    description: A dark-themed interface displays a header titled "Auto-resolution
+      and analysis updates in Copilot code review," with a mouse cursor clicking on
+      a conversation marked as "Addressed," indicating automat…
+  - url: https://github.blog/wp-content/uploads/2026/09/649715394-bcdc7a69-c8f2-4029-925e-0b8844943d01.jpg?fit=2064%2C892
+    description: A user interface displays a GitHub Copilot code review conversation
+      with an option to resolve or unresolve the discussion, indicating ongoing automated
+      review and analysis updates anticipated for Sept…
+  - url: https://github.blog/wp-content/uploads/2026/09/640486942-c6980a41-e05e-475d-878a-90f6c8754525.png?fit=2064%2C992
+    description: A GitHub review dashboard displays a successful code review approval
+      for a Copilot-assisted change, indicating no conflicts or unresolved issues,
+      with options for merging the pull request.
+  - url: https://github.blog/wp-content/uploads/2026/09/649772462-cd2b8dcf-4eac-422d-81a2-5e9ef2709240.jpg?fit=2064%2C848
+    description: The image displays a graphic with the text "Weekly releases" alongside
+      the GitHub Copilot logo, featuring a stylized, futuristic robot head on a black
+      background with a subtle green grid.
+  - url: https://github.blog/wp-content/uploads/2026/08/633138121-4de3d5e8-faeb-47a4-9cef-a703cce2b7b2.jpg
+    description: A user interface displaying a GitHub Copilot code review platform
+      with features like auto-resolution, comments, and review status updates, highlighting
+      recent improvements and upcoming features.
+  - url: https://github.blog/wp-content/uploads/2026/08/642427460-c76a799a-c155-49c3-b440-8ec1a88ffc0d.jpg?fit=2400%2C1260
+    description: A screenshot displays a GitHub Copilot code review interface showing
+      suggested comment statuses labeled "Addressed," "Won't fix," and "Incorrect,"
+      with the "Addressed" option marked as selected, indic…
+  - url: https://github.blog/wp-content/uploads/2026/08/642427459-50900663-eb25-4b11-9e84-91f4bf6e4815.jpg
+    description: The image depicts a dark-themed interface related to GitHub Copilot's
+      code review feature, highlighting resolution reasons and auto-resolution suggestions
+      from September 2026.
+  excerpt: '[Skip to content](#start-of-content) [Skip to sidebar](#sidebar)
+
+    / [Blog](https://github.blog/)
+
+    [Try GitHub Copilot app](https://github.com/features/ai/github-app?utm_source=blog-header-button-cta&utm_medium=blog&utm_campaign=github-app-cli-Q1-push)
+    [Attend GitHub Universe](https://githubuniverse.com/?utm_source=Blog-button&utm_medium=GitHub&utm_campaign=blog_button_seb_uni_26)
+
+    [Back to changelog](https://github.blog/changelog/)
+
+    Improvement
+
+    • 3 minute read
+
+    # Upcoming changes to GitHub Copilot policies and billing
+
+    ![](https://github.blog/wp-content/themes/github-2021-child/assets/img/featured-v3-improvements.svg)
+
+    To provide a strong, consistent Copilot experience, we’re making three separate,
+    upcoming changes to Copilot policies and billing. Please review the upcoming updates
+    to understand what may impact you.
+
+    ## [Reopening Copilot Business and Enterprise signups with billing updates](#reopening-copilot-business-and-enterprise-signups-with-billing-updates)
+
+    Starting September 1, 2026, GitHub will start reenabling sign-ups for new Copilot
+    Business and Copilot Enterprise customers paying by credit card or PayPal. To
+    improve availability and reliability of Copilot services, we’re strengthening
+    account vetting and updating billing experiences for customers who pay by credit
+    card or PayPal.
+
+    ### [What’s changing](#whats-changing)
+
+    * All new Copilot Business or Copilot Enterprise seat assignments will require
+    payment for each seat before users gain Copilot access.
+
+    * At the start of the next billing cycle, all Copilot Business and Copilot Enterprise
+    seats assigned will incur an upfront charge. This includes existing customers
+    starting October 1, 2026.
+
+    * If you exceed your included usage, additional payment may be required for you
+    and your users to continue using Copilot.
+
+    * Included usage may be prorated across the month to align with the seat cost
+    proration.
+
+    ### [What’s not changing](#whats-not-changing)
+
+    * Copilot Business and Copilot Enterprise prices are **not** changing.
+
+    * Revoking a seat does not result in a prorated refund. The removal will be reflected
+    in your next monthly billing cycle.
+
+    * All seats added in the middle of a billing cycle will continue to be prorated
+    from date of assignment to end of bill cycle.
+
+    * Additional usage exceeding included allowances will remain available for purchase.
+
+    * Spend controls, usage tracking, and the option to purchase additional AI credits
+    will remain available.
+
+    Existing Copilot Business and Copilot Enterprise customers can expect these billing
+    updates to take effect starting October 1, 2026.
+
+    Fully canceling Copilot and returning later may trigger updated account vetting
+    and billing behaviors.
+
+    For more information, read our [Copilot Quick Start documentation](https://docs.github.com/copilot/get-started/quickstart).
+
+    ## [Copilot cloud agent, Copilot Chat on github.com, and Copilot Chat in GitHub
+    Mobile are converging to a single experience and policy](#copilot-cloud-agent-copilot-chat-on-github-com-and-copilot-chat-i…'
+notes: This is a hands-on improvement for review workflows in GitHub. It is editorially
+  strong because it affects day-to-day PR automation and can be demonstrated on a
+  real repository with existing Copilot code review setup.
+area: devops and github
+code_example_ideas:
+- Open a pull request and observe how Copilot resolves comments after fixes are pushed.
+- Apply a Copilot suggestion and inspect the generated commit message flow.
+- Compare review output before and after the analysis updates on a sample repository.
+article_path: content/posts/2026-09-14-copilot-code-review-ya-se-limpia-solo-auto-resolucion-y-analisis-mas-listo-en-tu.md
+pr_url: null

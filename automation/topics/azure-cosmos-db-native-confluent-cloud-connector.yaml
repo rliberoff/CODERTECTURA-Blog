@@ -1,0 +1,113 @@
+id: azure-cosmos-db-native-confluent-cloud-connector
+title: Azure Cosmos DB Adds a Native Confluent Cloud Connector Experience
+slug: azure-cosmos-db-y-confluent-cloud-asi-montaria-una-integracion-kafka-nativa-de-v
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-10-12T06:30:11+00:00'
+- status: in_review
+  at: '2026-10-12T06:35:31+00:00'
+discovered_at: '2026-10-12T06:30:11+00:00'
+similarity:
+  max_score: 0.5376
+  closest_match: spec-driven-development-azure-cosmos-db-github-spec-kit
+  threshold: 0.82
+sources:
+- url: https://devblogs.microsoft.com/cosmosdb/introducing-the-native-confluent-cloud-connector-experience-in-azure-cosmos-db/
+  title: Introducing the Native Confluent Cloud Connector Experience in Azure Cosmos
+    DB!
+  published_date: '2026-10-09'
+  host: devblogs.microsoft.com
+  kind: primary
+  excerpt: 'Co-authored with Praveen Raja P Azure Cosmos DB already includes a powerful
+    event foundation: change feed provides a durable, ordered record of item changes
+    within each logical partition. It is ideal for reacting to operational data as
+    it changes, building projections, and driving workflows directly from the database.
+    Confluent Cloud adds a complementary event layer […] The post Introducing the
+    Native Confluent Cloud Connector Experience in Azure Cosmos DB! appeared first
+    on Azure Cosmos DB Blog .'
+- url: https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/add-source-confluent-kafka
+  title: Confluent Cloud for Apache Kafka Source in Fabric Eventstream - Microsoft
+    Fabric | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Add Confluent Cloud for Apache Kafka source to an eventstream
+
+    ## In this article
+
+    This article shows you how to add Confluent Cloud for Apache Kafka source to an
+    eventstream.
+
+    Confluent Cloud for Apache Kafka is a streaming platform offering powerful data
+    streaming and processing functionalities using Apache Kafka. By integrating Confluent
+    Cloud for Apache Kafka as a source within your eventstream, you can seamlessly
+    process real-time data streams before routing them to multiple destinations within
+    Fabric.
+
+    ## Prerequisites
+
+    Access to a workspace in the Fabric capacity license mode (or) the Trial license
+    mode with Contributor or higher permissions.
+
+    A Confluent Cloud for Apache Kafka cluster and an API Key.
+
+    Your Confluent Cloud for Apache Kafka cluster should be publicly accessible and
+    not be behind a firewall or secured in a virtual network. If it resides in a protected
+    network, connect to it by using [Eventstream connector virtual network injection](streaming-connector-private-network-support-guide).
+
+    If you plan to use **TLS/mTLS settings**, make sure the required certificates
+    are available in an **Azure Key Vault**:
+
+    ## Launch the Select a data source wizard
+
+    If you haven''t added any source to your eventstream yet, select the **Connect
+    data sources** tile. You can also select **Add source** > **Connect data sources**
+    on the ribbon.
+
+    [![Screenshot that shows the selection of the tile for using an external source.](includes/media/select-external-source/select-use-external-source-tile.png)](includes/media/select-external-source/select-use-external-source-tile.png#lightbox)
+
+    ![Screenshot that shows the selection of the tile for using an external source.](includes/media/select-external-source/select-use-external-source-tile.png)
+
+    If you''re adding the source to an already published eventstream, switch to **Edit**
+    mode. On the ribbon, select **Add source** > **Connect data sources**.
+
+    [![Screenshot that shows selections for adding external sources.](includes/media/select-external-source/add-source-ribbon.png)](includes/media/select-external-source/add-source-ribbon.png#lightbox)
+
+    ![Screenshot that shows selections for adding external sources.](includes/media/select-external-source/add-source-ribbon.png)
+
+    ## Configure and connect to Confluent Cloud for Apache Kafka
+
+    On the **Select a data source** page, select **Confluent Cloud for Apache Kafka**.
+
+    ![Screenshot that shows the selection of Confluent as the source type in the Get
+    events wizard.](includes/connectors/media/confluent-kafka-source-connector/select-confluent.png)
+
+    ![Screenshot that shows the selection of Confluent as the source type in the Get
+    events wizard.](includes/connectors/media/…'
+notes: 'This is a practical integration story for event-driven architectures: Cosmos
+  DB is making Kafka connectivity easier through a first-class portal experience.
+  It fits readers building data pipelines, projections, and reactive services on Azure.'
+area: Azure data platform
+code_example_ideas:
+- Set up a Cosmos DB change feed flow that publishes changes into Kafka through the
+  connector and inspect the resulting event stream.
+- Create a Kafka-to-Cosmos DB projection and verify that application-ready views are
+  materialized correctly.
+- Walk through the Azure portal connector creation flow and test schema validation
+  with a sample Confluent Cloud topic.
+article_path: content/posts/2026-10-12-azure-cosmos-db-y-confluent-cloud-asi-montaria-una-integracion-kafka-nativa-de-v.md
+pr_url: null

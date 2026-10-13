@@ -1,0 +1,51 @@
+id: github-copilot-telemetry-attribution-configurable-capture
+title: GitHub Copilot telemetry attribution and configurable capture for enterprise
+  admins
+slug: copilot-en-la-empresa-atribucion-de-telemetria-sin-capturar-el-contenido
+article_type: business
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-10-13T09:10:10+00:00'
+- status: in_review
+  at: '2026-10-13T09:15:46+00:00'
+discovered_at: '2026-10-13T09:10:10+00:00'
+similarity:
+  max_score: 0.4888
+  closest_match: microsoft-foundry-observability-agent-tracing-sensitive-telemetry
+  threshold: 0.82
+sources:
+- url: https://github.blog/changelog/2026-10-12-client-telemetry-user-attribution-and-configurable-capture
+  title: Client telemetry user attribution and configurable capture
+  published_date: '2026-10-12'
+  host: github.blog
+  kind: primary
+  excerpt: Enterprise administrators can now use telemetry in managed settings to
+    attribute GitHub Copilot activity to a user without collecting their prompts,
+    responses, or tool content. The telemetry.capture.identity setting adds three…
+    The post Client telemetry user attribution and configurable capture appeared first
+    on The GitHub Blog .
+- url: https://github.blog/changelog/2026-10-12-push-attribution-public-preview
+  title: Push attribution for commits in limited public preview
+  published_date: '2026-10-12'
+  host: github.blog
+  kind: secondary
+  excerpt: GitHub now durably records the authenticated user who pushed each commit
+    and surfaces that pusher identity in the UI and API alongside the existing author
+    and committer fields. Commit author… The post Push attribution for commits in
+    limited public preview appeared first on The GitHub Blog .
+- url: https://github.blog/changelog/2026-10-12-anonymous-organization-level-registries-for-dependabot
+  title: Anonymous organization-level registries for Dependabot
+  published_date: '2026-10-12'
+  host: github.blog
+  kind: secondary
+  excerpt: You can now select Anonymous as the authentication method for an organization-level
+    private registry. Use it for registries that Dependabot can reach without credentials,
+    such as an internal package mirror… The post Anonymous organization-level registries
+    for Dependabot appeared first on The GitHub Blog .
+notes: This is a policy and governance announcement rather than a build-it-yourself
+  feature. It is still relevant for platform teams standardizing Copilot usage, auditability,
+  and privacy controls across engineering organizations.
+area: devops and platform engineering
+article_path: content/posts/2026-10-13-copilot-en-la-empresa-atribucion-de-telemetria-sin-capturar-el-contenido.md
+pr_url: null

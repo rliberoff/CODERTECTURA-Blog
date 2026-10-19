@@ -1,0 +1,399 @@
+id: managed-hsm-external-key-management-ga
+title: Managed HSM external key management reaches GA
+slug: managed-hsm-con-claves-externas-ya-es-ga-que-cambia-de-verdad-y-como-montarlo-pa
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-10-19T06:24:34+00:00'
+- status: in_review
+  at: '2026-10-19T06:38:10+00:00'
+discovered_at: '2026-10-19T06:24:34+00:00'
+similarity:
+  max_score: 0.4265
+  closest_match: azure-databricks-private-network-gateway-public-preview
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=574296
+  title: '[Launched] Generally Available: External key management for Azure Key Vault
+    Managed HSM'
+  published_date: '2026-10-16'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: External key management for Azure Key Vault Managed HSM is now generally
+    available in all Azure public regions. For organizations with regulatory or sovereignty
+    requirements to retain physical control of key-encryption keys, it lets Azure
+    services that su
+- url: https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/external-key-management-networking
+  title: Configure networking and mTLS for Azure Key Vault Managed HSM external key
+    management | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/media/external-key-management/external-key-management-architecture.svg
+    description: ''
+  - url: https://learn.microsoft.com/en-us/azure/azure-sovereign-clouds/articles/media/external-key-management-architecture.png
+    description: The diagram illustrates the architecture of Azure Key Vault Managed
+      HSM for external key management, showing the flow between Azure cloud services,
+      remote authentication and key management proxy, and…
+  - url: https://learn.microsoft.com/en-us/azure/security/fundamentals/media/choosing-key-management-solutions/key-management-product-flow-chart.png
+    description: The graphic depicts a decision tree guiding users through selecting
+      Azure key management options, emphasizing sovereignty, external keys, and external
+      governance related to AI and cloud security.
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Configure networking and mTLS for Managed HSM external key management
+
+    ## In this article
+
+    This article covers the network and transport-layer security configuration required
+    to connect Managed HSM to your EKM Proxy. It''s aimed at network and security
+    engineers who are setting up or maintaining an external key management deployment.
+
+    You''ll learn how to choose a connectivity model, what outbound traffic Managed
+    HSM generates, and how to provision and rotate the mutual TLS (mTLS) certificates
+    that authenticate both sides of the connection.
+
+    This connection carries key-protection requests for your Azure service integration,
+    not workload data. For the encryption model, see [How CMK encryption at rest works](external-key-management-overview#how-cmk-encryption-at-rest-works).
+
+    For the end-to-end architecture and request flow, see [Managed HSM external key
+    management architecture](external-key-management-architecture). For command-level
+    setup steps, see [Quickstart: Create your first external key using the Azure CLI](external-key-management-quickstart-cli).
+
+    ## Connectivity models
+
+    Managed HSM initiates an outbound mTLS connection to your EKM Proxy. Two connectivity
+    models are supported:
+
+    Security doesn''t depend on network-layer restrictions in either model. The connection
+    is protected by mutual TLS (mTLS): both sides present and verify X.509 certificates
+    before any payload is exchanged. Private Link adds network isolation on top of
+    mTLS; it doesn''t replace it. Managed HSM source IPs aren''t static and can''t
+    be allow-listed, so certificate-based identity is the supported security mechanism
+    in both models.
+
+    ## Configure the public-internet model
+
+    In this model, the EKM Proxy is reachable over the public internet on a publicly
+    resolvable FQDN.
+
+    `--host`
+
+    `--server-ca-certificate`
+
+    For the full `az keyvault ekm-connection create` command, see [Quickstart: Create
+    your first external key using the Azure CLI](external-key-management-quickstart-cli).
+
+    `az keyvault ekm-connection create`
+
+    Note
+
+    Even though the proxy is publicly reachable, the connection is still mutually
+    authenticated. An attacker who reaches the proxy endpoint without a valid Managed
+    HSM client certificate can''t complete the handshake.
+
+    ## Configure the Azure Private Link model (preview)
+
+    Important
+
+    Azure Private Link integration for Managed HSM external key management is in **preview**.
+    Preview features are made available to you on the condition that you agree to
+    the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+    Some aspects of this integration might change before general availability. The
+    core external key management feature is general…'
+- url: https://learn.microsoft.com/en-us/azure/security/fundamentals/key-management
+  title: Overview of key management in Azure | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/media/managed-hsm-multiregion-scenario-1.png
+    description: The diagram depicts the architecture of external key management in
+      Azure Key Vault Managed HSM, illustrating client connections through private
+      endpoints to either the primary or secondary pools manag…
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Key management in Azure
+
+    ## In this article
+
+    Note
+
+    [Zero Trust](/en-us/security/zero-trust/zero-trust-overview) is a security strategy
+    comprising three principles: "Verify explicitly", "Use least privilege access",
+    and "Assume breach". Data protection, including key management, supports the "use
+    least privilege access" principle. For more information, see [What is Zero Trust?](/en-us/security/zero-trust/zero-trust-overview)
+
+    Azure supports platform-managed and customer-managed encryption keys.
+
+    Azure generates, stores, and manages platform-managed keys (PMKs). You don''t
+    need to interact with PMKs. For example, the keys used for [Azure Data Encryption
+    at Rest](encryption-atrest) are PMKs by default.
+
+    Customer-managed keys (CMKs) are keys that you create, delete, use, and manage.
+    You can store CMKs in a customer-owned key vault or hardware security module (HSM).
+    Bring your own key (BYOK) is a CMK scenario where you import keys from an external
+    storage location into an Azure key management service. For more information, see
+    [Azure Key Vault: Bring your own key specification](/en-us/azure/key-vault/keys/byok-specification).
+
+    A key encryption key (KEK) is a primary key that controls access to one or more
+    encryption keys that it encrypts.
+
+    You can store CMKs on-premises or, more commonly, in a cloud key management service.
+
+    ## Azure key management services
+
+    Azure offers several options for storing and managing your keys in the cloud,
+    including Azure Key Vault, Azure Key Vault Managed HSM, Azure Cloud HSM, Azure
+    Payment HSM, and Azure Payment HSM v2 (preview). These options differ in their
+    FIPS compliance level, management overhead, and intended applications.
+
+    For a comprehensive guide to choosing the right key management solution, see [How
+    to choose the right key management solution](key-management-choose).
+
+    ### Azure Key Vault (standard tier)
+
+    Azure Key Vault standard tier is a FIPS 140-2 Level 1 validated multitenant cloud
+    key management service. You can use it to store asymmetric keys, secrets, and
+    certificates. Keys stored in Azure Key Vault standard tier are software-protected.
+    You can use them for encryption at rest and custom applications. Azure Key Vault
+    standard tier provides a modern API and broad regional deployments and integrations
+    with Azure services. For more information, see [About Azure Key Vault](/en-us/azure/key-vault/general/overview).
+
+    ### Azure Key Vault (premium tier)
+
+    Azure Key Vault premium tier is a FIPS 140-3 Level 3 validated, PCI-compliant,
+    multitenant HSM offering. Use it to store asymmetric keys, secrets, and certificates,
+    and to create HSM-protected symmetric keys (oct-HSM/AES) in public preview. It
+    stores keys in…'
+- url: https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/external-key-management-overview
+  title: What is Managed HSM external key management? | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/media/managed-hsm-multiregion-scenario-1.png
+    description: The diagram depicts the architecture of external key management in
+      Azure Key Vault Managed HSM, illustrating client connections through private
+      endpoints to either the primary or secondary pools manag…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-security-docs/blob/main/articles/key-vault/managed-hsm/external-key-management-overview.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # What is Managed HSM external key management?
+
+    Azure Key Vault Managed HSM external key management (EKM) connects Azure services''
+    customer-managed-key (CMK) encryption at rest to an HSM you operate outside Microsoft
+    infrastructure. You can protect supported Azure workloads with an externally held
+    key while using Managed HSM for authentication, authorization, and the key interface
+    those services already support.
+
+    The Azure service continues to encrypt and decrypt your data. Your external HSM
+    protects the service''s data encryption keys through an **EKM Proxy** that you
+    or your HSM vendor operate. The key encryption key stays in your external HSM.
+
+    EKM provides this integration for [Azure services that support CMKs with Managed
+    HSM](/en-us/azure/security/fundamentals/encryption-customer-managed-keys-support).
+    Review the supported-service guidance and your service''s CMK configuration documentation
+    before planning your deployment.
+
+    External key management is generally available. Azure Private Link integration
+    for connecting Managed HSM to your EKM Proxy is in preview. For setup and preview
+    terms, see [Configure the Azure Private Link model (preview)](external-key-management-networking#configure-the-azure-private-link-model-preview).
+
+    ## How CMK encryption at rest works
+
+    Most Azure customer-managed-key (CMK) encryption-at-rest integrations use envelope
+    encryption. The Azure service encrypts and decrypts data with a data encryption
+    key (DEK), while the customer-managed key acts as a key encryption key (KEK) to
+    wrap and unwrap the DEK. External key management supports this pattern for [Azure
+    services that support CMKs with Managed HSM](/en-us/azure/security/fundamentals/encryption-customer-managed-keys-support).
+    It moves the KEK operation to your external HSM, not the service''s bulk-data
+    encryption. Unwrap returns the DEK to the Azure service; it doesn''t release the
+    external KEK.
+
+    ## Why use external key management?
+
+    External key management is the right choice when you have a hard requirement that
+    your key material never physically resides on Microsoft infrastructure. Specific
+    drivers include:
+
+    * **Compliance with physical HSM possession requirements.** Use external key management
+    when legal, regulatory, or contractual requiremen…'
+- url: https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/external-key-management-quickstart-cli
+  title: 'Quickstart: Create your first external key in Azure Key Vault Managed HSM
+    using the Azure CLI | Microsoft Learn'
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/media/external-key-management/external-key-management-architecture.svg
+    description: ''
+  - url: https://learn.microsoft.com/en-us/azure/azure-sovereign-clouds/articles/media/external-key-management-architecture.png
+    description: The diagram illustrates the architecture of Azure Key Vault Managed
+      HSM for external key management, showing the flow between Azure cloud services,
+      remote authentication and key management proxy, and…
+  - url: https://learn.microsoft.com/en-us/azure/security/fundamentals/media/choosing-key-management-solutions/key-management-product-flow-chart.png
+    description: The graphic depicts a decision tree guiding users through selecting
+      Azure key management options, emphasizing sovereignty, external keys, and external
+      governance related to AI and cloud security.
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Quickstart: Create your first external key using the Azure CLI
+
+    ## In this article
+
+    In this quickstart, you connect your external HSM to Managed HSM, create an external
+    key reference, and test the key-protection path. You then use the Managed HSM
+    key URI to configure customer-managed-key (CMK) encryption at rest in a compatible
+    Azure service.
+
+    For the encryption model and service compatibility, see [What is Managed HSM external
+    key management?](external-key-management-overview)
+
+    If you prefer to use the Azure portal, see [Quickstart: Create your first external
+    key using the Azure portal](external-key-management-quickstart-portal).
+
+    ## Prerequisites
+
+    Before you begin, you need:
+
+    `keyvault`
+
+    `az extension add --name keyvault`
+
+    `az extension update --name keyvault`
+
+    `Managed HSM EKM Administrator`
+
+    `Managed HSM Crypto User`
+
+    ## Sign in to Azure
+
+    `az login`
+
+    Set your subscription if you have more than one:
+
+    `az account set --subscription "<subscription-id>"`
+
+    ## Show the Managed HSM client certificate
+
+    Managed HSM presents an X.509 client certificate to your EKM Proxy on every inbound
+    mutual TLS (mTLS) connection. Before you create the external key management connection,
+    retrieve the certificate subject common name and the root CA certificate and allow-list
+    it at your proxy. This lets the proxy validate that the connection comes from
+    your Managed HSM, not an arbitrary caller.
+
+    `az keyvault ekm-connection certificate show --hsm-name <Managed HSM Name>`
+
+    The output looks similar to this:
+
+    `{
+
+    "caCertificates": [
+
+    "MIIDj...<truncated>...MrY="
+
+    ],
+
+    "subjectCommonName": "contoso.managedhsmclient.azure.net"
+
+    }`
+
+    Configure your proxy to trust connections that present certificate with the `subjectCommonName`
+    and rooted to one of the certificates in `caCertificates` list above. The exact
+    steps depend on your proxy vendor.
+
+    `subjectCommonName`
+
+    `caCertificates`
+
+    Note
+
+    For rotation steps and certificate lifecycle details, see [Configure networking
+    and mTLS for Managed HSM external key management](external-key-management-networking).
+
+    ## Create the external key management connection
+
+    The external key management connection binds your Managed HSM to a single EKM
+    Proxy. It contains the proxy address, the server CA trust anchor, and an optional
+    path prefix.
+
+    This section creates a public internet connection. For Private Link, follow [Configure
+    the Azure Private Link model (preview)](external-key-management-networking#configure-the-azure-private-link-model-preview)
+    instead, then continue with [Verify the connection](#verify-the-connection).
+
+    `az keyvault ekm-connection create \
+
+    --hsm-name <Managed HSM Name> \
+
+    --host <EKMProxy Host> \
+
+    --server-ca-certificate <Root cert> \
+
+    [--path…'
+notes: This is a high-value security story for regulated organizations that want to
+  keep key-encryption keys outside Microsoft infrastructure. The article can explain
+  the external key-management architecture and then walk through the portal or CLI
+  setup end to end.
+area: identity and access
+code_example_ideas:
+- Create an external key in Managed HSM from the Azure portal and verify the EKM Proxy
+  connection.
+- Repeat the setup with Azure CLI and inspect the `/info` probe response from the
+  proxy.
+- Configure mTLS networking for the EKM path and validate wrap/unwrap behavior against
+  a test key.
+article_path: content/posts/2026-10-19-managed-hsm-con-claves-externas-ya-es-ga-que-cambia-de-verdad-y-como-montarlo-pa.md
+pr_url: null

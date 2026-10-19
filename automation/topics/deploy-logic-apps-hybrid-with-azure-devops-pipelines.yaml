@@ -1,0 +1,255 @@
+id: deploy-logic-apps-hybrid-with-azure-devops-pipelines
+title: Deploy Logic Apps Hybrid with Azure DevOps pipelines
+slug: como-desplegar-logic-apps-hybrid-con-azure-devops-sin-pelearte-con-el-pipeline
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-10-19T06:24:34+00:00'
+- status: in_review
+  at: '2026-10-19T06:29:29+00:00'
+discovered_at: '2026-10-19T06:24:34+00:00'
+similarity:
+  max_score: 0.4206
+  closest_match: guided-copilot-in-vs-code-promises-a-more-structured-way-to-build-azure-apps
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/azure-integration-services-blog/deploying-logic-apps-hybrid-through-an-azure-devops-pipeline/ba-p/4556246
+  title: Deploying Logic Apps Hybrid through an Azure DevOps pipeline
+  published_date: '2026-10-19'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: 'Overview Logic Apps Hybrid runs Standard workflows on your own infrastructure:
+    an Arc-enabled Kubernetes cluster that appears in Azure as a connected environment.
+    You still author and manage the workflows in Azure, but the runtime is yours.
+    Until now, setting up CI/CD for this meant writing the ARM template and the pipeline
+    YAML by hand, and working out a few Hybrid-specific details along the way. The
+    Azure Logic Apps (Standard) extension for Visual Studio Code can now generate
+    all of it for you: the infrastructure template, its parameter file, and both pipelines.
+    A separate Azure DevOps extension supplies the pipeline tasks that do the Hybrid-specific
+    work. This post covers the whole path: generating the assets, what is inside them,
+    the service connections and variables you need to supply, and running both pipelines.
+    Things to consider first Three things work differently in Hybrid than in a cloud-only
+    Standard deployment. The generated assets handle all of them, but the pipelines
+    are much easier to follow once you know what they are. Connections cannot use
+    managed identity Infrastructure as code for Standard normally produces managed
+    API connections that authenticate with ManagedServiceIdentity . That does not
+    work in Hybrid, because the runtime executes inside a container on your own cluster
+    where no Azure managed identity is available. Hybrid connections use ActiveDirectoryOAuth
+    with a Microsoft Entra ID app registration instead. The Hybrid Build task rewrites
+    this at build time, so you do not have to. Any *-Authentication parameter of type
+    ManagedServiceIdentity becomes: { "type": "ActiveDirectoryOAuth", "tenant": "@appsetting(''WORKFLOWAPP_AAD_TENANTID'')",
+    "clientId": "@appsetting(''WORKFLOWAPP_AAD_CLIENTID'')", "secret": "@appsetting(''WORKFLOWAPP_AAD_CLIENTSECRET'')",
+    "audience": "https://management.core.windows.net/" } The @appsetting() references
+    resolve at runtime against Container App environment variables that the infrastructure
+    template sets. The same package can therefore go to any environment; only the
+    app settings change. The runtime runs on your cluster A Hybrid logic app uses
+    Azure Container Apps on Arc-enabled Kubernetes. It is deployed as a Microsoft.App/containerApps
+    resource with kind: workflowapp , tied to your cluster through a custom location.
+    Workflow content lives on an SMB file share mounted at /home/site/wwwroot . Deployment
+    goes through a ZIP deploy endpoint There is no App Service publishing involved.
+    The package is posted to the Hybrid logic app''s zipdeploy endpoint, authorized
+    with a bearer token from the client credentials flow. That is why the release
+    task needs its own Hybrid Logic App service connection holding the Entra ID tenant,
+    client ID, and client secret. What you''ll build A CI pipeline that packages your
+    workflows and publishes the application ZIP and infrastructure templates, and
+    a CD pipeline that deploys the infrastructure and releases the package to your
+    Hybrid logic app. The runtime runs on your Arc-ena…'
+- url: https://learn.microsoft.com/en-us/azure/container-apps/azure-arc-overview
+  title: Container Apps on Azure Arc Overview | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-kubernetes/media/arc-enabled-kubernetes-cluster-monitoring.png
+    description: The infographic illustrates the process of log and metrics collection,
+      alert raising, and troubleshooting within an Azure Arc-enabled Kubernetes cluster
+      across multiple nodes, emphasizing integration…
+  - url: https://learn.microsoft.com/en-us/azure/architecture/hybrid/images/arc-hybrid-kubernetes.svg
+    description: ''
+  - url: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-kubernetes/media/arc-enabled-kubernetes-cluster-connect-network.png
+    description: The diagram illustrates the architecture of Azure Container Apps
+      with Azure Arc-enabled Kubernetes, showing authentication via Microsoft Entra
+      ID, network connectivity through proxies and firewalls, a…
+  - url: https://learn.microsoft.com/en-us/azure/azure-arc/data/media/automated-integration-testing/integration-testing-overview.png
+    description: A detailed workflow diagram illustrating the process of automated
+      deployment and testing of Arc-enabled data services in Azure, integrating GitHub,
+      Kubernetes, Sonobuoy, and various testing tools for…
+  - url: https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/media/conceptual-extensions.png
+    description: The diagram illustrates the process of troubleshooting Azure Container
+      Apps on Azure Arc-enabled Kubernetes, detailing interactions between cluster
+      administrators, Azure Resource Manager, extension re…
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Azure Container Apps on Azure Arc
+
+    ## In this article
+
+    Azure Container Apps on Azure Arc-enabled Kubernetes lets you run Container Apps
+    workloads on supported Kubernetes infrastructure outside Azure datacenters, including
+    AKS on Azure Local. You manage the applications as Azure resources while the application
+    containers and the Container Apps data plane run on your Kubernetes cluster.
+
+    Running Container Apps on Azure Arc can help you:
+
+    Container Apps on Azure Arc isn''t a hosted compute service. Your organization
+    provides, secures, scales, patches, and operates the underlying Kubernetes cluster
+    and its compute, networking, and storage resources.
+
+    To prepare a cluster and deploy your first application, complete [Set up an Azure
+    Arc-enabled Kubernetes cluster to run Azure Container Apps](azure-arc-enable-cluster),
+    and then complete [Create a container app on Azure Arc](azure-arc-create-container-app).
+
+    As you configure your cluster, you create or use these resources:
+
+    **Connected cluster:** The Azure Resource Manager representation of your Kubernetes
+    cluster. Azure Arc agents running in the cluster maintain the connection to Azure.
+    For more information, see [What is Azure Arc-enabled Kubernetes?](/en-us/azure/azure-arc/kubernetes/overview).
+
+    **Container Apps cluster extension:** Software installed in the cluster that provides
+    the Container Apps controllers, ingress, scaling, Dapr, logging, and other data-plane
+    components. The extension is a child resource of the connected cluster.
+
+    **Custom location:** An Azure location resource that associates the connected
+    cluster, the Container Apps extension, and the Kubernetes namespace where Container
+    Apps resources are created.
+
+    **Container Apps connected environment:** The application boundary into which
+    developers deploy container apps and jobs. The connected environment references
+    the custom location and contains configuration shared by its applications.
+
+    The dependency order is: connected cluster > cluster extension > custom location
+    > connected environment > container app or job. If an earlier resource is unhealthy,
+    resources later in the chain might fail to provision.
+
+    ## Limitations
+
+    The following limitations apply to Azure Container Apps on Azure Arc-enabled Kubernetes.
+
+    | Limitation | Details |
+
+    | --- | --- |
+
+    | Supported Azure regions | Australia East, East Asia, East US, North Central
+    US, Southeast Asia, Sweden Central, UK South, West Europe, West US |
+
+    | Cluster networking requirement | Must support [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)
+    service type |
+
+    | Node OS requirement | **Linux** only. |
+
+    | Feature: Managed identities | [Not availabl…'
+- url: https://learn.microsoft.com/en-us/azure/container-apps/azure-arc-plan
+  title: Plan a Container Apps deployment on Azure Arc-enabled Kubernetes | Microsoft
+    Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/architecture/hybrid/images/arc-hybrid-kubernetes.svg
+    description: ''
+  - url: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-kubernetes/media/arc-enabled-kubernetes-network.png
+    description: The diagram illustrates the integration of Bank Pekao's Kubernetes
+      cluster with Azure Arc, facilitating hybrid-cloud migration and managing on-premises
+      and multicloud environments through various Azur…
+  - url: https://learn.microsoft.com/en-us/azure/azure-arc/media/overview/azure-arc-control-plane.png
+    description: The diagram illustrates an Azure Arc solution architecture, highlighting
+      the layered management of multi-cloud, on-premises, and operational edge resources
+      with an emphasis on controlling and remediat…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/container-apps/azure-arc-plan.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Plan a Container Apps deployment on Azure Arc-enabled Kubernetes
+
+    Use this article before installing the Container Apps extension on a production
+    cluster. Container Apps on Azure Arc uses capacity and platform services supplied
+    by your Kubernetes cluster. Decisions about nodes, load balancing, DNS, outbound
+    connectivity, storage, identity, logging, and upgrades affect application availability.
+
+    Use the sections in this article to identify deployment requirements and validate
+    prerequisites before installation.
+
+    ## Planning scope
+
+    Container Apps on Azure Arc spans Azure resources, an existing Kubernetes cluster,
+    and deployed applications. Plan for the following areas:
+
+    | Area | Planning inputs |
+
+    | --- | --- |
+
+    | Azure management resources | Connected cluster, cluster extension, custom location,
+    connected environment, provider registration, Azure RBAC, resource organization,
+    container apps, and jobs |
+
+    | Kubernetes cluster | Supported distribution and version, nodes, capacity, Kubernetes
+    and OS lifecycle, cluster security, backup, and disaster recovery |
+
+    | Networking | `LoadBalancer` implementation, IP addresses, routing, firewalls,
+    DNS, certificates, outbound connectivity, and application dependencies |
+
+    | Workloads | Images, revisions, scaling and job configuration, data, health probes,
+    secrets, and resource requirements |
+
+    | Observability | Kubernetes diagnostics, optional Log Analytics integration,
+    access, retention, alerting, and ingestion costs |
+
+    ## Supported topology and version matrix
+
+    Use the latest vendor-supported Kubernetes patch release that Azure Arc-enabled
+    Kubernetes also supports. The Container Apps documentation doesn''t publish a
+    separate Kubernetes version range for each distribution. Validate the exact distribution
+    and Kubernetes version with Microsoft support before a production installation
+    or upgrade.
+
+    The following matrix records the currently published distribution support. Revalidate
+    it against [Available extensions for Azure Arc-enabled Kubernetes clusters](/en-us/azure/azure-arc/kubernetes/extensions-release)
+    and [Azure Container Apps on Azure Arc limitations](azure-arc-overview#limitations)
+    before every installation.
+
+    | Distribution | Kubernetes version | Nodes | Load balancer | DNS preparation
+    | Validated storage driver | Extensio…'
+notes: This is a strong hands-on topic because it combines Logic Apps Hybrid, Arc-enabled
+  Kubernetes and Azure DevOps CI/CD in a single deployable flow. The post can focus
+  on the practical setup readers need to reproduce on their own infrastructure rather
+  than only the platform concept.
+area: integration and messaging
+code_example_ideas:
+- Show how to deploy a Logic Apps Hybrid workflow to an Arc-enabled Kubernetes cluster
+  using an Azure DevOps YAML pipeline.
+- Demonstrate the ARM/Bicep or template inputs needed to create the connected environment
+  and deploy the Standard workflow artifacts.
+- Add a pipeline stage that validates the workflow package and publishes it to the
+  hybrid runtime.
+article_path: content/posts/2026-10-19-como-desplegar-logic-apps-hybrid-con-azure-devops-sin-pelearte-con-el-pipeline.md
+pr_url: null

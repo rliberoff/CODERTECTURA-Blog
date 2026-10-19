@@ -1,0 +1,395 @@
+id: azure-databricks-private-network-gateway-public-preview
+title: Azure Databricks private network gateway enters Public Preview
+slug: azure-databricks-estrena-private-network-gateway-asi-conecto-serverless-a-mi-vne
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-10-19T06:24:34+00:00'
+- status: in_review
+  at: '2026-10-19T06:34:17+00:00'
+discovered_at: '2026-10-19T06:24:34+00:00'
+similarity:
+  max_score: 0.3999
+  closest_match: azure-communication-services-retirement-officially-on-the-clock
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=576556
+  title: '[In preview] Public Preview: Azure Databricks Private network gateway'
+  published_date: '2026-10-16'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: Private network gateway for Azure Databricks is now in Public Preview,
+    enabling serverless compute to connect to resources in your virtual network (VNet)
+    and transitively connected networks through a single managed gateway. Customers
+    can use the gateway t
+- url: https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/manage-private-endpoint-rules
+  title: Manage private endpoint rules - Azure Databricks | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/databricks/_static/images/security/network/pl-azure.png
+    description: The diagram illustrates the architecture of Azure Databricks' private
+      network gateway, including components like your VNet, Databricks Serverless
+      Plane, and Databricks Control Plane, with security gro…
+  excerpt: 'This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Manage private endpoint rules
+
+    ## In this article
+
+    Note
+
+    Azure Databricks charges for networking costs when serverless workloads connect
+    to customer resources, and when performance-intensive services egress data cross-region
+    back to clients. See [Understand Databricks networking costs](cost-management).
+
+    This article describes how to manage private endpoint rules for private connectivity
+    from serverless compute using the Azure Databricks account console. You can also
+    use the [Network connectivity configurations API](https://docs.databricks.com/api/account/networkconnectivity).
+
+    To configure private connectivity for serverless compute, see [Configure private
+    connectivity to Azure resources](serverless-private-link) and [Configure private
+    connectivity to resources in your VNet](pl-to-internal-network).
+
+    ## View the connection status of a private endpoint rule
+
+    After you create a private endpoint rule, you can view its status on the **Network
+    connectivity configurations** page under **Private endpoint rules**.
+
+    `PENDING`
+
+    `ESTABLISHED`
+
+    `REJECTED`
+
+    `DISCONNECTED`
+
+    `EXPIRED`
+
+    `REJECTED`
+
+    `DISCONNECTED`
+
+    `PENDING`
+
+    Most changes to private endpoint rules propagate to serverless compute within
+    10 minutes, but can take up to 24 hours to fully apply.
+
+    Note
+
+    Private endpoint rules are billed by Azure for each hour they exist, regardless
+    of connection state. To stop incurring charges, delete the rule. See [Remove private
+    endpoint rules](#delete).
+
+    :::
+
+    ## Remove private endpoint rules
+
+    You must be an Azure Databricks account administrator to remove a private endpoint.
+
+    As an account administrator, go to the account console.
+
+    In the sidebar, click **Security**.
+
+    Click **Network connectivity configurations**.
+
+    Select your NCC.
+
+    In **Private endpoint rules**, click the trash button ![Trash](../../../_static/images/icons/trash-icon.png)
+    at the right of the rule you want to remove.
+
+    ![Trash](../../../_static/images/icons/trash-icon.png)
+
+    If the rule is in `ESTABLISHED`, `REJECTED`, or `DISCONNECTED` state, Databricks
+    might retain the private endpoint on your cloud resource for 1 day before permanently
+    deleting it.
+
+    `ESTABLISHED`
+
+    `REJECTED`
+
+    `DISCONNECTED`
+
+    ## Update a private endpoint rule
+
+    ![Kebab menu icon.](../../../_static/images/product-icons/overflowicon.svg)
+
+    ## Supported resources
+
+    ### Azure
+
+    Private connectivity from serverless compute supports the following resources:
+
+    Note
+
+    Some resources require a specific sub-resource type:
+
+    `blob`
+
+    `dfs`
+
+    `web`
+
+    `Sql`
+
+    `MongoDB`
+
+    ### Azure China
+
+    Private connectivity from serverless compute supports the following resources
+    in Azure China:
+
+    Azure AI Search is not supported in Azure China.
+
+    For Azure Storage, private endpoints to the `web`…'
+- url: https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/october
+  title: October 2026 - Azure Databricks | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/databricks/_static/images/security/network/pl-azure.png
+    description: The diagram illustrates the architecture of Azure Databricks' private
+      network gateway, including components like your VNet, Databricks Serverless
+      Plane, and Databricks Control Plane, with security gro…
+  - url: https://learn.microsoft.com/en-us/azure/databricks/_static/images/account-settings/azure-networking-transit-vnet.png
+    description: The diagram illustrates the architecture of Azure Databricks VNET
+      injection with private link, showing the flow from customer on-premises systems
+      through virtual and transit gateways, peering, and int…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) Edit
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # October 2026
+
+    Azure Databricks released these features and improvements in October 2026.
+
+    Note
+
+    Releases are staged. Your Azure Databricks account might not be updated until
+    a week or more after the initial release date.
+
+    ## Saving an unchanged job no longer adds rows to the jobs system tables
+
+    **October 19, 2026**
+
+    Saving a job without changing its settings no longer adds rows to `system.lakeflow.jobs`
+    or `system.lakeflow.job_tasks`, and `change_time` stays at the last change. This
+    applies to saves from the UI, the Jobs API, and Declarative Automation Bundles.
+    See [Jobs table schema](../../../admin/system-tables/jobs#jobs).
+
+    ## `READ METADATA` privilege support for compliance security profile standards
+
+    **October 16, 2026**
+
+    The [`READ METADATA` privilege](../../../data-governance/unity-catalog/access-control/privileges-reference#read-metadata)
+    now supports all compliance security profile standards supported by Azure Databricks
+    and is available by default for workspaces with the [compliance security profile](../../../security/privacy/security-profile)
+    enabled.
+
+    For a full list of supported compliance standards, see [Compliance security profile](../../../security/privacy/security-profile).
+
+    ## ADBC driver for Power BI is now generally available
+
+    **October 15, 2026**
+
+    The Arrow Database Connectivity (ADBC) driver for the Azure Databricks connector
+    for Power BI is now generally available. ADBC is the default driver for new connections
+    in Power BI Desktop and the Power BI service. See [Configure ADBC or ODBC driver
+    for Power BI](../../../partners/bi/power-bi/adbc).
+
+    ## MySQL integrated CDC pipeline is now generally available
+
+    **October 15, 2026**
+
+    The integrated CDC pipeline for MySQL is now generally available. An integrated
+    CDC pipeline ingests change data from MySQL into Azure Databricks using a single
+    pipeline, combining extraction and application into one pipeline update. Unlike
+    the standard gateway-based architecture, an integrated CDC pipeline requires no
+    separate ingestion gateway. See [Create an integrated CDC pipeline for MySQL](../../../ingestion/lakeflow-connect/mysql-integrated-pipeline).
+
+    ## Context-based ingress policies for inbound private connectivity are now generally
+    available
+
+    **October 15, 2026**
+
+    Context-based ingress policies for inbound Private Link are now generally available.
+    Control which registered private endpoints can reach your workspaces…'
+- url: https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/september
+  title: September 2026 - Azure Databricks | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/databricks/_static/images/security/network/pl-azure.png
+    description: The diagram illustrates the architecture of Azure Databricks' private
+      network gateway, including components like your VNet, Databricks Serverless
+      Plane, and Databricks Control Plane, with security gro…
+  - url: https://learn.microsoft.com/en-us/azure/databricks/_static/images/account-settings/azure-networking-transit-vnet.png
+    description: The diagram illustrates the architecture of Azure Databricks VNET
+      injection with private link, showing the flow from customer on-premises systems
+      through virtual and transit gateways, peering, and int…
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) Edit
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # September 2026
+
+    Azure Databricks released these features and improvements in September 2026.
+
+    Note
+
+    Releases are staged. Your Azure Databricks account might not be updated until
+    a week or more after the initial release date.
+
+    ## Table update triggers on OpenSharing objects and system tables are now generally
+    available
+
+    **September 30, 2026**
+
+    Lakeflow Jobs table update triggers can monitor OpenSharing objects and system
+    tables. See [Add a trigger to OpenSharing and system tables](../../../jobs/trigger-table-update#trigger-on-ds-and-sys).
+
+    ## Control spreadsheet writeback with a workspace admin setting
+
+    **September 30, 2026**
+
+    Excel and Google Sheets writeback now requires a workspace admin to enable the
+    **Allow spreadsheet writeback** security setting. See [Write data back to Azure
+    Databricks using the Azure Databricks Excel Add-in](../../../integrations/excel/write-back)
+    and [Write data back to Azure Databricks from Google Sheets](../../../integrations/google-sheets/write-back).
+
+    ## Query tags for SQL warehouses are now generally available
+
+    **September 30, 2026**
+
+    Query tags are now generally available. You can apply custom key-value tags to
+    SQL workloads for grouping, filtering, and cost attribution on Databricks SQL
+    warehouses and Lakehouse//RT compute. Tags appear in `system.query.history` and
+    on the **Query History** page of the Azure Databricks UI. See [Query tags](../../../sql/user/queries/query-tags).
+
+    ## Databricks JDBC Driver (Simba) 2.8.4 is available
+
+    **September 29, 2026**
+
+    [Simba JDBC Driver (Legacy)](../../../integrations/jdbc/) 2.8.4 adds Java 25 support
+    and upgrades `libthrift`, `httpclient5`, `httpcore5`, and `lz4-java`. Download
+    it from the [JDBC drivers archive](https://www.databricks.com/spark/jdbc-drivers-archive)
+    under **All JDBC Driver Versions (Simba)**.
+
+    ## OpenAI GPT-6.1 Sol is now available on Unity Gateway
+
+    **September 29, 2026**
+
+    OpenAI [GPT-6.1 Sol](../../../machine-learning/foundation-model-apis/supported-models#openai-gpt-6-1-sol)
+    is now available on Unity Gateway. You can access this model using [Foundation
+    Model APIs](../../../machine-learning/foundation-model-apis/).
+
+    Customers are responsible for ensuring their compliance with [applicable terms](../../../machine-learning/model-serving/acceptable-use-models).
+
+    ## Genie Code agentic capabilities are now processed in the UK
+
+    **September 29, 2026**
+
+    Genie Code agentic capabilities are n…'
+- url: https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/private-network-gateway/configure-private-network-gateway
+  title: Configure a private network gateway - Azure Databricks
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/azure/databricks/_static/images/security/network/pl-azure.png
+    description: The diagram illustrates the architecture of Azure Databricks' private
+      network gateway, including components like your VNet, Databricks Serverless
+      Plane, and Databricks Control Plane, with security gro…
+  - url: https://learn.microsoft.com/en-us/azure/databricks/_static/images/account-settings/azure-networking-transit-vnet.png
+    description: The diagram illustrates the architecture of Azure Databricks VNET
+      injection with private link, showing the flow from customer on-premises systems
+      through virtual and transit gateways, peering, and int…
+  excerpt: '* Configure a private network gateway. # Configure a private network gateway.
+    This article describes how to set up and manage a private network gateway using
+    the account REST API. Before you create a private network gateway, make sure you
+    have the following:. This subnet must not be used by any other Azure resource,
+    and must be in the same region as your NCC and workspaces. * The IP address of
+    a DNS resolver that is reachable from the gateway subnet. The gateway and its
+    subnet must be in the same region as the NCC. All private network gateway configuration
+    uses the account REST API. Delegate this subnet to `Microsoft.Databricks/workspaces`
+    before you create the gateway. The delegated subnet must be in the same Azure
+    region as your NCC and target workspaces, and must have enough IP addresses for
+    the gateway nodes. ### Create the private network gateway. Creating a gateway
+    from the account console REST API requires an OAuth access token from a service
+    principal with client credentials, created beforehand by an account admin in the
+    account console. To create the gateway, send a POST request to the `private-network-gateways`
+    endpoint under your NCC. * **`azure_cloud_connection.gateway_subnet.resource_id`**
+    (required): The full Azure resource ID of the subnet you delegated in the previous
+    step. * **`destinations`** (required when `traffic_mode` is `SPECIFIC_DESTINATIONS`):
+    The DNS names to route through the gateway. To create a gateway in `SPECIFIC_DESTINATIONS`
+    mode, run the following:. A gateway uses the resolver you specify in `private_dns_resolvers`
+    to resolve hostnames for the destinations you configure. The resolver must be
+    reachable from the gateway subnet. If your private resources are registered in
+    an Azure private DNS zone, link that zone to the VNet that contains the gateway
+    subnet so the hostnames resolve correctly. You can update, delete, and list gateways
+    with the account REST API. You can update `gateway_name`, `destinations`, `private_dns_resolvers`,
+    and `traffic_mode` in place with a PATCH request. To change the gateway subnet,
+    delete the gateway and create a new one. Deleting a gateway cuts off connectivity
+    to the private resources that depend on it. To list the private network gateways
+    in an NCC, send a GET request to the gateway endpoint under your NCC:.'
+notes: This is a timely networking-and-data-platform update with direct architecture
+  impact for secure analytics workloads. It is especially relevant for teams that
+  need serverless Databricks compute while keeping traffic private and centrally governed.
+area: azure data platform
+code_example_ideas:
+- Configure a private network gateway for serverless compute using the account REST
+  API.
+- Map the gateway to a network connectivity configuration and verify connectivity
+  to VNet resources.
+- Test routing serverless egress through existing security appliances and document
+  the resulting network path.
+article_path: content/posts/2026-10-19-azure-databricks-estrena-private-network-gateway-asi-conecto-serverless-a-mi-vne.md
+pr_url: null

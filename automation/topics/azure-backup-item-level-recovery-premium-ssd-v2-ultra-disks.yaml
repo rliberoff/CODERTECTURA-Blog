@@ -1,0 +1,148 @@
+id: azure-backup-item-level-recovery-premium-ssd-v2-ultra-disks
+title: Azure Backup Now Supports Item-Level Recovery for Premium SSDv2 and Ultra Disk
+  VMs
+slug: azure-backup-ya-cubre-la-recuperacion-a-nivel-de-archivo-en-vms-con-premium-ssdv
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-10-26T06:24:28+00:00'
+- status: in_review
+  at: '2026-10-26T06:36:34+00:00'
+discovered_at: '2026-10-26T06:24:28+00:00'
+similarity:
+  max_score: 0.4093
+  closest_match: azure-container-registry-activity-metrics-scale
+  threshold: 0.82
+sources:
+- url: https://azure.microsoft.com/updates?id=577963
+  title: '[Launched] Generally Available: Item Level Recovery for Azure VMs with Premium
+    SSDv2 and Ultra Disks in Azure Backup'
+  published_date: '2026-10-23'
+  host: azure.microsoft.com
+  kind: primary
+  excerpt: Azure Backup now supports Item-Level Recovery (ILR) for Azure virtual machines
+    using Premium SSD v2 and Ultra disks with both 512 byte and 4KB logical sector
+    sizes. You can now recover individual files and folders from your Azure VMs with
+    Premium SSDv2 an
+- url: https://learn.microsoft.com/en-us/azure/backup/backup-azure-postgresql-flex-server-elastic-cluster-v2-overview
+  title: About Azure Backup for PostgreSQL flexible server and elastic cluster (v2)
+    - Azure Backup | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/en-us/troubleshoot/sql/azure-sql/media/sql-installation-fails-error-azure-vm/4k-sector-size-example.png
+    description: A Command Prompt window displays the output of the fsutil sectorinfo
+      command run on drive E, revealing sector size details including LogicalBytesPerSector
+      at 512 and PhysicalBytesPerSectorForAtomicity…
+  - url: https://learn.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/media/performance-guidelines-best-practices-vm-size/filter-vm-size-list.png?view=azuresql
+    description: The image displays a web interface for selecting an Azure VM size,
+      with a search for "v5" highlighted, and includes columns showing VM size, type,
+      number of vCPUs, RAM in GiB, and data disks.
+  - url: https://learn.microsoft.com/en-us/azure/backup/media/backup-azure-restore-files-from-vm/file-recovery-1.png
+    description: A flowchart illustrating the process of backing up files on Azure
+      VMs, including steps to download a script, meet OS and access requirements,
+      and run the script on a designated VM, with an alternative…
+  - url: https://learn.microsoft.com/en-us/azure/backup/media/backup-azure-restore-files-from-vm/unmount-disks3.png
+    description: The screenshot displays a step-by-step guide for file recovery using
+      Azure Backup, showing instructions for downloading scripts, selecting recovery
+      points, and unmounting disks after the recovery proc…
+  - url: https://learn.microsoft.com/en-us/azure/backup/media/backup-azure-restore-files-from-vm/linux-mount-paths.png
+    description: The image displays a black screen with white text showing details
+      about Microsoft Azure VM Backup, including connection status, recovery point
+      information, and file system paths for volumes on a Premi…
+  - url: https://learn.microsoft.com/en-us/azure/backup/media/backup-azure-restore-files-from-vm/open-vault-for-vm.png
+    description: The interface displays a backup status report for Azure VMs, highlighting
+      29 application-consistent restore points and options for file recovery, along
+      with timestamps of the most recent backups.
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/backup/backup-azure-postgresql-flex-server-elastic-cluster-v2-overview.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # About Azure PostgreSQL flexible server and elastic cluster vaulted backup (v2)
+    (preview)
+
+    **Azure Backup for PostgreSQL Flexible Server and Elastic Cluster v2 (preview)**
+    provides an enhanced backup capability designed to address key limitations of
+    the existing v1 solution and supports a broader range of backup needs. V2 uses
+    physical backups based on managed disk snapshots, replacing the logical `pg_dump`
+    backup approach used in v1.
+
+    ## Why use Azure PostgreSQL flexible server and elastic cluster vaulted backup
+    (v2)
+
+    The v2 backup solution provides greater flexibility for protecting and recovering
+    Azure PostgreSQL Flexible Server or Elastic Cluster workloads. It uses incremental
+    snapshots of the underlying managed disks instead of the logical backup approach
+    used by v1, addressing limitations related to server size, backup frequency, and
+    recovery options.
+
+    The following table compares the capabilities available with v1 and v2 backup.
+
+    | Capability | v1 (generally available) | v2 (preview) |
+
+    | --- | --- | --- |
+
+    | Backup technology | Logical backup (`pg_dump`) | Physical backup from managed
+    disk snapshots |
+
+    | Datasources protected | Flexible server | Flexible server and elastic cluster
+    |
+
+    | Maximum size | 1 TB | 32 TB on Premium SSD v1; 64 TB on Premium SSD v2 |
+
+    | Backup frequency | One backup per week | Daily and weekly schedules (1-day RPO)
+    |
+
+    | Backup type | Full backups only | First backup is full; subsequent backups are
+    incremental |
+
+    | Restore | Restore as files to a storage container, then import with native tools
+    | Restore as server directly to a target flexible server or elastic cluster |
+
+    | Maximum retention | Up to 10 years | Up to 10 years |
+
+    ## Key capabilities of Azure PostgreSQL flexible server and elastic cluster vaulted
+    backup (v2)
+
+    This feature includes the following key capabilities:
+
+    * **Vaulted, isolated long-term backups:** Takes snapshots in your tenant and
+    streams backups to the Backup vault. This capability isolates the backup data
+    from the source subscription and account. The vault protects the data with Azure
+    role-based access control (RBAC), [soft delete](secure-by-default), and [Multi-user
+    authorization](multi-user-authorization-concept) (if enabled).
+
+    * **WORM immutable backups:** Enables…'
+notes: This matters for operators because it removes a practical backup gap for modern
+  Azure VM storage configurations. A hands-on article can show whether item-level
+  recovery changes restore procedures for production teams.
+area: Azure data platform
+code_example_ideas:
+- Configure a VM backup policy and test restoring a single file from an Azure VM using
+  Premium SSDv2 or Ultra disks.
+- Verify restore behavior for VMs with 512-byte versus 4K logical sector sizes.
+- Document an end-to-end recovery drill for a Linux or Windows VM using Azure Backup
+  and PowerShell or CLI.
+article_path: content/posts/2026-10-26-azure-backup-ya-cubre-la-recuperacion-a-nivel-de-archivo-en-vms-con-premium-ssdv.md
+pr_url: null

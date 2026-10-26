@@ -1,0 +1,240 @@
+id: azure-container-registry-activity-metrics-scale
+title: Azure Container Registry Adds Scale-Ready Activity Metrics
+slug: azure-container-registry-por-fin-deja-ver-lo-importante-transacciones-egress-y-s
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-10-26T06:24:28+00:00'
+- status: in_review
+  at: '2026-10-26T06:29:45+00:00'
+discovered_at: '2026-10-26T06:24:28+00:00'
+similarity:
+  max_score: 0.4407
+  closest_match: microsoft-foundry-observability-agent-tracing-sensitive-telemetry
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/apps-on-azure-blog/making-azure-container-registry-activity-visible-at-scale/ba-p/4567301
+  title: Making Azure Container Registry Activity Visible at Scale
+  published_date: '2026-10-23'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: 'Learn More Use Grafana dashboards in Azure Container Registry Monitor
+    Azure Container Registry Azure Container Registry (ACR) now publishes two new
+    metrics: Transactions and Data Transfer . For the first time, you can see which
+    operations your registry serves, which region serves them, and how much data (egress)
+    they move, for each registry and each of its geo-replicas. ACR often serves as
+    a shared distribution point for containerized workloads. Build systems push container
+    images and other artifacts, Kubernetes clusters pull images during deployments,
+    and security and lifecycle tools scan artifacts throughout the day. As those environments
+    grow, high-level signals such as a total pull count or storage used can tell you
+    that activity changed, but not why . Transactions and Data Transfer fill that
+    gap, so you can explain a traffic spike, catch a failing or throttled pipeline,
+    and see where your data goes. A customer-facing metric is a stream of data points,
+    attributed to one resource, that you can chart, split, and alert on in Azure Monitor.
+    Building these metrics meant producing data points for very high-throughput signals,
+    counting them accurately, attributing each one to the right registry in every
+    region, and not exhausting the metrics system underneath. In this post, we''ll
+    cover what these metrics show you, what it took to deliver them at scale, and
+    the sharded design that made it possible. What you couldn''t see before Before
+    this work, push and pull counts, alongside storage used, were the only registry
+    traffic metrics we published. They showed that activity happened, but not what
+    kind of operations drove it, whether each operation succeeded, or where it was
+    served. Take a sudden jump in pulls: Before: total pull count is up, with no way
+    to tell which geo-replication drove the traffic. Now: the extra requests are blob
+    downloads in one geo-replication region, many of them Throttled, while Data Transfer
+    from that geo-replication stays flat. Those gaps matter most when traffic changes.
+    An increase may come from a deployment, a retry loop, metadata polling, a regional
+    workload shift, or larger image layers, and each looks different underneath: a
+    surge in manifest and blob reads, repeated errors or throttled responses, a steady
+    stream of tag and listing calls, traffic moving between replicas, or more bytes
+    per pull without more requests. To tell them apart, you need to know which operations
+    are changing, how much artifact data is moving, where requests are being served,
+    and whether the pattern matches the workload you intended to run. Push and pull
+    counts summarize outcomes. Transactions and Data Transfer describe behavior, and
+    describing behavior takes far more data. Why scale is the hard part These signals
+    are high throughput by nature, because every counted request becomes its own data
+    point: a single sampled registry''s activity can exceed 100,000 transactions and
+    hundreds of gigabytes of data transferred (egress) in one hour. All of those dat…'
+- url: https://azure.microsoft.com/updates?id=577963
+  title: '[Launched] Generally Available: Item Level Recovery for Azure VMs with Premium
+    SSDv2 and Ultra Disks in Azure Backup'
+  published_date: '2026-10-23'
+  host: azure.microsoft.com
+  kind: secondary
+  excerpt: Azure Backup now supports Item-Level Recovery (ILR) for Azure virtual machines
+    using Premium SSD v2 and Ultra disks with both 512 byte and 4KB logical sector
+    sizes. You can now recover individual files and folders from your Azure VMs with
+    Premium SSDv2 an
+- url: https://learn.microsoft.com/en-us/azure/container-registry/monitor-container-registry
+  title: Monitor Azure Container Registry - Azure Container Registry | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-management-docs/blob/main/articles/container-registry/monitor-container-registry.md)
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Monitor Azure Container Registry
+
+    This article describes:
+
+    * The types of monitoring data you can collect for this service.
+
+    * Ways to analyze that data.
+
+    Note
+
+    If you''re already familiar with this service and/or Azure Monitor and just want
+    to know how to analyze monitoring data, see the [Analyze](#analyze-monitoring-data)
+    section near the end of this article.
+
+    When you have critical applications and business processes that rely on Azure
+    resources, you need to monitor and get alerts for your system. The Azure Monitor
+    service collects and aggregates metrics and logs from every component of your
+    system. Azure Monitor provides you with a view of availability, performance, and
+    resilience, and notifies you of issues. You can use the Azure portal, PowerShell,
+    Azure CLI, REST API, or client libraries to set up and view monitoring data.
+
+    * For more information on Azure Monitor, see the [Azure Monitor overview](/en-us/azure/azure-monitor/overview).
+
+    * For more information on how to monitor Azure resources in general, see [Monitor
+    Azure resources with Azure Monitor](/en-us/azure/azure-monitor/essentials/monitor-azure-resource).
+
+    This article describes the monitoring data generated by Azure Container Registry
+    and how you can use the features of Azure Monitor to analyze and alert on this
+    data.
+
+    ## Monitor overview
+
+    The **Overview** page in the Azure portal for each registry includes a brief view
+    of recent resource usage and activity, such as push and pull operations. This
+    high-level information is useful, but only a small amount of data is shown there.
+
+    For customizable visualizations and more detailed analysis, open **Dashboards
+    with Grafana** under **Monitoring**. This integrated experience, enabled by Azure
+    Managed Grafana, includes Azure-managed dashboards for transaction trends, data
+    transfer, throttling, and storage consumption. You can also create, customize,
+    save, and share dashboards without deploying a separate Grafana instance. For
+    more information, see [Grafana dashboards in Azure Container Registry](/en-us/azure/container-registry/container-registry-dashboards-with-grafana).
+
+    ![Screenshot shows the registry metrics overview page displaying four metrics
+    over the last 30 days.](media/monitor-service/metrics-overview.png)
+
+    ## Resource type…'
+- url: https://learn.microsoft.com/en-us/azure/container-registry/monitor-container-registry-reference
+  title: Monitoring Data Reference for Azure Container Registry - Azure Container
+    Registry | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-management-docs/blob/main/articles/container-registry/monitor-container-registry-reference.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Azure Container Registry monitoring data reference
+
+    This article contains all the monitoring reference information for this service.
+
+    See [Monitor Azure Container Registry](monitor-container-registry) for details
+    on the data you can collect for Azure Container Registry and how to use it.
+
+    ## Metrics
+
+    This section lists all the automatically collected platform metrics for this service.
+    These metrics are also part of the global list of [all platform metrics supported
+    in Azure Monitor](/en-us/azure/azure-monitor/reference/supported-metrics/metrics-index#supported-metrics-per-resource-type).
+
+    For information on metric retention, see [Azure Monitor Metrics overview](/en-us/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics).
+
+    ### Supported metrics for Microsoft.ContainerRegistry/registries
+
+    The following table lists the metrics available for the Microsoft.ContainerRegistry/registries
+    resource type.
+
+    * All columns might not be present in every table.
+
+    * Some columns might be beyond the viewing area of the page. Select **Expand table**
+    to view all available columns.
+
+    **Table headings**
+
+    * **Category** - The metrics group or classification.
+
+    * **Metric** - The metric display name as it appears in the Azure portal.
+
+    * **Name in REST API** - The metric name as referred to in the [REST API](/en-us/azure/azure-monitor/essentials/rest-api-walkthrough).
+
+    * **Unit** - Unit of measure.
+
+    * **Aggregation** - The default [aggregation](/en-us/azure/azure-monitor/essentials/metrics-aggregation-explained)
+    type. Valid values: Average (Avg), Minimum (Min), Maximum (Max), Total (Sum),
+    Count.
+
+    * **Dimensions** - [Dimensions](/en-us/azure/azure-monitor/essentials/metrics-aggregation-explained#dimensions-splitting-and-filtering)
+    available for the metric.
+
+    * **Time Grains** - [Intervals](/en-us/azure/azure-monitor/essentials/metrics-aggregation-explained#granularity)
+    at which the metric is sampled. For example, `PT1M` indicates that the metric
+    is sampled every minute, `PT30M` every 30 minutes, `PT1H` every hour, and so on.
+
+    * **DS Export**- Whether the metric is exportable to Azure Monitor Logs via diagnostic
+    settings. For information on exporting metrics, see [Create diagnostic settings
+    in Azure Monitor](/en-us/azure/azure-monitor/…'
+- url: https://learn.microsoft.com/en-us/azure/container-registry/container-registry-dashboards-with-grafana?view=azuremgmtiothub-1.1.0
+  title: Use Grafana dashboards in Azure Container Registry
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: Use prebuilt or customizable Grafana dashboards to understand registry
+    usage patterns, monitor performance, identify throttling, track storage and data
+    transfer
+notes: This is a strong observability-and-platform story because the new metrics make
+  registry activity and egress visible in a way that is directly actionable. It fits
+  architecture readers who want to monitor shared or geo-replicated registries at
+  scale.
+area: Azure infrastructure and IaC
+code_example_ideas:
+- Create an Azure Monitor chart for the new ACR Transactions metric split by ApiName
+  and Region.
+- Query ACR DataTransfer in Grafana and compare pull traffic across regions.
+- Use the ACR monitoring reference to build an alert for unexpected 429 responses
+  or data egress spikes.
+article_path: content/posts/2026-10-26-azure-container-registry-por-fin-deja-ver-lo-importante-transacciones-egress-y-s.md
+pr_url: null

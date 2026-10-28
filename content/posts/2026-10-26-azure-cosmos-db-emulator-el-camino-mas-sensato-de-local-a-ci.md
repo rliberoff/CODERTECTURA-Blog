@@ -1,7 +1,7 @@
 ---
 title: 'Azure Cosmos DB Emulator: el camino más sensato de local a CI'
 date: '2026-10-26T06:38:40+00:00'
-draft: true
+draft: false
 slug: azure-cosmos-db-emulator-el-camino-mas-sensato-de-local-a-ci
 description: Te enseño cómo usar Azure Cosmos DB Emulator en Docker, desde tu portátil
   hasta GitHub Actions, para tener pruebas de integración .NET más fiables.

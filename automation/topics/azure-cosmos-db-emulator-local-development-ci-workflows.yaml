@@ -1,0 +1,253 @@
+id: azure-cosmos-db-emulator-local-development-ci-workflows
+title: Azure Cosmos DB Emulator Is a Better Path from Local Development to CI
+slug: azure-cosmos-db-emulator-el-camino-mas-sensato-de-local-a-ci
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-10-26T06:24:28+00:00'
+- status: in_review
+  at: '2026-10-26T06:39:57+00:00'
+discovered_at: '2026-10-26T06:24:28+00:00'
+similarity:
+  max_score: 0.5595
+  closest_match: spec-driven-development-azure-cosmos-db-github-spec-kit
+  threshold: 0.82
+sources:
+- url: https://devblogs.microsoft.com/cosmosdb/from-local-development-to-ci-workflows-with-the-azure-cosmos-db-emulator/
+  title: From Local Development to CI Workflows with the Azure Cosmos DB Emulator
+  published_date: '2026-10-23'
+  host: devblogs.microsoft.com
+  kind: primary
+  excerpt: When you change a database-backed feature, a successful HTTP response isn’t
+    enough. You need to know that the write reached storage, the application retrieved
+    the updated record, and the next answer reflects it. The Azure Cosmos DB Emulator
+    runs locally in Docker and lets us use the SDK we’ll use in production. We’ll
+    develop against […] The post From Local Development to CI Workflows with the Azure
+    Cosmos DB Emulator appeared first on Azure Cosmos DB Blog .
+- url: https://devblogs.microsoft.com/cosmosdb/code-with-cosmos/
+  title: 'Code with Cosmos: Build a Production-Ready AI App in Four Episodes'
+  published_date: '2026-10-23'
+  host: devblogs.microsoft.com
+  kind: secondary
+  excerpt: 'Follow an AI application from a blank folder to a system built for production
+    AI application development often starts with a promising prototype. A real application
+    has to do more than produce an answer: it needs current operational data, the
+    ability to take actions and complete transactions, memory that carries across
+    sessions, coordination between specialized […] The post Code with Cosmos: Build
+    a Production-Ready AI App in Four Episodes appeared first on Azure Cosmos DB Blog
+    .'
+- url: https://github.com/Azure/azure-cosmos-db-emulator-docker/issues/347
+  title: '[vNext] QueryRequestOptions.MaxItemCount is ignored for partition-scoped
+    ordered queries · Issue #347 · Azure/azure-cosmos-db-emulator-docker · GitHub'
+  published_date: null
+  host: github.com
+  kind: secondary
+  excerpt: '[Skip to content](#start-of-content)
+
+    ## Navigation Menu
+
+    [Sign in](/login?return_to=https%3A%2F%2Fgithub.com%2FAzure%2Fazure-cosmos-db-emulator-docker%2Fissues%2F347)
+
+    Appearance settings
+
+    [Sign in](/login?return_to=https%3A%2F%2Fgithub.com%2FAzure%2Fazure-cosmos-db-emulator-docker%2Fissues%2F347)
+
+    [Sign up](/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=Azure%2Fazure-cosmos-db-emulator-docker)
+
+    Appearance settings
+
+    You signed in with another tab or window. Reload to refresh your session. You
+    signed out in another tab or window. Reload to refresh your session. You switched
+    accounts on another tab or window. Reload to refresh your session. Dismiss alert
+
+    {{ message }}
+
+    ## Repository navigation
+
+    # [vNext] QueryRequestOptions.MaxItemCount is ignored for partition-scoped ordered
+    queries #347
+
+    Copy link
+
+    Copy link
+
+    Open
+
+    Open
+
+    [[vNext] QueryRequestOptions.MaxItemCount is ignored for partition-scoped ordered
+    queries](/Azure/azure-cosmos-db-emulator-docker/issues/347#top)#347
+
+    Copy link
+
+    Assignees
+
+    [![Ritvik-Jayaswal](https://avatars.githubusercontent.com/u/29742933?s=64&u=4c63feaf0f3c7e1483210eebaa6aef587271a7dc&v=4)](/Ritvik-Jayaswal)
+
+    Labels
+
+    [bug](https://github.com/Azure/azure-cosmos-db-emulator-docker/issues?q=state%3Aopen%20label%3A%22bug%22)[cosmosEmulatorVnextPreviewissues
+    raised for the vNext Linux based emulator (preview)](https://github.com/Azure/azure-cosmos-db-emulator-docker/issues?q=state%3Aopen%20label%3A%22cosmosEmulatorVnextPreview%22)issues
+    raised for the vNext Linux based emulator (preview)[query](https://github.com/Azure/azure-cosmos-db-emulator-docker/issues?q=state%3Aopen%20label%3A%22query%22)
+
+    Milestone
+
+    [2026-09](https://github.com/Azure/azure-cosmos-db-emulator-docker/milestone/23)
+
+    ## Description
+
+    [![@pajohns-autopilot](https://avatars.githubusercontent.com/u/287577614?u=a03b9d9c5765a2cbd28f7da17c8b7b58c476c71b&v=4&size=48)](https://github.com/pajohns-autopilot)
+
+    [pajohns-autopilot](https://github.com/pajohns-autopilot)
+
+    opened [on Aug 31, 2026](https://github.com/Azure/azure-cosmos-db-emulator-docker/issues/347#issue-5298521034)
+
+    Issue body actions
+
+    ## Description
+
+    The Linux vNext emulator ignores `QueryRequestOptions.MaxItemCount` for a
+
+    partition-scoped ordered LINQ query.
+
+    The application requests a maximum of 20 items and calls `ReadNextAsync()` once,
+
+    but the emulator returns thousands of items in that single `FeedResponse`.
+
+    The identical application code pointed at an Azure Cosmos DB development
+
+    instance returns exactly 20 items and a continuation token.
+
+    ## Environment
+
+    * Emulator image:
+
+    `mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-latest`
+
+    * Emulator version: `EN20260810`
+
+    * Image build: `20260807.1`
+
+    * Image digest:
+
+    `sha256:6ce44ed4ac69cf69a6cb7982d0536cfaa22696172168fc9fe9a722a189d38f99`
+
+    * Microsoft.Azure.Cosmos SDK: `3.61.0`
+
+    * Docker Desktop: `29.5.3`
+
+    * Host: macOS 26.5, Apple Silicon (`Darwin arm64`)
+
+    * Connec…'
+- url: https://learn.microsoft.com/en-us/azure/cosmos-db/emulator-linux
+  title: Linux-based emulator - vNext - Azure Cosmos DB | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) Edit
+
+    ---
+
+    ---
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Linux-based emulator - vNext
+
+    * Applies to: ✅ NoSQL
+
+    The next generation of the Azure Cosmos DB emulator is entirely Linux-based and
+    is available as a Docker container. It supports running on a wide variety of processors
+    and operating systems.
+
+    Important
+
+    This version of the emulator only supports the API for NoSQL in [gateway mode](sdk-connection-modes#available-connectivity-modes),
+    with a select subset of features. It doesn''t currently enforce authentication.
+    For more information, see [authentication](#authentication) and [feature support](#feature-support).
+
+    ## Prerequisites
+
+    * [Docker](https://www.docker.com/)
+
+    ## Installation
+
+    Get the Docker container image using `docker pull`. The container image is published
+    to the [Microsoft Artifact Registry](https://mcr.microsoft.com/) as `mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-latest`.
+
+    ```
+
+    docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-latest
+
+    ```
+
+    ## Running
+
+    To run the container, use `docker run`. Afterwards, use `docker ps` to validate
+    that the container is running.
+
+    ```
+
+    docker run --detach --publish 8081:8081 --publish 8080:8080 --publish 1234:1234
+    mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-latest docker ps
+
+    ```
+
+    ```
+
+    CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES c1bb8cf53f8a mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-latest
+    "/bin/bash -c /home/…" 5 seconds ago Up 5 seconds 0.0.0.0:1234->1234/tcp, :::1234->1234/tcp,
+    0.0.0.0:8081->8081/tcp, :::8081->8081/tcp
+
+    ```
+
+    The emulator includes two components:
+
+    * **Data Explorer** - Interactively explore the data in the emulator. By default,
+    this component runs on port `1234`.
+
+    * **Azure Cosmos DB emulator** - A local version of the Azure Cosmos DB database
+    service. By default, this component runs on port `8081`.
+
+    The emulator gateway endpoint uses port `8081` at the address <http://localhost:8081>.
+    To navigate to the Data Explorer, use the address <http://localhost:1234> in your
+    web browser. The gateway endpoint is typically available immediately, but Data
+    Explorer might take a few seconds to start.
+
+    ### Health probe
+
+    The emulator exposes a health probe endpoint on port `8080`. Use this endpoint
+    to determine when the emulator is fully initialized and ready to accept requests.
+
+    The following endpoints are available:
+
+    * <http://localhost:8080/alive> — Liveness probe.
+
+    * <http://localhost:8080/r…'
+notes: This is a practical developer workflow topic with a clear reproduction path
+  from laptop to pipeline. It is especially relevant for .NET teams that want deterministic
+  database-backed tests without provisioning cloud resources.
+area: Azure data platform
+code_example_ideas:
+- Run the Cosmos DB Emulator in Docker locally and point a .NET app to the emulator
+  endpoint.
+- Add the emulator to a GitHub Actions workflow for integration tests against the
+  same SDK used in production.
+- Seed test data, run CRUD and query tests, and verify persistence and concurrency
+  behavior during CI.
+article_path: content/posts/2026-10-26-azure-cosmos-db-emulator-el-camino-mas-sensato-de-local-a-ci.md
+pr_url: null

@@ -44,36 +44,35 @@ ai:
 
 Si trabajas con una API que persiste datos, hay un momento en el que el test unitario deja de darte paz mental. Puedes comprobar que el controlador devuelve 200, sí, pero eso no te asegura que la escritura haya llegado a almacenamiento, que la lectura posterior recupere el documento correcto o que una actualización concurrente falle exactamente como esperas. Justo por eso me parece tan interesante el enfoque que plantea [Azure Cosmos DB Emulator para pasar de desarrollo local a CI](https://devblogs.microsoft.com/cosmosdb/from-local-development-to-ci-workflows-with-the-azure-cosmos-db-emulator/): usar en local y en pipeline el mismo SDK y una superficie de comportamiento muy parecida a producción, sin depender de una cuenta compartida en la nube para cada ejecución.
 
-Mi tesis aquí es muy simple: para un equipo .NET, el emulador de Azure Cosmos DB en Docker es una de las formas más limpias de tener pruebas de integración reproducibles, rápidas y razonablemente fieles al mundo real. No sustituye a todas las validaciones contra un entorno real en Azure, pero sí elimina una cantidad enorme de fricción en el día a día. Y eso, en mi experiencia, cambia por completo la calidad del *feedback*.
+Mi tesis aquí es muy simple: para un equipo .NET, el emulador de Azure Cosmos DB en Docker es una de las formas más limpias de tener pruebas de integración reproducibles, rápidas y razonablemente fieles al mundo real. No sustituye a todas las validaciones contra un entorno real en Azure, pero sí elimina una cantidad enorme de fricción en el día a día.
 
 ### Antes de empezar
 
 Para reproducir el flujo de este artículo, yo partiría de estos requisitos:
 
-- **.NET 8 SDK** instalado.
+- **.NET 10 SDK** instalado.
 - **Docker Desktop** operativo en tu máquina.
-- Un sistema capaz de ejecutar contenedores Docker.
 - Un proyecto de test con **xUnit**.
 - El paquete **Microsoft.Azure.Cosmos 3.61.0** para acceder al SDK de Cosmos DB.
 - Si quieres llevarlo a pipeline, un repositorio en **GitHub** con Actions habilitado.
 
-También conviene tener claros los límites desde el principio, para no pedirle al emulador lo que no promete. Según la [documentación oficial del emulador Linux vNext](https://learn.microsoft.com/en-us/azure/cosmos-db/emulator-linux), funciona como contenedor Docker, está centrado en la **API for NoSQL**, usa **gateway mode** y actualmente ofrece un **subconjunto de características**. Además, la documentación indica que **no aplica autenticación actualmente**.
+También conviene tener claros los límites desde el principio, para no pedirle al emulador lo que no promete. Según la [documentación oficial del emulador Linux vNext](https://learn.microsoft.com/en-us/azure/cosmos-db/emulator-linux), funciona como contenedor Docker, está centrado en la **API for NoSQL**, usa **gateway mode** y actualmente ofrece un **subconjunto de características**, no todas las capacidades reales. Por ejemplo, la documentación indica que **no aplica autenticación actualmente**.
 
-Esto último simplifica muchísimo las pruebas locales, pero tiene una consecuencia importante: **que tus tests pasen en el emulador no significa que toda tu integración con Cosmos DB en Azure esté validada**. Valida muy bien persistencia, particionado y comportamiento del SDK. Seguridad, identidad y ciertas capacidades avanzadas, no.
+Esto último simplifica muchísimo las pruebas locales, pero tiene una consecuencia importante: **que tus tests pasen en el emulador no significa que toda tu integración con Cosmos DB en Azure esté validada**. Es decir, te ofrece la capacidad de verificar el correcto funcionamiento de los aspectos de persistencia, particionado y comportamiento del SDK; pero no te garantiza la veracidad en la operatividad de la seguridad, identidad y ciertas capacidades avanzadas.
 
 {{< figure src="/images/azure-cosmos-db-emulator-el-camino-mas-sensato-de-local-a-ci/body-1.png" alt="Diagrama del flujo de desarrollo local a CI con Cosmos DB Emulator" caption="El mismo patrón de pruebas puede vivir en el portátil y en el pipeline con muy pocas diferencias." >}}{{< /figure >}}
 
 ### Por qué prefiero el emulador frente a una base compartida en Azure
 
-La alternativa habitual en muchos equipos consiste en mantener una cuenta de desarrollo en Azure Cosmos DB y lanzar allí las pruebas de integración. Se puede hacer, claro. De hecho, a veces no queda otra. Pero tiene varios costes que se van acumulando sin hacer mucho ruido: dependencia de red, datos sucios entre ejecuciones, credenciales repartidas por demasiados sitios, latencia innecesaria y un coste económico que, aunque no siempre sea dramático, existe.
+La alternativa habitual en muchos equipos consiste en mantener una cuenta de desarrollo en Azure Cosmos DB y lanzar allí las pruebas de integración, pero tiene varios costes que se van acumulando sin hacer mucho ruido: dependencia de red, datos sucios entre ejecuciones, credenciales repartidas por demasiados sitios, latencia innecesaria y un coste económico que, aunque no siempre sea dramático, existe. Ciertamente existen casos o proyectos donde es inevitable usar una instancia real de Cosmos DB, pero para en mi experiencia para la gran mayoría de proyectos este emulador es más que suficiente para el día a día.
 
-Con el emulador, el flujo cambia bastante. Levantas un contenedor local, apuntas tu aplicación .NET al endpoint del emulador y ejecutas las mismas operaciones que harías contra Cosmos DB usando el mismo SDK. Tal y como explica [el artículo del equipo de Cosmos DB](https://devblogs.microsoft.com/cosmosdb/from-local-development-to-ci-workflows-with-the-azure-cosmos-db-emulator/), la idea es validar el recorrido real: escribir, leer y comprobar que la siguiente respuesta refleja el estado persistido.
+Con el emulador, el flujo cambia bastante. Levantas un contenedor local, apuntas tu aplicación .NET al endpoint del emulador y ejecutas las mismas operaciones que harías contra Cosmos DB usando el mismo SDK. Tal y como explica [el artículo del equipo de Cosmos DB](https://devblogs.microsoft.com/cosmosdb/from-local-development-to-ci-workflows-with-the-azure-cosmos-db-emulator/), la idea es validar el recorrido real de los datos: escribir, leer y comprobar que la siguiente respuesta refleja el estado persistido.
 
-Para mí, lo importante aquí no es solo el clásico «funciona en mi máquina». Lo importante es otra cosa: **mi máquina y la del pipeline se parecen mucho más entre sí**. Y ese puente entre portátil y CI vale oro, porque reduce diferencias invisibles, quita excusas y hace que los fallos sean bastante más diagnósticos.
+Como en otros artículos, lo interesante de este enfoque es que minimiza aun más el clásico «funciona en mi máquina», y acerca **mi máquina y la del pipeline mucho más entre sí**. Y ese puente entre portátil y CI vale oro, porque reduce diferencias invisibles, quita excusas y hace que los fallos sean bastante más diagnósticos. A parte de que disminuye la separación entre entornos que muchas veces ensucia el código: el típico flag de si estoy trabajando en local/desarrollo o ya el código debe operar en su formulación para la nube.
 
 ### Levantar Azure Cosmos DB Emulator en Docker
 
-La [documentación del emulador Linux](https://learn.microsoft.com/en-us/azure/cosmos-db/emulator-linux) indica la imagen y los puertos principales: `8081` para el gateway, `1234` para Data Explorer y `8080` para las *health probes*. Yo suelo arrancarlo así:
+La [documentación del emulador Linux](https://learn.microsoft.com/en-us/azure/cosmos-db/emulator-linux) indica la imagen y los puertos principales: `8081` para el gateway, `1234` para Data Explorer y `8080` para las *health probes*.
 
 ```bash
 docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-latest
@@ -92,7 +91,7 @@ La salida esperada tras `docker run -d` es el **id del contenedor** en una líne
 7f3f6c9d8c2b1a4e5d6f7890abc1234567890def1234567890abcdef12345678
 ```
 
-A partir de ahí, yo no sigo hasta verificar que realmente está listo. Y aquí merece la pena ser un poco maniático (yo lo soy): que el contenedor esté arrancado no significa que ya acepte peticiones correctamente. La propia [documentación de Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/emulator-linux) recomienda usar el *health probe*.
+A partir de ahí, yo no sigo hasta verificar que realmente está listo. Y aquí merece la pena ser un poco maniático (yo lo soy… bastante 🫣): que el contenedor esté arrancado no significa que ya acepte peticiones correctamente. La propia [documentación de Microsoft Learn](https://learn.microsoft.com/en-us/azure/cosmos-db/emulator-linux) recomienda usar el *health probe* primero para estar seguros.
 
 ```bash
 curl -s http://localhost:8080/alive
@@ -101,9 +100,9 @@ curl -s http://localhost:8080/ready
 
 En la práctica, la comprobación que de verdad me importa es `/ready`. Si ese endpoint responde bien, ya tengo una señal razonable de que puedo lanzar pruebas. Y si abres `http://localhost:1234`, deberías poder entrar en Data Explorer unos segundos después del arranque.
 
-### Conectar una app .NET 8 al emulador y preparar el contenedor
+### Conectar una app .NET 10 al emulador y preparar el contenedor
 
-Aquí viene la parte interesante de verdad: usar el SDK real de Cosmos desde una prueba de integración. Voy a asumir un proyecto de test xUnit en .NET 8 con `Microsoft.Azure.Cosmos` **3.61.0**.
+Aquí viene la parte interesante de verdad: usar el SDK de Cosmos desde una prueba de integración. Voy a asumir un proyecto de test xUnit en .NET 10 con `Microsoft.Azure.Cosmos` **3.61.0**.
 
 Lo primero que hago es crear un fixture que inicialice la base de datos y el contenedor una sola vez. He endurecido un poco el ejemplo para que falle antes y mejor si algo va mal, y para que el ciclo de vida sea más limpio en ejecución repetida.
 
@@ -159,7 +158,7 @@ Cuando esta inicialización funciona, la señal verificable es bastante sencilla
 
 {{< figure src="/images/azure-cosmos-db-emulator-el-camino-mas-sensato-de-local-a-ci/body-2.png" alt="Secuencia de arranque del emulador y creación de base de datos" caption="Yo siempre verifico primero la disponibilidad del emulador antes de crear base de datos y contenedor." >}}{{< /figure >}}
 
-Aquí hay un matiz importante. La [documentación oficial del emulador Linux vNext](https://learn.microsoft.com/en-us/azure/cosmos-db/emulator-linux) deja claro que **no aplica autenticación actualmente**, así que el foco de estas pruebas está en la conectividad y en el comportamiento de datos. Si tú necesitas validar identidad, permisos o secretos, esa parte te la tienes que llevar a un entorno real de Azure. El emulador no está para eso.
+Como comentaba antes, la [documentación oficial del emulador Linux vNext](https://learn.microsoft.com/en-us/azure/cosmos-db/emulator-linux) deja claro que **no aplica autenticación actualmente**, así que el foco de estas pruebas está en la conectividad y en el comportamiento de datos. Si tú necesitas validar identidad, permisos o secretos, esa parte si te la tienes que llevar a un entorno real de Azure. El emulador no está para eso (por ahora).
 
 ### Sembrar datos y probar CRUD real
 
@@ -215,7 +214,7 @@ Este tipo de prueba ya te da algo que un mock no te da ni de lejos: confirmas se
 
 ### Verificar concurrencia optimista con ETag
 
-Si me preguntas qué caso merece la pena automatizar pronto, yo diría que la concurrencia. En aplicaciones con Cosmos DB, las sobrescrituras silenciosas son de esos errores que parecen pequeños… hasta que llegan a producción. Y aquí el emulador también ayuda mucho a detectar fallos de lógica antes de tocar Azure.
+La concurrencia es uno de esos casos habituales que merece la pena automatizar pronto. En aplicaciones con Cosmos DB, las sobrescrituras silenciosas son de esos errores que parecen pequeños… hasta que llegan a producción. Y aquí el emulador también ayuda mucho a detectar fallos de lógica antes de tocar Azure.
 
 ```csharp
 using Microsoft.Azure.Cosmos;
@@ -271,7 +270,7 @@ Passed!  Total: 1, Failed: 0, Skipped: 0, Time: 1.5 s
 
 ### Llevar exactamente el mismo enfoque a GitHub Actions
 
-Aquí es donde, para mí, el emulador gana de verdad. No quiero una estrategia para local y otra distinta para CI. Quiero el mismo patrón, con el menor número posible de diferencias y con el mismo tipo de señal cuando algo falla.
+Aquí es donde, para mí, el emulador gana de verdad. No quiero una estrategia para local y otra distinta para CI. Ese drifting en el código y en la configuración llega a crecer a niveles insoportables. Quiero el mismo patrón, con el menor número posible de diferencias y con el mismo tipo de señal cuando algo falla.
 
 En GitHub Actions puedes levantar el contenedor del emulador, esperar al probe `/ready` y ejecutar las mismas pruebas .NET. Ese encaje con CI está precisamente en el centro del enfoque descrito por [el equipo de Azure Cosmos DB](https://devblogs.microsoft.com/cosmosdb/from-local-development-to-ci-workflows-with-the-azure-cosmos-db-emulator/).
 
@@ -291,10 +290,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar .NET 8
+      - name: Configurar .NET 10
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.x'
 
       - name: Levantar Azure Cosmos DB Emulator
         run: |
@@ -329,13 +328,13 @@ Emulador listo
 Passed!  Total: 2, Failed: 0, Skipped: 0
 ```
 
-**Y aquí está la gracia de todo esto:** local y CI hablan el mismo idioma. No el mismo “más o menos”, sino prácticamente el mismo flujo operativo. Cuando consigues eso, las pruebas de integración dejan de ser una ceremonia frágil y pasan a ser una herramienta cotidiana.
+**Y aquí está la gracia de todo esto:** local y CI hablan el mismo idioma. No el mismo “más o menos”, sino escencialmente el mismo flujo operativo. Cuando consigues eso, las pruebas de integración dejan de ser una ceremonia frágil y pasan a ser una herramienta cotidiana.
 
 ### Lo que sí y lo que no validaría con el emulador
 
 Aquí conviene ser muy honesto. El emulador es buenísimo para validar flujos de persistencia, consultas básicas, particiones, contratos del SDK y parte de la concurrencia. Pero la [documentación del emulador Linux vNext](https://learn.microsoft.com/en-us/azure/cosmos-db/emulator-linux) deja claro que hay un subconjunto de funcionalidades y que trabaja en gateway mode. Además, existen incidencias abiertas como [este problema con `QueryRequestOptions.MaxItemCount` en consultas ordenadas y acotadas por partición](https://github.com/Azure/azure-cosmos-db-emulator-docker/issues/347), que sirven como recordatorio bastante sano: **el emulador no es un clon perfecto del servicio administrado**.
 
-Eso no invalida su uso. Al contrario: lo coloca exactamente en el sitio correcto. Yo lo usaría para:
+Eso no invalida su uso, sino que lo coloca exactamente en el sitio correcto. Yo lo usaría para:
 
 - Pruebas de integración en local y CI,
 - Validación de CRUD y consultas representativas,
@@ -351,12 +350,12 @@ Y dejaría para un entorno real en Azure:
 
 ### Mi recomendación práctica
 
-Si hoy tu equipo sigue usando mocks para todo lo que toca base de datos, yo no intentaría arreglarlo con una gran migración épica (ya sabes, de esas que acaban en una hoja de cálculo con demasiados colores). Empezaría por dos o tres pruebas de integración de mucho valor: una de escritura y lectura, una de actualización con ETag y una consulta relevante por partición. Las ejecutaría primero en local con Docker y después exactamente igual en GitHub Actions.
+Si hoy tu equipo sigue usando mocks para todo lo que toca base de datos, yo no intentaría arreglarlo con una gran migración épica (ya sabes, de esas que acaban en una hoja de cálculo con demasiados colores, o un JIRA desbordado e ingestionable). Empezaría por dos o tres pruebas de integración de mucho valor: una de escritura y lectura, una de actualización con ETag y una consulta relevante por partición. Las ejecutaría primero en local con Docker y después exactamente igual en GitHub Actions.
 
 Ese pequeño cambio ya te obliga a diseñar mejor el acceso a datos, a separar configuración de infraestructura y a pensar en datos de prueba reproducibles. Y, sobre todo, te da una señal que vale bastante más que un test unitario maquillado: que tu código habla de verdad con Cosmos DB a través del mismo SDK que vas a usar en producción.
 
 {{< figure src="/images/azure-cosmos-db-emulator-el-camino-mas-sensato-de-local-a-ci/body-4.png" alt="Comparativa visual entre pruebas frágiles y flujo determinista con emulador" caption="El valor real del emulador aparece cuando el mismo recorrido local también funciona en CI." >}}{{< /figure >}}
 
-Mi conclusión es clara: **Azure Cosmos DB Emulator no sustituye a Azure Cosmos DB, pero sí mejora muchísimo el camino entre desarrollar y confiar**. Para mí, esa es la clave. Si puedo reproducir en mi portátil lo mismo que va a ejecutar el pipeline, reduzco sorpresas, acelero el *feedback* y convierto las pruebas de integración en una herramienta diaria, no en una ceremonia esporádica.
+Mi conclusión es clara: **Azure Cosmos DB Emulator no sustituye a Azure Cosmos DB, pero sí allana muchísimo el camino entre desarrollar y confiar**. Si puedo reproducir en mi portátil lo mismo que va a ejecutar el pipeline, reduzco sorpresas, acelero el *feedback* y convierto las pruebas de integración en una herramienta diaria, no en una ceremonia esporádica.
 
-Y cuando eso pasa, tú desarrollas con otra seguridad. Y yo, sinceramente, duermo bastante mejor.
+No se tu, pero cuando eso pasa, duermo muchísimo mejor.

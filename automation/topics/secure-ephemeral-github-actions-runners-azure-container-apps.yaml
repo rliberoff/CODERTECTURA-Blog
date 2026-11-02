@@ -1,0 +1,154 @@
+id: secure-ephemeral-github-actions-runners-azure-container-apps
+title: Build Secure Ephemeral GitHub Actions Runners on Azure Container Apps
+slug: runners-efimeros-y-seguros-de-github-actions-en-azure-container-apps-mi-patron-p
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-11-02T06:16:37+00:00'
+- status: in_review
+  at: '2026-11-02T06:22:43+00:00'
+discovered_at: '2026-11-02T06:16:37+00:00'
+similarity:
+  max_score: 0.4335
+  closest_match: azure-linux-on-wsl-dotnet-local-linux-dev-path
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/azure-infrastructure-blog/building-secure-ephemeral-github-actions-runners-on-azure/ba-p/4569209
+  title: Building Secure, Ephemeral GitHub Actions Runners on Azure Container Apps
+  published_date: '2026-11-01'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: 'A practical architecture using KEDA autoscaling, GitHub App authentication,
+    private Key Vault access, Microsoft Container Registry, and GitHub OIDC Implementation
+    guide and field learnings What this architecture delivers · A repository-scoped
+    runner that exists only for one workflow · Automatic scale-from-zero with an Azure
+    Container Apps Event Job and KEDA · GitHub App authentication instead of a personal
+    access token · Private secret retrieval using a managed identity, private endpoint
+    and private DNS · Secretless Azure deployment from workflows through GitHub OIDC
+    · No customer-managed Azure Container Registry for the runner image This article
+    focuses on the final event-driven architecture and the implementation decisions
+    that made it secure, repeatable and useful for real infrastructure workflows.
+    Why this pattern? GitHub-hosted runners are the simplest option for many teams,
+    but some workflows need private network access, organization-approved tooling
+    or tighter control over the execution boundary. Long-running self-hosted virtual
+    machines solve those needs, but introduce patching, capacity planning and idle
+    cost. Azure Container Apps Jobs provide a serverless execution boundary for finite
+    tasks. With the KEDA GitHub runner scaler, an execution can start when a matching
+    workflow is queued, register one ephemeral runner, process one job and terminate.
+    Setting the minimum execution count to zero preserves scale-to-zero when the queue
+    is empty. The important design work begins around that lifecycle: how the runner
+    image is prepared, how GitHub is authenticated, where secrets are stored, how
+    private access is enforced, and which identity is allowed to deploy Azure resources.
+    Reference architecture Figure 1. End-to-end event-driven architecture and trust
+    boundaries. A matching GitHub Actions workflow enters the queue. The KEDA github-runner
+    scaler polls GitHub using GitHub App authentication and starts an Azure Container
+    Apps Event Job when the queue length reaches the configured target. The event
+    job pulls a Microsoft-maintained base image from Microsoft Container Registry.
+    At startup, the container installs or verifies the required toolchain, obtains
+    GitHub App material from a private Azure Key Vault, generates short-lived GitHub
+    credentials and registers a repository-level ephemeral runner. The workflow executes
+    on that runner. When Azure access is needed, the workflow obtains a GitHub OIDC
+    token and exchanges it through a federated credential on a separate Microsoft
+    Entra deployment identity. Azure RBAC limits that identity to the intended deployment
+    scope. After one workflow, the runner exits and the Container Apps job completes.
+    With no remaining matching work, the solution returns to zero executions. Secure
+    authentication flow Figure 2. Private secret retrieval and short-lived GitHub
+    token exchange. Queue detection: KEDA queries GitHub for jobs matching the configured
+    owner, repository and label. Job startup: Azure Container Apps starts on…'
+- url: https://learn.microsoft.com/en-gb/azure/azure-arc/servers/automatic-agent-upgrade
+  title: Automatically upgrade the Azure Connected Machine agent - Azure Arc | Microsoft
+    Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  excerpt: '[Skip to Ask Learn chat experience](#)
+
+    This browser is no longer supported.
+
+    Upgrade to Microsoft Edge to take advantage of the latest features, security updates,
+    and technical support.
+
+    [Download Microsoft Edge](https://go.microsoft.com/fwlink/p/?LinkID=2092881 )
+    [More info about Internet Explorer and Microsoft Edge](https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge)
+
+    [Read in English](#) [Edit](https://github.com/MicrosoftDocs/azure-management-docs/blob/main/articles/azure-arc/servers/automatic-agent-upgrade.md)
+
+    ---
+
+    ---
+
+    Note
+
+    Access to this page requires authorization. You can try [signing in](#) or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    # Automatically upgrade the Azure Connected Machine agent
+
+    The Azure Connected Machine agent is updated regularly with bug fixes, stability
+    improvements, and new functionality. Automatic agent upgrade helps keep Azure
+    Arc-enabled servers up to date without requiring you to manually deploy each new
+    agent version.
+
+    When you enable automatic agent upgrade, Microsoft automatically manages updates
+    to the Azure Connected Machine agent. Machines are scheduled to upgrade to the
+    latest agent version. Upgrades roll out in batches across regions and initiate
+    during off-peak hours to help maintain stability and minimize disruption. If an
+    upgrade doesn''t complete successfully, the agent periodically retries the upgrade
+    until it succeeds.
+
+    Installing or upgrading the Azure Connected Machine agent doesn''t require a server
+    restart. This feature is currently available only on Azure public cloud.
+
+    ## Prerequisites
+
+    Before enabling automatic agent upgrade, ensure your machines meet the following
+    requirements:
+
+    * **All Arc-enabled servers:** Azure Connected Machine agent version 1.67 or later
+    is required.
+
+    * **Windows:** Set the PowerShell execution policy to RemoteSigned. Automatic
+    agent upgrade isn''t supported when the execution policy is set to Restricted.
+
+    * **Linux:** Ensure the cron service is installed and running. This service is
+    required to schedule and perform automatic agent upgrades.
+
+    Important
+
+    If enabled on an agent version earlier than 1.67, use [one of the other methods](manage-agent#additional-agent-upgrade-methods)
+    to upgrade the agent to a compatible version. Automatic Agent Upgrade can then
+    manage all future upgrades.
+
+    ## Enable automatic agent upgrade
+
+    You can enable automatic agent upgrade when connecting a new machine to Azure
+    Arc or enable it later for an existing Arc-enabled server.
+
+    To enable automatic agent upgrade when connecting the machine, include the `--enable-automatic-upgrade`
+    parameter with `azcmagent connect`.
+
+    ```
+
+    azcmagent connect \ --subscription-id "" \ --resource-group "" \ --location ""
+    \ --enable-automatic-upgrade
+
+    ```
+
+    Alternatively, enable automatic agent upgrade during the machine onboarding process
+    in the Azure portal by following these steps:
+
+    1. In the [Azure portal](https://portal.azure.com/), search for and sel…'
+notes: 'This is a strong hands-on platform-engineering story: a practical pattern
+  for running self-hosted GitHub Actions runners that scale to zero and disappear
+  after each job. It combines Container Apps, KEDA, Key Vault, and OIDC in a production-oriented
+  architecture.'
+area: azure compute and containers
+code_example_ideas:
+- Deploy an ephemeral runner container app with KEDA and GitHub App authentication.
+- Configure private Key Vault access and fetch runner credentials using managed identity.
+- Set up GitHub OIDC to avoid long-lived Azure credentials in the workflow.
+article_path: content/posts/2026-11-02-runners-efimeros-y-seguros-de-github-actions-en-azure-container-apps-mi-patron-p.md
+pr_url: null

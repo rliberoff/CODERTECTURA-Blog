@@ -1,0 +1,155 @@
+id: customer-owned-public-ips-azure-firewall-secured-virtual-wan-hub
+title: Deploy customer-owned public IPs for Azure Firewall in a secured Virtual WAN
+  hub
+slug: como-llevar-tus-propias-ip-publicas-a-azure-firewall-en-un-virtual-wan-secured-h
+article_type: technical
+status: in_review
+status_history:
+- status: candidate
+  at: '2026-11-23T06:17:12+00:00'
+- status: in_review
+  at: '2026-11-23T06:26:04+00:00'
+discovered_at: '2026-11-23T06:17:12+00:00'
+similarity:
+  max_score: 0.3872
+  closest_match: rotating-credentials-safely-azure-api-management
+  threshold: 0.82
+sources:
+- url: https://techcommunity.microsoft.com/t5/azure-infrastructure-blog/implement-virtual-wan-secure-hub-with-customer-owned-public-ips/ba-p/4575390
+  title: Implement Virtual WAN Secure Hub with Customer-Owned Public IPs for Firewall
+    using AVM
+  published_date: '2026-11-21'
+  host: techcommunity.microsoft.com
+  kind: primary
+  excerpt: 'Azure Virtual WAN provides a managed networking architecture that simplifies
+    connectivity between virtual networks, branch locations, VPN connections, and
+    ExpressRoute connections. At the centre of this architecture is the Virtual Hub
+    , which provides managed connectivity and routing. When Azure Firewall and the
+    associated security and routing policies are configured for the Virtual Hub through
+    Azure Firewall Manager, it becomes a secured virtual hub . Azure Firewall in the
+    secured virtual hub can then provide centralized security and traffic inspection
+    for traffic moving through the Virtual WAN environment. The same firewall can
+    also be configured for private and public networking traffic inspection by setting
+    the private and public Routing Intent. Public IP Addresses with Azure Firewall
+    While we use the azure vWAN secure Hub with Azure Firewall and public routing
+    intent, it requires Public IP addresses for public connectivity. These Public
+    IP addresses are important for both inbound and outbound traffic scenarios . For
+    outbound traffic , Azure Firewall Public IP addresses can be used as source addresses
+    when workloads communicate with destinations on the internet. Having known Public
+    IP addresses can be important when external systems allow traffic based on specific
+    source IP addresses. For inbound traffic , Azure Firewall can provide controlled
+    access to internal workloads through features such as Destination Network Address
+    Translation (DNAT). External traffic reaches a Public IP associated with the firewall
+    and is translated and forwarded to the appropriate internal destination according
+    to the configured firewall rules. The same IP then can also be configured with
+    DNS to provide an FQDN based endpoint solution to the upstream applications. In
+    many deployments, Public IP addresses can be managed as part of the Azure Firewall
+    deployment. However, there are also scenarios where organizations want to create
+    and manage their own Public IP resources and then associate those specific Public
+    IP addresses with Azure Firewall. For example, an organization might need to:
+    Maintain consistent Public IP addresses across the deployment. Control the creation
+    and lifecycle of the Public IP resources separately from Azure Firewall. Use known
+    Public IP addresses for outbound connectivity where external systems depend on
+    source IP allowlists. Maintain specific Public IP addresses for inbound connectivity
+    and DNAT scenarios. Meet existing networking, security, or compliance requirements
+    that depend on known Public IP addresses. The deployment model therefore changes
+    from simply defining how many Public IP addresses the firewall requires to defining
+    which Public IP resources the firewall should use . Customer-Provided Public IP
+    Addresses Azure Firewall in Virtual WAN secured hubs now supports the use of customer-provided
+    public IP addresses. This capability enables organizations to bring their own
+    public IP addresses when deploying Azure Firewall in a secured Vi…'
+- url: https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview
+  title: Azure Virtual Network Peering | Microsoft Learn
+  published_date: null
+  host: learn.microsoft.com
+  kind: secondary
+  images:
+  - url: https://learn.microsoft.com/ar-sa/azure/architecture/networking/architecture/_images/hub-spoke-network-topology-architecture.svg
+    description: ''
+  excerpt: 'Note
+
+    Access to this page requires authorization. You can try signing in or changing
+    directories.
+
+    Access to this page requires authorization. You can try changing directories.
+
+    Azure Virtual Network peering enables you to seamlessly connect two or more virtual
+    networks in Azure, making them appear as one for connectivity purposes. This powerful
+    feature allows you to create secure, high-performance connections between virtual
+    networks while keeping all traffic on Microsoft''s private backbone infrastructure,
+    eliminating the need for public internet routing.
+
+    **What you learn in this article:**
+
+    - How virtual network peering works and its key benefits
+
+    - Different types of peering (local and global)
+
+    - How to implement connectivity and service chaining
+
+    - How to disable peering route propagation to steer traffic through a network
+    virtual appliance
+
+    - Troubleshooting common peering issues
+
+    Whether you''re designing a hub-and-spoke topology or connecting networks across
+    regions, this guide helps you understand the capabilities and limitations of virtual
+    network peering.
+
+    By using Azure Virtual Network Manager connectivity configurations, you can scale
+    connectivity beyond traditional virtual network peering limits. For example, you
+    can create a hub-and-spoke topology with up to 1,000 spoke virtual networks connected
+    to a hub, or create a mesh connected group containing up to 3,000 virtual networks
+    that can communicate directly with one another.
+
+    Azure supports the following types of peering:
+
+    - **Virtual network peering**: Connect virtual networks within the same Azure
+    region.
+
+    - **Global virtual network peering**: Connect virtual networks across Azure regions.
+
+    The benefits of using virtual network peering, whether local or global, include:
+
+    - A low-latency, high-bandwidth connection between resources in different virtual
+    networks.
+
+    - The ability for resources in one virtual network to communicate with resources
+    in a different virtual network.
+
+    - The ability to transfer data between virtual networks across Azure subscriptions,
+    Microsoft Entra tenants, deployment models, and Azure regions.
+
+    - The ability to peer virtual networks created through Azure Resource Manager.
+
+    - The ability to peer a virtual network created through Resource Manager to one
+    created through the classic deployment model. To learn more about Azure deployment
+    models, see Understand Azure deployment models.
+
+    - No downtime to resources in either virtual network when you create the peering
+    or after the peering is created.
+
+    Network traffic between peered virtual networks is private. Traffic between the
+    virtual networks is kept on the Microsoft backbone network. No public internet,
+    gateways, or encryption are required in the communication between the virtual
+    networks.
+
+    Microsoft recently introduced an added flexibility on top of virtual network peering
+    - ''**Subnet peering**''.
+
+    It''s an added flexibility built on top of virtual network peering, where you
+    get an option to choose specific subnets that need to be pe…'
+notes: 'This topic combines networking architecture with a concrete deployment pattern:
+  bringing your own public IPs to Azure Firewall in Virtual WAN secured hubs. The
+  AVM angle makes it especially relevant for infrastructure teams standardizing network
+  IaC.'
+area: azure networking and private connectivity
+code_example_ideas:
+- Deploy a secured Virtual WAN hub with Azure Firewall using an Azure Verified Module
+  pattern.
+- Attach customer-owned Standard static public IPs to the firewall and verify routing
+  behavior.
+- Compare the AVM-based deployment with a classic hub-and-spoke setup and document
+  the required subnet and SKU constraints.
+article_path: content/posts/2026-11-23-como-llevar-tus-propias-ip-publicas-a-azure-firewall-en-un-virtual-wan-secured-h.md
+pr_url: null
